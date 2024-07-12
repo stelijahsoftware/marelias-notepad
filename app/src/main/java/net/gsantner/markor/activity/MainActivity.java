@@ -126,7 +126,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             manager.putFragment(outState, Integer.toString(R.id.nav_notebook), _notebook);
             //manager.putFragment(outState, Integer.toString(R.id.nav_quicknote), _quicknote);
             //manager.putFragment(outState, Integer.toString(R.id.nav_todo), _todo);
-            manager.putFragment(outState, Integer.toString(R.id.nav_more), _more);
+            //manager.putFragment(outState, Integer.toString(R.id.nav_more), _more);
         } catch (NullPointerException | IllegalStateException ignored) {
             Log.d(MainActivity.class.getName(), "Child fragments null in onSaveInstanceState()");
         }
@@ -146,7 +146,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             _notebook = (GsFileBrowserFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_notebook));
             //_quicknote = (DocumentEditAndViewFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_quicknote));
             //_todo = (DocumentEditAndViewFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_todo));
-            _more = (MoreFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_more));
+            //_more = (MoreFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_more));
 
             final NewFileDialog nf = (NewFileDialog) manager.findFragmentByTag(NewFileDialog.FRAGMENT_TAG);
             if (nf != null) {
@@ -355,7 +355,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         if (id == R.id.nav_notebook) return 0;
         //if (id == R.id.nav_todo) return 1;
         //if (id == R.id.nav_quicknote) return 2;
-        if (id == R.id.nav_more) return 3;
+        //if (id == R.id.nav_more) return 3;
         return 0;
     }
 
@@ -474,11 +474,12 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 //            } else if (id == R.id.nav_todo) {
 //                frag = _todo = DocumentEditAndViewFragment.newInstance(new Document(_appSettings.getTodoFile()), Document.EXTRA_FILE_LINE_NUMBER_LAST, false);
 //            }
-            if (id == R.id.nav_more) {
-                frag = _more = MoreFragment.newInstance();
-            } else {
+//            if (id == R.id.nav_more) {
+//                frag = _more = MoreFragment.newInstance();
+//            } else {
+
                 frag = _notebook = GsFileBrowserFragment.newInstance();
-            }
+//            }
             frag.setMenuVisibility(false);
             return frag;
         }
