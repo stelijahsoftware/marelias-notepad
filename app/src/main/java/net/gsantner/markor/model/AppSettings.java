@@ -1039,24 +1039,25 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         final String js = getString(R.string.pref_key__title_format_list, "[]");
         final Set<String> formats = new LinkedHashSet<>(jsonStringToList(js));
         formats.addAll(Arrays.asList(
-                "{{date}}_{{title}}",
-                "{{date}}T{{time}}_{{title}}",
-                "`yyyyMMddHHmmSS`_{{title}}",
+                "`yyyyMMdd-HHmmSS`-{{title}}",
+                //"{{date}}-{{time}}-{{title}}",
+                //"{{date}}_{{title}}",
+                //"`yyyyMMddHHmmSS`_{{title}}",
                 "{{uuid}}"
         ));
         return formats;
     }
 
     public void saveTitleFormat(final String format, final int maxCount) {
-        final Set<String> formats = getTitleFormats();
-        final Set<String> updated = new LinkedHashSet<>(Collections.singleton(format));
-        for (final String f : formats) {
-            updated.add(f);
-            if (updated.size() >= maxCount) {
-                break;
-            }
-        }
-        setString(R.string.pref_key__title_format_list, toJsonString(updated));
+//        final Set<String> formats = getTitleFormats();
+//        final Set<String> updated = new LinkedHashSet<>(Collections.singleton(format));
+//        for (final String f : formats) {
+//            updated.add(f);
+//            if (updated.size() >= maxCount) {
+//                break;
+//            }
+//        }
+//        setString(R.string.pref_key__title_format_list, toJsonString(updated));
     }
 
     private static String mapToJsonString(final Map<String, String> map) {
