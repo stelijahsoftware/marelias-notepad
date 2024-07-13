@@ -189,9 +189,9 @@ public class Document implements Serializable {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && file.getName().endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
     }
 
-    public boolean isBinaryFileNoTextLoading() {
-        return _file != null && FormatRegistry.CONVERTER_EMBEDBINARY.isFileOutOfThisFormat(_file.getAbsolutePath());
-    }
+//    public boolean isBinaryFileNoTextLoading() {
+//        return _file != null && FormatRegistry.CONVERTER_EMBEDBINARY.isFileOutOfThisFormat(_file.getAbsolutePath());
+//    }
 
     public boolean isEncrypted() {
         return isEncrypted(_file);
@@ -211,9 +211,10 @@ public class Document implements Serializable {
         String content;
         final char[] pw;
 
-        if (isBinaryFileNoTextLoading()) {
-            content = "";
-        } else if (isEncrypted() && (pw = getPasswordWithWarning(context)) != null) {
+//        if (isBinaryFileNoTextLoading()) {
+//            content = "";
+//        }
+        if (isEncrypted() && (pw = getPasswordWithWarning(context)) != null) {
             try {
                 final byte[] encryptedContext = GsFileUtils.readCloseStreamWithSize(new FileInputStream(_file), (int) _file.length());
                 if (encryptedContext.length > JavaPasswordbasedCryption.Version.NAME_LENGTH) {
@@ -230,7 +231,9 @@ public class Document implements Serializable {
                 Log.e(Document.class.getName(), "loadDocument:  decrypt failed for File " + _file + ". " + e.getMessage(), e);
                 content = "";
             }
-        } else {
+        }
+        else
+        {
             // We try to load 2x. If both times fail, we return null
             Pair<String, GsFileUtils.FileInfo> result = GsFileUtils.readTextFileFast(_file);
             if (result.second.ioError) {
@@ -298,9 +301,10 @@ public class Document implements Serializable {
 
     @SuppressWarnings("ConstantConditions")
     public synchronized boolean saveContent(final Activity context, final CharSequence content, MarkorContextUtils cu, final boolean isManualSave) {
-        if (isBinaryFileNoTextLoading()) {
-            return true;
-        }
+//        if (isBinaryFileNoTextLoading())
+//        {
+//            return true;
+//        }
 
         if (!isManualSave && TextUtils.getTrimmedLength(content) < GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH) {
             return false;

@@ -13,7 +13,7 @@ import androidx.core.text.TextUtilsCompat;
 
 import net.gsantner.markor.format.FormatRegistry;
 import net.gsantner.markor.format.TextConverterBase;
-import net.gsantner.markor.format.binary.EmbedBinaryTextConverter;
+//import net.gsantner.markor.format.binary.EmbedBinaryTextConverter;
 import net.gsantner.markor.format.keyvalue.KeyValueTextConverter;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
@@ -63,10 +63,12 @@ public class PlaintextTextConverter extends TextConverterBase {
         if (EXT_HTML.contains(extWithDot)) {
             // HTML: Display it
             converted += markup;
-        } else if (extWithDot.matches(EmbedBinaryTextConverter.EXT_MATCHES_M3U_PLAYLIST)) {
-            // Playlist: Load in Embed-Binary view-mode
-            return FormatRegistry.CONVERTER_EMBEDBINARY.convertMarkup(markup, context, lightMode, lineNum, file);
-        } else if (EXT_CODE_HL.contains(extWithDot) || (this instanceof KeyValueTextConverter)) {
+        }
+//        else if (extWithDot.matches(EmbedBinaryTextConverter.EXT_MATCHES_M3U_PLAYLIST)) {
+//            // Playlist: Load in Embed-Binary view-mode
+//            return FormatRegistry.CONVERTER_EMBEDBINARY.convertMarkup(markup, context, lightMode, lineNum, file);
+//        }
+        else if (EXT_CODE_HL.contains(extWithDot) || (this instanceof KeyValueTextConverter)) {
             // Source code: Load in Markdown view-mode & utilize code block highlighting
             final String hlLang = extWithDot.replace(".sh", ".bash").replace(".", "");
             markup = String.format(Locale.ROOT, "```%s\n%s\n```", hlLang, markup);

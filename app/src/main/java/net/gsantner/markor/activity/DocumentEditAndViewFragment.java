@@ -303,7 +303,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _cu.setSubMenuIconsVisibility(menu, true);
 
         final boolean isExperimentalFeaturesEnabled = _appSettings.isExperimentalFeaturesEnabled();
-        final boolean isText = !_document.isBinaryFileNoTextLoading();
+        final boolean isText = true; //!_document.isBinaryFileNoTextLoading();
 
         menu.findItem(R.id.action_undo).setVisible(isText && _appSettings.isEditorHistoryEnabled());
         menu.findItem(R.id.action_redo).setVisible(isText && _appSettings.isEditorHistoryEnabled());
@@ -810,7 +810,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
     public void setViewModeVisibility(boolean show, final boolean animate) {
         final Activity activity = getActivity();
-        show |= _document.isBinaryFileNoTextLoading();
+        show |= false; // _document.isBinaryFileNoTextLoading();
 
 //        _format.getActions().recreateActionButtons(_textActionsBar, show ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
 //        if (show) {
