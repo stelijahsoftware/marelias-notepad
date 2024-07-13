@@ -342,11 +342,11 @@ public class SettingsActivity extends MarkorBaseActivity {
                     _appSettings.setEditorBasicColor(false, R.color.sepia_fg_light__bg_dark, R.color.sepia_bg_light__fg_dark);
                     break;
                 }
-                case R.string.pref_key__plaintext__reorder_actions:
-                case R.string.pref_key__asciidoc__reorder_actions:
-                case R.string.pref_key__markdown__reorder_actions:
-                case R.string.pref_key__wikitext_reorder_actions:
-                case R.string.pref_key__orgmode__reorder_actions:
+//                case R.string.pref_key__plaintext__reorder_actions:
+//                case R.string.pref_key__asciidoc__reorder_actions:
+//                case R.string.pref_key__markdown__reorder_actions:
+//                case R.string.pref_key__wikitext_reorder_actions:
+//                case R.string.pref_key__orgmode__reorder_actions:
 //                case R.string.pref_key__todotxt__reorder_actions: {
 //                    startActivity(new Intent(getActivity(), ActionButtonSettingsActivity.class).putExtra(ActionButtonSettingsActivity.EXTRA_FORMAT_KEY, keyResId));
 //                    break;
