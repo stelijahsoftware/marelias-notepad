@@ -23,7 +23,7 @@ public class KeyValueSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern PATTERN_INI_KEY = Pattern.compile("(?im)^([a-z_0-9]+)\\s*[=]");
     public final static Pattern PATTERN_INI_COMMENT = Pattern.compile("(?im)^(;.*)$");
     public final static Pattern PATTERN_COMMENT = Pattern.compile("(?im)^((#|//)\\s+.*)$");
-    public final static Pattern PATTERN_CSV = Pattern.compile("[,;:]");
+//    public final static Pattern PATTERN_CSV = Pattern.compile("[,;:]");
 
     public KeyValueSyntaxHighlighter(AppSettings as) {
         super(as);

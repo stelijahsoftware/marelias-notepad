@@ -57,7 +57,7 @@ public class FormatRegistry {
     public static final int FORMAT_UNKNOWN = 0;
 //    public static final int FORMAT_WIKITEXT = R.string.action_format_wikitext;
     public static final int FORMAT_MARKDOWN = R.string.action_format_markdown;
-    public static final int FORMAT_CSV = R.string.action_format_csv;
+//    public static final int FORMAT_CSV = R.string.action_format_csv;
     public static final int FORMAT_PLAIN = R.string.action_format_plaintext;
 //    public static final int FORMAT_ASCIIDOC = R.string.action_format_asciidoc;
     public static final int FORMAT_TODOTXT = R.string.action_format_todotxt;
