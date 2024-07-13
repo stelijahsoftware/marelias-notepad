@@ -64,12 +64,12 @@ public class NewFileDialog extends DialogFragment {
 
     private static final List<Integer> NEW_FILE_FORMATS = Arrays.asList(
             FormatRegistry.FORMAT_MARKDOWN,
-            FormatRegistry.FORMAT_PLAIN,
-            FormatRegistry.FORMAT_TODOTXT,
-            FormatRegistry.FORMAT_WIKITEXT,
-            FormatRegistry.FORMAT_ASCIIDOC,
-            FormatRegistry.FORMAT_ORGMODE,
-            FormatRegistry.FORMAT_CSV
+            FormatRegistry.FORMAT_PLAIN
+            //FormatRegistry.FORMAT_TODOTXT,
+            //FormatRegistry.FORMAT_WIKITEXT,
+            //FormatRegistry.FORMAT_ASCIIDOC,
+            //FormatRegistry.FORMAT_ORGMODE,
+            //FormatRegistry.FORMAT_CSV
     );
 
     private GsCallback.a1<File> callback;
@@ -220,11 +220,16 @@ public class NewFileDialog extends DialogFragment {
             final String title = titleEdit.getText().toString().trim();
 
             String format = formatEdit.getText().toString().trim();
-            if (format.isEmpty() && title.isEmpty()) {
+            if (format.isEmpty() && title.isEmpty())
+            {
                 format = "`yyyy-MM-dd'T'hhMMss`";
-            } else if (format.isEmpty()) {
+            }
+            else if (format.isEmpty())
+            {
                 format = "{{title}}";
-            } else if (!title.isEmpty() && !format.contains("{{title}}")) {
+            }
+            else if (!title.isEmpty() && !format.contains("{{title}}"))
+            {
                 format += "_{{title}}";
             }
 
