@@ -16,7 +16,7 @@ import androidx.annotation.StringRes;
 
 import net.gsantner.markor.ApplicationObject;
 import net.gsantner.markor.R;
-import net.gsantner.markor.format.asciidoc.AsciidocActionButtons;
+//import net.gsantner.markor.format.asciidoc.AsciidocActionButtons;
 import net.gsantner.markor.format.asciidoc.AsciidocSyntaxHighlighter;
 import net.gsantner.markor.format.asciidoc.AsciidocTextConverter;
 import net.gsantner.markor.format.binary.EmbedBinaryTextConverter;
@@ -24,21 +24,21 @@ import net.gsantner.markor.format.csv.CsvSyntaxHighlighter;
 import net.gsantner.markor.format.csv.CsvTextConverter;
 import net.gsantner.markor.format.keyvalue.KeyValueSyntaxHighlighter;
 import net.gsantner.markor.format.keyvalue.KeyValueTextConverter;
-import net.gsantner.markor.format.markdown.MarkdownActionButtons;
+//import net.gsantner.markor.format.markdown.MarkdownActionButtons;
 import net.gsantner.markor.format.markdown.MarkdownReplacePatternGenerator;
 import net.gsantner.markor.format.markdown.MarkdownSyntaxHighlighter;
 import net.gsantner.markor.format.markdown.MarkdownTextConverter;
-import net.gsantner.markor.format.orgmode.OrgmodeActionButtons;
+//import net.gsantner.markor.format.orgmode.OrgmodeActionButtons;
 import net.gsantner.markor.format.orgmode.OrgmodeSyntaxHighlighter;
 import net.gsantner.markor.format.orgmode.OrgmodeTextConverter;
-import net.gsantner.markor.format.plaintext.PlaintextActionButtons;
+//import net.gsantner.markor.format.plaintext.PlaintextActionButtons;
 import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
 import net.gsantner.markor.format.plaintext.PlaintextTextConverter;
-import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
+//import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
 import net.gsantner.markor.format.todotxt.TodoTxtAutoTextFormatter;
 import net.gsantner.markor.format.todotxt.TodoTxtSyntaxHighlighter;
 import net.gsantner.markor.format.todotxt.TodoTxtTextConverter;
-import net.gsantner.markor.format.wikitext.WikitextActionButtons;
+//import net.gsantner.markor.format.wikitext.WikitextActionButtons;
 import net.gsantner.markor.format.wikitext.WikitextReplacePatternGenerator;
 import net.gsantner.markor.format.wikitext.WikitextSyntaxHighlighter;
 import net.gsantner.markor.format.wikitext.WikitextTextConverter;
@@ -134,7 +134,7 @@ public class FormatRegistry {
                 format._highlighter = new CsvSyntaxHighlighter(appSettings);
 
                 // TODO k3b ????
-                format._textActions = new PlaintextActionButtons(context, document);
+//                format._textActions = new PlaintextActionButtons(context, document);
                 format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
                 format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
                 break;
@@ -142,7 +142,7 @@ public class FormatRegistry {
             case FORMAT_PLAIN: {
                 format._converter = CONVERTER_PLAINTEXT;
                 format._highlighter = new PlaintextSyntaxHighlighter(appSettings);
-                format._textActions = new PlaintextActionButtons(context, document);
+//                format._textActions = new PlaintextActionButtons(context, document);
                 format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
                 format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
                 break;
@@ -150,7 +150,7 @@ public class FormatRegistry {
             case FORMAT_ASCIIDOC: {
                 format._converter = CONVERTER_ASCIIDOC;
                 format._highlighter = new AsciidocSyntaxHighlighter(appSettings);
-                format._textActions = new AsciidocActionButtons(context, document);
+//                format._textActions = new AsciidocActionButtons(context, document);
                 format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
                 format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
                 break;
@@ -158,20 +158,20 @@ public class FormatRegistry {
             case FORMAT_TODOTXT: {
                 format._converter = CONVERTER_TODOTXT;
                 format._highlighter = new TodoTxtSyntaxHighlighter(appSettings);
-                format._textActions = new TodoTxtActionButtons(context, document);
+//                format._textActions = new TodoTxtActionButtons(context, document);
                 format._autoFormatInputFilter = new TodoTxtAutoTextFormatter();
                 break;
             }
             case FORMAT_KEYVALUE: {
                 format._converter = CONVERTER_KEYVALUE;
                 format._highlighter = new KeyValueSyntaxHighlighter(appSettings);
-                format._textActions = new PlaintextActionButtons(context, document);
+//                format._textActions = new PlaintextActionButtons(context, document);
                 break;
             }
             case FORMAT_WIKITEXT: {
                 format._converter = CONVERTER_WIKITEXT;
                 format._highlighter = new WikitextSyntaxHighlighter(appSettings);
-                format._textActions = new WikitextActionButtons(context, document);
+//                format._textActions = new WikitextActionButtons(context, document);
                 format._autoFormatInputFilter = new AutoTextFormatter(WikitextReplacePatternGenerator.formatPatterns);
                 format._autoFormatTextWatcher = new ListHandler(WikitextReplacePatternGenerator.formatPatterns);
                 break;
@@ -179,13 +179,13 @@ public class FormatRegistry {
             case FORMAT_EMBEDBINARY: {
                 format._converter = CONVERTER_EMBEDBINARY;
                 format._highlighter = new PlaintextSyntaxHighlighter(appSettings);
-                format._textActions = new PlaintextActionButtons(context, document);
+//                format._textActions = new PlaintextActionButtons(context, document);
                 break;
             }
             case FORMAT_ORGMODE: {
                 format._converter = CONVERTER_ORGMODE;
                 format._highlighter = new OrgmodeSyntaxHighlighter(appSettings);
-                format._textActions = new OrgmodeActionButtons(context, document);
+//                format._textActions = new OrgmodeActionButtons(context, document);
                 format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
                 format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
                 break;
@@ -195,7 +195,7 @@ public class FormatRegistry {
                 formatId = FORMAT_MARKDOWN;
                 format._converter = CONVERTER_MARKDOWN;
                 format._highlighter = new MarkdownSyntaxHighlighter(appSettings);
-                format._textActions = new MarkdownActionButtons(context, document);
+//                format._textActions = new MarkdownActionButtons(context, document);
                 format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
                 format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
                 break;
@@ -205,16 +205,16 @@ public class FormatRegistry {
         return format;
     }
 
-    private ActionButtonBase _textActions;
+//    private ActionButtonBase _textActions;
     private SyntaxHighlighterBase _highlighter;
     private TextConverterBase _converter;
     private InputFilter _autoFormatInputFilter;
     private TextWatcher _autoFormatTextWatcher;
     private int _formatId;
 
-    public ActionButtonBase getActions() {
-        return _textActions;
-    }
+//    public ActionButtonBase getActions() {
+//        return _textActions;
+//    }
 
     public TextWatcher getAutoFormatTextWatcher() {
         return _autoFormatTextWatcher;

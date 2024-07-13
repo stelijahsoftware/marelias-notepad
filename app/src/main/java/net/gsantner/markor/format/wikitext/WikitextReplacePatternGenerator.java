@@ -7,7 +7,7 @@
 #########################################################*/
 package net.gsantner.markor.format.wikitext;
 
-import net.gsantner.markor.format.ActionButtonBase;
+//import net.gsantner.markor.format.ActionButtonBase;
 import net.gsantner.markor.frontend.textview.AutoTextFormatter;
 import net.gsantner.markor.frontend.textview.ReplacePatternGeneratorHelper;
 import net.gsantner.opoc.format.GsTextUtils;
@@ -65,85 +65,85 @@ public class WikitextReplacePatternGenerator {
      *
      * @param level heading level
      */
-    public static List<ActionButtonBase.ReplacePattern> setOrUnsetHeadingWithLevel(int level) {
-        List<ActionButtonBase.ReplacePattern> patterns = new ArrayList<>();
-
-        final int numberOfEqualSigns = 7 - level;
-
-        boolean isValidWikitextHeading = numberOfEqualSigns >= 2 && numberOfEqualSigns <= 6;
-        if (!isValidWikitextHeading) {
-            return patterns;
-        }
-
-        String headingChars = GsTextUtils.repeatChars('=', numberOfEqualSigns);
-
-        patterns.add(removeHeadingCharsForExactHeadingLevel(headingChars));
-        patterns.add(replaceDifferentHeadingLevelWithThisLevel(headingChars));
-        patterns.add(createHeadingIfNoneThere(headingChars));
-
-        return patterns;
-    }
-
-    private static ActionButtonBase.ReplacePattern removeHeadingCharsForExactHeadingLevel(String headingChars) {
-        return new ActionButtonBase.ReplacePattern(
-                "^\\s{0,3}" + headingChars + "[ \\t](.*)[ \\t]" + headingChars + "\\w*",
-                "$1");
-    }
-
-    private static ActionButtonBase.ReplacePattern replaceDifferentHeadingLevelWithThisLevel(String headingChars) {
-        return new ActionButtonBase.ReplacePattern("^\\s{0,3}={2,6}([ \\t].*[ \\t])={2,6}",
-                headingChars + "$1" + headingChars);
-    }
-
-    private static ActionButtonBase.ReplacePattern createHeadingIfNoneThere(String headingChars) {
-        return new ActionButtonBase.ReplacePattern("^\\s*?(\\S?.*)\\s*",
-                headingChars + " $1 " + headingChars);
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> replaceWithNextStateCheckbox() {
-        List<ActionButtonBase.ReplacePattern> replacePatterns = new ArrayList<>();
-
-        // toggle order: no checkbox -> unchecked -> checked -> crossed -> arrow -> unchecked -> ...
-        replacePatterns.addAll(toggleCheckboxToNextState());
-        replacePatterns.addAll(replaceOtherPrefixesWithUncheckedBox());
-        return replacePatterns;
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> removeCheckbox() {
-        Pattern anyCheckboxItem = Pattern.compile("^(\\s*)(\\[([ x*><])]\\s)");
-        return Collections.singletonList(new ActionButtonBase.ReplacePattern(anyCheckboxItem, "$1"));
-    }
-
-    private static List<ActionButtonBase.ReplacePattern> toggleCheckboxToNextState() {
-        return Arrays.asList(
-                new ActionButtonBase.ReplacePattern(PREFIX_UNCHECKED_LIST, checkedReplacement),
-                new ActionButtonBase.ReplacePattern(PREFIX_CHECKED_LIST, crossedReplacement),
-                new ActionButtonBase.ReplacePattern(PREFIX_CROSSED_LIST, rightArrowReplacement),
-                new ActionButtonBase.ReplacePattern(PREFIX_RIGHT_ARROW_LIST, leftArrowReplacement),
-                new ActionButtonBase.ReplacePattern(PREFIX_LEFT_ARROW_LIST, uncheckedReplacement));
-    }
-
-    private static List<ActionButtonBase.ReplacePattern> replaceOtherPrefixesWithUncheckedBox() {
-        List<ActionButtonBase.ReplacePattern> replacePatterns = new ArrayList<>();
-        for (final Pattern otherPattern : PREFIX_PATTERNS) {
-            replacePatterns.add(new ActionButtonBase.ReplacePattern(otherPattern, uncheckedReplacement));
-        }
-        return replacePatterns;
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> replaceWithUnorderedListPrefixOrRemovePrefix() {
-        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_UNORDERED_LIST, unorderedListReplacement);
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> replaceWithOrderedListPrefixOrRemovePrefix() {
-        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_ORDERED_LIST, orderedListReplacement);
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> deindentOneTab() {
-        return Collections.singletonList(new ActionButtonBase.ReplacePattern("^\t", ""));
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> indentOneTab() {
-        return Collections.singletonList(new ActionButtonBase.ReplacePattern("^", "\t"));
-    }
+//    public static List<ActionButtonBase.ReplacePattern> setOrUnsetHeadingWithLevel(int level) {
+//        List<ActionButtonBase.ReplacePattern> patterns = new ArrayList<>();
+//
+//        final int numberOfEqualSigns = 7 - level;
+//
+//        boolean isValidWikitextHeading = numberOfEqualSigns >= 2 && numberOfEqualSigns <= 6;
+//        if (!isValidWikitextHeading) {
+//            return patterns;
+//        }
+//
+//        String headingChars = GsTextUtils.repeatChars('=', numberOfEqualSigns);
+//
+//        patterns.add(removeHeadingCharsForExactHeadingLevel(headingChars));
+//        patterns.add(replaceDifferentHeadingLevelWithThisLevel(headingChars));
+//        patterns.add(createHeadingIfNoneThere(headingChars));
+//
+//        return patterns;
+//    }
+//
+//    private static ActionButtonBase.ReplacePattern removeHeadingCharsForExactHeadingLevel(String headingChars) {
+//        return new ActionButtonBase.ReplacePattern(
+//                "^\\s{0,3}" + headingChars + "[ \\t](.*)[ \\t]" + headingChars + "\\w*",
+//                "$1");
+//    }
+//
+//    private static ActionButtonBase.ReplacePattern replaceDifferentHeadingLevelWithThisLevel(String headingChars) {
+//        return new ActionButtonBase.ReplacePattern("^\\s{0,3}={2,6}([ \\t].*[ \\t])={2,6}",
+//                headingChars + "$1" + headingChars);
+//    }
+//
+//    private static ActionButtonBase.ReplacePattern createHeadingIfNoneThere(String headingChars) {
+//        return new ActionButtonBase.ReplacePattern("^\\s*?(\\S?.*)\\s*",
+//                headingChars + " $1 " + headingChars);
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> replaceWithNextStateCheckbox() {
+//        List<ActionButtonBase.ReplacePattern> replacePatterns = new ArrayList<>();
+//
+//        // toggle order: no checkbox -> unchecked -> checked -> crossed -> arrow -> unchecked -> ...
+//        replacePatterns.addAll(toggleCheckboxToNextState());
+//        replacePatterns.addAll(replaceOtherPrefixesWithUncheckedBox());
+//        return replacePatterns;
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> removeCheckbox() {
+//        Pattern anyCheckboxItem = Pattern.compile("^(\\s*)(\\[([ x*><])]\\s)");
+//        return Collections.singletonList(new ActionButtonBase.ReplacePattern(anyCheckboxItem, "$1"));
+//    }
+//
+//    private static List<ActionButtonBase.ReplacePattern> toggleCheckboxToNextState() {
+//        return Arrays.asList(
+//                new ActionButtonBase.ReplacePattern(PREFIX_UNCHECKED_LIST, checkedReplacement),
+//                new ActionButtonBase.ReplacePattern(PREFIX_CHECKED_LIST, crossedReplacement),
+//                new ActionButtonBase.ReplacePattern(PREFIX_CROSSED_LIST, rightArrowReplacement),
+//                new ActionButtonBase.ReplacePattern(PREFIX_RIGHT_ARROW_LIST, leftArrowReplacement),
+//                new ActionButtonBase.ReplacePattern(PREFIX_LEFT_ARROW_LIST, uncheckedReplacement));
+//    }
+//
+//    private static List<ActionButtonBase.ReplacePattern> replaceOtherPrefixesWithUncheckedBox() {
+//        List<ActionButtonBase.ReplacePattern> replacePatterns = new ArrayList<>();
+//        for (final Pattern otherPattern : PREFIX_PATTERNS) {
+//            replacePatterns.add(new ActionButtonBase.ReplacePattern(otherPattern, uncheckedReplacement));
+//        }
+//        return replacePatterns;
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> replaceWithUnorderedListPrefixOrRemovePrefix() {
+//        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_UNORDERED_LIST, unorderedListReplacement);
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> replaceWithOrderedListPrefixOrRemovePrefix() {
+//        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_ORDERED_LIST, orderedListReplacement);
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> deindentOneTab() {
+//        return Collections.singletonList(new ActionButtonBase.ReplacePattern("^\t", ""));
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> indentOneTab() {
+//        return Collections.singletonList(new ActionButtonBase.ReplacePattern("^", "\t"));
+//    }
 }

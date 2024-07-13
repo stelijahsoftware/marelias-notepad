@@ -7,7 +7,7 @@
 #########################################################*/
 package net.gsantner.markor.format.markdown;
 
-import net.gsantner.markor.format.ActionButtonBase;
+//import net.gsantner.markor.format.ActionButtonBase;
 import net.gsantner.markor.frontend.textview.AutoTextFormatter;
 import net.gsantner.markor.frontend.textview.ReplacePatternGeneratorHelper;
 import net.gsantner.opoc.format.GsTextUtils;
@@ -59,42 +59,42 @@ public class MarkdownReplacePatternGenerator {
      *
      * @param level ATX heading level
      */
-    public static List<ActionButtonBase.ReplacePattern> setOrUnsetHeadingWithLevel(int level) {
+//    public static List<ActionButtonBase.ReplacePattern> setOrUnsetHeadingWithLevel(int level) {
+//
+//        List<ActionButtonBase.ReplacePattern> patterns = new ArrayList<>();
+//
+//        String heading = GsTextUtils.repeatChars('#', level);
+//
+//        // Replace this exact heading level with nothing
+//        patterns.add(new ActionButtonBase.ReplacePattern("^(\\s{0,3})" + heading + " ", "$1"));
+//
+//        // Replace other headings with commonmark-compatible leading space
+//        patterns.add(new ActionButtonBase.ReplacePattern(MarkdownReplacePatternGenerator.PREFIX_ATX_HEADING, "$1" + heading + " "));
+//
+//        // Replace all other prefixes with heading
+//        for (final Pattern pp : MarkdownReplacePatternGenerator.PREFIX_PATTERNS) {
+//            patterns.add(new ActionButtonBase.ReplacePattern(pp, heading + "$1 "));
+//        }
+//
+//        return patterns;
+//    }
 
-        List<ActionButtonBase.ReplacePattern> patterns = new ArrayList<>();
-
-        String heading = GsTextUtils.repeatChars('#', level);
-
-        // Replace this exact heading level with nothing
-        patterns.add(new ActionButtonBase.ReplacePattern("^(\\s{0,3})" + heading + " ", "$1"));
-
-        // Replace other headings with commonmark-compatible leading space
-        patterns.add(new ActionButtonBase.ReplacePattern(MarkdownReplacePatternGenerator.PREFIX_ATX_HEADING, "$1" + heading + " "));
-
-        // Replace all other prefixes with heading
-        for (final Pattern pp : MarkdownReplacePatternGenerator.PREFIX_PATTERNS) {
-            patterns.add(new ActionButtonBase.ReplacePattern(pp, heading + "$1 "));
-        }
-
-        return patterns;
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> replaceWithUnorderedListPrefixOrRemovePrefix(String listChar) {
-        final String unorderedListReplacement = "$1" + listChar + " ";
-        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_UNORDERED_LIST, unorderedListReplacement);
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> toggleToCheckedOrUncheckedListPrefix(String listChar) {
-        final String unchecked = "$1" + listChar + " [ ] ";
-        final String checked = "$1" + listChar + " [x] ";
-        return ReplacePatternGeneratorHelper.replaceWithTargetPatternOrAlternative(PREFIX_PATTERNS, PREFIX_UNCHECKED_LIST, unchecked, checked);
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> replaceWithOrderedListPrefixOrRemovePrefix() {
-        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_ORDERED_LIST, ORDERED_LIST_REPLACEMENT);
-    }
-
-    public static List<ActionButtonBase.ReplacePattern> toggleQuote() {
-        return ReplacePatternGeneratorHelper.replaceWithTargetPatternOrAlternative(PREFIX_PATTERNS, PREFIX_QUOTE, ">$1 ", "");
-    }
+//    public static List<ActionButtonBase.ReplacePattern> replaceWithUnorderedListPrefixOrRemovePrefix(String listChar) {
+//        final String unorderedListReplacement = "$1" + listChar + " ";
+//        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_UNORDERED_LIST, unorderedListReplacement);
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> toggleToCheckedOrUncheckedListPrefix(String listChar) {
+//        final String unchecked = "$1" + listChar + " [ ] ";
+//        final String checked = "$1" + listChar + " [x] ";
+//        return ReplacePatternGeneratorHelper.replaceWithTargetPatternOrAlternative(PREFIX_PATTERNS, PREFIX_UNCHECKED_LIST, unchecked, checked);
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> replaceWithOrderedListPrefixOrRemovePrefix() {
+//        return ReplacePatternGeneratorHelper.replaceWithTargetPrefixOrRemove(PREFIX_PATTERNS, PREFIX_ORDERED_LIST, ORDERED_LIST_REPLACEMENT);
+//    }
+//
+//    public static List<ActionButtonBase.ReplacePattern> toggleQuote() {
+//        return ReplacePatternGeneratorHelper.replaceWithTargetPatternOrAlternative(PREFIX_PATTERNS, PREFIX_QUOTE, ">$1 ", "");
+//    }
 }
