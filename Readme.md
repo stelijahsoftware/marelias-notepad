@@ -11,3 +11,5 @@ X -ascii
 X -csv
 - Edit to start new note with date and time. Remove extra options (see merge requests). See todos from Snotepad.
 
+- Fix: search when launched from inside a file
+
