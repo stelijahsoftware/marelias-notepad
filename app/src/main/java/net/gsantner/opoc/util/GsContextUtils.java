@@ -184,12 +184,12 @@ public class GsContextUtils {
     public final static String PREF_KEY__SAF_TREE_URI = "pref_key__saf_tree_uri";
     public final static String CONTENT_RESOLVER_FILE_PROXY_SEGMENT = "CONTENT_RESOLVER_FILE_PROXY_SEGMENT";
 
-    public final static int REQUEST_CAMERA_PICTURE = 50001;
-    public final static int REQUEST_PICK_PICTURE = 50002;
+//    public final static int REQUEST_CAMERA_PICTURE = 50001;
+//    public final static int REQUEST_PICK_PICTURE = 50002;
     public final static int REQUEST_SAF = 50003;
     public final static int REQUEST_STORAGE_PERMISSION_M = 50004;
     public final static int REQUEST_STORAGE_PERMISSION_R = 50005;
-    public final static int REQUEST_RECORD_AUDIO = 50006;
+//    public final static int REQUEST_RECORD_AUDIO = 50006;
     private final static int BLINK_ANIMATOR_TAG = -1206813720;
 
     public static int TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH = 2;
@@ -1801,72 +1801,72 @@ public class GsContextUtils {
     @SuppressLint("ApplySharedPref")
     public void extractResultFromActivityResult(final Activity context, final int requestCode, final int resultCode, final Intent intent) {
         switch (requestCode) {
-            case REQUEST_CAMERA_PICTURE: {
-                sendPathCallback(resultCode == Activity.RESULT_OK ? _lastCameraPictureFilepath : null);
-                break;
-            }
-            case REQUEST_PICK_PICTURE: {
-                if (resultCode == Activity.RESULT_OK && intent != null) {
-                    Uri selectedImage = intent.getData();
-                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                    String picturePath = null;
-
-                    Cursor cursor = context.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                    if (cursor != null && cursor.moveToFirst()) {
-                        for (String column : filePathColumn) {
-                            int curColIndex = cursor.getColumnIndex(column);
-                            if (curColIndex == -1) {
-                                continue;
-                            }
-                            picturePath = cursor.getString(curColIndex);
-                            if (!TextUtils.isEmpty(picturePath)) {
-                                break;
-                            }
-                        }
-                        cursor.close();
-                    }
-
-                    // Try to grab via file extraction method
-                    intent.setAction(Intent.ACTION_VIEW);
-                    picturePath = picturePath != null ? picturePath : extractFileFromIntentStr(context, intent);
-
-                    // Retrieve image from file descriptor / Cloud, e.g.: Google Drive, Picasa
-                    if (picturePath == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                        try {
-                            final ParcelFileDescriptor parcelFileDescriptor = context.getContentResolver().openFileDescriptor(selectedImage, "r");
-                            if (parcelFileDescriptor != null) {
-                                final FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-                                final FileInputStream input = new FileInputStream(fileDescriptor);
-
-                                // Create temporary file in cache directory
-                                final File temp = File.createTempFile("image", "tmp", context.getCacheDir());
-                                temp.deleteOnExit();
-                                picturePath = temp.getAbsolutePath();
-
-                                GsFileUtils.writeFile(new File(picturePath), GsFileUtils.readCloseBinaryStream(input), null);
-                            }
-                        } catch (IOException ignored) {
-                            // nothing we can do here, null value will be handled below
-                        }
-                    }
-
-                    // Return path to picture on success, else null
-                    sendPathCallback(picturePath);
-                }
-                break;
-            }
-            case REQUEST_RECORD_AUDIO: {
-                if (resultCode == Activity.RESULT_OK && intent != null && intent.getData() != null) {
-                    final Uri uri = intent.getData();
-                    final String uriPath = uri.getPath();
-                    final String ext = uriPath.substring(uriPath.lastIndexOf("."));
-                    final String datestr = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss", Locale.ENGLISH).format(new Date());
-                    final File temp = new File(context.getCacheDir(), datestr + ext);
-                    GsFileUtils.copyUriToFile(context, uri, temp);
-                    sendPathCallback(temp.getAbsolutePath());
-                }
-                break;
-            }
+//            case REQUEST_CAMERA_PICTURE: {
+//                sendPathCallback(resultCode == Activity.RESULT_OK ? _lastCameraPictureFilepath : null);
+//                break;
+//            }
+//            case REQUEST_PICK_PICTURE: {
+//                if (resultCode == Activity.RESULT_OK && intent != null) {
+//                    Uri selectedImage = intent.getData();
+//                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+//                    String picturePath = null;
+//
+//                    Cursor cursor = context.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+//                    if (cursor != null && cursor.moveToFirst()) {
+//                        for (String column : filePathColumn) {
+//                            int curColIndex = cursor.getColumnIndex(column);
+//                            if (curColIndex == -1) {
+//                                continue;
+//                            }
+//                            picturePath = cursor.getString(curColIndex);
+//                            if (!TextUtils.isEmpty(picturePath)) {
+//                                break;
+//                            }
+//                        }
+//                        cursor.close();
+//                    }
+//
+//                    // Try to grab via file extraction method
+//                    intent.setAction(Intent.ACTION_VIEW);
+//                    picturePath = picturePath != null ? picturePath : extractFileFromIntentStr(context, intent);
+//
+//                    // Retrieve image from file descriptor / Cloud, e.g.: Google Drive, Picasa
+//                    if (picturePath == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                        try {
+//                            final ParcelFileDescriptor parcelFileDescriptor = context.getContentResolver().openFileDescriptor(selectedImage, "r");
+//                            if (parcelFileDescriptor != null) {
+//                                final FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+//                                final FileInputStream input = new FileInputStream(fileDescriptor);
+//
+//                                // Create temporary file in cache directory
+//                                final File temp = File.createTempFile("image", "tmp", context.getCacheDir());
+//                                temp.deleteOnExit();
+//                                picturePath = temp.getAbsolutePath();
+//
+//                                GsFileUtils.writeFile(new File(picturePath), GsFileUtils.readCloseBinaryStream(input), null);
+//                            }
+//                        } catch (IOException ignored) {
+//                            // nothing we can do here, null value will be handled below
+//                        }
+//                    }
+//
+//                    // Return path to picture on success, else null
+//                    sendPathCallback(picturePath);
+//                }
+//                break;
+//            }
+//            case REQUEST_RECORD_AUDIO: {
+//                if (resultCode == Activity.RESULT_OK && intent != null && intent.getData() != null) {
+//                    final Uri uri = intent.getData();
+//                    final String uriPath = uri.getPath();
+//                    final String ext = uriPath.substring(uriPath.lastIndexOf("."));
+//                    final String datestr = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss", Locale.ENGLISH).format(new Date());
+//                    final File temp = new File(context.getCacheDir(), datestr + ext);
+//                    GsFileUtils.copyUriToFile(context, uri, temp);
+//                    sendPathCallback(temp.getAbsolutePath());
+//                }
+//                break;
+//            }
             case REQUEST_SAF: {
                 if (resultCode == Activity.RESULT_OK && intent != null && intent.getData() != null) {
                     final Uri treeUri = intent.getData();
