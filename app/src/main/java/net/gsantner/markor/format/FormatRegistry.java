@@ -24,7 +24,7 @@ import net.gsantner.markor.R;
 //import net.gsantner.markor.format.csv.CsvTextConverter;
 import net.gsantner.markor.format.keyvalue.KeyValueSyntaxHighlighter;
 import net.gsantner.markor.format.keyvalue.KeyValueTextConverter;
-//import net.gsantner.markor.format.markdown.MarkdownActionButtons;
+import net.gsantner.markor.format.markdown.MarkdownActionButtons;
 import net.gsantner.markor.format.markdown.MarkdownReplacePatternGenerator;
 import net.gsantner.markor.format.markdown.MarkdownSyntaxHighlighter;
 import net.gsantner.markor.format.markdown.MarkdownTextConverter;
@@ -34,7 +34,7 @@ import net.gsantner.markor.format.markdown.MarkdownTextConverter;
 //import net.gsantner.markor.format.plaintext.PlaintextActionButtons;
 import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
 import net.gsantner.markor.format.plaintext.PlaintextTextConverter;
-//import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
+import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
 import net.gsantner.markor.format.todotxt.TodoTxtAutoTextFormatter;
 import net.gsantner.markor.format.todotxt.TodoTxtSyntaxHighlighter;
 import net.gsantner.markor.format.todotxt.TodoTxtTextConverter;
@@ -158,7 +158,7 @@ public class FormatRegistry {
             case FORMAT_TODOTXT: {
                 format._converter = CONVERTER_TODOTXT;
                 format._highlighter = new TodoTxtSyntaxHighlighter(appSettings);
-//                format._textActions = new TodoTxtActionButtons(context, document);
+                format._textActions = new TodoTxtActionButtons(context, document);
                 format._autoFormatInputFilter = new TodoTxtAutoTextFormatter();
                 break;
             }
@@ -195,7 +195,7 @@ public class FormatRegistry {
                 formatId = FORMAT_MARKDOWN;
                 format._converter = CONVERTER_MARKDOWN;
                 format._highlighter = new MarkdownSyntaxHighlighter(appSettings);
-//                format._textActions = new MarkdownActionButtons(context, document);
+                format._textActions = new MarkdownActionButtons(context, document);
                 format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
                 format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
                 break;
@@ -205,16 +205,16 @@ public class FormatRegistry {
         return format;
     }
 
-//    private ActionButtonBase _textActions;
+    private ActionButtonBase _textActions;
     private SyntaxHighlighterBase _highlighter;
     private TextConverterBase _converter;
     private InputFilter _autoFormatInputFilter;
     private TextWatcher _autoFormatTextWatcher;
     private int _formatId;
 
-//    public ActionButtonBase getActions() {
-//        return _textActions;
-//    }
+    public ActionButtonBase getActions() {
+        return _textActions;
+    }
 
     public TextWatcher getAutoFormatTextWatcher() {
         return _autoFormatTextWatcher;

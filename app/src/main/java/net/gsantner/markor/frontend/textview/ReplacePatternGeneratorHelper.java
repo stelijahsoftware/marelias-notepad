@@ -7,7 +7,7 @@
 #########################################################*/
 package net.gsantner.markor.frontend.textview;
 
-//import net.gsantner.markor.format.ActionButtonBase;
+import net.gsantner.markor.format.ActionButtonBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,24 +21,24 @@ public class ReplacePatternGeneratorHelper {
      * 2. Strings which already match the targeted pattern are replaced in such a way that an
      * alternative pattern is achieved.
      */
-//    public static List<ActionButtonBase.ReplacePattern> replaceWithTargetPatternOrAlternative(
-//            final Pattern[] replaceablePatterns,
-//            final Pattern targetPattern,
-//            final String targetReplacement,
-//            final String alternativeReplacement
-//    ) {
-//        final List<ActionButtonBase.ReplacePattern> replacePatterns = new ArrayList<>();
-//        for (final Pattern replaceablePattern : replaceablePatterns) {
-//            final String replacement;
-//            if (!replaceablePattern.equals(targetPattern)) {
-//                replacement = targetReplacement;
-//            } else {
-//                replacement = alternativeReplacement;
-//            }
-//            replacePatterns.add(new ActionButtonBase.ReplacePattern(replaceablePattern, replacement));
-//        }
-//        return replacePatterns;
-//    }
+    public static List<ActionButtonBase.ReplacePattern> replaceWithTargetPatternOrAlternative(
+            final Pattern[] replaceablePatterns,
+            final Pattern targetPattern,
+            final String targetReplacement,
+            final String alternativeReplacement
+    ) {
+        final List<ActionButtonBase.ReplacePattern> replacePatterns = new ArrayList<>();
+        for (final Pattern replaceablePattern : replaceablePatterns) {
+            final String replacement;
+            if (!replaceablePattern.equals(targetPattern)) {
+                replacement = targetReplacement;
+            } else {
+                replacement = alternativeReplacement;
+            }
+            replacePatterns.add(new ActionButtonBase.ReplacePattern(replaceablePattern, replacement));
+        }
+        return replacePatterns;
+    }
 
     /**
      * Constructs a list of prefix replacement patterns for strings which match the replaceable patterns so that:
@@ -46,13 +46,13 @@ public class ReplacePatternGeneratorHelper {
      * a way that the targeted prefix is achieved.
      * 2. In Strings which already contain the targeted prefix, this prefix is removed.
      */
-//    public static List<ActionButtonBase.ReplacePattern> replaceWithTargetPrefixOrRemove(
-//            final Pattern[] replaceablePrefixPatterns,
-//            final Pattern targetPrefixPattern,
-//            final String targetPrefixReplacement
-//    ) {
-//        String removePrefixReplacement = "$1";  // only keep whitespaces before prefix
-//        return replaceWithTargetPatternOrAlternative(replaceablePrefixPatterns,
-//                targetPrefixPattern, targetPrefixReplacement, removePrefixReplacement);
-//    }
+    public static List<ActionButtonBase.ReplacePattern> replaceWithTargetPrefixOrRemove(
+            final Pattern[] replaceablePrefixPatterns,
+            final Pattern targetPrefixPattern,
+            final String targetPrefixReplacement
+    ) {
+        String removePrefixReplacement = "$1";  // only keep whitespaces before prefix
+        return replaceWithTargetPatternOrAlternative(replaceablePrefixPatterns,
+                targetPrefixPattern, targetPrefixReplacement, removePrefixReplacement);
+    }
 }

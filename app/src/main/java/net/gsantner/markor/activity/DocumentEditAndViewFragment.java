@@ -42,7 +42,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import net.gsantner.markor.ApplicationObject;
 import net.gsantner.markor.BuildConfig;
 import net.gsantner.markor.R;
-//import net.gsantner.markor.format.ActionButtonBase;
+import net.gsantner.markor.format.ActionButtonBase;
 import net.gsantner.markor.format.FormatRegistry;
 import net.gsantner.markor.format.TextConverterBase;
 import net.gsantner.markor.frontend.DraggableScrollbarScrollView;
@@ -177,7 +177,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         // Here we replace it with the last saved format.
         _document.setFormat(_appSettings.getDocumentFormat(_document.getPath(), _document.getFormat()));
         applyTextFormat(_document.getFormat());
-//        _format.getActions().setDocument(_document);
+        _format.getActions().setDocument(_document);
 
         if (activity instanceof DocumentActivity) {
             ((DocumentActivity) activity).setDocumentTitle(_document.getTitle());
@@ -563,7 +563,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             case R.id.action_search: {
                 setViewModeVisibility(false);
-//                _format.getActions().onSearch();
+                _format.getActions().onSearch();
                 return true;
             }
             case R.id.action_send_debug_log: {
@@ -665,9 +665,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _hlEditor.setDynamicHighlightingEnabled(_appSettings.isDynamicHighlightingEnabled());
         _hlEditor.setAutoFormatters(_format.getAutoFormatInputFilter(), _format.getAutoFormatTextWatcher());
         _hlEditor.setAutoFormatEnabled(_appSettings.getDocumentAutoFormatEnabled(_document.getPath()));
-//        _format.getActions()
-//                .setUiReferences(activity, _hlEditor, _webView)
-//                .recreateActionButtons(_textActionsBar, _isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
+        _format.getActions()
+                .setUiReferences(activity, _hlEditor, _webView)
+                .recreateActionButtons(_textActionsBar, _isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
         updateMenuToggleStates(_format.getFormatId());
     }
 
@@ -810,9 +810,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     }
 
     public void setViewModeVisibility(boolean show, final boolean animate) {
-        final Activity activity = getActivity();
-        show |= false; // _document.isBinaryFileNoTextLoading();
-
+//        final Activity activity = getActivity();
+//        show |= false; // _document.isBinaryFileNoTextLoading();
+//
 //        _format.getActions().recreateActionButtons(_textActionsBar, show ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
 //        if (show) {
 //            updateViewModeText();
@@ -824,11 +824,11 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 //            _webViewClient.setRestoreScrollY(_webView.getScrollY());
 //            GsContextUtils.fadeInOut(_primaryScrollView, _webView, animate);
 //        }
-
-        _nextConvertToPrintMode = false;
-        _isPreviewVisible = show;
-
-        ((AppCompatActivity) activity).supportInvalidateOptionsMenu();
+//
+//        _nextConvertToPrintMode = false;
+//        _isPreviewVisible = show;
+//
+//        ((AppCompatActivity) activity).supportInvalidateOptionsMenu();
     }
 
     // Callback from view-mode/javascript
@@ -844,17 +844,17 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
     @Override
     protected void onToolbarClicked(View v) {
-//        if (_format != null) {
-//            _format.getActions().runTitleClick();
-//        }
+        if (_format != null) {
+            _format.getActions().runTitleClick();
+        }
     }
 
     @Override
     protected boolean onToolbarLongClicked(View v) {
-//        if (isVisible() && isResumed()) {
-//            _format.getActions().runJumpBottomTopAction(_isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
-//            return true;
-//        }
+        if (isVisible() && isResumed()) {
+            _format.getActions().runJumpBottomTopAction(_isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
+            return true;
+        }
         return false;
     }
 
