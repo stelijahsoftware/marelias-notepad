@@ -34,10 +34,10 @@ import net.gsantner.markor.format.markdown.MarkdownTextConverter;
 //import net.gsantner.markor.format.plaintext.PlaintextActionButtons;
 import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
 import net.gsantner.markor.format.plaintext.PlaintextTextConverter;
-import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
-import net.gsantner.markor.format.todotxt.TodoTxtAutoTextFormatter;
-import net.gsantner.markor.format.todotxt.TodoTxtSyntaxHighlighter;
-import net.gsantner.markor.format.todotxt.TodoTxtTextConverter;
+//import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
+//import net.gsantner.markor.format.todotxt.TodoTxtAutoTextFormatter;
+//import net.gsantner.markor.format.todotxt.TodoTxtSyntaxHighlighter;
+//import net.gsantner.markor.format.todotxt.TodoTxtTextConverter;
 //import net.gsantner.markor.format.wikitext.WikitextActionButtons;
 //import net.gsantner.markor.format.wikitext.WikitextReplacePatternGenerator;
 //import net.gsantner.markor.format.wikitext.WikitextSyntaxHighlighter;
@@ -60,7 +60,7 @@ public class FormatRegistry {
 //    public static final int FORMAT_CSV = R.string.action_format_csv;
     public static final int FORMAT_PLAIN = R.string.action_format_plaintext;
 //    public static final int FORMAT_ASCIIDOC = R.string.action_format_asciidoc;
-    public static final int FORMAT_TODOTXT = R.string.action_format_todotxt;
+//    public static final int FORMAT_TODOTXT = R.string.action_format_todotxt;
     public static final int FORMAT_KEYVALUE = R.string.action_format_keyvalue;
     public static final int FORMAT_EMBEDBINARY = R.string.action_format_embedbinary;
     public static final int FORMAT_ORGMODE = R.string.action_format_orgmode;
@@ -68,7 +68,7 @@ public class FormatRegistry {
 
     public final static MarkdownTextConverter CONVERTER_MARKDOWN = new MarkdownTextConverter();
 //    public final static WikitextTextConverter CONVERTER_WIKITEXT = new WikitextTextConverter();
-    public final static TodoTxtTextConverter CONVERTER_TODOTXT = new TodoTxtTextConverter();
+//    public final static TodoTxtTextConverter CONVERTER_TODOTXT = new TodoTxtTextConverter();
 //    public final static KeyValueTextConverter CONVERTER_KEYVALUE = new KeyValueTextConverter();
 //    public final static CsvTextConverter CONVERTER_CSV = new CsvTextConverter();
     public final static PlaintextTextConverter CONVERTER_PLAINTEXT = new PlaintextTextConverter();
@@ -155,13 +155,13 @@ public class FormatRegistry {
 //                format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
 //                break;
 //            }
-            case FORMAT_TODOTXT: {
-                format._converter = CONVERTER_TODOTXT;
-                format._highlighter = new TodoTxtSyntaxHighlighter(appSettings);
-                format._textActions = new TodoTxtActionButtons(context, document);
-                format._autoFormatInputFilter = new TodoTxtAutoTextFormatter();
-                break;
-            }
+//            case FORMAT_TODOTXT: {
+//                format._converter = CONVERTER_TODOTXT;
+//                format._highlighter = new TodoTxtSyntaxHighlighter(appSettings);
+//                format._textActions = new TodoTxtActionButtons(context, document);
+//                format._autoFormatInputFilter = new TodoTxtAutoTextFormatter();
+//                break;
+//            }
 //            case FORMAT_KEYVALUE: {
 //                format._converter = CONVERTER_KEYVALUE;
 //                format._highlighter = new KeyValueSyntaxHighlighter(appSettings);

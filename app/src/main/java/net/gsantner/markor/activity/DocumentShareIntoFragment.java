@@ -31,7 +31,7 @@ import net.gsantner.markor.ApplicationObject;
 import net.gsantner.markor.R;
 import net.gsantner.markor.format.FormatRegistry;
 import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
-import net.gsantner.markor.format.todotxt.TodoTxtTask;
+//import net.gsantner.markor.format.todotxt.TodoTxtTask;
 //import net.gsantner.markor.frontend.AttachLinkOrFileDialog;
 import net.gsantner.markor.frontend.NewFileDialog;
 import net.gsantner.markor.frontend.filebrowser.MarkorFileBrowserFactory;
@@ -339,11 +339,12 @@ public class DocumentShareIntoFragment extends MarkorBaseFragment {
 
             formatted = formatShare(formatted);
 
-            if (format == FormatRegistry.FORMAT_TODOTXT) {
-                formatted = TodoTxtTask.getToday() + " " + formatted.replaceAll("\\n+", " ");
-            } else {
+//            if (format == FormatRegistry.FORMAT_TODOTXT) {
+//                formatted = TodoTxtTask.getToday() + " " + formatted.replaceAll("\\n+", " ");
+//            }
+//            else {
                 formatted = "\n" + formatted;
-            }
+//            }
 
             return formatted;
         }
