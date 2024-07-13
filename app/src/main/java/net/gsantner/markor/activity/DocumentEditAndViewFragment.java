@@ -325,8 +325,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         menu.findItem(R.id.submenu_per_file_settings).setVisible(isText);
 
         menu.findItem(R.id.action_share_pdf).setVisible(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT);
-        menu.findItem(R.id.action_share_image).setVisible(true);
-        menu.findItem(R.id.action_load_epub).setVisible(isExperimentalFeaturesEnabled);
+//        menu.findItem(R.id.action_share_image).setVisible(true);
+//        menu.findItem(R.id.action_load_epub).setVisible(isExperimentalFeaturesEnabled);
 
         // SearchView (View Mode)
         _menuSearchViewForViewMode = (SearchView) menu.findItem(R.id.action_search_view).getActionView();
@@ -517,16 +517,16 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 }
                 return true;
             }
-            case R.id.action_share_calendar_event: {
-                if (saveDocument(false)) {
-                    if (!_cu.createCalendarAppointment(getActivity(), _document.getTitle(), getTextString(), null)) {
-                        Toast.makeText(activity, R.string.no_calendar_app_is_installed, Toast.LENGTH_SHORT).show();
-                    }
-                }
-                return true;
-            }
-            case R.id.action_share_screenshot:
-            case R.id.action_share_image:
+//            case R.id.action_share_calendar_event: {
+//                if (saveDocument(false)) {
+//                    if (!_cu.createCalendarAppointment(getActivity(), _document.getTitle(), getTextString(), null)) {
+//                        Toast.makeText(activity, R.string.no_calendar_app_is_installed, Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                return true;
+//            }
+//            case R.id.action_share_screenshot:
+//            case R.id.action_share_image:
             case R.id.action_share_pdf: {
                 _appSettings.getSetWebViewFulldrawing(true);
                 if (saveDocument(false)) {
@@ -536,10 +536,11 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                     _webView.postDelayed(() -> {
                         if (item.getItemId() == R.id.action_share_pdf && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                             _cu.printOrCreatePdfFromWebview(_webView, _document, getTextString().contains("beamer\n"));
-                        } else if (item.getItemId() != R.id.action_share_pdf) {
-                            Bitmap bmp = _cu.getBitmapFromWebView(_webView, item.getItemId() == R.id.action_share_image);
-                            _cu.shareImage(getContext(), bmp, null);
                         }
+//                        else if (item.getItemId() != R.id.action_share_pdf) {
+//                            Bitmap bmp = _cu.getBitmapFromWebView(_webView, item.getItemId() == R.id.action_share_image);
+//                            _cu.shareImage(getContext(), bmp, null);
+//                        }
                     }, 7000);
                 }
 
@@ -547,11 +548,11 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             case R.string.action_format_wikitext:
             case R.string.action_format_keyvalue:
-            case R.string.action_format_todotxt:
-            case R.string.action_format_csv:
+//            case R.string.action_format_todotxt:
+//            case R.string.action_format_csv:
             case R.string.action_format_plaintext:
-            case R.string.action_format_asciidoc:
-            case R.string.action_format_orgmode:
+//            case R.string.action_format_asciidoc:
+//            case R.string.action_format_orgmode:
             case R.string.action_format_markdown: {
                 if (itemId != _document.getFormat()) {
                     _document.setFormat(itemId);
@@ -570,22 +571,22 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 _cu.draftEmail(getActivity(), "Debug Log " + getString(R.string.app_name_real), text, "debug@localhost.lan");
                 return true;
             }
-            case R.id.action_load_epub: {
-                MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
-                                                            @Override
-                                                            public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-                                                                _hlEditor.setText(GsCoolExperimentalStuff.convertEpubToText(file, getString(R.string.page)));
-                                                            }
-
-                                                            @Override
-                                                            public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
-                                                                dopt.titleText = R.string.select;
-                                                            }
-                                                        }, getParentFragmentManager(), activity,
-                        (context, file) -> file != null && file.getAbsolutePath().toLowerCase().endsWith(".epub")
-                );
-                return true;
-            }
+//            case R.id.action_load_epub: {
+//                MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
+//                                                            @Override
+//                                                            public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
+//                                                                _hlEditor.setText(GsCoolExperimentalStuff.convertEpubToText(file, getString(R.string.page)));
+//                                                            }
+//
+//                                                            @Override
+//                                                            public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
+//                                                                dopt.titleText = R.string.select;
+//                                                            }
+//                                                        }, getParentFragmentManager(), activity,
+//                        (context, file) -> file != null && file.getAbsolutePath().toLowerCase().endsWith(".epub")
+//                );
+//                return true;
+//            }
             case R.id.action_speed_read: {
                 GsCoolExperimentalStuff.showSpeedReadDialog(activity, getTextString());
                 return true;

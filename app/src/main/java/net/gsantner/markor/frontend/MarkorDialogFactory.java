@@ -90,19 +90,19 @@ public class MarkorDialogFactory {
     }
 
     public static void showAsciidocSpecialKeyDialog(Activity activity, GsCallback.a1<String> callback) {
-        GsSearchOrCustomTextDialog.DialogOptions dopt = new GsSearchOrCustomTextDialog.DialogOptions();
-        baseConf(activity, dopt);
-        dopt.callback = callback;
-        // this is the only difference to showSpecialKeyDialog:
-        // R.array.asciidoc_textactions_press_key__text is used instead of R.array.textactions_press_key__text
-        String[] actions = activity.getResources().getStringArray(R.array.asciidoc_textactions_press_key__text);
-        dopt.data = new ArrayList<>(Arrays.asList(actions));
-
-        dopt.dialogHeightDp = 530;
-        dopt.titleText = R.string.special_key;
-        dopt.isSearchEnabled = false;
-        dopt.okButtonText = 0;
-        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
+//        GsSearchOrCustomTextDialog.DialogOptions dopt = new GsSearchOrCustomTextDialog.DialogOptions();
+//        baseConf(activity, dopt);
+//        dopt.callback = callback;
+//        // this is the only difference to showSpecialKeyDialog:
+//        // R.array.asciidoc_textactions_press_key__text is used instead of R.array.textactions_press_key__text
+//        String[] actions = activity.getResources().getStringArray(R.array.asciidoc_textactions_press_key__text);
+//        dopt.data = new ArrayList<>(Arrays.asList(actions));
+//
+//        dopt.dialogHeightDp = 530;
+//        dopt.titleText = R.string.special_key;
+//        dopt.isSearchEnabled = false;
+//        dopt.okButtonText = 0;
+//        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
     }
 
     public static void showInsertTableRowDialog(final Activity activity, final boolean isHeader, GsCallback.a2<Integer, Boolean> callback) {

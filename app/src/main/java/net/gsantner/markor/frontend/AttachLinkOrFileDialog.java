@@ -48,11 +48,14 @@ public class AttachLinkOrFileDialog {
     private static String getImageFormat(final int textFormatId) {
         if (textFormatId == FormatRegistry.FORMAT_MARKDOWN) {
             return "![%TITLE%](%LINK%)";
-        } else if (textFormatId == FormatRegistry.FORMAT_WIKITEXT) {
-            return "{{%LINK%}}";
-        } else if (textFormatId == FormatRegistry.FORMAT_ASCIIDOC) {
-            return "image::%LINK%[\"%TITLE%\"]";
-        } else {
+        }
+//        else if (textFormatId == FormatRegistry.FORMAT_WIKITEXT) {
+//            return "{{%LINK%}}";
+//        }
+//        else if (textFormatId == FormatRegistry.FORMAT_ASCIIDOC) {
+//            return "image::%LINK%[\"%TITLE%\"]";
+//        }
+        else {
             return "<img style='width:auto;max-height:256px;' alt='%TITLE%' src='%LINK%' />";
         }
     }
@@ -60,11 +63,14 @@ public class AttachLinkOrFileDialog {
     private static String getLinkFormat(final int textFormatId) {
         if (textFormatId == FormatRegistry.FORMAT_MARKDOWN) {
             return "[%TITLE%](%LINK%)";
-        } else if (textFormatId == FormatRegistry.FORMAT_WIKITEXT) {
-            return "{{%LINK%|%TITLE%}}";
-        } else if (textFormatId == FormatRegistry.FORMAT_ASCIIDOC) {
-            return "link:%LINK%[%TITLE%]";
-        } else if (textFormatId == FormatRegistry.FORMAT_TODOTXT) {
+        }
+//        else if (textFormatId == FormatRegistry.FORMAT_WIKITEXT) {
+//            return "{{%LINK%|%TITLE%}}";
+//        }
+//        else if (textFormatId == FormatRegistry.FORMAT_ASCIIDOC) {
+//            return "link:%LINK%[%TITLE%]";
+//        }
+        else if (textFormatId == FormatRegistry.FORMAT_TODOTXT) {
             return "%TITLE% link:%LINK%";
         } else {
             return "<a href=\"%LINK%\">%TITLE%</a>";
@@ -242,9 +248,9 @@ public class AttachLinkOrFileDialog {
                 .replace("%TITLE%", title)
                 .replace("%LINK%", path);
 
-        if (textFormatId == FormatRegistry.FORMAT_WIKITEXT && newText.endsWith("|]]")) {
-            newText = newText.replaceFirst("\\|]]$", "]]");
-        }
+//        if (textFormatId == FormatRegistry.FORMAT_WIKITEXT && newText.endsWith("|]]")) {
+//            newText = newText.replaceFirst("\\|]]$", "]]");
+//        }
 
         if (textFormatId == FormatRegistry.FORMAT_TODOTXT) {
             newText = newText.replaceAll("\\n", " ");
