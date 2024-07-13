@@ -59,7 +59,7 @@ import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.frontend.settings.GsFontPreferenceCompat;
 import net.gsantner.opoc.frontend.textview.TextViewUndoRedo;
 import net.gsantner.opoc.util.GsContextUtils;
-import net.gsantner.opoc.util.GsCoolExperimentalStuff;
+//import net.gsantner.opoc.util.GsCoolExperimentalStuff;
 import net.gsantner.opoc.web.GsWebViewChromeClient;
 import net.gsantner.opoc.wrapper.GsTextWatcherAdapter;
 
@@ -587,10 +587,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 //                );
 //                return true;
 //            }
-            case R.id.action_speed_read: {
-                GsCoolExperimentalStuff.showSpeedReadDialog(activity, getTextString());
-                return true;
-            }
+//            case R.id.action_speed_read: {
+//                GsCoolExperimentalStuff.showSpeedReadDialog(activity, getTextString());
+//                return true;
+//            }
             case R.id.action_wrap_words: {
                 final boolean newState = !isWrapped();
                 _appSettings.setDocumentWrapState(_document.getPath(), newState);
