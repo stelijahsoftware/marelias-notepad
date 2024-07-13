@@ -41,7 +41,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main__view_pager_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="676dp"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginBottom="?attr/actionBarSize" />
 
@@ -61,7 +61,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
-        android:layout_height="34dp"
+        android:layout_height="25dp"
         android:layout_gravity="bottom|start"
         android:background="@color/dark__background_2"
         app:itemBackground="@color/dark__background_2"
