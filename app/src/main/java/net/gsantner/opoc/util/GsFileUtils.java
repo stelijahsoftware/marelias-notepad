@@ -459,13 +459,17 @@ public class GsFileUtils {
             return "text/markdown";
         } else if (ext.matches("(te?xt)|(taskpaper)")) {
             return "text/plain";
-        } else if (ext.matches("webp")) {
-            return "image/webp";
-        } else if (ext.matches("jpe?g")) {
-            return "image/jpeg";
-        } else if (ext.matches("png")) {
-            return "image/png";
-        } else if (ext.matches("a(sciidoc)?doc")) {
+        }
+//        else if (ext.matches("webp")) {
+//            return "image/webp";
+//        }
+//        else if (ext.matches("jpe?g")) {
+//            return "image/jpeg";
+//        }
+//        else if (ext.matches("png")) {
+//            return "image/png";
+//        }
+        else if (ext.matches("a(sciidoc)?doc")) {
             return "text/asciidoc";
         }
 

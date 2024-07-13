@@ -89,7 +89,7 @@ public class MarkorDialogFactory {
         GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
     }
 
-    public static void showAsciidocSpecialKeyDialog(Activity activity, GsCallback.a1<String> callback) {
+//    public static void showAsciidocSpecialKeyDialog(Activity activity, GsCallback.a1<String> callback) {
 //        GsSearchOrCustomTextDialog.DialogOptions dopt = new GsSearchOrCustomTextDialog.DialogOptions();
 //        baseConf(activity, dopt);
 //        dopt.callback = callback;
@@ -103,7 +103,7 @@ public class MarkorDialogFactory {
 //        dopt.isSearchEnabled = false;
 //        dopt.okButtonText = 0;
 //        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
-    }
+//    }
 
     public static void showInsertTableRowDialog(final Activity activity, final boolean isHeader, GsCallback.a2<Integer, Boolean> callback) {
         final DialogOptions dopt = new DialogOptions();

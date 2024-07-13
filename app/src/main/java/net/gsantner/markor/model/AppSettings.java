@@ -152,13 +152,13 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_highlighting_activated, true);
     }
 
-    public boolean isLineNumbersEnabled() {
-        return getBool(R.string.pref_key__enable_line_numbers, false);
-    }
-
-    public void setLineNumbersEnabled(boolean enabled) {
-        setBool(R.string.pref_key__enable_line_numbers, enabled);
-    }
+//    public boolean isLineNumbersEnabled() {
+//        return getBool(R.string.pref_key__enable_line_numbers, false);
+//    }
+//
+//    public void setLineNumbersEnabled(boolean enabled) {
+//        setBool(R.string.pref_key__enable_line_numbers, enabled);
+//    }
 
     public boolean isDynamicHighlightingEnabled() {
         return getBool(R.string.pref_key__is_dynamic_highlighting_activated, true);
@@ -168,21 +168,21 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getInt(R.string.pref_key__markdown__hl_delay_v2, 650);
     }
 
-    public int getAsciidocHighlightingDelay() {
-        return getInt(R.string.pref_key__asciidoc__hl_delay, 650);
-    }
-
-    public int getOrgmodeHighlightingDelay() {
-        return getInt(R.string.pref_key__orgmode__hl_delay, 650);
-    }
+//    public int getAsciidocHighlightingDelay() {
+//        return getInt(R.string.pref_key__asciidoc__hl_delay, 650);
+//    }
+//
+//    public int getOrgmodeHighlightingDelay() {
+//        return getInt(R.string.pref_key__orgmode__hl_delay, 650);
+//    }
 
     public boolean isMarkdownHighlightLineEnding() {
         return getBool(R.string.pref_key__markdown__highlight_lineending_two_or_more_space, false);
     }
 
-    public boolean isAsciidocHighlightLineEnding() {
-        return getBool(R.string.pref_key__asciidoc__highlight_lineending_hard_line_break, false);
-    }
+//    public boolean isAsciidocHighlightLineEnding() {
+//        return getBool(R.string.pref_key__asciidoc__highlight_lineending_hard_line_break, false);
+//    }
 
     public boolean isHighlightCodeMonospaceFont() {
         return getBool(R.string.pref_key__highlight_code_monospace_font, false);
@@ -296,21 +296,21 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_highlighting_for_hexcolor_activated, false);
     }
 
-    public boolean isTodoAppendProConOnEndEnabled() {
-        return getBool(R.string.pref_key__todotxt__append_contexts_and_projects_on_end_of_task, true);
-    }
+//    public boolean isTodoAppendProConOnEndEnabled() {
+//        return getBool(R.string.pref_key__todotxt__append_contexts_and_projects_on_end_of_task, true);
+//    }
 
-    public boolean isTodoAddCompletionDateEnabled() {
-        return getBool(R.string.pref_key__todotxt__add_completion_date_for_todos, true);
-    }
+//    public boolean isTodoAddCompletionDateEnabled() {
+//        return getBool(R.string.pref_key__todotxt__add_completion_date_for_todos, true);
+//    }
 
-    public boolean isAppCurrentVersionFirstStart(boolean doSet) {
-        int value = getInt(R.string.pref_key__app_first_start_current_version, -1);
-        if (doSet) {
-            setInt(R.string.pref_key__app_first_start_current_version, BuildConfig.VERSION_CODE);
-        }
-        return value != BuildConfig.VERSION_CODE;
-    }
+//    public boolean isAppCurrentVersionFirstStart(boolean doSet) {
+//        int value = getInt(R.string.pref_key__app_first_start_current_version, -1);
+//        if (doSet) {
+//            setInt(R.string.pref_key__app_first_start_current_version, BuildConfig.VERSION_CODE);
+//        }
+//        return value != BuildConfig.VERSION_CODE;
+//    }
 
     public float getEditorLineSpacing() {
         return getInt(R.string.pref_key__editor_line_spacing, 100) / 100f;
@@ -320,17 +320,17 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getString(R.string.pref_key__todotxt__last_used_archive_filename, "todo.archive.txt");
     }
 
-    public boolean isEditorStartOnBotttom() {
-        return getBool(R.string.pref_key__editor_start_editing_on_bottom, true);
-    }
+//    public boolean isEditorStartOnBotttom() {
+//        return getBool(R.string.pref_key__editor_start_editing_on_bottom, true);
+//    }
 
     public boolean isEditorStartEditingInCenter() {
         return getBool(R.string.pref_key__editor_start_editing_in_center, false);
     }
 
-    public int getEditorActionButtonItemPadding() {
-        return getInt(R.string.pref_key__editor_textaction_bar_item_padding, 6);
-    }
+//    public int getEditorActionButtonItemPadding() {
+//        return getInt(R.string.pref_key__editor_textaction_bar_item_padding, 6);
+//    }
 
     public boolean isDisableSpellingRedUnderline() {
         return getBool(R.string.pref_key__editor_disable_spelling_red_underline, true);
