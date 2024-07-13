@@ -14,7 +14,7 @@ import androidx.core.text.TextUtilsCompat;
 import net.gsantner.markor.format.FormatRegistry;
 import net.gsantner.markor.format.TextConverterBase;
 //import net.gsantner.markor.format.binary.EmbedBinaryTextConverter;
-import net.gsantner.markor.format.keyvalue.KeyValueTextConverter;
+//import net.gsantner.markor.format.keyvalue.KeyValueTextConverter;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
 
@@ -68,12 +68,13 @@ public class PlaintextTextConverter extends TextConverterBase {
 //            // Playlist: Load in Embed-Binary view-mode
 //            return FormatRegistry.CONVERTER_EMBEDBINARY.convertMarkup(markup, context, lightMode, lineNum, file);
 //        }
-        else if (EXT_CODE_HL.contains(extWithDot) || (this instanceof KeyValueTextConverter)) {
-            // Source code: Load in Markdown view-mode & utilize code block highlighting
-            final String hlLang = extWithDot.replace(".sh", ".bash").replace(".", "");
-            markup = String.format(Locale.ROOT, "```%s\n%s\n```", hlLang, markup);
-            return FormatRegistry.CONVERTER_MARKDOWN.convertMarkup(markup, context, lightMode, lineNum, file);
-        } else {
+//        else if (EXT_CODE_HL.contains(extWithDot) || (this instanceof KeyValueTextConverter)) {
+//            // Source code: Load in Markdown view-mode & utilize code block highlighting
+//            final String hlLang = extWithDot.replace(".sh", ".bash").replace(".", "");
+//            markup = String.format(Locale.ROOT, "```%s\n%s\n```", hlLang, markup);
+//            return FormatRegistry.CONVERTER_MARKDOWN.convertMarkup(markup, context, lightMode, lineNum, file);
+//        }
+        else {
             ///////////////////////////////////////////
             // Whatever else show in plaintext <pre> block
             converted = HTML100_BODY_PRE_BEGIN
