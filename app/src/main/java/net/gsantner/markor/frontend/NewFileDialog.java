@@ -145,7 +145,7 @@ public class NewFileDialog extends DialogFragment {
         final ArrayAdapter<String> formatAdapter = new ArrayAdapter<>(
                 activity, android.R.layout.simple_spinner_dropdown_item);
 
-        formatAdapter.add("");
+        //formatAdapter.add("");
         formatAdapter.addAll(appSettings.getTitleFormats());
 
         final ListPopupWindow formatPopup = new ListPopupWindow(activity);
