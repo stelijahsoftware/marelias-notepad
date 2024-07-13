@@ -347,10 +347,10 @@ public class SettingsActivity extends MarkorBaseActivity {
                 case R.string.pref_key__markdown__reorder_actions:
                 case R.string.pref_key__wikitext_reorder_actions:
                 case R.string.pref_key__orgmode__reorder_actions:
-                case R.string.pref_key__todotxt__reorder_actions: {
-                    startActivity(new Intent(getActivity(), ActionButtonSettingsActivity.class).putExtra(ActionButtonSettingsActivity.EXTRA_FORMAT_KEY, keyResId));
-                    break;
-                }
+//                case R.string.pref_key__todotxt__reorder_actions: {
+//                    startActivity(new Intent(getActivity(), ActionButtonSettingsActivity.class).putExtra(ActionButtonSettingsActivity.EXTRA_FORMAT_KEY, keyResId));
+//                    break;
+//                }
                 case R.string.pref_key__set_encryption_password: {
                     MarkorDialogFactory.showSetPasswordDialog(getActivity());
                     break;
