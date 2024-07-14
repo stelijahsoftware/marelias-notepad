@@ -148,7 +148,7 @@ public class DocumentShareIntoFragment extends MarkorBaseFragment {
 
         @Override
         public int getPreferenceResourceForInflation() {
-            return R.xml.prefactions_share_into;
+            return 0; //R.xml.prefactions_share_into;
         }
 
         @Override
