@@ -50,7 +50,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 
-import other.writeily.widget.WrMarkorWidgetProvider;
+//import other.writeily.widget.WrMarkorWidgetProvider;
 
 public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFragment.FilesystemFragmentOptionsListener, NavigationBarView.OnItemSelectedListener {
 
@@ -497,7 +497,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     @Override
     protected void onPause() {
         super.onPause();
-        WrMarkorWidgetProvider.updateLauncherWidgets();
+//        WrMarkorWidgetProvider.updateLauncherWidgets();
     }
 
     @Override

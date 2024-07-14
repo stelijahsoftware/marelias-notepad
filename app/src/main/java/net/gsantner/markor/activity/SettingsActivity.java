@@ -41,7 +41,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import other.writeily.widget.WrMarkorWidgetProvider;
+//import other.writeily.widget.WrMarkorWidgetProvider;
 
 public class SettingsActivity extends MarkorBaseActivity {
 
@@ -229,9 +229,10 @@ public class SettingsActivity extends MarkorBaseActivity {
                 } catch (IllegalArgumentException e) {
                     Toast.makeText(context, e.getLocalizedMessage() + "\n\n" + getString(R.string.loading_default_value), Toast.LENGTH_SHORT).show();
                 }
-            } else if (eq(key, R.string.pref_key__notebook_directory, R.string.pref_key__quicknote_filepath, R.string.pref_key__todo_filepath)) {
-                WrMarkorWidgetProvider.updateLauncherWidgets();
             }
+//            else if (eq(key, R.string.pref_key__notebook_directory, R.string.pref_key__quicknote_filepath, R.string.pref_key__todo_filepath)) {
+//                WrMarkorWidgetProvider.updateLauncherWidgets();
+//            }
         }
 
         @Override
