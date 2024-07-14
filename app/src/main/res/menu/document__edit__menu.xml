@@ -32,18 +32,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_preview"
-        android:icon="@drawable/ic_visibility_black_24dp"
-        android:title="@string/view_mode"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/action_edit"
-        android:icon="@drawable/ic_edit_black_24dp"
-        android:title="@string/edit_mode"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/action_save"
         android:icon="@drawable/ic_save_black_24dp"
         android:title="@string/save"
@@ -139,59 +127,6 @@
         </menu>
     </item>
 
-    <item
-        android:id="@+id/submenu_share"
-        android:icon="@drawable/ic_share_black_24dp"
-        android:title="@string/share"
-        app:showAsAction="never">
-        <menu>
-            <item
-                android:id="@+id/action_share_path"
-                android:icon="@drawable/ic_link_black_24dp"
-                android:title="@string/url_or_path" />
-            <item
-                android:id="@+id/action_share_text"
-                android:icon="@drawable/ic_file_white_24dp"
-                android:title="@string/plaintext" />
-            <item
-                android:id="@+id/action_share_pdf"
-                android:icon="@drawable/ic_print_black_24dp"
-                android:title="@string/print_pdf"
-                android:visible="false" />
-            <item
-                android:id="@+id/action_share_file"
-                android:icon="@drawable/ic_file_white_24dp"
-                android:title="@string/file" />
-            <item
-                android:id="@+id/action_share_html"
-                android:icon="@drawable/ic_code_black_24dp"
-                android:title="@string/share_html__mime_html" />
-            <item
-                android:id="@+id/action_share_html_source"
-                android:icon="@drawable/ic_code_black_24dp"
-                android:title="@string/html_as_plaintext" />
-        </menu>
-    </item>
-
-    <item
-        android:id="@+id/submenu_tools"
-        android:icon="@drawable/ic_format_shapes_black_24dp"
-        android:title="@string/tools"
-        app:showAsAction="never">
-        <menu>
-            <item
-                android:id="@+id/action_speed_read"
-                android:icon="@drawable/ic_lightning_black_24dp"
-                android:title="Speed Read"
-                tools:ignore="HardcodedText" />
-            <item
-                android:id="@+id/action_send_debug_log"
-                android:icon="@drawable/ic_bug_report_black_24dp"
-                android:title="@string/send_debug_log"
-                android:visible="false"
-                app:showAsAction="never" />
-        </menu>
-    </item>
     <item
         android:id="@+id/action_show_file_browser"
         android:icon="@drawable/ic_folder_gray_24dp"

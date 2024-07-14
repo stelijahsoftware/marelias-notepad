@@ -307,7 +307,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
         menu.findItem(R.id.action_undo).setVisible(isText && _appSettings.isEditorHistoryEnabled());
         menu.findItem(R.id.action_redo).setVisible(isText && _appSettings.isEditorHistoryEnabled());
-        menu.findItem(R.id.action_send_debug_log).setVisible(MainActivity.IS_DEBUG_ENABLED && !isDisplayedAtMainActivity() && !_isPreviewVisible);
+//        menu.findItem(R.id.action_send_debug_log).setVisible(MainActivity.IS_DEBUG_ENABLED && !isDisplayedAtMainActivity() && !_isPreviewVisible);
 
         // Undo / Redo / Save (keep visible, but deactivated and tinted grey if not executable)
         _undoMenuItem = menu.findItem(R.id.action_undo).setVisible(isText && !_isPreviewVisible);
@@ -315,16 +315,16 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _saveMenuItem = menu.findItem(R.id.action_save).setVisible(isText && !_isPreviewVisible);
 
         // Edit / Preview switch
-        menu.findItem(R.id.action_edit).setVisible(isText && _isPreviewVisible);
-        menu.findItem(R.id.action_preview).setVisible(isText && !_isPreviewVisible);
+//        menu.findItem(R.id.action_edit).setVisible(isText && _isPreviewVisible);
+//        menu.findItem(R.id.action_preview).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_search).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_search_view).setVisible(isText && _isPreviewVisible);
         menu.findItem(R.id.submenu_format_selection).setVisible(isText && !_isPreviewVisible);
-        menu.findItem(R.id.submenu_share).setVisible(isText);
-        menu.findItem(R.id.submenu_tools).setVisible(isText);
+//        menu.findItem(R.id.submenu_share).setVisible(isText);
+//        menu.findItem(R.id.submenu_tools).setVisible(isText);
         menu.findItem(R.id.submenu_per_file_settings).setVisible(isText);
 
-        menu.findItem(R.id.action_share_pdf).setVisible(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT);
+//        menu.findItem(R.id.action_share_pdf).setVisible(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT);
 //        menu.findItem(R.id.action_share_image).setVisible(true);
 //        menu.findItem(R.id.action_load_epub).setVisible(isExperimentalFeaturesEnabled);
 
@@ -478,45 +478,45 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 }
                 return true;
             }
-            case R.id.action_preview: {
-                setViewModeVisibility(true);
-                return true;
-            }
-            case R.id.action_edit: {
-                setViewModeVisibility(false);
-                return true;
-            }
+//            case R.id.action_preview: {
+//                setViewModeVisibility(true);
+//                return true;
+//            }
+//            case R.id.action_edit: {
+//                setViewModeVisibility(false);
+//                return true;
+//            }
             case R.id.action_preview_edit_toggle: {
                 setViewModeVisibility(!_isPreviewVisible);
                 return true;
             }
-            case R.id.action_share_path: {
-                _cu.shareText(getActivity(), _document.getFile().getAbsolutePath(), GsContextUtils.MIME_TEXT_PLAIN);
-                return true;
-            }
-            case R.id.action_share_text: {
-                if (saveDocument(false)) {
-                    _cu.shareText(getActivity(), getTextString(), GsContextUtils.MIME_TEXT_PLAIN);
-                }
-                return true;
-            }
-            case R.id.action_share_file: {
-                if (saveDocument(false)) {
-                    _cu.shareStream(getActivity(), _document.getFile(), GsContextUtils.MIME_TEXT_PLAIN);
-                }
-                return true;
-            }
-            case R.id.action_share_html:
-            case R.id.action_share_html_source: {
-                if (saveDocument(false)) {
-                    TextConverterBase converter = FormatRegistry.getFormat(_document.getFormat(), activity, _document).getConverter();
-                    _cu.shareText(getActivity(),
-                            converter.convertMarkup(getTextString(), getActivity(), false, _hlEditor.getLineNumbersEnabled(), _document.getFile()),
-                            "text/" + (item.getItemId() == R.id.action_share_html ? "html" : "plain")
-                    );
-                }
-                return true;
-            }
+//            case R.id.action_share_path: {
+//                _cu.shareText(getActivity(), _document.getFile().getAbsolutePath(), GsContextUtils.MIME_TEXT_PLAIN);
+//                return true;
+//            }
+//            case R.id.action_share_text: {
+//                if (saveDocument(false)) {
+//                    _cu.shareText(getActivity(), getTextString(), GsContextUtils.MIME_TEXT_PLAIN);
+//                }
+//                return true;
+//            }
+//            case R.id.action_share_file: {
+//                if (saveDocument(false)) {
+//                    _cu.shareStream(getActivity(), _document.getFile(), GsContextUtils.MIME_TEXT_PLAIN);
+//                }
+//                return true;
+//            }
+//            case R.id.action_share_html:
+//            case R.id.action_share_html_source: {
+//                if (saveDocument(false)) {
+//                    TextConverterBase converter = FormatRegistry.getFormat(_document.getFormat(), activity, _document).getConverter();
+//                    _cu.shareText(getActivity(),
+//                            converter.convertMarkup(getTextString(), getActivity(), false, _hlEditor.getLineNumbersEnabled(), _document.getFile()),
+//                            "text/" + (item.getItemId() == R.id.action_share_html ? "html" : "plain")
+//                    );
+//                }
+//                return true;
+//            }
 //            case R.id.action_share_calendar_event: {
 //                if (saveDocument(false)) {
 //                    if (!_cu.createCalendarAppointment(getActivity(), _document.getTitle(), getTextString(), null)) {
@@ -527,25 +527,25 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 //            }
 //            case R.id.action_share_screenshot:
 //            case R.id.action_share_image:
-            case R.id.action_share_pdf: {
-                _appSettings.getSetWebViewFulldrawing(true);
-                if (saveDocument(false)) {
-                    _nextConvertToPrintMode = true;
-                    setViewModeVisibility(true);
-                    Toast.makeText(activity, R.string.please_wait, Toast.LENGTH_LONG).show();
-                    _webView.postDelayed(() -> {
-                        if (item.getItemId() == R.id.action_share_pdf && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                            _cu.printOrCreatePdfFromWebview(_webView, _document, getTextString().contains("beamer\n"));
-                        }
-//                        else if (item.getItemId() != R.id.action_share_pdf) {
-//                            Bitmap bmp = _cu.getBitmapFromWebView(_webView, item.getItemId() == R.id.action_share_image);
-//                            _cu.shareImage(getContext(), bmp, null);
+//            case R.id.action_share_pdf: {
+//                _appSettings.getSetWebViewFulldrawing(true);
+//                if (saveDocument(false)) {
+//                    _nextConvertToPrintMode = true;
+//                    setViewModeVisibility(true);
+//                    Toast.makeText(activity, R.string.please_wait, Toast.LENGTH_LONG).show();
+//                    _webView.postDelayed(() -> {
+//                        if (item.getItemId() == R.id.action_share_pdf && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                            _cu.printOrCreatePdfFromWebview(_webView, _document, getTextString().contains("beamer\n"));
 //                        }
-                    }, 7000);
-                }
-
-                return true;
-            }
+////                        else if (item.getItemId() != R.id.action_share_pdf) {
+////                            Bitmap bmp = _cu.getBitmapFromWebView(_webView, item.getItemId() == R.id.action_share_image);
+////                            _cu.shareImage(getContext(), bmp, null);
+////                        }
+//                    }, 7000);
+//                }
+//
+//                return true;
+//            }
             case R.string.action_format_wikitext:
             case R.string.action_format_keyvalue:
 //            case R.string.action_format_todotxt:
@@ -566,11 +566,11 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 _format.getActions().onSearch();
                 return true;
             }
-            case R.id.action_send_debug_log: {
-                final String text = AppSettings.getDebugLog() + "\n\n------------------------\n\n\n\n" + Document.getMaskedContent(getTextString());
-                _cu.draftEmail(getActivity(), "Debug Log " + getString(R.string.app_name_real), text, "debug@localhost.lan");
-                return true;
-            }
+//            case R.id.action_send_debug_log: {
+//                final String text = AppSettings.getDebugLog() + "\n\n------------------------\n\n\n\n" + Document.getMaskedContent(getTextString());
+//                _cu.draftEmail(getActivity(), "Debug Log " + getString(R.string.app_name_real), text, "debug@localhost.lan");
+//                return true;
+//            }
 //            case R.id.action_load_epub: {
 //                MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
 //                                                            @Override
@@ -801,12 +801,12 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     }
 
     public void updateViewModeText() {
-        final String text = getTextString();
-        _format.getConverter().convertMarkupShowInWebView(_document, text, getActivity(), _webView, _nextConvertToPrintMode, _hlEditor.getLineNumbersEnabled());
+//        final String text = getTextString();
+//        _format.getConverter().convertMarkupShowInWebView(_document, text, getActivity(), _webView, _nextConvertToPrintMode, _hlEditor.getLineNumbersEnabled());
     }
 
     public void setViewModeVisibility(final boolean show) {
-        setViewModeVisibility(show, true);
+//        setViewModeVisibility(show, true);
     }
 
     public void setViewModeVisibility(boolean show, final boolean animate) {
