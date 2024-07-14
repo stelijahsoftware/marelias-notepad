@@ -28,7 +28,7 @@ import java.io.File;
 import java.util.Date;
 import java.util.Locale;
 
-import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
+//import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 
 @SuppressWarnings("WeakerAccess")
 public abstract class TextConverterBase {
@@ -200,7 +200,7 @@ public abstract class TextConverterBase {
     }
 
     public boolean isFileOutOfThisFormat(String filepath) {
-        String extWithDot = filepath.replace(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION, "").replaceAll(".*\\.", ".").toLowerCase();
+        String extWithDot = filepath.replaceAll(".*\\.", ".").toLowerCase();
         extWithDot = TextUtils.isEmpty(extWithDot) || extWithDot.startsWith(".") ? extWithDot : "";
         return isFileOutOfThisFormat(filepath, extWithDot);
     }

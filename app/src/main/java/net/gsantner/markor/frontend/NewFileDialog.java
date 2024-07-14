@@ -53,7 +53,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
+//import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 
 public class NewFileDialog extends DialogFragment {
     public static final String FRAGMENT_TAG = NewFileDialog.class.getName();
@@ -120,11 +120,11 @@ public class NewFileDialog extends DialogFragment {
         final EditText formatEdit = root.findViewById(R.id.new_file_dialog__name_format);
         final TextView formatSpinner = root.findViewById(R.id.new_file_dialog__name_format_spinner);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && appSettings.isDefaultPasswordSet()) {
-            encryptCheckbox.setChecked(appSettings.getNewFileDialogLastUsedEncryption());
-        } else {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && appSettings.isDefaultPasswordSet()) {
+//            encryptCheckbox.setChecked(appSettings.getNewFileDialogLastUsedEncryption());
+//        } else {
             encryptCheckbox.setVisibility(View.GONE);
-        }
+//        }
 
         utf8BomCheckbox.setChecked(appSettings.getNewFileDialogLastUsedUtf8Bom());
         utf8BomCheckbox.setVisibility(appSettings.isExperimentalFeaturesEnabled() ? View.VISIBLE : View.GONE);
@@ -179,11 +179,11 @@ public class NewFileDialog extends DialogFragment {
         final GsCallback.a1<Integer> typeCallback = pos -> {
             final FormatRegistry.Format fmt = formats.get(pos);
             if (fmt.defaultExtensionWithDot != null) {
-                if (encryptCheckbox.isChecked()) {
-                    extEdit.setText(fmt.defaultExtensionWithDot + JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
-                } else {
+//                if (encryptCheckbox.isChecked()) {
+//                    extEdit.setText(fmt.defaultExtensionWithDot + JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
+//                } else {
                     extEdit.setText(fmt.defaultExtensionWithDot);
-                }
+//                }
             }
 
             final int tpos = templateAdapter.getPosition(appSettings.getTypeTemplate(fmt.format));
@@ -198,13 +198,13 @@ public class NewFileDialog extends DialogFragment {
         // -----------------------------------------------------------------------------------------
         encryptCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             final String currentExtention = extEdit.getText().toString();
-            if (isChecked) {
-                if (!currentExtention.endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION)) {
-                    extEdit.setText(currentExtention + JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
-                }
-            } else if (currentExtention.endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION)) {
-                extEdit.setText(currentExtention.replace(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION, ""));
-            }
+//            if (isChecked) {
+//                if (!currentExtention.endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION)) {
+//                    extEdit.setText(currentExtention + JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
+//                }
+//            } else if (currentExtention.endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION)) {
+//                extEdit.setText(currentExtention.replace(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION, ""));
+//            }
             appSettings.setNewFileDialogLastUsedEncryption(isChecked);
         });
 

@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
+//import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 
 @SuppressWarnings("WeakerAccess")
 
@@ -451,17 +451,17 @@ public class FileSearchEngine {
         }
 
         private InputStream getInputStream(File file) throws FileNotFoundException {
-            if (isEncryptedFile(file)) {
-                final byte[] encryptedContext = GsFileUtils.readCloseStreamWithSize(new FileInputStream(file), (int) file.length());
-                return new ByteArrayInputStream(JavaPasswordbasedCryption.getDecryptedText(encryptedContext, _config.password.clone()).getBytes(StandardCharsets.UTF_8));
-            } else {
+//            if (isEncryptedFile(file)) {
+//                final byte[] encryptedContext = GsFileUtils.readCloseStreamWithSize(new FileInputStream(file), (int) file.length());
+//                return new ByteArrayInputStream(JavaPasswordbasedCryption.getDecryptedText(encryptedContext, _config.password.clone()).getBytes(StandardCharsets.UTF_8));
+//            } else {
                 return new FileInputStream(file);
-            }
+//            }
         }
     }
 
 
-    private static boolean isEncryptedFile(File file) {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && file.getName().endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
-    }
+//    private static boolean isEncryptedFile(File file) {
+//        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && file.getName().endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
+//    }
 }

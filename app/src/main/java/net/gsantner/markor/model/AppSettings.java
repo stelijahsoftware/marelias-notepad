@@ -52,7 +52,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-import other.de.stanetz.jpencconverter.PasswordStore;
+//import other.de.stanetz.jpencconverter.PasswordStore;
 
 @SuppressWarnings({"SameParameterValue", "WeakerAccess", "FieldCanBeLocal"})
 public class AppSettings extends GsSharedPreferencesPropertyBackend {
@@ -874,21 +874,21 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getString(R.string.pref_key__editor_unordered_list_character, "-");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public char[] getDefaultPassword() {
-        return new PasswordStore(getContext()).loadKey(R.string.pref_key__default_encryption_password);
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.M)
+//    public char[] getDefaultPassword() {
+//        return new PasswordStore(getContext()).loadKey(R.string.pref_key__default_encryption_password);
+//    }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public boolean isDefaultPasswordSet() {
-        final char[] key = getDefaultPassword();
-        return (key != null && key.length > 0);
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.M)
+//    public boolean isDefaultPasswordSet() {
+//        final char[] key = getDefaultPassword();
+//        return (key != null && key.length > 0);
+//    }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public void setDefaultPassword(String password) {
-        new PasswordStore(getContext()).storeKey(password, R.string.pref_key__default_encryption_password);
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.M)
+//    public void setDefaultPassword(String password) {
+//        new PasswordStore(getContext()).storeKey(password, R.string.pref_key__default_encryption_password);
+//    }
 
     public boolean getNewFileDialogLastUsedEncryption() {
         return getBool(R.string.pref_key__new_file_dialog_lastused_encryption, false);

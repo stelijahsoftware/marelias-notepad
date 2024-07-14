@@ -112,7 +112,7 @@ public class FormatRegistry {
 //                if (textonly && format.converter instanceof EmbedBinaryTextConverter) {
 //                    continue;
 //                }
-                if (format.converter != null && format.converter.isFileOutOfThisFormat(filepath)) {
+                if (format.converter != null) {
                     return true;
                 }
             }

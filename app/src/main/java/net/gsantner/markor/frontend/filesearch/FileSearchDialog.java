@@ -163,7 +163,7 @@ public class FileSearchDialog {
                 opt.ignoredDirectories = appSettings.getFileSearchIgnorelist();
                 opt.maxSearchDepth = appSettings.getSearchMaxDepth();
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    opt.password = appSettings.getDefaultPassword();
+//                    opt.password = appSettings.getDefaultPassword();
                 }
                 appSettings.setSearchQueryRegexUsing(opt.isRegexQuery);
                 appSettings.setSearchQueryCaseSensitivity(opt.isCaseSensitiveQuery);

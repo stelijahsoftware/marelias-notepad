@@ -53,7 +53,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 //import other.com.vladsch.flexmark.ext.katex.FlexmarkKatexExtension;
-import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
+//import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 
 @SuppressWarnings({"unchecked", "WeakerAccess"})
 public class MarkdownTextConverter extends TextConverterBase {
@@ -392,7 +392,7 @@ public class MarkdownTextConverter extends TextConverterBase {
 
     @Override
     protected boolean isFileOutOfThisFormat(String filepath, String extWithDot) {
-        filepath = filepath.replace(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION, "");
+//        filepath = filepath.replace(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION, "");
         return (MarkdownTextConverter.PATTERN_HAS_FILE_EXTENSION_FOR_THIS_FORMAT.matcher(filepath).matches());
     }
 

@@ -41,7 +41,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.security.SecureRandom;
 import java.util.Locale;
 
-import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
+//import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue", "unused", "UnnecessaryLocalVariable"})
 public class Document implements Serializable {
@@ -185,17 +185,17 @@ public class Document implements Serializable {
         _format = format;
     }
 
-    public static boolean isEncrypted(File file) {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && file.getName().endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
-    }
+//    public static boolean isEncrypted(File file) {
+//        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && file.getName().endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
+//    }
 
 //    public boolean isBinaryFileNoTextLoading() {
 //        return _file != null && FormatRegistry.CONVERTER_EMBEDBINARY.isFileOutOfThisFormat(_file.getAbsolutePath());
 //    }
 
-    public boolean isEncrypted() {
-        return isEncrypted(_file);
-    }
+//    public boolean isEncrypted() {
+//        return isEncrypted(_file);
+//    }
 
     private void setContentHash(final CharSequence s) {
         _lastLength = s != null ? s.length() : 0;
@@ -214,26 +214,26 @@ public class Document implements Serializable {
 //        if (isBinaryFileNoTextLoading()) {
 //            content = "";
 //        }
-        if (isEncrypted() && (pw = getPasswordWithWarning(context)) != null) {
-            try {
-                final byte[] encryptedContext = GsFileUtils.readCloseStreamWithSize(new FileInputStream(_file), (int) _file.length());
-                if (encryptedContext.length > JavaPasswordbasedCryption.Version.NAME_LENGTH) {
-                    content = JavaPasswordbasedCryption.getDecryptedText(encryptedContext, pw);
-                } else {
-                    content = new String(encryptedContext, StandardCharsets.UTF_8);
-                }
-            } catch (FileNotFoundException e) {
-                Log.e(Document.class.getName(), "loadDocument:  File " + _file + " not found.");
-                content = "";
-            } catch (JavaPasswordbasedCryption.EncryptionFailedException |
-                     IllegalArgumentException e) {
-                Toast.makeText(context, R.string.could_not_decrypt_file_content_wrong_password_or_is_the_file_maybe_not_encrypted, Toast.LENGTH_LONG).show();
-                Log.e(Document.class.getName(), "loadDocument:  decrypt failed for File " + _file + ". " + e.getMessage(), e);
-                content = "";
-            }
-        }
-        else
-        {
+//        if (isEncrypted() && (pw = getPasswordWithWarning(context)) != null) {
+//            try {
+//                final byte[] encryptedContext = GsFileUtils.readCloseStreamWithSize(new FileInputStream(_file), (int) _file.length());
+//                if (encryptedContext.length > JavaPasswordbasedCryption.Version.NAME_LENGTH) {
+//                    content = JavaPasswordbasedCryption.getDecryptedText(encryptedContext, pw);
+//                } else {
+//                    content = new String(encryptedContext, StandardCharsets.UTF_8);
+//                }
+//            } catch (FileNotFoundException e) {
+//                Log.e(Document.class.getName(), "loadDocument:  File " + _file + " not found.");
+//                content = "";
+//            } catch (JavaPasswordbasedCryption.EncryptionFailedException |
+//                     IllegalArgumentException e) {
+//                Toast.makeText(context, R.string.could_not_decrypt_file_content_wrong_password_or_is_the_file_maybe_not_encrypted, Toast.LENGTH_LONG).show();
+//                Log.e(Document.class.getName(), "loadDocument:  decrypt failed for File " + _file + ". " + e.getMessage(), e);
+//                content = "";
+//            }
+//        }
+//        else
+//        {
             // We try to load 2x. If both times fail, we return null
             Pair<String, GsFileUtils.FileInfo> result = GsFileUtils.readTextFileFast(_file);
             if (result.second.ioError) {
@@ -242,7 +242,7 @@ public class Document implements Serializable {
             }
             content = result.first;
             _fileInfo = result.second;
-        }
+//        }
 
         if (MainActivity.IS_DEBUG_ENABLED) {
             AppSettings.appendDebugLog(
@@ -269,17 +269,17 @@ public class Document implements Serializable {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private static char[] getPasswordWithWarning(final Context context) {
-        final char[] pw = ApplicationObject.settings().getDefaultPassword();
-        if (pw == null || pw.length == 0) {
-            final String warningText = context.getString(R.string.no_password_set_cannot_encrypt_decrypt);
-            Toast.makeText(context, warningText, Toast.LENGTH_LONG).show();
-            Log.w(Document.class.getName(), warningText);
-            return null;
-        }
-        return pw;
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.M)
+//    private static char[] getPasswordWithWarning(final Context context) {
+//        final char[] pw = ApplicationObject.settings().getDefaultPassword();
+//        if (pw == null || pw.length == 0) {
+//            final String warningText = context.getString(R.string.no_password_set_cannot_encrypt_decrypt);
+//            Toast.makeText(context, warningText, Toast.LENGTH_LONG).show();
+//            Log.w(Document.class.getName(), warningText);
+//            return null;
+//        }
+//        return pw;
+//    }
 
     public boolean testCreateParent() {
         return testCreateParent(_file);
@@ -320,14 +320,14 @@ public class Document implements Serializable {
         }
 
         boolean success;
-        try {
+//        try {
             final char[] pw;
             final byte[] contentAsBytes;
-            if (isEncrypted() && (pw = getPasswordWithWarning(context)) != null) {
-                contentAsBytes = new JavaPasswordbasedCryption(Build.VERSION.SDK_INT, new SecureRandom()).encrypt(content.toString(), pw);
-            } else {
+//            if (isEncrypted() && (pw = getPasswordWithWarning(context)) != null) {
+//                contentAsBytes = new JavaPasswordbasedCryption(Build.VERSION.SDK_INT, new SecureRandom()).encrypt(content.toString(), pw);
+//            } else {
                 contentAsBytes = content.toString().getBytes();
-            }
+//            }
 
             cu = cu != null ? cu : new MarkorContextUtils(context);
             final boolean isContentResolverProxyFile = cu.isContentResolverProxyFile(_file);
@@ -365,11 +365,11 @@ public class Document implements Serializable {
                 Log.i(Document.class.getName(), "File write failed; size = " + size + "; length = " + contentAsBytes.length + "; file=" + _file);
             }
 
-        } catch (JavaPasswordbasedCryption.EncryptionFailedException e) {
-            Log.e(Document.class.getName(), "writeContent:  encrypt failed for File " + getPath() + ". " + e.getMessage(), e);
-            Toast.makeText(context, R.string.could_not_encrypt_file_content_the_file_was_not_saved, Toast.LENGTH_LONG).show();
-            success = false;
-        }
+//        } catch (JavaPasswordbasedCryption.EncryptionFailedException e) {
+//            Log.e(Document.class.getName(), "writeContent:  encrypt failed for File " + getPath() + ". " + e.getMessage(), e);
+//            Toast.makeText(context, R.string.could_not_encrypt_file_content_the_file_was_not_saved, Toast.LENGTH_LONG).show();
+//            success = false;
+//        }
 
         if (success) {
             setContentHash(content);

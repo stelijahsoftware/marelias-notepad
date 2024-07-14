@@ -434,7 +434,7 @@ public class MarkorDialogFactory {
      *
      * @param activity Activity
      * @param text     EditText containing the todo.txt file
-     * @param filter   Filter selecting certain todos (by context, project etc etc)
+//     * @param filter   Filter selecting certain todos (by context, project etc etc)
      * @return Dialogoptions for the dialog. Can be further modified by the caller
      */
     public static DialogOptions makeSttLineSelectionDialog(
@@ -984,15 +984,15 @@ public class MarkorDialogFactory {
             baseConf(activity, dopt);
             dopt.isSearchEnabled = true;
             dopt.titleText = R.string.file_encryption_password;
-            final boolean hasPassword = as().isDefaultPasswordSet();
-            dopt.messageText = hasPassword ? activity.getString(R.string.password_already_set_setting_a_new_password_will_overwrite) : "";
-            dopt.searchHintText = hasPassword ? R.string.hidden_password : R.string.empty_string;
-            dopt.callback = password -> {
-                if (!TextUtils.isEmpty(password)) {
-                    as().setDefaultPassword(password);
-                    Toast.makeText(activity, "✔️", Toast.LENGTH_SHORT).show();
-                }
-            };
+//            final boolean hasPassword = as().isDefaultPasswordSet();
+//            dopt.messageText = hasPassword ? activity.getString(R.string.password_already_set_setting_a_new_password_will_overwrite) : "";
+//            dopt.searchHintText = hasPassword ? R.string.hidden_password : R.string.empty_string;
+//            dopt.callback = password -> {
+//                if (!TextUtils.isEmpty(password)) {
+//                    as().setDefaultPassword(password);
+//                    Toast.makeText(activity, "✔️", Toast.LENGTH_SHORT).show();
+//                }
+//            };
             GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
         }
     }
