@@ -23,8 +23,8 @@ android {
     compileSdkVersion rootProject.ext.version_compileSdk
 
     defaultConfig {
-        resValue "string", "manifest_package_id", "net.gsantner.markor"
-        applicationId "net.gsantner.markor"
+        resValue "string", "manifest_package_id", "net.elyahw.notepad2"
+        applicationId "net.elyahw.notepad2"
         versionName "2.12.2"
         versionCode 151
 
