@@ -52,7 +52,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import other.com.vladsch.flexmark.ext.katex.FlexmarkKatexExtension;
+//import other.com.vladsch.flexmark.ext.katex.FlexmarkKatexExtension;
 import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 
 @SuppressWarnings({"unchecked", "WeakerAccess"})
@@ -134,7 +134,7 @@ public class MarkdownTextConverter extends TextConverterBase {
             StrikethroughSubscriptExtension.create(),
             AutolinkExtension.create(),
             InsExtension.create(),
-            FlexmarkKatexExtension.KatexExtension.create(),
+//            FlexmarkKatexExtension.KatexExtension.create(),
             JekyllTagExtension.create(),
             JekyllFrontMatterExtension.create(),
             SuperscriptExtension.create(),        // https://github.com/vsch/flexmark-java/wiki/Extensions#superscript
