@@ -9,6 +9,7 @@ import net.gsantner.notepad2.activity.MarkorBaseActivity;
 import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 
+
 import java.io.File;
 
 /**
@@ -30,14 +31,9 @@ public class OpenFromShortcutOrWidgetActivity extends MarkorBaseActivity {
     }
 
     private void launchActivityAndFinish(Intent intent) {
-        final Intent newIntent = new Intent(intent);
-        final File intentFile = MarkorContextUtils.getIntentFile(intent, null);
-        if (intentFile != null && (intentFile.isDirectory() || GsFileBrowserListAdapter.isVirtualFolder(intentFile))) {
-            newIntent.setClass(this, MainActivity.class);
-            startActivity(newIntent);
-        } else {
-            newIntent.setClass(this, DocumentActivity.class);
-            DocumentActivity.launch(this, null, null, newIntent, null);
+        final File file = MarkorContextUtils.getIntentFile(intent, null);
+        if (file != null) {
+            DocumentActivity.launch(this, file, null, null);
         }
         finish();
     }

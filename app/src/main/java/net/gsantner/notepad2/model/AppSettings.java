@@ -365,9 +365,11 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
             return _default;
         } else {
             final String value = getString(PREF_PREFIX_FILE_FORMAT + path, null);
+            if (value == null) {
+                return _default;
+            }
             final int sid = _cu.getResId(_context, GsContextUtils.ResType.STRING, value);
-            // Note TextFormat.FORMAT_UNKNOWN also == 0
-            return sid != 0 ? sid : _default;
+            return sid != FormatRegistry.FORMAT_UNKNOWN ? sid : _default;
         }
     }
 
@@ -423,6 +425,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     public boolean getDocumentPreviewState(final String path) {
         // Use global setting as default
         final boolean _default = isPreferViewMode();
+        // Always open in preview state when prefer preview mode is enabled
         if (_default || !fexists(path)) {
             return _default;
         } else {
@@ -743,11 +746,16 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public int getNewFileDialogLastUsedType() {
-        return getInt(R.string.pref_key__new_file_dialog_lastused_type, 0);
+        try {
+            final String typeStr = getString(R.string.pref_key__new_file_dialog_lastused_type, "");
+            return _cu.getResId(_context, GsContextUtils.ResType.STRING, typeStr);
+        } catch (ClassCastException e) {
+            return FormatRegistry.FORMAT_MARKDOWN;
+        }
     }
 
-    public void setNewFileDialogLastUsedType(int i) {
-        setInt(R.string.pref_key__new_file_dialog_lastused_type, i);
+    public void setNewFileDialogLastUsedType(final int format) {
+        setString(R.string.pref_key__new_file_dialog_lastused_type, _context.getString(format));
     }
 
     public void setFileBrowserLastBrowsedFolder(File f) {
@@ -848,6 +856,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
     public void saveTitleFormat(final String format, final int maxCount) {
     }
+
 
     private static String mapToJsonString(final Map<String, String> map) {
         return new JSONObject(map).toString();

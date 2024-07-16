@@ -98,7 +98,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
         // noinspection PointlessBooleanExpression - Send Test intent
         if (BuildConfig.IS_TEST_BUILD && false) {
-            DocumentActivity.launch(this, new File("/sdcard/Documents/mordor/aa-beamer.md"), true, null, null);
+            DocumentActivity.launch(this, new File("/sdcard/Documents/mordor/aa-beamer.md"), true, null);
         }
 
         _cu.applySpecialLaunchersVisibility(this, _appSettings.isSpecialFileLaunchersEnabled());
@@ -122,11 +122,10 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         // Save references to fragments
         try {
             final FragmentManager manager = getSupportFragmentManager();
+
             // Put and get notebook first. Most important for correct operation.
             manager.putFragment(outState, Integer.toString(R.id.nav_notebook), _notebook);
-            //manager.putFragment(outState, Integer.toString(R.id.nav_quicknote), _quicknote);
-            //manager.putFragment(outState, Integer.toString(R.id.nav_todo), _todo);
-            //manager.putFragment(outState, Integer.toString(R.id.nav_more), _more);
+
         } catch (NullPointerException | IllegalStateException ignored) {
             Log.d(MainActivity.class.getName(), "Child fragments null in onSaveInstanceState()");
         }
@@ -144,9 +143,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         try {
             final FragmentManager manager = getSupportFragmentManager();
             _notebook = (GsFileBrowserFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_notebook));
-            //_quicknote = (DocumentEditAndViewFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_quicknote));
-            //_todo = (DocumentEditAndViewFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_todo));
-            //_more = (MoreFragment) manager.getFragment(savedInstanceState, Integer.toString(R.id.nav_more));
 
             final NewFileDialog nf = (NewFileDialog) manager.findFragmentByTag(NewFileDialog.FRAGMENT_TAG);
             if (nf != null) {
@@ -182,25 +178,14 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         super.onNewIntent(intent);
         final File file = MarkorContextUtils.getValidIntentFile(intent, null);
         if (_notebook != null && file != null) {
+            _viewPager.setCurrentItem(tabIdToPos(R.id.nav_notebook), false);
             if (file.isDirectory() || GsFileBrowserListAdapter.isVirtualFolder(file)) {
-                _notebook.post(() -> _notebook.setCurrentFolder(file));
+                _notebook.setCurrentFolder(file);
             } else {
-                _notebook.post(() -> _notebook.getAdapter().showFile(file));
+                _notebook.getAdapter().showFile(file);
             }
-            //_bottomNav.postDelayed(() -> _bottomNav.setSelectedItemId(R.id.nav_notebook), 10);
         }
     }
-
-//    private void optShowRate() {
-//        try {
-//            new com.pixplicity.generate.Rate.Builder(this)
-//                    .setTriggerCount(4)
-//                    .setMinimumInstallTime((int) TimeUnit.MINUTES.toMillis(30))
-//                    .setFeedbackAction(() -> _cu.showGooglePlayEntryForThisApp(MainActivity.this))
-//                    .build().count().showRequest();
-//        } catch (Exception ignored) {
-//        }
-//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -240,24 +225,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         }
 
         _cu.setKeepScreenOn(this, _appSettings.isKeepScreenOn());
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && _appSettings.isMultiWindowEnabled()) {
-//            setTaskDescription(new ActivityManager.TaskDescription(getString(R.string.app_name)));
-//        }
 
-        // Intro dialog and show changelog etc
-//        final boolean firstStart = IntroActivity.optStart(this);
-//        try {
-//            if (!firstStart && _appSettings.isAppCurrentVersionFirstStart(true)) {
-//                GsSimpleMarkdownParser smp = GsSimpleMarkdownParser.get().setDefaultSmpFilter(GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW);
-//                String html = "";
-//                html += smp.parse(getString(R.string.copyright_license_text_official).replace("\n", "  \n"), "").getHtml();
-////                html += "<br/><br/><br/><big><big>" + getString(R.string.changelog) + "</big></big><br/>" + smp.parse(getResources().openRawResource(R.raw.changelog), "", GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW);
-//                html += "<br/><br/><br/><big><big>" + getString(R.string.licenses) + "</big></big><br/>" + smp.parse(getResources().openRawResource(R.raw.licenses_3rd_party), "").getHtml();
-//                _cu.showDialogWithHtmlTextView(this, 0, html);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     // Cycle between recent, favourite, and current
@@ -309,10 +277,9 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
     private void newItemCallback(final File file) {
         if (file.isFile()) {
-            DocumentActivity.launch(MainActivity.this, file, false, null, null);
-        } else if (file.isDirectory()) {
-            _notebook.getAdapter().showFile(file);
+            DocumentActivity.launch(MainActivity.this, file, false, null);
         }
+        _notebook.getAdapter().showFile(file);
     }
 
     @Override
@@ -450,7 +417,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
                 @Override
                 public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-                    DocumentActivity.handleFileClick(MainActivity.this, file, lineNumber);
+                    DocumentActivity.launch(MainActivity.this, file, null, lineNumber);
                 }
             });
         }
@@ -468,17 +435,9 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         public Fragment createFragment(final int pos) {
             final GsFragmentBase<?, ?> frag;
             final int id = tabIdFromPos(pos);
-//            if (id == R.id.nav_quicknote) {
-//                frag = _quicknote = DocumentEditAndViewFragment.newInstance(new Document(_appSettings.getQuickNoteFile()), Document.EXTRA_FILE_LINE_NUMBER_LAST, false);
-//            } else if (id == R.id.nav_todo) {
-//                frag = _todo = DocumentEditAndViewFragment.newInstance(new Document(_appSettings.getTodoFile()), Document.EXTRA_FILE_LINE_NUMBER_LAST, false);
-//            }
-//            if (id == R.id.nav_more) {
-//                frag = _more = MoreFragment.newInstance();
-//            } else {
 
-                frag = _notebook = GsFileBrowserFragment.newInstance();
-//            }
+            frag = _notebook = GsFileBrowserFragment.newInstance();
+
             frag.setMenuVisibility(false);
             return frag;
         }

@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -25,13 +24,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
-//import android.widget.HorizontalScrollView;
-//import android.widget.ImageView;
 
 import androidx.annotation.DrawableRes;
 //import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 //import androidx.appcompat.widget.TooltipCompat;
 
@@ -290,107 +286,13 @@ public abstract class ActionButtonBase {
     }
 
     @SuppressWarnings("ConstantConditions")
-    public void recreateActionButtons(ViewGroup barLayout, ActionItem.DisplayMode displayMode) {
+    public void recreateActionButtons(final ViewGroup barLayout, final ActionItem.DisplayMode displayMode) {
         barLayout.removeAllViews();
-//        setBarVisible(barLayout, true);
 
         final Map<String, ActionItem> map = getActiveActionMap();
         final List<String> orderedKeys = getActionOrder();
         final Set<String> disabledKeys = new HashSet<>(getDisabledActions());
-//        for (final String key : orderedKeys) {
-//            final ActionItem action = map.get(key);
-//            if (!disabledKeys.contains(key) && (action.displayMode == displayMode || action.displayMode == ActionItem.DisplayMode.ANY)) {
-//                appendActionButtonToBar(barLayout, action);
-//            }
-//        }
     }
-
-//    @RequiresApi(api = Build.VERSION_CODES.P)
-//    private void setupRepeat(final View btn, final ActionItem action) {
-//        // Velocity and acceleration parameters
-//        final int initialDelay = 400, deltaDelay = 50, minDelay = 100;
-//        final Integer token = action.keyId;
-//
-//        btn.setOnTouchListener(new View.OnTouchListener() {
-//            Handler handler = null;
-//            int delay = initialDelay;
-//
-//            @SuppressLint("ClickableViewAccessibility")
-//            @Override
-//            public boolean onTouch(final View v, final MotionEvent event) {
-//                if (handler == null) {
-//                    handler = v.getHandler();
-//                }
-//
-//                final int action = event.getAction();
-//                if (action == MotionEvent.ACTION_DOWN) {
-//                    delay = initialDelay;
-//                    onClick(v);
-//                    return true;
-//                } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
-//                    handler.removeCallbacksAndMessages(token);
-//                    return true;
-//                }
-//                return false;
-//            }
-//
-//            private void onClick(final View v) {
-//                try {
-//                    v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
-//                    onActionClick(action.keyId);
-//                    handler.postDelayed(() -> onClick(v), token, delay);
-//                    delay = Math.max(minDelay, delay - deltaDelay);
-//                } catch (Exception ex) {
-//                    ex.printStackTrace();
-//                }
-//            }
-//        });
-//    }
-
-//    @SuppressLint("ClickableViewAccessibility")
-//    protected void appendActionButtonToBar(final ViewGroup barLayout, final @NonNull ActionItem action) {
-//        final ImageView btn = (ImageView) _activity.getLayoutInflater().inflate(R.layout.quick_keyboard_button, null);
-//        btn.setImageResource(action.iconId);
-//        final String desc = rstr(action.stringId);
-//        btn.setContentDescription(desc);
-//        TooltipCompat.setTooltipText(btn, desc);
-//
-//        if (action.isRepeatable && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-//            setupRepeat(btn, action);
-//        } else {
-//            btn.setOnClickListener(v -> {
-//                try {
-//                    // run action
-//                    v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
-//                    onActionClick(action.keyId);
-//                } catch (Exception ex) {
-//                    ex.printStackTrace();
-//                }
-//            });
-//            btn.setOnLongClickListener(v -> {
-//                try {
-//                    v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
-//                    return onActionLongClick(action.keyId);
-//                } catch (Exception ex) {
-//                    ex.printStackTrace();
-//                }
-//                return false;
-//            });
-//        }
-//        final int sidePadding = _buttonHorizontalMargin + btn.getPaddingLeft(); // Left and right are symmetrical
-//        btn.setPadding(sidePadding, btn.getPaddingTop(), sidePadding, btn.getPaddingBottom());
-//        barLayout.addView(btn);
-//    }
-
-//    protected void setBarVisible(ViewGroup barLayout, boolean visible) {
-//        if (barLayout.getId() == R.id.document__fragment__edit__text_actions_bar && barLayout.getParent() instanceof HorizontalScrollView) {
-//            ((HorizontalScrollView) barLayout.getParent()).setVisibility(visible ? View.VISIBLE : View.GONE);
-//        }
-//    }
-
-//    protected void runRegularPrefixAction(String action) {
-//        runRegularPrefixAction(action, null, false);
-//    }
 
     protected void runRegularPrefixAction(String action, Boolean ignoreIndent) {
         runRegularPrefixAction(action, null, ignoreIndent);
@@ -695,7 +597,7 @@ public abstract class ActionButtonBase {
                     } else {
                         final File f = GsFileUtils.makeAbsolute(resource, _document.getFile().getParentFile());
                         if (f.canRead()) {
-                            DocumentActivity.handleFileClick(getActivity(), f, null);
+                            DocumentActivity.launch(getActivity(), f, null, null);
                             return true;
                         }
                     }
@@ -800,18 +702,6 @@ public abstract class ActionButtonBase {
                 }
                 return true;
             }
-//            case R.string.abid_common_insert_audio: {
-//                AttachLinkOrFileDialog.insertAudioRecording(_activity, _document.getFormat(), _hlEditor.getText(), _document.getFile());
-//                return true;
-//            }
-//            case R.string.abid_common_insert_link: {
-//                AttachLinkOrFileDialog.insertGalleryPhoto(_activity, _document.getFormat(), _hlEditor.getText(), _document.getFile());
-//                return true;
-//            }
-//            case R.string.abid_common_insert_image: {
-//                AttachLinkOrFileDialog.insertCameraPhoto(_activity, _document.getFormat(), _hlEditor.getText(), _document.getFile());
-//                return true;
-//            }
         }
         return false;
     }
