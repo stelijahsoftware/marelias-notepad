@@ -32,7 +32,7 @@ import net.gsantner.markor.format.markdown.MarkdownTextConverter;
 //import net.gsantner.markor.format.orgmode.OrgmodeSyntaxHighlighter;
 //import net.gsantner.markor.format.orgmode.OrgmodeTextConverter;
 //import net.gsantner.markor.format.plaintext.PlaintextActionButtons;
-import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
+//import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
 import net.gsantner.markor.format.plaintext.PlaintextTextConverter;
 //import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
 //import net.gsantner.markor.format.todotxt.TodoTxtAutoTextFormatter;

@@ -25,22 +25,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.EditText;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
+//import android.widget.HorizontalScrollView;
+//import android.widget.ImageView;
 
 import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
+//import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
-import androidx.appcompat.widget.TooltipCompat;
+//import androidx.appcompat.widget.TooltipCompat;
 
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.Utils;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 
-import net.gsantner.markor.ApplicationObject;
+//import net.gsantner.markor.ApplicationObject;
 import net.gsantner.markor.R;
 import net.gsantner.markor.activity.DocumentActivity;
 //import net.gsantner.markor.frontend.AttachLinkOrFileDialog;
@@ -53,7 +53,7 @@ import net.gsantner.markor.model.Document;
 import net.gsantner.markor.util.MarkorContextUtils;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.util.GsCollectionUtils;
-import net.gsantner.opoc.util.GsContextUtils;
+//import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
 

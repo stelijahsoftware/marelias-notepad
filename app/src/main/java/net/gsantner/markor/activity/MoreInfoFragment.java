@@ -12,19 +12,19 @@ package net.gsantner.markor.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+//import android.content.Intent;
+//import android.net.Uri;
 
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
+//import androidx.preference.PreferenceGroup;
 
 import net.gsantner.markor.ApplicationObject;
 import net.gsantner.markor.R;
 import net.gsantner.markor.model.AppSettings;
-import net.gsantner.opoc.format.GsSimpleMarkdownParser;
+//import net.gsantner.opoc.format.GsSimpleMarkdownParser;
 import net.gsantner.opoc.frontend.base.GsPreferenceFragmentBase;
 
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Locale;
 
 public class MoreInfoFragment extends GsPreferenceFragmentBase<AppSettings> {
