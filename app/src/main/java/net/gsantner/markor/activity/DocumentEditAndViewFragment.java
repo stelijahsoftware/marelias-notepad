@@ -89,7 +89,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     private HighlightingEditor _hlEditor;
     private WebView _webView;
     private MarkorWebViewClient _webViewClient;
-    private ViewGroup _textActionsBar;
+//    private ViewGroup _textActionsBar;
 
     private DraggableScrollbarScrollView _primaryScrollView;
     private HorizontalScrollView _hsView;
@@ -100,7 +100,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     private TextViewUndoRedo _editTextUndoRedoHelper;
     private MenuItem _saveMenuItem, _undoMenuItem, _redoMenuItem;
     private boolean _isPreviewVisible;
-    private boolean _nextConvertToPrintMode = false;
+//    private boolean _nextConvertToPrintMode = false;
 
 
     public DocumentEditAndViewFragment() {
@@ -130,7 +130,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         final Activity activity = getActivity();
 
         _hlEditor = view.findViewById(R.id.document__fragment__edit__highlighting_editor);
-        _textActionsBar = view.findViewById(R.id.document__fragment__edit__text_actions_bar);
+//        _textActionsBar = view.findViewById(R.id.document__fragment__edit__text_actions_bar);
         _webView = view.findViewById(R.id.document__fragment_view_webview);
         _primaryScrollView = view.findViewById(R.id.document__fragment__edit__content_editor__scrolling_parent);
         _cu = new MarkorContextUtils(activity);
@@ -666,8 +666,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _hlEditor.setAutoFormatters(_format.getAutoFormatInputFilter(), _format.getAutoFormatTextWatcher());
         _hlEditor.setAutoFormatEnabled(_appSettings.getDocumentAutoFormatEnabled(_document.getPath()));
         _format.getActions()
-                .setUiReferences(activity, _hlEditor, _webView)
-                .recreateActionButtons(_textActionsBar, _isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
+                .setUiReferences(activity, _hlEditor, _webView);
+//                .recreateActionButtons(_textActionsBar, _isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
         updateMenuToggleStates(_format.getFormatId());
     }
 

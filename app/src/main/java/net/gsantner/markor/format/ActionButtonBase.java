@@ -211,9 +211,9 @@ public abstract class ActionButtonBase {
      *
      * @param keys of keys (in order) to save
      */
-    public void saveDisabledActions(final Collection<String> keys) {
-        saveActionPreference(DISABLED_SUFFIX, keys);
-    }
+//    public void saveDisabledActions(final Collection<String> keys) {
+//        saveActionPreference(DISABLED_SUFFIX, keys);
+//    }
 
     /**
      * Save an action order to preferences.
@@ -292,7 +292,7 @@ public abstract class ActionButtonBase {
     @SuppressWarnings("ConstantConditions")
     public void recreateActionButtons(ViewGroup barLayout, ActionItem.DisplayMode displayMode) {
         barLayout.removeAllViews();
-        setBarVisible(barLayout, true);
+//        setBarVisible(barLayout, true);
 
         final Map<String, ActionItem> map = getActiveActionMap();
         final List<String> orderedKeys = getActionOrder();
@@ -305,47 +305,47 @@ public abstract class ActionButtonBase {
 //        }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.P)
-    private void setupRepeat(final View btn, final ActionItem action) {
-        // Velocity and acceleration parameters
-        final int initialDelay = 400, deltaDelay = 50, minDelay = 100;
-        final Integer token = action.keyId;
-
-        btn.setOnTouchListener(new View.OnTouchListener() {
-            Handler handler = null;
-            int delay = initialDelay;
-
-            @SuppressLint("ClickableViewAccessibility")
-            @Override
-            public boolean onTouch(final View v, final MotionEvent event) {
-                if (handler == null) {
-                    handler = v.getHandler();
-                }
-
-                final int action = event.getAction();
-                if (action == MotionEvent.ACTION_DOWN) {
-                    delay = initialDelay;
-                    onClick(v);
-                    return true;
-                } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
-                    handler.removeCallbacksAndMessages(token);
-                    return true;
-                }
-                return false;
-            }
-
-            private void onClick(final View v) {
-                try {
-                    v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
-                    onActionClick(action.keyId);
-                    handler.postDelayed(() -> onClick(v), token, delay);
-                    delay = Math.max(minDelay, delay - deltaDelay);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.P)
+//    private void setupRepeat(final View btn, final ActionItem action) {
+//        // Velocity and acceleration parameters
+//        final int initialDelay = 400, deltaDelay = 50, minDelay = 100;
+//        final Integer token = action.keyId;
+//
+//        btn.setOnTouchListener(new View.OnTouchListener() {
+//            Handler handler = null;
+//            int delay = initialDelay;
+//
+//            @SuppressLint("ClickableViewAccessibility")
+//            @Override
+//            public boolean onTouch(final View v, final MotionEvent event) {
+//                if (handler == null) {
+//                    handler = v.getHandler();
+//                }
+//
+//                final int action = event.getAction();
+//                if (action == MotionEvent.ACTION_DOWN) {
+//                    delay = initialDelay;
+//                    onClick(v);
+//                    return true;
+//                } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
+//                    handler.removeCallbacksAndMessages(token);
+//                    return true;
+//                }
+//                return false;
+//            }
+//
+//            private void onClick(final View v) {
+//                try {
+//                    v.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+//                    onActionClick(action.keyId);
+//                    handler.postDelayed(() -> onClick(v), token, delay);
+//                    delay = Math.max(minDelay, delay - deltaDelay);
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 
 //    @SuppressLint("ClickableViewAccessibility")
 //    protected void appendActionButtonToBar(final ViewGroup barLayout, final @NonNull ActionItem action) {
@@ -382,23 +382,23 @@ public abstract class ActionButtonBase {
 //        barLayout.addView(btn);
 //    }
 
-    protected void setBarVisible(ViewGroup barLayout, boolean visible) {
-        if (barLayout.getId() == R.id.document__fragment__edit__text_actions_bar && barLayout.getParent() instanceof HorizontalScrollView) {
-            ((HorizontalScrollView) barLayout.getParent()).setVisibility(visible ? View.VISIBLE : View.GONE);
-        }
-    }
+//    protected void setBarVisible(ViewGroup barLayout, boolean visible) {
+//        if (barLayout.getId() == R.id.document__fragment__edit__text_actions_bar && barLayout.getParent() instanceof HorizontalScrollView) {
+//            ((HorizontalScrollView) barLayout.getParent()).setVisibility(visible ? View.VISIBLE : View.GONE);
+//        }
+//    }
 
-    protected void runRegularPrefixAction(String action) {
-        runRegularPrefixAction(action, null, false);
-    }
+//    protected void runRegularPrefixAction(String action) {
+//        runRegularPrefixAction(action, null, false);
+//    }
 
     protected void runRegularPrefixAction(String action, Boolean ignoreIndent) {
         runRegularPrefixAction(action, null, ignoreIndent);
     }
 
-    protected void runRegularPrefixAction(String action, String replaceString) {
-        runRegularPrefixAction(action, replaceString, false);
-    }
+//    protected void runRegularPrefixAction(String action, String replaceString) {
+//        runRegularPrefixAction(action, replaceString, false);
+//    }
 
     protected void runRegularPrefixAction(final String action, final String replaceString, final Boolean ignoreIndent) {
 
