@@ -19,3 +19,4 @@ X - Remove bottom bar in text editing
 - highlight briefly when going back (see Merge requests on github)
 - do not open multiple instances (single instance only), not one for each file and for each reopened file. I.e just like snotepad
 - remove the bottom dark bar (Files)
+- Change the versioning to match the new versions
