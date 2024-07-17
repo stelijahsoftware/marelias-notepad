@@ -41,9 +41,9 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main__view_pager_container"
         android:layout_width="match_parent"
-        android:layout_height="676dp"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="7mm"
+        android:layout_marginBottom="0mm" />
 
     <!--suppress AndroidUnknownAttribute -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
