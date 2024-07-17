@@ -13,10 +13,10 @@ X - Fix: search when launched from inside a file (8cc1d0def12211bcc1886e95471bf8
 X - call them notes 1 & notes 2
 X - Remove bottom bar in text editing
 X - do not open multiple instances (single instance only), not one for each file and for each reopened file. I.e just like snotepad
+X - Change the versioning to match the new versions
 
 - Edit to start new note with date and time. Remove extra options (see merge requests)
 - Make scrollbar always visible.
 - total notes count
 - highlight briefly when going back (see Merge requests on github)
 - remove the bottom dark bar (Files)
-- Change the versioning to match the new versions
