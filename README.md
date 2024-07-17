@@ -17,8 +17,8 @@ X - Change the versioning to match the new versions
 X - remove the bottom dark bar (Files)
 X - change app name from markor to notepad2
 
-[h] - highlight briefly when going back (see Merge requests on github)
 [h] - one click starts new note with date and time
+[h] - highlight briefly when going back (see Merge requests on github)
 [h] - scrollbar always visible.
 
-[l]- total notes count (+ on folders?)
+[l] - total notes count (+ on folders?)
