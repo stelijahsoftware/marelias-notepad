@@ -17,7 +17,7 @@ X - Change the versioning to match the new versions
 X - remove the bottom dark bar (Files)
 
 [h] - highlight briefly when going back (see Merge requests on github)
-[h] - Edit to start new note with date and time with a single click (Remove extra options, see merge requests)
-[h] - Make scrollbar always visible.
+[h] - single click to start a new note with date and time
+[h] - scrollbar always visible.
 
 [l]- total notes count (+ on folders?)
