@@ -25,7 +25,7 @@ android {
     defaultConfig {
         resValue "string", "manifest_package_id", "net.elyahw.notepad2"
         applicationId "net.elyahw.notepad2"
-        versionName "0.6.1"
+        versionName "0.6.3"
         versionCode 10
 
         multiDexEnabled true
