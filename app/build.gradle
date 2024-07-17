@@ -141,7 +141,6 @@ dependencies {
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
     implementation 'com.kailashdabhi:om-recorder:1.1.5'
     implementation 'com.github.mertakdut:EpubParser:1.0.95'
-    implementation project(':app:thirdparty-lib-src:QuadFlask-colorpicker')
 
     // Tool libraries
     //noinspection AnnotationProcessorOnCompilePath
