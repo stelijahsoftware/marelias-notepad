@@ -14,10 +14,10 @@ X - call them notes 1 & notes 2
 X - Remove bottom bar in text editing
 X - do not open multiple instances (single instance only), not one for each file and for each reopened file. I.e just like snotepad
 X - Change the versioning to match the new versions
+X - remove the bottom dark bar (Files)
 
 [h] - highlight briefly when going back (see Merge requests on github)
-[h] - Edit to start new note with date and time. Remove extra options (see merge requests)
+[h] - Edit to start new note with date and time with a single click (Remove extra options, see merge requests)
 [h] - Make scrollbar always visible.
-X - remove the bottom dark bar (Files)
 
 [l]- total notes count (+ on folders?)
