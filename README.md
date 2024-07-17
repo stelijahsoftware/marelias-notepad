@@ -19,6 +19,6 @@ X - change app name from markor to notepad2
 
 [h] - one click starts new note with date and time
 [h] - highlight briefly when going back (see Merge requests on github)
-[h] - scrollbar always visible.
+[h] - scrollbar always visible + clickable
 
 [l] - total notes count (+ on folders?)
