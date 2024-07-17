@@ -56,7 +56,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
     public static boolean IS_DEBUG_ENABLED = false;
 
-    private BottomNavigationView _bottomNav;
+//    private BottomNavigationView _bottomNav;
     private ViewPager2 _viewPager;
     private GsFileBrowserFragment _notebook;
     //private DocumentEditAndViewFragment _quicknote, _todo;
@@ -74,7 +74,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         IS_DEBUG_ENABLED |= BuildConfig.IS_TEST_BUILD;
         _cu = new MarkorContextUtils(this);
         setContentView(R.layout.main__activity);
-        _bottomNav = findViewById(R.id.bottom_navigation_bar);
+//        _bottomNav = findViewById(R.id.bottom_navigation_bar);
         _viewPager = findViewById(R.id.main__view_pager_container);
         _fab = findViewById(R.id.fab_add_new_item);
         _fab.setOnClickListener(this::onClickFab);
@@ -93,7 +93,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         // Setup viewpager
         _viewPager.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager()));
         _viewPager.setOffscreenPageLimit(4);
-        _bottomNav.setOnItemSelectedListener(this);
+//        _bottomNav.setOnItemSelectedListener(this);
         reduceViewpagerSwipeSensitivity();
 
         // noinspection PointlessBooleanExpression - Send Test intent
@@ -187,7 +187,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             } else {
                 _notebook.post(() -> _notebook.getAdapter().showFile(file));
             }
-            _bottomNav.postDelayed(() -> _bottomNav.setSelectedItemId(R.id.nav_notebook), 10);
+            //_bottomNav.postDelayed(() -> _bottomNav.setSelectedItemId(R.id.nav_notebook), 10);
         }
     }
 
@@ -359,9 +359,8 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         return 0;
     }
 
-    public int tabIdFromPos(final int pos) {
-        return _bottomNav.getMenu().getItem(pos).getItemId();
-    }
+    public int tabIdFromPos(final int pos) { return 0;}//_bottomNav.getMenu().getItem(pos).getItemId();
+
 
     public int getCurrentPos() {
         return _viewPager.getCurrentItem();
@@ -395,7 +394,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     }
 
     public void onViewPagerPageSelected(final int pos) {
-        _bottomNav.getMenu().getItem(pos).setChecked(true);
+        //_bottomNav.getMenu().getItem(pos).setChecked(true);
 
         if (pos == tabIdToPos(R.id.nav_notebook)) {
             _fab.show();
@@ -486,7 +485,8 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
         @Override
         public int getItemCount() {
-            return _bottomNav.getMenu().size();
+            return 1;
+            //return _bottomNav.getMenu().size();
         }
     }
 

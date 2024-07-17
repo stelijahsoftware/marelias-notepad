@@ -22,13 +22,13 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="45dp"
         android:theme="@style/AppTheme.Light.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="46dp"
             android:background="?attr/colorPrimary"
             android:theme="@style/LightTextToolbarOverlay"
             app:subtitleTextColor="@color/secondary_text"
@@ -57,17 +57,5 @@
         android:contentDescription="@string/create_new_file_or_folder"
         android:src="@drawable/ic_add_white_24dp"
         app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_bar"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_gravity="bottom|start"
-        android:background="@color/dark__background_2"
-        app:itemBackground="@color/dark__background_2"
-        app:itemIconTint="@drawable/bottomnav_color_selector"
-        app:itemTextColor="@drawable/bottomnav_color_selector"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/main__bottom_nav" />
 
 </FrameLayout>
