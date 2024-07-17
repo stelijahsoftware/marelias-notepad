@@ -16,6 +16,7 @@ X - do not open multiple instances (single instance only), not one for each file
 X - Change the versioning to match the new versions
 X - remove the bottom dark bar (Files)
 
+[m] - change app name from markor to notepad2
 [h] - highlight briefly when going back (see Merge requests on github)
 [h] - single click to start a new note with date and time
 [h] - scrollbar always visible.
