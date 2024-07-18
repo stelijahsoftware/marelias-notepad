@@ -22,3 +22,7 @@ X - change app name from markor to notepad2
 [h] - scrollbar always visible + clickable
 
 [l] - total notes count (+ on folders?)
+
+
+# Forked starting from (if you would like to pull new commits, start from this):
+https://github.com/gsantner/markor/commit/d24c66e93a1a6162c796c8a47acf0621012660c8
