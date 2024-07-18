@@ -83,7 +83,7 @@ public class MarkorContextUtils extends GsContextUtils {
     }
 
     public <T extends GsContextUtils> T showMountSdDialog(final Activity activity) {
-        showMountSdDialog(activity, R.string.mount_storage, R.string.application_needs_access_to_storage_mount_it, R.drawable.mount_sdcard_help);
+        showMountSdDialog(activity, R.string.mount_storage, R.string.application_needs_access_to_storage_mount_it, 0);
         return thisp();
     }
 

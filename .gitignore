@@ -5,5 +5,6 @@ local.properties
 .idea/
 build/
 app/flavor*
+app/src/main/res/raw/*
 
 *.apk
