@@ -19,9 +19,10 @@ X - change app name from markor to notepad2
 X - one click starts new note with date and time
 X - scrollbar always visible + clickable
 
-[h] - highlight briefly when going back (see Merge requests on github)
-
-[l] - total notes count (+ on folders?)
+- darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
+- Add more highlighting (file:///home/elias/Library/Projects/3-Writing-Tools/Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java)
+- highlight briefly when going back (see Merge requests on github)
+- total notes count (+ on folders?)
 
 
 # Forked starting from (if you would like to pull new commits, start from this):
