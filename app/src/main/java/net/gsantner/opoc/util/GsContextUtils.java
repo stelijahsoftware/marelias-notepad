@@ -2570,6 +2570,7 @@ public class GsContextUtils {
 
         scroll.setPadding(padding, 0, padding, 0);
         scroll.addView(textView);
+        scroll.setScrollbarFadingEnabled(false);
         textView.setMovementMethod(new LinkMovementMethod());
         textView.setText(isHtml ? new SpannableString(Html.fromHtml(text)) : text);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);

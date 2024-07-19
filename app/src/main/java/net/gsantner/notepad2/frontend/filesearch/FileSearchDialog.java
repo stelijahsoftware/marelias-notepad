@@ -136,6 +136,8 @@ public class FileSearchDialog {
 
         // ScrollView
         scrollView.addView(dialogLayout);
+        scrollView.setScrollbarFadingEnabled(false);
+
 
         // Configure dialog
         final AlertDialog dialog = dialogBuilder
