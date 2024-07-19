@@ -27,3 +27,6 @@ NOW [h] - scrollbar always visible + clickable
 
 # Forked starting from (if you would like to pull new commits, start from this):
 https://github.com/gsantner/markor/commit/d24c66e93a1a6162c796c8a47acf0621012660c8
+
+
+g pref_key__new_file_dialog_lastused_extension
