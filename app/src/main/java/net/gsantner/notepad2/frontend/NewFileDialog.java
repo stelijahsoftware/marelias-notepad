@@ -151,6 +151,7 @@ public class NewFileDialog extends DialogFragment {
         final ListPopupWindow formatPopup = new ListPopupWindow(activity);
         formatPopup.setAdapter(formatAdapter);
         formatPopup.setAnchorView(formatEdit);
+        formatEdit.setText(formatAdapter.getItem(0));
         formatPopup.setOnItemClickListener((parent, view, position, id) ->
         {
             formatEdit.setText(formatAdapter.getItem(position));
