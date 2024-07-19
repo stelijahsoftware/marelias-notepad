@@ -133,6 +133,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 //        _textActionsBar = view.findViewById(R.id.document__fragment__edit__text_actions_bar);
         _webView = view.findViewById(R.id.document__fragment_view_webview);
         _primaryScrollView = view.findViewById(R.id.document__fragment__edit__content_editor__scrolling_parent);
+        _primaryScrollView.setScrollbarFadingEnabled(false);
         _cu = new MarkorContextUtils(activity);
 
         // Using `if (_document != null)` everywhere is dangerous
