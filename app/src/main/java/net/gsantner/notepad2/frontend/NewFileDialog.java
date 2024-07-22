@@ -307,8 +307,6 @@ public class NewFileDialog extends DialogFragment {
             dialogBuilder.setNeutralButton("", null);
         }
 
-        // Initial creation - loop through and set type
-
         titleEdit.requestFocus();
 
         return dialogBuilder;
