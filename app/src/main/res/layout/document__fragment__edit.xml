@@ -31,10 +31,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            android:minHeight="1dp"
             android:gravity="top"
             android:imeOptions="flagNoExtractUi"
             android:inputType="textMultiLine|textCapSentences"
+            android:minHeight="1dp"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingTop="0mm"
             android:paddingRight="@dimen/activity_horizontal_margin"
@@ -44,13 +44,12 @@
 
     </net.gsantner.notepad2.frontend.DraggableScrollbarScrollView>
 
-
     <net.gsantner.notepad2.web.DraggableScrollbarWebView
         android:id="@+id/document__fragment_view_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
         android:layout_marginBottom="@dimen/textactions_bar_height"
+        android:background="@color/background"
         android:visibility="gone" />
 
     <FrameLayout
@@ -59,5 +58,4 @@
         android:layout_height="match_parent"
         android:background="@color/black"
         android:visibility="gone" />
-
 </FrameLayout>

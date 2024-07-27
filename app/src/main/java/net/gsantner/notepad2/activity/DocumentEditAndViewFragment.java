@@ -530,6 +530,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 .setUiReferences(activity, _hlEditor, _webView);
 //                .recreateActionButtons(_textActionsBar, _isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
         updateMenuToggleStates(_format.getFormatId());
+
     }
 
     private void updateMenuToggleStates(final int selectedFormatActionId) {
