@@ -47,6 +47,7 @@ import net.gsantner.notepad2.frontend.textview.TextViewUtils;
 import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.notepad2.model.Document;
 import net.gsantner.notepad2.util.MarkorContextUtils;
+
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.util.GsCollectionUtils;
 //import net.gsantner.opoc.util.GsContextUtils;
@@ -876,45 +877,6 @@ public abstract class ActionButtonBase {
         });
     }
 
-//    public void showColorPickerDialog() {
-//        MarkorDialogFactory.showColorSelectionModeDialog(getActivity(), new GsCallback.a1<Integer>() {
-//            @Override
-//            public void callback(Integer colorInsertType) {
-//                ColorPickerDialogBuilder
-//                        .with(_hlEditor.getContext())
-//                        .setTitle(R.string.color)
-//                        .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
-//                        .density(12)
-//                        .setPositiveButton(android.R.string.ok, new ColorPickerClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-//                                String hex = Utils.getHexString(selectedColor, false).toLowerCase();
-//                                int pos = _hlEditor.getSelectionStart();
-//                                switch (colorInsertType) {
-//                                    case R.string.hexcode: {
-//                                        _hlEditor.getText().insert(pos, hex);
-//                                        break;
-//                                    }
-//                                    case R.string.foreground: {
-//                                        _hlEditor.getText().insert(pos, "<span style='color:" + hex + ";'></span>");
-//                                        _hlEditor.setSelection(_hlEditor.getSelectionStart() - 7);
-//                                        break;
-//                                    }
-//                                    case R.string.background: {
-//                                        _hlEditor.getText().insert(pos, "<span style='background-color:" + hex + ";'></span>");
-//                                        _hlEditor.setSelection(_hlEditor.getSelectionStart() - 7);
-//                                        break;
-//                                    }
-//                                }
-//
-//                            }
-//                        })
-//                        .setNegativeButton(R.string.cancel, null)
-//                        .build()
-//                        .show();
-//            }
-//        });
-//    }
 
     public void runJumpBottomTopAction(ActionItem.DisplayMode displayMode) {
         if (displayMode == ActionItem.DisplayMode.EDIT) {

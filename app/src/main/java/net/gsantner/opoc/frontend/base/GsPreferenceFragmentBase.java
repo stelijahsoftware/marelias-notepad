@@ -154,7 +154,7 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
 
         if (activity != null && activity.getTheme() != null) {
             TypedArray array = activity.getTheme().obtainStyledAttributes(new int[]{android.R.attr.colorBackground});
-            int bgcolor = array.getColor(0, 0xFFFFFFFF);
+            int bgcolor = array.getColor(0, 0xFFFFFF);
             _defaultIconTintColor = _cu.shouldColorOnTopBeLight(bgcolor) ? Color.WHITE : Color.BLACK;
         }
 
