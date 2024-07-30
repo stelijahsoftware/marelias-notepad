@@ -837,14 +837,16 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         final String js = getString(R.string.pref_key__title_format_list, "[]");
         final Set<String> formats = new LinkedHashSet<>(jsonStringToList(js));
         formats.addAll(Arrays.asList(
-                "`yyyyMMdd` {{title}}",
-                "`yyyy-MM-dd` {{title}}",
-                "`yyyyMMdd_HHmmSS` {{title}}",
-                "{{title}}",
-                //"{{date}}-{{time}}-{{title}}",
-                //"{{date}}_{{title}}",
-                //"`yyyyMMddHHmmSS`_{{title}}",
-                "{{uuid}}"
+
+            "`yyyyMMdd` {{title}}",
+            "`yyyy-MM-dd` {{title}}",
+            "`yyyyMMdd_HHmmSS` {{title}}",
+            "{{title}}",
+            //"{{date}}-{{time}}-{{title}}",
+            //"{{date}}_{{title}}",
+            //"`yyyyMMddHHmmSS`_{{title}}",
+
+            "{{uuid}}"
         ));
         return formats;
     }
