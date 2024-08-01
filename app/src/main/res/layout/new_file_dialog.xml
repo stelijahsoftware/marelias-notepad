@@ -140,21 +140,21 @@
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@string/template"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:ellipsize="end"-->
+<!--            android:lines="1"-->
+<!--            android:text="@string/template"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />-->
 
-        <Spinner
-            android:id="@+id/new_file_dialog__template"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawSelectorOnTop="true"/>
+<!--        <Spinner-->
+<!--            android:id="@+id/new_file_dialog__template"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawSelectorOnTop="true"/>-->
 
         <CheckBox
             android:id="@+id/new_file_dialog__encrypt"

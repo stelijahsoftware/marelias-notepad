@@ -116,7 +116,7 @@ public class NewFileDialog extends DialogFragment {
         final CheckBox encryptCheckbox = root.findViewById(R.id.new_file_dialog__encrypt);
         final CheckBox utf8BomCheckbox = root.findViewById(R.id.new_file_dialog__utf8_bom);
         final Spinner typeSpinner = root.findViewById(R.id.new_file_dialog__type);
-        final Spinner templateSpinner = root.findViewById(R.id.new_file_dialog__template);
+//        final Spinner templateSpinner = root.findViewById(R.id.new_file_dialog__template);
         final EditText formatEdit = root.findViewById(R.id.new_file_dialog__name_format);
         final TextView formatSpinner = root.findViewById(R.id.new_file_dialog__name_format_spinner);
 
@@ -164,11 +164,11 @@ public class NewFileDialog extends DialogFragment {
         // -----------------------------------------------------------------------------------------
         final List<Pair<String, File>> snippets = appSettings.getSnippetFiles();
         final List<Pair<String, String>> templates = appSettings.getBuiltinTemplates();
-        final ArrayAdapter<String> templateAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item);
-        templateAdapter.add(activity.getString(R.string.empty_file));
-        templateAdapter.addAll(GsCollectionUtils.map(snippets, p -> p.first));
-        templateAdapter.addAll(GsCollectionUtils.map(templates, p -> p.first));
-        templateSpinner.setAdapter(templateAdapter);
+//        final ArrayAdapter<String> templateAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item);
+//        templateAdapter.add(activity.getString(R.string.empty_file));
+//        templateAdapter.addAll(GsCollectionUtils.map(snippets, p -> p.first));
+//        templateAdapter.addAll(GsCollectionUtils.map(templates, p -> p.first));
+//        templateSpinner.setAdapter(templateAdapter);
 
         // Setup type / format spinner and action
         // -----------------------------------------------------------------------------------------
@@ -187,10 +187,10 @@ public class NewFileDialog extends DialogFragment {
 //                }
             }
 
-            final int tpos = templateAdapter.getPosition(appSettings.getTypeTemplate(fmt.format));
-            if (tpos >= 0) {
-                templateSpinner.setSelection(tpos);
-            }
+//            final int tpos = templateAdapter.getPosition(appSettings.getTypeTemplate(fmt.format));
+//            if (tpos >= 0) {
+//                templateSpinner.setSelection(tpos);
+//            }
         };
 
         typeSpinner.setOnItemSelectedListener(new GsAndroidSpinnerOnItemSelectedAdapter(typeCallback));
@@ -249,15 +249,16 @@ public class NewFileDialog extends DialogFragment {
 
             // Get template string
             // -------------------------------------------------------------------------------------
-            final int ti = templateSpinner.getSelectedItemPosition();
+//            final int ti = templateSpinner.getSelectedItemPosition();
             final String template;
-            if (ti == 0) {
-                template = "";
-            } else if (ti <= snippets.size()) {
-                template = GsFileUtils.readTextFileFast(snippets.get(ti - 1).second).first;
-            } else {
-                template = templates.get(ti - snippets.size()).second;
-            }
+            template = "";
+//            if (ti == 0) {
+//                template = "";
+//            } else if (ti <= snippets.size()) {
+//                template = GsFileUtils.readTextFileFast(snippets.get(ti - 1).second).first;
+//            } else {
+//                template = templates.get(ti - snippets.size()).second;
+//            }
 
             final Pair<String, Integer> content = getTemplateContent(template, title);
             // -------------------------------------------------------------------------------------
@@ -269,9 +270,9 @@ public class NewFileDialog extends DialogFragment {
 
             // These are done even if the file isn't created
             final String titleFormat = formatEdit.getText().toString().trim();
-            appSettings.setTemplateTitleFormat(templateAdapter.getItem(ti), titleFormat);
+//            appSettings.setTemplateTitleFormat(templateAdapter.getItem(ti), titleFormat);
             final FormatRegistry.Format fmt = formats.get(typeSpinner.getSelectedItemPosition());
-            appSettings.setTypeTemplate(fmt.format, (String) templateSpinner.getSelectedItem());
+//            appSettings.setTypeTemplate(fmt.format, (String) templateSpinner.getSelectedItem());
             appSettings.setNewFileDialogLastUsedType(fmt.format);
 
             if (!titleFormat.isEmpty()) {
