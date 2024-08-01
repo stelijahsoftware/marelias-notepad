@@ -115,10 +115,10 @@ public class NewFileDialog extends DialogFragment {
 //        final EditText extEdit = root.findViewById(R.id.new_file_dialog__ext);
         final CheckBox encryptCheckbox = root.findViewById(R.id.new_file_dialog__encrypt);
         final CheckBox utf8BomCheckbox = root.findViewById(R.id.new_file_dialog__utf8_bom);
-        final Spinner typeSpinner = root.findViewById(R.id.new_file_dialog__type);
+//        final Spinner typeSpinner = root.findViewById(R.id.new_file_dialog__type);
 //        final Spinner templateSpinner = root.findViewById(R.id.new_file_dialog__template);
         final EditText formatEdit = root.findViewById(R.id.new_file_dialog__name_format);
-        final TextView formatSpinner = root.findViewById(R.id.new_file_dialog__name_format_spinner);
+//        final TextView formatSpinner = root.findViewById(R.id.new_file_dialog__name_format_spinner);
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && appSettings.isDefaultPasswordSet()) {
 //            encryptCheckbox.setChecked(appSettings.getNewFileDialogLastUsedEncryption());
@@ -158,7 +158,7 @@ public class NewFileDialog extends DialogFragment {
             formatPopup.dismiss();
         });
 
-        formatSpinner.setOnClickListener(v -> formatPopup.show());
+//        formatSpinner.setOnClickListener(v -> formatPopup.show());
 
         // Setup template spinner and action
         // -----------------------------------------------------------------------------------------
@@ -172,13 +172,13 @@ public class NewFileDialog extends DialogFragment {
 
         // Setup type / format spinner and action
         // -----------------------------------------------------------------------------------------
-        final ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item);
-        typeAdapter.addAll(GsCollectionUtils.map(formats, f -> activity.getString(f.name)));
-        typeSpinner.setAdapter(typeAdapter);
+//        final ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item);
+//        typeAdapter.addAll(GsCollectionUtils.map(formats, f -> activity.getString(f.name)));
+//        typeSpinner.setAdapter(typeAdapter);
 
         // Load name formats into spinner
-        final GsCallback.a1<Integer> typeCallback = pos -> {
-            final FormatRegistry.Format fmt = formats.get(pos);
+//        final GsCallback.a1<Integer> typeCallback = pos -> {
+//            final FormatRegistry.Format fmt = formats.get(pos);
 //            if (fmt.defaultExtensionWithDot != null) {
 //                if (encryptCheckbox.isChecked()) {
 //                    extEdit.setText(fmt.defaultExtensionWithDot + JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
@@ -191,9 +191,9 @@ public class NewFileDialog extends DialogFragment {
 //            if (tpos >= 0) {
 //                templateSpinner.setSelection(tpos);
 //            }
-        };
+//        };
 
-        typeSpinner.setOnItemSelectedListener(new GsAndroidSpinnerOnItemSelectedAdapter(typeCallback));
+//        typeSpinner.setOnItemSelectedListener(new GsAndroidSpinnerOnItemSelectedAdapter(typeCallback));
 
         // Setup other checkboxes etc
         // -----------------------------------------------------------------------------------------
@@ -271,7 +271,7 @@ public class NewFileDialog extends DialogFragment {
             // These are done even if the file isn't created
             final String titleFormat = formatEdit.getText().toString().trim();
 //            appSettings.setTemplateTitleFormat(templateAdapter.getItem(ti), titleFormat);
-            final FormatRegistry.Format fmt = formats.get(typeSpinner.getSelectedItemPosition());
+            final FormatRegistry.Format fmt = formats.get(0);
 //            appSettings.setTypeTemplate(fmt.format, (String) templateSpinner.getSelectedItem());
             appSettings.setNewFileDialogLastUsedType(fmt.format);
 
@@ -326,15 +326,15 @@ public class NewFileDialog extends DialogFragment {
         }
 
         // Initial creation - loop through and set type
-        final int lastUsedType = appSettings.getNewFileDialogLastUsedType();
-        for (int i = 0; i < formats.size(); i++) {
-            final FormatRegistry.Format fmt = formats.get(i);
-            if (fmt.format == lastUsedType) {
-                typeSpinner.setSelection(i);
-                typeCallback.callback(i);
-                break;
-            }
-        }
+//        final int lastUsedType = appSettings.getNewFileDialogLastUsedType();
+//        for (int i = 0; i < formats.size(); i++) {
+//            final FormatRegistry.Format fmt = formats.get(i);
+//            if (fmt.format == lastUsedType) {
+//                typeSpinner.setSelection(i);
+//                typeCallback.callback(i);
+//                break;
+//            }
+//        }
 
         titleEdit.requestFocus();
 

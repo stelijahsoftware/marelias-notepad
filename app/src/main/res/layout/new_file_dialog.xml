@@ -124,21 +124,21 @@
         </RelativeLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@string/type"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:ellipsize="end"-->
+<!--            android:lines="1"-->
+<!--            android:text="@string/type"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />-->
 
-        <view class="net.gsantner.notepad2.frontend.NewFileDialog$ReselectSpinner"
-            android:id="@+id/new_file_dialog__type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawSelectorOnTop="true"/>
+<!--        <view class="net.gsantner.notepad2.frontend.NewFileDialog$ReselectSpinner"-->
+<!--            android:id="@+id/new_file_dialog__type"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawSelectorOnTop="true"/>-->
 
 <!--        <TextView-->
 <!--            android:layout_width="wrap_content"-->
