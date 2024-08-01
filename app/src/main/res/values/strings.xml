@@ -20,7 +20,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="confirm_overwrite">Confirm Overwrite</string>
     <string name="file_already_exists_overwerite">File already exists, overwrite?</string>
     <string name="browse_filesystem">Browse filesystem</string>
-    <string name="title">Title</string>
+    <string name="title">yyyyMMdd_hhMMss</string>
     <string name="empty_directory">Empty directory</string>
     <string name="enter_name_of_folder">Enter the name of your folder</string>
     <string name="create_folder">Create Folder</string>
