@@ -56,7 +56,7 @@ public class GsFileBrowserOptions {
                 doSelectMultiple = false;
 
         public boolean mustStartWithRootFolder = true,
-                sortFolderFirst = true,
+                sortFolderFirst = false,
                 sortReverse = true,
                 descModtimeInsteadOfParent = false,
                 filterShowDotFiles = true;

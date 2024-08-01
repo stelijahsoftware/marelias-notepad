@@ -267,7 +267,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public String getFileBrowserSortByType() {
-        return getString(R.string.pref_key__file_browser__sort_by_type, GsFileUtils.SORT_BY_NAME);
+        return getString(R.string.pref_key__file_browser__sort_by_type, GsFileUtils.SORT_BY_MTIME);
     }
 
     public boolean setFileBrowserSortReverse(boolean value) {
@@ -736,7 +736,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
 
     public boolean isFileBrowserSortFolderFirst() {
-        return getBool(R.string.pref_key__filesystem_folder_first, true);
+        return getBool(R.string.pref_key__filesystem_folder_first, false);
     }
 
     public String getNavigationBarColor() {
