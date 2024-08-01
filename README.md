@@ -34,3 +34,7 @@ X - scrollbar always visible + clickable
 - highlight briefly when going back (see Merge requests on github)
 - total notes count (+ on folders?)
 
+- Pull the improvements for fast scrolling glitch
+
+# Create issue:
+- Touch the containing folder whenever a note is edited
