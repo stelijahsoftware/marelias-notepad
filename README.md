@@ -24,6 +24,8 @@ X - remove the bottom dark bar (Files)
 X - change app name from markor to notepad2
 X - one click starts new note with date and time
 X - scrollbar always visible + clickable
+X - simplify new file dialog
+X - Change the default flags of (sort by date; reverse order.. etc)
 
 - darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 
@@ -35,7 +37,6 @@ X - scrollbar always visible + clickable
 - total notes count (+ on folders?)
 
 - Pull the improvements for fast scrolling glitch
-- Change the default flags of (sort by date; reverse order.. etc)
 
 # Create issue:
 - Touch the containing folder whenever a note is edited
