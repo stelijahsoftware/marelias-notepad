@@ -113,8 +113,8 @@ public class NewFileDialog extends DialogFragment {
 
         final EditText titleEdit = root.findViewById(R.id.new_file_dialog__name);
 //        final EditText extEdit = root.findViewById(R.id.new_file_dialog__ext);
-        final CheckBox encryptCheckbox = root.findViewById(R.id.new_file_dialog__encrypt);
-        final CheckBox utf8BomCheckbox = root.findViewById(R.id.new_file_dialog__utf8_bom);
+//        final CheckBox encryptCheckbox = root.findViewById(R.id.new_file_dialog__encrypt);
+//        final CheckBox utf8BomCheckbox = root.findViewById(R.id.new_file_dialog__utf8_bom);
 //        final Spinner typeSpinner = root.findViewById(R.id.new_file_dialog__type);
 //        final Spinner templateSpinner = root.findViewById(R.id.new_file_dialog__template);
         final EditText formatEdit = root.findViewById(R.id.new_file_dialog__name_format);
@@ -123,11 +123,11 @@ public class NewFileDialog extends DialogFragment {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && appSettings.isDefaultPasswordSet()) {
 //            encryptCheckbox.setChecked(appSettings.getNewFileDialogLastUsedEncryption());
 //        } else {
-            encryptCheckbox.setVisibility(View.GONE);
+//            encryptCheckbox.setVisibility(View.GONE);
 //        }
 
-        utf8BomCheckbox.setChecked(appSettings.getNewFileDialogLastUsedUtf8Bom());
-        utf8BomCheckbox.setVisibility(appSettings.isExperimentalFeaturesEnabled() ? View.VISIBLE : View.GONE);
+//        utf8BomCheckbox.setChecked(appSettings.getNewFileDialogLastUsedUtf8Bom());
+//        utf8BomCheckbox.setVisibility(appSettings.isExperimentalFeaturesEnabled() ? View.VISIBLE : View.GONE);
 //        extEdit.setText(appSettings.getNewFileDialogLastUsedExtension());
         titleEdit.requestFocus();
         new Handler().postDelayed(new GsContextUtils.DoTouchView(titleEdit), 200);
@@ -197,7 +197,7 @@ public class NewFileDialog extends DialogFragment {
 
         // Setup other checkboxes etc
         // -----------------------------------------------------------------------------------------
-        encryptCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//        encryptCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
 //            final String currentExtention = extEdit.getText().toString();
 //            if (isChecked) {
 //                if (!currentExtention.endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION)) {
@@ -206,12 +206,12 @@ public class NewFileDialog extends DialogFragment {
 //            } else if (currentExtention.endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION)) {
 //                extEdit.setText(currentExtention.replace(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION, ""));
 //            }
-            appSettings.setNewFileDialogLastUsedEncryption(isChecked);
-        });
+//            appSettings.setNewFileDialogLastUsedEncryption(isChecked);
+//        });
 
-        utf8BomCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            appSettings.setNewFileDialogLastUsedUtf8Bom(isChecked);
-        });
+//        utf8BomCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            appSettings.setNewFileDialogLastUsedUtf8Bom(isChecked);
+//        });
 
         dialogBuilder.setView(root);
 
