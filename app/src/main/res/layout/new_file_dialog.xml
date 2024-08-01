@@ -175,7 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/folder_is_created_without_extension" />
+            android:text="- Folder creation ignores format and extension" />
 
         <TextView
             style="@style/TextAppearance.AppCompat.Caption"

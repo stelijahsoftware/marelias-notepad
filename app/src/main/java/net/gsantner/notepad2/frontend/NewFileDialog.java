@@ -239,6 +239,12 @@ public class NewFileDialog extends DialogFragment {
             return TextViewUtils.interpolateSnippet(format, title, "").trim();
         };
 
+        final GsCallback.s0 getTitle_folder = () -> {
+            final String title = titleEdit.getText().toString().trim();
+            String format = "{{title}}";
+            return TextViewUtils.interpolateSnippet(format, title, "").trim();
+        };
+
 
         final MarkorContextUtils cu = new MarkorContextUtils(getContext());
         dialogBuilder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> dialogInterface.dismiss());
@@ -301,7 +307,11 @@ public class NewFileDialog extends DialogFragment {
 
         dialogBuilder.setNeutralButton(R.string.folder, (dialogInterface, i) -> {
 
-            final String title = getTitle.callback();
+//            final String title = getTitle.callback();
+            final String title = getTitle_folder.callback();
+//            final String title = TextViewUtils.interpolateSnippet(".txt", "{{title}}", "").trim();
+
+
             final String dirName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title);
             final File f = new File(basedir, dirName);
 
