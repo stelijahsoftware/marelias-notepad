@@ -63,7 +63,7 @@ public class NewFileDialog extends DialogFragment {
     public static final int MAX_TITLE_FORMATS = 10;
 
     private static final List<Integer> NEW_FILE_FORMATS = Arrays.asList(
-            FormatRegistry.FORMAT_MARKDOWN,
+//            FormatRegistry.FORMAT_MARKDOWN,
             FormatRegistry.FORMAT_PLAIN
             //FormatRegistry.FORMAT_TODOTXT,
             //FormatRegistry.FORMAT_WIKITEXT,

@@ -61,7 +61,7 @@ public class Document implements Serializable {
     private long _touchTime = -1; // The last time this document touched the file
     private GsFileUtils.FileInfo _fileInfo;
     private @StringRes
-    int _format = FormatRegistry.FORMAT_UNKNOWN;
+    int _format = FormatRegistry.FORMAT_PLAIN;
     private transient SharedPreferences _modTimePref;
 
     // Used to check if string changed

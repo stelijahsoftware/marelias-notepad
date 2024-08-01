@@ -54,16 +54,16 @@ import java.util.List;
 import java.util.Locale;
 
 public class FormatRegistry {
-    public static final int FORMAT_UNKNOWN = 0;
+//    public static final int FORMAT_UNKNOWN = 0;
 //    public static final int FORMAT_WIKITEXT = R.string.action_format_wikitext;
-    public static final int FORMAT_MARKDOWN = R.string.action_format_markdown;
+//    public static final int FORMAT_MARKDOWN = R.string.action_format_markdown;
 //    public static final int FORMAT_CSV = R.string.action_format_csv;
     public static final int FORMAT_PLAIN = R.string.action_format_plaintext;
 //    public static final int FORMAT_ASCIIDOC = R.string.action_format_asciidoc;
 //    public static final int FORMAT_TODOTXT = R.string.action_format_todotxt;
-    public static final int FORMAT_KEYVALUE = R.string.action_format_keyvalue;
-    public static final int FORMAT_EMBEDBINARY = R.string.action_format_embedbinary;
-    public static final int FORMAT_ORGMODE = R.string.action_format_orgmode;
+//    public static final int FORMAT_KEYVALUE = R.string.action_format_keyvalue;
+//    public static final int FORMAT_EMBEDBINARY = R.string.action_format_embedbinary;
+//    public static final int FORMAT_ORGMODE = R.string.action_format_orgmode;
 
 
     public final static MarkdownTextConverter CONVERTER_MARKDOWN = new MarkdownTextConverter();
@@ -92,7 +92,7 @@ public class FormatRegistry {
 
     // Order here is used to **determine** format by it's file extension and/or content heading
     public static final List<Format> FORMATS = Arrays.asList(
-            new Format(FormatRegistry.FORMAT_MARKDOWN, R.string.markdown, ".md", CONVERTER_MARKDOWN),
+//            new Format(FormatRegistry.FORMAT_MARKDOWN, R.string.markdown, ".md", CONVERTER_MARKDOWN),
 //            new Format(FormatRegistry.FORMAT_TODOTXT, R.string.todo_txt, ".todo.txt", CONVERTER_TODOTXT),
 //            new Format(FormatRegistry.FORMAT_CSV, R.string.csv, ".csv", CONVERTER_CSV),
 //            new Format(FormatRegistry.FORMAT_WIKITEXT, R.string.wikitext, ".txt", CONVERTER_WIKITEXT),
@@ -100,8 +100,8 @@ public class FormatRegistry {
 //            new Format(FormatRegistry.FORMAT_ASCIIDOC, R.string.asciidoc, ".adoc", CONVERTER_ASCIIDOC),
 //            new Format(FormatRegistry.FORMAT_ORGMODE, R.string.orgmode, ".org", CONVERTER_ORGMODE),
 //            new Format(FormatRegistry.FORMAT_EMBEDBINARY, R.string.embed_binary, ".jpg", CONVERTER_EMBEDBINARY),
-            new Format(FormatRegistry.FORMAT_PLAIN, R.string.plaintext, ".txt", CONVERTER_PLAINTEXT),
-            new Format(FormatRegistry.FORMAT_UNKNOWN, R.string.none, "", null)
+            new Format(FormatRegistry.FORMAT_PLAIN, R.string.plaintext, ".txt", CONVERTER_PLAINTEXT)
+//            new Format(FormatRegistry.FORMAT_UNKNOWN, R.string.none, "", null)
     );
 
     public static boolean isFileSupported(final File file, final boolean... textOnly) {
@@ -128,7 +128,7 @@ public class FormatRegistry {
         final FormatRegistry format = new FormatRegistry();
         final AppSettings appSettings = ApplicationObject.settings();
 
-        formatId = FORMAT_MARKDOWN;
+        formatId = FORMAT_PLAIN;
         format._converter = CONVERTER_MARKDOWN;
         format._highlighter = new MarkdownSyntaxHighlighter(appSettings);
         format._textActions = new MarkdownActionButtons(context, document);

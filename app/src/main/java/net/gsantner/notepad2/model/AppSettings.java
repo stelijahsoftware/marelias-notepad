@@ -458,7 +458,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public void setDocumentFormat(final String path, @StringRes final int format) {
-        if (fexists(path) && format != FormatRegistry.FORMAT_UNKNOWN) {
+        if (fexists(path)) {
             setString(PREF_PREFIX_FILE_FORMAT + path, _context.getString(format));
         }
     }
