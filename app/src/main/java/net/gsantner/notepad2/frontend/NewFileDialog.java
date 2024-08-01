@@ -221,10 +221,11 @@ public class NewFileDialog extends DialogFragment {
         final GsCallback.s0 getTitle = () -> {
             final String title = titleEdit.getText().toString().trim();
 
+            // Elyahw: This is what is done on the press of the okay button in new file dialog. For options see [AppSettings.java]
             String format = formatEdit.getText().toString().trim();
-            if (format.isEmpty() && title.isEmpty())
+            if (title.isEmpty())//format.isEmpty() &&
             {
-                format = "`yyyy-MM-dd'T'hhMMss`";
+                format = "`yyyyMMdd'_'hhMMss`";
             }
             else if (format.isEmpty())
             {
