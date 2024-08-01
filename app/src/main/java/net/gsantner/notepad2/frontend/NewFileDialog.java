@@ -118,7 +118,7 @@ public class NewFileDialog extends DialogFragment {
 //        final Spinner typeSpinner = root.findViewById(R.id.new_file_dialog__type);
 //        final Spinner templateSpinner = root.findViewById(R.id.new_file_dialog__template);
         final EditText formatEdit = root.findViewById(R.id.new_file_dialog__name_format);
-//        final TextView formatSpinner = root.findViewById(R.id.new_file_dialog__name_format_spinner);
+        final TextView formatSpinner = root.findViewById(R.id.new_file_dialog__name_format_spinner);
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && appSettings.isDefaultPasswordSet()) {
 //            encryptCheckbox.setChecked(appSettings.getNewFileDialogLastUsedEncryption());
@@ -158,7 +158,7 @@ public class NewFileDialog extends DialogFragment {
             formatPopup.dismiss();
         });
 
-//        formatSpinner.setOnClickListener(v -> formatPopup.show());
+        formatSpinner.setOnClickListener(v -> formatPopup.show());
 
         // Setup template spinner and action
         // -----------------------------------------------------------------------------------------
