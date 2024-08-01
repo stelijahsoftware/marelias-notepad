@@ -35,6 +35,7 @@ X - scrollbar always visible + clickable
 - total notes count (+ on folders?)
 
 - Pull the improvements for fast scrolling glitch
+- Change the default flags of (sort by date; reverse order.. etc)
 
 # Create issue:
 - Touch the containing folder whenever a note is edited
