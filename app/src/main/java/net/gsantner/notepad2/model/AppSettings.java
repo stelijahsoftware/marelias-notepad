@@ -275,8 +275,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return value;
     }
 
+    // Elyahw: Initial state of reverse button
     public boolean isFileBrowserSortReverse() {
-        return getBool(R.string.pref_key__sort_reverse, false);
+        return getBool(R.string.pref_key__sort_reverse, true);
     }
 
     public boolean setFileBrowserFilterShowDotFiles(boolean v) {

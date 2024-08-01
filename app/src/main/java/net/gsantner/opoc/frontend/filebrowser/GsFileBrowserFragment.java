@@ -338,7 +338,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             item.setChecked(_dopt.sortFolderFirst);
         }
         if ((item = menu.findItem(R.id.action_sort_reverse)) != null) {
-            item.setChecked(_dopt.sortReverse);
+            item.setChecked(_dopt.sortReverse); // Elyahw
         }
         if ((item = menu.findItem(R.id.action_show_dotfiles)) != null) {
             item.setChecked(_dopt.filterShowDotFiles);
