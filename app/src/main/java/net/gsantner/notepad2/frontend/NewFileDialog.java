@@ -112,7 +112,7 @@ public class NewFileDialog extends DialogFragment {
         final View root = inflater.inflate(R.layout.new_file_dialog, null);
 
         final EditText titleEdit = root.findViewById(R.id.new_file_dialog__name);
-        final EditText extEdit = root.findViewById(R.id.new_file_dialog__ext);
+//        final EditText extEdit = root.findViewById(R.id.new_file_dialog__ext);
         final CheckBox encryptCheckbox = root.findViewById(R.id.new_file_dialog__encrypt);
         final CheckBox utf8BomCheckbox = root.findViewById(R.id.new_file_dialog__utf8_bom);
         final Spinner typeSpinner = root.findViewById(R.id.new_file_dialog__type);
@@ -128,12 +128,12 @@ public class NewFileDialog extends DialogFragment {
 
         utf8BomCheckbox.setChecked(appSettings.getNewFileDialogLastUsedUtf8Bom());
         utf8BomCheckbox.setVisibility(appSettings.isExperimentalFeaturesEnabled() ? View.VISIBLE : View.GONE);
-        extEdit.setText(appSettings.getNewFileDialogLastUsedExtension());
+//        extEdit.setText(appSettings.getNewFileDialogLastUsedExtension());
         titleEdit.requestFocus();
         new Handler().postDelayed(new GsContextUtils.DoTouchView(titleEdit), 200);
 
         titleEdit.setFilters(new InputFilter[]{GsContextUtils.instance.makeFilenameInputFilter()});
-        extEdit.setFilters(titleEdit.getFilters());
+//        extEdit.setFilters(titleEdit.getFilters());
 
         // Build a list of available formats
         // -----------------------------------------------------------------------------------------
@@ -179,13 +179,13 @@ public class NewFileDialog extends DialogFragment {
         // Load name formats into spinner
         final GsCallback.a1<Integer> typeCallback = pos -> {
             final FormatRegistry.Format fmt = formats.get(pos);
-            if (fmt.defaultExtensionWithDot != null) {
+//            if (fmt.defaultExtensionWithDot != null) {
 //                if (encryptCheckbox.isChecked()) {
 //                    extEdit.setText(fmt.defaultExtensionWithDot + JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
 //                } else {
-                    extEdit.setText(fmt.defaultExtensionWithDot);
+//                    extEdit.setText(fmt.defaultExtensionWithDot);
 //                }
-            }
+//            }
 
 //            final int tpos = templateAdapter.getPosition(appSettings.getTypeTemplate(fmt.format));
 //            if (tpos >= 0) {
@@ -198,7 +198,7 @@ public class NewFileDialog extends DialogFragment {
         // Setup other checkboxes etc
         // -----------------------------------------------------------------------------------------
         encryptCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            final String currentExtention = extEdit.getText().toString();
+//            final String currentExtention = extEdit.getText().toString();
 //            if (isChecked) {
 //                if (!currentExtention.endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION)) {
 //                    extEdit.setText(currentExtention + JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
@@ -244,7 +244,7 @@ public class NewFileDialog extends DialogFragment {
         dialogBuilder.setPositiveButton(getString(android.R.string.ok), (dialogInterface, i) -> {
 
             final String title = getTitle.callback();
-            final String ext = extEdit.getText().toString().trim();
+            final String ext = ".txt";
             final String fileName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ext);
 
             // Get template string
@@ -285,7 +285,7 @@ public class NewFileDialog extends DialogFragment {
                 // We only make these changes if the file did not already exist
                 appSettings.setDocumentFormat(document.getPath(), fmt.format);
                 appSettings.setLastEditPosition(document.getPath(), content.second);
-                appSettings.setNewFileDialogLastUsedExtension(extEdit.getText().toString().trim());
+                appSettings.setNewFileDialogLastUsedExtension(".txt");
 
                 callback(file);
 
