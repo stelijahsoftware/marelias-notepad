@@ -38,5 +38,4 @@ X - Change the default flags of (sort by date; reverse order.. etc)
 
 - Pull the improvements for fast scrolling glitch
 
-# Create issue:
-- Touch the containing folder whenever a note is edited
+- Touch the containing folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
