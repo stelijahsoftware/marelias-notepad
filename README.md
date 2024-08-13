@@ -39,3 +39,5 @@ X - Change the default flags of (sort by date; reverse order.. etc)
 - Pull the improvements for fast scrolling glitch
 
 - Touch the containing folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
+- Make hinted text have lighter grey colour at new note creation
+- Move new note button to bottom right corner
