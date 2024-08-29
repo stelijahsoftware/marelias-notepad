@@ -27,17 +27,23 @@ X - scrollbar always visible + clickable
 X - simplify new file dialog
 X - Change the default flags of (sort by date; reverse order.. etc)
 
-- darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
+# High priority:
+[H] - Use a single process (for editor and file manager)
+[H] - Touch the parent folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
 
+# Navigation:
+- highlight briefly when going back (see Merge requests on github)
+- total notes count (+ on folders?)
+
+# Editing:
 - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java
 - remove auto insertion of tabs when enter is pressed on a line with multiple spaces
 - prevent auto insertion of '-' when enter is pressed on a line beginning with -
 
-- highlight briefly when going back (see Merge requests on github)
-- total notes count (+ on folders?)
-
-- Pull the improvements for fast scrolling glitch
-
-- Touch the containing folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
+# Appearance:
+- darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - Make hinted text have lighter grey colour at new note creation
 - Move new note button to bottom right corner
+
+# Updates:
+- Pull the improvements from latest version
