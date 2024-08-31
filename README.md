@@ -26,10 +26,10 @@ X - one click starts new note with date and time
 X - scrollbar always visible + clickable
 X - simplify new file dialog
 X - Change the default flags of (sort by date; reverse order.. etc)
+X - Touch the parent folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
 
 # High priority:
 [H] - Use a single process (for editor and file manager)
-[H] - Touch the parent folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
 
 # Navigation:
 - highlight briefly when going back (see Merge requests on github)

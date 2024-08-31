@@ -789,8 +789,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             File ff = _document.getFile();
             String ppath = "";
             ppath = ff.getAbsolutePath();
-            System.out.println("aaaaaa\n");
-            Log.i("Elias", "aaaa");
+            //System.out.println("Touching parent folder\n");
+            //Log.i("Elyahw", "Touching parent folder");
 
             File parentFolder = ff.getParentFile();
             long currentTime = System.currentTimeMillis();
