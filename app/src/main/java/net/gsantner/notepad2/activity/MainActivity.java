@@ -245,7 +245,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         }
 
         // Intro dialog and show changelog etc
-        final boolean firstStart = IntroActivity.optStart(this);
+//        final boolean firstStart = IntroActivity.optStart(this);
 //        try {
 //            if (!firstStart && _appSettings.isAppCurrentVersionFirstStart(true)) {
 //                GsSimpleMarkdownParser smp = GsSimpleMarkdownParser.get().setDefaultSmpFilter(GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW);
