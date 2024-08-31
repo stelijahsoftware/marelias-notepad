@@ -781,21 +781,22 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             return false;
         }
 
-        // Touch parent folder on edit (elyahw)
-        File ff = _document.getFile();
-        String ppath = "";
-        ppath = ff.getAbsolutePath();
-        System.out.println("aaaaaa\n");
-        Log.i("Elias", "aaaa");
-
-        File parentFolder = ff.getParentFile();
-        long currentTime = System.currentTimeMillis();
-        parentFolder.setLastModified(currentTime);
-
         // Document is written iff writeable && content has changed
         final CharSequence text = _hlEditor.getText();
         if (!_document.isContentSame(text))
         {
+            // Touch parent folder on edit (elyahw) ----------
+            File ff = _document.getFile();
+            String ppath = "";
+            ppath = ff.getAbsolutePath();
+            System.out.println("aaaaaa\n");
+            Log.i("Elias", "aaaa");
+
+            File parentFolder = ff.getParentFile();
+            long currentTime = System.currentTimeMillis();
+            parentFolder.setLastModified(currentTime);
+            // ------------
+
             final int minLength = GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH;
             if (!forceSaveEmpty && text != null && text.length() < minLength)
             {
