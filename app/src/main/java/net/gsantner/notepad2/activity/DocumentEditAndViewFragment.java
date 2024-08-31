@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 //import android.graphics.Bitmap;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -26,7 +27,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
-import android.view.ViewGroup;
+//import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
@@ -37,29 +38,31 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.StringRes;
+//import androidx.appcompat.app.AppCompatActivity;
 
 import net.gsantner.notepad2.ApplicationObject;
 import net.gsantner.notepad2.BuildConfig;
 import net.gsantner.notepad2.R;
 import net.gsantner.notepad2.format.ActionButtonBase;
 import net.gsantner.notepad2.format.FormatRegistry;
-import net.gsantner.notepad2.format.TextConverterBase;
+//import net.gsantner.notepad2.format.TextConverterBase;
 import net.gsantner.notepad2.frontend.DraggableScrollbarScrollView;
 import net.gsantner.notepad2.frontend.FileInfoDialog;
 import net.gsantner.notepad2.frontend.MarkorDialogFactory;
-import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
+//import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
 import net.gsantner.notepad2.frontend.textview.HighlightingEditor;
 import net.gsantner.notepad2.frontend.textview.TextViewUtils;
-import net.gsantner.notepad2.model.AppSettings;
+//import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.notepad2.model.Document;
 import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.notepad2.web.MarkorWebViewClient;
-import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
+//import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.frontend.settings.GsFontPreferenceCompat;
 import net.gsantner.opoc.frontend.textview.TextViewUndoRedo;
 import net.gsantner.opoc.util.GsContextUtils;
 //import net.gsantner.opoc.util.GsCoolExperimentalStuff;
+import net.gsantner.opoc.util.GsFileUtils;
 import net.gsantner.opoc.web.GsWebViewChromeClient;
 import net.gsantner.opoc.wrapper.GsTextWatcherAdapter;
 
@@ -471,6 +474,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             case R.id.action_save: {
                 saveDocument(true);
+                // touch parent (elyahw)
                 return true;
             }
             case R.id.action_reload: {
@@ -777,23 +781,42 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             return false;
         }
 
+        // Touch parent folder on edit (elyahw)
+        File ff = _document.getFile();
+        String ppath = "";
+        ppath = ff.getAbsolutePath();
+        System.out.println("aaaaaa\n");
+        Log.i("Elias", "aaaa");
+
+        File parentFolder = ff.getParentFile();
+        long currentTime = System.currentTimeMillis();
+        parentFolder.setLastModified(currentTime);
+
         // Document is written iff writeable && content has changed
         final CharSequence text = _hlEditor.getText();
-        if (!_document.isContentSame(text)) {
+        if (!_document.isContentSame(text))
+        {
             final int minLength = GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH;
-            if (!forceSaveEmpty && text != null && text.length() < minLength) {
+            if (!forceSaveEmpty && text != null && text.length() < minLength)
+            {
                 final String message = activity.getString(R.string.wont_save_min_length, minLength);
                 Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+
                 return true;
             }
-            if (_document.saveContent(getActivity(), text, _cu, forceSaveEmpty)) {
+            if (_document.saveContent(getActivity(), text, _cu, forceSaveEmpty))
+            {
                 checkTextChangeState();
                 return true;
-            } else {
+            }
+            else
+            {
                 errorClipText();
                 return false; // Failure only if saveContent somehow fails
             }
-        } else {
+        }
+        else
+        {
             return true; // Report success if text not changed
         }
     }
