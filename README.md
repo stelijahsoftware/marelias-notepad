@@ -30,6 +30,7 @@ X - Touch the parent folder whenever a note is edited (created issue https://git
 
 # High priority:
 [H] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
+- do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 
 # Navigation:
 - highlight briefly when going back (see Merge requests on github)
