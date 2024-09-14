@@ -2,7 +2,7 @@
 
 Forked from https://www.github.com/gsantner/markor
 
-Apache 2.0 license (see (LICENSE.txt)[./LICENSE.txt]; all licenses in the original repo above apply to this repo).
+Apache 2.0 license (see [LICENSE.txt]("./LICENSE.txt"); all licenses in the original repo above apply to this repo).
 
 <img src="./icon/icon.png" alt="icon" width="25%" />
 
