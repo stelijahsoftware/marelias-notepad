@@ -27,11 +27,14 @@ X - scrollbar always visible + clickable
 X - simplify new file dialog
 X - Change the default flags of (sort by date; reverse order.. etc)
 X - Touch the parent folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
+X - change icon
 
 # High priority:
 [H] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
-- change icon; rename to mar-elias notes
+- rename to mar-elias notes
+- make save button bigger (disable auto-save)
+- remove local file settings (make them global, set defaults)
 
 # Navigation:
 - highlight briefly when going back (see Merge requests on github)
