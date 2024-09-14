@@ -4,6 +4,8 @@ Forked from https://www.github.com/gsantner/notepad2
 
 All licenses in the original repo above apply to this repo.
 
+<img src="./icon/icon.png" alt="icon" width="25%" />
+
 ### Forked starting from (if you would like to pull new commits, start from this):
 
 https://github.com/gsantner/markor/commit/d24c66e93a1a6162c796c8a47acf0621012660c8
