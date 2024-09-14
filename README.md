@@ -6,6 +6,8 @@ Apache 2.0 license (see [LICENSE.txt](./LICENSE.txt); all licenses in the origin
 
 <img src="./icon/icon.png" alt="icon" width="25%" />
 
+A txt notes editor which is a simplified and heavily trimmed down and improved light version of Markor.
+
 ### Forked starting from (if you would like to pull new commits, start from this):
 
 https://github.com/gsantner/markor/commit/d24c66e93a1a6162c796c8a47acf0621012660c8
