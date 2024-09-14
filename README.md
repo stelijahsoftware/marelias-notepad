@@ -32,7 +32,7 @@ X - change icon
 # High priority:
 [H] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
-- rename to mar-elias notes
+- rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
 - make save button bigger (disable auto-save)
 - remove local file settings (make them global, set defaults)
 
