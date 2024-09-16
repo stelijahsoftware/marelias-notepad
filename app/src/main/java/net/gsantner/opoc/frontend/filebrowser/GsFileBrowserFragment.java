@@ -254,7 +254,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             _fragmentMenu.findItem(R.id.action_share_files).setVisible(selFilesOnly && (selMulti1 || selMultiMore) && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
             _fragmentMenu.findItem(R.id.action_go_to).setVisible(!_filesystemViewerAdapter.areItemsSelected());
             _fragmentMenu.findItem(R.id.action_sort).setVisible(!_filesystemViewerAdapter.areItemsSelected());
-            _fragmentMenu.findItem(R.id.action_import).setVisible(!_filesystemViewerAdapter.areItemsSelected() && !_filesystemViewerAdapter.isCurrentFolderVirtual());
+//            _fragmentMenu.findItem(R.id.action_import).setVisible(!_filesystemViewerAdapter.areItemsSelected() && !_filesystemViewerAdapter.isCurrentFolderVirtual());
             _fragmentMenu.findItem(R.id.action_settings).setVisible(!_filesystemViewerAdapter.areItemsSelected());
             _fragmentMenu.findItem(R.id.action_favourite).setVisible(selMultiAny && !allSelectedFav);
             _fragmentMenu.findItem(R.id.action_favourite_remove).setVisible(selMultiAny && allSelectedFav);
@@ -415,10 +415,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 item.setChecked(!item.isChecked());
                 _dopt.filterShowDotFiles = _appSettings.setFileBrowserFilterShowDotFiles(item.isChecked());
                 reloadCurrentFolder();
-                return true;
-            }
-            case R.id.action_import: {
-                showImportDialog();
                 return true;
             }
             case R.id.action_search: {
@@ -594,29 +590,29 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
     }
 
     private void showImportDialog() {
-        MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
-            @Override
-            public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-                importFile(file);
-                reloadCurrentFolder();
-            }
-
-            @Override
-            public void onFsViewerMultiSelected(String request, File... files) {
-                for (File file : files) {
-                    importFile(file);
-                }
-                reloadCurrentFolder();
-            }
-
-            @Override
-            public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
-                dopt.titleText = R.string.import_from_device;
-                dopt.doSelectMultiple = true;
-                dopt.doSelectFile = true;
-                dopt.doSelectFolder = true;
-            }
-        }, getChildFragmentManager(), getActivity(), null);
+//        MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
+//            @Override
+//            public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
+//                importFile(file);
+//                reloadCurrentFolder();
+//            }
+//
+//            @Override
+//            public void onFsViewerMultiSelected(String request, File... files) {
+//                for (File file : files) {
+//                    importFile(file);
+//                }
+//                reloadCurrentFolder();
+//            }
+//
+//            @Override
+//            public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
+//                dopt.titleText = R.string.import_from_device;
+//                dopt.doSelectMultiple = true;
+//                dopt.doSelectFile = true;
+//                dopt.doSelectFolder = true;
+//            }
+//        }, getChildFragmentManager(), getActivity(), null);
     }
 
     private void importFile(final File file) {
