@@ -340,9 +340,9 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         if ((item = menu.findItem(R.id.action_sort_reverse)) != null) {
             item.setChecked(_dopt.sortReverse); // Elyahw
         }
-        if ((item = menu.findItem(R.id.action_show_dotfiles)) != null) {
-            item.setChecked(_dopt.filterShowDotFiles);
-        }
+//        if ((item = menu.findItem(R.id.action_show_dotfiles)) != null) {
+//            item.setChecked(_dopt.filterShowDotFiles);
+//        }
 
         if ((item = menu.findItem(R.id.action_sort_by_name)) != null && GsFileUtils.SORT_BY_NAME.equals(_dopt.sortByType)) {
             item.setChecked(true);
@@ -411,12 +411,12 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 reloadCurrentFolder();
                 return true;
             }
-            case R.id.action_show_dotfiles: {
-                item.setChecked(!item.isChecked());
-                _dopt.filterShowDotFiles = _appSettings.setFileBrowserFilterShowDotFiles(item.isChecked());
-                reloadCurrentFolder();
-                return true;
-            }
+//            case R.id.action_show_dotfiles: {
+//                item.setChecked(!item.isChecked());
+//                _dopt.filterShowDotFiles = _appSettings.setFileBrowserFilterShowDotFiles(item.isChecked());
+//                reloadCurrentFolder();
+//                return true;
+//            }
             case R.id.action_search: {
                 executeSearchAction();
                 return true;
