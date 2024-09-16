@@ -35,21 +35,22 @@ X - change icon
 X - remove auto insertion of tabs when enter is pressed on a line with multiple spaces + prevent auto insertion of '-' when enter is pressed on a line beginning with '-'. Solved in bd240b3df2fb81a80ff3ea402c03693c918a10d9
 X - remove local file settings - done in 1a1c71047ef7a7a8babd002a2390b7ab8c5f88f9
 X - main screen: remove import from device option; replace '...' on top right with cog icon
+X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java - done in 0a36d0300b795aea4d027836e94c48c0a9e3b5a7
+X - Move new note button to bottom right corner
 
 # High priority:
 - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 - rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
-- make save button bigger (disable auto-save)
-- make local file settings global + set defaults
+- make save button bigger (disable auto-save?)
+- convert local file settings to global + set defaults
 - Pull any improvements from latest version
+- Clean up settings menu
 
 # Navigation:
 - highlight briefly when going back (see Merge requests on github)
 - total notes count (+ on folders?)
 
 # Appearance:
-- Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java
 - darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - Make hinted text have lighter grey colour at new note creation
-- Move new note button to bottom right corner
