@@ -32,6 +32,7 @@ X - simplify new file dialog
 X - Change the default flags of (sort by date; reverse order.. etc)
 X - Touch the parent folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
 X - change icon
+X - remove auto insertion of tabs when enter is pressed on a line with multiple spaces + prevent auto insertion of '-' when enter is pressed on a line beginning with '-'. Solved in bd240b3df2fb81a80ff3ea402c03693c918a10d9
 
 # High priority:
 [H] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
@@ -46,8 +47,6 @@ X - change icon
 
 # Editing:
 - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java
-- remove auto insertion of tabs when enter is pressed on a line with multiple spaces
-- prevent auto insertion of '-' when enter is pressed on a line beginning with -
 
 # Appearance:
 - darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
