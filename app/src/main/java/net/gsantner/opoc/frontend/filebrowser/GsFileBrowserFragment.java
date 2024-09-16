@@ -252,7 +252,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             _fragmentMenu.findItem(R.id.action_move_selected_items).setVisible((selMulti1 || selMultiMore) && selWritable && !selInVirtualDirectory && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
             _fragmentMenu.findItem(R.id.action_copy_selected_items).setVisible((selMulti1 || selMultiMore) && selWritable && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
             _fragmentMenu.findItem(R.id.action_share_files).setVisible(selFilesOnly && (selMulti1 || selMultiMore) && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
-            _fragmentMenu.findItem(R.id.action_go_to).setVisible(!_filesystemViewerAdapter.areItemsSelected());
+//            _fragmentMenu.findItem(R.id.action_go_to).setVisible(!_filesystemViewerAdapter.areItemsSelected());
             _fragmentMenu.findItem(R.id.action_sort).setVisible(!_filesystemViewerAdapter.areItemsSelected());
 //            _fragmentMenu.findItem(R.id.action_import).setVisible(!_filesystemViewerAdapter.areItemsSelected() && !_filesystemViewerAdapter.isCurrentFolderVirtual());
             _fragmentMenu.findItem(R.id.action_settings).setVisible(!_filesystemViewerAdapter.areItemsSelected());
@@ -354,13 +354,13 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             item.setChecked(true);
         }
 
-        List<Pair<File, String>> sdcardFolders = _cu.getAppDataPublicDirs(getContext(), false, true, true);
-        int[] sdcardResIds = {R.id.action_go_to_appdata_sdcard_1, R.id.action_go_to_appdata_sdcard_2};
-        for (int i = 0; i < sdcardResIds.length && i < sdcardFolders.size(); i++) {
-            item = menu.findItem(sdcardResIds[i]);
-            item.setTitle(item.getTitle().toString().replaceFirst("[)]\\s*$", " " + sdcardFolders.get(i).second) + ")");
-            item.setVisible(true);
-        }
+//        List<Pair<File, String>> sdcardFolders = _cu.getAppDataPublicDirs(getContext(), false, true, true);
+//        int[] sdcardResIds = {R.id.action_go_to_appdata_sdcard_1, R.id.action_go_to_appdata_sdcard_2};
+//        for (int i = 0; i < sdcardResIds.length && i < sdcardFolders.size(); i++) {
+//            item = menu.findItem(sdcardResIds[i]);
+//            item.setTitle(item.getTitle().toString().replaceFirst("[)]\\s*$", " " + sdcardFolders.get(i).second) + ")");
+//            item.setVisible(true);
+//        }
 
         _fragmentMenu = menu;
         updateMenuItems();
@@ -427,20 +427,20 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 reloadCurrentFolder();
                 return true;
             }
-            case R.id.action_go_to_home:
-            case R.id.action_go_to_popular_files:
-            case R.id.action_go_to_recent_files:
-            case R.id.action_go_to_favourite_files:
-            case R.id.action_go_to_appdata_private:
-            case R.id.action_go_to_storage:
-            case R.id.action_go_to_appdata_sdcard_1:
-            case R.id.action_go_to_appdata_sdcard_2:
-            case R.id.action_go_to_appdata_public: {
-                final File folder = _appSettings.getFolderToLoadByMenuId(_id);
-                _filesystemViewerAdapter.setCurrentFolder(folder);
-                Toast.makeText(getContext(), folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
+//            case R.id.action_go_to_popular_files:
+//            case R.id.action_go_to_recent_files:
+//            case R.id.action_go_to_favourite_files:
+//            case R.id.action_go_to_appdata_private:
+//            case R.id.action_go_to_storage:
+//            case R.id.action_go_to_appdata_sdcard_1:
+//            case R.id.action_go_to_appdata_sdcard_2:
+//            case R.id.action_go_to_appdata_public:
+//            case R.id.action_go_to_home: {
+//                final File folder = _appSettings.getFolderToLoadByMenuId(_id);
+//                _filesystemViewerAdapter.setCurrentFolder(folder);
+//                Toast.makeText(getContext(), folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+//                return true;
+//            }
             case R.id.action_favourite: {
                 if (_filesystemViewerAdapter.areItemsSelected()) {
                     _dopt.favouriteFiles = GsCollectionUtils.union(_dopt.favouriteFiles, currentSelection);
