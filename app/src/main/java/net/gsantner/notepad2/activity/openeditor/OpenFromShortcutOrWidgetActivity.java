@@ -9,8 +9,8 @@ import net.gsantner.notepad2.activity.MarkorBaseActivity;
 import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 
-
 import java.io.File;
+
 
 /**
  * This Activity exists solely to launch DocumentActivity with the correct intent
@@ -31,10 +31,7 @@ public class OpenFromShortcutOrWidgetActivity extends MarkorBaseActivity {
     }
 
     private void launchActivityAndFinish(Intent intent) {
-        final File file = MarkorContextUtils.getIntentFile(intent, null);
-        if (file != null) {
-            DocumentActivity.launch(this, file, null, null);
-        }
+        DocumentActivity.launch(this, intent);
         finish();
     }
 }
