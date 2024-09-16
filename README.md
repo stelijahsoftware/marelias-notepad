@@ -41,6 +41,7 @@ X - remove local file settings - done in 1a1c71047ef7a7a8babd002a2390b7ab8c5f88f
 - rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
 - make save button bigger (disable auto-save)
 - make local file settings global + set defaults
+- main screen: remove import from device option; replace '...' on top right with cog icon
 
 # Navigation:
 - highlight briefly when going back (see Merge requests on github)
