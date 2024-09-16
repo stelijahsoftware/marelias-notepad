@@ -165,7 +165,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public int getMarkdownHighlightingDelay() {
-        return getInt(R.string.pref_key__markdown__hl_delay_v2, 650);
+        return getInt(R.string.pref_key__markdown__hl_delay_v2, 200);
     }
 
 //    public int getAsciidocHighlightingDelay() {
@@ -176,24 +176,24 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 //        return getInt(R.string.pref_key__orgmode__hl_delay, 650);
 //    }
 
-    public boolean isMarkdownHighlightLineEnding() {
-        return getBool(R.string.pref_key__markdown__highlight_lineending_two_or_more_space, false);
-    }
+//    public boolean isMarkdownHighlightLineEnding() {
+//        return getBool(R.string.pref_key__markdown__highlight_lineending_two_or_more_space, false);
+//    }
 
 //    public boolean isAsciidocHighlightLineEnding() {
 //        return getBool(R.string.pref_key__asciidoc__highlight_lineending_hard_line_break, false);
 //    }
 
-    public boolean isHighlightCodeMonospaceFont() {
-        return getBool(R.string.pref_key__highlight_code_monospace_font, false);
-    }
-
-    public boolean isHighlightCodeBlock() {
-        return !getBool(R.string.pref_key__highlight_code_block_disabled, false);
-    }
+//    public boolean isHighlightCodeMonospaceFont() {
+//        return getBool(R.string.pref_key__highlight_code_monospace_font, false);
+//    }
+//
+//    public boolean isHighlightCodeBlock() {
+//        return !getBool(R.string.pref_key__highlight_code_block_disabled, false);
+//    }
 
     public int getHighlightingDelayTodoTxt() {
-        return getInt(R.string.pref_key__todotxt__hl_delay, 870);
+        return getInt(R.string.pref_key__todotxt__hl_delay, 200);
     }
 
     public boolean isRenderRtl() {

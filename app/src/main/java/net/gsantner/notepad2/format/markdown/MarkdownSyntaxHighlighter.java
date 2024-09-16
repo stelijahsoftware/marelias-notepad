@@ -50,10 +50,10 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
 
     @Override
     public SyntaxHighlighterBase configure(Paint paint) {
-        _highlightLineEnding = _appSettings.isMarkdownHighlightLineEnding();
-        _highlightCodeChangeFont = _appSettings.isHighlightCodeMonospaceFont();
+        _highlightLineEnding = false; // _appSettings.isMarkdownHighlightLineEnding();
+        _highlightCodeChangeFont = false; // _appSettings.isHighlightCodeMonospaceFont();
         _highlightBiggerHeadings = _appSettings.isHighlightBiggerHeadings();
-        _highlightCodeBlock = _appSettings.isHighlightCodeBlock();
+        _highlightCodeBlock = false; // _appSettings.isHighlightCodeBlock();
         _delay = _appSettings.getMarkdownHighlightingDelay();
         return super.configure(paint);
     }
