@@ -51,95 +51,36 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/submenu_per_file_settings"
-        android:icon="@drawable/ic_check_black_24dp"
-        android:title="@string/file_settings"
-        app:showAsAction="never">
-        <menu>
-            <item
-                android:id="@+id/action_wrap_words"
-                android:checkable="true"
-                android:icon="@drawable/ic_baseline_wrap_text_24"
-                android:title="@string/wrap_words"
-                app:showAsAction="never" />
-
-            <item
-                android:id="@+id/action_line_numbers"
-                android:checkable="true"
-                android:icon="@drawable/ic_line_numbers_24dp"
-                android:title="@string/line_numbers"
-                app:showAsAction="never" />
-
-            <item
-                android:id="@+id/action_enable_highlighting"
-                android:checkable="true"
-                android:icon="@drawable/ic_format_color_fill_black_24dp"
-                android:title="@string/syntax_highlighting"
-                app:showAsAction="never" />
-
-            <item
-                android:id="@+id/action_enable_auto_format"
-                android:checkable="true"
-                android:icon="@drawable/ic_baseline_align_horizontal_left_24"
-                android:title="@string/auto_format"
-                app:showAsAction="never" />
-
-            <item
-                android:id="@+id/action_set_font_size"
-                android:checkable="false"
-                android:icon="@drawable/ic_format_size_black_24dp"
-                android:title="@string/font_size"
-                app:showAsAction="never" />
-
-            <!-- Format menu -->
-            <item
-                android:id="@+id/submenu_format_selection"
-                android:icon="@drawable/ic_format_shapes_black_24dp"
-                android:title="@string/format"
-                app:showAsAction="never">
-                <menu>
-                    <group
-                        android:id="@+id/action_format_group"
-                        android:checkableBehavior="single">
-                        <item
-                            android:id="@string/action_format_keyvalue"
-                            android:icon="@drawable/ic_file_white_24dp"
-                            android:title="@string/key_value" />
-                        <item
-                            android:id="@string/action_format_plaintext"
-                            android:icon="@drawable/ic_file_white_24dp"
-                            android:title="@string/plaintext" />
-                        <item
-                            android:id="@string/action_format_markdown"
-                            android:icon="@drawable/gs_markdown_black_24dp"
-                            android:title="@string/markdown" />
-                        <item
-                            android:id="@string/action_format_todotxt"
-                            android:icon="@drawable/ic_assignment_turned_in_black_24dp"
-                            android:title="@string/todo_txt" />
-                        <item
-                            android:id="@string/action_format_wikitext"
-                            android:icon="@drawable/fountain_pen"
-                            android:title="@string/wikitext" />
-                    </group>
-                </menu>
-            </item>
-        </menu>
-    </item>
+        android:id="@+id/action_wrap_words"
+        android:checkable="true"
+        android:icon="@drawable/ic_baseline_wrap_text_24"
+        android:title="@string/wrap_words"
+        app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_show_file_browser"
-        android:icon="@drawable/ic_folder_gray_24dp"
-        android:title="@string/file_browser"
+        android:id="@+id/action_line_numbers"
+        android:checkable="true"
+        android:icon="@drawable/ic_line_numbers_24dp"
+        android:title="@string/line_numbers"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_enable_highlighting"
+        android:checkable="true"
+        android:icon="@drawable/ic_format_color_fill_black_24dp"
+        android:title="@string/syntax_highlighting"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_set_font_size"
+        android:checkable="false"
+        android:icon="@drawable/ic_format_size_black_24dp"
+        android:title="@string/font_size"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_info"
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/info"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_reload"
-        android:icon="@drawable/ic_redo_black_24dp"
-        android:title="@string/reload"
         app:showAsAction="never" />
 </menu>

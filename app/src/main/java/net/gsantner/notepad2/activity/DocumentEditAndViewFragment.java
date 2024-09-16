@@ -11,7 +11,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-//import android.graphics.Bitmap;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -27,7 +26,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
-//import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
@@ -39,29 +37,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
-//import androidx.appcompat.app.AppCompatActivity;
 
 import net.gsantner.notepad2.ApplicationObject;
 import net.gsantner.notepad2.BuildConfig;
 import net.gsantner.notepad2.R;
 import net.gsantner.notepad2.format.ActionButtonBase;
 import net.gsantner.notepad2.format.FormatRegistry;
-//import net.gsantner.notepad2.format.TextConverterBase;
 import net.gsantner.notepad2.frontend.DraggableScrollbarScrollView;
 import net.gsantner.notepad2.frontend.FileInfoDialog;
 import net.gsantner.notepad2.frontend.MarkorDialogFactory;
-//import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
 import net.gsantner.notepad2.frontend.textview.HighlightingEditor;
 import net.gsantner.notepad2.frontend.textview.TextViewUtils;
-//import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.notepad2.model.Document;
 import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.notepad2.web.MarkorWebViewClient;
-//import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.frontend.settings.GsFontPreferenceCompat;
 import net.gsantner.opoc.frontend.textview.TextViewUndoRedo;
 import net.gsantner.opoc.util.GsContextUtils;
-//import net.gsantner.opoc.util.GsCoolExperimentalStuff;
 import net.gsantner.opoc.util.GsFileUtils;
 import net.gsantner.opoc.web.GsWebViewChromeClient;
 import net.gsantner.opoc.wrapper.GsTextWatcherAdapter;
@@ -92,7 +84,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     private HighlightingEditor _hlEditor;
     private WebView _webView;
     private MarkorWebViewClient _webViewClient;
-//    private ViewGroup _textActionsBar;
 
     private DraggableScrollbarScrollView _primaryScrollView;
     private HorizontalScrollView _hsView;
@@ -103,8 +94,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     private TextViewUndoRedo _editTextUndoRedoHelper;
     private MenuItem _saveMenuItem, _undoMenuItem, _redoMenuItem;
     private boolean _isPreviewVisible;
-//    private boolean _nextConvertToPrintMode = false;
-
 
     public DocumentEditAndViewFragment() {
         super();
@@ -273,7 +262,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 }
             }
         }
-
         TextViewUtils.setSelectionAndShow(_hlEditor, startPos);
     }
 
@@ -312,7 +300,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
         menu.findItem(R.id.action_undo).setVisible(isText && _appSettings.isEditorHistoryEnabled());
         menu.findItem(R.id.action_redo).setVisible(isText && _appSettings.isEditorHistoryEnabled());
-//        menu.findItem(R.id.action_send_debug_log).setVisible(MainActivity.IS_DEBUG_ENABLED && !isDisplayedAtMainActivity() && !_isPreviewVisible);
 
         // Undo / Redo / Save (keep visible, but deactivated and tinted grey if not executable)
         _undoMenuItem = menu.findItem(R.id.action_undo).setVisible(isText && !_isPreviewVisible);
@@ -320,18 +307,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _saveMenuItem = menu.findItem(R.id.action_save).setVisible(isText && !_isPreviewVisible);
 
         // Edit / Preview switch
-//        menu.findItem(R.id.action_edit).setVisible(isText && _isPreviewVisible);
-//        menu.findItem(R.id.action_preview).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_search).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_search_view).setVisible(isText && _isPreviewVisible);
-        menu.findItem(R.id.submenu_format_selection).setVisible(isText && !_isPreviewVisible);
-//        menu.findItem(R.id.submenu_share).setVisible(isText);
-//        menu.findItem(R.id.submenu_tools).setVisible(isText);
-        menu.findItem(R.id.submenu_per_file_settings).setVisible(isText);
-
-//        menu.findItem(R.id.action_share_pdf).setVisible(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT);
-//        menu.findItem(R.id.action_share_image).setVisible(true);
-//        menu.findItem(R.id.action_load_epub).setVisible(isExperimentalFeaturesEnabled);
+//        menu.findItem(R.id.submenu_per_file_settings).setVisible(isText);
 
         // SearchView (View Mode)
         _menuSearchViewForViewMode = (SearchView) menu.findItem(R.id.action_search_view).getActionView();
@@ -477,88 +455,13 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 // touch parent (elyahw)
                 return true;
             }
-            case R.id.action_reload: {
-                _document.resetChangeTracking(); // Force next load
-                if (loadDocument()) {
-                    Toast.makeText(activity, "✔", Toast.LENGTH_SHORT).show();
-                }
-                return true;
-            }
-//            case R.id.action_preview: {
-//                setViewModeVisibility(true);
-//                return true;
-//            }
-//            case R.id.action_edit: {
-//                setViewModeVisibility(false);
-//                return true;
-//            }
             case R.id.action_preview_edit_toggle: {
                 setViewModeVisibility(!_isPreviewVisible);
                 return true;
             }
-//            case R.id.action_share_path: {
-//                _cu.shareText(getActivity(), _document.getFile().getAbsolutePath(), GsContextUtils.MIME_TEXT_PLAIN);
-//                return true;
-//            }
-//            case R.id.action_share_text: {
-//                if (saveDocument(false)) {
-//                    _cu.shareText(getActivity(), getTextString(), GsContextUtils.MIME_TEXT_PLAIN);
-//                }
-//                return true;
-//            }
-//            case R.id.action_share_file: {
-//                if (saveDocument(false)) {
-//                    _cu.shareStream(getActivity(), _document.getFile(), GsContextUtils.MIME_TEXT_PLAIN);
-//                }
-//                return true;
-//            }
-//            case R.id.action_share_html:
-//            case R.id.action_share_html_source: {
-//                if (saveDocument(false)) {
-//                    TextConverterBase converter = FormatRegistry.getFormat(_document.getFormat(), activity, _document).getConverter();
-//                    _cu.shareText(getActivity(),
-//                            converter.convertMarkup(getTextString(), getActivity(), false, _hlEditor.getLineNumbersEnabled(), _document.getFile()),
-//                            "text/" + (item.getItemId() == R.id.action_share_html ? "html" : "plain")
-//                    );
-//                }
-//                return true;
-//            }
-//            case R.id.action_share_calendar_event: {
-//                if (saveDocument(false)) {
-//                    if (!_cu.createCalendarAppointment(getActivity(), _document.getTitle(), getTextString(), null)) {
-//                        Toast.makeText(activity, R.string.no_calendar_app_is_installed, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                return true;
-//            }
-//            case R.id.action_share_screenshot:
-//            case R.id.action_share_image:
-//            case R.id.action_share_pdf: {
-//                _appSettings.getSetWebViewFulldrawing(true);
-//                if (saveDocument(false)) {
-//                    _nextConvertToPrintMode = true;
-//                    setViewModeVisibility(true);
-//                    Toast.makeText(activity, R.string.please_wait, Toast.LENGTH_LONG).show();
-//                    _webView.postDelayed(() -> {
-//                        if (item.getItemId() == R.id.action_share_pdf && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//                            _cu.printOrCreatePdfFromWebview(_webView, _document, getTextString().contains("beamer\n"));
-//                        }
-////                        else if (item.getItemId() != R.id.action_share_pdf) {
-////                            Bitmap bmp = _cu.getBitmapFromWebView(_webView, item.getItemId() == R.id.action_share_image);
-////                            _cu.shareImage(getContext(), bmp, null);
-////                        }
-//                    }, 7000);
-//                }
-//
-//                return true;
-//            }
             case R.string.action_format_wikitext:
             case R.string.action_format_keyvalue:
-//            case R.string.action_format_todotxt:
-//            case R.string.action_format_csv:
             case R.string.action_format_plaintext:
-//            case R.string.action_format_asciidoc:
-//            case R.string.action_format_orgmode:
             case R.string.action_format_markdown: {
                 if (itemId != _document.getFormat()) {
                     _document.setFormat(itemId);
@@ -572,31 +475,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 _format.getActions().onSearch();
                 return true;
             }
-//            case R.id.action_send_debug_log: {
-//                final String text = AppSettings.getDebugLog() + "\n\n------------------------\n\n\n\n" + Document.getMaskedContent(getTextString());
-//                _cu.draftEmail(getActivity(), "Debug Log " + getString(R.string.app_name_real), text, "debug@localhost.lan");
-//                return true;
-//            }
-//            case R.id.action_load_epub: {
-//                MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
-//                                                            @Override
-//                                                            public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-//                                                                _hlEditor.setText(GsCoolExperimentalStuff.convertEpubToText(file, getString(R.string.page)));
-//                                                            }
-//
-//                                                            @Override
-//                                                            public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
-//                                                                dopt.titleText = R.string.select;
-//                                                            }
-//                                                        }, getParentFragmentManager(), activity,
-//                        (context, file) -> file != null && file.getAbsolutePath().toLowerCase().endsWith(".epub")
-//                );
-//                return true;
-//            }
-//            case R.id.action_speed_read: {
-//                GsCoolExperimentalStuff.showSpeedReadDialog(activity, getTextString());
-//                return true;
-//            }
             case R.id.action_wrap_words: {
                 final boolean newState = !isWrapped();
                 _appSettings.setDocumentWrapState(_document.getPath(), newState);
@@ -618,13 +496,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 updateMenuToggleStates(0);
                 return true;
             }
-            case R.id.action_enable_auto_format: {
-                final boolean newState = !_hlEditor.getAutoFormatEnabled();
-                _hlEditor.setAutoFormatEnabled(newState);
-                _appSettings.setDocumentAutoFormatEnabled(_document.getPath(), newState);
-                updateMenuToggleStates(0);
-                return true;
-            }
             case R.id.action_info: {
                 if (saveDocument(false)) { // In order to have the correct info displayed
                     FileInfoDialog.show(_document.getFile(), getParentFragmentManager());
@@ -636,14 +507,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                     _hlEditor.setTextSize(TypedValue.COMPLEX_UNIT_SP, (float) newSize);
                     _appSettings.setDocumentFontSize(_document.getPath(), newSize);
                 });
-                return true;
-            }
-            case R.id.action_show_file_browser: {
-                // Delay because I want menu to close before we open the file browser
-                _hlEditor.postDelayed(() -> {
-                    final Intent intent = new Intent(activity, MainActivity.class).putExtra(Document.EXTRA_FILE, _document.getFile());
-                    GsContextUtils.instance.animateToActivity(activity, intent, false, null);
-                }, 250);
                 return true;
             }
             default: {
@@ -687,19 +550,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         }
         if ((mi = _fragmentMenu.findItem(R.id.action_line_numbers)) != null) {
             mi.setChecked(_hlEditor.getLineNumbersEnabled());
-        }
-        if ((mi = _fragmentMenu.findItem(R.id.action_enable_auto_format)) != null) {
-            mi.setChecked(_hlEditor.getAutoFormatEnabled());
-        }
-
-        final SubMenu su;
-        if (selectedFormatActionId != 0 && (mi = _fragmentMenu.findItem(R.id.submenu_format_selection)) != null && (su = mi.getSubMenu()) != null) {
-            for (int i = 0; i < su.size(); i++) {
-                if ((mi = su.getItem(i)).getItemId() == selectedFormatActionId) {
-                    mi.setChecked(true);
-                    break;
-                }
-            }
         }
     }
 
@@ -836,25 +686,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     }
 
     public void setViewModeVisibility(boolean show, final boolean animate) {
-//        final Activity activity = getActivity();
-//        show |= false; // _document.isBinaryFileNoTextLoading();
-//
-//        _format.getActions().recreateActionButtons(_textActionsBar, show ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
-//        if (show) {
-//            updateViewModeText();
-//            _cu.showSoftKeyboard(activity, false, _hlEditor);
-//            _hlEditor.clearFocus();
-//            _hlEditor.postDelayed(() -> _cu.showSoftKeyboard(activity, false, _hlEditor), 300);
-//            GsContextUtils.fadeInOut(_webView, _primaryScrollView, animate);
-//        } else {
-//            _webViewClient.setRestoreScrollY(_webView.getScrollY());
-//            GsContextUtils.fadeInOut(_primaryScrollView, _webView, animate);
-//        }
-//
-//        _nextConvertToPrintMode = false;
-//        _isPreviewVisible = show;
-//
-//        ((AppCompatActivity) activity).supportInvalidateOptionsMenu();
     }
 
     // Callback from view-mode/javascript

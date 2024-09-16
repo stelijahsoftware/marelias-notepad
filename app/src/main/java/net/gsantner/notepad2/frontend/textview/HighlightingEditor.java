@@ -73,6 +73,7 @@ public class HighlightingEditor extends AppCompatEditText {
         }
 
         _hlEnabled = false;
+        _autoFormatEnabled = false;
         _numEnabled = false;
         _oldHlRect = new Rect();
         _hlRect = new Rect();
@@ -364,20 +365,20 @@ public class HighlightingEditor extends AppCompatEditText {
     }
 
     public void setAutoFormatEnabled(final boolean enable) {
-        if (enable && !_autoFormatEnabled) {
-            if (_autoFormatFilter != null) {
-                setFilters(new InputFilter[]{_autoFormatFilter});
-            }
-            if (_autoFormatModifier != null) {
-                addTextChangedListener(_autoFormatModifier);
-            }
-        } else if (!enable && _autoFormatEnabled) {
-            setFilters(new InputFilter[]{});
-            if (_autoFormatModifier != null) {
-                removeTextChangedListener(_autoFormatModifier);
-            }
-        }
-        _autoFormatEnabled = enable;
+//        if (enable && !_autoFormatEnabled) {
+//            if (_autoFormatFilter != null) {
+//                setFilters(new InputFilter[]{_autoFormatFilter});
+//            }
+//            if (_autoFormatModifier != null) {
+//                addTextChangedListener(_autoFormatModifier);
+//            }
+//        } else if (!enable && _autoFormatEnabled) {
+//            setFilters(new InputFilter[]{});
+//            if (_autoFormatModifier != null) {
+//                removeTextChangedListener(_autoFormatModifier);
+//            }
+//        }
+        _autoFormatEnabled = false;
     }
 
     // Run some code with auto formatters and accessibility disabled
