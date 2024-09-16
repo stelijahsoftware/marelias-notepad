@@ -475,24 +475,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 _format.getActions().onSearch();
                 return true;
             }
-            case R.id.action_wrap_words: {
-                final boolean newState = !isWrapped();
-                _appSettings.setDocumentWrapState(_document.getPath(), newState);
-                setHorizontalScrollMode(newState);
-                updateMenuToggleStates(0);
-                return true;
-            }
             case R.id.action_line_numbers: {
                 final boolean newState = !_hlEditor.getLineNumbersEnabled();
                 _appSettings.setDocumentLineNumbersEnabled(_document.getPath(), newState);
                 _hlEditor.setLineNumbersEnabled(newState);
-                updateMenuToggleStates(0);
-                return true;
-            }
-            case R.id.action_enable_highlighting: {
-                final boolean newState = !_hlEditor.getHighlightingEnabled();
-                _hlEditor.setHighlightingEnabled(newState);
-                _appSettings.setDocumentHighlightState(_document.getPath(), newState);
                 updateMenuToggleStates(0);
                 return true;
             }
@@ -542,12 +528,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
     private void updateMenuToggleStates(final int selectedFormatActionId) {
         MenuItem mi;
-        if ((mi = _fragmentMenu.findItem(R.id.action_wrap_words)) != null) {
-            mi.setChecked(isWrapped());
-        }
-        if ((mi = _fragmentMenu.findItem(R.id.action_enable_highlighting)) != null) {
-            mi.setChecked(_hlEditor.getHighlightingEnabled());
-        }
         if ((mi = _fragmentMenu.findItem(R.id.action_line_numbers)) != null) {
             mi.setChecked(_hlEditor.getLineNumbersEnabled());
         }
@@ -563,7 +543,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
             final int[] sel = TextViewUtils.getSelection(_hlEditor);
 
-            final boolean hlEnabled = _hlEditor.getHighlightingEnabled();
             _hlEditor.setHighlightingEnabled(false);
 
             _primaryScrollView.removeAllViews();
@@ -581,7 +560,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 _primaryScrollView.addView(_hlEditor);
             }
 
-            _hlEditor.setHighlightingEnabled(hlEnabled);
+            _hlEditor.setHighlightingEnabled(true);
 
             // Run after layout() of immediate parent completes
             (wrap ? _primaryScrollView : _hsView).post(() -> TextViewUtils.setSelectionAndShow(_hlEditor, sel));

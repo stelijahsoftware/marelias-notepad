@@ -72,8 +72,8 @@ public class HighlightingEditor extends AppCompatEditText {
             setFallbackLineSpacing(false);
         }
 
-        _hlEnabled = false;
-        _autoFormatEnabled = false;
+        _hlEnabled = true; // Elyahw: keep always true
+        _autoFormatEnabled = false; // Elyahw: keep always false
         _numEnabled = false;
         _oldHlRect = new Rect();
         _hlRect = new Rect();
