@@ -164,9 +164,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_dynamic_highlighting_activated, true);
     }
 
-    public int getMarkdownHighlightingDelay() {
-        return getInt(R.string.pref_key__markdown__hl_delay_v2, 200);
-    }
+//    public int getMarkdownHighlightingDelay() {
+//        return getInt(R.string.pref_key__markdown__hl_delay_v2, 200);
+//    }
 
 //    public int getAsciidocHighlightingDelay() {
 //        return getInt(R.string.pref_key__asciidoc__hl_delay, 650);
@@ -823,9 +823,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_enable_experimental_features, BuildConfig.IS_TEST_BUILD);
     }
 
-    public boolean isHighlightBiggerHeadings() {
-        return getBool(R.string.pref_key__editor_markdown_bigger_headings_2, false);
-    }
+//    public boolean isHighlightBiggerHeadings() {
+//        return getBool(R.string.pref_key__editor_markdown_bigger_headings_2, false);
+//    }
 
     public String getViewModeLinkColor() {
         return GsTextUtils.colorToHexString(getInt(R.string.pref_key__view_mode_link_color, Color.parseColor("#388E3C")));

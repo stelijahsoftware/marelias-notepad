@@ -7,6 +7,7 @@
 #########################################################*/
 package net.gsantner.notepad2.format.markdown;
 
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
@@ -33,11 +34,33 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
     public final static Pattern ACTION_IMAGE_PATTERN = Pattern.compile("(?m)!\\[(.*?)\\]\\((.*?)\\)");
 
+    public final static Pattern elyahw_colour_comment_cpp = Pattern.compile("\\/\\/.*");
+//    public final static Pattern elyahw_colour_comment_python = Pattern.compile("\\#\\#.*"); // overriden by orange
+
     private static final int MD_COLOR_HEADING = 0xffef6D00;
     private static final int MD_COLOR_LINK = 0xff1ea3fe;
     private static final int MD_COLOR_LIST = 0xffdaa521;
     private static final int MD_COLOR_QUOTE = 0xff88b04c;
     private static final int MD_COLOR_CODEBLOCK = 0x448c8c8c;
+
+    private static final int elyahw_colour_red = Color.parseColor("#de0303");
+    private static final int elyahw_colour_green = Color.parseColor("#008f00");
+
+/*
+from Kate:
+    <itemData name="Strong Text" color='#000000' bold="true"/>
+    <itemData name="Comment" color='#008f00'/>
+    <itemData name="CommentBlue" color='#1603ff' backgroundColor='#e6f3ff'/>
+    <itemData name="CommentBloodRed" color='#de0303'/>
+    <itemData name="HTTP Header" color='#0080ff' underline="1" bold="0" italic="0" />
+    <itemData name="ColourChar" color='#ff00ff'/>
+    <itemData name="ColourNumb" color='#ff8000'/>
+    <itemData name="ColourHigh" color='#000000' backgroundColor='#ff0000' bold="1"/>
+    <itemData name="ColourMedium" color='#000000' backgroundColor='#ff8000' bold="1"/>
+    <itemData name="ColourLow" color='#000000' backgroundColor='#ffff00' bold="1"/>
+    <itemData name="TaskDone" strikeOut="1" bold="1" backgroundColor="#eeeeee" /> <!-- Note: strikeOut not strikeout -->
+    <itemData name="CodeSegment" color='#000000' backgroundColor='#eaeaea' italic="1"/>
+ */
 
     public MarkdownSyntaxHighlighter(AppSettings as) {
         super(as);
@@ -52,9 +75,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public SyntaxHighlighterBase configure(Paint paint) {
         _highlightLineEnding = false; // _appSettings.isMarkdownHighlightLineEnding();
         _highlightCodeChangeFont = false; // _appSettings.isHighlightCodeMonospaceFont();
-        _highlightBiggerHeadings = _appSettings.isHighlightBiggerHeadings();
+        _highlightBiggerHeadings = false; // _appSettings.isHighlightBiggerHeadings();
         _highlightCodeBlock = false; // _appSettings.isHighlightCodeBlock();
-        _delay = _appSettings.getMarkdownHighlightingDelay();
+        _delay = 200; // _appSettings.getMarkdownHighlightingDelay();
         return super.configure(paint);
     }
 
@@ -70,6 +93,14 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         } else {
             createColorSpanForMatches(HEADING, MD_COLOR_HEADING);
         }
+
+
+
+        createColorSpanForMatches(elyahw_colour_comment_cpp, elyahw_colour_red);
+//        createColorSpanForMatches(elyahw_colour_comment_python, elyahw_colour_green);
+
+
+
 
         createColorSpanForMatches(LINK, MD_COLOR_LINK);
         createColorSpanForMatches(LIST_UNORDERED, MD_COLOR_LIST);
