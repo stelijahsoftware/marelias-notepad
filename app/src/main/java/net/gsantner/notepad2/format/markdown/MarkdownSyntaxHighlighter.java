@@ -39,18 +39,18 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int MD_COLOR_QUOTE = 0xff88b04c;
     private static final int MD_COLOR_CODEBLOCK = 0x448c8c8c;
 
-    // Elyahw colours:
+    // Elyahw colours: (from Kate highlights)
     private static final int elyahw_colour_red = Color.parseColor("#de0303");
+    private static final int elyahw_colour_red_bright = Color.parseColor("#ff0000");
     private static final int elyahw_colour_green = Color.parseColor("#008f00");
     private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
+    private static final int elyahw_colour_blue_dark = Color.parseColor("#1603ff");
+    private static final int elyahw_colour_blue_bright = Color.parseColor("#0080ff");
     private static final int elyahw_colour_orange = Color.parseColor("#ff8000");
     private static final int elyahw_colour_yellow = Color.parseColor("#ffff00");
+    private static final int elyahw_colour_purple = Color.parseColor("#ff00ff");
     /*
     from Kate:
-        <itemData name="CommentBlue" color='#1603ff' backgroundColor='#e6f3ff'/>
-        <itemData name="CommentBloodRed" color='#de0303'/>
-        <itemData name="HTTP Header" color='#0080ff' underline="1" bold="0" italic="0" />
-        <itemData name="ColourChar" color='#ff00ff'/>
         <itemData name="TaskDone" strikeOut="1" bold="1" backgroundColor="#eeeeee" /> <!-- Note: strikeOut not strikeout -->
         <itemData name="CodeSegment" color='#000000' backgroundColor='#eaeaea' italic="1"/>
      */
@@ -63,6 +63,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern elyahw_priority_high = Pattern.compile("^\\[(h|H)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_priority_med = Pattern.compile("^\\[(m|M)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_priority_low = Pattern.compile("^\\[(l|L)\\]", Pattern.MULTILINE);
+    public final static Pattern elyahw_chars = Pattern.compile("^(\\-|\\*|=|o \\-|O \\-)+", Pattern.MULTILINE);
 
 
     // TODO: how to avoid highlighting in the middle of another highlight?
@@ -108,8 +109,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorSpanForMatches(HEADING_SIMPLE, MD_COLOR_HEADING);
 
         createColorSpanForMatches(LINK, MD_COLOR_LINK);
-        createColorSpanForMatches(LIST_UNORDERED, MD_COLOR_LIST);
-        createColorSpanForMatches(LIST_ORDERED, MD_COLOR_LIST);
+
+        // createColorSpanForMatches(LIST_UNORDERED, MD_COLOR_LIST);
+        // createColorSpanForMatches(LIST_ORDERED, MD_COLOR_LIST);
 
         if (_highlightLineEnding)
         {
@@ -131,7 +133,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         // Elyahw custom:
         //createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
         //createStyleSpanForMatches(elyahw_link, Typeface.ITALIC);
-        createColorBackgroundSpan(elyahw_priority_high, elyahw_colour_red);
+        createColorBackgroundSpan(elyahw_priority_high, elyahw_colour_red_bright);
         createStyleSpanForMatches(elyahw_priority_high, Typeface.BOLD);
         createColorBackgroundSpan(elyahw_priority_med, elyahw_colour_orange);
         createStyleSpanForMatches(elyahw_priority_med, Typeface.BOLD);
@@ -140,6 +142,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
         createColorSpanForMatches(elyahw_numbers, elyahw_colour_orange);
         createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
+        createColorSpanForMatches(elyahw_chars, elyahw_colour_purple);
 
     }
 }
