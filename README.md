@@ -37,6 +37,7 @@ X - remove local file settings - done in 1a1c71047ef7a7a8babd002a2390b7ab8c5f88f
 X - main screen: remove import from device option; replace '...' on top right with cog icon
 X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java - done in 0a36d0300b795aea4d027836e94c48c0a9e3b5a7
 X - Move new note button to bottom right corner
+X - Clean up settings menu
 
 # High priority:
 - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
@@ -45,7 +46,6 @@ X - Move new note button to bottom right corner
 - make save button bigger (disable auto-save?)
 - convert local file settings to global + set defaults
 - Pull any improvements from latest version
-- Clean up settings menu
 
 # Navigation:
 - highlight briefly when going back (see Merge requests on github)
@@ -54,3 +54,4 @@ X - Move new note button to bottom right corner
 # Appearance:
 - darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - Make hinted text have lighter grey colour at new note creation
+- Disable highlighting inside other highlights
