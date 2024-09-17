@@ -38,6 +38,7 @@ X - main screen: remove import from device option; replace '...' on top right wi
 X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java - done in 0a36d0300b795aea4d027836e94c48c0a9e3b5a7
 X - Move new note button to bottom right corner
 X - Clean up settings menu
+X - add to highlighting: [h] [m] [l]
 
 # Naming:
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
@@ -54,5 +55,8 @@ X - Clean up settings menu
 - darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - Make hinted text have lighter grey colour at new note creation
 [h] - Disable highlighting inside other highlights
-- add to highlighting: [h] [m] [l]
 - make save button bigger (disable auto-save?)
+
+- do not highlight numbers in links
+- change # heading highlighting to blue + light blue bg
+- Add crossover x - highlighting
