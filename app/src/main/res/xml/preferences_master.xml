@@ -72,7 +72,7 @@
     <Preference
         android:icon="@drawable/ic_code_black_24dp"
         android:key="@string/pref_key__more_info__source_code"
-        android:summary="Visit project webpage"
+        android:summary="Visit project webpage:\nhttps://filter.mar-elias.com/"
         android:title="About" />
 
 </PreferenceScreen> <!-- Screen -->

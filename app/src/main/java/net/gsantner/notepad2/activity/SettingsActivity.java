@@ -158,7 +158,7 @@ public class SettingsActivity extends MarkorBaseActivity {
 //                    ("Launcher (" + getString(R.string.special_documents) + ")"),
 //                    getString(R.string.app_drawer_launcher_special_files_description), true
 //            );
-            updateSummary(R.string.pref_key__exts_to_always_open_in_this_app, _appSettings.getString(R.string.pref_key__exts_to_always_open_in_this_app, ""));
+//            updateSummary(R.string.pref_key__exts_to_always_open_in_this_app, _appSettings.getString(R.string.pref_key__exts_to_always_open_in_this_app, ""));
 
 //            updateSummary(R.string.pref_key__snippet_directory_path, _appSettings.getSnippetsDirectory().getAbsolutePath());
 
