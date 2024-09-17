@@ -32,7 +32,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)|(^[^\\S\\n]{4}(?![0-9\\-*+]).*$)");
     public final static Pattern DOUBLESPACE_LINE_ENDING = Pattern.compile("(?m)(?<=\\S)([^\\S\\n]{2,})\\n");
     public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
-    public final static Pattern ACTION_IMAGE_PATTERN = Pattern.compile("(?m)!\\[(.*?)\\]\\((.*?)\\)");
+//    public final static Pattern ACTION_IMAGE_PATTERN = Pattern.compile("(?m)!\\[(.*?)\\]\\((.*?)\\)");
 
     private static final int MD_COLOR_HEADING = 0xffef6D00;
     private static final int MD_COLOR_LINK = 0xff1ea3fe;
@@ -72,14 +72,14 @@ from Kate:
     private boolean _highlightLineEnding;
     private boolean _highlightCodeChangeFont;
     private boolean _highlightBiggerHeadings;
-    private boolean _highlightCodeBlock;
+
 
     @Override
-    public SyntaxHighlighterBase configure(Paint paint) {
+    public SyntaxHighlighterBase configure(Paint paint)
+    {
         _highlightLineEnding = false; // _appSettings.isMarkdownHighlightLineEnding();
         _highlightCodeChangeFont = false; // _appSettings.isHighlightCodeMonospaceFont();
         _highlightBiggerHeadings = false; // _appSettings.isHighlightBiggerHeadings();
-        _highlightCodeBlock = true; // _appSettings.isHighlightCodeBlock();
         _delay = 200; // _appSettings.getMarkdownHighlightingDelay();
         return super.configure(paint);
     }
@@ -91,9 +91,12 @@ from Kate:
         createUnderlineHexColorsSpans();
         createSmallBlueLinkSpans();
 
-        if (_highlightBiggerHeadings) {
+        if (_highlightBiggerHeadings)
+        {
             createSpanForMatches(HEADING, new WrMarkdownHeaderSpanCreator(_spannable, MD_COLOR_HEADING));
-        } else {
+        }
+        else
+        {
             createColorSpanForMatches(HEADING, MD_COLOR_HEADING);
         }
 
@@ -101,7 +104,8 @@ from Kate:
         createColorSpanForMatches(LIST_UNORDERED, MD_COLOR_LIST);
         createColorSpanForMatches(LIST_ORDERED, MD_COLOR_LIST);
 
-        if (_highlightLineEnding) {
+        if (_highlightLineEnding)
+        {
             createColorBackgroundSpan(DOUBLESPACE_LINE_ENDING, MD_COLOR_CODEBLOCK);
         }
 
@@ -110,13 +114,13 @@ from Kate:
         createColorSpanForMatches(QUOTATION, MD_COLOR_QUOTE);
         createStrikeThroughSpanForMatches(STRIKETHROUGH);
 
-        if (_highlightCodeChangeFont) {
+        if (_highlightCodeChangeFont)
+        {
             createMonospaceSpanForMatches(CODE);
         }
 
-        if (_highlightCodeBlock) {
-            createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
-        }
+        createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
+
 
         // Elyahw custom:
         // createColorBackgroundSpan
