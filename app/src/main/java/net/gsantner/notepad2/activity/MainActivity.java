@@ -225,9 +225,9 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     @Override
     protected void onResume() {
         super.onResume();
-        if (!IntroActivity.isFirstStart(this)) {
+//        if (!IntroActivity.isFirstStart(this)) {
             StoragePermissionActivity.requestPermissions(this);
-        }
+//        }
 
         if (_appSettings.isRecreateMainRequired()) {
             // recreate(); // does not remake fragments
