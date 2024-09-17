@@ -250,10 +250,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__editor_start_editing_in_center, false);
     }
 
-    public boolean isDisableSpellingRedUnderline() {
-        return getBool(R.string.pref_key__editor_disable_spelling_red_underline, true);
-    }
-
     public void addRecentFile(final File file) {
         if (!listFileInRecents(file)) {
             return;

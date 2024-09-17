@@ -66,7 +66,7 @@ public class HighlightingEditor extends AppCompatEditText {
 
         setAutoFormatters(null, null);
 
-        _isSpellingRedUnderline = !as.isDisableSpellingRedUnderline();
+        _isSpellingRedUnderline = true; // elyahw
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             setFallbackLineSpacing(false);
