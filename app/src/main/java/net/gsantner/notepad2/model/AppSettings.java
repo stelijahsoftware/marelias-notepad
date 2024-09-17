@@ -244,7 +244,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public boolean isDisallowScreenshots() {
-        return getBool(R.string.pref_key__is_disallow_screenshots, false);
+        return false;
     }
 
     public String getLanguage() {
