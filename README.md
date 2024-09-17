@@ -57,6 +57,6 @@ X - add to highlighting: [h] [m] [l]
 [h] - Disable highlighting inside other highlights
 - make save button bigger (disable auto-save?)
 
-- do not highlight numbers in links
-- change # heading highlighting to blue + light blue bg
+
+- don't highlight numbers inside # labels. see: https://chatgpt.com/c/66e99b55-06e0-8005-98e5-6d9c3a54c06b
 - Add crossover x - highlighting
