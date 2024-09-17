@@ -226,7 +226,10 @@ public class SettingsActivity extends MarkorBaseActivity {
                     }, fragManager, getActivity());
                     return true;
                 }
-
+                case R.string.pref_key__more_info__source_code: {
+                    _cu.openWebpageInExternalBrowser(getContext(), "https://filter.mar-elias.com/");
+                    return true;
+                }
             }
 
             if (key.startsWith("pref_key__editor_basic_color_scheme") && !key.contains("_fg_") && !key.contains("_bg_")) {

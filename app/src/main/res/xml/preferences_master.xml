@@ -65,8 +65,14 @@
     <androidx.preference.EditTextPreference
         android:defaultValue="@string/empty_string"
         android:dialogMessage="@string/file_description_format_dialog"
-        android:icon="@android:drawable/ic_menu_info_details"
+        android:icon="@drawable/ic_info_black_24dp"
         android:key="@string/pref_key__file_description_format"
         android:title="@string/file_description_format" />
+
+    <Preference
+        android:icon="@drawable/ic_code_black_24dp"
+        android:key="@string/pref_key__more_info__source_code"
+        android:summary="Visit project webpage"
+        android:title="About" />
 
 </PreferenceScreen> <!-- Screen -->
