@@ -234,21 +234,8 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__sort_reverse, true);
     }
 
-    public boolean setFileBrowserFilterShowDotFiles(boolean v) {
-        setBool(R.string.pref_key__show_dot_files_v2, v);
-        return v;
-    }
-
-    public boolean isFileBrowserFilterShowDotFiles() {
-        return getBool(R.string.pref_key__show_dot_files_v2, true);
-    }
-
     public boolean isShowSettingsOptionInMainToolbar() {
         return false; // getBool(R.string.pref_key__show_settings_option_in_main_toolbar, true);
-    }
-
-    public boolean isHighlightingHexColorEnabled() {
-        return getBool(R.string.pref_key__is_highlighting_for_hexcolor_activated, false);
     }
 
     public float getEditorLineSpacing() {

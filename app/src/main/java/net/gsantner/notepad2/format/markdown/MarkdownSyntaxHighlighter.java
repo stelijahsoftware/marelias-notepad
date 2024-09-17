@@ -55,9 +55,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         <itemData name="CodeSegment" color='#000000' backgroundColor='#eaeaea' italic="1"/>
      */
 
-    // Elyahw regexes:
+    // Elyahw regexes: reference: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
     public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)$", Pattern.MULTILINE); // (?<!:) ignore :// for website links // you need multiline to match ^
-    public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/.+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/\\S+ ");
     public final static Pattern elyahw_numbers = Pattern.compile("[0-9]");
     public final static Pattern elyahw_comment_python = Pattern.compile("^\\#[^(\\s|#)].*$", Pattern.MULTILINE); // overriden by orange
     public final static Pattern elyahw_priority_high = Pattern.compile("^\\[(h|H)\\]", Pattern.MULTILINE);
