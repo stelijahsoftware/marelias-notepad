@@ -32,7 +32,6 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)|(^[^\\S\\n]{4}(?![0-9\\-*+]).*$)");
     public final static Pattern DOUBLESPACE_LINE_ENDING = Pattern.compile("(?m)(?<=\\S)([^\\S\\n]{2,})\\n");
     public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
-//    public final static Pattern ACTION_IMAGE_PATTERN = Pattern.compile("(?m)!\\[(.*?)\\]\\((.*?)\\)");
 
     private static final int MD_COLOR_HEADING = 0xffef6D00;
     private static final int MD_COLOR_LINK = 0xff1ea3fe;
@@ -41,7 +40,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int MD_COLOR_CODEBLOCK = 0x448c8c8c;
 
     // Elyahw:
-    public final static Pattern elyahw_comment_cpp = Pattern.compile("\\/\\/.+");
+    public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)", Pattern.MULTILINE); // (?<!:) ignore :// for website links // you need multiline to match ^
+    // public final static Pattern elyahw_comment_cpp = Pattern.compile("^Location.*", Pattern.MULTILINE);
     public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/.+");
     // public final static Pattern elyahw_comment_python = Pattern.compile("\\#\\#.*"); // overriden by orange
 
@@ -49,21 +49,21 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int elyahw_colour_green = Color.parseColor("#008f00");
     private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
 
-/*
-from Kate:
-    <itemData name="Strong Text" color='#000000' bold="true"/>
-    <itemData name="Comment" color='#008f00'/>
-    <itemData name="CommentBlue" color='#1603ff' backgroundColor='#e6f3ff'/>
-    <itemData name="CommentBloodRed" color='#de0303'/>
-    <itemData name="HTTP Header" color='#0080ff' underline="1" bold="0" italic="0" />
-    <itemData name="ColourChar" color='#ff00ff'/>
-    <itemData name="ColourNumb" color='#ff8000'/>
-    <itemData name="ColourHigh" color='#000000' backgroundColor='#ff0000' bold="1"/>
-    <itemData name="ColourMedium" color='#000000' backgroundColor='#ff8000' bold="1"/>
-    <itemData name="ColourLow" color='#000000' backgroundColor='#ffff00' bold="1"/>
-    <itemData name="TaskDone" strikeOut="1" bold="1" backgroundColor="#eeeeee" /> <!-- Note: strikeOut not strikeout -->
-    <itemData name="CodeSegment" color='#000000' backgroundColor='#eaeaea' italic="1"/>
- */
+    /*
+    from Kate:
+        <itemData name="Strong Text" color='#000000' bold="true"/>
+        <itemData name="Comment" color='#008f00'/>
+        <itemData name="CommentBlue" color='#1603ff' backgroundColor='#e6f3ff'/>
+        <itemData name="CommentBloodRed" color='#de0303'/>
+        <itemData name="HTTP Header" color='#0080ff' underline="1" bold="0" italic="0" />
+        <itemData name="ColourChar" color='#ff00ff'/>
+        <itemData name="ColourNumb" color='#ff8000'/>
+        <itemData name="ColourHigh" color='#000000' backgroundColor='#ff0000' bold="1"/>
+        <itemData name="ColourMedium" color='#000000' backgroundColor='#ff8000' bold="1"/>
+        <itemData name="ColourLow" color='#000000' backgroundColor='#ffff00' bold="1"/>
+        <itemData name="TaskDone" strikeOut="1" bold="1" backgroundColor="#eeeeee" /> <!-- Note: strikeOut not strikeout -->
+        <itemData name="CodeSegment" color='#000000' backgroundColor='#eaeaea' italic="1"/>
+     */
 
     public MarkdownSyntaxHighlighter(AppSettings as) {
         super(as);
@@ -121,12 +121,12 @@ from Kate:
 
         createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
 
-
         // Elyahw custom:
         // createColorBackgroundSpan
         createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
+        // createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_blue); // Colour the background
         createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
-//        createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
+        // createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
 
     }
 }
