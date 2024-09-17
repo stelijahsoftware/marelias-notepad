@@ -325,9 +325,9 @@ public class MarkdownTextConverter extends TextConverterBase {
             }
         }
 
-        if (_appSettings.getDocumentWrapState(file.getAbsolutePath())) {
-            onLoadJs += "wrapCodeBlockWords();";
-        }
+//        if (_appSettings.getDocumentWrapState(file.getAbsolutePath())) {
+//            onLoadJs += "wrapCodeBlockWords();";
+//        }
 
         if (enableLineNumbers) {
             // For Prism line numbers plugin

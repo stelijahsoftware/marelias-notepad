@@ -642,7 +642,7 @@ public abstract class ActionButtonBase {
         final Editable text = _hlEditor.getText();
         switch (action) {
             case R.string.abid_common_unordered_list_char: {
-                runRegularPrefixAction(_appSettings.getUnorderedListCharacter() + " ", true);
+                runRegularPrefixAction("-" + " ", true);
                 return true;
             }
             case R.string.abid_common_checkbox_list: {
@@ -657,22 +657,7 @@ public abstract class ActionButtonBase {
                 DatetimeFormatDialog.showDatetimeFormatDialog(_activity, _hlEditor);
                 return true;
             }
-//            case R.string.abid_common_accordion: {
-//                _hlEditor.insertOrReplaceTextOnCursor("<details markdown='1'><summary>" + rstr(R.string.expand_collapse) + "</summary>\n" + HighlightingEditor.PLACE_CURSOR_HERE_TOKEN + "\n\n</details>");
-//                return true;
-//            }
-//            case R.string.abid_common_insert_audio: {
-//                AttachLinkOrFileDialog.showInsertImageOrLinkDialog(AttachLinkOrFileDialog.AUDIO_ACTION, _document.getFormat(), _activity, text, _document.getFile());
-//                return true;
-//            }
-//            case R.string.abid_common_insert_link: {
-//                AttachLinkOrFileDialog.showInsertImageOrLinkDialog(AttachLinkOrFileDialog.FILE_OR_LINK_ACTION, _document.getFormat(), _activity, text, _document.getFile());
-//                return true;
-//            }
-//            case R.string.abid_common_insert_image: {
-//                AttachLinkOrFileDialog.showInsertImageOrLinkDialog(AttachLinkOrFileDialog.IMAGE_ACTION, _document.getFormat(), _activity, text, _document.getFile());
-//                return true;
-//            }
+
             case R.string.abid_common_ordered_list_renumber: {
                 renumberOrderedList();
                 return true;

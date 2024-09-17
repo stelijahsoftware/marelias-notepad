@@ -125,16 +125,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return new File(getDefaultNotebookFile(), rstr(R.string.todo_default_filename));
     }
 
-//    public File getSnippetsDirectory() {
-//        final File _default = new File(getNotebookDirectory(), ".app/snippets");
-//        final File snf = new File(getString(R.string.pref_key__quicknote_filepath, _default.getAbsolutePath()));
-//        return snf.isDirectory() && snf.canRead() ? snf : _default;
-//    }
-//
-//    public void setSnippetDirectory(final File folder) {
-//        setString(R.string.pref_key__snippet_directory_path, folder.getAbsolutePath());
-//    }
-
     public String getFontFamily() {
         return getString(R.string.pref_key__font_family, rstr(R.string.default_font_family));
     }
@@ -152,45 +142,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_highlighting_activated, true);
     }
 
-//    public boolean isLineNumbersEnabled() {
-//        return getBool(R.string.pref_key__enable_line_numbers, false);
-//    }
-//
-//    public void setLineNumbersEnabled(boolean enabled) {
-//        setBool(R.string.pref_key__enable_line_numbers, enabled);
-//    }
-
     public boolean isDynamicHighlightingEnabled() {
         return getBool(R.string.pref_key__is_dynamic_highlighting_activated, true);
     }
-
-//    public int getMarkdownHighlightingDelay() {
-//        return getInt(R.string.pref_key__markdown__hl_delay_v2, 200);
-//    }
-
-//    public int getAsciidocHighlightingDelay() {
-//        return getInt(R.string.pref_key__asciidoc__hl_delay, 650);
-//    }
-//
-//    public int getOrgmodeHighlightingDelay() {
-//        return getInt(R.string.pref_key__orgmode__hl_delay, 650);
-//    }
-
-//    public boolean isMarkdownHighlightLineEnding() {
-//        return getBool(R.string.pref_key__markdown__highlight_lineending_two_or_more_space, false);
-//    }
-
-//    public boolean isAsciidocHighlightLineEnding() {
-//        return getBool(R.string.pref_key__asciidoc__highlight_lineending_hard_line_break, false);
-//    }
-
-//    public boolean isHighlightCodeMonospaceFont() {
-//        return getBool(R.string.pref_key__highlight_code_monospace_font, false);
-//    }
-//
-//    public boolean isHighlightCodeBlock() {
-//        return !getBool(R.string.pref_key__highlight_code_block_disabled, false);
-//    }
 
     public int getHighlightingDelayTodoTxt() {
         return getInt(R.string.pref_key__todotxt__hl_delay, 200);
@@ -297,22 +251,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_highlighting_for_hexcolor_activated, false);
     }
 
-//    public boolean isTodoAppendProConOnEndEnabled() {
-//        return getBool(R.string.pref_key__todotxt__append_contexts_and_projects_on_end_of_task, true);
-//    }
-
-//    public boolean isTodoAddCompletionDateEnabled() {
-//        return getBool(R.string.pref_key__todotxt__add_completion_date_for_todos, true);
-//    }
-
-//    public boolean isAppCurrentVersionFirstStart(boolean doSet) {
-//        int value = getInt(R.string.pref_key__app_first_start_current_version, -1);
-//        if (doSet) {
-//            setInt(R.string.pref_key__app_first_start_current_version, BuildConfig.VERSION_CODE);
-//        }
-//        return value != BuildConfig.VERSION_CODE;
-//    }
-
     public float getEditorLineSpacing() {
         return getInt(R.string.pref_key__editor_line_spacing, 100) / 100f;
     }
@@ -321,17 +259,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getString(R.string.pref_key__todotxt__last_used_archive_filename, "todo.archive.txt");
     }
 
-//    public boolean isEditorStartOnBotttom() {
-//        return getBool(R.string.pref_key__editor_start_editing_on_bottom, true);
-//    }
-
     public boolean isEditorStartEditingInCenter() {
         return getBool(R.string.pref_key__editor_start_editing_in_center, false);
     }
-
-//    public int getEditorActionButtonItemPadding() {
-//        return getInt(R.string.pref_key__editor_textaction_bar_item_padding, 6);
-//    }
 
     public boolean isDisableSpellingRedUnderline() {
         return getBool(R.string.pref_key__editor_disable_spelling_red_underline, true);
@@ -425,21 +355,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         if (!file.equals(getTodoFile()) && !file.equals(getQuickNoteFile())) {
             setInt(PREF_PREFIX_VIEW_SCROLL_X + file.getAbsolutePath(), scrollX, _prefCache);
             setInt(PREF_PREFIX_VIEW_SCROLL_Y + file.getAbsolutePath(), scrollY, _prefCache);
-        }
-    }
-
-    public void setDocumentWrapState(final String path, final boolean state) {
-        if (fexists(path)) {
-            setBool(PREF_PREFIX_WRAP_STATE + path, state);
-        }
-    }
-
-    public boolean getDocumentWrapState(final String path) {
-        final boolean _default = isEditorLineBreakingEnabled();
-        if (!fexists(path)) {
-            return _default;
-        } else {
-            return getBool(PREF_PREFIX_WRAP_STATE + path, _default);
         }
     }
 
@@ -823,33 +738,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_enable_experimental_features, BuildConfig.IS_TEST_BUILD);
     }
 
-//    public boolean isHighlightBiggerHeadings() {
-//        return getBool(R.string.pref_key__editor_markdown_bigger_headings_2, false);
-//    }
-
     public String getViewModeLinkColor() {
         return GsTextUtils.colorToHexString(getInt(R.string.pref_key__view_mode_link_color, Color.parseColor("#388E3C")));
     }
-
-    public String getUnorderedListCharacter() {
-        return getString(R.string.pref_key__editor_unordered_list_character, "-");
-    }
-
-//    @RequiresApi(api = Build.VERSION_CODES.M)
-//    public char[] getDefaultPassword() {
-//        return new PasswordStore(getContext()).loadKey(R.string.pref_key__default_encryption_password);
-//    }
-
-//    @RequiresApi(api = Build.VERSION_CODES.M)
-//    public boolean isDefaultPasswordSet() {
-//        final char[] key = getDefaultPassword();
-//        return (key != null && key.length > 0);
-//    }
-
-//    @RequiresApi(api = Build.VERSION_CODES.M)
-//    public void setDefaultPassword(String password) {
-//        new PasswordStore(getContext()).storeKey(password, R.string.pref_key__default_encryption_password);
-//    }
 
     public boolean getNewFileDialogLastUsedEncryption() {
         return getBool(R.string.pref_key__new_file_dialog_lastused_encryption, false);
@@ -913,23 +804,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__wikitext_dynamic_notebook_root, false);
     }
 
-//    public boolean isOpenLinksWithChromeCustomTabs() {
-//        return getBool(R.string.pref_key__open_links_with_chrome_custom_tabs, true);
-//    }
-
     public String getShareIntoPrefix() {
         return getString(R.string.pref_key__share_into_format, "\\n----\\n{{text}}");
     }
-//
-//    public @NonNull
-//    File getAttachmentFolder(final File file) {
-//        final File parent = file.getParentFile();
-//        if (parent == null) {
-//            return getNotebookDirectory();
-//        }
-//        final String child = getString(R.string.pref_key__attachment_folder_name, "_res").trim();
-//        return GsTextUtils.isNullOrEmpty(child) ? parent : new File(parent, child);
-//    }
 
     public List<Pair<String, String>> getBuiltinTemplates() {
         final List<Pair<String, String>> templates = new ArrayList<>();
@@ -950,25 +827,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
         return templates;
     }
-
-    // Read all files in snippets folder with appropriate extension
-    // Create a map of snippet title -> text
-//    public List<Pair<String, File>> getSnippetFiles() {
-//        final List<Pair<String, File>> texts = new ArrayList<>();
-//        // Read all files in snippets folder with appropriate extension
-//        // Create a map of snippet title -> text
-//        final File[] files = getSnippetsDirectory().listFiles();
-//        if (files != null) {
-//            for (final File f : files) {
-//                if (f.isFile() && f.canRead() && FormatRegistry.isFileSupported(f, true)) {
-//                    texts.add(Pair.create(f.getName(), f));
-//                }
-//            }
-//        }
-//
-//        GsCollectionUtils.keySort(texts, p -> p.first);
-//        return texts;
-//    }
 
     public void setTypeTemplate(final @StringRes int format, final String template) {
         final String js = getString(R.string.pref_key__filetype_template_map, "{}");
@@ -1013,15 +871,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public void saveTitleFormat(final String format, final int maxCount) {
-//        final Set<String> formats = getTitleFormats();
-//        final Set<String> updated = new LinkedHashSet<>(Collections.singleton(format));
-//        for (final String f : formats) {
-//            updated.add(f);
-//            if (updated.size() >= maxCount) {
-//                break;
-//            }
-//        }
-//        setString(R.string.pref_key__title_format_list, toJsonString(updated));
     }
 
     private static String mapToJsonString(final Map<String, String> map) {

@@ -67,14 +67,6 @@
                 android:summary="@string/dynamic_highlighting_effect"
                 android:title="@string/dynamic_highlighting" />
 
-        </PreferenceCategory>
-
-
-
-
-
-
-        <PreferenceCategory android:title="@string/editor">
             <androidx.preference.SeekBarPreference
                 android:defaultValue="8"
                 android:icon="@drawable/ic_space_bar_black_24dp"
@@ -85,45 +77,30 @@
                 app:min="0"
                 app:showSeekBarValue="true" />
 
-            <PreferenceScreen
-                android:icon="@drawable/ic_palette_black_24dp"
-                android:summary="@string/background_foreground_color_in_editor_works_dark_light"
-                android:title="@string/basic_color_scheme">
+            <androidx.preference.SeekBarPreference
+                android:defaultValue="100"
+                android:icon="@drawable/ic_format_line_spacing_black_24dp"
+                android:key="@string/pref_key__editor_line_spacing"
+                android:max="250"
+                android:summary="@string/space_between_lines_in_percent"
+                android:title="@string/line_spacing"
+                app:min="50"
+                app:showSeekBarValue="true" />
 
-                <PreferenceCategory android:title="@string/preset">
-                    <Preference
-                        android:icon="@drawable/ic_palette_black_24dp"
-                        android:key="@string/pref_key__basic_color_scheme_notepad2"
-                        android:title="@string/editor_basic_color_scheme_notepad2" />
-                    <Preference
-                        android:icon="@drawable/ic_palette_black_24dp"
-                        android:key="@string/pref_key__basic_color_scheme_blackorwhite"
-                        android:title="@string/editor_basic_color_scheme_black_or_white" />
-                    <Preference
-                        android:icon="@drawable/ic_palette_black_24dp"
-                        android:key="@string/pref_key__basic_color_scheme_solarized"
-                        android:title="@string/editor_basic_color_scheme_solarized" />
-                    <Preference
-                        android:icon="@drawable/ic_palette_black_24dp"
-                        android:key="@string/pref_key__basic_color_scheme_gruvbox"
-                        android:title="@string/editor_basic_color_scheme_gruvbox" />
-                    <Preference
-                        android:icon="@drawable/ic_palette_black_24dp"
-                        android:key="@string/pref_key__basic_color_scheme_greenscale"
-                        android:title="@string/editor_basic_color_scheme_greenscale" />
-                    <Preference
-                        android:icon="@drawable/ic_palette_black_24dp"
-                        android:key="@string/pref_key__basic_color_scheme_sepia"
-                        android:title="@string/editor_basic_color_scheme_sepia" />
-                    <Preference
-                        android:icon="@drawable/ic_palette_black_24dp"
-                        android:key="@string/pref_key__basic_color_scheme_nord"
-                        android:title="@string/editor_basic_color_scheme_nord" />
-                </PreferenceCategory>
-
-            </PreferenceScreen>
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:icon="@drawable/ic_vertical_align_bottom_black_24dp"
+                android:key="@string/pref_key__editor_start_editing_on_bottom"
+                android:summary="@string/start_on_bottom_when_loading_document"
+                android:title="@string/start_on_bottom" />
 
         </PreferenceCategory>
+
+
+
+
+
+
 
         <PreferenceCategory android:title="@string/file_browser">
             <androidx.preference.EditTextPreference
@@ -187,44 +164,6 @@
                 android:summary="@string/increase_text_size_of_headings_according_to_level"
                 android:title="@string/bigger_headings" />
         </PreferenceCategory>
-
-        <PreferenceCategory android:title="@string/miscellaneous">
-            <androidx.preference.SeekBarPreference
-                android:defaultValue="100"
-                android:icon="@drawable/ic_format_line_spacing_black_24dp"
-                android:key="@string/pref_key__editor_line_spacing"
-                android:max="250"
-                android:summary="@string/space_between_lines_in_percent"
-                android:title="@string/line_spacing"
-                app:min="50"
-                app:showSeekBarValue="true" />
-            <CheckBoxPreference
-                android:defaultValue="true"
-                android:icon="@drawable/ic_visibility_black_24dp"
-                android:key="@string/pref_key__editor_enable_line_breaking"
-                android:summary="@string/soft_break_if_not_fit_to_width_else_enable_horizontal_scrolling"
-                android:title="@string/wrap_words" />
-
-            <CheckBoxPreference
-                android:defaultValue="false"
-                android:icon="@drawable/ic_vertical_align_bottom_black_24dp"
-                android:key="@string/pref_key__editor_start_editing_on_bottom"
-                android:summary="@string/start_on_bottom_when_loading_document"
-                android:title="@string/start_on_bottom" />
-            <ListPreference
-                android:defaultValue="-"
-                android:dialogTitle="@string/theme"
-                android:entries="@array/pref_arrdisp__unordered_list_character"
-                android:entryValues="@array/pref_arrkeys__unordered_list_character"
-                android:icon="@drawable/ic_list_black_24dp"
-                android:key="@string/pref_key__editor_unordered_list_character"
-                android:summary="@string/character_to_start_items_of_unordered_list_with"
-                android:title="@string/unordered_list_character" />
-        </PreferenceCategory>
-
-
-
-
 
 
 </PreferenceScreen> <!-- Screen -->

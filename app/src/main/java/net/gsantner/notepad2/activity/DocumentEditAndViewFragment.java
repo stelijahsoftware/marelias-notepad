@@ -213,7 +213,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _webView.setBackgroundColor(Color.TRANSPARENT);
 
         // Various settings
-        setHorizontalScrollMode(isDisplayedAtMainActivity() || _appSettings.getDocumentWrapState(_document.getPath()));
         updateMenuToggleStates(0);
         // ---------------------------------------------------------
 
@@ -535,36 +534,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
     private boolean isWrapped() {
         return _hsView == null || (_hlEditor.getParent() == _primaryScrollView);
-    }
-
-    private void setHorizontalScrollMode(final boolean wrap) {
-        final Context context = getContext();
-        if (context != null && _hlEditor != null && isWrapped() != wrap) {
-
-            final int[] sel = TextViewUtils.getSelection(_hlEditor);
-
-            _hlEditor.setHighlightingEnabled(false);
-
-            _primaryScrollView.removeAllViews();
-            if (_hsView != null) {
-                _hsView.removeAllViews();
-            }
-            if (!wrap) {
-                if (_hsView == null) {
-                    _hsView = new HorizontalScrollView(context);
-                    _hsView.setFillViewport(true);
-                }
-                _hsView.addView(_hlEditor);
-                _primaryScrollView.addView(_hsView);
-            } else {
-                _primaryScrollView.addView(_hlEditor);
-            }
-
-            _hlEditor.setHighlightingEnabled(true);
-
-            // Run after layout() of immediate parent completes
-            (wrap ? _primaryScrollView : _hsView).post(() -> TextViewUtils.setSelectionAndShow(_hlEditor, sel));
-        }
     }
 
     @Override
