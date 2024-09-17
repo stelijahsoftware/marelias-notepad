@@ -66,16 +66,6 @@
             android:title="@string/dynamic_highlighting" />
 
         <androidx.preference.SeekBarPreference
-            android:defaultValue="8"
-            android:icon="@drawable/ic_space_bar_black_24dp"
-            android:key="@string/pref_key__editor_textaction_bar_item_padding"
-            android:max="32"
-            android:summary="@string/horizontal_space_between_actionbuttons"
-            android:title="@string/actionbutton_spacing"
-            app:min="0"
-            app:showSeekBarValue="true" />
-
-        <androidx.preference.SeekBarPreference
             android:defaultValue="100"
             android:icon="@drawable/ic_format_line_spacing_black_24dp"
             android:key="@string/pref_key__editor_line_spacing"
@@ -84,7 +74,6 @@
             android:title="@string/line_spacing"
             app:min="50"
             app:showSeekBarValue="true" />
-
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/file_browser">
@@ -101,6 +90,7 @@
         android:icon="@drawable/ic_format_shapes_black_24dp"
         android:key="@string/pref_key__font_family"
         android:title="@string/font" />
+
     <androidx.preference.SeekBarPreference
         android:defaultValue="18"
         android:icon="@drawable/ic_format_size_black_24dp"
@@ -110,6 +100,7 @@
         android:summary="@string/control_font_size_in_editor"
         android:title="@string/font_size"
         app:showSeekBarValue="true" />
+
     <androidx.preference.SeekBarPreference
         android:defaultValue="1"
         android:icon="@drawable/ic_keyboard_tab_black_24dp"

@@ -238,10 +238,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return false; // getBool(R.string.pref_key__show_settings_option_in_main_toolbar, true);
     }
 
-    public float getEditorLineSpacing() {
-        return getInt(R.string.pref_key__editor_line_spacing, 100) / 100f;
-    }
-
     public String getLastTodoUsedArchiveFilename() {
         return getString(R.string.pref_key__todotxt__last_used_archive_filename, "todo.archive.txt");
     }

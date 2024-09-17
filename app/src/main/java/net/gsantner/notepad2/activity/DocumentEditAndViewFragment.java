@@ -197,7 +197,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
         // Configure the editor. Doing so after load helps prevent some errors
         // ---------------------------------------------------------
-        _hlEditor.setLineSpacing(0, _appSettings.getEditorLineSpacing());
+        _hlEditor.setLineSpacing(0, 100);
         _hlEditor.setTextSize(TypedValue.COMPLEX_UNIT_SP, _appSettings.getDocumentFontSize(_document.getPath()));
         _hlEditor.setTypeface(GsFontPreferenceCompat.typeface(getContext(), _appSettings.getFontFamily(), Typeface.NORMAL));
         _hlEditor.setBackgroundColor(_appSettings.getEditorBackgroundColor());
