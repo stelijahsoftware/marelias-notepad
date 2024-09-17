@@ -39,15 +39,20 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int MD_COLOR_QUOTE = 0xff88b04c;
     private static final int MD_COLOR_CODEBLOCK = 0x448c8c8c;
 
-    // Elyahw:
-    public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)", Pattern.MULTILINE); // (?<!:) ignore :// for website links // you need multiline to match ^
-    // public final static Pattern elyahw_comment_cpp = Pattern.compile("^Location.*", Pattern.MULTILINE);
-    public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/.+");
-    // public final static Pattern elyahw_comment_python = Pattern.compile("\\#\\#.*"); // overriden by orange
-
+    // Elyahw colours:
     private static final int elyahw_colour_red = Color.parseColor("#de0303");
     private static final int elyahw_colour_green = Color.parseColor("#008f00");
     private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
+    private static final int elyahw_colour_orange = Color.parseColor("#ff8000");
+
+    // Elyahw regexes:
+    public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)$", Pattern.MULTILINE); // (?<!:) ignore :// for website links // you need multiline to match ^
+    // public final static Pattern elyahw_comment_cpp = Pattern.compile("^Location.*", Pattern.MULTILINE);
+    public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/.+$");
+    public final static Pattern elyahw_numbers = Pattern.compile("[0-9]");
+    public final static Pattern elyahw_comment_python = Pattern.compile("^\\#[^(\\s|#)].*$", Pattern.MULTILINE); // overriden by orange
+
+    // TODO: how to avoid highlighting in the middle of another highlight?
 
     /*
     from Kate:
@@ -57,7 +62,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         <itemData name="CommentBloodRed" color='#de0303'/>
         <itemData name="HTTP Header" color='#0080ff' underline="1" bold="0" italic="0" />
         <itemData name="ColourChar" color='#ff00ff'/>
-        <itemData name="ColourNumb" color='#ff8000'/>
+        <itemData name="ColourOrange" color='#ff8000'/>
         <itemData name="ColourHigh" color='#000000' backgroundColor='#ff0000' bold="1"/>
         <itemData name="ColourMedium" color='#000000' backgroundColor='#ff8000' bold="1"/>
         <itemData name="ColourLow" color='#000000' backgroundColor='#ffff00' bold="1"/>
@@ -126,7 +131,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
         // createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_blue); // Colour the background
         createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
-        // createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
+        createColorSpanForMatches(elyahw_numbers, elyahw_colour_orange);
+         createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
 
     }
 }
