@@ -34,17 +34,20 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
     public final static Pattern ACTION_IMAGE_PATTERN = Pattern.compile("(?m)!\\[(.*?)\\]\\((.*?)\\)");
 
-    public final static Pattern elyahw_colour_comment_cpp = Pattern.compile("\\/\\/.*");
-//    public final static Pattern elyahw_colour_comment_python = Pattern.compile("\\#\\#.*"); // overriden by orange
-
     private static final int MD_COLOR_HEADING = 0xffef6D00;
     private static final int MD_COLOR_LINK = 0xff1ea3fe;
     private static final int MD_COLOR_LIST = 0xffdaa521;
     private static final int MD_COLOR_QUOTE = 0xff88b04c;
     private static final int MD_COLOR_CODEBLOCK = 0x448c8c8c;
 
+    // Elyahw:
+    public final static Pattern elyahw_comment_cpp = Pattern.compile("\\/\\/.+");
+    public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/.+");
+    // public final static Pattern elyahw_comment_python = Pattern.compile("\\#\\#.*"); // overriden by orange
+
     private static final int elyahw_colour_red = Color.parseColor("#de0303");
     private static final int elyahw_colour_green = Color.parseColor("#008f00");
+    private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
 
 /*
 from Kate:
@@ -76,7 +79,7 @@ from Kate:
         _highlightLineEnding = false; // _appSettings.isMarkdownHighlightLineEnding();
         _highlightCodeChangeFont = false; // _appSettings.isHighlightCodeMonospaceFont();
         _highlightBiggerHeadings = false; // _appSettings.isHighlightBiggerHeadings();
-        _highlightCodeBlock = false; // _appSettings.isHighlightCodeBlock();
+        _highlightCodeBlock = true; // _appSettings.isHighlightCodeBlock();
         _delay = 200; // _appSettings.getMarkdownHighlightingDelay();
         return super.configure(paint);
     }
@@ -93,14 +96,6 @@ from Kate:
         } else {
             createColorSpanForMatches(HEADING, MD_COLOR_HEADING);
         }
-
-
-
-        createColorSpanForMatches(elyahw_colour_comment_cpp, elyahw_colour_red);
-//        createColorSpanForMatches(elyahw_colour_comment_python, elyahw_colour_green);
-
-
-
 
         createColorSpanForMatches(LINK, MD_COLOR_LINK);
         createColorSpanForMatches(LIST_UNORDERED, MD_COLOR_LIST);
@@ -122,5 +117,12 @@ from Kate:
         if (_highlightCodeBlock) {
             createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
         }
+
+        // Elyahw custom:
+        // createColorBackgroundSpan
+        createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
+        createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
+//        createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
+
     }
 }

@@ -125,15 +125,15 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return new File(getDefaultNotebookFile(), rstr(R.string.todo_default_filename));
     }
 
-    public File getSnippetsDirectory() {
-        final File _default = new File(getNotebookDirectory(), ".app/snippets");
-        final File snf = new File(getString(R.string.pref_key__quicknote_filepath, _default.getAbsolutePath()));
-        return snf.isDirectory() && snf.canRead() ? snf : _default;
-    }
-
-    public void setSnippetDirectory(final File folder) {
-        setString(R.string.pref_key__snippet_directory_path, folder.getAbsolutePath());
-    }
+//    public File getSnippetsDirectory() {
+//        final File _default = new File(getNotebookDirectory(), ".app/snippets");
+//        final File snf = new File(getString(R.string.pref_key__quicknote_filepath, _default.getAbsolutePath()));
+//        return snf.isDirectory() && snf.canRead() ? snf : _default;
+//    }
+//
+//    public void setSnippetDirectory(final File folder) {
+//        setString(R.string.pref_key__snippet_directory_path, folder.getAbsolutePath());
+//    }
 
     public String getFontFamily() {
         return getString(R.string.pref_key__font_family, rstr(R.string.default_font_family));
@@ -920,16 +920,16 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     public String getShareIntoPrefix() {
         return getString(R.string.pref_key__share_into_format, "\\n----\\n{{text}}");
     }
-
-    public @NonNull
-    File getAttachmentFolder(final File file) {
-        final File parent = file.getParentFile();
-        if (parent == null) {
-            return getNotebookDirectory();
-        }
-        final String child = getString(R.string.pref_key__attachment_folder_name, "_res").trim();
-        return GsTextUtils.isNullOrEmpty(child) ? parent : new File(parent, child);
-    }
+//
+//    public @NonNull
+//    File getAttachmentFolder(final File file) {
+//        final File parent = file.getParentFile();
+//        if (parent == null) {
+//            return getNotebookDirectory();
+//        }
+//        final String child = getString(R.string.pref_key__attachment_folder_name, "_res").trim();
+//        return GsTextUtils.isNullOrEmpty(child) ? parent : new File(parent, child);
+//    }
 
     public List<Pair<String, String>> getBuiltinTemplates() {
         final List<Pair<String, String>> templates = new ArrayList<>();
@@ -953,22 +953,22 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
     // Read all files in snippets folder with appropriate extension
     // Create a map of snippet title -> text
-    public List<Pair<String, File>> getSnippetFiles() {
-        final List<Pair<String, File>> texts = new ArrayList<>();
-        // Read all files in snippets folder with appropriate extension
-        // Create a map of snippet title -> text
-        final File[] files = getSnippetsDirectory().listFiles();
-        if (files != null) {
-            for (final File f : files) {
-                if (f.isFile() && f.canRead() && FormatRegistry.isFileSupported(f, true)) {
-                    texts.add(Pair.create(f.getName(), f));
-                }
-            }
-        }
-
-        GsCollectionUtils.keySort(texts, p -> p.first);
-        return texts;
-    }
+//    public List<Pair<String, File>> getSnippetFiles() {
+//        final List<Pair<String, File>> texts = new ArrayList<>();
+//        // Read all files in snippets folder with appropriate extension
+//        // Create a map of snippet title -> text
+//        final File[] files = getSnippetsDirectory().listFiles();
+//        if (files != null) {
+//            for (final File f : files) {
+//                if (f.isFile() && f.canRead() && FormatRegistry.isFileSupported(f, true)) {
+//                    texts.add(Pair.create(f.getName(), f));
+//                }
+//            }
+//        }
+//
+//        GsCollectionUtils.keySort(texts, p -> p.first);
+//        return texts;
+//    }
 
     public void setTypeTemplate(final @StringRes int format, final String template) {
         final String js = getString(R.string.pref_key__filetype_template_map, "{}");

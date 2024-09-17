@@ -689,13 +689,13 @@ public abstract class ActionButtonBase {
                 runRenumberOrderedListIfRequired();
                 return true;
             }
-            case R.string.abid_common_insert_snippet: {
-                MarkorDialogFactory.showInsertSnippetDialog(_activity, (snip) -> {
-                    _hlEditor.insertOrReplaceTextOnCursor(TextViewUtils.interpolateSnippet(snip, _document.getTitle(), TextViewUtils.getSelectedText(_hlEditor)));
-                    _lastSnip = snip;
-                });
-                return true;
-            }
+//            case R.string.abid_common_insert_snippet: {
+//                MarkorDialogFactory.showInsertSnippetDialog(_activity, (snip) -> {
+//                    _hlEditor.insertOrReplaceTextOnCursor(TextViewUtils.interpolateSnippet(snip, _document.getTitle(), TextViewUtils.getSelectedText(_hlEditor)));
+//                    _lastSnip = snip;
+//                });
+//                return true;
+//            }
             case R.string.abid_common_open_link_browser: {
                 final int sel = TextViewUtils.getSelection(_hlEditor)[0];
                 final String line = TextViewUtils.getSelectedLines(_hlEditor, sel);

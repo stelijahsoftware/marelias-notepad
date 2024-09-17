@@ -998,19 +998,19 @@ public class MarkorDialogFactory {
     }
 
 
-    public static void showInsertSnippetDialog(final Activity activity, final GsCallback.a1<String> callback) {
-        final DialogOptions dopt = new DialogOptions();
-        baseConf(activity, dopt);
-
-        final List<Pair<String, File>> snippets = as().getSnippetFiles();
-
-        dopt.data = GsCollectionUtils.map(snippets, p -> p.first);
-        dopt.isSearchEnabled = true;
-        dopt.titleText = R.string.insert_snippet;
-        dopt.messageText = Html.fromHtml("<small><small>" + as().getSnippetsDirectory().getAbsolutePath() + "</small></small>");
-        dopt.positionCallback = (ind) -> callback.callback(GsFileUtils.readTextFileFast(snippets.get(ind.get(0)).second).first);
-        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
-    }
+//    public static void showInsertSnippetDialog(final Activity activity, final GsCallback.a1<String> callback) {
+//        final DialogOptions dopt = new DialogOptions();
+//        baseConf(activity, dopt);
+//
+//        final List<Pair<String, File>> snippets = as().getSnippetFiles();
+//
+//        dopt.data = GsCollectionUtils.map(snippets, p -> p.first);
+//        dopt.isSearchEnabled = true;
+//        dopt.titleText = R.string.insert_snippet;
+//        dopt.messageText = Html.fromHtml("<small><small>" + as().getSnippetsDirectory().getAbsolutePath() + "</small></small>");
+//        dopt.positionCallback = (ind) -> callback.callback(GsFileUtils.readTextFileFast(snippets.get(ind.get(0)).second).first);
+//        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
+//    }
 
     public static void baseConf(Activity activity, DialogOptions dopt) {
         dopt.isDarkDialog = GsContextUtils.instance.isDarkModeEnabled(activity);

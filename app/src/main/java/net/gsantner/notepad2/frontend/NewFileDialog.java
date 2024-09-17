@@ -162,7 +162,7 @@ public class NewFileDialog extends DialogFragment {
 
         // Setup template spinner and action
         // -----------------------------------------------------------------------------------------
-        final List<Pair<String, File>> snippets = appSettings.getSnippetFiles();
+//        final List<Pair<String, File>> snippets = appSettings.getSnippetFiles();
         final List<Pair<String, String>> templates = appSettings.getBuiltinTemplates();
 //        final ArrayAdapter<String> templateAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item);
 //        templateAdapter.add(activity.getString(R.string.empty_file));
