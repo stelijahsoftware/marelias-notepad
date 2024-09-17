@@ -43,7 +43,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int elyahw_colour_red = Color.parseColor("#de0303");
     private static final int elyahw_colour_red_bright = Color.parseColor("#ff0000");
     private static final int elyahw_colour_green = Color.parseColor("#009f00");
-    private static final int elyahw_colour_green_light = Color.parseColor("#e1ffe3");
+    // private static final int elyahw_colour_green_light = Color.parseColor("#e1ffe3");
     // private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
     private static final int elyahw_colour_blue_light = Color.parseColor("#cadfff");
     private static final int elyahw_colour_blue_dark = Color.parseColor("#0000ff");
@@ -61,7 +61,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern elyahw_comment_python = Pattern.compile("^\\#.+$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#\\#+.+$", Pattern.MULTILINE); // overriden by orange
     // public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/\\S+ ");
-    public final static Pattern elyahw_numbers = Pattern.compile("(?<![a-zA-Z0-9/#%=-_])\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
+    public final static Pattern elyahw_numbers = Pattern.compile("(?<!((https?|Https?|HTTPS?):\\/\\/\\S{0,300})|(^\\/\\/.{0,300})|(^#.{0,300}))\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
     public final static Pattern elyahw_priority_high = Pattern.compile("^\\[(h|H)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_priority_med = Pattern.compile("^\\[(m|M)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_priority_low = Pattern.compile("^\\[(l|L)\\]", Pattern.MULTILINE);
