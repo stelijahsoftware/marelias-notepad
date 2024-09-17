@@ -39,19 +39,20 @@ X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/
 X - Move new note button to bottom right corner
 X - Clean up settings menu
 
-# High priority:
-- Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
+# Naming:
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 - rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
-- make save button bigger (disable auto-save?)
+
+# Organisation:
+[h] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
+- highlight briefly when going back (see Merge requests on github)
+- show total notes count (+ on folders?)
 - convert local file settings to global + set defaults
 - Pull any improvements from latest version
 
-# Navigation:
-- highlight briefly when going back (see Merge requests on github)
-- total notes count (+ on folders?)
-
 # Appearance:
-- darker scrollbars (make ones in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
+- darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - Make hinted text have lighter grey colour at new note creation
-- Disable highlighting inside other highlights
+[h] - Disable highlighting inside other highlights
+- add to highlighting: [h] [m] [l]
+- make save button bigger (disable auto-save?)
