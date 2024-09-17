@@ -913,9 +913,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__wikitext_dynamic_notebook_root, false);
     }
 
-    public boolean isOpenLinksWithChromeCustomTabs() {
-        return getBool(R.string.pref_key__open_links_with_chrome_custom_tabs, true);
-    }
+//    public boolean isOpenLinksWithChromeCustomTabs() {
+//        return getBool(R.string.pref_key__open_links_with_chrome_custom_tabs, true);
+//    }
 
     public String getShareIntoPrefix() {
         return getString(R.string.pref_key__share_into_format, "\\n----\\n{{text}}");

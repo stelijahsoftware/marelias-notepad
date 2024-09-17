@@ -12,7 +12,6 @@ import android.content.Context;
 //import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
@@ -26,22 +25,17 @@ import androidx.preference.PreferenceScreen;
 
 import net.gsantner.notepad2.ApplicationObject;
 import net.gsantner.notepad2.R;
-import net.gsantner.notepad2.frontend.MarkorDialogFactory;
 import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
 import net.gsantner.notepad2.model.AppSettings;
-import net.gsantner.notepad2.util.BackupUtils;
 import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.frontend.base.GsActivityBase;
 import net.gsantner.opoc.frontend.base.GsPreferenceFragmentBase;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.frontend.settings.GsFontPreferenceCompat;
-import net.gsantner.opoc.util.GsContextUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-
-//import other.writeily.widget.WrMarkorWidgetProvider;
 
 public class SettingsActivity extends MarkorBaseActivity {
 
@@ -175,24 +169,6 @@ public class SettingsActivity extends MarkorBaseActivity {
                 updateSummary(R.string.pref_key__file_description_format, fileDescFormat);
             }
 
-            setPreferenceVisible(R.string.pref_key__is_multi_window_enabled, Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
-
-            setPreferenceVisible(R.string.pref_key__set_encryption_password, Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                updateSummary(R.string.pref_key__set_encryption_password, getString(R.string.hidden_password));
-            }
-
-//            final int[] experimentalKeys = new int[]{
-//                    R.string.pref_key__swipe_to_change_mode,
-//                    R.string.pref_key__todotxt__hl_delay,
-//                    R.string.pref_key__markdown__hl_delay_v2,
-//                    R.string.pref_key__theming_hide_system_statusbar,
-//                    R.string.pref_key__tab_width_v2,
-//                    R.string.pref_key__editor_line_spacing,
-//            };
-//            for (final int keyId : experimentalKeys) {
-//                setPreferenceVisible(keyId, _appSettings.isExperimentalFeaturesEnabled());
-//            }
         }
 
         @SuppressLint("ApplySharedPref")
@@ -210,13 +186,13 @@ public class SettingsActivity extends MarkorBaseActivity {
             } else if (eq(key, R.string.pref_key__app_theme)) {
                 _appSettings.applyAppTheme();
                 getActivity().finish();
-            } else if (eq(key, R.string.pref_key__theming_hide_system_statusbar)) {
-                activityRetVal = RESULT.RESTART_REQ;
-                _appSettings.setRecreateMainRequired(true);
-            } else if (eq(key, R.string.pref_key__is_launcher_for_special_files_enabled)) {
+            }
+
+            else if (eq(key, R.string.pref_key__is_launcher_for_special_files_enabled)) {
                 boolean extraLaunchersEnabled = prefs.getBoolean(key, false);
                 new MarkorContextUtils(getActivity()).applySpecialLaunchersVisibility(getActivity(), extraLaunchersEnabled);
-            } else if (eq(key, R.string.pref_key__file_description_format)) {
+            }
+            else if (eq(key, R.string.pref_key__file_description_format)) {
                 try {
                     new SimpleDateFormat(prefs.getString(key, ""), Locale.getDefault());
                 } catch (IllegalArgumentException e) {
@@ -224,16 +200,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                     prefs.edit().putString(key, "").commit();
                 }
             }
-//            else if (eq(key, R.string.pref_key__share_into_format)) {
-//                try {
-//                    Toast.makeText(context, GsContextUtils.instance.formatDateTime(context, prefs.getString(key, ""), System.currentTimeMillis()), Toast.LENGTH_SHORT).show();
-//                } catch (IllegalArgumentException e) {
-//                    Toast.makeText(context, e.getLocalizedMessage() + "\n\n" + getString(R.string.loading_default_value), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//            else if (eq(key, R.string.pref_key__notebook_directory, R.string.pref_key__quicknote_filepath, R.string.pref_key__todo_filepath)) {
-//                WrMarkorWidgetProvider.updateLauncherWidgets();
-//            }
+
         }
 
         @Override
@@ -241,22 +208,6 @@ public class SettingsActivity extends MarkorBaseActivity {
         public Boolean onPreferenceClicked(Preference preference, String key, int keyResId) {
             final FragmentManager fragManager = getActivity().getSupportFragmentManager();
             switch (keyResId) {
-//                case R.string.pref_key__snippet_directory_path: {
-//                    MarkorFileBrowserFactory.showFolderDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
-//                        @Override
-//                        public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-//                            _appSettings.setSnippetDirectory(file);
-//                            doUpdatePreferences();
-//                        }
-//
-//                        @Override
-//                        public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
-//                            dopt.titleText = R.string.snippet_directory;
-//                            dopt.rootFolder = _appSettings.getNotebookDirectory();
-//                        }
-//                    }, fragManager, getActivity());
-//                    return true;
-//                }
 
                 case R.string.pref_key__notebook_directory: {
                     MarkorFileBrowserFactory.showFolderDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
@@ -275,40 +226,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                     }, fragManager, getActivity());
                     return true;
                 }
-//                case R.string.pref_key__quicknote_filepath: {
-//                    MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
-//                        @Override
-//                        public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-//                            _appSettings.setQuickNoteFile(file);
-//                            _appSettings.setRecreateMainRequired(true);
-//                            doUpdatePreferences();
-//                        }
-//
-//                        @Override
-//                        public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
-//                            dopt.titleText = R.string.quicknote;
-//                            dopt.rootFolder = _appSettings.getNotebookDirectory();
-//                        }
-//                    }, fragManager, getActivity(), MarkorFileBrowserFactory.IsMimeText);
-//                    return true;
-//                }
-//                case R.string.pref_key__todo_filepath: {
-//                    MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
-//                        @Override
-//                        public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-//                            _appSettings.setTodoFile(file);
-//                            _appSettings.setRecreateMainRequired(true);
-//                            doUpdatePreferences();
-//                        }
-//
-//                        @Override
-//                        public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
-//                            dopt.titleText = R.string.todo;
-//                            dopt.rootFolder = _appSettings.getNotebookDirectory();
-//                        }
-//                    }, fragManager, getActivity(), MarkorFileBrowserFactory.IsMimeText);
-//                    return true;
-//                }
+
                 case R.string.pref_key__basic_color_scheme_notepad2: {
                     _appSettings.setEditorBasicColor(true, R.color.white, R.color.dark_grey);
                     _appSettings.setEditorBasicColor(false, R.color.dark_grey, R.color.light__background);
@@ -344,27 +262,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                     _appSettings.setEditorBasicColor(false, R.color.sepia_fg_light__bg_dark, R.color.sepia_bg_light__fg_dark);
                     break;
                 }
-//                case R.string.pref_key__plaintext__reorder_actions:
-//                case R.string.pref_key__asciidoc__reorder_actions:
-//                case R.string.pref_key__markdown__reorder_actions:
-//                case R.string.pref_key__wikitext_reorder_actions:
-//                case R.string.pref_key__orgmode__reorder_actions:
-//                case R.string.pref_key__todotxt__reorder_actions: {
-//                    startActivity(new Intent(getActivity(), ActionButtonSettingsActivity.class).putExtra(ActionButtonSettingsActivity.EXTRA_FORMAT_KEY, keyResId));
-//                    break;
-//                }
-//                case R.string.pref_key__set_encryption_password: {
-//                    MarkorDialogFactory.showSetPasswordDialog(getActivity());
-//                    break;
-//                }
-//                case R.string.pref_key__backup_settings: {
-//                    BackupUtils.showBackupWriteToDialog(getContext(), getFragmentManager());
-//                    break;
-//                }
-//                case R.string.pref_key__restore_settings: {
-//                    BackupUtils.showBackupSelectFromDialog(getContext(), getFragmentManager());
-//                    break;
-//                }
+
             }
 
             if (key.startsWith("pref_key__editor_basic_color_scheme") && !key.contains("_fg_") && !key.contains("_bg_")) {
