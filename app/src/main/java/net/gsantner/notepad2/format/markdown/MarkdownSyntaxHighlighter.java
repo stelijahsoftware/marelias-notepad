@@ -61,7 +61,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern elyahw_comment_python = Pattern.compile("^\\#.+$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#\\#+.+$", Pattern.MULTILINE); // overriden by orange
     // public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/\\S+ ");
-    public final static Pattern elyahw_numbers = Pattern.compile("(?<![a-zA-Z0-9/#])\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
+    public final static Pattern elyahw_numbers = Pattern.compile("(?<![a-zA-Z0-9/#%=-_])\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
     public final static Pattern elyahw_priority_high = Pattern.compile("^\\[(h|H)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_priority_med = Pattern.compile("^\\[(m|M)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_priority_low = Pattern.compile("^\\[(l|L)\\]", Pattern.MULTILINE);
