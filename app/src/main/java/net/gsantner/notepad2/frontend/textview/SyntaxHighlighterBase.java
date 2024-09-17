@@ -53,7 +53,7 @@ public abstract class SyntaxHighlighterBase {
     /**
      * Url pattern with required http/https protocol. Case-sensitive.
      */
-    public static final Pattern URL = Pattern.compile("\\bhttps?://(?:(?:[-;:&=+$,\\w]+@)?[A-Za-z0-9.-]+|(?:www\\.|[-;:&=+$,\\w]+@)[A-Za-z0-9.-]+)(?:/[+~%/.\\w_-]*\\??[-+=&;%@.\\w_]*#?[.!/\\\\\\w]*)?");
+    public static final Pattern URL = Pattern.compile("\\b(http|Http|HTTP)s?://(?:(?:[-;:&=+$,\\w]+@)?[A-Za-z0-9.-]+|(?:www\\.|[-;:&=+$,\\w]+@)[A-Za-z0-9.-]+)(?:/[+~%/.\\w_-]*\\??[-+=&;%@.\\w_]*#?[.!/\\\\\\w]*)?");
 
     protected static SyntaxHighlighterBase getDefaultHighlighter(final AppSettings as) {
         return new PlaintextSyntaxHighlighter(as);
@@ -444,7 +444,7 @@ public abstract class SyntaxHighlighterBase {
     }
 
     protected final void createSmallBlueLinkSpans() {
-        createSpanForMatches(URL, new HighlightSpan().setForeColor(0xff1ea3fd).setItalic(true).setTextScale(0.85f));
+        createSpanForMatches(URL, new HighlightSpan().setForeColor(0xff1ea3fd).setItalic(true).setTextScale(0.85f).setUnderline(true));
     }
 
     protected final void createUnderlineHexColorsSpans() {

@@ -90,18 +90,22 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     @Override
     protected void generateSpans() {
 
-        createTabSpans(_tabSize);
-        createUnderlineHexColorsSpans();
+        //createTabSpans(_tabSize);
+        //createUnderlineHexColorsSpans();
+
+        // Highlighting urls:
         createSmallBlueLinkSpans();
 
-        if (_highlightBiggerHeadings)
-        {
-            createSpanForMatches(HEADING, new WrMarkdownHeaderSpanCreator(_spannable, MD_COLOR_HEADING));
-        }
-        else
-        {
-            createColorSpanForMatches(HEADING, MD_COLOR_HEADING);
-        }
+        // Causes strange highlighting above '=='
+        //        if (_highlightBiggerHeadings)
+        //        {
+        //            createSpanForMatches(HEADING, new WrMarkdownHeaderSpanCreator(_spannable, MD_COLOR_HEADING));
+        //        }
+        //        else
+        //        {
+        //            createColorSpanForMatches(HEADING, MD_COLOR_HEADING);
+        //        }
+        createColorSpanForMatches(HEADING_SIMPLE, MD_COLOR_HEADING);
 
         createColorSpanForMatches(LINK, MD_COLOR_LINK);
         createColorSpanForMatches(LIST_UNORDERED, MD_COLOR_LIST);
@@ -125,8 +129,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
 
         // Elyahw custom:
-        createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
-        createStyleSpanForMatches(elyahw_link, Typeface.ITALIC);
+        //createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
+        //createStyleSpanForMatches(elyahw_link, Typeface.ITALIC);
         createColorBackgroundSpan(elyahw_priority_high, elyahw_colour_red);
         createStyleSpanForMatches(elyahw_priority_high, Typeface.BOLD);
         createColorBackgroundSpan(elyahw_priority_med, elyahw_colour_orange);
