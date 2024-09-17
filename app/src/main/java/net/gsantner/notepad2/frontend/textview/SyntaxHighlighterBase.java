@@ -93,7 +93,7 @@ public abstract class SyntaxHighlighterBase {
         _fontFamily = _appSettings.getFontFamily();
         _textColor = _appSettings.getEditorForegroundColor();
         if (paint != null) {
-            _tabSize = (int) (_appSettings.getTabWidth() * paint.measureText(" "));
+            _tabSize = (int) (paint.measureText(" "));
         }
         return this;
     }

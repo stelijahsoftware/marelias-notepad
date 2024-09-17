@@ -126,7 +126,8 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public String getFontFamily() {
-        return getString(R.string.pref_key__font_family, rstr(R.string.default_font_family));
+        String str = "sans-serif-regular"; // elyahw font
+        return str;
     }
 
     public int getFontSize() {
@@ -139,7 +140,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public boolean isHighlightingEnabled() {
-        return getBool(R.string.pref_key__is_highlighting_activated, true);
+        return true;
     }
 
     public boolean isDynamicHighlightingEnabled() {
@@ -658,10 +659,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
     public File getFolderToLoadByMenuId() {
         return getNotebookDirectory();
-    }
-
-    public int getTabWidth() {
-        return getInt(R.string.pref_key__tab_width_v2, 1);
     }
 
     public boolean listFileInRecents(File file) {

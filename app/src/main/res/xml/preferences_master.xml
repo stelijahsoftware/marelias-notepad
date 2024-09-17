@@ -13,83 +13,37 @@
     android:layout_height="match_parent"
     android:title="@string/settings">
 
-    <PreferenceCategory android:title="Paths">
-        <Preference
-            android:icon="@drawable/ic_save_black_24dp"
-            android:key="@string/pref_key__notebook_directory"
-            android:title="Notebook save location" />
-    </PreferenceCategory>
+    <Preference
+        android:icon="@drawable/ic_save_black_24dp"
+        android:key="@string/pref_key__notebook_directory"
+        android:title="Notebook save location" />
 
+    <ListPreference
+        android:defaultValue="#000000"
+        android:dialogTitle="@string/navigationbar_color"
+        android:entries="@array/pref_arrdisp__navigationbar_color"
+        android:entryValues="@array/pref_arrkeys__navigationbar_color"
+        android:icon="@drawable/ic_invert_colors_black_24dp"
+        android:key="@string/pref_key__navigationbar_color"
+        android:summary="%1$s"
+        android:title="@string/navigationbar_color" />
 
-    <PreferenceCategory android:title="@string/general">
-        <ListPreference
-            android:defaultValue="#000000"
-            android:dialogTitle="@string/navigationbar_color"
-            android:entries="@array/pref_arrdisp__navigationbar_color"
-            android:entryValues="@array/pref_arrkeys__navigationbar_color"
-            android:icon="@drawable/ic_invert_colors_black_24dp"
-            android:key="@string/pref_key__navigationbar_color"
-            android:summary="%1$s"
-            android:title="@string/navigationbar_color" />
+    <ListPreference
+        android:defaultValue="@string/app_theme_system"
+        android:dialogTitle="@string/theme"
+        android:entries="@array/pref_arrdisp__app_themes"
+        android:entryValues="@array/pref_arrkeys__app_themes"
+        android:icon="@drawable/ic_invert_colors_black_24dp"
+        android:key="@string/pref_key__app_theme"
+        android:summary="%1$s"
+        android:title="@string/theme" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:icon="@drawable/ic_screen_lock_portrait_black_24dp"
-            android:key="@string/pref_key__is_keep_screen_on"
-            android:title="@string/keep_screen_on" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:icon="@drawable/ic_screen_lock_portrait_black_24dp"
+        android:key="@string/pref_key__is_keep_screen_on"
+        android:title="@string/keep_screen_on" />
 
-        <ListPreference
-            android:defaultValue="@string/app_theme_system"
-            android:dialogTitle="@string/theme"
-            android:entries="@array/pref_arrdisp__app_themes"
-            android:entryValues="@array/pref_arrkeys__app_themes"
-            android:icon="@drawable/ic_invert_colors_black_24dp"
-            android:key="@string/pref_key__app_theme"
-            android:summary="%1$s"
-            android:title="@string/theme" />
-
-    </PreferenceCategory>
-
-
-    <PreferenceCategory android:title="Editing">
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:icon="@drawable/ic_highlight_black_24dp"
-            android:key="@string/pref_key__is_highlighting_activated"
-            android:summary="@string/highlighting_enabled_or_not__appspecific"
-            android:title="@string/syntax_highlighting" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:icon="@drawable/ic_highlight_black_24dp"
-            android:key="@string/pref_key__is_dynamic_highlighting_activated"
-            android:summary="@string/dynamic_highlighting_effect"
-            android:title="@string/dynamic_highlighting" />
-
-        <androidx.preference.SeekBarPreference
-            android:defaultValue="100"
-            android:icon="@drawable/ic_format_line_spacing_black_24dp"
-            android:key="@string/pref_key__editor_line_spacing"
-            android:max="250"
-            android:summary="@string/space_between_lines_in_percent"
-            android:title="@string/line_spacing"
-            app:min="50"
-            app:showSeekBarValue="true" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/file_browser">
-        <androidx.preference.EditTextPreference
-            android:defaultValue="@string/empty_string"
-            android:dialogMessage="@string/file_description_format_dialog"
-            android:icon="@android:drawable/ic_menu_info_details"
-            android:key="@string/pref_key__file_description_format"
-            android:title="@string/file_description_format" />
-    </PreferenceCategory>
-
-    <net.gsantner.opoc.frontend.settings.GsFontPreferenceCompat
-        android:defaultValue="@string/default_font_family"
-        android:icon="@drawable/ic_format_shapes_black_24dp"
-        android:key="@string/pref_key__font_family"
-        android:title="@string/font" />
 
     <androidx.preference.SeekBarPreference
         android:defaultValue="18"
@@ -101,14 +55,18 @@
         android:title="@string/font_size"
         app:showSeekBarValue="true" />
 
-    <androidx.preference.SeekBarPreference
-        android:defaultValue="1"
-        android:icon="@drawable/ic_keyboard_tab_black_24dp"
-        android:key="@string/pref_key__tab_width_v2"
-        android:max="12"
-        android:summary="@string/amount_of_space_for_tab"
-        android:title="@string/tab_width"
-        app:min="1"
-        app:showSeekBarValue="true" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:icon="@drawable/ic_highlight_black_24dp"
+        android:key="@string/pref_key__is_dynamic_highlighting_activated"
+        android:summary="@string/dynamic_highlighting_effect"
+        android:title="@string/dynamic_highlighting" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/empty_string"
+        android:dialogMessage="@string/file_description_format_dialog"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:key="@string/pref_key__file_description_format"
+        android:title="@string/file_description_format" />
 
 </PreferenceScreen> <!-- Screen -->
