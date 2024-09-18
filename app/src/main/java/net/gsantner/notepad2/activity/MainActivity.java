@@ -240,9 +240,9 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         }
 
         _cu.setKeepScreenOn(this, _appSettings.isKeepScreenOn());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && _appSettings.isMultiWindowEnabled()) {
-            setTaskDescription(new ActivityManager.TaskDescription(getString(R.string.app_name)));
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && _appSettings.isMultiWindowEnabled()) {
+//            setTaskDescription(new ActivityManager.TaskDescription(getString(R.string.app_name)));
+//        }
 
         // Intro dialog and show changelog etc
 //        final boolean firstStart = IntroActivity.optStart(this);

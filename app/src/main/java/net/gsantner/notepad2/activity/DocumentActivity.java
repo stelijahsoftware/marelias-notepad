@@ -66,11 +66,12 @@ public class DocumentActivity extends MarkorBaseActivity {
         if (doPreview != null) {
             intent.putExtra(DocumentActivity.EXTRA_DO_PREVIEW, doPreview);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ApplicationObject.settings().isMultiWindowEnabled()) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        } else {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && ApplicationObject.settings().isMultiWindowEnabled()) {
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+//        }
+//        else {
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        }
+//        }
         if (path != null && path.isDirectory()) {
             intent = new Intent(activity, MainActivity.class).putExtra(Document.EXTRA_FILE, path);
         }
@@ -283,9 +284,9 @@ public class DocumentActivity extends MarkorBaseActivity {
 
     public void setDocumentTitle(final String title) {
         _toolbarTitleText.setText(title);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && _appSettings.isMultiWindowEnabled()) {
-            setTaskDescription(new ActivityManager.TaskDescription(title));
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && _appSettings.isMultiWindowEnabled()) {
+//            setTaskDescription(new ActivityManager.TaskDescription(title));
+//        }
     }
 
     public void showTextEditor(final Document document, final Integer lineNumber, final Boolean startPreview) {
