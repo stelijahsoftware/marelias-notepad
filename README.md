@@ -56,7 +56,3 @@ X - add to highlighting: [h] [m] [l]
 - Make hinted text have lighter grey colour at new note creation
 [h] - Disable highlighting inside other highlights
 - make save button bigger (disable auto-save?)
-
-
-- don't highlight numbers inside # labels. see: https://chatgpt.com/c/66e99b55-06e0-8005-98e5-6d9c3a54c06b
-- Add crossover x - highlighting

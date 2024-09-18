@@ -66,6 +66,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern elyahw_priority_med = Pattern.compile("^\\[(m|M)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_priority_low = Pattern.compile("^\\[(l|L)\\]", Pattern.MULTILINE);
     public final static Pattern elyahw_chars = Pattern.compile("(^(\\-|\\*|=)+)|(\\s\\-\\s)", Pattern.MULTILINE);
+    public final static Pattern elyahw_crossover = Pattern.compile("^((x|X) \\- $)", Pattern.MULTILINE);
 
 
     // TODO: how to avoid highlighting in the middle of another highlight?
@@ -148,6 +149,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorSpanForMatches(elyahw_comment_python_double, elyahw_colour_blue_dark);
         createColorBackgroundSpan(elyahw_comment_python_double, elyahw_colour_blue_light);
         createColorSpanForMatches(elyahw_chars, elyahw_colour_purple);
+        createStrikeThroughSpanForMatches(elyahw_crossover);
+        createStyleSpanForMatches(elyahw_crossover, Typeface.BOLD);
 
     }
 }
