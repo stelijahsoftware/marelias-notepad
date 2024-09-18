@@ -39,6 +39,7 @@ X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/
 X - Move new note button to bottom right corner
 X - Clean up settings menu
 X - add to highlighting: [h] [m] [l]
+X - Disable highlighting inside other highlights (see commits ending in 80f4109e76fbc566e23e661c6eace18158893054)
 
 # Naming:
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
@@ -54,5 +55,4 @@ X - add to highlighting: [h] [m] [l]
 # Appearance:
 - darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - Make hinted text have lighter grey colour at new note creation
-[h] - Disable highlighting inside other highlights
 - make save button bigger (disable auto-save?)
