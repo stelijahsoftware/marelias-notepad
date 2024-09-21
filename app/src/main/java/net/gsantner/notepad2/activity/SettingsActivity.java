@@ -169,6 +169,25 @@ public class SettingsActivity extends MarkorBaseActivity {
                 updateSummary(R.string.pref_key__file_description_format, fileDescFormat);
             }
 
+
+
+            // Display app version (elyahw)
+            super.doUpdatePreferences();
+            Context context = getContext();
+            if (context == null) {
+                return;
+            }
+            Locale locale = Locale.getDefault();
+            Preference pref = findPreference(R.string.pref_key__more_info__source_code);
+
+            pref.setTitle(String.format(locale,
+                                 "%s\nVersion v%s (%d)",
+                                        _cu.getAppIdFlavorSpecific(context),
+                                        _cu.getAppVersionName(context),
+                                        _cu.bcint(context, "VERSION_CODE", 0)));
+
+
+
         }
 
         @SuppressLint("ApplySharedPref")
