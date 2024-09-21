@@ -48,7 +48,7 @@ X - Add version number to About f4d3ca22d5b9d0d91e2eed33e6c2953fe7ccde9f
 
 # Organisation:
 [blocked] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
-[h] - Pull any improvements from latest version (single process implemented here https://github.com/gsantner/markor/commit/c5fe529515830dd16ba5dea6e14eadd016b1a1bf); start pulling from current state (see reference in project information; update it when pulling new changes)
+[h] - Pull any improvements from latest version (single process implemented here https://github.com/gsantner/markor/commit/c5fe529515830dd16ba5dea6e14eadd016b1a1bf); start pulling from current state (see reference in project information; update it when pulling new changes) - CONTINUE WORKING FROM THE BRANCH
 - highlight briefly when going back (see Merge requests on github)
 - show total notes count (+ on folders?)
 
