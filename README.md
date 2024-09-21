@@ -39,12 +39,12 @@ X - Clean up settings menu
 X - add to highlighting: [h] [m] [l]
 X - Disable highlighting inside other highlights (see commits ending in 80f4109e76fbc566e23e661c6eace18158893054)
 X - convert local file settings to global + set defaults
+X - Add version number to About f4d3ca22d5b9d0d91e2eed33e6c2953fe7ccde9f
 
 # Naming:
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 - rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
 - Make hinted text have lighter grey colour at new note creation
-- Add version number to About
 
 # Organisation:
 [blocked] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
