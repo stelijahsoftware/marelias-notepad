@@ -88,7 +88,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         });
 
         setSupportActionBar(findViewById(R.id.toolbar));
-        optShowRate();
+//        optShowRate();
 
         // Setup viewpager
         _viewPager.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager()));
@@ -191,16 +191,16 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         }
     }
 
-    private void optShowRate() {
-        try {
-            new com.pixplicity.generate.Rate.Builder(this)
-                    .setTriggerCount(4)
-                    .setMinimumInstallTime((int) TimeUnit.MINUTES.toMillis(30))
-                    .setFeedbackAction(() -> _cu.showGooglePlayEntryForThisApp(MainActivity.this))
-                    .build().count().showRequest();
-        } catch (Exception ignored) {
-        }
-    }
+//    private void optShowRate() {
+//        try {
+//            new com.pixplicity.generate.Rate.Builder(this)
+//                    .setTriggerCount(4)
+//                    .setMinimumInstallTime((int) TimeUnit.MINUTES.toMillis(30))
+//                    .setFeedbackAction(() -> _cu.showGooglePlayEntryForThisApp(MainActivity.this))
+//                    .build().count().showRequest();
+//        } catch (Exception ignored) {
+//        }
+//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
