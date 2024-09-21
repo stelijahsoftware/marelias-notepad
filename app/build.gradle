@@ -35,8 +35,8 @@ android {
         buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
         buildConfigField "String[]", "DETECTED_ANDROID_LOCALES", "${findUsedAndroidLocales()}"
         buildConfigField "String", "BUILD_DATE", "\"${getBuildDate()}\""
-        buildConfigField "String", "GITHASH", "\"${getGitHash()}\""
-        buildConfigField "String", "GITMSG", "\"${getGitLastCommitMessage()}\""
+        buildConfigField "String", "GITHASH", "\"${getGitHash}\""
+        buildConfigField "String", "GITMSG", "\"${getGitLastCommitMessage}\""
         setProperty("archivesBaseName", applicationId + "-v" + versionCode + "-" + versionName)
     }
 
@@ -73,9 +73,9 @@ android {
     }
 
     packagingOptions {
-        exclude 'META-INF/LICENSE-LGPL-2.1.txt'
-        exclude 'META-INF/LICENSE-LGPL-3.txt'
-        exclude 'META-INF/LICENSE-W3C-TEST'
+        resources {
+            excludes += ['META-INF/LICENSE-LGPL-2.1.txt', 'META-INF/LICENSE-LGPL-3.txt', 'META-INF/LICENSE-W3C-TEST']
+        }
     }
 
     compileOptions {
@@ -84,9 +84,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    lintOptions {
-        disable 'MissingTranslation', 'InvalidPackage', 'ObsoleteLintCustomCheck', 'DefaultLocale', 'UnusedAttribute', 'VectorRaster', 'InflateParams', 'IconLocation', 'UnusedResources', 'TypographyEllipsis'
+    namespace 'net.gsantner.notepad2'
+    lint {
         abortOnError false
+        disable 'MissingTranslation', 'InvalidPackage', 'ObsoleteLintCustomCheck', 'DefaultLocale', 'UnusedAttribute', 'VectorRaster', 'InflateParams', 'IconLocation', 'UnusedResources', 'TypographyEllipsis'
+    }
+    buildFeatures {
+        buildConfig true
     }
 }
 
@@ -137,10 +141,7 @@ dependencies {
 
 
     // UI libs
-    implementation 'com.pixplicity.generate:library:1.1.8'
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
-    implementation 'com.kailashdabhi:om-recorder:1.1.5'
-    implementation 'com.github.mertakdut:EpubParser:1.0.95'
 
     // Tool libraries
     //noinspection AnnotationProcessorOnCompilePath
