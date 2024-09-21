@@ -60,7 +60,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     private ViewPager2 _viewPager;
     private GsFileBrowserFragment _notebook;
     //private DocumentEditAndViewFragment _quicknote, _todo;
-    private MoreFragment _more;
+//    private MoreFragment _more;
     private FloatingActionButton _fab;
 
     private boolean _doubleBackToExitPressedOnce;
@@ -378,7 +378,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         if (pos == 0) return _notebook;
         //if (pos == 1) return _todo;
         //if (pos == 2) return _quicknote;
-        if (pos == 3) return _more;
+//        if (pos == 3) return _more;
         return null;
     }
 
