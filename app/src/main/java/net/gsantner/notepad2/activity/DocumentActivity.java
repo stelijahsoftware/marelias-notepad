@@ -186,12 +186,9 @@ public class DocumentActivity extends MarkorBaseActivity {
         final boolean intentIsSend = Intent.ACTION_SEND.equals(intentAction);
         final boolean intentIsEdit = Intent.ACTION_EDIT.equals(intentAction);
 
-        if (intentIsSend && intent.hasExtra(Intent.EXTRA_TEXT)) {
-            showShareInto(intent);
-            return;
-        } else if (Intent.ACTION_PROCESS_TEXT.equals(intentAction) && intent.hasExtra(Intent.EXTRA_PROCESS_TEXT)) {
+        if (Intent.ACTION_PROCESS_TEXT.equals(intentAction) && intent.hasExtra(Intent.EXTRA_PROCESS_TEXT)) {
             intent.putExtra(Intent.EXTRA_TEXT, intent.getStringExtra("android.intent.extra.PROCESS_TEXT"));
-            showShareInto(intent);
+            //showShareInto(intent);
             return;
         } else if (file == null && (intentIsView || intentIsEdit || intentIsSend)) {
             file = _cu.extractFileFromIntent(this, intent);
@@ -301,11 +298,6 @@ public class DocumentActivity extends MarkorBaseActivity {
         }
     }
 
-    public void showShareInto(Intent intent) {
-        // Disable edittext when going to shareinto
-        _toolbarTitleText.setText(R.string.share_into);
-        showFragment(DocumentShareIntoFragment.newInstance(intent));
-    }
 
     @Override
     protected void onResume() {
