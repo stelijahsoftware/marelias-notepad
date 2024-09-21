@@ -44,6 +44,7 @@ X - convert local file settings to global + set defaults
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 - rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
 - Make hinted text have lighter grey colour at new note creation
+- Add version number to About
 
 # Organisation:
 [blocked] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
@@ -54,3 +55,21 @@ X - convert local file settings to global + set defaults
 # Appearance:
 - darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - make save button bigger (disable auto-save?)
+
+# Commands:
+./gradlew build --warning-mode all
+
+./gradlew clean
+./gradlew build
+
+// Deploy apk (release):
+# To edit the app version, edit build.gradle inside app/
+Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'DefaultRelease'
+# then find the apk here:
+NewPipe/app/release/app-release.apk
+notepad2-markor/app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk
+personaldnsfilter/app/release/
+# or: (choose the build type from Build -> Select build variant)
+Build -> Build Bundle(s)/APK(s)->Build APK
+# find the apk here:
+snotepad/app/build/outputs/apk/debug/
