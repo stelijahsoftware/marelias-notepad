@@ -69,10 +69,4 @@ X - Add version number to About f4d3ca22d5b9d0d91e2eed33e6c2953fe7ccde9f
 # To edit the app version, edit build.gradle inside app/
 Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'DefaultRelease'
 # then find the apk here:
-NewPipe/app/release/app-release.apk
 notepad2-markor/app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk
-personaldnsfilter/app/release/
-# or: (choose the build type from Build -> Select build variant)
-Build -> Build Bundle(s)/APK(s)->Build APK
-# find the apk here:
-snotepad/app/build/outputs/apk/debug/
