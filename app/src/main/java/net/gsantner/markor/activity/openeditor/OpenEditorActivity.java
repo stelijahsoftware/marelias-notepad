@@ -5,16 +5,16 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity.openeditor;
+package net.gsantner.notepad2.activity.openeditor;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import net.gsantner.markor.activity.MarkorBaseActivity;
-import net.gsantner.markor.activity.StoragePermissionActivity;
-import net.gsantner.markor.model.Document;
+import net.gsantner.notepad2.activity.MarkorBaseActivity;
+import net.gsantner.notepad2.activity.StoragePermissionActivity;
+import net.gsantner.notepad2.model.Document;
 
 import java.io.File;
 

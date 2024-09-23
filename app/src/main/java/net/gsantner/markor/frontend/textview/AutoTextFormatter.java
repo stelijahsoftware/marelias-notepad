@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.frontend.textview;
+package net.gsantner.notepad2.frontend.textview;
 
 import android.text.Editable;
 import android.text.InputFilter;

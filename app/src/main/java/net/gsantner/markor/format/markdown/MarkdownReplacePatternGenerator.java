@@ -5,11 +5,11 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format.markdown;
+package net.gsantner.notepad2.format.markdown;
 
-import net.gsantner.markor.format.ActionButtonBase;
-import net.gsantner.markor.frontend.textview.AutoTextFormatter;
-import net.gsantner.markor.frontend.textview.ReplacePatternGeneratorHelper;
+import net.gsantner.notepad2.format.ActionButtonBase;
+import net.gsantner.notepad2.frontend.textview.AutoTextFormatter;
+import net.gsantner.notepad2.frontend.textview.ReplacePatternGeneratorHelper;
 import net.gsantner.opoc.format.GsTextUtils;
 
 import java.util.ArrayList;

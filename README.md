@@ -1,5 +1,5 @@
 # Rights:
-Forked from https://www.github.com/gsantner/markor
+Forked from https://www.github.com/gsantner/notepad2
 All licenses in the original repo above apply to this repo.
 
 # TODO:

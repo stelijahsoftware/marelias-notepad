@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format;
+package net.gsantner.notepad2.format;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,10 +16,10 @@ import android.webkit.WebView;
 
 import androidx.core.content.ContextCompat;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.model.Document;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.model.Document;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
@@ -70,14 +70,14 @@ public abstract class TextConverterBase {
     protected static final String CSS_CLASS_STICKY = CSS_S + " .sticky {position: sticky; display: inline-block; border: 0px solid " + TOKEN_BW_INVERSE_OF_THEME + ";} " + CSS_E;
     protected static final String CSS_CLASS_FLOAT = CSS_S + " .floatl {float: left;} .clear {clear:both;} " + CSS_E;
 
-    // onPageLoaded_markor_private() invokes the user injected function onPageLoaded()
-    protected static final String HTML500_BODY = "</head>\n<body class='" + TOKEN_TEXT_CONVERTER_CSS_CLASS + "' onload='onPageLoaded_markor_private();'>\n\n<!-- USER DOCUMENT CONTENT -->\n\n\n";
+    // onPageLoaded_notepad2_private() invokes the user injected function onPageLoaded()
+    protected static final String HTML500_BODY = "</head>\n<body class='" + TOKEN_TEXT_CONVERTER_CSS_CLASS + "' onload='onPageLoaded_notepad2_private();'>\n\n<!-- USER DOCUMENT CONTENT -->\n\n\n";
     //protected static final String HTML900_TO_TOP = "<a class='back_to_top'>&uarr;</a>"
     //        + CSS_S + ".back_to_top { position: fixed; bottom: 80px; right: 40px; z-index: 9999; width: 30px; height: 30px; text-align: center; line-height: 30px; background: #f5f5f5; color: #444; cursor: pointer; border-radius: 2px; display: none; } .back_to_top:hover { background: #e9ebec; } .back_to_top-show { display: block; }" +CSS_E
     //        + "<script>" + "(function() { 'use strict'; function trackScroll() { var scrolled = window.pageYOffset; var coords = document.documentElement.clientHeight; if (scrolled > coords) { goTopBtn.classList.add('back_to_top-show'); } if (scrolled < coords) { goTopBtn.classList.remove('back_to_top-show'); } } function backToTop() { if (window.pageYOffset > 0) { window.scrollBy(0, -80); setTimeout(backToTop, 0); } } var goTopBtn = document.querySelector('.back_to_top'); window.addEventListener('scroll', trackScroll); goTopBtn.addEventListener('click', backToTop); })();" + "</script>";
     protected static final String HTML990_BODY_END = "\n\n<!-- USER DOCUMENT CONTENT END -->\n\n</body></html>";
 
-    protected static final String HTML_ON_PAGE_LOAD_S = "<script> function onPageLoaded_markor_private() {\n";
+    protected static final String HTML_ON_PAGE_LOAD_S = "<script> function onPageLoaded_notepad2_private() {\n";
     protected static final String HTML_ON_PAGE_LOAD_E = "\nonPageLoaded(); }\n</script>";
 
     // protected static final String HTML_JQUERY_INCLUDE = "<script src='file:///android_asset/jquery/jquery-3.3.1.min.js'></script>"; // currently not bundled

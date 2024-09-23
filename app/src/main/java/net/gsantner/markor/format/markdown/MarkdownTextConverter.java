@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format.markdown;
+package net.gsantner.notepad2.format.markdown;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -38,8 +38,8 @@ import com.vladsch.flexmark.util.ast.Document;
 import com.vladsch.flexmark.util.builder.Extension;
 import com.vladsch.flexmark.util.options.MutableDataSet;
 
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.TextConverterBase;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.TextConverterBase;
 import net.gsantner.opoc.util.GsContextUtils;
 
 import java.io.File;
@@ -92,7 +92,7 @@ public class MarkdownTextConverter extends TextConverterBase {
     public static final String CSS_GITLAB_VIDEO_CAPTION = CSS_S + ".video-container > p { margin: 0; }" + CSS_E;
     public static final String CSS_LINK_SOFT_WRAP_AUTOBREAK_LINES = CSS_S + "p > a { word-break:break-all; }" + CSS_E;
 
-    public static final String CSS_TOC_STYLE = CSS_S + ".markor-table-of-contents { border: 1px solid " + TOKEN_BW_INVERSE_OF_THEME + "; border-radius: 2px; } .markor-table-of-contents > h1 { padding-left: 14px; margin-bottom: -8px; border-bottom: 1px solid " + TOKEN_BW_INVERSE_OF_THEME + "; } .markor-table-of-contents-list li { margin-left: -12px; } .markor-table-of-contents-list a { text-decoration: none; }" + CSS_E;
+    public static final String CSS_TOC_STYLE = CSS_S + ".notepad2-table-of-contents { border: 1px solid " + TOKEN_BW_INVERSE_OF_THEME + "; border-radius: 2px; } .notepad2-table-of-contents > h1 { padding-left: 14px; margin-bottom: -8px; border-bottom: 1px solid " + TOKEN_BW_INVERSE_OF_THEME + "; } .notepad2-table-of-contents-list li { margin-left: -12px; } .notepad2-table-of-contents-list a { text-decoration: none; }" + CSS_E;
     public static final String CSS_PRESENTATION_BEAMER = "<!-- " + TOKEN_TEXT_CONVERTER_MAX_ZOOM_OUT_BY_DEFAULT + " -->" + CSS_S + "img { max-width: 100%; } a:visited, a:link, a:hover, a:focus, a:active { color:inherit; } table { border-collapse: collapse; width: 100%; } table, th, td { padding: 5px; } body { font-family: Helvetica, Arial, Freesans, clean, sans-serif; padding:0 0 0 0; margin:auto; max-width:42em; } h1, h2, h3, h4, h5, h6 { font-weight: bold; } h1 { font-size: 28px; border-bottom: 2px solid; border-bottom-color: inherit; } h2 { font-size: 24px; border-bottom: 2px solid; border-bottom-color: inherit; } h3 { font-size: 18px; } h4 { font-size: 16px; } h5 { font-size: 14px; } h6 { font-size: 14px; } p, blockquote, ul, ol, dl, li, table, pre { margin: 15px 0; } code { margin: 0 2px; padding: 0 5px; } pre { line-height: 1.25em; overflow: auto; padding: 6px 10px; } pre > code { border: 0; margin: 0; padding: 0; } code { font-family: monospace; } img { max-width: 100%; } .slide { display: flex; width: 297mm; height: 166mm; margin: 0 auto 20px auto; padding: 0; align-items: center; border: 1px solid " + TOKEN_BW_INVERSE_OF_THEME + "; } .slide_body { display: block; width: 260mm; height: 155mm; margin: auto; overflow: hidden; } .slide_body:empty { display: none; } .slide:empty{ display: none; } @media print { body { margin: 0; padding: 0; } .slide { page-break-after: always; margin: 0; padding: 0; width: 297mm; min-height: 200mm; height: 200mm; max-height: 200mm; border: none; overflow: hidden; border: 0; } } *:not(span){ unicode-bidi: plaintext; } .slide_title > *{ text-align: center; border-bottom: 0px; font-size: 450%; } .slide_title > h1 { font-size: 550%; } .slide_body:not(.slide_title) > * { font-size: 200%; } .slide_body:not(.slide_title) > h1 { font-size: 350%; } .slide_body:not(.slide_title) > h2 { font-size: 310%; } img[alt*='imghcenter'] { display:block; margin-left: auto; margin-right: auto; } img[alt*='imgbig'] { object-fit: cover; min-height: 100%; min-width: 70%; } .slide_body:not(.slide_title) > h3 { font-size: 280%; }" + CSS_E;
     public static final String HTML_PRESENTATION_BEAMER_SLIDE_START_DIV = "<!-- Presentation slide NO --> <div class='slide_pNO slide'><div class='slide_body'>";
     public static final String TOKEN_SITE_DATE_JEKYLL = "{{ site.time | date: '%x' }}";
@@ -254,8 +254,8 @@ public class MarkdownTextConverter extends TextConverterBase {
             head += CSS_TOC_STYLE;
             options.set(TocExtension.LEVELS, TocOptions.getLevels(_appSettings.getMarkdownTableOfContentLevels()))
                     .set(TocExtension.TITLE, context.getString(R.string.table_of_contents))
-                    .set(TocExtension.DIV_CLASS, "markor-table-of-contents toc")
-                    .set(TocExtension.LIST_CLASS, "markor-table-of-contents-list")
+                    .set(TocExtension.DIV_CLASS, "notepad2-table-of-contents toc")
+                    .set(TocExtension.LIST_CLASS, "notepad2-table-of-contents-list")
                     .set(TocExtension.BLANK_LINE_SPACER, false);
         }
 
@@ -282,7 +282,7 @@ public class MarkdownTextConverter extends TextConverterBase {
         // Jekyll: Replace {{ site.baseurl }} with ..--> usually used in Jekyll blog _posts folder which is one folder below repository root, for reference to e.g. pictures in assets folder
         markup = markup.replace("{{ site.baseurl }}", "..").replace(TOKEN_SITE_DATE_JEKYLL, TOKEN_POST_TODAY_DATE);
 
-        // Notable: They use a home brewed syntax for referencing attachments: @attachment/f.png = ../attachements/f.jpg -- https://github.com/gsantner/markor/issues/1252
+        // Notable: They use a home brewed syntax for referencing attachments: @attachment/f.png = ../attachements/f.jpg -- https://github.com/gsantner/notepad2/issues/1252
         markup = markup.replace("](@attachment/", "](../attachements/");
 
         if (_appSettings.isMarkdownNewlineNewparagraphEnabled()) {

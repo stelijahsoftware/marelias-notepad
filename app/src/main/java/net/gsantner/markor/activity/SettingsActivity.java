@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,13 +24,13 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.frontend.MarkorDialogFactory;
-import net.gsantner.markor.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.util.BackupUtils;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.frontend.MarkorDialogFactory;
+import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.util.BackupUtils;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.frontend.base.GsActivityBase;
 import net.gsantner.opoc.frontend.base.GsPreferenceFragmentBase;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
@@ -308,7 +308,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                     }, fragManager, getActivity(), MarkorFileBrowserFactory.IsMimeText);
                     return true;
                 }
-                case R.string.pref_key__basic_color_scheme_markor: {
+                case R.string.pref_key__basic_color_scheme_notepad2: {
                     _appSettings.setEditorBasicColor(true, R.color.white, R.color.dark_grey);
                     _appSettings.setEditorBasicColor(false, R.color.dark_grey, R.color.light__background);
                     break;

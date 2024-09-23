@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.util;
+package net.gsantner.notepad2.util;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,12 +20,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import net.gsantner.markor.R;
-import net.gsantner.markor.activity.openeditor.OpenEditorQuickNoteActivity;
-import net.gsantner.markor.activity.openeditor.OpenEditorTodoActivity;
-import net.gsantner.markor.activity.openeditor.OpenFromShortcutOrWidgetActivity;
-import net.gsantner.markor.activity.openeditor.OpenShareIntoActivity;
-import net.gsantner.markor.model.Document;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.activity.openeditor.OpenEditorQuickNoteActivity;
+import net.gsantner.notepad2.activity.openeditor.OpenEditorTodoActivity;
+import net.gsantner.notepad2.activity.openeditor.OpenFromShortcutOrWidgetActivity;
+import net.gsantner.notepad2.activity.openeditor.OpenShareIntoActivity;
+import net.gsantner.notepad2.model.Document;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
@@ -44,7 +44,7 @@ public class MarkorContextUtils extends GsContextUtils {
         setLauncherActivityEnabled(context, OpenEditorQuickNoteActivity.class, extraLaunchersEnabled);
         setLauncherActivityEnabled(context, OpenEditorTodoActivity.class, extraLaunchersEnabled);
         setLauncherActivityEnabled(context, OpenShareIntoActivity.class, extraLaunchersEnabled);
-        setLauncherActivityEnabledFromString(context, "net.gsantner.markor.AliasDocumentProcessText", extraLaunchersEnabled);
+        setLauncherActivityEnabledFromString(context, "net.gsantner.notepad2.AliasDocumentProcessText", extraLaunchersEnabled);
         return thisp();
     }
 

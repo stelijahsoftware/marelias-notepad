@@ -1,4 +1,4 @@
-package net.gsantner.markor.frontend;
+package net.gsantner.notepad2.frontend;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

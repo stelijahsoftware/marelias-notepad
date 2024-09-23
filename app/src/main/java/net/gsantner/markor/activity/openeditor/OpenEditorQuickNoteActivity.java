@@ -5,13 +5,13 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity.openeditor;
+package net.gsantner.notepad2.activity.openeditor;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import net.gsantner.markor.model.Document;
+import net.gsantner.notepad2.model.Document;
 
 public class OpenEditorQuickNoteActivity extends OpenEditorActivity {
 

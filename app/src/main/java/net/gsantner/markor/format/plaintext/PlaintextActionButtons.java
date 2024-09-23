@@ -5,18 +5,18 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format.plaintext;
+package net.gsantner.notepad2.format.plaintext;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.ActionButtonBase;
-import net.gsantner.markor.format.markdown.MarkdownReplacePatternGenerator;
-import net.gsantner.markor.frontend.textview.AutoTextFormatter;
-import net.gsantner.markor.model.Document;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.ActionButtonBase;
+import net.gsantner.notepad2.format.markdown.MarkdownReplacePatternGenerator;
+import net.gsantner.notepad2.frontend.textview.AutoTextFormatter;
+import net.gsantner.notepad2.model.Document;
 
 import java.util.Arrays;
 import java.util.List;

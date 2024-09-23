@@ -1,4 +1,4 @@
-package net.gsantner.markor.frontend.filesearch;
+package net.gsantner.notepad2.frontend.filesearch;
 
 import android.app.Activity;
 import android.text.TextUtils;
@@ -19,9 +19,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
 

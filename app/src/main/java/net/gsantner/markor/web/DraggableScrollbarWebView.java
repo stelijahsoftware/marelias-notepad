@@ -1,4 +1,4 @@
-package net.gsantner.markor.web;
+package net.gsantner.notepad2.web;
 
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;

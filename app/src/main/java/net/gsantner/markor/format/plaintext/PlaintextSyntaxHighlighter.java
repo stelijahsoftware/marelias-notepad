@@ -1,4 +1,4 @@
-package net.gsantner.markor.format.plaintext;
+package net.gsantner.notepad2.format.plaintext;
 /*#######################################################
  *
  *   Maintained 2018-2024 by Gregor Santner <gsantner AT mailbox DOT org>
@@ -7,8 +7,8 @@ package net.gsantner.markor.format.plaintext;
  *
 #########################################################*/
 
-import net.gsantner.markor.frontend.textview.SyntaxHighlighterBase;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.frontend.textview.SyntaxHighlighterBase;
+import net.gsantner.notepad2.model.AppSettings;
 
 public class PlaintextSyntaxHighlighter extends SyntaxHighlighterBase {
 

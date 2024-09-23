@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.frontend.textview;
+package net.gsantner.notepad2.frontend.textview;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -27,9 +27,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatEditText;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.activity.MainActivity;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.activity.MainActivity;
+import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
 import net.gsantner.opoc.wrapper.GsTextWatcherAdapter;
@@ -99,7 +99,7 @@ public class HighlightingEditor extends AppCompatEditText {
         observer.addOnScrollChangedListener(() -> updateHighlighting(false));
         observer.addOnGlobalLayoutListener(() -> updateHighlighting(false));
 
-        // Fix for Android 12 perf issues - https://github.com/gsantner/markor/discussions/1794
+        // Fix for Android 12 perf issues - https://github.com/gsantner/notepad2/discussions/1794
         setEmojiCompatEnabled(false);
     }
 

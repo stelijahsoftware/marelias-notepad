@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format.general;
+package net.gsantner.notepad2.format.general;
 
 import android.text.TextPaint;
 import android.text.style.UnderlineSpan;

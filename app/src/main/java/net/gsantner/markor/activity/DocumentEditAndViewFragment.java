@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -39,22 +39,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.BuildConfig;
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.ActionButtonBase;
-import net.gsantner.markor.format.FormatRegistry;
-import net.gsantner.markor.format.TextConverterBase;
-import net.gsantner.markor.frontend.DraggableScrollbarScrollView;
-import net.gsantner.markor.frontend.FileInfoDialog;
-import net.gsantner.markor.frontend.MarkorDialogFactory;
-import net.gsantner.markor.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.gsantner.markor.frontend.textview.HighlightingEditor;
-import net.gsantner.markor.frontend.textview.TextViewUtils;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.model.Document;
-import net.gsantner.markor.util.MarkorContextUtils;
-import net.gsantner.markor.web.MarkorWebViewClient;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.BuildConfig;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.ActionButtonBase;
+import net.gsantner.notepad2.format.FormatRegistry;
+import net.gsantner.notepad2.format.TextConverterBase;
+import net.gsantner.notepad2.frontend.DraggableScrollbarScrollView;
+import net.gsantner.notepad2.frontend.FileInfoDialog;
+import net.gsantner.notepad2.frontend.MarkorDialogFactory;
+import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.gsantner.notepad2.frontend.textview.HighlightingEditor;
+import net.gsantner.notepad2.frontend.textview.TextViewUtils;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.model.Document;
+import net.gsantner.notepad2.util.MarkorContextUtils;
+import net.gsantner.notepad2.web.MarkorWebViewClient;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.frontend.settings.GsFontPreferenceCompat;
 import net.gsantner.opoc.frontend.textview.TextViewUndoRedo;

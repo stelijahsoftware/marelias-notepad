@@ -8,7 +8,7 @@
  *
 #########################################################*/
 
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,9 +18,9 @@ import android.content.Context;
 import androidx.preference.Preference;
 //import androidx.preference.PreferenceGroup;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.model.AppSettings;
 //import net.gsantner.opoc.format.GsSimpleMarkdownParser;
 import net.gsantner.opoc.frontend.base.GsPreferenceFragmentBase;
 

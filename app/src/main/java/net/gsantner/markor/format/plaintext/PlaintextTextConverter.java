@@ -5,16 +5,16 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format.plaintext;
+package net.gsantner.notepad2.format.plaintext;
 
 import android.content.Context;
 
 import androidx.core.text.TextUtilsCompat;
 
-import net.gsantner.markor.format.FormatRegistry;
-import net.gsantner.markor.format.TextConverterBase;
-//import net.gsantner.markor.format.binary.EmbedBinaryTextConverter;
-//import net.gsantner.markor.format.keyvalue.KeyValueTextConverter;
+import net.gsantner.notepad2.format.FormatRegistry;
+import net.gsantner.notepad2.format.TextConverterBase;
+//import net.gsantner.notepad2.format.binary.EmbedBinaryTextConverter;
+//import net.gsantner.notepad2.format.keyvalue.KeyValueTextConverter;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
 

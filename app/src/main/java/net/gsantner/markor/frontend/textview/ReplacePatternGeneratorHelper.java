@@ -5,9 +5,9 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.frontend.textview;
+package net.gsantner.notepad2.frontend.textview;
 
-import net.gsantner.markor.format.ActionButtonBase;
+import net.gsantner.notepad2.format.ActionButtonBase;
 
 import java.util.ArrayList;
 import java.util.List;

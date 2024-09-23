@@ -35,7 +35,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.gsantner.markor.R;
+import net.gsantner.notepad2.R;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.util.GsCollectionUtils;
 import net.gsantner.opoc.util.GsContextUtils;

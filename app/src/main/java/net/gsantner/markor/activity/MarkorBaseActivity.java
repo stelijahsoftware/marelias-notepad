@@ -1,4 +1,4 @@
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,10 +9,10 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.frontend.base.GsActivityBase;
 import net.gsantner.opoc.frontend.base.GsFragmentBase;
 

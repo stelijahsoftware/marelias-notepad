@@ -12,7 +12,7 @@
 <!-- Do NOT run auto format on this file -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="net.gsantner.markor"
+    package="net.gsantner.notepad2"
     tools:targetApi="jelly_bean">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -104,7 +104,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/markor_widget" />
+                android:resource="@xml/notepad2_widget" />
         </receiver>
 
         <service
@@ -183,7 +183,7 @@
             tools:targetApi="lollipop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="net.gsantner.markor.activity.MainActivity" />
+                android:value="net.gsantner.notepad2.activity.MainActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />

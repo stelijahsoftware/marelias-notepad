@@ -1,4 +1,4 @@
-package net.gsantner.markor.frontend.filesearch;
+package net.gsantner.notepad2.frontend.filesearch;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,8 +20,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 
-import net.gsantner.markor.R;
-import net.gsantner.markor.frontend.filesearch.FileSearchEngine.FitFile;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.frontend.filesearch.FileSearchEngine.FitFile;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
 import net.gsantner.opoc.wrapper.GsTextWatcherAdapter;

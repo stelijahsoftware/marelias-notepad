@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -24,12 +24,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.FormatRegistry;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.model.Document;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.FormatRegistry;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.model.Document;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.frontend.base.GsFragmentBase;
 import net.gsantner.opoc.util.GsContextUtils;

@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,19 +27,19 @@ import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.FormatRegistry;
-import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
-//import net.gsantner.markor.format.todotxt.TodoTxtTask;
-//import net.gsantner.markor.frontend.AttachLinkOrFileDialog;
-import net.gsantner.markor.frontend.NewFileDialog;
-import net.gsantner.markor.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.gsantner.markor.frontend.textview.HighlightingEditor;
-import net.gsantner.markor.frontend.textview.TextViewUtils;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.model.Document;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.FormatRegistry;
+import net.gsantner.notepad2.format.plaintext.PlaintextSyntaxHighlighter;
+//import net.gsantner.notepad2.format.todotxt.TodoTxtTask;
+//import net.gsantner.notepad2.frontend.AttachLinkOrFileDialog;
+import net.gsantner.notepad2.frontend.NewFileDialog;
+import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.gsantner.notepad2.frontend.textview.HighlightingEditor;
+import net.gsantner.notepad2.frontend.textview.TextViewUtils;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.model.Document;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.frontend.base.GsPreferenceFragmentBase;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserListAdapter;

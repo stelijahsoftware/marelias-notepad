@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format.markdown;
+package net.gsantner.notepad2.format.markdown;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,13 +15,13 @@ import android.view.KeyEvent;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
-import net.gsantner.markor.R;
-import net.gsantner.markor.activity.DocumentActivity;
-import net.gsantner.markor.format.ActionButtonBase;
-import net.gsantner.markor.frontend.MarkorDialogFactory;
-import net.gsantner.markor.frontend.textview.AutoTextFormatter;
-import net.gsantner.markor.frontend.textview.TextViewUtils;
-import net.gsantner.markor.model.Document;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.activity.DocumentActivity;
+import net.gsantner.notepad2.format.ActionButtonBase;
+import net.gsantner.notepad2.frontend.MarkorDialogFactory;
+import net.gsantner.notepad2.frontend.textview.AutoTextFormatter;
+import net.gsantner.notepad2.frontend.textview.TextViewUtils;
+import net.gsantner.notepad2.model.Document;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
 

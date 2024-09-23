@@ -4,7 +4,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.frontend;
+package net.gsantner.notepad2.frontend;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -26,7 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
-import net.gsantner.markor.R;
+import net.gsantner.notepad2.R;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.model.GsSharedPreferencesPropertyBackend;
 

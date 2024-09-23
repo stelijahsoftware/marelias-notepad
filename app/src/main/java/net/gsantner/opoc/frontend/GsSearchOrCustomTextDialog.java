@@ -51,7 +51,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.TooltipCompat;
 import androidx.core.widget.TextViewCompat;
 
-import net.gsantner.markor.R;
+import net.gsantner.notepad2.R;
 import net.gsantner.opoc.util.GsCollectionUtils;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.wrapper.GsCallback;

@@ -1,4 +1,4 @@
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.content.Intent;
 import android.widget.Toast;
@@ -6,7 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
-import net.gsantner.markor.R;
+import net.gsantner.notepad2.R;
 import net.gsantner.opoc.util.GsContextUtils;
 
 import java.util.concurrent.atomic.AtomicBoolean;

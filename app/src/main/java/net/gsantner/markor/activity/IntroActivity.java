@@ -1,4 +1,4 @@
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,8 +14,8 @@ import androidx.preference.PreferenceManager;
 import com.github.appintro.AppIntro;
 import com.github.appintro.AppIntroFragment;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
 import net.gsantner.opoc.util.GsContextUtils;
 
 public class IntroActivity extends AppIntro {

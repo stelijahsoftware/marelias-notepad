@@ -5,15 +5,15 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.frontend;
+package net.gsantner.notepad2.frontend;
 
-//import static net.gsantner.markor.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_CONTEXT;
-//import static net.gsantner.markor.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_CREATION_DATE;
-//import static net.gsantner.markor.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_DESCRIPTION;
-//import static net.gsantner.markor.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_DUE_DATE;
-//import static net.gsantner.markor.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_LINE;
-//import static net.gsantner.markor.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_PRIORITY;
-//import static net.gsantner.markor.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_PROJECT;
+//import static net.gsantner.notepad2.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_CONTEXT;
+//import static net.gsantner.notepad2.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_CREATION_DATE;
+//import static net.gsantner.notepad2.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_DESCRIPTION;
+//import static net.gsantner.notepad2.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_DUE_DATE;
+//import static net.gsantner.notepad2.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_LINE;
+//import static net.gsantner.notepad2.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_PRIORITY;
+//import static net.gsantner.notepad2.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_PROJECT;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -37,18 +37,18 @@ import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.markdown.MarkdownTextConverter;
-//import net.gsantner.markor.format.todotxt.TodoTxtBasicSyntaxHighlighter;
-//import net.gsantner.markor.format.todotxt.TodoTxtFilter;
-//import net.gsantner.markor.format.todotxt.TodoTxtTask;
-import net.gsantner.markor.frontend.filesearch.FileSearchDialog;
-import net.gsantner.markor.frontend.filesearch.FileSearchEngine;
-import net.gsantner.markor.frontend.filesearch.FileSearchResultSelectorDialog;
-import net.gsantner.markor.frontend.textview.SyntaxHighlighterBase;
-import net.gsantner.markor.frontend.textview.TextViewUtils;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.markdown.MarkdownTextConverter;
+//import net.gsantner.notepad2.format.todotxt.TodoTxtBasicSyntaxHighlighter;
+//import net.gsantner.notepad2.format.todotxt.TodoTxtFilter;
+//import net.gsantner.notepad2.format.todotxt.TodoTxtTask;
+import net.gsantner.notepad2.frontend.filesearch.FileSearchDialog;
+import net.gsantner.notepad2.frontend.filesearch.FileSearchEngine;
+import net.gsantner.notepad2.frontend.filesearch.FileSearchResultSelectorDialog;
+import net.gsantner.notepad2.frontend.textview.SyntaxHighlighterBase;
+import net.gsantner.notepad2.frontend.textview.TextViewUtils;
+import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.frontend.GsSearchOrCustomTextDialog;
 import net.gsantner.opoc.frontend.GsSearchOrCustomTextDialog.DialogOptions;

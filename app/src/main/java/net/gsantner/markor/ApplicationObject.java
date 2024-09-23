@@ -5,13 +5,13 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor;
+package net.gsantner.notepad2;
 
 import android.webkit.WebView;
 
 import androidx.multidex.MultiDexApplication;
 
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.model.AppSettings;
 
 public class ApplicationObject extends MultiDexApplication {
     // Make resources not marked as unused

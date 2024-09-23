@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.model;
+package net.gsantner.notepad2.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,11 +22,11 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 
-import net.gsantner.markor.BuildConfig;
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.FormatRegistry;
-import net.gsantner.markor.util.MarkorContextUtils;
-import net.gsantner.markor.util.ShortcutUtils;
+import net.gsantner.notepad2.BuildConfig;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.FormatRegistry;
+import net.gsantner.notepad2.util.MarkorContextUtils;
+import net.gsantner.notepad2.util.ShortcutUtils;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.gsantner.opoc.model.GsSharedPreferencesPropertyBackend;

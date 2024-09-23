@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.util;
+package net.gsantner.notepad2.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,11 +17,11 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.activity.openeditor.OpenFromShortcutOrWidgetActivity;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.model.Document;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.activity.openeditor.OpenFromShortcutOrWidgetActivity;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.model.Document;
 
 import java.io.File;
 import java.util.ArrayList;

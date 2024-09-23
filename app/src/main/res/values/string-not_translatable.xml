@@ -12,13 +12,13 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="app_name_real" translatable="false">Markor</string>
     <string name="app_name" translatable="false">@string/app_name_real</string>
     <string name="app_license_name" translatable="false">Apache 2.0</string>
-    <string name="app_community_url" translatable="false">https://github.com/gsantner/markor/discussions/2269#discussion_bucket</string>
-    <string name="app_bugreport_url" translatable="false">https://github.com/gsantner/markor/discussions/2269#discussion_bucket</string>
-    <string name="app_translate_url" translatable="false">https://github.com/gsantner/markor/discussions/2269#discussion_bucket</string>
+    <string name="app_community_url" translatable="false">https://github.com/gsantner/notepad2/discussions/2269#discussion_bucket</string>
+    <string name="app_bugreport_url" translatable="false">https://github.com/gsantner/notepad2/discussions/2269#discussion_bucket</string>
+    <string name="app_translate_url" translatable="false">https://github.com/gsantner/notepad2/discussions/2269#discussion_bucket</string>
 
-    <string name="app_web_url" translatable="false">https://github.com/gsantner/markor</string>
-    <string name="sync_client_support_issue_url" translatable="false">https://github.com/gsantner/markor/discussions/1381</string>
-    <string name="app_source_code_url" translatable="false">https://github.com/gsantner/markor</string>
+    <string name="app_web_url" translatable="false">https://github.com/gsantner/notepad2</string>
+    <string name="sync_client_support_issue_url" translatable="false">https://github.com/gsantner/notepad2/discussions/1381</string>
+    <string name="app_source_code_url" translatable="false">https://github.com/gsantner/notepad2</string>
     <string name="huuid" translatable="false">hUUID</string>
     <string name="embed_binary" translatable="false">Embed binary</string>
     <string name="actionbutton" translatable="false">ActionButton</string>
@@ -48,7 +48,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 
     <string name="katex_latex" translatable="false">KaTex (LaTex)\n$ a^2 + b^2 = c^2 $</string>
     <string name="app_theme_system" translatable="false">system</string>
-    <string name="editor_basic_color_scheme_markor" translatable="false">Markor</string>
+    <string name="editor_basic_color_scheme_notepad2" translatable="false">Markor</string>
     <string name="editor_basic_color_scheme_black_or_white" translatable="false">Black or White</string>
     <string name="editor_basic_color_scheme_amoled" translatable="false">AMOLED</string>
     <string name="editor_basic_color_scheme_solarized" translatable="false">Solarized</string>
@@ -65,7 +65,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
         ### Copyright © 2017-2024
         **Gregor Santner**
         \n**Official project sources:**
-        [Project page](https://github.com/gsantner/markor#readme) | [Source code](https://github.com/gsantner/markor) | [F-Droid](https://f-droid.org/repository/browse/?fdid=net.gsantner.markor)
+        [Project page](https://github.com/gsantner/notepad2#readme) | [Source code](https://github.com/gsantner/notepad2) | [F-Droid](https://f-droid.org/repository/browse/?fdid=net.gsantner.notepad2)
     ]]></string>
 
     <string name="inject_to_head" translatable="false">Inject -> head</string>
@@ -201,7 +201,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__basic_color_scheme_nord" translatable="false">pref_key__basic_color_scheme_nord</string>
     <string name="pref_key__basic_color_scheme_blackorwhite" translatable="false">pref_key__basic_color_scheme_blackorwhite</string>
     <string name="pref_key__basic_color_scheme_amoled" translatable="false">pref_key__basic_color_scheme_amoled</string>
-    <string name="pref_key__basic_color_scheme_markor" translatable="false">pref_key__basic_color_scheme_markor</string>
+    <string name="pref_key__basic_color_scheme_notepad2" translatable="false">pref_key__basic_color_scheme_notepad2</string>
     <string name="pref_key__basic_color_scheme_gruvbox" translatable="false">pref_key__basic_color_scheme_gruvbox</string>
     <string name="pref_key__basic_color_scheme_greenscale" translatable="false">pref_key__basic_color_scheme_greenscale</string>
     <string name="pref_key__basic_color_scheme_sepia" translatable="false">pref_key__basic_color_scheme_sepia</string>

@@ -1,12 +1,12 @@
-package net.gsantner.markor.activity.openeditor;
+package net.gsantner.notepad2.activity.openeditor;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import net.gsantner.markor.activity.DocumentActivity;
-import net.gsantner.markor.activity.MainActivity;
-import net.gsantner.markor.activity.MarkorBaseActivity;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.activity.DocumentActivity;
+import net.gsantner.notepad2.activity.MainActivity;
+import net.gsantner.notepad2.activity.MarkorBaseActivity;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 
 import java.io.File;

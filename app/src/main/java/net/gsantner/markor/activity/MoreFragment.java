@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
-import net.gsantner.markor.R;
+import net.gsantner.notepad2.R;
 import net.gsantner.opoc.frontend.base.GsFragmentBase;
 import net.gsantner.opoc.model.GsSharedPreferencesPropertyBackend;
 import net.gsantner.opoc.util.GsContextUtils;

@@ -1,14 +1,14 @@
-package net.gsantner.markor.util;
+package net.gsantner.notepad2.util;
 
 import android.app.Activity;
 import android.content.Context;
 
 import androidx.fragment.app.FragmentManager;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.ActionButtonBase;
-import net.gsantner.markor.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.ActionButtonBase;
+import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.util.GsBackupUtils;
 

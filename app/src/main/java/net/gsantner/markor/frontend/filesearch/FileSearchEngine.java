@@ -1,4 +1,4 @@
-package net.gsantner.markor.frontend.filesearch;
+package net.gsantner.notepad2.frontend.filesearch;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import net.gsantner.markor.R;
+import net.gsantner.notepad2.R;
 import net.gsantner.opoc.util.GsFileUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
 

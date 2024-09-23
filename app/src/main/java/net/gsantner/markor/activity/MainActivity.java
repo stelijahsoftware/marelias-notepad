@@ -6,7 +6,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.activity;
+package net.gsantner.notepad2.activity;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -33,12 +33,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 
-import net.gsantner.markor.BuildConfig;
-import net.gsantner.markor.R;
-import net.gsantner.markor.frontend.NewFileDialog;
-import net.gsantner.markor.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.gsantner.markor.model.Document;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.BuildConfig;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.frontend.NewFileDialog;
+import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.gsantner.notepad2.model.Document;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.format.GsSimpleMarkdownParser;
 import net.gsantner.opoc.frontend.base.GsFragmentBase;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserFragment;

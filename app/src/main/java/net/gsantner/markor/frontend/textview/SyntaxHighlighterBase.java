@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.frontend.textview;
+package net.gsantner.notepad2.frontend.textview;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -29,9 +29,9 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import net.gsantner.markor.format.general.ColorUnderlineSpan;
-import net.gsantner.markor.format.plaintext.PlaintextSyntaxHighlighter;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.format.general.ColorUnderlineSpan;
+import net.gsantner.notepad2.format.plaintext.PlaintextSyntaxHighlighter;
+import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
 

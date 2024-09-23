@@ -45,7 +45,7 @@ import android.text.TextWatcher;
 import android.text.style.UnderlineSpan;
 import android.widget.TextView;
 
-import net.gsantner.markor.frontend.textview.TextViewUtils;
+import net.gsantner.notepad2.frontend.textview.TextViewUtils;
 
 import java.io.File;
 import java.util.LinkedList;

@@ -5,13 +5,13 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.format.markdown;
+package net.gsantner.notepad2.format.markdown;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
-import net.gsantner.markor.frontend.textview.SyntaxHighlighterBase;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.frontend.textview.SyntaxHighlighterBase;
+import net.gsantner.notepad2.model.AppSettings;
 
 import java.util.regex.Pattern;
 

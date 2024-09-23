@@ -4,7 +4,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.frontend;
+package net.gsantner.notepad2.frontend;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,10 +27,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.os.ConfigurationCompat;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.frontend.textview.HighlightingEditor;
-import net.gsantner.markor.model.AppSettings;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.frontend.textview.HighlightingEditor;
+import net.gsantner.notepad2.model.AppSettings;
 import net.gsantner.opoc.model.GsSharedPreferencesPropertyBackend;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.wrapper.GsCallback;

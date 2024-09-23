@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.gsantner.markor.model;
+package net.gsantner.notepad2.model;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,12 +21,12 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.activity.MainActivity;
-import net.gsantner.markor.format.FormatRegistry;
-import net.gsantner.markor.format.markdown.MarkdownTextConverter;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.activity.MainActivity;
+import net.gsantner.notepad2.format.FormatRegistry;
+import net.gsantner.notepad2.format.markdown.MarkdownTextConverter;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
 
