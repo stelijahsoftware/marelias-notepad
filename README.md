@@ -17,7 +17,7 @@ X - epub
 X - ascii
 X - csv
 X - See todos from Snotepad.
-X - Fix: search when launched from inside a file (8cc1d0def12211bcc1886e95471bf86895171d35 breaks file search)
+X - Fix: search when launched from inside a file (breaks file search)
 X - call them notes 1 & notes 2
 X - Remove bottom bar in text editing
 X - do not open multiple instances (single instance only), not one for each file and for each reopened file. I.e just like snotepad
@@ -30,20 +30,20 @@ X - simplify new file dialog
 X - Change the default flags of (sort by date; reverse order.. etc)
 X - Touch the parent folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
 X - change icon
-X - remove auto insertion of tabs when enter is pressed on a line with multiple spaces + prevent auto insertion of '-' when enter is pressed on a line beginning with '-'. Solved in bd240b3df2fb81a80ff3ea402c03693c918a10d9
-X - remove local file settings - done in 1a1c71047ef7a7a8babd002a2390b7ab8c5f88f9
+X - remove auto insertion of tabs when enter is pressed on a line with multiple spaces + prevent auto insertion of '-' when enter is pressed on a line beginning with '-'
+X - remove local file settings
 X - main screen: remove import from device option; replace '...' on top right with cog icon
-X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java - done in 0a36d0300b795aea4d027836e94c48c0a9e3b5a7
+X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java
 X - Move new note button to bottom right corner
 X - Clean up settings menu
 X - add to highlighting: [h] [m] [l]
-X - Disable highlighting inside other highlights (see commits ending in 80f4109e76fbc566e23e661c6eace18158893054)
+X - Disable highlighting inside other highlights (see commits ending in)
 X - convert local file settings to global + set defaults
-X - Add version number to About f4d3ca22d5b9d0d91e2eed33e6c2953fe7ccde9f
+X - Add version number to About
 
 # Naming:
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
-- rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
+- rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 - Make hinted text have lighter grey colour at new note creation
 - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 
@@ -57,7 +57,8 @@ X - Add version number to About f4d3ca22d5b9d0d91e2eed33e6c2953fe7ccde9f
 - show total notes count (+ on folders?)
 
 # Appearance:
-- darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
+- darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color; and to make other scrollbars always visible
+")
 - make save button bigger (disable auto-save?)
 
 ## Commands:
