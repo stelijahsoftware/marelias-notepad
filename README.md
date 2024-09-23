@@ -45,6 +45,7 @@ X - Add version number to About f4d3ca22d5b9d0d91e2eed33e6c2953fe7ccde9f
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 - rename to mar-elias notes (see 5a3cd97b05e1efb958bf0885463323de17e6a585 and fadfbde3fa08cc4001d7e7ddc17e8ccf79bc938d)
 - Make hinted text have lighter grey colour at new note creation
+- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 
 # Organisation:
 [blocked] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
@@ -59,14 +60,14 @@ X - Add version number to About f4d3ca22d5b9d0d91e2eed33e6c2953fe7ccde9f
 - darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in 2bfc4d86d3a06eb0390e6b9e6daa20e723cbc079)
 - make save button bigger (disable auto-save?)
 
-# Commands:
+## Commands:
 ./gradlew build --warning-mode all
 
 ./gradlew clean
 ./gradlew build
 
-// Deploy apk (release):
-# To edit the app version, edit build.gradle inside app/
-Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'DefaultRelease'
-# then find the apk here:
-notepad2-markor/app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk
+## Deploy apk (release):
+To edit the app version, edit build.gradle inside app/
+`Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'DefaultRelease'`
+then find the apk here:
+`notepad2-markor/app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk`
