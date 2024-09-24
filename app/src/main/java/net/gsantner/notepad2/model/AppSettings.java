@@ -558,11 +558,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public boolean isMultiWindowEnabled() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            return getBool(R.string.pref_key__is_multi_window_enabled, true);
-//        } else {
-            return false;
-//        }
+        return false;
     }
 
     public boolean isSearchQueryCaseSensitive() {
