@@ -14,8 +14,8 @@ import android.content.Context;
 
 import androidx.documentfile.provider.DocumentFile;
 
-import net.gsantner.markor.frontend.MarkorDialogFactory;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.frontend.MarkorDialogFactory;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
 
 import java.io.File;
@@ -28,15 +28,15 @@ import java.util.Stack;
 
 public class WrMarkorSingleton {
 
-    private static WrMarkorSingleton markorSingletonInstance = null;
+    private static WrMarkorSingleton notepad2SingletonInstance = null;
     private static File notesLastDirectory = null;
 
     public static WrMarkorSingleton getInstance() {
-        if (markorSingletonInstance == null) {
-            markorSingletonInstance = new WrMarkorSingleton();
+        if (notepad2SingletonInstance == null) {
+            notepad2SingletonInstance = new WrMarkorSingleton();
         }
 
-        return markorSingletonInstance;
+        return notepad2SingletonInstance;
     }
 
     public File getNotesLastDirectory() {

@@ -20,7 +20,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="confirm_overwrite">Confirm Overwrite</string>
     <string name="file_already_exists_overwerite">File already exists, overwrite?</string>
     <string name="browse_filesystem">Browse filesystem</string>
-    <string name="title">Title</string>
+    <string name="title">yyyyMMdd_hhMMss</string>
     <string name="empty_directory">Empty directory</string>
     <string name="enter_name_of_folder">Enter the name of your folder</string>
     <string name="create_folder">Create Folder</string>
@@ -471,6 +471,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="error_could_not_open_file">Error: Could not open file.</string>
     <string name="document_error_clip">Error encountered: Text copied to clipboard.</string>
     <string name="wont_save_min_length">Files with fewer than %d characters not saved automatically in order to prevent data loss.</string>
-    <string name="advanced_filtering_help"><![CDATA[<small><a href="https://www.github.com/gsantner/markor/discussions/1940">Advanced filtering syntax</a></small>]]></string>
+    <string name="advanced_filtering_help"><![CDATA[<small><a href="https://www.github.com/gsantner/notepad2/discussions/1940">Advanced filtering syntax</a></small>]]></string>
     <string name="filter">Filter</string>
 </resources>

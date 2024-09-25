@@ -1,2 +1,2 @@
-include(':app:thirdparty-lib-src:QuadFlask-colorpicker')
 include ':app'
+rootProject.name = "notepad2"

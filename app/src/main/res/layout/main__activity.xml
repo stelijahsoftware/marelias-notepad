@@ -17,18 +17,18 @@
     android:background="@color/background"
     android:fitsSystemWindows="true"
     android:theme="@style/AppTheme.Unified"
-    tools:context="net.gsantner.markor.activity.MainActivity">
+    tools:context="net.gsantner.notepad2.activity.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="45dp"
         android:theme="@style/AppTheme.Light.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="46dp"
             android:background="?attr/colorPrimary"
             android:theme="@style/LightTextToolbarOverlay"
             app:subtitleTextColor="@color/secondary_text"
@@ -42,8 +42,8 @@
         android:id="@+id/main__view_pager_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_marginBottom="?attr/actionBarSize" />
+        android:layout_marginTop="7mm"
+        android:layout_marginBottom="0mm" />
 
     <!--suppress AndroidUnknownAttribute -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -53,21 +53,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/create_new_file_or_folder"
         android:src="@drawable/ic_add_white_24dp"
         app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_bar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="start|bottom"
-        android:background="@color/primary"
-        app:itemBackground="@color/primary"
-        app:itemIconTint="@drawable/bottomnav_color_selector"
-        app:itemTextColor="@drawable/bottomnav_color_selector"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/main__bottom_nav" />
 
 </FrameLayout>

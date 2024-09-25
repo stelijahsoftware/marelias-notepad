@@ -15,17 +15,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/AppTheme.Unified"
-    tools:context="net.gsantner.markor.activity.DocumentActivity">
+    tools:context="net.gsantner.notepad2.activity.DocumentActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="7mm"
         android:theme="@style/AppTheme.Light.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="7mm"
             android:background="?attr/colorPrimary"
             android:theme="@style/LightTextToolbarOverlay">
 

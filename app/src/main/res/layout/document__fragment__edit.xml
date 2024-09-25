@@ -15,18 +15,18 @@
     android:background="@android:color/transparent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context="net.gsantner.markor.activity.DocumentEditAndViewFragment"
+    tools:context="net.gsantner.notepad2.activity.DocumentEditAndViewFragment"
     tools:showIn="@layout/document__activity">
 
-    <net.gsantner.markor.frontend.DraggableScrollbarScrollView
+    <net.gsantner.notepad2.frontend.DraggableScrollbarScrollView
         android:id="@+id/document__fragment__edit__content_editor__scrolling_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/textactions_bar_height"
+        android:layout_marginBottom="0mm"
         android:background="@android:color/transparent"
         android:fillViewport="true">
 
-        <net.gsantner.markor.frontend.textview.HighlightingEditor
+        <net.gsantner.notepad2.frontend.textview.HighlightingEditor
             android:id="@+id/document__fragment__edit__highlighting_editor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,31 +36,16 @@
             android:imeOptions="flagNoExtractUi"
             android:inputType="textMultiLine|textCapSentences"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingTop="0mm"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/editor_bottom_margin"
+            android:paddingBottom="0mm"
             android:scrollbars="none"
             android:textCursorDrawable="@drawable/cursor_accent" />
 
-    </net.gsantner.markor.frontend.DraggableScrollbarScrollView>
+    </net.gsantner.notepad2.frontend.DraggableScrollbarScrollView>
 
-    <HorizontalScrollView
-        android:id="@+id/document__fragment__edit__text_actions_bar__scrolling_parent"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/textactions_bar_height"
-        android:layout_gravity="bottom"
-        android:background="@color/textActionBarColor"
-        android:paddingTop="4dp">
 
-        <LinearLayout
-            android:id="@+id/document__fragment__edit__text_actions_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/textActionBarColor"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
-
-    <net.gsantner.markor.web.DraggableScrollbarWebView
+    <net.gsantner.notepad2.web.DraggableScrollbarWebView
         android:id="@+id/document__fragment_view_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

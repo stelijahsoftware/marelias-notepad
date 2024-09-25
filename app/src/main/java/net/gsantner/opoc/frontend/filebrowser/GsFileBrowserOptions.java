@@ -56,8 +56,8 @@ public class GsFileBrowserOptions {
                 doSelectMultiple = false;
 
         public boolean mustStartWithRootFolder = true,
-                sortFolderFirst = true,
-                sortReverse = false,
+                sortFolderFirst = false,
+                sortReverse = true,
                 descModtimeInsteadOfParent = false,
                 filterShowDotFiles = true;
 
@@ -116,6 +116,10 @@ public class GsFileBrowserOptions {
         public int secondaryTextColor = 0;
         @ColorRes
         public int titleTextColor = 0;
+        @ColorRes
+        public int fileColor = 0;
+        @ColorRes
+        public int folderColor = 0;
 
         public Collection<File> favouriteFiles, recentFiles, popularFiles = null;
         public GsCallback.a1<CharSequence> setTitle = null, setSubtitle = null;

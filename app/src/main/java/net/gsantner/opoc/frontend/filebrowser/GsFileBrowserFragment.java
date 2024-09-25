@@ -38,15 +38,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import net.gsantner.markor.ApplicationObject;
-import net.gsantner.markor.R;
-import net.gsantner.markor.format.FormatRegistry;
-import net.gsantner.markor.frontend.FileInfoDialog;
-import net.gsantner.markor.frontend.MarkorDialogFactory;
-import net.gsantner.markor.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.gsantner.markor.frontend.filesearch.FileSearchEngine;
-import net.gsantner.markor.model.AppSettings;
-import net.gsantner.markor.util.MarkorContextUtils;
+import net.gsantner.notepad2.ApplicationObject;
+import net.gsantner.notepad2.R;
+import net.gsantner.notepad2.format.FormatRegistry;
+import net.gsantner.notepad2.frontend.FileInfoDialog;
+import net.gsantner.notepad2.frontend.MarkorDialogFactory;
+import net.gsantner.notepad2.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.gsantner.notepad2.frontend.filesearch.FileSearchEngine;
+import net.gsantner.notepad2.model.AppSettings;
+import net.gsantner.notepad2.util.MarkorContextUtils;
 import net.gsantner.opoc.frontend.base.GsFragmentBase;
 import net.gsantner.opoc.model.GsSharedPreferencesPropertyBackend;
 import net.gsantner.opoc.util.GsCollectionUtils;
@@ -252,9 +252,9 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             _fragmentMenu.findItem(R.id.action_move_selected_items).setVisible((selMulti1 || selMultiMore) && selWritable && !selInVirtualDirectory && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
             _fragmentMenu.findItem(R.id.action_copy_selected_items).setVisible((selMulti1 || selMultiMore) && selWritable && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
             _fragmentMenu.findItem(R.id.action_share_files).setVisible(selFilesOnly && (selMulti1 || selMultiMore) && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
-            _fragmentMenu.findItem(R.id.action_go_to).setVisible(!_filesystemViewerAdapter.areItemsSelected());
+//            _fragmentMenu.findItem(R.id.action_go_to).setVisible(!_filesystemViewerAdapter.areItemsSelected());
             _fragmentMenu.findItem(R.id.action_sort).setVisible(!_filesystemViewerAdapter.areItemsSelected());
-            _fragmentMenu.findItem(R.id.action_import).setVisible(!_filesystemViewerAdapter.areItemsSelected() && !_filesystemViewerAdapter.isCurrentFolderVirtual());
+//            _fragmentMenu.findItem(R.id.action_import).setVisible(!_filesystemViewerAdapter.areItemsSelected() && !_filesystemViewerAdapter.isCurrentFolderVirtual());
             _fragmentMenu.findItem(R.id.action_settings).setVisible(!_filesystemViewerAdapter.areItemsSelected());
             _fragmentMenu.findItem(R.id.action_favourite).setVisible(selMultiAny && !allSelectedFav);
             _fragmentMenu.findItem(R.id.action_favourite_remove).setVisible(selMultiAny && allSelectedFav);
@@ -338,11 +338,11 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             item.setChecked(_dopt.sortFolderFirst);
         }
         if ((item = menu.findItem(R.id.action_sort_reverse)) != null) {
-            item.setChecked(_dopt.sortReverse);
+            item.setChecked(_dopt.sortReverse); // Elyahw
         }
-        if ((item = menu.findItem(R.id.action_show_dotfiles)) != null) {
-            item.setChecked(_dopt.filterShowDotFiles);
-        }
+//        if ((item = menu.findItem(R.id.action_show_dotfiles)) != null) {
+//            item.setChecked(_dopt.filterShowDotFiles);
+//        }
 
         if ((item = menu.findItem(R.id.action_sort_by_name)) != null && GsFileUtils.SORT_BY_NAME.equals(_dopt.sortByType)) {
             item.setChecked(true);
@@ -354,13 +354,13 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             item.setChecked(true);
         }
 
-        List<Pair<File, String>> sdcardFolders = _cu.getAppDataPublicDirs(getContext(), false, true, true);
-        int[] sdcardResIds = {R.id.action_go_to_appdata_sdcard_1, R.id.action_go_to_appdata_sdcard_2};
-        for (int i = 0; i < sdcardResIds.length && i < sdcardFolders.size(); i++) {
-            item = menu.findItem(sdcardResIds[i]);
-            item.setTitle(item.getTitle().toString().replaceFirst("[)]\\s*$", " " + sdcardFolders.get(i).second) + ")");
-            item.setVisible(true);
-        }
+//        List<Pair<File, String>> sdcardFolders = _cu.getAppDataPublicDirs(getContext(), false, true, true);
+//        int[] sdcardResIds = {R.id.action_go_to_appdata_sdcard_1, R.id.action_go_to_appdata_sdcard_2};
+//        for (int i = 0; i < sdcardResIds.length && i < sdcardFolders.size(); i++) {
+//            item = menu.findItem(sdcardResIds[i]);
+//            item.setTitle(item.getTitle().toString().replaceFirst("[)]\\s*$", " " + sdcardFolders.get(i).second) + ")");
+//            item.setVisible(true);
+//        }
 
         _fragmentMenu = menu;
         updateMenuItems();
@@ -411,16 +411,12 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 reloadCurrentFolder();
                 return true;
             }
-            case R.id.action_show_dotfiles: {
-                item.setChecked(!item.isChecked());
-                _dopt.filterShowDotFiles = _appSettings.setFileBrowserFilterShowDotFiles(item.isChecked());
-                reloadCurrentFolder();
-                return true;
-            }
-            case R.id.action_import: {
-                showImportDialog();
-                return true;
-            }
+//            case R.id.action_show_dotfiles: {
+//                item.setChecked(!item.isChecked());
+//                _dopt.filterShowDotFiles = _appSettings.setFileBrowserFilterShowDotFiles(item.isChecked());
+//                reloadCurrentFolder();
+//                return true;
+//            }
             case R.id.action_search: {
                 executeSearchAction();
                 return true;
@@ -431,20 +427,20 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 reloadCurrentFolder();
                 return true;
             }
-            case R.id.action_go_to_home:
-            case R.id.action_go_to_popular_files:
-            case R.id.action_go_to_recent_files:
-            case R.id.action_go_to_favourite_files:
-            case R.id.action_go_to_appdata_private:
-            case R.id.action_go_to_storage:
-            case R.id.action_go_to_appdata_sdcard_1:
-            case R.id.action_go_to_appdata_sdcard_2:
-            case R.id.action_go_to_appdata_public: {
-                final File folder = _appSettings.getFolderToLoadByMenuId(_id);
-                _filesystemViewerAdapter.setCurrentFolder(folder);
-                Toast.makeText(getContext(), folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
-                return true;
-            }
+//            case R.id.action_go_to_popular_files:
+//            case R.id.action_go_to_recent_files:
+//            case R.id.action_go_to_favourite_files:
+//            case R.id.action_go_to_appdata_private:
+//            case R.id.action_go_to_storage:
+//            case R.id.action_go_to_appdata_sdcard_1:
+//            case R.id.action_go_to_appdata_sdcard_2:
+//            case R.id.action_go_to_appdata_public:
+//            case R.id.action_go_to_home: {
+//                final File folder = _appSettings.getFolderToLoadByMenuId(_id);
+//                _filesystemViewerAdapter.setCurrentFolder(folder);
+//                Toast.makeText(getContext(), folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+//                return true;
+//            }
             case R.id.action_favourite: {
                 if (_filesystemViewerAdapter.areItemsSelected()) {
                     _dopt.favouriteFiles = GsCollectionUtils.union(_dopt.favouriteFiles, currentSelection);
@@ -594,29 +590,29 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
     }
 
     private void showImportDialog() {
-        MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
-            @Override
-            public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
-                importFile(file);
-                reloadCurrentFolder();
-            }
-
-            @Override
-            public void onFsViewerMultiSelected(String request, File... files) {
-                for (File file : files) {
-                    importFile(file);
-                }
-                reloadCurrentFolder();
-            }
-
-            @Override
-            public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
-                dopt.titleText = R.string.import_from_device;
-                dopt.doSelectMultiple = true;
-                dopt.doSelectFile = true;
-                dopt.doSelectFolder = true;
-            }
-        }, getChildFragmentManager(), getActivity(), null);
+//        MarkorFileBrowserFactory.showFileDialog(new GsFileBrowserOptions.SelectionListenerAdapter() {
+//            @Override
+//            public void onFsViewerSelected(String request, File file, final Integer lineNumber) {
+//                importFile(file);
+//                reloadCurrentFolder();
+//            }
+//
+//            @Override
+//            public void onFsViewerMultiSelected(String request, File... files) {
+//                for (File file : files) {
+//                    importFile(file);
+//                }
+//                reloadCurrentFolder();
+//            }
+//
+//            @Override
+//            public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
+//                dopt.titleText = R.string.import_from_device;
+//                dopt.doSelectMultiple = true;
+//                dopt.doSelectFile = true;
+//                dopt.doSelectFolder = true;
+//            }
+//        }, getChildFragmentManager(), getActivity(), null);
     }
 
     private void importFile(final File file) {

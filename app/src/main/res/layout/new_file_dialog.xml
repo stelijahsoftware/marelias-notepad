@@ -46,7 +46,7 @@
 
             <EditText
                 android:id="@+id/new_file_dialog__name"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="70"
@@ -54,26 +54,26 @@
                 android:importantForAutofill="no"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textSize="15sp"
+                android:textSize="20sp"
                 tools:ignore="HardcodedText,TextFields"/>
 
-            <EditText
-                android:id="@+id/new_file_dialog__ext"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_weight="30"
-                android:gravity="end"
-                android:hint=".md"
-                android:importantForAutofill="no"
-                android:inputType="text|textNoSuggestions"
-                android:lines="1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textSize="15sp"
-                tools:ignore="HardcodedText"
-                tools:text=".md" />
+<!--            <EditText-->
+<!--                android:id="@+id/new_file_dialog__ext"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:layout_weight="30"-->
+<!--                android:gravity="end"-->
+<!--                android:hint=".md"-->
+<!--                android:importantForAutofill="no"-->
+<!--                android:inputType="text|textNoSuggestions"-->
+<!--                android:lines="1"-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Caption"-->
+<!--                android:textSize="15sp"-->
+<!--                tools:ignore="HardcodedText"-->
+<!--                tools:text=".md" />-->
         </LinearLayout>
 
 
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:hint="{{title}}"
+                android:hint="`yyyyMMdd-HHmmSS`-{{title}}"
                 android:importantForAutofill="no"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -124,58 +124,58 @@
         </RelativeLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@string/type"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:ellipsize="end"-->
+<!--            android:lines="1"-->
+<!--            android:text="@string/type"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />-->
 
-        <view class="net.gsantner.markor.frontend.NewFileDialog$ReselectSpinner"
-            android:id="@+id/new_file_dialog__type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawSelectorOnTop="true"/>
+<!--        <view class="net.gsantner.notepad2.frontend.NewFileDialog$ReselectSpinner"-->
+<!--            android:id="@+id/new_file_dialog__type"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawSelectorOnTop="true"/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="@string/template"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:ellipsize="end"-->
+<!--            android:lines="1"-->
+<!--            android:text="@string/template"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />-->
 
-        <Spinner
-            android:id="@+id/new_file_dialog__template"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawSelectorOnTop="true"/>
+<!--        <Spinner-->
+<!--            android:id="@+id/new_file_dialog__template"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawSelectorOnTop="true"/>-->
 
-        <CheckBox
-            android:id="@+id/new_file_dialog__encrypt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/encrypt_file_content" />
+<!--        <CheckBox-->
+<!--            android:id="@+id/new_file_dialog__encrypt"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="@string/encrypt_file_content" />-->
 
-        <CheckBox
-            android:id="@+id/new_file_dialog__utf8_bom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/utf8_with_bom" />
+<!--        <CheckBox-->
+<!--            android:id="@+id/new_file_dialog__utf8_bom"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:text="@string/utf8_with_bom" />-->
 
         <TextView
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/folder_is_created_without_extension" />
+            android:text="- Folder creation ignores format and extension" />
 
         <TextView
             style="@style/TextAppearance.AppCompat.Caption"
