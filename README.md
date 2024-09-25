@@ -8,7 +8,7 @@ Apache 2.0 license (see [LICENSE.txt](./LICENSE.txt); all licenses in the origin
 
 A txt notes editor which is a simplified and heavily trimmed down and improved light version of [Markor](https://www.github.com/gsantner/markor).
 
-### Forked starting from (if you would like to pull new commits, start from Jul 16, 2024 d24c66e93a1a6162c796c8a47acf0621012660c8):
+### Forked starting from (if you would like to pull new commits, start from 25-May-2024, last commit included is a2afb69bc6edcf9ee35d33060a02ae7cc0292847):
 
 # TODO:
 X - Remove all occurrences of:
