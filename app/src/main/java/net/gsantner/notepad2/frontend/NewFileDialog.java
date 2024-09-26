@@ -201,24 +201,24 @@ public class NewFileDialog extends DialogFragment {
             return TextViewUtils.interpolateSnippet(format, title, "").trim();
         };
         // elyahw merge conflict: new:
-        final @ColorInt int color = titleEdit.getCurrentTextColor();
-        titleEdit.addTextChangedListener(new GsTextWatcherAdapter() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                try {
-                    final String title = getTitle.callback();
-                    final String ext = extEdit.getText().toString().trim();
-                    final String fn = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ext);
-                    if (new File(basedir, fn).exists()) {
-                        titleEdit.setTextColor(0xffff0000);
-                    } else {
-                        titleEdit.setTextColor(color);
-                    }
-                } catch (Exception ignored) {
-                    titleEdit.setTextColor(color);
-                }
-            }
-        });
+//        final @ColorInt int color = titleEdit.getCurrentTextColor();
+//        titleEdit.addTextChangedListener(new GsTextWatcherAdapter() {
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                try {
+//                    final String title = getTitle.callback();
+//                    final String ext = extEdit.getText().toString().trim();
+//                    final String fn = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ext);
+//                    if (new File(basedir, fn).exists()) {
+//                        titleEdit.setTextColor(0xffff0000);
+//                    } else {
+//                        titleEdit.setTextColor(color);
+//                    }
+//                } catch (Exception ignored) {
+//                    titleEdit.setTextColor(color);
+//                }
+//            }
+//        });
 
         final MarkorContextUtils cu = new MarkorContextUtils(getContext());
         dialogBuilder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> dialogInterface.dismiss());
@@ -249,7 +249,7 @@ public class NewFileDialog extends DialogFragment {
             final FormatRegistry.Format fmt = formats.get(0);
 //            appSettings.setTypeTemplate(fmt.format, (String) templateSpinner.getSelectedItem());
             appSettings.setNewFileDialogLastUsedType(fmt.format);
-            appSettings.setNewFileDialogLastUsedExtension(extEdit.getText().toString().trim());
+//            appSettings.setNewFileDialogLastUsedExtension(extEdit.getText().toString().trim());
 
             if (!titleFormat.isEmpty()) {
                 appSettings.saveTitleFormat(titleFormat, MAX_TITLE_FORMATS);

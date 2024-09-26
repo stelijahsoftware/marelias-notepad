@@ -524,34 +524,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 .setUiReferences(activity, _hlEditor, _webView);
 //                .recreateActionButtons(_textActionsBar, _isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
         updateMenuToggleStates(_format.getFormatId());
-        showHideActionBar();
-    }
-
-    private void showHideActionBar() {
-        final Activity activity = getActivity();
-        if (activity != null) {
-            final View bar = activity.findViewById(R.id.document__fragment__edit__text_actions_bar);
-            final View parent = activity.findViewById(R.id.document__fragment__edit__text_actions_bar__scrolling_parent);
-            final View editScroll = activity.findViewById(R.id.document__fragment__edit__content_editor__scrolling_parent);
-            final View viewScroll = activity.findViewById(R.id.document__fragment_view_webview);
-
-            if (bar != null && parent != null && editScroll != null && viewScroll != null) {
-                final boolean hide = _textActionsBar.getChildCount() == 0;
-                parent.setVisibility(hide ? View.GONE : View.VISIBLE);
-                final int marginBottom = hide ? 0 : (int) getResources().getDimension(R.dimen.textactions_bar_height);
-                setMarginBottom(editScroll, marginBottom);
-                setMarginBottom(viewScroll, marginBottom);
-
-            }
-        }
-    }
-
-    private void setMarginBottom(final View view, final int marginBottom) {
-        final ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-        if (params != null) {
-            params.setMargins(params.leftMargin, params.topMargin, params.rightMargin, marginBottom);
-            view.setLayoutParams(params);
-        }
     }
 
     private void updateMenuToggleStates(final int selectedFormatActionId) {

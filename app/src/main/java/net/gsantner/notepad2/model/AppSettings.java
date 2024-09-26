@@ -369,7 +369,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
                 return _default;
             }
             final int sid = _cu.getResId(_context, GsContextUtils.ResType.STRING, value);
-            return sid != FormatRegistry.FORMAT_UNKNOWN ? sid : _default;
+            return FormatRegistry.FORMAT_PLAIN; // sid != FormatRegistry.FORMAT_PLAIN ? sid : _default;
         }
     }
 
@@ -746,12 +746,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public int getNewFileDialogLastUsedType() {
-        try {
-            final String typeStr = getString(R.string.pref_key__new_file_dialog_lastused_type, "");
-            return _cu.getResId(_context, GsContextUtils.ResType.STRING, typeStr);
-        } catch (ClassCastException e) {
-            return FormatRegistry.FORMAT_MARKDOWN;
-        }
+            return FormatRegistry.FORMAT_PLAIN;
     }
 
     public void setNewFileDialogLastUsedType(final int format) {

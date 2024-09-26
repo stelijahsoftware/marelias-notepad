@@ -200,7 +200,7 @@ public abstract class TextConverterBase {
     }
 
     public boolean isFileOutOfThisFormat(final @NonNull File file) {
-        final String name = file.getName().toLowerCase().replace(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION, "");
+        final String name = file.getName().toLowerCase();
         final String ext = name.replaceAll(".*\\.", ".");
         return isFileOutOfThisFormat(file, name, ext);
     }
