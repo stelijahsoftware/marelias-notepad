@@ -94,12 +94,11 @@ public class DocumentActivity extends MarkorBaseActivity {
         } else {
             intent = new Intent(activity, DocumentActivity.class);
 
-            if (!(activity instanceof DocumentActivity) &&
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
-                as.isMultiWindowEnabled()
-            ) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-            }
+            // elyahw multiple tasks here..
+//            if (!(activity instanceof DocumentActivity) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && as.isMultiWindowEnabled())
+//            {
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+//            }
 
             if (lineNumber != null) {
                 intent.putExtra(Document.EXTRA_FILE_LINE_NUMBER, lineNumber);
