@@ -1,0 +1,43 @@
+try cherry picking the other way around
+
+* cdd623ef (origin/master, origin/HEAD, master) Improvements for HeadlineDialog scroll restoration and copy code block button (PR #2406)
+* c4458214 Improvements for the action buttons (closes #2386, PR #2388)
+* d161e62d Create launcher widget for todo (closes #1997, PR #2379)
+X - IGNORED * f31cfa73 Update translations (PR #2418)
+X - * 40932ca4 Disable multi-window settings option by default (PR #2420)
+X - * dcd77e23 Fixed checking for indices (#2421)
+X - * 169664fc Fix how multiple windows are launched (PR #2419)
+X - * d4183ef7 Add Em Space special key for paragraph indent (#2400)
+X - IGNORED * ea066b6a GitHub Actions CI configuration - upgrade upload step, fixes CI build error (PR #2416 by @gsantner)
+X - IGNORED * 8ac73f8a Updated README with dark/light todo.txt format images (PR #2411)
+X - * c5fe5295 Navigation and highlighting improvements (PR #2377 closes #2409 closes #2410)
+X - IGNORED * ef1e024a Update translations (PR #2413)
+X - * 92b30e11 Filebrowser: Fix file modification time not reloaded, closes #2196 (PR #2385)
+X - IGNORED * 9cf3f929 Update translations (PR #2376)
+X - IGNORED * 0dd9afa8 Minor doc improvements
+X - * e8acb720 Fix inject-head js option not applying, closes #2365, closes #2380 (PR #2383)
+X - * ca79c62c Add usual yyyy-MM-dd newfile default option
+X - IGNORED * a3cc2146 Markor v2.12.5 (154)
+X - * bc73060d DocumentEditAndViewFragment: Fix all warnings, especially related to null pointers
+X - * 3a506e28 Zim: Fix link/attachment format (PR #2147 by @mehw)
+X - * 80e813e0 Add history scroll restoration for scroll views (#2366)
+X - * 57aaf0f6 Various bugfixes (anchor/toc jumping #2364, snippets folder #2369, wikitext newfile #2362, virtual directory browser #2350) (PR #2370 by @hardhard1)
+X - IGNORED * be4ab7f7 Update translations(#2368)
+X - * 19e0cdc4 New Color picker, bump Android minSdk from 16 to 18, closes #1428 (PR #2203 by @halfdane)
+X - * 9f4f6f59 Latest Android SDK/Gradle fixes, by @gsantner #2360
+X - IGNORED * 446d4f9b Markor v2.12.4 (153)
+X - IGNORED * 885f394f Add links to changelog
+X - * d8cd5904 SearchReplace dialog: Use full width, closes #2367, by @gsantner
+X - * dab3aa8f ShareInto: Fix crash when _editor is null
+X - IGNORED * 3f067938 Update translations (PR #2356)
+X - * c4ba9e7b Appearance improvements (PR #2359 closes #2358)
+X - * be11d3db Fix notebook directory not being created, fix NewFileDialog when no last used type, by @gsantner closes #2360
+X - * 5de71d5e Project configuration: upgrade to Android SDK 35, Gradle 8.7, AGP 8.5, Build tools 35, by @gsantner, (closes #2346, closes #2305 PR #2355)
+X - IGNORED * 275f488e Markor v2.12.3 (152)
+X - IGNORED * d49bbc30 Update translations (PR #2349)
+X - * c72856d2 Add ACTION_CREATE_NOTE intent filter, closes #2320, by @gsantner
+X - * ac7d78a8 Highlight file when going back to filebrowser (PR #2351)
+X - * 321f9b7e View-Mode: Prism codeblock copy to clipboard button, update Mermaid and dark mode, closes #2336 closes #2335  (#2345)
+X - * 0508b4b8 File browser: Make Folder and file icons visually better distinct (outlined icon for file),  (PR by @wshoy #2331 fixes #2186)
+X - * 92744b3c Jump to correct heading via id, other tweaks, bugfixes (PR #2307 by @harshad1, fixes #2312 #2313)
+X - IGNORED * d24c66e9 Update translations (PR #2317)
