@@ -79,36 +79,6 @@
             android:name=".activity.StoragePermissionActivity"
             android:label="@string/permissions"
             android:parentActivityName=".activity.MainActivity" />
-        <activity
-            android:name=".activity.ActionButtonSettingsActivity"
-            android:parentActivityName=".activity.SettingsActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.SettingsActivity" />
-        </activity>
-        <activity
-            android:name="other.writeily.widget.WrWidgetConfigure"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
-
-        <receiver
-            android:name="other.writeily.widget.WrMarkorWidgetProvider"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/notepad2_widget" />
-        </receiver>
-
-        <service
-            android:name="other.writeily.widget.WrFilesWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -1110,10 +1080,6 @@
         <package android:name="org.mozilla.fennec_aurora" />
         <package android:name="org.mozilla.klar" />
         <package android:name="org.mozilla.focus" />
-
-        <intent>
-            <action android:name="android.media.action.IMAGE_CAPTURE" />
-        </intent>
 
         <intent>
             <action android:name="android.intent.action.VIEW" />
