@@ -11,11 +11,7 @@ A txt notes editor which is a simplified and heavily trimmed down and improved l
 ### Forked starting from (if you would like to pull new commits, start from 25-May-2024, last commit included is a2afb69bc6edcf9ee35d33060a02ae7cc0292847):
 
 # TODO:
-X - Remove all occurrences of:
-X - audio
-X - epub
-X - ascii
-X - csv
+X - Remove all occurrences of: audio, epub, ascii, csv
 X - See todos from Snotepad.
 X - Fix: search when launched from inside a file (breaks file search)
 X - call them notes 1 & notes 2
@@ -40,25 +36,22 @@ X - add to highlighting: [h] [m] [l]
 X - Disable highlighting inside other highlights (see commits ending in)
 X - convert local file settings to global + set defaults
 X - Add version number to About
+X - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
+X - Pull any improvements from latest version (single process implemented here https://github.com/gsantner/markor/commit/c5fe529515830dd16ba5dea6e14eadd016b1a1bf); start pulling from current state (see reference in project information; update it when pulling new changes)
 
 # Naming:
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 - Make hinted text have lighter grey colour at new note creation
-- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977 + put inside try/catch
 
 # Organisation:
-[blocked] - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
-
-[m] - Pull any improvements from latest version (single process implemented here https://github.com/gsantner/markor/commit/c5fe529515830dd16ba5dea6e14eadd016b1a1bf); start pulling from current state (see reference in project information; update it when pulling new changes)
-[h] - CONTINUE WORKING FROM THE BRANCH [pull_updates_from_master]
-
 - highlight briefly when going back (see Merge requests on github)
 - show total notes count (+ on folders?)
+- publish to gplay
 
 # Appearance:
-- darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color; and to make other scrollbars always visible
-")
+- darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color; and to make other scrollbars always visible")
 - make save button bigger (disable auto-save?)
 
 ## Commands:
