@@ -89,9 +89,9 @@ android {
         abortOnError false
         disable 'MissingTranslation', 'InvalidPackage', 'ObsoleteLintCustomCheck', 'DefaultLocale', 'UnusedAttribute', 'VectorRaster', 'InflateParams', 'IconLocation', 'UnusedResources', 'TypographyEllipsis'
     }
-    buildFeatures {
-        buildConfig true
-    }
+//    buildFeatures {
+//        buildConfig true
+//    }
 
 }
 
@@ -153,12 +153,12 @@ dependencies {
     }
 
     // Processors
-    def anpros = []
-    for (anpro in anpros) {
-        if (enable_plugin_kotlin) {
-            kapt anpro
-        } else {
-            annotationProcessor anpro
-        }
-    }
+//    def anpros = []
+//    for (anpro in anpros) {
+//        if (enable_plugin_kotlin) {
+//            kapt anpro
+//        } else {
+//            annotationProcessor anpro
+//        }
+//    }
 }
