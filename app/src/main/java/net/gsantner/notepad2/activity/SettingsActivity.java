@@ -246,7 +246,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                     return true;
                 }
                 case R.string.pref_key__more_info__source_code: {
-                    _cu.openWebpageInExternalBrowser(getContext(), "https://filter.mar-elias.com/");
+                    _cu.openWebpageInExternalBrowser(getContext(), "https://notepad.mar-elias.com/");
                     return true;
                 }
             }
