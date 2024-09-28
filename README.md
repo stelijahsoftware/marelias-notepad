@@ -10,7 +10,7 @@ A txt notes editor which is a simplified and heavily trimmed down and improved l
 
 ### Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
-# TODO:
+# Changelog:
 X - Remove all occurrences of: audio, epub, ascii, csv
 X - See todos from Snotepad.
 X - Fix: search when launched from inside a file (breaks file search)
@@ -41,28 +41,30 @@ X - Pull any improvements from latest version (single process implemented here h
 X - Add an about screen that shows the original developer (+ a link to his github) + license name + my own link
 X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 
-# Naming:
+
+# TODO:
+### Naming:
 [h] - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 
-# Organisation:
+### Organisation:
 - highlight briefly when going back (see Merge requests on github)
 [h] - show total notes count (+ on folders?)
 [m] - publish to gplay
 
-# Appearance:
+### Appearance:
 - darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
 - make save button bigger (disable auto-save?)
 - Make hinted text have lighter grey colour at new note creation
 
-## Commands:
+# Build Commands:
 ./gradlew build --warning-mode all
 
 ./gradlew clean
 ./gradlew build
 
-## Deploy apk (release):
-To edit the app version, edit build.gradle inside app/
+# Deploy apk (release):
+To increase app version, edit build.gradle inside app/
 `Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'DefaultRelease'`
 then find the apk here:
-`notepad2-markor/app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk`
+`app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk`
