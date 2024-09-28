@@ -41,17 +41,17 @@ X - Pull any improvements from latest version (single process implemented here h
 
 # Naming:
 - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
-- rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 - Make hinted text have lighter grey colour at new note creation
-- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977 + put inside try/catch
+- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+[m] - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 
 # Organisation:
 - highlight briefly when going back (see Merge requests on github)
 - show total notes count (+ on folders?)
-- publish to gplay
+[m] - publish to gplay
 
 # Appearance:
-- darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color; and to make other scrollbars always visible")
+- darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
 - make save button bigger (disable auto-save?)
 
 ## Commands:
