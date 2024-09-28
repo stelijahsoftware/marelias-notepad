@@ -73,23 +73,15 @@ import java.util.regex.Pattern;
 public abstract class ActionButtonBase {
     private Activity _activity;
     private MarkorContextUtils _cu;
-//    private final int _buttonHorizontalMargin;
-    private String _lastSnip;
 
     protected HighlightingEditor _hlEditor;
     protected WebView _webView;
     protected Document _document;
     protected AppSettings _appSettings;
-    protected int _indent;
 
     private final GsSearchOrCustomTextDialog.DialogState _specialKeyDialogState = new GsSearchOrCustomTextDialog.DialogState();
 
     public static final String ACTION_ORDER_PREF_NAME = "action_order";
-    private static final String ORDER_SUFFIX = "_order";
-    private static final String DISABLED_SUFFIX = "_disabled";
-
-    private static final Pattern UNTRIMMED_TEXT = Pattern.compile("(\\s*)(.*?)(\\s*)", Pattern.DOTALL);
-
 
     // Override to implement custom search action
     public boolean onSearch() {
@@ -153,27 +145,6 @@ public abstract class ActionButtonBase {
         return new ArrayList<>(unique.values());
     }
 
-    /**
-     * Get string for every ActionItem.keyId defined by getActiveActionList
-     *
-     * @return List or resource strings
-     */
-    public List<String> getActiveActionKeys() {
-        return GsCollectionUtils.map(getActionList(), item -> rstr(item.keyId));
-    }
-
-    private void saveActionPreference(final String suffix, final Collection<String> values) {
-        final SharedPreferences settings = getContext().getSharedPreferences(ACTION_ORDER_PREF_NAME, Context.MODE_PRIVATE);
-        final String formatKey = rstr(getFormatActionsKey()) + suffix;
-        settings.edit().putString(formatKey, TextUtils.join(",", values)).apply();
-    }
-
-    private List<String> loadActionPreference(final String suffix) {
-        String formatKey = rstr(getFormatActionsKey()) + suffix;
-        SharedPreferences settings = getContext().getSharedPreferences(ACTION_ORDER_PREF_NAME, Context.MODE_PRIVATE);
-        String combinedKeys = settings.getString(formatKey, null);
-        return combinedKeys != null ? Arrays.asList(combinedKeys.split(",")) : Collections.emptyList();
-    }
 
     public static class ReplacePattern {
         public final Matcher matcher;
@@ -205,61 +176,6 @@ public abstract class ActionButtonBase {
             this(searchPattern, replacePattern, false);
         }
 
-        public ReplacePattern(String searchPattern, String replacePattern) {
-            this(Pattern.compile(searchPattern), replacePattern, false);
-        }
-    }
-
-    /**
-     * Runs through a sequence of regex-search-and-replace actions on each selected line.
-     * This function wraps _runRegexReplaceAction with a call to disable text trackers
-     *
-     * @param patterns An array of ReplacePattern
-     */
-    public static void runRegexReplaceAction(final EditText editor, final List<ReplacePattern> patterns) {
-        if (editor instanceof HighlightingEditor) {
-            ((HighlightingEditor) editor).withAutoFormatDisabled(() -> runRegexReplaceAction(editor.getText(), patterns));
-        } else {
-            runRegexReplaceAction(editor.getText(), patterns);
-        }
-    }
-
-    private static void runRegexReplaceAction(final Editable editable, final List<ReplacePattern> patterns) {
-
-        final int[] sel = TextViewUtils.getSelection(editable);
-        if (sel[0] < 0) {
-            return;
-        }
-        final int[][] offsets = TextViewUtils.getLineOffsetFromIndex(editable, sel);
-
-        final TextViewUtils.ChunkedEditable text = TextViewUtils.ChunkedEditable.wrap(editable);
-        // Start of line on which sel begins
-        final int selStartStart = TextViewUtils.getLineStart(text, sel[0]);
-
-        // Number of lines we will be modifying
-        final int lineCount = GsTextUtils.countChars(text, sel[0], sel[1], '\n')[0] + 1;
-        int lineStart = selStartStart;
-
-
-        for (int i = 0; i < lineCount; i++) {
-
-            int lineEnd = TextViewUtils.getLineEnd(text, lineStart);
-            final String line = TextViewUtils.toString(text, lineStart, lineEnd);
-
-            for (final ReplacePattern pattern : patterns) {
-                if (pattern.matcher.reset(line).find()) {
-                    if (!pattern.isSameReplace()) {
-                        text.replace(lineStart, lineEnd, pattern.replace());
-                    }
-                    break;
-                }
-            }
-
-            lineStart = TextViewUtils.getLineEnd(text, lineStart) + 1;
-        }
-
-        text.applyChanges();
-        TextViewUtils.setSelectionFromOffsets(editable, offsets);
     }
 
     public ActionButtonBase setUiReferences(@Nullable final Activity activity, @Nullable final HighlightingEditor hlEditor, @Nullable final WebView webview) {
@@ -319,10 +235,6 @@ public abstract class ActionButtonBase {
             isRepeatable = repeatable;
             return this;
         }
-    }
-
-    private String rstr(@StringRes int resKey) {
-        return getContext().getString(resKey);
     }
 
     public void runJumpBottomTopAction(ActionItem.DisplayMode displayMode) {
