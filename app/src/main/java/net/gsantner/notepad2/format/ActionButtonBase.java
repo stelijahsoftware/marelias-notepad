@@ -91,17 +91,6 @@ public abstract class ActionButtonBase {
     private static final Pattern UNTRIMMED_TEXT = Pattern.compile("(\\s*)(.*?)(\\s*)", Pattern.DOTALL);
 
 
-
-    // Override to implement custom onClick
-    public boolean onActionClick(final @StringRes int action) {
-        return runCommonAction(action);
-    }
-
-    // Override to implement custom onLongClick
-    public boolean onActionLongClick(final @StringRes int action) {
-        return runCommonLongPressAction(action);
-    }
-
     // Override to implement custom search action
     public boolean onSearch() {
         MarkorDialogFactory.showSearchDialog(_activity, _hlEditor);
@@ -128,31 +117,6 @@ public abstract class ActionButtonBase {
      * @return List of ActionItems
      */
     protected abstract List<ActionItem> getFormatActionList();
-
-    /**
-     * These will not be added to the actions list.
-     *
-     * @return List of keyId strings.
-     */
-    public List<String> getDisabledActions() {
-        return loadActionPreference(DISABLED_SUFFIX);
-    }
-
-    /**
-     * Map every string Action identifier -> ActionItem
-     *
-     * @return Map of String key -> Action
-     */
-    public Map<String, ActionItem> getActiveActionMap() {
-        final List<ActionItem> actionList = getActionList();
-        final List<String> keyList = getActiveActionKeys();
-
-        final Map<String, ActionItem> map = new HashMap<>();
-        for (int i = 0; i < actionList.size(); i++) {
-            map.put(keyList.get(i), actionList.get(i));
-        }
-        return map;
-    }
 
     /**
      * Get a combined action list - from derived format and the base actions
@@ -198,30 +162,6 @@ public abstract class ActionButtonBase {
         return GsCollectionUtils.map(getActionList(), item -> rstr(item.keyId));
     }
 
-    /**
-     * Save an action order to preferences.
-     * The Preference is derived from the key returned by getFormatActionsKey
-     * <p>
-     * Keys are joined into a comma separated list before saving.
-     *
-     * @param keys of keys (in order) to save
-     */
-//    public void saveDisabledActions(final Collection<String> keys) {
-//        saveActionPreference(DISABLED_SUFFIX, keys);
-//    }
-
-    /**
-     * Save an action order to preferences.
-     * The Preference is derived from the key returned by getFormatActionsKey
-     * <p>
-     * Keys are joined into a comma separated list before saving.
-     *
-     * @param keys of keys (in order) to save
-     */
-    public void saveActionOrder(final Collection<String> keys) {
-        saveActionPreference(ORDER_SUFFIX, keys);
-    }
-
     private void saveActionPreference(final String suffix, final Collection<String> values) {
         final SharedPreferences settings = getContext().getSharedPreferences(ACTION_ORDER_PREF_NAME, Context.MODE_PRIVATE);
         final String formatKey = rstr(getFormatActionsKey()) + suffix;
@@ -233,92 +173,6 @@ public abstract class ActionButtonBase {
         SharedPreferences settings = getContext().getSharedPreferences(ACTION_ORDER_PREF_NAME, Context.MODE_PRIVATE);
         String combinedKeys = settings.getString(formatKey, null);
         return combinedKeys != null ? Arrays.asList(combinedKeys.split(",")) : Collections.emptyList();
-    }
-
-    /**
-     * Get the ordered list of preference keys.
-     * <p>
-     * This routine does the following:
-     * 1. Extract list of currently defined actions
-     * 2. Extract saved action-order-list (Comma separated) from preferences
-     * 3. Split action order list into list of action keys
-     * 4. Remove action keys which are no longer present in currently defined actions from the preference list
-     * 5. Add new actions which are not in the preference list to the preference list
-     * 6. If changes were made (i.e. actions have been added or removed), re-save the preference list
-     *
-     * @return List of Action Item keys in order specified by preferences
-     */
-    public List<String> getActionOrder() {
-        final Set<String> order = new LinkedHashSet<>(loadActionPreference(ORDER_SUFFIX));
-
-        // Handle the case where order was stored without suffix. i.e. before this release.
-        if (order.isEmpty()) {
-            order.addAll(loadActionPreference(""));
-        }
-
-        final Set<String> defined = new LinkedHashSet<>(getActiveActionKeys());
-        final Set<String> disabled = new LinkedHashSet<>(getDisabledActions());
-
-        // Any definedKeys which are not in prefs or disabled keys are added to disabled
-        final Set<String> existing = GsCollectionUtils.union(order, disabled);
-        final Set<String> added = GsCollectionUtils.setDiff(defined, existing);
-        final Set<String> removed = GsCollectionUtils.setDiff(existing, defined);
-
-        // NOTE: suppressing this for increased discoverability
-        // Disable any new actions unless none existing (i.e. first run)
-        // if (!existing.isEmpty()) {
-        //     disabled.addAll(added);
-        // }
-
-        // Add new ones to order
-        order.addAll(added);
-
-        // Removed removed from order and disabled
-        disabled.removeAll(removed);
-        order.removeAll(removed);
-
-        if (!added.isEmpty() || !removed.isEmpty()) {
-            saveActionOrder(order);
-        }
-
-        return new ArrayList<>(order);
-    }
-
-    @SuppressWarnings("ConstantConditions")
-    public void recreateActionButtons(final ViewGroup barLayout, final ActionItem.DisplayMode displayMode) {
-        barLayout.removeAllViews();
-
-        final Map<String, ActionItem> map = getActiveActionMap();
-        final List<String> orderedKeys = getActionOrder();
-        final Set<String> disabledKeys = new HashSet<>(getDisabledActions());
-    }
-
-    protected void runRegularPrefixAction(String action, Boolean ignoreIndent) {
-        runRegularPrefixAction(action, null, ignoreIndent);
-    }
-
-//    protected void runRegularPrefixAction(String action, String replaceString) {
-//        runRegularPrefixAction(action, replaceString, false);
-//    }
-
-    protected void runRegularPrefixAction(final String action, final String replaceString, final Boolean ignoreIndent) {
-
-        String replacement = (replaceString == null) ? "" : replaceString;
-
-        String patternIndent = ignoreIndent ? "(^\\s*)" : "(^)";
-        String replaceIndent = "$1";
-
-        String escapedAction = String.format("\\Q%s\\E", action);
-        String escapedReplace = String.format("(\\Q%s\\E)?", replacement);
-
-        ReplacePattern[] patterns = {
-                // Replace action with replacement
-                new ReplacePattern(patternIndent + escapedAction, replaceIndent + replacement),
-                // Replace replacement or nothing with action
-                new ReplacePattern(patternIndent + escapedReplace, replaceIndent + action),
-        };
-
-        runRegexReplaceAction(Arrays.asList(patterns));
     }
 
     public static class ReplacePattern {
@@ -347,10 +201,6 @@ public abstract class ActionButtonBase {
             return replaceAll ? matcher.replaceAll(replacePattern) : matcher.replaceFirst(replacePattern);
         }
 
-        public ReplacePattern(String searchPattern, String replacePattern, boolean replaceAll) {
-            this(Pattern.compile(searchPattern), replacePattern, replaceAll);
-        }
-
         public ReplacePattern(Pattern searchPattern, String replacePattern) {
             this(searchPattern, replacePattern, false);
         }
@@ -358,22 +208,6 @@ public abstract class ActionButtonBase {
         public ReplacePattern(String searchPattern, String replacePattern) {
             this(Pattern.compile(searchPattern), replacePattern, false);
         }
-    }
-
-    public void runRegexReplaceAction(final ReplacePattern... patterns) {
-        runRegexReplaceAction(Arrays.asList(patterns));
-    }
-
-    public void runRegexReplaceAction(final List<ReplacePattern> patterns) {
-        runRegexReplaceAction(_hlEditor, patterns);
-    }
-
-    public void runRegexReplaceAction(final String pattern, final String replace) {
-        runRegexReplaceAction(Collections.singletonList(new ReplacePattern(pattern, replace)));
-    }
-
-    public static void runRegexReplaceAction(final EditText editor, final ReplacePattern... patterns) {
-        runRegexReplaceAction(editor, Arrays.asList(patterns));
     }
 
     /**
@@ -388,10 +222,6 @@ public abstract class ActionButtonBase {
         } else {
             runRegexReplaceAction(editor.getText(), patterns);
         }
-    }
-
-    public static void runRegexReplaceAction(final Editable editable, final ReplacePattern... patterns) {
-        runRegexReplaceAction(editable, Arrays.asList(patterns));
     }
 
     private static void runRegexReplaceAction(final Editable editable, final List<ReplacePattern> patterns) {
@@ -432,77 +262,6 @@ public abstract class ActionButtonBase {
         TextViewUtils.setSelectionFromOffsets(editable, offsets);
     }
 
-    public static void surroundBlock(final Editable text, final String delim) {
-        final int[] sel = TextViewUtils.getLineSelection(text);
-        if (text != null && sel[0] >= 0) {
-            final CharSequence line = text.subSequence(sel[0], sel[1]);
-            text.replace(sel[0], sel[1], delim + "\n" + line + "\n" + delim);
-        }
-    }
-
-    protected void runSurroundAction(final String delim) {
-        runSurroundAction(delim, delim, true);
-    }
-
-    /**
-     * Surrounds the current selection with the given startDelimiter and end strings.
-     * If the region is already surrounded by the given strings, they are removed instead.
-     *
-     * @param open  The string to insert at the start of the selection
-     * @param close The string to insert at the end of the selection
-     * @param trim  Whether to trim spaces from the start and end of the selection
-     */
-    protected void runSurroundAction(final String open, final String close, final boolean trim) {
-        final Editable text = _hlEditor.getText();
-        final int[] sel = TextViewUtils.getSelection(text);
-        if (sel[0] < 0) {
-            return;
-        }
-
-        // Detect if delims within or around selection
-        // If so, remove it
-        // -------------------------------------------------------------------------
-        final int ss = sel[0], se = sel[1];
-        final int ol = open.length(), cl = close.length(), sl = se - ss;
-        // Left as a CharSequence to help maintain spans
-        final CharSequence selection = text.subSequence(ss, se);
-
-        // Case delims around selection
-        if ((ss > ol) && ((se + cl) <= text.length())) {
-            final String before = text.subSequence(ss - ol, ss).toString();
-            final String after = text.subSequence(se, se + cl).toString();
-            if (before.equals(open) && after.equals(close)) {
-                text.replace(ss - ol, se + cl, selection);
-                _hlEditor.setSelection(ss - ol, se - ol);
-                return;
-            }
-        }
-
-        // Case delims within selection
-        if ((se - ss) >= (ol + cl)) {
-            final String within = text.subSequence(ss, se).toString();
-            if (within.startsWith(open) && within.endsWith(close)) {
-                text.replace(ss, se, within.substring(ol, within.length() - cl));
-                _hlEditor.setSelection(ss, se - ol - cl);
-                return;
-            }
-        }
-
-        final String replace;
-        if (trim && selection.length() > 0) {
-            final int f = TextViewUtils.getFirstNonWhitespace(selection);
-            final int l = TextViewUtils.getLastNonWhitespace(selection) + 1;
-            replace = selection.subSequence(0, f) + open +
-                    selection.subSequence(f, l) + close +
-                    selection.subSequence(l, sl);
-        } else {
-            replace = open + selection + close;
-        }
-
-        text.replace(ss, se, replace);
-        _hlEditor.setSelection(ss + ol, se + ol);
-    }
-
     public ActionButtonBase setUiReferences(@Nullable final Activity activity, @Nullable final HighlightingEditor hlEditor, @Nullable final WebView webview) {
         _activity = activity;
         _hlEditor = hlEditor;
@@ -530,194 +289,6 @@ public abstract class ActionButtonBase {
 
     public MarkorContextUtils getCu() {
         return _cu;
-    }
-
-    /**
-     * Callable from background thread!
-     */
-    public void setEditorTextAsync(final String text) {
-        _activity.runOnUiThread(() -> _hlEditor.setText(text));
-    }
-
-    protected void runIndentLines(final boolean deIndent) {
-        if (deIndent) {
-            final String leadingIndentPattern = String.format("^\\s{1,%d}", _indent);
-            ActionButtonBase.runRegexReplaceAction(_hlEditor, new ActionButtonBase.ReplacePattern(leadingIndentPattern, ""));
-        } else {
-            final String tabString = GsTextUtils.repeatChars(' ', _indent);
-            ActionButtonBase.runRegexReplaceAction(_hlEditor, new ActionButtonBase.ReplacePattern("^", tabString));
-        }
-    }
-
-    // Some actions common to multiple file types
-    // Can be called _explicitly_ by a derived class
-    protected final boolean runCommonAction(final @StringRes int action) {
-        final Editable text = _hlEditor.getText();
-        switch (action) {
-            case R.string.abid_common_unordered_list_char: {
-                runRegularPrefixAction("-" + " ", true);
-                return true;
-            }
-            case R.string.abid_common_checkbox_list: {
-                runRegularPrefixAction("- [ ] ", "- [x] ", true);
-                return true;
-            }
-            case R.string.abid_common_ordered_list_number: {
-                runRegularPrefixAction("1. ", true);
-                return true;
-            }
-            case R.string.abid_common_time: {
-                DatetimeFormatDialog.showDatetimeFormatDialog(_activity, _hlEditor);
-                return true;
-            }
-
-            case R.string.abid_common_ordered_list_renumber: {
-                renumberOrderedList();
-                return true;
-            }
-            case R.string.abid_common_move_text_one_line_up:
-            case R.string.abid_common_move_text_one_line_down: {
-                moveLineSelectionBy1(_hlEditor, action == R.string.abid_common_move_text_one_line_up);
-                runRenumberOrderedListIfRequired();
-                return true;
-            }
-            case R.string.abid_common_indent:
-            case R.string.abid_common_deindent: {
-                runIndentLines(action == R.string.abid_common_deindent);
-                runRenumberOrderedListIfRequired();
-                return true;
-            }
-
-            case R.string.abid_common_open_link_browser: {
-                final int sel = TextViewUtils.getSelection(_hlEditor)[0];
-                if (sel < 0) {
-                    return true;
-                }
-
-                final String line = TextViewUtils.getSelectedLines(_hlEditor, sel);
-                final int cursor = sel - TextViewUtils.getLineStart(_hlEditor.getText(), sel);
-
-                // First try to pull a resource
-                String url = null;
-                final String resource = GsTextUtils.tryExtractResourceAroundPos(line, cursor);
-                if (resource != null) {
-                    if (WEB_URL.matcher(resource).matches()) {
-                        url = resource;
-                    } else {
-                        final File f = GsFileUtils.makeAbsolute(resource, _document.file.getParentFile());
-                        if (f.canRead()) {
-                            DocumentActivity.launch(getActivity(), f, null, null);
-                            return true;
-                        }
-                    }
-                }
-
-                // Then try to pull a tag
-                url = url == null ? GsTextUtils.tryExtractUrlAroundPos(line, cursor) : url;
-                if (url != null) {
-                    if (url.endsWith(")")) {
-                        url = url.substring(0, url.length() - 1);
-                    }
-                    _cu.openWebpageInExternalBrowser(getContext(), url);
-                }
-
-                return true;
-            }
-            case R.string.abid_common_special_key: {
-                runSpecialKeyAction();
-                return true;
-            }
-            case R.string.abid_common_new_line_below: {
-                // Go to end of line, works with wrapped lines too
-                final int sel = TextViewUtils.getSelection(_hlEditor)[1];
-                if (sel > 0) {
-                    _hlEditor.setSelection(TextViewUtils.getLineEnd(text, sel));
-                    _hlEditor.simulateKeyPress(KeyEvent.KEYCODE_ENTER);
-                }
-                return true;
-            }
-            case R.string.abid_common_delete_lines: {
-                final int[] sel = TextViewUtils.getLineSelection(text);
-                if (GsTextUtils.isValidSelection(text, sel)) {
-                    final boolean lastLine = sel[1] == text.length();
-                    final boolean firstLine = sel[0] == 0;
-                    text.delete(sel[0] - (lastLine && !firstLine ? 1 : 0), sel[1] + (lastLine ? 0 : 1));
-                }
-                return true;
-            }
-            case R.string.abid_common_duplicate_lines: {
-                duplicateLineSelection(_hlEditor);
-                runRenumberOrderedListIfRequired();
-                return true;
-            }
-            case R.string.abid_common_web_jump_to_very_top_or_bottom: {
-                runJumpBottomTopAction(ActionItem.DisplayMode.VIEW);
-                return true;
-            }
-//            case R.string.abid_common_web_jump_to_table_of_contents: {
-//                if (_appSettings.isMarkdownTableOfContentsEnabled()) {
-//                    _webView.loadUrl("javascript:document.getElementsByClassName('toc')[0].scrollIntoView();");
-//                } else {
-//                    runTitleClick();
-//                }
-//                return true;
-//            }
-            case R.string.abid_common_view_file_in_other_app: {
-                _cu.viewFileInOtherApp(getContext(), _document.file, GsFileUtils.getMimeType(_document.file));
-                return true;
-            }
-//            case R.string.abid_common_rotate_screen: {
-//                _cu.nextScreenRotationSetting(_activity);
-//                return true;
-//            }
-        }
-        return false;
-    }
-
-    // Some long-press actions common to multiple file types
-    // Can be called _explicitly_ by a derived class
-    @SuppressLint("NonConstantResourceId")
-    protected final boolean runCommonLongPressAction(@StringRes int action) {
-        switch (action) {
-            case R.string.abid_common_deindent:
-            case R.string.abid_common_indent: {
-                MarkorDialogFactory.showIndentSizeDialog(_activity, _indent, (size) -> {
-                    _indent = Integer.parseInt(size);
-                    _appSettings.setDocumentIndentSize(_document.path, _indent);
-                });
-                return true;
-            }
-            case R.string.abid_common_open_link_browser: {
-                return onSearch();
-            }
-            case R.string.abid_common_special_key: {
-                runJumpBottomTopAction(ActionItem.DisplayMode.EDIT);
-                return true;
-            }
-            case R.string.abid_common_time: {
-                try {
-                    _hlEditor.insertOrReplaceTextOnCursor(DatetimeFormatDialog.getMostRecentDate(getContext()));
-                } catch (Exception ignored) {
-                }
-                return true;
-            }
-            case R.string.abid_common_ordered_list_number: {
-                runRenumberOrderedListIfRequired(true);
-                return true;
-            }
-            case R.string.abid_common_move_text_one_line_up:
-            case R.string.abid_common_move_text_one_line_down: {
-                TextViewUtils.showSelection(_hlEditor);
-                return true;
-            }
-            case R.string.abid_common_insert_snippet: {
-                if (!TextUtils.isEmpty(_lastSnip)) {
-                    _hlEditor.insertOrReplaceTextOnCursor(TextViewUtils.interpolateSnippet(_lastSnip, _document.title, TextViewUtils.getSelectedText(_hlEditor)));
-                }
-                return true;
-            }
-        }
-        return false;
     }
 
     public static class ActionItem {
@@ -750,135 +321,8 @@ public abstract class ActionButtonBase {
         }
     }
 
-    public static void moveLineSelectionBy1(final HighlightingEditor hlEditor, final boolean isUp) {
-        final Editable text = hlEditor.getText();
-        final int[] sel = TextViewUtils.getSelection(text);
-        if (text == null || sel[0] < 0) {
-            return;
-        }
-
-        final int[] lineSel = TextViewUtils.getLineSelection(text, sel);
-
-        if ((isUp && lineSel[0] > 0) || (!isUp && lineSel[1] < text.length())) {
-            final CharSequence lines = text.subSequence(lineSel[0], lineSel[1]);
-
-            final int[] altSel = TextViewUtils.getLineSelection(text, isUp ? lineSel[0] - 1 : lineSel[1] + 1);
-            final CharSequence altLine = text.subSequence(altSel[0], altSel[1]);
-
-            final int[][] offsets = TextViewUtils.getLineOffsetFromIndex(text, sel);
-
-            hlEditor.withAutoFormatDisabled(() -> {
-                final String newPair = String.format("%s\n%s", isUp ? lines : altLine, isUp ? altLine : lines);
-                text.replace(Math.min(lineSel[0], altSel[0]), Math.max(lineSel[1], altSel[1]), newPair);
-            });
-
-            offsets[0][0] += isUp ? -1 : 1;
-            offsets[1][0] += isUp ? -1 : 1;
-
-            TextViewUtils.setSelectionFromOffsets(text, offsets);
-        }
-    }
-
-    public static void duplicateLineSelection(final HighlightingEditor hlEditor) {
-        // Duplication is performed downwards, selection is moving alongside it and
-        // cursor is preserved regarding column position (helpful for editing the
-        // newly created line at the selected position right away).
-        final Editable text = hlEditor.getText();
-        final int[] sel = TextViewUtils.getSelection(text);
-        if (sel[0] >= 0) {
-            final int linesStart = TextViewUtils.getLineStart(text, sel[0]);
-            final int linesEnd = TextViewUtils.getLineEnd(text, sel[1]);
-
-            final CharSequence lines = text.subSequence(linesStart, linesEnd);
-
-            final int[][] offsets = TextViewUtils.getLineOffsetFromIndex(text, sel);
-
-            hlEditor.withAutoFormatDisabled(() -> {
-                // Prepending the newline instead of appending it is required for making
-                // this logic work even if it's about the last line in the given file.
-                final String lines_final = String.format("\n%s", lines);
-                text.insert(linesEnd, lines_final);
-            });
-
-            final int lineCount = offsets[1][0] - offsets[0][0] + 1;
-            offsets[0][0] += lineCount;
-            offsets[1][0] += lineCount;
-
-            TextViewUtils.setSelectionFromOffsets(text, offsets);
-        }
-    }
-
-    // Derived classes should override this to implement format-specific renumber logic
-    protected void renumberOrderedList() {
-        // No-op in base class
-    }
-
-    public final void runRenumberOrderedListIfRequired() {
-        runRenumberOrderedListIfRequired(false);
-    }
-
-    public final void runRenumberOrderedListIfRequired(final boolean force) {
-        if (force || _hlEditor.getAutoFormatEnabled()) {
-            _hlEditor.withAutoFormatDisabled(this::renumberOrderedList);
-        }
-    }
-
     private String rstr(@StringRes int resKey) {
         return getContext().getString(resKey);
-    }
-
-    public void runSpecialKeyAction() {
-        MarkorDialogFactory.showSpecialKeyDialog(getActivity(), _specialKeyDialogState, (callbackPayload) -> {
-            if (!_hlEditor.hasSelection() && _hlEditor.length() > 0) {
-                _hlEditor.requestFocus();
-            }
-            if (callbackPayload.equals(rstr(R.string.key_page_down))) {
-                _hlEditor.simulateKeyPress(KeyEvent.KEYCODE_PAGE_DOWN);
-            } else if (callbackPayload.equals(rstr(R.string.key_page_up))) {
-                _hlEditor.simulateKeyPress(KeyEvent.KEYCODE_PAGE_UP);
-            } else if (callbackPayload.equals(rstr(R.string.key_pos_1))) {
-                _hlEditor.simulateKeyPress(KeyEvent.KEYCODE_MOVE_HOME);
-            } else if (callbackPayload.equals(rstr(R.string.key_pos_end))) {
-                _hlEditor.simulateKeyPress(KeyEvent.KEYCODE_MOVE_END);
-            } else if (callbackPayload.equals(rstr(R.string.key_pos_1_document))) {
-                _hlEditor.setSelection(0);
-            } else if (callbackPayload.equals(rstr(R.string.key_pos_end_document))) {
-                _hlEditor.setSelection(_hlEditor.length());
-            } else if (callbackPayload.equals(rstr(R.string.move_text_one_line_up))) {
-                ActionButtonBase.moveLineSelectionBy1(_hlEditor, true);
-            } else if (callbackPayload.equals(rstr(R.string.move_text_one_line_down))) {
-                ActionButtonBase.moveLineSelectionBy1(_hlEditor, false);
-            } else if (callbackPayload.equals(rstr(R.string.select_current_line))) {
-                selectWholeLines(_hlEditor.getText());
-            } else if (callbackPayload.equals(rstr(R.string.key_ctrl_a))) {
-                _hlEditor.setSelection(0, _hlEditor.length());
-            } else if (callbackPayload.equals(rstr(R.string.key_tab))) {
-                _hlEditor.insertOrReplaceTextOnCursor("\u0009");
-            } else if (callbackPayload.equals(rstr(R.string.zero_width_space))) {
-                _hlEditor.insertOrReplaceTextOnCursor("\u200B");
-            } else if (callbackPayload.equals(rstr(R.string.em_space))) {
-                _hlEditor.insertOrReplaceTextOnCursor("\u2003");
-            } else if (callbackPayload.equals(rstr(R.string.break_page_pdf_print))) {
-                _hlEditor.insertOrReplaceTextOnCursor("<div style='page-break-after:always;'></div>");
-            } else if (callbackPayload.equals(rstr(R.string.search))) {
-                onSearch();
-            } else if (callbackPayload.equals(rstr(R.string.ohm))) {
-                _hlEditor.insertOrReplaceTextOnCursor("Ω");
-            } else if (callbackPayload.equals(rstr(R.string.char_punctation_mark_arrows))) {
-                _hlEditor.insertOrReplaceTextOnCursor("»«");
-            } else if (callbackPayload.equals(rstr(R.string.continued_overline))) {
-                _hlEditor.insertOrReplaceTextOnCursor("‾‾‾‾‾");
-            } else if (callbackPayload.equals(rstr(R.string.shrug))) {
-                _hlEditor.insertOrReplaceTextOnCursor("¯\\_(ツ)_/¯");
-            }
-        });
-    }
-
-    public static void selectWholeLines(final @Nullable Spannable text) {
-        final int[] sel = TextViewUtils.getLineSelection(text);
-        if (sel[0] >= 0) {
-            Selection.setSelection(text, sel[0], sel[1]);
-        }
     }
 
     public void runJumpBottomTopAction(ActionItem.DisplayMode displayMode) {

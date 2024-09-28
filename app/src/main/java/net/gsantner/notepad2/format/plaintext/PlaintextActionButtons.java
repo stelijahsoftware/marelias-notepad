@@ -48,9 +48,4 @@ public class PlaintextActionButtons extends ActionButtonBase {
         return R.string.pref_key__plaintext__action_keys;
     }
 
-    @Override
-    protected void renumberOrderedList() {
-        // Use markdown format for plain text too
-        AutoTextFormatter.renumberOrderedList(_hlEditor.getText(), MarkdownReplacePatternGenerator.formatPatterns);
-    }
 }
