@@ -600,15 +600,19 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         if (!_document.isContentSame(text))
         {
             // Touch parent folder on edit (elyahw) ----------
-            File ff = _document.file;
-            String ppath = "";
-            ppath = ff.getAbsolutePath();
+            //File ff = _document.file;
+            //String ppath = "";
+            //ppath = ff.getAbsolutePath();
             //System.out.println("Touching parent folder\n");
             //Log.i("Elyahw", "Touching parent folder");
-
-            File parentFolder = ff.getParentFile();
-            long currentTime = System.currentTimeMillis();
-            parentFolder.setLastModified(currentTime);
+            try {
+                File parentFolder = _document.file.getParentFile();
+                long currentTime = System.currentTimeMillis();
+                parentFolder.setLastModified(currentTime);
+            }
+            catch (Exception ignored) {
+            }
+            
             // ------------
 
             final int minLength = GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH;
