@@ -9,7 +9,7 @@
 ###########################################################*/
 package other.writeily.format.markdown;
 
-import net.gsantner.opoc.wrapper.GsCallback;
+import net.marelias.opoc.wrapper.GsCallback;
 
 import java.util.regex.Matcher;
 

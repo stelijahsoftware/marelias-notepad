@@ -14,9 +14,9 @@ import android.content.Context;
 
 import androidx.documentfile.provider.DocumentFile;
 
-import net.gsantner.notepad2.frontend.MarkorDialogFactory;
-import net.gsantner.notepad2.util.MarkorContextUtils;
-import net.gsantner.opoc.util.GsFileUtils;
+import net.marelias.notepad.frontend.MarkorDialogFactory;
+import net.marelias.notepad.util.MarkorContextUtils;
+import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
 import java.util.ArrayList;

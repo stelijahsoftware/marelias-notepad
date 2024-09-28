@@ -38,13 +38,12 @@ X - convert local file settings to global + set defaults
 X - Add version number to About
 X - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
 X - Pull any improvements from latest version (single process implemented here https://github.com/gsantner/markor/commit/c5fe529515830dd16ba5dea6e14eadd016b1a1bf); start pulling from current state (see reference in project information; update it when pulling new changes)
+X - Add an about screen that shows the original developer (+ a link to his github) + license name + my own link
 
 # Naming:
 [h] - do not use hour and minute for automatic numbering, instead use sequential numbers (if name of new note exists do not open existing one, rather number sequentially)
 [m] - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
-
-[h] - Add an about screen that shows the original developer (+ a link to his github) + license name + my own link
 
 # Organisation:
 - highlight briefly when going back (see Merge requests on github)
