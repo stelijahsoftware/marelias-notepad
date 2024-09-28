@@ -29,7 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.JavascriptInterface;
+//import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.HorizontalScrollView;
@@ -468,8 +468,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 return true;
             }
 
-            case R.string.action_format_wikitext:
-            case R.string.action_format_keyvalue:
             case R.string.action_format_plaintext:
             case R.string.action_format_markdown: {
                 if (itemId != _document.getFormat()) {
@@ -549,9 +547,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         }
     }
 
-    private boolean isWrapped() {
-        return _hsView == null || (_hlEditor.getParent() == _primaryScrollView);
-    }
+//    private boolean isWrapped() {
+//        return _hsView == null || (_hlEditor.getParent() == _primaryScrollView);
+//    }
 
     @Override
     public String getFragmentTag() {
@@ -612,7 +610,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             catch (Exception ignored) {
             }
-            
+
             // ------------
 
             final int minLength = GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH;
@@ -640,9 +638,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         }
     }
 
-    private boolean isDisplayedAtMainActivity() {
-        return getActivity() instanceof MainActivity;
-    }
+//    private boolean isDisplayedAtMainActivity() {
+//        return getActivity() instanceof MainActivity;
+//    }
 
     public void updateViewModeText() {
 //        final String text = getTextString();
@@ -657,15 +655,15 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     }
 
     // Callback from view-mode/javascript
-    @SuppressWarnings("unused")
-    @JavascriptInterface
-    public void webViewJavascriptCallback(final String[] jsArgs) {
-        final String[] args = (jsArgs == null || jsArgs.length == 0 || jsArgs[0] == null) ? new String[0] : jsArgs;
-        final String type = args.length == 0 || TextUtils.isEmpty(args[0]) ? "" : args[0];
-        if (type.equalsIgnoreCase("toast") && args.length == 2) {
-            Toast.makeText(getActivity(), args[1], Toast.LENGTH_SHORT).show();
-        }
-    }
+//    @SuppressWarnings("unused")
+//    @JavascriptInterface
+//    public void webViewJavascriptCallback(final String[] jsArgs) {
+//        final String[] args = (jsArgs == null || jsArgs.length == 0 || jsArgs[0] == null) ? new String[0] : jsArgs;
+//        final String type = args.length == 0 || TextUtils.isEmpty(args[0]) ? "" : args[0];
+//        if (type.equalsIgnoreCase("toast") && args.length == 2) {
+//            Toast.makeText(getActivity(), args[1], Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     protected void onToolbarClicked(View v) {
