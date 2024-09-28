@@ -32,6 +32,8 @@ import net.gsantner.opoc.frontend.base.GsActivityBase;
 import net.gsantner.opoc.frontend.base.GsPreferenceFragmentBase;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.frontend.settings.GsFontPreferenceCompat;
+import net.gsantner.opoc.format.GsSimpleMarkdownParser;
+//import net.gsantner.notepad2.BuildConfig;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -180,14 +182,11 @@ public class SettingsActivity extends MarkorBaseActivity {
             Locale locale = Locale.getDefault();
             Preference pref = findPreference(R.string.pref_key__more_info__source_code);
 
-            pref.setTitle(String.format(locale,
-                                 "%s\nVersion v%s (%d)",
-                                        _cu.getAppIdFlavorSpecific(context),
-                                        _cu.getAppVersionName(context),
-                                        _cu.bcint(context, "VERSION_CODE", 0)));
-
-
-
+            pref.setTitle("About");
+            pref.setSummary(String.format(locale,"Mar-Elias Notepad\n(%s)\nVersion v%s----",
+                                                    _cu.getAppIdUsedAtManifest(context),
+                                                    //_cu.getAppIdFlavorSpecific(context),
+                                                    _cu.getAppVersionName(context))); // BuildConfig.VERSION_NAME
         }
 
         @SuppressLint("ApplySharedPref")
@@ -246,7 +245,36 @@ public class SettingsActivity extends MarkorBaseActivity {
                     return true;
                 }
                 case R.string.pref_key__more_info__source_code: {
-                    _cu.openWebpageInExternalBrowser(getContext(), "https://notepad.mar-elias.com/");
+                    // Either open a webpage:
+                    // _cu.openWebpageInExternalBrowser(getContext(), "https://notepad.mar-elias.com/");
+                    // Or display information window:
+
+                    String aaa = "<br>" + // + Add links
+                                 "<b>Mar-Elias Notepad</b> is a fork of <b>Markor</b>, a simple text file editor with customised highlights<br>" +
+                                 "<font color='#276230'>Project website:</font><br>" +
+                                 "<a href='https://notepad.mar-elias.com/'>https://notepad.mar-elias.com/</a><br>" +
+                                 "<br>" +
+                                 "<b>Markor</b>, an open source notes project<br>" +
+                                 //"Project name: Markor<br>" +
+                                 "<font color='#276230'>Author: </font>Gregor Santner<br>" +
+                                 "<font color='#276230'>Official project:</font>" +
+                                 "<br><a href='https://github.com/gsantner/markor'>https://github.com/gsantner/markor</a><br>" +
+                                 "<font color='#276230'>LICENSE: </font>" +
+                                 "<a href='https://github.com/writing-tools/marelias-notepad/blob/master/LICENSE.txt'>APACHE 2.0</a><br>";
+                    // See:
+                    // app/src/main/res/xml/preferences_master.xml
+
+                    // This copies the content to the clipboard:
+                    //_cu.setClipboard(getContext(), preference.getSummary());
+
+                    GsSimpleMarkdownParser smp = new GsSimpleMarkdownParser();
+                    try {
+                        //getResources().openRawResource(R.raw.license)
+                        String html = smp.parse(aaa, "", GsSimpleMarkdownParser.FILTER_CHANGELOG).getHtml();
+                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.about, html, true, null);
+                    } catch (Exception ex) {
+
+                    }
                     return true;
                 }
             }

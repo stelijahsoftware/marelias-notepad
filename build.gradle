@@ -60,7 +60,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-final String[] ROOT_TO_RAW_COPYFILES = ["README.md", "CHANGELOG.md", "CONTRIBUTORS.md", "LICENSE.txt", "LICENSE.md", "LICENSE"]
+final String[] ROOT_TO_RAW_COPYFILES = ["README.md", "LICENSE.txt", "LICENSE.md", "LICENSE"]
 task copyRepoFiles(type: Copy) {
     from rootProject.files(ROOT_TO_RAW_COPYFILES)
     into "app/src/main/res/raw"

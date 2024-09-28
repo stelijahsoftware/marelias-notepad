@@ -77,6 +77,9 @@ public class GsSimpleMarkdownParser {
         @Override
         public String filter(String text) {
             text = text
+                    .replaceAll("(?s)<!--.*?-->", "")  // HTML comments
+                    //.replace("\n\n", "\n<br/>\n") // Start new line if 2 empty lines
+                    //.replaceAll("<(http|https):\\/\\/(.*)>", "<a href='$1://$2'>$1://$2</a>")
                     .replace("New:", "<font color='#276230'>New:</font>")
                     .replace("New features:", "<font color='#276230'>New:</font>")
                     .replace("Added:", "<font color='#276230'>Added:</font>")
@@ -88,6 +91,7 @@ public class GsSimpleMarkdownParser {
                     .replace("Improved:", "<font color='#555555'>Improved:</font>")
                     .replace("Modified:", "<font color='#555555'>Modified:</font>")
                     .replace("Mod:", "<font color='#555555'>Mod:</font>")
+
             ;
             return text;
         }
