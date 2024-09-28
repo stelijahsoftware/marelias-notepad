@@ -26,7 +26,7 @@ android {
         resValue "string", "manifest_package_id", "net.elyahw.notepad2"
         applicationId "net.elyahw.notepad2"
         versionName "1.0.1"
-        versionCode 15
+        versionCode 15 // an internal version number
 
         multiDexEnabled true
         minSdkVersion rootProject.ext.version_minSdk

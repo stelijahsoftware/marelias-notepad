@@ -219,7 +219,7 @@ public class DocumentActivity extends MarkorBaseActivity {
         final String notSupportedMessage = (getString(R.string.filemanager_doesnot_supply_required_data__appspecific) + "\n\n" + getString(R.string.sync_to_local_folder_notice)).replace("\n", "<br/>");
         new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Rounded)
                 .setMessage(Html.fromHtml(notSupportedMessage))
-                .setNegativeButton(R.string.more_info, (di, i) -> _cu.openWebpageInExternalBrowser(this, getString(R.string.sync_client_support_issue_url)))
+                .setNegativeButton(R.string.more_info, (di, i) -> _cu.openWebpageInExternalBrowser(this, ""))
                 .setPositiveButton(android.R.string.ok, null)
                 .setOnDismissListener((dialogInterface) -> finish())
                 .create().show();

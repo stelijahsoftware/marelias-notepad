@@ -44,52 +44,6 @@ public class PlaintextTextConverter extends TextConverterBase {
     //########################
 
     @Override
-    public String convertMarkup(String markup, Context context, boolean lightMode, boolean lineNum, File file) {
-        String converted = "", onLoadJs = "", head = "";
-        final String extWithDot = GsFileUtils.getFilenameExtension(file);
-        String tmp;
-
-        ///////////////////////////////////////////
-        // Refactor input
-        ///////////////////////////////////////////
-        // JSON: try to pretty-print
-        if (extWithDot.equals(".json") && (tmp = GsTextUtils.jsonPrettyPrint(markup)) != null) {
-            markup = tmp;
-        }
-
-        ///////////////////////////////////////////
-        // Convert
-        ///////////////////////////////////////////
-        if (EXT_HTML.contains(extWithDot)) {
-            // HTML: Display it
-            converted += markup;
-        }
-//        else if (extWithDot.matches(EmbedBinaryTextConverter.EXT_MATCHES_M3U_PLAYLIST)) {
-//            // Playlist: Load in Embed-Binary view-mode
-//            return FormatRegistry.CONVERTER_EMBEDBINARY.convertMarkup(markup, context, lightMode, lineNum, file);
-//        }
-//        else if (EXT_CODE_HL.contains(extWithDot) || (this instanceof KeyValueTextConverter)) {
-//            // Source code: Load in Markdown view-mode & utilize code block highlighting
-//            final String hlLang = extWithDot.replace(".sh", ".bash").replace(".", "");
-//            markup = String.format(Locale.ROOT, "```%s\n%s\n```", hlLang, markup);
-//            return FormatRegistry.CONVERTER_MARKDOWN.convertMarkup(markup, context, lightMode, lineNum, file);
-//        }
-        else {
-            ///////////////////////////////////////////
-            // Whatever else show in plaintext <pre> block
-            converted = HTML100_BODY_PRE_BEGIN
-                    + TextUtilsCompat.htmlEncode(markup)
-                    + HTML101_BODY_PRE_END;
-        }
-        return putContentIntoTemplate(context, converted, lightMode, file, onLoadJs, head);
-    }
-
-    @Override
-    protected String getContentType() {
-        return CONTENT_TYPE_HTML;
-    }
-
-    @Override
     protected boolean isFileOutOfThisFormat(final File file, final String name, final String ext) {
         return EXT.contains(ext) || _appSettings.isExtOpenWithThisApp(ext) || GsFileUtils.isTextFile(file);
     }

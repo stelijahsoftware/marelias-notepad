@@ -516,10 +516,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getFileSet(getStringList(R.string.pref_key__popular_documents));
     }
 
-    public String getInjectedHeader() {
-        return getString(R.string.pref_key__inject_to_head, rstr(R.string.inject_to_head_default));
-    }
-
     public String getInjectedBody() {
         return getString(R.string.pref_key__inject_to_body, "");
     }

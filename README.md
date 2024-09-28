@@ -44,6 +44,15 @@ X - Pull any improvements from latest version (single process implemented here h
 [m] - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 
+[h] - Add an about screen that shows the original developer (+ a link to his github) + license name + my own link
+
+### Copyright © 2017-2024
+**Gregor Santner**
+\n**Official project sources:**
+[Project page](https://github.com/gsantner/notepad2#readme) | [Source code](https://github.com/gsantner/notepad2) | [F-Droid](https://f-droid.org/repository/browse/?fdid=net.gsantner.notepad2)
+LICENSE: APACHE 2.0 (+ LINK)
+
+
 # Organisation:
 - highlight briefly when going back (see Merge requests on github)
 [h] - show total notes count (+ on folders?)

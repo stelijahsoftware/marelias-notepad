@@ -9,16 +9,11 @@ You should have received a copy of the CC0 legalcode along with this
 work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 -->
 <resources>
-    <string name="app_name_real" translatable="false">Notes2</string> <!-- Android application name; used in [app/src/main/AndroidManifest.xml] -->
+    <string name="app_name_real" translatable="false">Mar-Elias Notepad</string> <!-- Android application name; used in [app/src/main/AndroidManifest.xml] -->
     <string name="app_name" translatable="false">@string/app_name_real</string>
     <string name="app_license_name" translatable="false">Apache 2.0</string>
-    <string name="app_community_url" translatable="false">https://github.com/gsantner/notepad2/discussions/2269#discussion_bucket</string>
-    <string name="app_bugreport_url" translatable="false">https://github.com/gsantner/notepad2/discussions/2269#discussion_bucket</string>
-    <string name="app_translate_url" translatable="false">https://github.com/gsantner/notepad2/discussions/2269#discussion_bucket</string>
 
     <string name="app_web_url" translatable="false">https://github.com/gsantner/notepad2</string>
-    <string name="sync_client_support_issue_url" translatable="false">https://github.com/gsantner/notepad2/discussions/1381</string>
-    <string name="app_source_code_url" translatable="false">https://github.com/gsantner/notepad2</string>
     <string name="huuid" translatable="false">hUUID</string>
     <string name="embed_binary" translatable="false">Embed binary</string>
     <string name="actionbutton" translatable="false">ActionButton</string>
@@ -70,26 +65,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="inject_to_head" translatable="false">Inject -> head</string>
     <string name="inject_to_body" translatable="false">Inject -> body</string>
     <string name="js_css" translatable="false"><![CDATA[html: <head>CSS, JavaScript</head>]]></string>
-    <string name="inject_to_head_default" translatable="false"><![CDATA[
-    <style>
-    \nhtml,body {
-    \n  /*font-family: sans-serif-condensed;*/
-    \n  /*font-size: 80%;*/
-    \n}
-    \n</style>
-    \n
-    \n
-    \n<script type=\"text/javascript\">
-    \nfunction onPageLoaded(){
-    \n
-    \n/*if (\'{{ post.text_converter_name }}\' == \'MarkdownTextConverter\') {
-    \n  window.scrollTo(0,document.body.scrollHeight);
-    \n}*/
-    \n
-    \n}
-    \n</script>
-    ]]></string>
-
 
     <plurals name="item_selected" translatable="false">
         <item quantity="one" translatable="false">@string/one_item_selected</item>
@@ -380,7 +355,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="audio" translatable="false">Audio</string>
     <string name="screenshot" translatable="false">Screenshot</string>
     <string name="continued_overline" translatable="false">Continued overline (‾‾‾‾)</string>
-    <string name="shrug" translatable="false">Shrug (¯\_(ツ)_/¯)</string>
     <string name="accordion" translatable="false">Accordion</string>
     <string name="pref_key__default_encryption_password" translatable="false">pref_key__default_encryption_password</string>
     <string name="pref_key__set_encryption_password" translatable="false">pref_key__set_encryption_password</string>
@@ -391,8 +365,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__file_browser_last_browsed_folder" translatable="false">pref_key__file_browser_last_browsed_folder</string>
     <string name="pref_key__file_description_format" translatable="false">pref_key__file_description_format</string>
     <string name="pref_key__wikitext_bigger_headings" translatable="false">pref_key__wikitext_bigger_headings</string>
-    <string name="pref_key__asciidoc_bigger_headings" translatable="false">pref_key__asciidoc_bigger_headings</string>
-    <string name="pref_key__wikitext_reorder_actions" translatable="false">pref_key__wikitext_reorder_actions</string>
     <string name="pref_key__wikitext_action_keys" translatable="false">pref_key__wikitext_action_keys</string>
     <string name="pref_key__wikitext_dynamic_notebook_root" translatable="false">pref_key__wikitext_dynamic_notebook_root</string>
     <string name="pref_key__max_search_depth" translatable="false">pref_key__max_search_depth</string>
@@ -401,20 +373,14 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__is_search_query_use_regex" translatable="false">pref_key__is_search_query_use_regex</string>
     <string name="pref_key__is_search_in_content" translatable="false">pref_key__is_search_in_content</string>
     <string name="pref_key__is_only_first_content_match" translatable="false">pref_key__is_only_first_content_match</string>
-    <string name="pref_key__restore_settings" translatable="false">pref_key__restore_settings</string>
-    <string name="pref_key__backup_settings" translatable="false">pref_key__backup_settings</string>
     <string name="hidden_password" translatable="false">****</string>
     <string name="pref_key__todotxt__additional_projects_contexts" translatable="false">"pref_key__todotxt__additional_projects_contexts"</string>
     <string name="pref_key__todotxt__due_date_offset" translatable="false">pref_key__todotxt_due_date_offset</string>
     <string name="action_format_keyvalue" translatable="false">action_format_keyvalue</string>
     <string name="action_format_plaintext" translatable="false">action_format_plaintext</string>
-    <string name="action_format_csv" translatable="false">action_format_csv</string>
-    <string name="action_format_asciidoc" translatable="false">action_format_asciidoc</string>
     <string name="action_format_embedbinary" translatable="false">action_format_embedbinary</string>
     <string name="action_format_markdown" translatable="false">action_format_markdown</string>
     <string name="action_format_todotxt" translatable="false">action_format_todotxt</string>
-    <string name="action_format_wikitext" translatable="false">action_format_wikitext</string>
-    <string name="action_format_orgmode" translatable="false">action_format_orgmode</string>
     <string name="pref_key__share_into_format" translatable="false">pref_key__share_into_format</string>
     <string name="pref_key__attachment_folder_name" translatable="false">pref_key__attachment_directory_name</string>
     <string name="pref_key__filetype_template_map" translatable="false">pref_key__filetype_template_map</string>
