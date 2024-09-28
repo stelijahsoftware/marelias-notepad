@@ -784,7 +784,7 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
                 }
             });
         } else if (toShow != null && _adapterDataFiltered.contains(toShow)) {
-            scrollToAndFlash(toShow);
+//            scrollToAndFlash(toShow); // elyahw fix bug https://github.com/gsantner/markor/issues/2427
         }
     }
 
