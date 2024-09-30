@@ -204,15 +204,15 @@ public class Document implements Serializable {
             _fileInfo = result.second;
 //        }
 
-        if (MainActivity.IS_DEBUG_ENABLED) {
-            AppSettings.appendDebugLog(
-                    "\n\n\n--------------\nLoaded document, filepattern "
-                            + title.replaceAll(".*\\.", "-")
-                            + ", chars: " + content.length() + " bytes:" + content.getBytes().length
-                            + "(" + GsFileUtils.getReadableFileSize(content.getBytes().length, true) +
-                            "). Language >" + Locale.getDefault()
-                            + "<, Language override >" + ApplicationObject.settings().getLanguage() + "<");
-        }
+//        if (MainActivity.IS_DEBUG_ENABLED) {
+//            AppSettings.appendDebugLog(
+//                    "\n\n\n--------------\nLoaded document, filepattern "
+//                            + title.replaceAll(".*\\.", "-")
+//                            + ", chars: " + content.length() + " bytes:" + content.getBytes().length
+//                            + "(" + GsFileUtils.getReadableFileSize(content.getBytes().length, true) +
+//                            "). Language >" + Locale.getDefault()
+//                            + "<, Language override >" + ApplicationObject.settings().getLanguage() + "<");
+//        }
 
         if (_fileInfo != null && _fileInfo.ioError) {
             // Force next load on failure

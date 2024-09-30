@@ -274,22 +274,6 @@ public class GsContextUtils {
         return ContextCompat.getColor(context, resId);
     }
 
-//    /**
-//     * Checks if all given (textual) resource ids are available
-//     *
-//     * @param resType       A {@link ResType}
-//     * @param resIdsTextual A (textual) identifier to be awaited at R.restype.resIdsTextual
-//     * @return True if all given ids are available
-//     */
-//    public boolean areResourcesAvailable(final Context context, final ResType resType, final String... resIdsTextual) {
-//        for (String name : resIdsTextual) {
-//            if (getResId(context, resType, name) == 0) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
-
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //########################
     //## App & Device information
@@ -391,28 +375,6 @@ public class GsContextUtils {
         return fields;
     }
 
-//    /**
-//     * Get a BuildConfig bool value
-//     */
-//    public Boolean bcbool(final Context context, final String fieldName, final Boolean defaultValue) {
-//        Object field = getBuildConfigValue(context, fieldName);
-//        if (field instanceof Boolean) {
-//            return (Boolean) field;
-//        }
-//        return defaultValue;
-//    }
-
-//    /**
-//     * Get a BuildConfig string value
-//     */
-//    public String bcstr(final Context context, final String fieldName, final String defaultValue) {
-//        Object field = getBuildConfigValue(context, fieldName);
-//        if (field instanceof String) {
-//            return (String) field;
-//        }
-//        return defaultValue;
-//    }
-
     /**
      * Get a BuildConfig string value
      */
@@ -423,135 +385,6 @@ public class GsContextUtils {
         }
         return defaultValue;
     }
-
-//    /**
-//     * Check if this is a gplay build (requires BuildConfig field)
-//     */
-//    public boolean isGooglePlayBuild(final Context context) {
-//        return bcbool(context, "IS_GPLAY_BUILD", true);
-//    }
-//
-//    /**
-//     * Check if this is a foss build (requires BuildConfig field)
-//     */
-//    public boolean isFossBuild(final Context context) {
-//        return bcbool(context, "IS_FOSS_BUILD", false);
-//    }
-//
-//    public String readTextfileFromRawRes(final Context context, @RawRes int rawResId, String linePrefix, String linePostfix) {
-//        final StringBuilder sb = new StringBuilder();
-//
-//        String line;
-//        linePrefix = linePrefix == null ? "" : linePrefix;
-//        linePostfix = linePostfix == null ? "" : linePostfix;
-//        try (BufferedReader br = new BufferedReader(new InputStreamReader(context.getResources().openRawResource(rawResId)))) {
-//            while ((line = br.readLine()) != null) {
-//                sb.append(linePrefix);
-//                sb.append(line);
-//                sb.append(linePostfix);
-//                sb.append("\n");
-//            }
-//        } catch (Exception ignored) {
-//        }
-//        return sb.toString();
-//    }
-
-//    /**
-//     * Get internet connection state - the permission ACCESS_NETWORK_STATE is required
-//     *
-//     * @return True if internet connection available
-//     */
-//    @SuppressLint("MissingPermission")
-//    public boolean isConnectedToInternet(final Context context) {
-//        try {
-//            ConnectivityManager con = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-//            NetworkInfo activeNetInfo = con == null ? null : con.getActiveNetworkInfo();
-//            return activeNetInfo != null && activeNetInfo.isConnectedOrConnecting();
-//        } catch (Exception ignored) {
-//            throw new RuntimeException("Error: Developer forgot to declare a permission");
-//        }
-//    }
-
-//    /**
-//     * Check if app with given {@code appId} is installed
-//     */
-//    public boolean isAppInstalled(final Context context, String appId) {
-//        try {
-//            final PackageManager pm = context.getApplicationContext().getPackageManager();
-//            pm.getPackageInfo(appId, PackageManager.GET_ACTIVITIES);
-//            return true;
-//        } catch (PackageManager.NameNotFoundException e) {
-//            return false;
-//        }
-//    }
-
-//    /**
-//     * Restart the current app. Supply the class to start on startup
-//     */
-//    public void restartApp(final Context context, Class classToStart) {
-//        final Intent intent = new Intent(context, classToStart);
-//        int flags = PendingIntent.FLAG_CANCEL_CURRENT;
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-//            flags |= PendingIntent.FLAG_IMMUTABLE;
-//        }
-//        final PendingIntent pendi = PendingIntent.getActivity(context, 555, intent, flags);
-//        final AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-//        if (context instanceof Activity) {
-//            ((Activity) context).finish();
-//        }
-//        if (mgr != null) {
-//            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, pendi);
-//        } else {
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            context.startActivity(intent);
-//        }
-//        Runtime.getRuntime().exit(0);
-//    }
-
-//    /**
-//     * Load a markdown file from a {@link RawRes}, prepend each line with {@code prepend} text
-//     * and convert markdown to html using {@link GsSimpleMarkdownParser}
-//     */
-//    public String loadMarkdownForTextViewFromRaw(final Context context, @RawRes int rawMdFile, String prepend) {
-//        try {
-//            return new GsSimpleMarkdownParser()
-//                    .parse(context.getResources().openRawResource(rawMdFile), prepend, GsSimpleMarkdownParser.FILTER_ANDROID_TEXTVIEW)
-//                    .replaceColor("#000001", rcolor(context, getResId(context, ResType.COLOR, "accent")))
-//                    .removeMultiNewlines().replaceBulletCharacter("*").getHtml();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return "";
-//        }
-//    }
-
-//    /**
-//     * Load html into a {@link Spanned} object and set the
-//     * {@link TextView}'s text using {@link TextView#setText(CharSequence)}
-//     */
-//    public void setHtmlToTextView(final TextView textView, final String html) {
-//        textView.setMovementMethod(LinkMovementMethod.getInstance());
-//        textView.setText(new SpannableString(htmlToSpanned(html)));
-//    }
-
-//    /**
-//     * Estimate this device's screen diagonal size in inches
-//     */
-//    public double getEstimatedScreenSizeInches(final Context context) {
-//        final DisplayMetrics dm = context.getResources().getDisplayMetrics();
-//
-//        double calc = dm.density * 160d;
-//        double x = Math.pow(dm.widthPixels / calc, 2);
-//        double y = Math.pow(dm.heightPixels / calc, 2);
-//        calc = Math.sqrt(x + y) * 1.16;  // 1.16 = est. Nav/Statusbar
-//        return Math.min(12, Math.max(4, calc));
-//    }
-
-//    /**
-//     * Check if the device is currently in portrait orientation
-//     */
-//    public boolean isInPortraitMode(final Context context) {
-//        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
-//    }
 
     /**
      * Get an {@link Locale} out of a android language code
@@ -622,13 +455,6 @@ public class GsContextUtils {
         }
         return result;
     }
-
-//    /**
-//     * Convert pixel unit do android dp unit
-//     */
-//    public float convertPxToDp(final Context context, final float px) {
-//        return px / context.getResources().getDisplayMetrics().density;
-//    }
 
     /**
      * Convert android dp unit to pixel unit
@@ -711,81 +537,6 @@ public class GsContextUtils {
         return null;
     }
 
-//    /**
-//     * Request the givens paths to be scanned by MediaScanner
-//     *
-//     * @param files Files and folders to scan
-//     */
-//    public void mediaScannerScanFile(final Context context, final File... files) {
-//        if (android.os.Build.VERSION.SDK_INT > 19) {
-//            String[] paths = new String[files.length];
-//            for (int i = 0; i < files.length; i++) {
-//                paths[i] = files[i].getAbsolutePath();
-//            }
-//            MediaScannerConnection.scanFile(context, paths, null, null);
-//        } else {
-//            for (File file : files) {
-//                context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)));
-//            }
-//        }
-//    }
-
-//    /**
-//     * Load an image into a {@link ImageView} and apply a color filter
-//     */
-//    public static void setDrawableWithColorToImageView(ImageView imageView, @DrawableRes int drawableResId, @ColorRes int colorResId) {
-//        imageView.setImageResource(drawableResId);
-//        imageView.setColorFilter(ContextCompat.getColor(imageView.getContext(), colorResId));
-//    }
-
-//    /**
-//     * Get a {@link Bitmap} out of a {@link Drawable}
-//     */
-//    public Bitmap drawableToBitmap(Drawable drawable) {
-//        Bitmap bitmap = null;
-//        if (drawable instanceof VectorDrawableCompat
-//                || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && drawable instanceof VectorDrawable)
-//                || ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && drawable instanceof AdaptiveIconDrawable))) {
-//
-//            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-//                drawable = (DrawableCompat.wrap(drawable)).mutate();
-//            }
-//
-//            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-//            Canvas canvas = new Canvas(bitmap);
-//            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-//            drawable.draw(canvas);
-//        } else if (drawable instanceof BitmapDrawable) {
-//            bitmap = ((BitmapDrawable) drawable).getBitmap();
-//        }
-//        return bitmap;
-//    }
-
-//    /**
-//     * Get a {@link Bitmap} out of a {@link DrawableRes}
-//     */
-//    public Bitmap drawableToBitmap(final Context context, @DrawableRes final int drawableId) {
-//        try {
-//            return drawableToBitmap(ContextCompat.getDrawable(context, drawableId));
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
-
-//    /**
-//     * Get a {@link Bitmap} from a given {@code imagePath} on the filesystem
-//     * Specifying a {@code maxDimen} is also possible and a value below 2000
-//     * is recommended, otherwise a {@link OutOfMemoryError} may occur
-//     */
-//    public Bitmap loadImageFromFilesystem(final File imagePath, final int maxDimen) {
-//        BitmapFactory.Options options = new BitmapFactory.Options();
-//        options.inJustDecodeBounds = true;
-//        BitmapFactory.decodeFile(imagePath.getAbsolutePath(), options);
-//        options.inSampleSize = calculateInSampleSize(options, maxDimen);
-//        options.inJustDecodeBounds = false;
-//        return BitmapFactory.decodeFile(imagePath.getAbsolutePath(), options);
-//    }
-
     /**
      * Calculates the scaling factor so the bitmap is maximal as big as the maxDimen
      *
@@ -804,18 +555,6 @@ public class GsContextUtils {
         }
         return inSampleSize;
     }
-
-//    /**
-//     * Scale the bitmap so both dimensions are lower or equal to {@code maxDimen}
-//     * This keeps the aspect ratio
-//     */
-//    public Bitmap scaleBitmap(final Bitmap bitmap, final int maxDimen) {
-//        int picSize = Math.min(bitmap.getHeight(), bitmap.getWidth());
-//        float scale = 1.f * maxDimen / picSize;
-//        Matrix matrix = new Matrix();
-//        matrix.postScale(scale, scale);
-//        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-//    }
 
     /**
      * Write the given {@link Bitmap} to filesystem
@@ -841,31 +580,6 @@ public class GsContextUtils {
         });
         return thisp();
     }
-
-//    /**
-//     * Draw text in the center of the given {@link DrawableRes}
-//     * This may be useful for e.g. badge counts
-//     */
-//    public Bitmap drawTextOnDrawable(final Context context, @DrawableRes final int drawableRes, final String text, final int textSize) {
-//        Resources resources = context.getResources();
-//        float scale = resources.getDisplayMetrics().density;
-//        Bitmap bitmap = drawableToBitmap(context, drawableRes);
-//
-//        bitmap = bitmap.copy(bitmap.getConfig(), true);
-//        Canvas canvas = new Canvas(bitmap);
-//        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-//        paint.setColor(Color.rgb(61, 61, 61));
-//        paint.setTextSize((int) (textSize * scale));
-//        paint.setShadowLayer(1f, 0f, 1f, Color.WHITE);
-//
-//        Rect bounds = new Rect();
-//        paint.getTextBounds(text, 0, text.length(), bounds);
-//        int x = (bitmap.getWidth() - bounds.width()) / 2;
-//        int y = (bitmap.getHeight() + bounds.height()) / 2;
-//        canvas.drawText(text, x, y, paint);
-//
-//        return bitmap;
-//    }
 
     /**
      * Try to tint all {@link Menu}s {@link MenuItem}s with given color
@@ -1052,19 +766,6 @@ public class GsContextUtils {
             vibrator.vibrate(ms_v);
         }
     }
-
-    /*
-    Check if Wifi is connected. Requires these permissions in AndroidManifest:
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-     */
-//    @SuppressLint("MissingPermission")
-//    public boolean isWifiConnected(final Context context, boolean... enabledOnly) {
-//        final boolean doEnabledCheckOnly = enabledOnly != null && enabledOnly.length > 0 && enabledOnly[0];
-//        final ConnectivityManager connectivityManager = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-//        final NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-//        return wifiInfo != null && (doEnabledCheckOnly ? wifiInfo.isAvailable() : wifiInfo.isConnected());
-//    }
 
     // Returns if the device is currently in portrait orientation (landscape=false)
     @SuppressWarnings("deprecation")
@@ -1347,80 +1048,6 @@ public class GsContextUtils {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Request installation of APK specified by file
-     * Permission required:
-     * <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-     *
-     * @param file The apk file to install
-     */
-    public boolean requestApkInstallation(final Context context, final File file) {
-        if (file == null || !file.getName().toLowerCase().endsWith(".apk")) {
-            return false;
-        }
-
-        Uri fileUri = null;
-        try {
-            fileUri = FileProvider.getUriForFile(context, getFileProvider(context), file);
-        } catch (Exception ignored) {
-            try {
-                fileUri = Uri.fromFile(file);
-            } catch (Exception ignored2) {
-            }
-        }
-
-        if (fileUri != null) {
-            final String MIME_TYPE_APK = "application/vnd.android.package-archive";
-
-            boolean hasRequestInstallPackagesPermission = true;
-            try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    context.getPackageManager().canRequestPackageInstalls();
-                }
-            } catch (Exception ignored) {
-                hasRequestInstallPackagesPermission = false;
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !hasRequestInstallPackagesPermission) {
-                shareStream(context, file, MIME_TYPE_APK);
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                startActivity(context, new Intent(Intent.ACTION_INSTALL_PACKAGE).setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION).setDataAndType(fileUri, MIME_TYPE_APK));
-            } else {
-                startActivity(context, new Intent(Intent.ACTION_VIEW).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).setDataAndType(fileUri, MIME_TYPE_APK));
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Share the given bitmap with given format
-     *
-     * @param bitmap  Image
-     * @param quality Quality of the exported image [0-100]
-     * @return if success, true
-     */
-    public <T extends GsContextUtils> T shareImage(final Context context, final Bitmap bitmap, final GsCallback.a1<Boolean> okCallback, final Integer... quality) {
-        try {
-            File file = new File(context.getCacheDir(), GsFileUtils.getFilenameWithTimestamp());
-            if (bitmap != null) {
-                writeImageToFile(file, bitmap, (ok) -> {
-                    if (ok) {
-                        shareStream(context, file, getMimeType(context, file));
-                    }
-                    if (okCallback != null) {
-                        okCallback.callback(ok);
-                    }
-                }, quality);
-                return thisp();
-            }
-        } catch (Exception ignored) {
-        }
-        if (okCallback != null) {
-            okCallback.callback(false);
-        }
-        return thisp();
     }
 
     /**
@@ -1715,70 +1342,10 @@ public class GsContextUtils {
         return out;
     }
 
-    /**
-     * Request a picture from gallery
-     * Result will be available from {@link Activity}.onActivityResult.
-     * It will return the path to the image if locally stored. If retrieved from e.g. a cloud
-     * service, the image will get copied to app-cache folder and it's path returned.
-     */
-//    public void requestGalleryPicture(final Activity activity, final GsCallback.a1<String> callback) {
-//        final Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        try {
-//            activity.startActivityForResult(intent, REQUEST_PICK_PICTURE);
-//            setPathCallback(callback);
-//        } catch (Exception ex) {
-//            Toast.makeText(activity, "No gallery app installed!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
-//    public boolean requestAudioRecording(final Activity activity, final GsCallback.a1<String> callback) {
-//        final Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
-//        try {
-//            activity.startActivityForResult(intent, REQUEST_RECORD_AUDIO);
-//            setPathCallback(callback);
-//            return true;
-//        } catch (Exception ignored) {
-//        }
-//        return false;
-//    }
-
     public String extractFileFromIntentStr(final Context context, final Intent receivingIntent) {
         File f = extractFileFromIntent(context, receivingIntent);
         return f != null ? f.getAbsolutePath() : null;
     }
-
-    /**
-     * Request a picture from camera-like apps
-     * Result ({@link String}) will be available from {@link Activity}.onActivityResult.
-     * It has set resultCode to {@link Activity#RESULT_OK} with same requestCode, if successfully
-     * The requested image savepath has to be stored at caller side (not contained in intent),
-     * it can be retrieved using {@link #extractResultFromActivityResult(Activity, int, int, Intent)}
-     * returns null if an error happened.
-     */
-//    public void requestCameraPicture(final Activity activity, GsCallback.a1<String> callback) {
-//        try {
-//            final Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//            final File picDir = activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-//            final String name = GsFileUtils.getFilenameWithTimestamp("IMG", "", ".jpg");
-//            final File imageTemp = GsFileUtils.findNonConflictingDest(picDir, name);
-//
-//            if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null && imageTemp.createNewFile()) {
-//                imageTemp.deleteOnExit();
-//                // Continue only if the File was successfully created
-//                final Uri uri;
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//                    uri = FileProvider.getUriForFile(activity, getFileProvider(activity), imageTemp);
-//                } else {
-//                    uri = Uri.fromFile(imageTemp);
-//                }
-//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri).putExtra(Intent.EXTRA_RETURN_RESULT, true);
-//                activity.startActivityForResult(takePictureIntent, REQUEST_CAMERA_PICTURE);
-//                _lastCameraPictureFilepath = imageTemp.getAbsolutePath();
-//                setPathCallback(callback);
-//            }
-//        } catch (IOException ignored) {
-//        }
-//    }
 
     private void setPathCallback(final GsCallback.a1<String> callback) {
         _receivePathCallback = new WeakReference<>(callback);
@@ -1803,72 +1370,6 @@ public class GsContextUtils {
     @SuppressLint("ApplySharedPref")
     public void extractResultFromActivityResult(final Activity context, final int requestCode, final int resultCode, final Intent intent) {
         switch (requestCode) {
-//            case REQUEST_CAMERA_PICTURE: {
-//                sendPathCallback(resultCode == Activity.RESULT_OK ? _lastCameraPictureFilepath : null);
-//                break;
-//            }
-//            case REQUEST_PICK_PICTURE: {
-//                if (resultCode == Activity.RESULT_OK && intent != null) {
-//                    Uri selectedImage = intent.getData();
-//                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-//                    String picturePath = null;
-//
-//                    Cursor cursor = context.getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-//                    if (cursor != null && cursor.moveToFirst()) {
-//                        for (String column : filePathColumn) {
-//                            int curColIndex = cursor.getColumnIndex(column);
-//                            if (curColIndex == -1) {
-//                                continue;
-//                            }
-//                            picturePath = cursor.getString(curColIndex);
-//                            if (!TextUtils.isEmpty(picturePath)) {
-//                                break;
-//                            }
-//                        }
-//                        cursor.close();
-//                    }
-//
-//                    // Try to grab via file extraction method
-//                    intent.setAction(Intent.ACTION_VIEW);
-//                    picturePath = picturePath != null ? picturePath : extractFileFromIntentStr(context, intent);
-//
-//                    // Retrieve image from file descriptor / Cloud, e.g.: Google Drive, Picasa
-//                    if (picturePath == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//                        try {
-//                            final ParcelFileDescriptor parcelFileDescriptor = context.getContentResolver().openFileDescriptor(selectedImage, "r");
-//                            if (parcelFileDescriptor != null) {
-//                                final FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-//                                final FileInputStream input = new FileInputStream(fileDescriptor);
-//
-//                                // Create temporary file in cache directory
-//                                final File temp = File.createTempFile("image", "tmp", context.getCacheDir());
-//                                temp.deleteOnExit();
-//                                picturePath = temp.getAbsolutePath();
-//
-//                                GsFileUtils.writeFile(new File(picturePath), GsFileUtils.readCloseBinaryStream(input), null);
-//                            }
-//                        } catch (IOException ignored) {
-//                            // nothing we can do here, null value will be handled below
-//                        }
-//                    }
-//
-//                    // Return path to picture on success, else null
-//                    sendPathCallback(picturePath);
-//                }
-//                break;
-//            }
-//            case REQUEST_RECORD_AUDIO: {
-//                if (resultCode == Activity.RESULT_OK && intent != null && intent.getData() != null) {
-//                    final Uri uri = intent.getData();
-//                    final String uriPath = uri.getPath();
-//                    final String ext = uriPath.substring(uriPath.lastIndexOf("."));
-//                    final String datestr = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss", Locale.ENGLISH).format(new Date());
-//                    final File temp = new File(context.getCacheDir(), datestr + ext);
-//                    GsFileUtils.copyUriToFile(context, uri, temp);
-//                    sendPathCallback(temp.getAbsolutePath());
-//                }
-//                break;
-//            }
             case REQUEST_SAF: {
                 if (resultCode == Activity.RESULT_OK && intent != null && intent.getData() != null) {
                     final Uri treeUri = intent.getData();
@@ -1891,47 +1392,6 @@ public class GsContextUtils {
             }
         }
     }
-
-//    /**
-//     * Send a local broadcast (to receive within app), with given action and string-extra+value.
-//     * This is a convenience method for quickly sending just one thing.
-//     */
-//    public void sendLocalBroadcastWithStringExtra(final Context context, final String action, final String extra, final CharSequence value) {
-//        Intent intent = new Intent(action);
-//        intent.putExtra(extra, value);
-//        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-//    }
-
-    /**
-     * Receive broadcast results via a callback method
-     *
-     * @param callback       Function to call with received {@link Intent}
-     * @param autoUnregister Whether or not to automatically unregister receiver after first match
-     * @param filterActions  All {@link IntentFilter} actions to filter for
-     * @return The created instance. Has to be unregistered on {@link Activity} lifecycle events.
-     */
-//    public BroadcastReceiver receiveResultFromLocalBroadcast(final Context context, final GsCallback.a2<Intent, BroadcastReceiver> callback, final boolean autoUnregister, final String... filterActions) {
-//        IntentFilter intentFilter = new IntentFilter();
-//        for (String filterAction : filterActions) {
-//            intentFilter.addAction(filterAction);
-//        }
-//        final BroadcastReceiver br = new BroadcastReceiver() {
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//                if (intent != null) {
-//                    if (autoUnregister) {
-//                        LocalBroadcastManager.getInstance(context).unregisterReceiver(this);
-//                    }
-//                    try {
-//                        callback.callback(intent, this);
-//                    } catch (Exception ignored) {
-//                    }
-//                }
-//            }
-//        };
-//        LocalBroadcastManager.getInstance(context).registerReceiver(br, intentFilter);
-//        return br;
-//    }
 
     /**
      * Request edit of file
@@ -2516,13 +1976,6 @@ public class GsContextUtils {
         return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT).replaceAll("\\s+", "");
     }
 
-
-//    public Snackbar showSnackBar(final Activity context, @StringRes int stringResId, boolean showLong) {
-//        final Snackbar s = Snackbar.make(context.findViewById(android.R.id.content), stringResId, (showLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT));
-//        s.show();
-//        return s;
-//    }
-
     public void showSnackBar(final Activity context, @StringRes int stringResId, boolean showLong, @StringRes int actionResId, View.OnClickListener listener) {
         Snackbar.make(context.findViewById(android.R.id.content), stringResId, (showLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT))
                 .setAction(actionResId, listener)
@@ -2545,10 +1998,6 @@ public class GsContextUtils {
         return thisp();
     }
 
-//    public void showDialogWithHtmlTextView(final Activity context, @StringRes int resTitleId, String html) {
-//        showDialogWithHtmlTextView(context, resTitleId, html, true, null);
-//    }
-
     public void showDialogWithHtmlTextView(final Activity context, @StringRes int resTitleId, String text, boolean isHtml, DialogInterface.OnDismissListener dismissedListener) {
         ScrollView scroll = new ScrollView(context);
         AppCompatTextView textView = new AppCompatTextView(context);
@@ -2570,31 +2019,6 @@ public class GsContextUtils {
         dialogFullWidth(dialog.show(), true, false);
     }
 
-//    public void showDialogWithRawFileInWebView(final Activity context, String fileInRaw, @StringRes int resTitleId) {
-//        final WebView wv = new WebView(context);
-//        wv.loadUrl("file:///android_res/raw/" + fileInRaw);
-//        AlertDialog.Builder dialog = new AlertDialog.Builder(context)
-//                .setPositiveButton(android.R.string.ok, null)
-//                .setTitle(resTitleId)
-//                .setView(wv);
-//        dialogFullWidth(dialog.show(), true, false);
-//    }
-
-    // Toggle with no param, else set visibility according to first bool
-//    public <T extends GsContextUtils> T toggleStatusbarVisibility(final Activity context, boolean... optionalForceVisible) {
-//        WindowManager.LayoutParams attrs = context.getWindow().getAttributes();
-//        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-//        if (optionalForceVisible.length == 0) {
-//            attrs.flags ^= flag;
-//        } else if (optionalForceVisible.length == 1 && optionalForceVisible[0]) {
-//            attrs.flags &= ~flag;
-//        } else {
-//            attrs.flags |= flag;
-//        }
-//        context.getWindow().setAttributes(attrs);
-//        return thisp();
-//    }
-
     public <T extends GsContextUtils> T showGooglePlayEntryForThisApp(final Context context) {
         String pkgId = "details?id=" + context.getPackageName();
         try {
@@ -2607,47 +2031,6 @@ public class GsContextUtils {
         }
         return thisp();
     }
-
-//    public <T extends GsContextUtils> T setStatusbarColor(final Activity context, int color, boolean... fromRes) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            if (fromRes != null && fromRes.length > 0 && fromRes[0]) {
-//                color = ContextCompat.getColor(context, color);
-//            }
-//
-//            context.getWindow().setStatusBarColor(color);
-//        }
-//        return thisp();
-//    }
-
-//    public boolean isLauncherEnabled(final Context context, final Class activityClass) {
-//        try {
-//            ComponentName component = new ComponentName(context, activityClass);
-//            return context.getPackageManager().getComponentEnabledSetting(component) != PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
-//        } catch (Exception ignored) {
-//        }
-//        return false;
-//    }
-//
-//    @ColorInt
-//    public Integer getCurrentPrimaryColor(final Context context) {
-//        TypedValue typedValue = new TypedValue();
-//        context.getTheme().resolveAttribute(getResId(context, ResType.ATTR, "colorPrimary"), typedValue, true);
-//        return typedValue.data;
-//    }
-//
-//    @ColorInt
-//    public Integer getCurrentPrimaryDarkColor(final Context context) {
-//        TypedValue typedValue = new TypedValue();
-//        context.getTheme().resolveAttribute(getResId(context, ResType.ATTR, "colorPrimaryDark"), typedValue, true);
-//        return typedValue.data;
-//    }
-
-//    @ColorInt
-//    public Integer getCurrentAccentColor(final Context context) {
-//        TypedValue typedValue = new TypedValue();
-//        context.getTheme().resolveAttribute(getResId(context, ResType.ATTR, "colorAccent"), typedValue, true);
-//        return typedValue.data;
-//    }
 
     @ColorInt
     public Integer getActivityBackgroundColor(final Activity activity) {
@@ -2695,25 +2078,6 @@ public class GsContextUtils {
         }
         return thisp();
     }
-
-//    public <T extends GsContextUtils> T startCalendarApp(final Context context) {
-//        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
-//        builder.appendPath("time");
-//        builder.appendPath(Long.toString(System.currentTimeMillis()));
-//        Intent intent = new Intent(Intent.ACTION_VIEW, builder.build());
-//        startActivity(context, intent);
-//        return thisp();
-//    }
-
-    /**
-     * Detect if the activity is currently in splitscreen/multiwindow mode
-     */
-//    public boolean isInSplitScreenMode(final Activity activity) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//            return activity.isInMultiWindowMode();
-//        }
-//        return false;
-//    }
 
     public void setKeepScreenOn(final Activity activity, Boolean keepOn) {
         if (keepOn) {
@@ -2768,22 +2132,6 @@ public class GsContextUtils {
         window.setAttributes(params);
     }
 
-    // Make activity/app not show up in the recents history - call before finish / System.exit
-//    public <T extends GsContextUtils> T removeActivityFromHistory(final Context activity) {
-//        try {
-//            ActivityManager am = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
-//            if (am != null && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-//                List<ActivityManager.AppTask> tasks = am.getAppTasks();
-//                if (tasks != null && !tasks.isEmpty()) {
-//                    tasks.get(0).setExcludeFromRecents(true);
-//                }
-//            }
-//
-//        } catch (Exception ignored) {
-//        }
-//        return thisp();
-//    }
-
     /**
      * Set Android day-night theme
      *
@@ -2816,38 +2164,6 @@ public class GsContextUtils {
         int h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         return h >= begin && h <= end;
     }
-
-//    @SuppressLint("SwitchIntDef")
-//    public void nextScreenRotationSetting(final Activity context) {
-//        String text;
-//        int nextOrientation;
-//        switch (context.getRequestedOrientation()) {
-//            case ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE: {
-//                nextOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-//                text = "Portrait";
-//                break;
-//            }
-//            case ActivityInfo.SCREEN_ORIENTATION_PORTRAIT: {
-//                nextOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR;
-//                text = "Sensor";
-//                break;
-//            }
-//            case ActivityInfo.SCREEN_ORIENTATION_SENSOR: {
-//                nextOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
-//                text = "Default";
-//                break;
-//            }
-//            default: {
-//                nextOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
-//                text = "Landscape";
-//                break;
-//            }
-//        }
-//        int resId = getResId(context, ResType.STRING, text);
-//        text = (resId != 0 ? context.getString(resId) : text);
-//        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
-//        context.setRequestedOrientation(nextOrientation);
-//    }
 
     /**
      * Check if the Dark theme mode is enable in this app currently (or at system if system theme is set)
@@ -2911,29 +2227,4 @@ public class GsContextUtils {
         }
     }
 
-//    public static boolean fadeInOut(final View in, final View out, final boolean animate) {
-//        // Do nothing if we are already in the correct state
-//        if (in.getVisibility() == View.VISIBLE && out.getVisibility() == View.GONE) {
-//            return false;
-//        }
-//
-//        in.setVisibility(View.VISIBLE);
-//        if (animate) {
-//            in.setAlpha(0);
-//            in.animate().alpha(1).setDuration(200).setListener(null);
-//            out.animate()
-//                    .alpha(0)
-//                    .setDuration(200)
-//                    .setListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-//                            out.setVisibility(View.GONE);
-//                        }
-//                    });
-//        } else {
-//            out.setVisibility(View.GONE);
-//        }
-//
-//        return true;
-//    }
 }

@@ -47,17 +47,12 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
         m_setActivityBackgroundColor.callback();
         m_setActivityNavigationBarColor.callback();
 
-        // Set secure flag / disallow screenshots
-        if (isFlagSecure() != null) {
-            try {
-                if (isFlagSecure()) {
-                    getWindow().setFlags(FLAG_SECURE, FLAG_SECURE);
-                } else {
-                    getWindow().clearFlags(FLAG_SECURE);
-                }
-            } catch (Exception ignored) {
-            }
+
+        try {
+            getWindow().clearFlags(FLAG_SECURE);
+        } catch (Exception ignored) {
         }
+
     }
 
     protected void onPreCreate(@Nullable Bundle savedInstanceState) {

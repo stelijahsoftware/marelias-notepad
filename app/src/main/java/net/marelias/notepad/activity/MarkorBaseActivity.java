@@ -28,9 +28,9 @@ public abstract class MarkorBaseActivity extends GsActivityBase<AppSettings, Mar
             getWindow().setExitTransition(null);
         }
         _cu.setAppLanguage(this, _appSettings.getLanguage());
-        if (_appSettings.isHideSystemStatusbar()) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
+//        if (_appSettings.isHideSystemStatusbar()) {
+//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        }
     }
 
     protected boolean onReceiveKeyPress(GsFragmentBase fragment, int keyCode, KeyEvent event) {
@@ -57,8 +57,8 @@ public abstract class MarkorBaseActivity extends GsActivityBase<AppSettings, Mar
         return new MarkorContextUtils(applicationContext);
     }
 
-    @Override
-    public Boolean isFlagSecure() {
-        return _appSettings.isDisallowScreenshots();
-    }
+//    @Override
+//    public Boolean isFlagSecure() {
+//        return _appSettings.isDisallowScreenshots();
+//    }
 }

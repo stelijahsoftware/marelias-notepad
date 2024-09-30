@@ -25,14 +25,14 @@ android {
     defaultConfig {
         resValue "string", "manifest_package_id", "net.marelias.notepad"
         applicationId "net.marelias.notepad"
-        versionName "1.0.1"
-        versionCode 15 // an internal version number
+        versionName "1.0.2"
+        versionCode 16 // an internal version number
 
         multiDexEnabled true
         minSdkVersion rootProject.ext.version_minSdk
         targetSdkVersion rootProject.ext.version_compileSdk
-        buildConfigField "boolean", "IS_TEST_BUILD", "false"
-        buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
+//        buildConfigField "boolean", "IS_TEST_BUILD", "false"
+//        buildConfigField "boolean", "IS_GPLAY_BUILD", "false"
         buildConfigField "String[]", "DETECTED_ANDROID_LOCALES", "${findUsedAndroidLocales()}"
         buildConfigField "String", "BUILD_DATE", "\"${getBuildDate()}\""
         buildConfigField "String", "GITHASH", "\"${getGitHash}\""
@@ -42,17 +42,17 @@ android {
 
     flavorDimensions "default"
     productFlavors {
-        flavorAtest {
-            applicationId "net.marelias.notepad"
-            versionCode = Integer.parseInt(new Date().format('yyMMdd'))
-            versionName = defaultConfig.versionName + "-" + new Date().format('HHmm')
-            buildConfigField "boolean", "IS_TEST_BUILD", "true"
-        }
+//        flavorAtest {
+//            applicationId "net.marelias.notepad"
+//            versionCode = Integer.parseInt(new Date().format('yyMMdd'))
+//            versionName = defaultConfig.versionName + "-" + new Date().format('HHmm')
+//            buildConfigField "boolean", "IS_TEST_BUILD", "true"
+//        }
         flavorDefault {
         }
-        flavorGplay {
-            buildConfigField "boolean", "IS_GPLAY_BUILD", "true"
-        }
+//        flavorGplay {
+//            buildConfigField "boolean", "IS_GPLAY_BUILD", "true"
+//        }
     }
 
     sourceSets {

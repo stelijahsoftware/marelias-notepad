@@ -183,25 +183,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return ret;
     }
 
-    public boolean isHideSystemStatusbar() {
-        return getBool(R.string.pref_key__theming_hide_system_statusbar, false);
-    }
-
-    public boolean isSpecialFileLaunchersEnabled() {
-        if (BuildConfig.IS_TEST_BUILD) {
-            return false;
-        }
-        return getBool(R.string.pref_key__is_launcher_for_special_files_enabled, false);
-    }
-
-    public boolean isKeepScreenOn() {
-        return getBool(R.string.pref_key__is_keep_screen_on, !BuildConfig.IS_TEST_BUILD);
-    }
-
-    public boolean isDisallowScreenshots() {
-        return false;
-    }
-
     public String getLanguage() {
         return getString(R.string.pref_key__language, "");
     }
@@ -704,34 +685,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
             extSettingCache = Arrays.asList(pref.toLowerCase().replace(",,", ",None,").replace(" ", "").split(","));
         }
         return extSettingCache.contains(ext) || extSettingCache.contains(".*");
-    }
-
-    public boolean isExperimentalFeaturesEnabled() {
-        return getBool(R.string.pref_key__is_enable_experimental_features, BuildConfig.IS_TEST_BUILD);
-    }
-
-    public String getViewModeLinkColor() {
-        return GsTextUtils.colorToHexString(getInt(R.string.pref_key__view_mode_link_color, Color.parseColor("#388E3C")));
-    }
-
-    public boolean getNewFileDialogLastUsedEncryption() {
-        return getBool(R.string.pref_key__new_file_dialog_lastused_encryption, false);
-    }
-
-    public void setNewFileDialogLastUsedEncryption(boolean b) {
-        setBool(R.string.pref_key__new_file_dialog_lastused_encryption, b);
-    }
-
-    public boolean getNewFileDialogLastUsedUtf8Bom() {
-        return getBool(R.string.pref_key__new_file_dialog_lastused_encryption, false);
-    }
-
-    public void setNewFileDialogLastUsedUtf8Bom(boolean b) {
-        setBool(R.string.pref_key__new_file_dialog_lastused_encryption, b);
-    }
-
-    public String getNewFileDialogLastUsedExtension() {
-        return getString(R.string.pref_key__new_file_dialog_lastused_extension, ".md");
     }
 
     public void setNewFileDialogLastUsedExtension(String v) {

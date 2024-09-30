@@ -23,8 +23,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import net.marelias.notepad.R;
-import net.marelias.notepad.activity.openeditor.OpenEditorQuickNoteActivity;
-import net.marelias.notepad.activity.openeditor.OpenEditorTodoActivity;
 import net.marelias.notepad.activity.openeditor.OpenFromShortcutOrWidgetActivity;
 import net.marelias.notepad.activity.openeditor.OpenShareIntoActivity;
 import net.marelias.notepad.model.Document;
@@ -42,13 +40,11 @@ public class MarkorContextUtils extends GsContextUtils {
         }
     }
 
-    public <T extends GsContextUtils> T applySpecialLaunchersVisibility(final Context context, boolean extraLaunchersEnabled) {
-        setLauncherActivityEnabled(context, OpenEditorQuickNoteActivity.class, extraLaunchersEnabled);
-        setLauncherActivityEnabled(context, OpenEditorTodoActivity.class, extraLaunchersEnabled);
-        setLauncherActivityEnabled(context, OpenShareIntoActivity.class, extraLaunchersEnabled);
-        setLauncherActivityEnabledFromString(context, "net.marelias.notepad.AliasDocumentProcessText", extraLaunchersEnabled);
-        return thisp();
-    }
+//    public <T extends GsContextUtils> T applySpecialLaunchersVisibility(final Context context, boolean extraLaunchersEnabled) {
+//        setLauncherActivityEnabled(context, OpenShareIntoActivity.class, extraLaunchersEnabled);
+//        setLauncherActivityEnabledFromString(context, "net.marelias.notepad.AliasDocumentProcessText", extraLaunchersEnabled);
+//        return thisp();
+//    }
 
     private static int getIconResForFile(final @NonNull File file) {
         if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_POPULAR)) {

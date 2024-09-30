@@ -39,7 +39,7 @@ import net.marelias.opoc.util.GsFileUtils;
 import java.io.File;
 import java.util.Stack;
 
-import other.so.AndroidBug5497Workaround;
+//import other.so.AndroidBug5497Workaround;
 
 public class DocumentActivity extends MarkorBaseActivity {
 
@@ -142,9 +142,9 @@ public class DocumentActivity extends MarkorBaseActivity {
         setContentView(R.layout.document__activity);
         _toolbar = findViewById(R.id.toolbar);
 
-        if (_appSettings.isHideSystemStatusbar()) {
-            AndroidBug5497Workaround.assistActivity(this);
-        }
+//        if (_appSettings.isHideSystemStatusbar()) {
+//            AndroidBug5497Workaround.assistActivity(this);
+//        }
 
         setSupportActionBar(findViewById(R.id.toolbar));
         _fragManager = getSupportFragmentManager();
@@ -287,7 +287,7 @@ public class DocumentActivity extends MarkorBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        _cu.setKeepScreenOn(this, _appSettings.isKeepScreenOn());
+//        _cu.setKeepScreenOn(this, _appSettings.isKeepScreenOn());
     }
 
     @Override

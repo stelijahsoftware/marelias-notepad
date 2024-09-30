@@ -393,9 +393,9 @@ public class HighlightingEditor extends AppCompatEditText {
     @Override
     protected void onSelectionChanged(int selStart, int selEnd) {
         super.onSelectionChanged(selStart, selEnd);
-        if (MainActivity.IS_DEBUG_ENABLED) {
-            AppSettings.appendDebugLog("Selection changed: " + selStart + "->" + selEnd);
-        }
+//        if (MainActivity.IS_DEBUG_ENABLED) {
+//            AppSettings.appendDebugLog("Selection changed: " + selStart + "->" + selEnd);
+//        }
     }
 
     // Auto-format

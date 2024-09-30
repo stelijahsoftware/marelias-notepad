@@ -52,7 +52,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFragment.FilesystemFragmentOptionsListener {
 
-    public static boolean IS_DEBUG_ENABLED = false;
+//    public static boolean IS_DEBUG_ENABLED = false;
 
 //    private BottomNavigationView _bottomNav;
     private ViewPager2 _viewPager;
@@ -68,7 +68,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        IS_DEBUG_ENABLED |= BuildConfig.IS_TEST_BUILD;
+//        IS_DEBUG_ENABLED |= BuildConfig.IS_TEST_BUILD;
 
         try {
             //noinspection ResultOfMethodCallIgnored
@@ -102,11 +102,11 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         reduceViewpagerSwipeSensitivity();
 
         // noinspection PointlessBooleanExpression - Send Test intent
-        if (BuildConfig.IS_TEST_BUILD && false) {
-            DocumentActivity.launch(this, new File("/sdcard/Documents/mordor/aa-beamer.md"), true, null);
-        }
+//        if (BuildConfig.IS_TEST_BUILD && false) {
+//            DocumentActivity.launch(this, new File("/sdcard/Documents/mordor/aa-beamer.md"), true, null);
+//        }
 
-        _cu.applySpecialLaunchersVisibility(this, _appSettings.isSpecialFileLaunchersEnabled());
+//        _cu.applySpecialLaunchersVisibility(this, _appSettings.isSpecialFileLaunchersEnabled());
     }
 
     @Override
@@ -229,7 +229,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             startActivity(intent);
         }
 
-        _cu.setKeepScreenOn(this, _appSettings.isKeepScreenOn());
+//        _cu.setKeepScreenOn(this, _appSettings.isKeepScreenOn());
 
     }
 
