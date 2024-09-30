@@ -26,7 +26,7 @@ import net.marelias.notepad.BuildConfig;
 import net.marelias.notepad.R;
 import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.notepad.util.ShortcutUtils;
+//import net.marelias.notepad.util.ShortcutUtils;
 import net.marelias.opoc.format.GsTextUtils;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.model.GsSharedPreferencesPropertyBackend;
@@ -99,30 +99,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
                 Environment.getExternalStorageDirectory(),
                 "Documents",
                 rstr(R.string.app_name).toLowerCase(Locale.ROOT));
-    }
-
-    public File getQuickNoteFile() {
-        return new File(getString(R.string.pref_key__quicknote_filepath, getDefaultQuickNoteFile().getAbsolutePath()));
-    }
-
-    public void setQuickNoteFile(final File file) {
-        setString(R.string.pref_key__quicknote_filepath, Document.getPath(file));
-    }
-
-    public File getDefaultQuickNoteFile() {
-        return new File(getDefaultNotebookFile(), rstr(R.string.quicknote_default_filename));
-    }
-
-    public File getTodoFile() {
-        return new File(getString(R.string.pref_key__todo_filepath, getDefaultTodoFile().getAbsolutePath()));
-    }
-
-    public void setTodoFile(final File file) {
-        setString(R.string.pref_key__todo_filepath, Document.getPath(file));
-    }
-
-    public File getDefaultTodoFile() {
-        return new File(getDefaultNotebookFile(), rstr(R.string.todo_default_filename));
     }
 
     public String getFontFamily() {
@@ -228,24 +204,20 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__editor_start_editing_in_center, false);
     }
 
-    public void addRecentFile(final File file) {
-        if (!listFileInRecents(file)) {
-            return;
-        }
-        final String path = Document.getPath(file);
-        if (!file.equals(getTodoFile()) && !file.equals(getQuickNoteFile())) {
-            ArrayList<String> recent = getRecentDocuments();
-            recent.add(0, path);
-            recent.remove(Document.getPath(getTodoFile()));
-            recent.remove(Document.getPath(getQuickNoteFile()));
-            recent.remove("");
-            recent.remove(null);
-
-            setInt(path, getInt(path, 0, _prefCache) + 1, _prefCache);
-            setRecentDocuments(recent);
-        }
-        ShortcutUtils.setShortcuts(_context);
-    }
+//    public void addRecentFile(final File file) {
+//        if (!listFileInRecents(file)) {
+//            return;
+//        }
+//        final String path = Document.getPath(file);
+//            ArrayList<String> recent = getRecentDocuments();
+//            recent.add(0, path);
+//            recent.remove("");
+//            recent.remove(null);
+//
+//            setInt(path, getInt(path, 0, _prefCache) + 1, _prefCache);
+//            setRecentDocuments(recent);
+//        ShortcutUtils.setShortcuts(_context);
+//    }
 
     public void setFavouriteFiles(final Collection<File> files) {
         final Set<String> set = new LinkedHashSet<>();
@@ -314,10 +286,8 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         if (file == null || !file.exists()) {
             return;
         }
-        if (!file.equals(getTodoFile()) && !file.equals(getQuickNoteFile())) {
-            setInt(PREF_PREFIX_VIEW_SCROLL_X + Document.getPath(file), scrollX, _prefCache);
-            setInt(PREF_PREFIX_VIEW_SCROLL_Y + Document.getPath(file), scrollY, _prefCache);
-        }
+        setInt(PREF_PREFIX_VIEW_SCROLL_X + Document.getPath(file), scrollX, _prefCache);
+        setInt(PREF_PREFIX_VIEW_SCROLL_Y + Document.getPath(file), scrollY, _prefCache);
     }
 
     public void setDocumentLineNumbersEnabled(final String path, final boolean enabled) {
