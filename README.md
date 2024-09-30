@@ -1,17 +1,20 @@
+# Mar-Elias Notepad
+A Simple noteapd with highlights.
+
 # Rights:
 
-Forked from https://www.github.com/gsantner/markor
+Forked from Gregor Santner's [Markor](https://www.github.com/gsantner/markor)
 
-Apache 2.0 license (see [LICENSE.txt](./LICENSE.txt); all licenses in the original repo above apply to this repo).
+Apache 2.0 license (see [LICENSE.txt](./LICENSE.txt); all licenses in the original repo (Markor) apply to this repo).
 
 <img src="./icon/icon.png" alt="icon" width="25%" />
 
-A txt notes editor which is a simplified and heavily trimmed down and improved light version of [Markor](https://www.github.com/gsantner/markor).
+A simple text notes editor and heavily trimmed down version of [Markor](https://www.github.com/gsantner/markor), with customised highlights.
 
 ### Forking note:
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
-# Changelog from Markor:
+### Changelog from Markor:
 X - Remove all occurrences of: audio, epub, ascii, csv
 X - See todos from Snotepad.
 X - Fix: search when launched from inside a file (breaks file search)
@@ -43,7 +46,7 @@ X - Add an about screen that shows the original developer (+ a link to his githu
 X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
 
 
-# TODO:
+### TODO:
 [h] - Naming: do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
     - Naming: Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
     - Organisation: highlight briefly when going back (see Merge requests on github)
@@ -53,13 +56,13 @@ X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename f
     - Appearance: make save button bigger (disable auto-save?)
     - Appearance: Make hinted text have lighter grey colour at new note creation
 
-# Build Commands:
+### Build Commands:
 ./gradlew build --warning-mode all
 
 ./gradlew clean
 ./gradlew build
 
-# Deploy apk (release):
+### Deploy apk (release):
 To increase app version, edit build.gradle inside app/
 `Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'DefaultRelease'`
 then find the apk here:
