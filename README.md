@@ -56,6 +56,8 @@ X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename f
     - Appearance: make save button bigger (disable auto-save?)
     - Appearance: Make hinted text have lighter grey colour at new note creation
 - Add button to insert date yyy-mm-dd
+- Auto-delete empty notes
+- disable red underlining of incorrectly typed words
 
 ### Build Commands:
 ./gradlew build --warning-mode all
