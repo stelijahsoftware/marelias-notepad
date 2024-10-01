@@ -55,6 +55,7 @@ X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename f
     - Appearance: darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
     - Appearance: make save button bigger (disable auto-save?)
     - Appearance: Make hinted text have lighter grey colour at new note creation
+- Add button to insert date yyy-mm-dd
 
 ### Build Commands:
 ./gradlew build --warning-mode all
