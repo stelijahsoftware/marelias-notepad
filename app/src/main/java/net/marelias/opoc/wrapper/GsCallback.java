@@ -32,14 +32,6 @@ public class GsCallback {
         void callback(A arg1, B arg2, C arg3, D arg4);
     }
 
-    public interface a5<A, B, C, D, E> {
-        void callback(A arg1, B arg2, C arg3, D arg4, E arg5);
-    }
-
-    public interface b0 {
-        boolean callback();
-    }
-
     public interface b1<A> {
         boolean callback(A arg1);
     }
@@ -50,10 +42,6 @@ public class GsCallback {
 
     public interface b3<A, B, C> {
         boolean callback(A arg1, B arg2, C arg3);
-    }
-
-    public interface b4<A, B, C, D> {
-        boolean callback(A arg1, B arg2, C arg3, D arg4);
     }
 
     public interface b5<A, B, C, D, E> {

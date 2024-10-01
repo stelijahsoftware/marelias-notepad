@@ -27,12 +27,13 @@ import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
 import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
 import net.marelias.notepad.model.AppSettings;
-import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.frontend.base.GsActivityBase;
 import net.marelias.opoc.frontend.base.GsPreferenceFragmentBase;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.marelias.opoc.frontend.settings.GsFontPreferenceCompat;
-import net.marelias.opoc.format.GsSimpleMarkdownParser;
+
+//import net.marelias.notepad.util.MarkorContextUtils;
+//import net.marelias.opoc.format.GsSimpleMarkdownParser;
 //import net.marelias.notepad.BuildConfig;
 
 import java.io.File;
@@ -171,8 +172,6 @@ public class SettingsActivity extends MarkorBaseActivity {
                 updateSummary(R.string.pref_key__file_description_format, fileDescFormat);
             }
 
-
-
             // Display app version (elyahw)
             super.doUpdatePreferences();
             Context context = getContext();
@@ -218,7 +217,6 @@ public class SettingsActivity extends MarkorBaseActivity {
                     prefs.edit().putString(key, "").commit();
                 }
             }
-
         }
 
         @Override
@@ -247,9 +245,9 @@ public class SettingsActivity extends MarkorBaseActivity {
                 case R.string.pref_key__more_info__source_code: {
                     // Either open a webpage:
                     // _cu.openWebpageInExternalBrowser(getContext(), "https://notepad.mar-elias.com/");
-                    // Or display information window:
 
-                    String aaa = "<br>" + // + Add links
+                    // Or display html text in a window:
+                    String html_info = "<br>" + // + Add links
                                  "<b>Mar-Elias Notepad</b> is a fork of <b>Markor</b>, a simple text file editor with customised highlights<br>" +
                                  "<font color='#276230'>Project website:</font><br>" +
                                  "<a href='https://notepad.mar-elias.com/'>https://notepad.mar-elias.com/</a><br>" +
@@ -267,11 +265,11 @@ public class SettingsActivity extends MarkorBaseActivity {
                     // This copies the content to the clipboard:
                     //_cu.setClipboard(getContext(), preference.getSummary());
 
-                    GsSimpleMarkdownParser smp = new GsSimpleMarkdownParser();
+                    // GsSimpleMarkdownParser smp = new GsSimpleMarkdownParser();
                     try {
-                        //getResources().openRawResource(R.raw.license)
-                        String html = smp.parse(aaa, "", GsSimpleMarkdownParser.FILTER_CHANGELOG).getHtml();
-                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.about, html, true, null);
+                        // getResources().openRawResource(R.raw.license)
+                        // String html = smp.parse(aaa, "", GsSimpleMarkdownParser.FILTER_CHANGELOG).getHtml();
+                        _cu.showDialogWithHtmlTextView(getActivity(), R.string.about, html_info, true, null);
                     } catch (Exception ex) {
 
                     }
