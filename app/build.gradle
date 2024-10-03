@@ -77,7 +77,6 @@ android {
         }
     }
 
-
     compileOptions {
         encoding = 'UTF-8'
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -92,7 +91,6 @@ android {
 //    buildFeatures {
 //        buildConfig true
 //    }
-
 }
 
 dependencies {
@@ -131,8 +129,7 @@ dependencies {
 
     // UI libs
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
-
-
+    
     // Tool libraries
     //noinspection AnnotationProcessorOnCompilePath
     implementation 'commons-io:commons-io:2.7'

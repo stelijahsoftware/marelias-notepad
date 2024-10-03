@@ -47,19 +47,20 @@ X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename f
 
 
 ### TODO:
-[h] - Naming: do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-    - Naming: Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
-    - Organisation: highlight briefly when going back (see Merge requests on github)
-[h] - Organisation: show total notes count (+ on folders?)
-[m] - Organisation: publish to gplay
-    - Appearance: darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
-    - Appearance: make save button bigger (disable auto-save?)
-    - Appearance: Make hinted text have lighter grey colour at new note creation
+- Naming: do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note) [h]
+- Naming: Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+- Organisation: highlight briefly when going back (see Merge requests on github)
+- Organisation: show total notes count (+ on folders?) [h]
+- Organisation: publish to gplay [m]
+- Appearance: darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
+- Appearance: make save button bigger (disable auto-save?)
+- Appearance: Make hinted text have lighter grey colour at new note creation
 - Add button to insert date yyy-mm-dd
 - Auto-delete empty notes
 - disable red underlining of incorrectly typed words
 - put top bar on bottom for easier access to save button & rename..etc
 - when renaming a note, don't display the extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
+- copy template note inside default folder
 
 ### Build Commands:
 ./gradlew build --warning-mode all
