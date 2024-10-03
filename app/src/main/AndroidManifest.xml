@@ -36,7 +36,6 @@
         android:name=".ApplicationObject"
         android:allowBackup="true"
         android:appCategory="productivity"
-        android:fullBackupContent="@xml/full_backup_rules"
         android:icon="@drawable/ic_launcher"
         android:isGame="false"
         android:label="@string/app_name"

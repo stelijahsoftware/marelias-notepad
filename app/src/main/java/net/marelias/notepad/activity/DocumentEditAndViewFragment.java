@@ -40,7 +40,7 @@ import androidx.annotation.NonNull;
 //import androidx.annotation.StringRes;
 
 import net.marelias.notepad.ApplicationObject;
-import net.marelias.notepad.BuildConfig;
+//import net.marelias.notepad.BuildConfig;
 import net.marelias.notepad.R;
 import net.marelias.notepad.format.ActionButtonBase;
 import net.marelias.notepad.format.FormatRegistry;
@@ -165,9 +165,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         webSettings.setAllowUniversalAccessFromFileURLs(false);
         webSettings.setMediaPlaybackRequiresUserGesture(false);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && BuildConfig.DEBUG) { // && BuildConfig.IS_TEST_BUILD
-            WebView.setWebContentsDebuggingEnabled(true); // Inspect on computer chromium browser: chrome://inspect/#devices
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && BuildConfig.DEBUG) { // && BuildConfig.IS_TEST_BUILD
+//            WebView.setWebContentsDebuggingEnabled(true); // Inspect on computer chromium browser: chrome://inspect/#devices
+//        }
 
         // Upon construction, the document format has been determined from extension etc
         // Here we replace it with the last saved format.
