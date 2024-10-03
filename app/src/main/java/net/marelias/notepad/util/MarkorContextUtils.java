@@ -47,13 +47,14 @@ public class MarkorContextUtils extends GsContextUtils {
 //    }
 
     private static int getIconResForFile(final @NonNull File file) {
-        if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_POPULAR)) {
-            return R.mipmap.ic_shortcut_popular;
-        } else if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_RECENTS)) {
-            return R.mipmap.ic_shortcut_recent;
-        } else if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_FAVOURITE)) {
-            return R.mipmap.ic_shortcut_favourite;
-        } else if (file.isDirectory()) {
+//        if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_POPULAR)) {
+//            return R.mipmap.ic_shortcut_popular;
+//        } else if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_RECENTS)) {
+//            return R.mipmap.ic_shortcut_recent;
+//        } else if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_FAVOURITE)) {
+//            return R.mipmap.ic_shortcut_favourite;
+//        } else
+            if (file.isDirectory()) {
             return R.mipmap.ic_shortcut_folder;
         } else {
             return R.mipmap.ic_shortcut_file;
