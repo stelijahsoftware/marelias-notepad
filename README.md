@@ -61,6 +61,7 @@ X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename f
 - put top bar on bottom for easier access to save button & rename..etc
 - when renaming a note, don't display the extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
 - copy template note inside default folder
+- add git integration
 
 ### Build Commands:
 ./gradlew build --warning-mode all
