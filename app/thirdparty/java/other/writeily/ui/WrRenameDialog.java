@@ -117,7 +117,16 @@ public class WrRenameDialog extends DialogFragment {
         EditText editText = root.findViewById(R.id.new_name);
         editText.setFilters(new InputFilter[]{GsContextUtils.instance.makeFilenameInputFilter()});
         editText.requestFocus();
-        editText.setText(file.getName());
+        String file_name = file.getName();
+        editText.setText(file_name);
+
+        int name_len = file_name.length();
+        int name_from = 0;
+        int name_to = name_len-4;
+        if (file_name.contains("_")) {
+            name_from = file_name.indexOf('_');
+        }
+        editText.setSelection(name_from,name_to);
 
         dialogBuilder.setPositiveButton(getString(android.R.string.ok), null);
         dialogBuilder.setNegativeButton(getString(R.string.cancel), null);
