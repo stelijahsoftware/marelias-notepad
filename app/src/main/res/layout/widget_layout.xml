@@ -68,35 +68,6 @@
         android:src="@drawable/ic_add_white_24dp"
         app:tint="@color/white" />
 
-    <ImageButton
-        android:id="@+id/widget_todo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/widget_new_note"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/fab_circle"
-        android:elevation="2dp"
-        android:src="@drawable/ic_assignment_turned_in_black_24dp"
-        app:tint="@color/white" />
-
-    <ImageButton
-        android:id="@+id/widget_quicknote"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/widget_todo"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/fab_circle"
-        android:elevation="2dp"
-        android:src="@drawable/ic_lightning_black_24dp"
-        app:tint="@color/white" />
 
     <RelativeLayout
         android:id="@+id/widget_list_container"
