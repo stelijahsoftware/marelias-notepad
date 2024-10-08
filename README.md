@@ -47,6 +47,7 @@ X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename f
 X - Add **bold** to and italics notes _template_ + x - cross over
 X - disable red underlining of incorrectly typed words
 X - remove hinted text on new note creation
+X - Notes: Shift down the page
 
 ### TODO:
 - Naming: do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note) [h]
@@ -57,13 +58,12 @@ X - remove hinted text on new note creation
 - Appearance: darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
 - Appearance: make save button bigger (disable auto-save?)
 - Appearance: Make hinted text have lighter grey colour at new note creation
-- Add button to insert date yyy-mm-dd
-- Auto-delete empty notes
+- Add button to insert date yyy-mm-dd?
+- Auto-delete empty notes on save + disable auto-save
 - put top bar on bottom for easier access to save button & rename..etc
-- when renaming a note, don't display the extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
+- when renaming a note, don't display extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
 - add git integration
 - automatically create template in storage location on install
-- Notes: Shift down the page
 - Edit note title from note edit screen
 
 ### Build Commands:

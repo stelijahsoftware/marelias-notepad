@@ -22,7 +22,8 @@
         android:id="@+id/document__fragment__edit__content_editor__scrolling_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="0mm"
+        android:layout_marginBottom="1mm"
+        android:layout_marginTop="1mm"
         android:background="@android:color/transparent"
         android:fillViewport="true">
 
