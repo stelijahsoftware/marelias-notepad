@@ -50,21 +50,21 @@ X - remove hinted text on new note creation
 X - Notes: Shift down the page
 
 ### TODO:
-- Naming: do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note) [h]
-- Naming: Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
-- Organisation: highlight briefly when going back (see Merge requests on github)
-- Organisation: show total notes count (+ on folders?) [h]
-- Organisation: publish to gplay [m]
-- Appearance: darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
-- Appearance: make save button bigger (disable auto-save?)
-- Appearance: Make hinted text have lighter grey colour at new note creation
+- Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note) [h]
+- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+- Highlight briefly when going back (see Merge requests on github)
+- Show total notes count (+ on folders?) [h]
+- Darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
+- Make save button bigger (disable auto-save?)
+- Make hinted text have lighter grey colour at new note creation
 - Add button to insert date yyy-mm-dd?
 - Auto-delete empty notes on save + disable auto-save
-- put top bar on bottom for easier access to save button & rename..etc
-- when renaming a note, don't display extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
-- add git integration
-- automatically create template in storage location on install
-- Edit note title from note edit screen
+- Put top bar on bottom for easier access to save button & rename..etc
+- When renaming a note, don't display extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
+- Add git integration
+- Automatically create template in storage location on install
+- Edit note title from note edit screen [h]
+- Publish to gplay
 
 ### Build Commands:
 ./gradlew build --warning-mode all
