@@ -523,21 +523,9 @@ public abstract class SyntaxHighlighterBase {
         createTypefaceSpanForMatches(pattern, "monospace", groupsToMatch);
     }
 
-    protected final void createColoredUnderlineSpanForMatches(final Pattern pattern, @ColorInt int color, int... groupsToMatch) {
-        createSpanForMatches(pattern, matcher -> new ColorUnderlineSpan(color, null), groupsToMatch);
-    }
-
-    protected final void createColoredUnderlineSpanForMatches(final Pattern pattern, final GsCallback.r1<Object, Matcher> creator, int... groupsToMatch) {
-        createSpanForMatches(pattern, creator, groupsToMatch);
-    }
-
-    protected final void createSuperscriptStyleSpanForMatches(final Pattern pattern, final int... groupsToMatch) {
-        createSpanForMatches(pattern, matcher -> new SuperscriptSpan(), groupsToMatch);
-    }
-
-    protected final void createSubscriptStyleSpanForMatches(final Pattern pattern, final int... groupsToMatch) {
-        createSpanForMatches(pattern, matcher -> new SubscriptSpan(), groupsToMatch);
-    }
+//    protected final void createColoredUnderlineSpanForMatches(final Pattern pattern, final GsCallback.r1<Object, Matcher> creator, int... groupsToMatch) {
+//        createSpanForMatches(pattern, creator, groupsToMatch);
+//    }
 
     protected final void createTabSpans(final int tabWidth) {
         if (tabWidth > 0) {
@@ -549,9 +537,9 @@ public abstract class SyntaxHighlighterBase {
         createSpanForMatches(URL, new HighlightSpan().setForeColor(0xff1ea3fd).setItalic(true).setTextScale(0.85f).setUnderline(true));
     }
 
-    protected final void createUnderlineHexColorsSpans() {
-        createColoredUnderlineSpanForMatches(ColorUnderlineSpan.HEX_CODE_UNDERLINE_PATTERN, m -> new ColorUnderlineSpan(m.group(1), 3f), 1);
-    }
+//    protected final void createUnderlineHexColorsSpans() {
+//        createColoredUnderlineSpanForMatches(ColorUnderlineSpan.HEX_CODE_UNDERLINE_PATTERN, m -> new ColorUnderlineSpan(m.group(1), 3f), 1);
+//    }
 
     // We _do not_ implement UpdateLayout or Parcelable for performance reasons
     public static class HighlightSpan extends CharacterStyle implements UpdateAppearance, GsCallback.r1<Object, Matcher> {

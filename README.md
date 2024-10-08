@@ -57,7 +57,7 @@ X - Add **bold** to and italics notes _template_ + x - cross over
 - Appearance: Make hinted text have lighter grey colour at new note creation
 - Add button to insert date yyy-mm-dd
 - Auto-delete empty notes
-- disable red underlining of incorrectly typed words
+X - disable red underlining of incorrectly typed words
 - put top bar on bottom for easier access to save button & rename..etc
 - when renaming a note, don't display the extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
 - add git integration

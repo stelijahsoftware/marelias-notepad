@@ -50,7 +50,7 @@ public class HighlightingEditor extends AppCompatEditText {
     public final static String INSERT_SELECTION_HERE_TOKEN = "%%INSERT_SELECTION_HERE%%";
 
     private boolean _accessibilityEnabled = true;
-    private final boolean _isSpellingRedUnderline;
+//    private final boolean _isSpellingRedUnderline;
     private SyntaxHighlighterBase _hl;
     private boolean _isDynamicHighlightingEnabled = true;
     private Runnable _hlDebounced;        // Debounced runnable which recomputes highlighting
@@ -73,7 +73,7 @@ public class HighlightingEditor extends AppCompatEditText {
 
         setAutoFormatters(null, null);
 
-        _isSpellingRedUnderline = true; // elyahw
+//        _isSpellingRedUnderline = false; // elyahw
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             setFallbackLineSpacing(false);
@@ -369,7 +369,7 @@ public class HighlightingEditor extends AppCompatEditText {
 
     @Override
     public boolean isSuggestionsEnabled() {
-        return _isSpellingRedUnderline && super.isSuggestionsEnabled();
+        return false; // _isSpellingRedUnderline && super.isSuggestionsEnabled();
     }
 
     @Override

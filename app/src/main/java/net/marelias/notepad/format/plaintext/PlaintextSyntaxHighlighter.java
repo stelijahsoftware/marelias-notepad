@@ -19,7 +19,7 @@ public class PlaintextSyntaxHighlighter extends SyntaxHighlighterBase {
     @Override
     protected void generateSpans() {
         createTabSpans(_tabSize);
-        createUnderlineHexColorsSpans();
+        //createUnderlineHexColorsSpans();
         createSmallBlueLinkSpans();
     }
 
