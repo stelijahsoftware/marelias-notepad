@@ -30,7 +30,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import net.marelias.notepad.format.general.ColorUnderlineSpan;
+//import net.marelias.notepad.format.general.ColorUnderlineSpan;
 import net.marelias.notepad.format.plaintext.PlaintextSyntaxHighlighter;
 import net.marelias.notepad.model.AppSettings;
 
