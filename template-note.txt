@@ -8,7 +8,7 @@ This is a list:
 - element 1
 - element 2
 - element 3
-x - this is a finished task
+X - this is a finished task
 
 All numbers will be coloured orange, for example 2024-09-28
 
