@@ -103,6 +103,8 @@
                 android:hint="`yyyyMMdd-HHmmSS`-{{title}}"
                 android:importantForAutofill="no"
                 android:singleLine="true"
+                android:cursorVisible="false"
+                android:editable="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                 android:textSize="15sp"
                 tools:ignore="HardcodedText,TextFields"/>
