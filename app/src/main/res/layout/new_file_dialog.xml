@@ -44,13 +44,13 @@
             android:orientation="horizontal"
             android:weightSum="100">
 
+            <!--vvv android:hint="@string/title" vvv-->
             <EditText
                 android:id="@+id/new_file_dialog__name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="70"
-                android:hint="@string/title"
                 android:importantForAutofill="no"
                 android:singleLine="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
