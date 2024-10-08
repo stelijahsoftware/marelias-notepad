@@ -159,20 +159,20 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         checkOptions();
     }
 
-    public void onClicked(View view) {
-        switch (view.getId()) {
-            case R.id.ui__filesystem_dialog__button_ok:
-            case R.id.ui__filesystem_dialog__home: {
-                _filesystemViewerAdapter.onClick(view);
-                break;
-            }
-            case R.id.ui__filesystem_dialog__button_cancel: {
-                onFsViewerCancel(_dopt.requestId);
-                break;
-            }
-
-        }
-    }
+//    public void onClicked(View view) {
+//        switch (view.getId()) {
+//            case R.id.ui__filesystem_dialog__button_ok:
+//            case R.id.ui__filesystem_dialog__home: {
+//                _filesystemViewerAdapter.onClick(view);
+//                break;
+//            }
+//            case R.id.ui__filesystem_dialog__button_cancel: {
+//                onFsViewerCancel(_dopt.requestId);
+//                break;
+//            }
+//
+//        }
+//    }
 
     private void checkOptions() {
         if (_dopt.doSelectFile && !_dopt.doSelectMultiple) {

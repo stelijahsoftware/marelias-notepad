@@ -322,12 +322,12 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         }
     }
 
-    public void reconfigure() {
-        if (_dopt.listener != null) {
-            _dopt.listener.onFsViewerConfig(_dopt);
-            reloadCurrentFolder();
-        }
-    }
+//    public void reconfigure() {
+//        if (_dopt.listener != null) {
+//            _dopt.listener.onFsViewerConfig(_dopt);
+//            reloadCurrentFolder();
+//        }
+//    }
 
     public boolean isCurrentFolderVirtual() {
         return isVirtualFolder(_currentFolder);
@@ -378,16 +378,16 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         return canWrite(_currentFolder);
     }
 
-    private int getPathLevel(String path) {
-        final int end = path.lastIndexOf('/');
-        int level = 0;
-        for (int i = 0; i <= end; i++) {
-            if (path.charAt(i) == '/') {
-                level++;
-            }
-        }
-        return level;
-    }
+//    private int getPathLevel(String path) {
+//        final int end = path.lastIndexOf('/');
+//        int level = 0;
+//        for (int i = 0; i <= end; i++) {
+//            if (path.charAt(i) == '/') {
+//                level++;
+//            }
+//        }
+//        return level;
+//    }
 
     @Override
     @SuppressWarnings("UnnecessaryReturnStatement")
