@@ -48,6 +48,7 @@ X - Add **bold** to and italics notes _template_ + x - cross over
 X - disable red underlining of incorrectly typed words
 X - remove hinted text on new note creation
 X - Notes: Shift down the page
+X - Automatically create template in storage location on install
 
 ### TODO:
 - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note) [h]
@@ -62,7 +63,6 @@ X - Notes: Shift down the page
 - Put top bar on bottom for easier access to save button & rename..etc
 - When renaming a note, don't display extension + automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
 - Add git integration
-- Automatically create template in storage location on install
 - Edit note title from note edit screen [h]
 - Publish to gplay
 

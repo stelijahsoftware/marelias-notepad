@@ -24,6 +24,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -49,6 +50,9 @@ import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 
 //import other.writeily.widget.WrMarkorWidgetProvider;
+import java.io.FileOutputStream;
+//import android.os.Environment;
+import android.content.SharedPreferences;
 
 public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFragment.FilesystemFragmentOptionsListener {
 
@@ -107,6 +111,63 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 //        }
 
 //        _cu.applySpecialLaunchersVisibility(this, _appSettings.isSpecialFileLaunchersEnabled());
+
+        // Elyahw: Create default note:
+        final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!getPrefs.getBoolean("default_file_was_created", false)) {
+            createDefaultFile();
+        }
+    }
+
+    private void createDefaultFile() {
+        // Get the internal storage directory
+        File dir = _appSettings.getNotebookDirectory();
+        System.out.println(">>>>>>> elyahw: writing default note to: " + dir);
+
+        String path = dir.getAbsolutePath();
+        String fileName = "Sample note.txt";
+        File file = new File(path, fileName);
+
+        // Check if the file exists, if not, create it
+        if (!file.exists()) {
+            try {
+                System.out.println(">>>>>>> WRITING FILE NOW>>>: " + file);
+
+                // Create a new file (it won't write anything if a file with similar name exists)
+                FileOutputStream fos = new FileOutputStream(file);
+                String defaultContent = "# This is a green line\n" +
+                                        "\n" +
+                                        "## This is a blue line\n" +
+                                        "\n" +
+                                        "// Red line\n" +
+                                        "\n" +
+                                        "This is a list:\n" +
+                                        "- element 1\n" +
+                                        "- element 2\n" +
+                                        "- element 3\n" +
+                                        "X - this is a finished task\n" +
+                                        "\n" +
+                                        "All numbers will be coloured orange, for example 2024-09-28\n" +
+                                        "\n" +
+                                        "Urls and websites will be highlighted: https://www.github.com/gsantner/markor\n" +
+                                        "\n" +
+                                        "You can also add **bold** and _italic_ text\n" +
+                                        "\n" +
+                                        "***** Asterisks will also be coloured\n" +
+                                        "\n" +
+                                        "You can also add importance tags like:\n" +
+                                        "[h] task 1\n" +
+                                        "[m] task 2\n" +
+                                        "[l] task 3\n";
+                fos.write(defaultContent.getBytes());
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Store a value in preferences:
+        PreferenceManager.getDefaultSharedPreferences(getBaseContext()).edit().putBoolean("default_file_was_created", true).apply();
     }
 
     @Override
