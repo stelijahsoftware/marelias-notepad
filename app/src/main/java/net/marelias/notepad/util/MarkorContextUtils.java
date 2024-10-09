@@ -12,19 +12,14 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
-import android.print.PrintJob;
 import android.text.TextUtils;
-import android.webkit.WebView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import net.marelias.notepad.R;
 import net.marelias.notepad.activity.openeditor.OpenFromShortcutOrWidgetActivity;
-//import net.marelias.notepad.activity.openeditor.OpenShareIntoActivity;
 import net.marelias.notepad.model.Document;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.util.GsContextUtils;

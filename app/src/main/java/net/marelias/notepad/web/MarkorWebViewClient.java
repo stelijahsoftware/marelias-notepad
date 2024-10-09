@@ -8,17 +8,9 @@
 package net.marelias.notepad.web;
 
 import android.app.Activity;
-import android.content.Context;
 import android.webkit.WebView;
 
-import net.marelias.notepad.ApplicationObject;
-import net.marelias.notepad.activity.DocumentActivity;
-import net.marelias.notepad.model.AppSettings;
-import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.web.GsWebViewClient;
-
-import java.io.File;
-import java.net.URLDecoder;
 
 public class MarkorWebViewClient extends GsWebViewClient {
     protected final Activity _activity;

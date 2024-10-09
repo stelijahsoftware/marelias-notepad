@@ -14,8 +14,6 @@ import androidx.annotation.StringRes;
 
 import net.marelias.notepad.R;
 import net.marelias.notepad.format.ActionButtonBase;
-import net.marelias.notepad.format.markdown.MarkdownReplacePatternGenerator;
-import net.marelias.notepad.frontend.textview.AutoTextFormatter;
 import net.marelias.notepad.model.Document;
 
 import java.util.Arrays;

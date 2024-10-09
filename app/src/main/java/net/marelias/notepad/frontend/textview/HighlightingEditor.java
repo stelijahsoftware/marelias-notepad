@@ -28,7 +28,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import net.marelias.notepad.ApplicationObject;
-import net.marelias.notepad.activity.MainActivity;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.format.GsTextUtils;
 import net.marelias.opoc.wrapper.GsCallback;

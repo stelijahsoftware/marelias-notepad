@@ -8,7 +8,6 @@
 package net.marelias.notepad.activity;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -37,7 +36,6 @@ import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
-import java.util.Stack;
 
 //import other.so.AndroidBug5497Workaround;
 

@@ -19,8 +19,6 @@ import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.ReplacementSpan;
-import android.text.style.SubscriptSpan;
-import android.text.style.SuperscriptSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.UpdateAppearance;
 import android.text.style.UpdateLayout;
@@ -30,12 +28,9 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-//import net.marelias.notepad.format.general.ColorUnderlineSpan;
 import net.marelias.notepad.format.plaintext.PlaintextSyntaxHighlighter;
 import net.marelias.notepad.model.AppSettings;
-
 import net.marelias.opoc.format.GsTextUtils;
-
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.wrapper.GsCallback;
 

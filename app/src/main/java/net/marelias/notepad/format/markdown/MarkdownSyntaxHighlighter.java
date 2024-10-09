@@ -16,8 +16,6 @@ import net.marelias.notepad.model.AppSettings;
 
 import java.util.regex.Pattern;
 
-import other.writeily.format.markdown.WrMarkdownHeaderSpanCreator;
-
 public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
 
     public final static Pattern BOLD = Pattern.compile("(?<=(\\n|^|\\s|\\[|\\{|\\())(([*_]){2,3})(?=\\S)(.*?)\\S\\2(?=(\\n|$|\\s|\\.|,|:|;|-|\\]|\\}|\\)))");

@@ -17,19 +17,14 @@ package net.marelias.notepad.frontend;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.os.Build;
 import android.text.Editable;
 import android.text.Html;
 import android.text.InputType;
-import android.text.Spannable;
 import android.text.TextUtils;
-import android.util.Pair;
 import android.view.WindowManager;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -38,14 +33,9 @@ import androidx.core.content.ContextCompat;
 
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
-import net.marelias.notepad.format.markdown.MarkdownTextConverter;
-//import net.marelias.notepad.format.todotxt.TodoTxtBasicSyntaxHighlighter;
-//import net.marelias.notepad.format.todotxt.TodoTxtFilter;
-//import net.marelias.notepad.format.todotxt.TodoTxtTask;
 import net.marelias.notepad.frontend.filesearch.FileSearchDialog;
 import net.marelias.notepad.frontend.filesearch.FileSearchEngine;
 import net.marelias.notepad.frontend.filesearch.FileSearchResultSelectorDialog;
-import net.marelias.notepad.frontend.textview.SyntaxHighlighterBase;
 import net.marelias.notepad.frontend.textview.TextViewUtils;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.format.GsTextUtils;

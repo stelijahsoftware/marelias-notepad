@@ -53,8 +53,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.TooltipCompat;
 import androidx.core.widget.TextViewCompat;
 
-import net.marelias.notepad.R;
-
 import net.marelias.opoc.util.GsCollectionUtils;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.wrapper.GsCallback;

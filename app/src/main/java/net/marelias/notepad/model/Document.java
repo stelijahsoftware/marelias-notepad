@@ -14,16 +14,12 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 
 import net.marelias.notepad.ApplicationObject;
-import net.marelias.notepad.R;
-import net.marelias.notepad.activity.MainActivity;
 import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.format.markdown.MarkdownTextConverter;
 import net.marelias.notepad.util.MarkorContextUtils;
@@ -31,15 +27,10 @@ import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.security.SecureRandom;
-import java.util.Locale;
 
 //import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 

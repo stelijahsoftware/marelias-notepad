@@ -7,26 +7,12 @@
 #########################################################*/
 package net.marelias.notepad.format;
 
-import android.app.Activity;
-import android.content.Context;
-import android.net.Uri;
-import android.text.format.DateFormat;
-import android.webkit.WebView;
-
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
 import net.marelias.notepad.ApplicationObject;
-import net.marelias.notepad.R;
 import net.marelias.notepad.model.AppSettings;
-import net.marelias.notepad.model.Document;
-import net.marelias.opoc.format.GsTextUtils;
-import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
-import java.util.Date;
-import java.util.Locale;
 
 //import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 

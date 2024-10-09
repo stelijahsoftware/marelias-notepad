@@ -9,7 +9,6 @@ package net.marelias.notepad.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-//import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -31,10 +30,6 @@ import net.marelias.opoc.frontend.base.GsActivityBase;
 import net.marelias.opoc.frontend.base.GsPreferenceFragmentBase;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.marelias.opoc.frontend.settings.GsFontPreferenceCompat;
-
-//import net.marelias.notepad.util.MarkorContextUtils;
-//import net.marelias.opoc.format.GsSimpleMarkdownParser;
-//import net.marelias.notepad.BuildConfig;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

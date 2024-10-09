@@ -7,22 +7,13 @@
 #########################################################*/
 package net.marelias.notepad.format.plaintext;
 
-import android.content.Context;
-
-import androidx.core.text.TextUtilsCompat;
-
-import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.format.TextConverterBase;
-//import net.marelias.notepad.format.binary.EmbedBinaryTextConverter;
-//import net.marelias.notepad.format.keyvalue.KeyValueTextConverter;
-import net.marelias.opoc.format.GsTextUtils;
 import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 @SuppressWarnings("WeakerAccess")
 public class PlaintextTextConverter extends TextConverterBase {

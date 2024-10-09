@@ -7,13 +7,8 @@
 #########################################################*/
 package net.marelias.notepad.format.markdown;
 
-import net.marelias.notepad.format.ActionButtonBase;
 import net.marelias.notepad.frontend.textview.AutoTextFormatter;
-import net.marelias.notepad.frontend.textview.ReplacePatternGeneratorHelper;
-import net.marelias.opoc.format.GsTextUtils;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class MarkdownReplacePatternGenerator {

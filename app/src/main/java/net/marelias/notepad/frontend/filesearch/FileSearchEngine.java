@@ -2,7 +2,6 @@ package net.marelias.notepad.frontend.filesearch;
 
 import android.app.Activity;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
@@ -16,14 +15,12 @@ import net.marelias.opoc.util.GsFileUtils;
 import net.marelias.opoc.wrapper.GsCallback;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

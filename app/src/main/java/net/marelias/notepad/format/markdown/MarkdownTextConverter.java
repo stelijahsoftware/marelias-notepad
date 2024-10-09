@@ -7,56 +7,20 @@
 #########################################################*/
 package net.marelias.notepad.format.markdown;
 
-import android.content.Context;
-import android.text.TextUtils;
-
-import com.vladsch.flexmark.ext.admonition.AdmonitionExtension;
-import com.vladsch.flexmark.ext.anchorlink.AnchorLinkExtension;
-import com.vladsch.flexmark.ext.autolink.AutolinkExtension;
-import com.vladsch.flexmark.ext.emoji.EmojiExtension;
-import com.vladsch.flexmark.ext.emoji.EmojiImageType;
-import com.vladsch.flexmark.ext.footnotes.FootnoteExtension;
-import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughSubscriptExtension;
-import com.vladsch.flexmark.ext.gfm.tasklist.TaskListExtension;
-import com.vladsch.flexmark.ext.gitlab.GitLabExtension;
-import com.vladsch.flexmark.ext.ins.InsExtension;
-import com.vladsch.flexmark.ext.jekyll.front.matter.JekyllFrontMatterExtension;
-import com.vladsch.flexmark.ext.jekyll.tag.JekyllTagExtension;
-import com.vladsch.flexmark.ext.tables.TablesExtension;
-import com.vladsch.flexmark.ext.toc.SimTocExtension;
-import com.vladsch.flexmark.ext.toc.TocExtension;
-import com.vladsch.flexmark.ext.toc.internal.TocOptions;
-import com.vladsch.flexmark.ext.typographic.TypographicExtension;
-import com.vladsch.flexmark.ext.wikilink.WikiLinkExtension;
-import com.vladsch.flexmark.ext.yaml.front.matter.AbstractYamlFrontMatterVisitor;
-import com.vladsch.flexmark.ext.yaml.front.matter.YamlFrontMatterExtension;
 import com.vladsch.flexmark.html.AttributeProvider;
 import com.vladsch.flexmark.html.AttributeProviderFactory;
 import com.vladsch.flexmark.html.HtmlRenderer;
 import com.vladsch.flexmark.html.renderer.AttributablePart;
 import com.vladsch.flexmark.html.renderer.LinkResolverContext;
-import com.vladsch.flexmark.parser.Parser;
-import com.vladsch.flexmark.superscript.SuperscriptExtension;
 import com.vladsch.flexmark.util.ast.Document;
 import com.vladsch.flexmark.util.ast.Node;
-import com.vladsch.flexmark.util.builder.Extension;
 import com.vladsch.flexmark.util.html.Attributes;
 import com.vladsch.flexmark.util.options.MutableDataHolder;
-import com.vladsch.flexmark.util.options.MutableDataSet;
 
-import net.marelias.notepad.R;
 import net.marelias.notepad.format.TextConverterBase;
-import net.marelias.opoc.util.GsContextUtils;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressWarnings({"unchecked", "WeakerAccess"})

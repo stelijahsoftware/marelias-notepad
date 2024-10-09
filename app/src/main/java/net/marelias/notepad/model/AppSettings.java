@@ -11,23 +11,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Environment;
 import android.util.Pair;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 
-import net.marelias.notepad.BuildConfig;
 import net.marelias.notepad.R;
 import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.util.MarkorContextUtils;
-//import net.marelias.notepad.util.ShortcutUtils;
-import net.marelias.opoc.format.GsTextUtils;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.model.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsCollectionUtils;

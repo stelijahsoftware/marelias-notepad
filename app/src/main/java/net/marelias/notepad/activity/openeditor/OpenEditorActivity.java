@@ -7,16 +7,12 @@
 #########################################################*/
 package net.marelias.notepad.activity.openeditor;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
 import net.marelias.notepad.activity.MarkorBaseActivity;
 import net.marelias.notepad.activity.StoragePermissionActivity;
-import net.marelias.notepad.model.Document;
-
-import java.io.File;
 
 public class OpenEditorActivity extends MarkorBaseActivity {
 

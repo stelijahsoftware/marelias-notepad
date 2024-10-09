@@ -7,65 +7,27 @@
 #########################################################*/
 package net.marelias.notepad.format;
 
-import static android.util.Patterns.WEB_URL;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.text.Editable;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.TextUtils;
-import android.view.HapticFeedbackConstants;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.EditText;
 
 import androidx.annotation.DrawableRes;
-//import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
-//import androidx.appcompat.widget.TooltipCompat;
 
-//import com.flask.colorpicker.ColorPickerView;
-//import com.flask.colorpicker.Utils;
-//import com.flask.colorpicker.builder.ColorPickerClickListener;
-//import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
-
-//import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
-import net.marelias.notepad.activity.DocumentActivity;
-//import net.marelias.notepad.frontend.AttachLinkOrFileDialog;
-import net.marelias.notepad.frontend.DatetimeFormatDialog;
 import net.marelias.notepad.frontend.MarkorDialogFactory;
 import net.marelias.notepad.frontend.textview.HighlightingEditor;
-import net.marelias.notepad.frontend.textview.TextViewUtils;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
-
-import net.marelias.opoc.format.GsTextUtils;
 import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog;
-import net.marelias.opoc.util.GsCollectionUtils;
-//import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.util.GsFileUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

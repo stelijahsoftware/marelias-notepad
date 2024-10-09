@@ -39,13 +39,6 @@ public class WrMarkorSingleton {
         return notepad2SingletonInstance;
     }
 
-    public File getNotesLastDirectory() {
-        return notesLastDirectory;
-    }
-
-    public void setNotesLastDirectory(File notesLastDirectory) {
-        WrMarkorSingleton.notesLastDirectory = notesLastDirectory;
-    }
 
     private boolean saneCopy(final File file, final File dest) {
         return file != null && dest != null && file.exists() && !GsFileUtils.isChild(file, dest);
@@ -171,35 +164,5 @@ public class WrMarkorSingleton {
         } else {
             copyFile(src, dest);
         }
-    }
-
-    public boolean isDirectoryEmpty(ArrayList<File> files) {
-        return (files == null || files.isEmpty());
-    }
-
-    /**
-     * Recursively add all files from the specified directory
-     *
-     * @param sourceDir the directory to add files from
-     */
-    public ArrayList<File> addMarkdownFilesFromDirectory(File sourceDir, ArrayList<File> files) {
-        ArrayList<File> addedFiles = new ArrayList<>();
-
-        List<File> listedData = Arrays.asList(sourceDir.listFiles());
-        Collections.sort(listedData, (f1, f2) -> f1.getName().compareToIgnoreCase(f2.getName()));
-
-        for (File f : listedData) {
-            if (!f.getName().startsWith(".")) {
-                if (f.isDirectory()) {
-                    files.add(f);
-                } else {
-                    addedFiles.add(f);
-                }
-            }
-        }
-
-        // Append addedFiles to files so directories appear first
-        files.addAll(addedFiles);
-        return files;
     }
 }

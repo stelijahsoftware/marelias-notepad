@@ -9,10 +9,9 @@
 package net.marelias.notepad.activity;
 
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,30 +28,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import net.marelias.notepad.BuildConfig;
 import net.marelias.notepad.R;
 import net.marelias.notepad.frontend.NewFileDialog;
 import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.format.GsSimpleMarkdownParser;
 import net.marelias.opoc.frontend.base.GsFragmentBase;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserFragment;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.concurrent.TimeUnit;
-
-//import other.writeily.widget.WrMarkorWidgetProvider;
-import java.io.FileOutputStream;
-//import android.os.Environment;
-import android.content.SharedPreferences;
 
 public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFragment.FilesystemFragmentOptionsListener {
 

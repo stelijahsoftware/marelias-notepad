@@ -4,12 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import net.marelias.notepad.activity.DocumentActivity;
-import net.marelias.notepad.activity.MainActivity;
 import net.marelias.notepad.activity.MarkorBaseActivity;
-import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
-
-import java.io.File;
 
 
 /**
