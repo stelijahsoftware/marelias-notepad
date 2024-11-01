@@ -1,5 +1,5 @@
 # Mar-Elias Notepad
-A Simple noteapd with highlights. [DOWNLOAD LINK](https://play.google.com/store/apps/details?id=net.marelias.notepad)
+A Simple noteapd with highlights. [DOWNLOAD LINK](https://play.google.com/apps/testing/net.marelias.notepad)
 
 # Rights:
 
