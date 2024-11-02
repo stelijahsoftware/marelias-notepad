@@ -73,7 +73,7 @@ X - Make hinted text have lighter grey colour at new note creation (completely r
 ./gradlew build
 
 ### Deploy apk (release):
-To increase app version, edit build.gradle inside app/
+To increase app version, edit build.gradle inside app/ + tag in git
 `Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'DefaultRelease'`
 then find the apk here:
 `app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk`

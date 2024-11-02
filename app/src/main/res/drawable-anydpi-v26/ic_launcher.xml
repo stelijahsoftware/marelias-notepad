@@ -7,7 +7,7 @@
     <monochrome android:drawable="@drawable/ic_launcher_monochrome"/>
     -->
 
-    <!-- Elias: you can choose either 'drawable' or 'mipmap' -->
+    <!-- elyahw: you can choose either 'drawable' or 'mipmap' -->
     <background android:drawable="@android:color/transparent"/>
     <foreground android:drawable="@mipmap/ic_launcher_mar_elias2_foreground"/>
 
