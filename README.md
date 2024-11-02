@@ -80,8 +80,7 @@ app/build.gradle
 ```
 2. Then tag in git:
 ```
-git tag -ln && git tag -a v1.0.6 -m "v1.0.6"
-git push origin --tags
+git tag -ln && git tag -a v1.0.6 -m "v1.0.6" && git push origin --tags
 ```
 3. Then generate apk: (choose Android app bundle if submitting to Google Play store)
 ```
