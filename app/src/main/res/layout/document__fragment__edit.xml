@@ -25,6 +25,9 @@
         android:layout_marginBottom="0mm"
         android:layout_marginTop="0mm"
         android:background="@android:color/transparent"
+        android:scrollbarSize="8dip"
+        android:scrollbarThumbVertical="@color/dark_grey"
+        android:scrollbarTrackVertical="@color/transparent"
         android:fillViewport="true">
 
         <net.marelias.notepad.frontend.textview.HighlightingEditor

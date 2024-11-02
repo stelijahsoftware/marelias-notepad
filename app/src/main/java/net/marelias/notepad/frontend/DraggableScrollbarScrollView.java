@@ -9,6 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 
+// Elyahw: This class is used in [net/marelias/notepad/activity/DocumentEditAndViewFragment.java]
+
 @SuppressLint("ClickableViewAccessibility")
 public class DraggableScrollbarScrollView extends ScrollView {
 
