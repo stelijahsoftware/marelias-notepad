@@ -89,7 +89,9 @@ public class DraggableScrollbarScrollView extends ScrollView {
             _ltr = getLayoutDirection() == View.LAYOUT_DIRECTION_LTR;
         }
         final DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
-        _grabWidth = (int) (1.5 * (float) getVerticalScrollbarWidth() * displayMetrics.density);
+        _grabWidth = 25;//(int) (1.5 * (float) getVerticalScrollbarWidth() * displayMetrics.density); // 66
+        //System.out.println(">>>>>>> elyahw: ");
+        //System.out.println(_grabWidth);
     }
 
     public void setFastScrollEnabled(boolean fastScrollEnabled) {
