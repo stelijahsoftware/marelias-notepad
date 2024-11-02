@@ -51,11 +51,12 @@ X - Notes: Shift down the page
 X - Automatically create default note template in storage location on install
 X - When renaming a note, automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
 X - Make hinted text have lighter grey colour at new note creation (completely removed)
+X - make scrollbar in files list always visible
+X - Darker scrollbars + wider
 
 ### TODO:
 [H] - Put top bar on bottom for easier access to save button & rename..etc
 [H] - open with dialog for odt, doc, docx, odtf and pdf
-[H] - Darker scrollbars + (make scrollbar in files list always visible + wider, this was previously attempted in commit title "Attempt to change scrollbar color..")
 [H] - Publish to gplay [WIP]
 [M] - Show total notes count (+ on folders?)
 [M] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
