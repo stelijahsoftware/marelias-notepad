@@ -50,21 +50,21 @@ X - remove hinted text on new note creation
 X - Notes: Shift down the page
 X - Automatically create default note template in storage location on install
 X - When renaming a note, automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
+X - Make hinted text have lighter grey colour at new note creation (completely removed)
 
 ### TODO:
-- Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note) [h]
-- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
-- Highlight briefly when going back (see Merge requests on github)
-- Show total notes count (+ on folders?) [h]
-- Darker scrollbars + (make scrollbar in files list always visible, this was previously attempted in commit title "Attempt to change scrollbar color..")
-- Make save button bigger (disable auto-save?)
-- Make hinted text have lighter grey colour at new note creation
-- Add button to insert date yyy-mm-dd?
-- Auto-delete empty notes on save + disable auto-save
-- Put top bar on bottom for easier access to save button & rename..etc
-- Add git integration
-- Edit note title from note edit screen [h]
-- Publish to gplay
+[H] - Put top bar on bottom for easier access to save button & rename..etc
+[H] - open with dialog for odt, doc, docx, odtf and pdf
+[H] - Darker scrollbars + (make scrollbar in files list always visible + wider, this was previously attempted in commit title "Attempt to change scrollbar color..")
+[H] - Publish to gplay [WIP]
+[M] - Show total notes count (+ on folders?)
+[M] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[M] - Edit note title from note edit screen
+[L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+[L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
+[L] - Add button to insert date yyy-mm-dd?
+[L] - Auto-delete empty notes on save + disable auto-save?
+[L] - Add git integration
 
 ### Build Commands:
 ./gradlew build --warning-mode all
