@@ -58,6 +58,7 @@ X - Darker scrollbars + wider
 [H] - Put top bar on bottom for easier access to save button & rename..etc
 [H] - open with dialog for odt, doc, docx, odtf and pdf
 [H] - Publish to gplay [WIP]
+[H] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [M] - Show total notes count (+ on folders?)
 [M] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 [M] - Edit note title from note edit screen
