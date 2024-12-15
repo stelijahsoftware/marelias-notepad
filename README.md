@@ -56,7 +56,7 @@ X - Darker scrollbars + wider
 
 ### TODO:
 [H] - open with dialog for odt, doc, docx, odtf and pdf (see implementation in original app). Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it) - SEE THE DIALOG it shows you when you try to open an odt file.
-[h] - green & red bg + [r
+[h] - green & red bg + [r + Colour: ✓ ✗, + make 3 hashes orange ###
 [H] - Put top bar on bottom for easier access to save button & rename..etc
 [H] - Publish to gplay [WIP]
 [H] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
