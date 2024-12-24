@@ -244,16 +244,16 @@ public class SettingsActivity extends MarkorBaseActivity {
                     // Or display html text in a window:
                     String html_info = "<br>" + // + Add links
                                  "<font color='#000000'><b>Mar-Elias Notepad</b> is a fork of <b>Markor</b>, a simple text file editor with customised highlights</font><br>" +
-                                 "<font color='#276230'>Project website:</font><br>" +
-                                 "<font color='#0040ff'><a href='https://notepad.mar-elias.com/'>https://notepad.mar-elias.com/</a></font><br>" +
+                                 //"<font color='#276230'>Project website:</font><br>" +
+                                 //"<font color='#0040ff'><a href='https://notepad.mar-elias.com/'>https://notepad.mar-elias.com/</a></font><br>" +
                                  "<br>" +
                                  "<font color='#000000'><b>Markor</b>, an open source notes project</font><br>" +
                                  //"Project name: Markor<br>" +
                                  "<font color='#276230'>Author: </font><font color='#000000'>Gregor Santner</font><br>" +
                                  "<font color='#276230'>Official project:</font>" +
-                                 "<br><font color='#0040ff'><a href='https://github.com/gsantner/markor'>https://github.com/gsantner/markor</a></font><br>" +
-                                 "<font color='#276230'>LICENSE: </font>" +
-                                 "<font color='#0040ff'><a href='https://github.com/writing-tools/marelias-notepad/blob/master/LICENSE.txt'>APACHE 2.0</a></font><br>";
+                                 "<br><font color='#0040ff'><a href='https://github.com/gsantner/markor'>https://github.com/gsantner/markor</a></font><br>";// +
+                                 //"<font color='#276230'>LICENSE: </font>" +
+                                 //"<font color='#0040ff'><a href='https://github.com/writing-tools/marelias-notepad/blob/master/LICENSE.txt'>APACHE 2.0</a></font><br>";
                     // See:
                     // app/src/main/res/xml/preferences_master.xml
 
