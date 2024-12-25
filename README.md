@@ -58,7 +58,7 @@ X - Darker scrollbars + wider
 [H] - open with dialog for odt, doc, docx, odtf and pdf (see implementation in original app). Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it) - SEE THE DIALOG it shows you when you try to open an odt file.
 [h] - green & red bg + [r + Colour: ✓ ✗, + make 3 hashes orange ###
 [H] - Put top bar on bottom for easier access to save button & rename..etc
-[H] - Publish to gplay [WIP]
+WIP - Publish to gplay
 [H] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [h] - Keep recently searched for items in search list
 [M] - Show total notes count (+ on folders?)
@@ -68,7 +68,7 @@ X - Darker scrollbars + wider
 [L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
 [L] - Add button to insert date yyy-mm-dd?
 [L] - Auto-delete empty notes on save + disable auto-save?
-[L] - Add git integration
+[L] - Add git integration (add note how to do it in about)
 
 ### Build Commands:
 ./gradlew build --warning-mode all
