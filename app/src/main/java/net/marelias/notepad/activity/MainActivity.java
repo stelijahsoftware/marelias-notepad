@@ -129,27 +129,49 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "\n" +
                                         "## This is a blue line\n" +
                                         "\n" +
+                                        "### This is an orange line\n" +
+                                        "\n" +
                                         "// Red line\n" +
+                                        "\n" +
+                                        "123456789543250 154223\n" +
+                                        "\n" +
+                                        "[R red line\n" +
+                                        "[o orange line\n" +
+                                        "[b blue line\n" +
+                                        "[g green line\n" +
+                                        "[c cyan line\n" +
+                                        "[p purple line\n" +
                                         "\n" +
                                         "This is a list:\n" +
                                         "- element 1\n" +
                                         "- element 2\n" +
                                         "- element 3\n" +
                                         "X - this is a finished task\n" +
+                                        "x - another finished task\n" +
                                         "\n" +
                                         "All numbers will be coloured orange, for example 2024-09-28\n" +
                                         "\n" +
-                                        "Urls and websites will be highlighted: https://www.github.com/gsantner/markor\n" +
+                                        "Urls and websites will be highlighted:\n" +
+                                        "https://www.github.com/gsantner/markor\n" +
                                         "\n" +
                                         "You can also add **bold**, another __bold__ and _italic_ or *italic* text\n" +
                                         "\n" +
                                         "***** Asterisks will be coloured\n" +
                                         "----- Dashes will be coloured too\n" +
+                                        "===== as well\n" +
                                         "\n" +
                                         "You can also add importance tags like:\n" +
                                         "[h] task 1\n" +
                                         "[m] task 2\n" +
-                                        "[l] task 3\n";
+                                        "[l] task 3\n" +
+                                        "\n" +
+                                        "[High] task a\n" +
+                                        "[medium] task b\n" +
+                                        "[LOW] task c\n" +
+                                        "\n" +
+                                        "`This is code, it has a different font`\n" +
+                                        "\n";
+
                 fos.write(defaultContent.getBytes());
                 fos.close();
             } catch (IOException e) {
