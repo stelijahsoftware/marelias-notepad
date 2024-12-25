@@ -57,6 +57,7 @@ X - green & red bg + [r + make 3 hashes orange ###
 X - Colour: ✓ ✗
 
 ### TODO:
+- colour $ as pink + colour line beginning with $ as code
 [H] - open with dialog for odt, doc, docx, odtf and pdf (see implementation in original app).
       Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
       SEE THE DIALOG it shows you when you try to open an odt file.
