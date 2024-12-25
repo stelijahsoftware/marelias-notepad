@@ -18,6 +18,10 @@ import java.util.regex.Pattern;
 
 public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
 
+    /// *******************************
+    // 1. REGULAR EXPRESSIONS/PATTERNS:
+    /// *******************************
+
     public final static Pattern BOLD = Pattern.compile("(?<=(\\n|^|\\s|\\[|\\{|\\())(([*_]){2,3})(?=\\S)(.*?)\\S\\2(?=(\\n|$|\\s|\\.|,|:|;|-|\\]|\\}|\\)))");
     public final static Pattern ITALICS = Pattern.compile("(?<=(\\n|^|\\s|\\[|\\{|\\())([*_])(?=((?!\\2)|\\2{2,}))(?=\\S)(.*?)\\S\\2(?=(\\n|$|\\s|\\.|,|:|;|-|\\]|\\}|\\)))");
     // public final static Pattern HEADING = Pattern.compile("(?m)((^#{1,6}[^\\S\\n][^\\n]+)|((\\n|^)[^\\s]+.*?\\n(-{2,}|={2,})[^\\S\\n]*$))");
@@ -31,44 +35,67 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern DOUBLESPACE_LINE_ENDING = Pattern.compile("(?m)(?<=\\S)([^\\S\\n]{2,})\\n");
     // public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
 
+    // Elyahw regexes: reference: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
+    public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)$", Pattern.MULTILINE);
+    public final static Pattern elyahw_comment_python = Pattern.compile("^\\#.+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#\\#+.+$", Pattern.MULTILINE); // overriden by orange
+    public final static Pattern elyahw_comment_python_triple = Pattern.compile("^\\#\\#\\#+.+$", Pattern.MULTILINE);
+    // public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/\\S+ ");
+    public final static Pattern elyahw_numbers = Pattern.compile("(?<!((https?|Https?|HTTPS?):\\/\\/\\S{0,300})|(^\\/\\/.{0,300})|(^#.{0,300}))\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
+
+    public final static Pattern elyahw_priority_high = Pattern.compile("^\\[(h|H|high|HIGH|High)\\]", Pattern.MULTILINE);
+    public final static Pattern elyahw_priority_med = Pattern.compile("^\\[(m|M|medium|MEDIUM|Medium)\\]", Pattern.MULTILINE);
+    public final static Pattern elyahw_priority_low = Pattern.compile("^\\[(l|L|low|LOW|Low)\\]", Pattern.MULTILINE);
+
+    public final static Pattern elyahw_heading_red = Pattern.compile("^\\[(r|R)\\ .+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_heading_orange = Pattern.compile("^\\[(o|O)\\ .+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_heading_blue = Pattern.compile("^\\[(b|B)\\ .+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_heading_green = Pattern.compile("^\\[(g|G)\\ .+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_heading_cyan = Pattern.compile("^\\[(c|C)\\ .+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_heading_purple = Pattern.compile("^\\[(p|P)\\ .+$", Pattern.MULTILINE);
+
+    public final static Pattern elyahw_chars = Pattern.compile("(^(\\-|\\*|=)+)|(\\s\\-\\s)", Pattern.MULTILINE);
+    public final static Pattern elyahw_crossover = Pattern.compile("^((x|X) \\- ).+$", Pattern.MULTILINE);
+
+    // TODO: how to avoid highlighting in the middle of another highlight?
+
+    /// **********************
+    // 2. COLOURS:
+    /// **********************
+
     // private static final int MD_COLOR_HEADING = 0xffef6D00;
     private static final int MD_COLOR_LINK = 0xff1ea3fe;
     // private static final int MD_COLOR_LIST = 0xffdaa521;
     private static final int MD_COLOR_QUOTE = Color.parseColor("#e0e0e0");
     private static final int MD_COLOR_CODEBLOCK = Color.parseColor("#e0e0e0");
 
+    private static final int elyahw_colour_white = Color.parseColor("#ffffff");
+
     // Elyahw colours: (from Kate highlights)
     private static final int elyahw_colour_red = Color.parseColor("#de0303");
+    private static final int elyahw_colour_red_bg = Color.parseColor("#fff2f2");
     private static final int elyahw_colour_red_bright = Color.parseColor("#ff0000");
+
     private static final int elyahw_colour_green = Color.parseColor("#009f00");
-    // private static final int elyahw_colour_green_light = Color.parseColor("#e1ffe3");
-    // private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
+    private static final int elyahw_colour_green_light = Color.parseColor("#e1ffe3");
+
+    private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
+    private static final int elyahw_colour_blue_kate = Color.parseColor("#1603ff");
     private static final int elyahw_colour_blue_light = Color.parseColor("#cadfff");
     private static final int elyahw_colour_blue_dark = Color.parseColor("#0000ff");
+
     private static final int elyahw_colour_orange = Color.parseColor("#ff8000");
+    private static final int elyahw_colour_orange_bg = Color.parseColor("#fff9f2");
     private static final int elyahw_colour_yellow = Color.parseColor("#ffff00");
+    private static final int elyahw_colour_purple_kate = Color.parseColor("#800080");
     private static final int elyahw_colour_purple = Color.parseColor("#ff00ff");
+    private static final int elyahw_colour_cyan = Color.parseColor("#00ffff");
+
     /*
     from Kate:
         <itemData name="TaskDone" strikeOut="1" bold="1" backgroundColor="#eeeeee" /> <!-- Note: strikeOut not strikeout -->
         <itemData name="CodeSegment" color='#000000' backgroundColor='#eaeaea' italic="1"/>
      */
-
-    // Elyahw regexes: reference: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
-    public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)$", Pattern.MULTILINE);
-    public final static Pattern elyahw_comment_python = Pattern.compile("^\\#.+$", Pattern.MULTILINE);
-    public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#\\#+.+$", Pattern.MULTILINE); // overriden by orange
-    // public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/\\S+ ");
-    public final static Pattern elyahw_numbers = Pattern.compile("(?<!((https?|Https?|HTTPS?):\\/\\/\\S{0,300})|(^\\/\\/.{0,300})|(^#.{0,300}))\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
-    public final static Pattern elyahw_priority_high = Pattern.compile("^\\[(h|H)\\]", Pattern.MULTILINE);
-    public final static Pattern elyahw_priority_med = Pattern.compile("^\\[(m|M)\\]", Pattern.MULTILINE);
-    public final static Pattern elyahw_priority_low = Pattern.compile("^\\[(l|L)\\]", Pattern.MULTILINE);
-    public final static Pattern elyahw_chars = Pattern.compile("(^(\\-|\\*|=)+)|(\\s\\-\\s)", Pattern.MULTILINE);
-    public final static Pattern elyahw_crossover = Pattern.compile("^((x|X) \\- ).+$", Pattern.MULTILINE);
-
-
-    // TODO: how to avoid highlighting in the middle of another highlight?
-
 
     public MarkdownSyntaxHighlighter(AppSettings as) {
         super(as);
@@ -77,7 +104,6 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private boolean _highlightLineEnding;
     private boolean _highlightCodeChangeFont;
     private boolean _highlightBiggerHeadings;
-
 
     @Override
     public SyntaxHighlighterBase configure(Paint paint)
@@ -131,22 +157,53 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
 
         createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
 
-        // Elyahw custom:
+        // Elyahw custom: (order matters)
         //createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
         //createStyleSpanForMatches(elyahw_link, Typeface.ITALIC);
+
+        /// **********************
+        // 3. COLOUR MAPPINGS:
+        /// **********************
+
+        //$ [l] [m] [h]
         createColorBackgroundSpan(elyahw_priority_high, elyahw_colour_red_bright);
         createStyleSpanForMatches(elyahw_priority_high, Typeface.BOLD);
         createColorBackgroundSpan(elyahw_priority_med, elyahw_colour_orange);
         createStyleSpanForMatches(elyahw_priority_med, Typeface.BOLD);
         createColorBackgroundSpan(elyahw_priority_low, elyahw_colour_yellow); // Colour the background
         createStyleSpanForMatches(elyahw_priority_low, Typeface.BOLD); // Make bold
+
+        //$ [r [g [b..
+        createColorSpanForMatches(elyahw_heading_red, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_red, elyahw_colour_red_bright);
+        createColorSpanForMatches(elyahw_heading_green, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_green, elyahw_colour_green);
+        createColorSpanForMatches(elyahw_heading_blue, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_blue, elyahw_colour_blue_kate);
+        createColorSpanForMatches(elyahw_heading_cyan, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_cyan, elyahw_colour_cyan);
+        createColorSpanForMatches(elyahw_heading_purple, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_purple, elyahw_colour_purple_kate);
+        createColorSpanForMatches(elyahw_heading_orange, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_orange, elyahw_colour_orange);
+
+        //$ // Red comment
         createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
-        createColorSpanForMatches(elyahw_numbers, elyahw_colour_orange);
+        createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_red_bg);
+
+        //$ # ## ### Python comments
         createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
-        // createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green_light);
+        createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green_light);
         createColorSpanForMatches(elyahw_comment_python_double, elyahw_colour_blue_dark);
         createColorBackgroundSpan(elyahw_comment_python_double, elyahw_colour_blue_light);
+        createColorSpanForMatches(elyahw_comment_python_triple, elyahw_colour_orange);
+        createColorBackgroundSpan(elyahw_comment_python_triple, elyahw_colour_orange_bg);
+
+        createColorSpanForMatches(elyahw_numbers, elyahw_colour_orange);
+
+        // createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green_light);
         createColorSpanForMatches(elyahw_chars, elyahw_colour_purple);
+
         createStrikeThroughSpanForMatches(elyahw_crossover);
         createStyleSpanForMatches(elyahw_crossover, Typeface.BOLD);
 
