@@ -55,6 +55,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern elyahw_heading_cyan = Pattern.compile("^\\[(c|C)\\ .+$", Pattern.MULTILINE);
     public final static Pattern elyahw_heading_purple = Pattern.compile("^\\[(p|P)\\ .+$", Pattern.MULTILINE);
 
+    public final static Pattern elyahw_filter_allow = Pattern.compile("^\\✓.+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_filter_block = Pattern.compile("^\\✗.+$", Pattern.MULTILINE);
+
     public final static Pattern elyahw_chars = Pattern.compile("(^(\\-|\\*|=)+)|(\\s\\-\\s)", Pattern.MULTILINE);
     public final static Pattern elyahw_crossover = Pattern.compile("^((x|X) \\- ).+$", Pattern.MULTILINE);
 
@@ -191,6 +194,10 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorBackgroundSpan(elyahw_heading_orange, elyahw_colour_orange);
 
         //$ // Red comment
+        createColorBackgroundSpan(elyahw_filter_allow, elyahw_colour_green);
+        createColorBackgroundSpan(elyahw_filter_block, elyahw_colour_red);
+
+        //$ Filter ✓ ✗
         createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
         createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_red_bg);
 

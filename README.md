@@ -53,14 +53,17 @@ X - When renaming a note, automatically highlight the time part of the name i.e.
 X - Make hinted text have lighter grey colour at new note creation (completely removed)
 X - make scrollbar in files list always visible
 X - Darker scrollbars + wider
+X - green & red bg + [r + make 3 hashes orange ###
+X - Colour: ✓ ✗
 
 ### TODO:
-[H] - open with dialog for odt, doc, docx, odtf and pdf (see implementation in original app). Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it) - SEE THE DIALOG it shows you when you try to open an odt file.
-[h] - green & red bg + [r + Colour: ✓ ✗, + make 3 hashes orange ###
+[H] - open with dialog for odt, doc, docx, odtf and pdf (see implementation in original app).
+      Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
+      SEE THE DIALOG it shows you when you try to open an odt file.
 [H] - Put top bar on bottom for easier access to save button & rename..etc
-WIP - Publish to gplay
 [H] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [h] - Keep recently searched for items in search list
+WIP - Publish to gplay
 [M] - Show total notes count (+ on folders?)
 [M] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 [M] - Edit note title from note edit screen (like snotepad)

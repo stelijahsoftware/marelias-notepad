@@ -142,6 +142,9 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "[c cyan line\n" +
                                         "[p purple line\n" +
                                         "\n" +
+                                        "✓ filter allow rule\n" +
+                                        "✗ filter block rule\n" +
+                                        "\n" +
                                         "This is a list:\n" +
                                         "- element 1\n" +
                                         "- element 2\n" +
