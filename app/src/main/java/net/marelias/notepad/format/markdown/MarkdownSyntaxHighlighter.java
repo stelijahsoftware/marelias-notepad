@@ -32,6 +32,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern QUOTATION = Pattern.compile("(\\n|^)>");
     public final static Pattern STRIKETHROUGH = Pattern.compile("~{2}(.*?)\\S~{2}");
     public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)|(^[^\\S\\n]{4}(?![0-9\\-*+]).*$)");
+    //public final static Pattern CODE_big = Pattern.compile("`{3,}.*`{3,}$"); // how to let it span multiple lines?
     public final static Pattern DOUBLESPACE_LINE_ENDING = Pattern.compile("(?m)(?<=\\S)([^\\S\\n]{2,})\\n");
     // public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
 
@@ -109,7 +110,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public SyntaxHighlighterBase configure(Paint paint)
     {
         _highlightLineEnding = false; // _appSettings.isMarkdownHighlightLineEnding();
-        _highlightCodeChangeFont = false; // _appSettings.isHighlightCodeMonospaceFont();
+        _highlightCodeChangeFont = true; // _appSettings.isHighlightCodeMonospaceFont();
         _highlightBiggerHeadings = false; // _appSettings.isHighlightBiggerHeadings();
         _delay = 200; // _appSettings.getMarkdownHighlightingDelay();
         return super.configure(paint);
@@ -156,6 +157,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         }
 
         createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
+        //createColorBackgroundSpan(CODE_big, MD_COLOR_CODEBLOCK);
+
 
         // Elyahw custom: (order matters)
         //createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
