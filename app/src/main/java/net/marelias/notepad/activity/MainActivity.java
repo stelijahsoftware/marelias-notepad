@@ -126,9 +126,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                 // Create a new file (it won't write anything if a file with similar name exists)
                 FileOutputStream fos = new FileOutputStream(file);
                 String defaultContent = "# This is a green line\n" +
-                                        "\n" +
                                         "## This is a blue line\n" +
-                                        "\n" +
                                         "### This is an orange line\n" +
                                         "\n" +
                                         "// Red line\n" +
@@ -157,7 +155,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "Urls and websites will be highlighted:\n" +
                                         "https://www.github.com/gsantner/markor\n" +
                                         "\n" +
-                                        "You can also add **bold**, another __bold__ and _italic_ or *italic* text\n" +
+                                        "You can also add **bold**, another __bold__ and _italic_ or *italic* text; or ~~striked~~\n" +
                                         "\n" +
                                         "***** Asterisks will be coloured\n" +
                                         "----- Dashes will be coloured too\n" +
@@ -173,6 +171,13 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "[LOW] task c\n" +
                                         "\n" +
                                         "`This is code, it has a different font`\n" +
+                                        "\n" +
+                                        "$ This is another line of code`\n" +
+                                        "\n" +
+                                        "```\n" +
+                                        "Multiple lines\n" +
+                                        "of code..\n" +
+                                        "```\n" +
                                         "\n";
 
                 fos.write(defaultContent.getBytes());

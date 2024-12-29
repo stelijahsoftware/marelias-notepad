@@ -31,16 +31,19 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     // public final static Pattern LIST_ORDERED = Pattern.compile("(?m)^\\s{0,16}(\\d+)(:?\\.|\\))\\s");
     public final static Pattern QUOTATION = Pattern.compile("(\\n|^)>");
     public final static Pattern STRIKETHROUGH = Pattern.compile("~{2}(.*?)\\S~{2}");
+
     public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)|(^[^\\S\\n]{4}(?![0-9\\-*+]).*$)");
-    //public final static Pattern CODE_big = Pattern.compile("`{3,}.*`{3,}$"); // how to let it span multiple lines?
+    public final static Pattern CODE_big = Pattern.compile("(?s)`{3}.*`{3}"); // (?s) lets it span multiple lines
+    public final static Pattern CODE_dollar = Pattern.compile("^\\$\\ .+$", Pattern.MULTILINE);
+
     public final static Pattern DOUBLESPACE_LINE_ENDING = Pattern.compile("(?m)(?<=\\S)([^\\S\\n]{2,})\\n");
     // public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
 
     // Elyahw regexes: reference: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
     public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_python = Pattern.compile("^\\#.+$", Pattern.MULTILINE);
-    public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#\\#+.+$", Pattern.MULTILINE); // overriden by orange
-    public final static Pattern elyahw_comment_python_triple = Pattern.compile("^\\#\\#\\#+.+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#{2}+.+$", Pattern.MULTILINE); // overriden by orange
+    public final static Pattern elyahw_comment_python_triple = Pattern.compile("^\\#{3}+.+$", Pattern.MULTILINE);
     // public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/\\S+ ");
     public final static Pattern elyahw_numbers = Pattern.compile("(?<!((https?|Https?|HTTPS?):\\/\\/\\S{0,300})|(^\\/\\/.{0,300})|(^#.{0,300}))\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
 
@@ -112,7 +115,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     @Override
     public SyntaxHighlighterBase configure(Paint paint)
     {
-        _highlightLineEnding = false; // _appSettings.isMarkdownHighlightLineEnding();
+        _highlightLineEnding = true; // _appSettings.isMarkdownHighlightLineEnding();
         _highlightCodeChangeFont = true; // _appSettings.isHighlightCodeMonospaceFont();
         _highlightBiggerHeadings = false; // _appSettings.isHighlightBiggerHeadings();
         _delay = 200; // _appSettings.getMarkdownHighlightingDelay();
@@ -157,10 +160,13 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         if (_highlightCodeChangeFont)
         {
             createMonospaceSpanForMatches(CODE);
+            createMonospaceSpanForMatches(CODE_dollar);
+            createMonospaceSpanForMatches(CODE_big);
         }
 
         createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
-        //createColorBackgroundSpan(CODE_big, MD_COLOR_CODEBLOCK);
+        createColorBackgroundSpan(CODE_dollar, MD_COLOR_CODEBLOCK);
+        createColorBackgroundSpan(CODE_big, MD_COLOR_CODEBLOCK);
 
 
         // Elyahw custom: (order matters)
