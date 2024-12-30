@@ -32,7 +32,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern QUOTATION = Pattern.compile("(\\n|^)>");
     public final static Pattern STRIKETHROUGH = Pattern.compile("~{2}(.*?)\\S~{2}");
 
-    public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)|(^[^\\S\\n]{4}(?![0-9\\-*+]).*$)");
+    public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)");
+    //public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)|(^[^\\S\\n]{4}(?![0-9\\-*+]).*$)"); // includes any code tabbed with 4 spaces
     public final static Pattern CODE_big = Pattern.compile("(?s)`{3}.*`{3}"); // (?s) lets it span multiple lines
     public final static Pattern CODE_dollar = Pattern.compile("^\\$\\ .+$", Pattern.MULTILINE);
 
