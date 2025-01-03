@@ -70,6 +70,7 @@ X - colour line beginning with $ as code
 [H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 [H] - Auto-delete empty notes on save + disable auto-save?
 [H] - Touch all parent folders on save
+[H] - Creating new folder with no name moves directory navigation up (goes up one level)
 
 [L] - Show total notes count (+ on folders?)
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
