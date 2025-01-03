@@ -55,24 +55,27 @@ X - make scrollbar in files list always visible
 X - Darker scrollbars + wider
 X - green & red bg + [r + make 3 hashes orange ###
 X - Colour: ✓ ✗
+X - colour line beginning with $ as code
 
 ### TODO:
-- colour $ as pink + colour line beginning with $ as code
 [H] - open with dialog for odt, doc, docx, odtf and pdf (see implementation in original app).
       Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
       SEE THE DIALOG it shows you when you try to open an odt file.
 [H] - Put top bar on bottom for easier access to save button & rename..etc
 [H] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[h] - Keep recently searched for items in search list
-WIP - Publish to gplay
-[M] - Show total notes count (+ on folders?)
-[M] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[M] - Edit note title from note edit screen (like snotepad)
+[H] - Keep recently searched for items in search list
+[H] - Publish to gplay
+[H] - Edit note title from note edit screen (like snotepad)
+[H] - Plus button should auto add note with date; rename title from pressing note title on opening
+[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[H] - Auto-delete empty notes on save + disable auto-save?
+[H] - Touch all parent folders on save
+
+[L] - Show total notes count (+ on folders?)
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 [L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
-[L] - Add button to insert date yyy-mm-dd?
-[L] - Auto-delete empty notes on save + disable auto-save?
-[L] - Add git integration (add note how to do it in about)
+[L] - Add git integration (add note in 'about' screen how to do it in about)
+X - Add button to insert date yyy-mm-dd?
 
 ### Build Commands:
 ./gradlew build --warning-mode all
