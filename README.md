@@ -14,6 +14,38 @@ A simple text notes editor and heavily trimmed down version of [Markor](https://
 ### Forking note:
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
+### TODO:
+[H] - `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
+    - Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
+    - SEE THE DIALOG it shows you when you try to open an odt file.
+
+[H] - `Plus button` should not show dialog, instead auto add note (like snotepad)
+    - Rename title from pressing `note title` on opening.
+    - Add plus button to create folders from top menu
+
+[H] - add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
+
+[H] - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
+
+[H] - Auto-delete empty notes on save + disable auto-save?
+
+[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+
+[H] - Publish to gplay
+
+[M] - Put top bar on bottom for easier access to save button & rename..etc
+[M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+[M] - Keep recently searched for items in search list
+
+[L] - Show total notes count (+ on folders?)
+[L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+[L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
+[L] - Add git integration (add note in 'about' screen how to do it in about)
+
+### Ignored tasks:
+X - Add button to insert date yyy-mm-dd?
+X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
+
 ### Changelog from Markor:
 X - Remove all occurrences of: audio, epub, ascii, csv
 X - See todos from Snotepad.
@@ -57,38 +89,6 @@ X - green & red bg + [r + make 3 hashes orange ###
 X - Colour: ✓ ✗
 X - colour line beginning with $ as code
 X - FIX: Touch all parent folders on save starting from home
-
-### TODO:
-[H] - `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
-    - Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
-    - SEE THE DIALOG it shows you when you try to open an odt file.
-
-[H] - `Plus button` should not show dialog, instead auto add note (like snotepad)
-    - Rename title from pressing `note title` on opening.
-    - Add plus button to create folders from top menu
-
-[H] - add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
-
-[H] - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
-
-[H] - Auto-delete empty notes on save + disable auto-save?
-
-[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-
-[H] - Publish to gplay
-
-[M] - Put top bar on bottom for easier access to save button & rename..etc
-[M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[M] - Keep recently searched for items in search list
-
-[L] - Show total notes count (+ on folders?)
-[L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
-[L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
-[L] - Add git integration (add note in 'about' screen how to do it in about)
-
-### Ignored tasks:
-X - Add button to insert date yyy-mm-dd?
-X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Build Commands:
 ./gradlew build --warning-mode all
