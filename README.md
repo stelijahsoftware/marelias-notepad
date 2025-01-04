@@ -56,6 +56,7 @@ X - Darker scrollbars + wider
 X - green & red bg + [r + make 3 hashes orange ###
 X - Colour: ✓ ✗
 X - colour line beginning with $ as code
+X - FIX: Touch all parent folders on save starting from home
 
 ### TODO:
 [H] - `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
@@ -69,7 +70,6 @@ X - colour line beginning with $ as code
 [H] - add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
 
 [H] - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
-[H] - FIX: Touch all parent folders on save starting from home
 
 [H] - Auto-delete empty notes on save + disable auto-save?
 

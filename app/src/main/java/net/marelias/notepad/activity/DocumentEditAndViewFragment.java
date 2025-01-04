@@ -591,20 +591,35 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         if (!_document.isContentSame(text))
         {
             // Touch parent folder on edit (elyahw) ----------
-            //File ff = _document.file;
-            //String ppath = "";
-            //ppath = ff.getAbsolutePath();
-            //System.out.println("Touching parent folder\n");
-            //Log.i("Elyahw", "Touching parent folder");
             try {
                 File parentFolder = _document.file.getParentFile();
+                File rootFolder = new File(_appSettings.getNotebookDirectory().getPath());
+                File homePath = new File("/storage/emulated/0/");
+
+                //File ff = _document.file;
+                //String ppath = "";
+                //ppath = ff.getAbsolutePath();
+
+                // no logging, just print to terminal:
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Touching parent folder.........................................\n");
+                System.out.println(parentFolder.getPath()); // "/storage/emulated/0/Documents/mar-elias notepad/aaa/abcd/fda"
+                System.out.println(_appSettings.getNotebookDirectory().getAbsolutePath()); // "/storage/emulated/0/Documents/mar-elias notepad"
+                System.out.println(_appSettings.getNotebookDirectory().getPath()); // same
+
                 long currentTime = System.currentTimeMillis();
-                parentFolder.setLastModified(currentTime);
+
+                // Traverse up the directory hierarchy and touch until root folder is reached
+                while (parentFolder != null &&
+                        !parentFolder.equals(rootFolder) &&
+                        !parentFolder.equals(homePath)) {
+                    parentFolder.setLastModified(currentTime);
+                    parentFolder = parentFolder.getParentFile();
+                }
             }
             catch (Exception ignored) {
+                Log.i("Elyahw", "Exception touch parent folder.."); // Logcat
             }
-
-            // ------------
+            // ------------------------------------------------
 
             final int minLength = GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH;
             if (!forceSaveEmpty && text != null && text.length() < minLength)
