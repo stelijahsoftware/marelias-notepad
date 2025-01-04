@@ -15,23 +15,20 @@ A simple text notes editor and heavily trimmed down version of [Markor](https://
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[H] - `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
+[H] - BIG: `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
     - Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
     - SEE THE DIALOG it shows you when you try to open an odt file.
 
-[H] - `Plus button` should not show dialog, instead auto add note (like snotepad)
+[H] - BIG: `Plus button` should not show dialog, instead auto add note (like snotepad)
     - Rename title from pressing `note title` on opening.
     - Add plus button to create folders from top menu
 
-[H] - add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
+[H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
 
-[H] - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
-
-[H] - Auto-delete empty notes on save + disable auto-save?
-
-[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-
-[H] - Publish to gplay
+[H] - SMALL: FIX: Creating new folder with no name moves directory navigation up (goes up one level)
+[H] - SMALL: Auto-delete empty notes on save + disable auto-save?
+[H] - SMALL: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[H] - WIP: Publish to gplay
 
 [M] - Put top bar on bottom for easier access to save button & rename..etc
 [M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
