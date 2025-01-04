@@ -58,25 +58,37 @@ X - Colour: ✓ ✗
 X - colour line beginning with $ as code
 
 ### TODO:
-[H] - open with dialog for odt, doc, docx, odtf and pdf (see implementation in original app).
-      Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
-      SEE THE DIALOG it shows you when you try to open an odt file.
-[H] - Put top bar on bottom for easier access to save button & rename..etc
-[H] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[H] - Keep recently searched for items in search list
-[H] - Publish to gplay
-[H] - Edit note title from note edit screen (like snotepad)
-[H] - Plus button should auto add note with date; rename title from pressing note title on opening
-[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[H] - `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
+    - Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
+    - SEE THE DIALOG it shows you when you try to open an odt file.
+
+[H] - `Plus button` should not show dialog, instead auto add note (like snotepad)
+    - Rename title from pressing `note title` on opening.
+    - Add plus button to create folders from top menu
+
+[H] - add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
+
+[H] - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
+[H] - FIX: Touch all parent folders on save starting from home
+
 [H] - Auto-delete empty notes on save + disable auto-save?
-[H] - Touch all parent folders on save
-[H] - Creating new folder with no name moves directory navigation up (goes up one level)
+
+[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+
+[H] - Publish to gplay
+
+[M] - Put top bar on bottom for easier access to save button & rename..etc
+[M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+[M] - Keep recently searched for items in search list
 
 [L] - Show total notes count (+ on folders?)
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 [L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
 [L] - Add git integration (add note in 'about' screen how to do it in about)
+
+### Ignored tasks:
 X - Add button to insert date yyy-mm-dd?
+X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Build Commands:
 ./gradlew build --warning-mode all
