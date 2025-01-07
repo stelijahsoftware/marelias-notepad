@@ -1,5 +1,7 @@
 # Mar-Elias Notepad
-A Simple noteapd with highlights. [DOWNLOAD LINK](https://play.google.com/apps/testing/net.marelias.notepad)
+A Simple noteapd with highlights.
+
+[<img src="icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=net.marelias.notepad)
 
 # Rights:
 
@@ -10,6 +12,9 @@ Apache 2.0 license (see [LICENSE.txt](./LICENSE.txt); all licenses in the origin
 <img src="./icon/icon.png" alt="icon" width="25%" />
 
 A simple text notes editor and heavily trimmed down version of [Markor](https://www.github.com/gsantner/markor), with customised highlights.
+
+# Contact:
+feedbackATstelijahDOTcoDOTuk
 
 ### Forking note:
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
