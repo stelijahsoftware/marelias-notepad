@@ -575,9 +575,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__filesystem_folder_first, false);
     }
 
-    public String getNavigationBarColor() {
-        return getString(R.string.pref_key__navigationbar_color, "#000000");
-    }
+//    public String getNavigationBarColor() {
+//        return getString(R.string.pref_key__navigationbar_color, "#000000");
+//    }
 
 //    public @IdRes
 //    Integer getAppStartupFolderMenuId() {

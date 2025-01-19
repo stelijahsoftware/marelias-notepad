@@ -19,16 +19,6 @@
         android:title="Notebook save location" />
 
     <ListPreference
-        android:defaultValue="#000000"
-        android:dialogTitle="@string/navigationbar_color"
-        android:entries="@array/pref_arrdisp__navigationbar_color"
-        android:entryValues="@array/pref_arrkeys__navigationbar_color"
-        android:icon="@drawable/ic_invert_colors_black_24dp"
-        android:key="@string/pref_key__navigationbar_color"
-        android:summary="%1$s"
-        android:title="@string/navigationbar_color" />
-
-    <ListPreference
         android:defaultValue="@string/app_theme_system"
         android:dialogTitle="@string/theme"
         android:entries="@array/pref_arrdisp__app_themes"
