@@ -627,13 +627,14 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
     public boolean scrollToAndFlash(final File file) {
         final int pos = getFilePosition(file);
         if (pos >= 0 && _layoutManager != null) {
-            doAfterChange(() -> _recyclerView.postDelayed(() -> {
-                final RecyclerView.ViewHolder holder = _recyclerView.findViewHolderForLayoutPosition(pos);
-                if (holder != null) {
-                    GsContextUtils.blinkView(holder.itemView);
-                }
-            }, 400));
             _layoutManager.scrollToPosition(pos);
+            _recyclerView.post(() ->
+                    _recyclerView.postDelayed(() -> {
+                        final RecyclerView.ViewHolder holder = _recyclerView.findViewHolderForLayoutPosition(pos);
+                        if (holder != null) {
+                            GsContextUtils.blinkView(holder.itemView);
+                        }
+                    }, 400));
             return true;
         }
         return false;
