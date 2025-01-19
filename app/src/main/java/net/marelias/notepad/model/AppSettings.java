@@ -66,7 +66,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         _isDeviceGoodHardware = _cu.isDeviceGoodHardware(context);
 
         if (getInt(R.string.pref_key__basic_color_scheme__bg_light, -999) == -999) {
-            setEditorBasicColor(true, R.color.white, R.color.dark_grey);
+//            setEditorBasicColor(true, R.color.white, R.color.dark_grey);
             setEditorBasicColor(false, R.color.dark_grey, R.color.light__background);
         }
         return this;
@@ -474,26 +474,26 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getInt(night ? R.string.pref_key__basic_color_scheme__fg_dark : R.string.pref_key__basic_color_scheme__fg_light, rcolor(R.color.primary_text));
     }
 
-    public int getEditorBackgroundColor() {
-        final boolean night = GsContextUtils.instance.isDarkModeEnabled(_context);
-        int c = getInt(night ? R.string.pref_key__basic_color_scheme__bg_dark : R.string.pref_key__basic_color_scheme__bg_light, rcolor(R.color.background));
-        if (getAppThemeName().contains("black")) {
-            c = Color.BLACK;
-        }
-        return c;
-    }
+//    public int getEditorBackgroundColor() {
+//        final boolean night = GsContextUtils.instance.isDarkModeEnabled(_context);
+//        int c = getInt(night ? R.string.pref_key__basic_color_scheme__bg_dark : R.string.pref_key__basic_color_scheme__bg_light, rcolor(R.color.background));
+//        if (getAppThemeName().contains("black")) {
+//            c = Color.BLACK;
+//        }
+//        return c;
+//    }
 
-    public void applyAppTheme() {
-        GsContextUtils.instance.applyDayNightTheme(getString(R.string.pref_key__app_theme, getAppThemeName()));
-    }
+//    public void applyAppTheme() {
+//        GsContextUtils.instance.applyDayNightTheme(getString(R.string.pref_key__app_theme, getAppThemeName()));
+//    }
 
-    public String getAppThemeName() {
-        return getString(R.string.pref_key__app_theme, _context.getString(R.string.app_theme_system));
-    }
+//    public String getAppThemeName() {
+//        return getString(R.string.pref_key__app_theme, _context.getString(R.string.app_theme_system));
+//    }
 
     public void setEditorBasicColor(boolean forDarkMode, @ColorRes int fgColor, @ColorRes int bgColor) {
-        int resIdFg = forDarkMode ? R.string.pref_key__basic_color_scheme__fg_dark : R.string.pref_key__basic_color_scheme__fg_light;
-        int resIdBg = forDarkMode ? R.string.pref_key__basic_color_scheme__bg_dark : R.string.pref_key__basic_color_scheme__bg_light;
+        int resIdFg = R.string.pref_key__basic_color_scheme__fg_light;
+        int resIdBg = R.string.pref_key__basic_color_scheme__bg_light;
         setInt(resIdFg, rcolor(fgColor));
         setInt(resIdBg, rcolor(bgColor));
     }

@@ -2,7 +2,7 @@ package net.marelias.notepad.activity;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
+//import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
@@ -21,11 +21,11 @@ public abstract class MarkorBaseActivity extends GsActivityBase<AppSettings, Mar
     protected void onPreCreate(@Nullable Bundle savedInstanceState) {
         super.onPreCreate(savedInstanceState); // _appSettings, _cu gets available
         setTheme(R.style.AppTheme_Unified);
-        _appSettings.applyAppTheme();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setEnterTransition(null);
-            getWindow().setExitTransition(null);
-        }
+//        _appSettings.applyAppTheme();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            getWindow().setEnterTransition(null);
+//            getWindow().setExitTransition(null);
+//        }
         _cu.setAppLanguage(this, _appSettings.getLanguage());
 //        if (_appSettings.isHideSystemStatusbar()) {
 //            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -38,12 +38,12 @@ public abstract class MarkorBaseActivity extends GsActivityBase<AppSettings, Mar
 
     @Override
     public Integer getNewNavigationBarColor() {
-        return _appSettings.getAppThemeName().contains("black") ? Color.BLACK : null;
+        return Color.BLACK;
     }
 
     @Override
     public Integer getNewActivityBackgroundColor() {
-        return _appSettings.getAppThemeName().contains("black") ? Color.BLACK : null;
+        return null; // _appSettings.getAppThemeName().contains("black") ? Color.BLACK :
     }
 
     @Override
