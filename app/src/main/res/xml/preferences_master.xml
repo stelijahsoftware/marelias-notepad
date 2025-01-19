@@ -42,13 +42,6 @@
         android:summary="@string/dynamic_highlighting_effect"
         android:title="@string/dynamic_highlighting" />
 
-    <androidx.preference.EditTextPreference
-        android:defaultValue="@string/empty_string"
-        android:dialogMessage="@string/file_description_format_dialog"
-        android:icon="@drawable/ic_info_black_24dp"
-        android:key="@string/pref_key__file_description_format"
-        android:title="@string/file_description_format" />
-
     <Preference
         android:icon="@drawable/ic_code_black_24dp"
         android:key="@string/pref_key__more_info__source_code"

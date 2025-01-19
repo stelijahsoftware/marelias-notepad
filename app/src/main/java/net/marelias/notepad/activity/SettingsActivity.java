@@ -160,12 +160,12 @@ public class SettingsActivity extends MarkorBaseActivity {
 
 //            updateSummary(R.string.pref_key__snippet_directory_path, _appSettings.getSnippetsDirectory().getAbsolutePath());
 
-            final String fileDescFormat = _appSettings.getString(R.string.pref_key__file_description_format, "");
-            if (fileDescFormat.equals("")) {
-                updateSummary(R.string.pref_key__file_description_format, getString(R.string.default_));
-            } else {
-                updateSummary(R.string.pref_key__file_description_format, fileDescFormat);
-            }
+//            final String fileDescFormat = _appSettings.getString(R.string.pref_key__file_description_format, "");
+//            if (fileDescFormat.equals("")) {
+//                updateSummary(R.string.pref_key__file_description_format, getString(R.string.default_));
+//            } else {
+//                updateSummary(R.string.pref_key__file_description_format, fileDescFormat);
+//            }
 
             // Display app version (elyahw)
             super.doUpdatePreferences();
@@ -204,14 +204,14 @@ public class SettingsActivity extends MarkorBaseActivity {
 //                boolean extraLaunchersEnabled = prefs.getBoolean(key, false);
 //                new MarkorContextUtils(getActivity()).applySpecialLaunchersVisibility(getActivity(), extraLaunchersEnabled);
 //            }
-            else if (eq(key, R.string.pref_key__file_description_format)) {
+//            else if (eq(key, R.string.pref_key__file_description_format)) {
                 try {
                     new SimpleDateFormat(prefs.getString(key, ""), Locale.getDefault());
                 } catch (IllegalArgumentException e) {
                     Toast.makeText(getContext(), e.getLocalizedMessage() + "\n\n" + getString(R.string.loading_default_value), Toast.LENGTH_SHORT).show();
                     prefs.edit().putString(key, "").commit();
                 }
-            }
+//            }
         }
 
         @Override
