@@ -1,9 +1,9 @@
 /*#######################################################
  *
- * SPDX-FileCopyrightText: 2017-2024 Gregor Santner <gsantner AT mailbox DOT org>
+ * SPDX-FileCopyrightText: 2017-2025 Gregor Santner <gsantner AT mailbox DOT org>
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
  *
- * Written 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ * Written 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  * To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
  * You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 #########################################################*/
@@ -22,6 +22,9 @@ import net.gsantner.opoc.wrapper.GsCallback;
 import java.io.File;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class GsFileBrowserOptions {
@@ -105,6 +108,7 @@ public class GsFileBrowserOptions {
         public int selectedItemImage = android.R.drawable.checkbox_on_background;
         @DrawableRes
         public int fileImage = android.R.drawable.ic_menu_edit;
+
         @ColorRes
         public int backgroundColor = android.R.color.background_light;
         @ColorRes
@@ -122,11 +126,18 @@ public class GsFileBrowserOptions {
         @ColorRes
         public int folderColor = 0;
 
+        public final Map<File, File> storageMaps = new LinkedHashMap<>();
+        public final Map<File, Integer> iconMaps = new HashMap<>();
         public Collection<File> favouriteFiles, recentFiles, popularFiles = null;
         public GsCallback.a1<CharSequence> setTitle = null, setSubtitle = null;
 
-        public GsCallback.a0 refresh = null;
+        public void addVirtualFile(final String name, final File target, final int icon) {
+            final File file = new File(GsFileBrowserListAdapter.VIRTUAL_STORAGE_ROOT, name);
+            storageMaps.put(file, target);
+            iconMaps.put(file, icon);
+        }
     }
+
 
     public static class SelectionListenerAdapter implements SelectionListener, Serializable {
         @Override

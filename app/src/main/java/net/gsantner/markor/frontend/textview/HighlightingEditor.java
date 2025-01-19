@@ -1,6 +1,6 @@
 /*#######################################################
  *
- *   Maintained 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ *   Maintained 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  *   License of this file: Apache 2.0
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
@@ -18,23 +18,31 @@ import android.text.InputFilter;
 import android.text.Layout;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.ActionMode;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.accessibility.AccessibilityEvent;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import net.gsantner.markor.ApplicationObject;
+import net.gsantner.markor.R;
 import net.gsantner.markor.activity.MainActivity;
 import net.gsantner.markor.model.AppSettings;
+import net.gsantner.markor.util.TextCasingUtils;
 import net.gsantner.opoc.format.GsTextUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
 import net.gsantner.opoc.wrapper.GsTextWatcherAdapter;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -55,7 +63,6 @@ public class HighlightingEditor extends AppCompatEditText {
     private boolean _isDynamicHighlightingEnabled = true;
     private Runnable _hlDebounced;        // Debounced runnable which recomputes highlighting
     private boolean _hlEnabled;           // Whether highlighting is enabled
-    private boolean _numEnabled;          // Whether show line numbers is enabled
     private final Rect _oldHlRect;        // Rect highlighting was previously applied to
     private final Rect _hlRect;           // Current rect
     private int _hlShiftThreshold = -1;   // How much to scroll before re-apply highlight
@@ -63,7 +70,6 @@ public class HighlightingEditor extends AppCompatEditText {
     private TextWatcher _autoFormatModifier;
     private boolean _autoFormatEnabled;
     private boolean _saveInstanceState = true;
-    private final LineNumbersDrawer _lineNumbersDrawer = new LineNumbersDrawer(this);
     private final ExecutorService executor = new ThreadPoolExecutor(0, 3, 60, TimeUnit.SECONDS, new SynchronousQueue<>());
     private final AtomicBoolean _textUnchangedWhileHighlighting = new AtomicBoolean(true);
 
@@ -80,7 +86,6 @@ public class HighlightingEditor extends AppCompatEditText {
         }
 
         _hlEnabled = false;
-        _numEnabled = false;
         _oldHlRect = new Rect();
         _hlRect = new Rect();
 
@@ -109,20 +114,28 @@ public class HighlightingEditor extends AppCompatEditText {
 
         // Fix for Android 12 perf issues - https://github.com/gsantner/markor/discussions/1794
         setEmojiCompatEnabled(false);
+
+        // Custom options
+        setupCustomOptions();
     }
 
     @Override
     public boolean onPreDraw() {
-        _lineNumbersDrawer.setTextSize(getTextSize());
-        return super.onPreDraw();
+        try {
+            return super.onPreDraw();
+        } catch (OutOfMemoryError ignored) {
+            return false; // return false to cancel current drawing pass/round
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-
-        if (_numEnabled) {
-            _lineNumbersDrawer.draw(canvas);
+        try {
+            super.onDraw(canvas);
+        } catch (Exception e) {
+            // Hinder drawing from crashing the app
+            Log.e(getClass().getName(), "HighlightingEdtior onDraw->super.onDraw crash" + e);
+            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -160,14 +173,14 @@ public class HighlightingEditor extends AppCompatEditText {
     private void updateHighlighting() {
         if (runHighlight(false)) {
             // Do not batch as we do not want to reflow
-           _hl.clearDynamic().applyDynamic(hlRegion());
+            _hl.clearDynamic().applyDynamic(hlRegion());
             _oldHlRect.set(_hlRect);
         }
     }
 
     public void recomputeHighlighting() {
         if (runHighlight(true)) {
-            batch(() -> _hl.clearAll().recompute().applyStatic().applyDynamic(hlRegion()));
+            batch(() -> _hl.clearDynamic().clearStatic(false).recompute().applyStatic().applyDynamic(hlRegion()));
         }
     }
 
@@ -179,7 +192,10 @@ public class HighlightingEditor extends AppCompatEditText {
      */
     private void recomputeHighlightingAsync() {
         if (runHighlight(true)) {
-            executor.execute(this::_recomputeHighlightingWorker);
+            try {
+                executor.execute(this::_recomputeHighlightingWorker);
+            } catch (RejectedExecutionException ignored) {
+            }
         }
     }
 
@@ -188,7 +204,7 @@ public class HighlightingEditor extends AppCompatEditText {
         _hl.compute();
         post(() -> {
             if (_textUnchangedWhileHighlighting.get()) {
-                batch(() -> _hl.clearAll().setComputed().applyStatic().applyDynamic(hlRegion()));
+                batch(() -> _hl.clearStatic(false).clearDynamic().setComputed().applyStatic().applyDynamic(hlRegion()));
             }
         });
     }
@@ -204,7 +220,7 @@ public class HighlightingEditor extends AppCompatEditText {
 
     public void setHighlighter(final SyntaxHighlighterBase newHighlighter) {
         if (_hl != null) {
-            _hl.clearAll();
+            _hl.clearDynamic().clearStatic(true);
         }
 
         _hl = newHighlighter;
@@ -245,27 +261,10 @@ public class HighlightingEditor extends AppCompatEditText {
         } else if (!enable && _hlEnabled) {
             _hlEnabled = false;
             if (_hl != null) {
-                _hl.clearAll();
+                _hl.clearDynamic().clearStatic(true);
             }
         }
         return prev;
-    }
-
-    public boolean isLineNumbersEnabled() {
-        return _numEnabled;
-    }
-
-    public void setLineNumbersEnabled(final boolean enable) {
-        if (enable ^ _numEnabled) {
-            post(this::invalidate);
-        }
-        _numEnabled = enable;
-        if (_numEnabled) {
-            _lineNumbersDrawer.startLineTracking();
-        } else {
-            _lineNumbersDrawer.reset();
-            _lineNumbersDrawer.stopLineTracking();
-        }
     }
 
     // Region to highlight
@@ -287,14 +286,12 @@ public class HighlightingEditor extends AppCompatEditText {
 
     private int rowStart(final int y) {
         final Layout layout = getLayout();
-        final int line = layout.getLineForVertical(y);
-        return layout.getLineStart(line);
+        return layout == null ? 0 : layout.getLineStart(layout.getLineForVertical(y));
     }
 
     private int rowEnd(final int y) {
         final Layout layout = getLayout();
-        final int line = layout.getLineForVertical(y);
-        return layout.getLineEnd(line);
+        return layout == null ? 0 : layout.getLineEnd(layout.getLineForVertical(y));
     }
 
     // Various overrides
@@ -342,7 +339,12 @@ public class HighlightingEditor extends AppCompatEditText {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && id == android.R.id.paste) {
             id = android.R.id.pasteAsPlainText;
         }
-        return super.onTextContextMenuItem(id);
+        try {
+            // i.e. DeadSystemRuntimeException can happen here
+            return super.onTextContextMenuItem(id);
+        } catch (Exception ignored) {
+            return true;
+        }
     }
 
     // Accessibility code is blocked during rapid update events
@@ -447,6 +449,11 @@ public class HighlightingEditor extends AppCompatEditText {
     // Utility functions for interaction
     // ---------------------------------------------------------------------------------------------
 
+    public void selectLines() {
+        final int[] sel = TextViewUtils.getLineSelection(this);
+        setSelection(sel[0], sel[1]);
+    }
+
     public void simulateKeyPress(int keyEvent_KEYCODE_SOMETHING) {
         dispatchKeyEvent(new KeyEvent(0, 0, KeyEvent.ACTION_DOWN, keyEvent_KEYCODE_SOMETHING, 0));
         dispatchKeyEvent(new KeyEvent(0, 0, KeyEvent.ACTION_UP, keyEvent_KEYCODE_SOMETHING, 0));
@@ -498,168 +505,36 @@ public class HighlightingEditor extends AppCompatEditText {
         return GsTextUtils.inRange(0, length(), indexes);
     }
 
-    static class LineNumbersDrawer {
-
-        private final AppCompatEditText _editor;
-        private final Paint _paint = new Paint();
-
-        private final int _defaultPaddingLeft;
-        private static final int LINE_NUMBER_PADDING_LEFT = 18;
-        private static final int LINE_NUMBER_PADDING_RIGHT = 12;
-
-        private final Rect _visibleArea = new Rect();
-        private final Rect _lineNumbersArea = new Rect();
-
-        private int _numberX;
-        private int _gutterX;
-        private int _maxNumber = 1; // to gauge gutter width
-        private int _maxNumberDigits;
-        private float _oldTextSize;
-        private final int[] _startLine = {0, 1}; // {line index, actual line number}
-
-        private final GsTextWatcherAdapter _lineTrackingWatcher = new GsTextWatcherAdapter() {
+    private void setupCustomOptions() {
+        setCustomSelectionActionModeCallback(new ActionMode.Callback() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                _maxNumber -= GsTextUtils.countChar(s, start, start + count, '\n');
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                // Add custom items programmatically
+                menu.add(0, R.string.option_select_lines, 0, "☰");
+                return true;
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                _maxNumber += GsTextUtils.countChar(s, start, start + count, '\n');
-            }
-        };
-
-        public LineNumbersDrawer(final AppCompatEditText editor) {
-            _editor = editor;
-            _paint.setColor(0xFF999999);
-            _paint.setTextAlign(Paint.Align.RIGHT);
-            _defaultPaddingLeft = editor.getPaddingLeft();
-        }
-
-        public void setTextSize(final float textSize) {
-            _paint.setTextSize(textSize);
-        }
-
-        public boolean isTextSizeChanged() {
-            if (_paint.getTextSize() == _oldTextSize) {
-                return false;
-            } else {
-                _oldTextSize = _paint.getTextSize();
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                // Modify menu items here if necessary
                 return true;
             }
-        }
 
-        public boolean isMaxNumberDigitsChanged() {
-            final int oldDigits = _maxNumberDigits;
-
-            if (_maxNumber < 10) {
-                _maxNumberDigits = 1;
-            } else if (_maxNumber < 100) {
-                _maxNumberDigits = 2;
-            } else if (_maxNumber < 1000) {
-                _maxNumberDigits = 3;
-            } else if (_maxNumber < 10000) {
-                _maxNumberDigits = 4;
-            } else {
-                _maxNumberDigits = 5;
-            }
-            return _maxNumberDigits != oldDigits;
-        }
-
-        public boolean isOutOfLineNumbersArea() {
-            final int margin = (int) (_visibleArea.height() * 0.5f);
-            final int top = _visibleArea.top - margin;
-            final int bottom = _visibleArea.bottom + margin;
-
-            if (top < _lineNumbersArea.top || bottom > _lineNumbersArea.bottom) {
-                // Reset line numbers area
-                // height of line numbers area = (1.5 + 1 + 1.5) * height of visible area
-                _lineNumbersArea.top = top - _visibleArea.height();
-                _lineNumbersArea.bottom = bottom + _visibleArea.height();
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public void startLineTracking() {
-            _editor.removeTextChangedListener(_lineTrackingWatcher);
-            _maxNumber = 1;
-            final CharSequence text = _editor.getText();
-            if (text != null) {
-                _maxNumber += GsTextUtils.countChar(text, 0, text.length(), '\n');
-            }
-            _editor.addTextChangedListener(_lineTrackingWatcher);
-        }
-
-        public void stopLineTracking() {
-            _editor.removeTextChangedListener(_lineTrackingWatcher);
-        }
-
-        /**
-         * Draw line numbers.
-         *
-         * @param canvas The canvas on which the line numbers will be drawn.
-         */
-        public void draw(final Canvas canvas) {
-            if (!_editor.getLocalVisibleRect(_visibleArea)) {
-                return;
-            }
-
-            final CharSequence text = _editor.getText();
-            final Layout layout = _editor.getLayout();
-            if (text == null || layout == null) {
-                return;
-            }
-
-            // If text size or the max line number of digits changed,
-            // update the variables and reset padding
-            if (isTextSizeChanged() || isMaxNumberDigitsChanged()) {
-                _numberX = LINE_NUMBER_PADDING_LEFT + (int) _paint.measureText(String.valueOf(_maxNumber));
-                _gutterX = _numberX + LINE_NUMBER_PADDING_RIGHT;
-                _editor.setPadding(_gutterX + 12, _editor.getPaddingTop(), _editor.getPaddingRight(), _editor.getPaddingBottom());
-            }
-
-            int i = _startLine[0], number = _startLine[1];
-            // If current visible area is out of current line numbers area,
-            // iterate from the first line to recalculate the start line
-            if (isOutOfLineNumbersArea()) {
-                i = 0;
-                number = 1;
-                _startLine[0] = -1;
-            }
-
-            // Draw border of the gutter
-            canvas.drawLine(_gutterX, _lineNumbersArea.top, _gutterX, _lineNumbersArea.bottom, _paint);
-
-            // Draw line numbers
-            final int count = layout.getLineCount();
-            final int offsetY = _editor.getPaddingTop();
-            for (; i < count; i++) {
-                final int start = layout.getLineStart(i);
-                if (start == 0 || text.charAt(start - 1) == '\n') {
-                    final int y = layout.getLineBaseline(i);
-                    if (y > _lineNumbersArea.bottom) {
-                        break;
-                    }
-                    if (y > _lineNumbersArea.top) {
-                        if (_startLine[0] < 0) {
-                            _startLine[0] = i;
-                            _startLine[1] = number;
-                        }
-                        canvas.drawText(String.valueOf(number), _numberX, y + offsetY, _paint);
-                    }
-                    number++;
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.string.option_select_lines:
+                        HighlightingEditor.this.selectLines();
+                        return true;
+                    default:
+                        return false;
                 }
             }
-        }
 
-        /**
-         * Reset to the state without line numbers.
-         */
-        public void reset() {
-            _editor.setPadding(_defaultPaddingLeft, _editor.getPaddingTop(), _editor.getPaddingRight(), _editor.getPaddingBottom());
-            _maxNumberDigits = 0;
-        }
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                // Cleanup if needed
+            }
+        });
     }
 }

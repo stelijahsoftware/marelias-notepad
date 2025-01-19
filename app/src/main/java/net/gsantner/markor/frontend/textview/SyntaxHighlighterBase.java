@@ -1,6 +1,6 @@
 /*#######################################################
  *
- *   Maintained 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ *   Maintained 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  *   License of this file: Apache 2.0
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
@@ -62,9 +62,9 @@ import java.util.regex.Pattern;
  * Spans are further divided into two categories: dynamic and static.
  * - Dynamic spans are updated as one scrolls, as described above
  * - Static spans are applied once and never updated. These are typically used for
- *   spans which affect the text layout.
- *   - For example, a span which makes text bigger.
- *   - Updating these dynamically would make the text jump around as one scrolls
+ * spans which affect the text layout.
+ * - For example, a span which makes text bigger.
+ * - Updating these dynamically would make the text jump around as one scrolls
  * <p>
  * Fixup:
  * - As the user types we shift all spans to accomodate the changed text.
@@ -75,19 +75,19 @@ import java.util.regex.Pattern;
  * - Derived classes should override generateSpans() to generate all spans
  * - New spans are added by calling addSpanGroup()
  * - The HighlightingEditor will trigger the generation of spans when the text changes.
- *   - This is debounced so that changes are batched
- *   - Span generation is done on a background thread
+ * - This is debounced so that changes are batched
+ * - Span generation is done on a background thread
  * <p>
  * Other performance tips:
  * - Performance is heavily dependent on the number of spans applied to the text.
  * - Combine related spans into a single span if possible
- *   - HighlightSpan is a helper class which can be used to create a span with multiple attributes
- *   - For example, a span which makes text bold and italic
+ * - HighlightSpan is a helper class which can be used to create a span with multiple attributes
+ * - For example, a span which makes text bold and italic
  * - Absolutely minimize the number of spans implementing `UpdateLayout`
- *   - These spans trigger a text layout update when changed in any way
- *   - Instead consider using a span implementing `StaticSpan`
- *     - If StaticSpans are present, the text is reflowed after applying them
- *     - This happens once, and not for each span, which is much more efficient
+ * - These spans trigger a text layout update when changed in any way
+ * - Instead consider using a span implementing `StaticSpan`
+ * - If StaticSpans are present, the text is reflowed after applying them
+ * - This happens once, and not for each span, which is much more efficient
  */
 public abstract class SyntaxHighlighterBase {
 
@@ -153,12 +153,14 @@ public abstract class SyntaxHighlighterBase {
         int start, end;
         final Object span;
         final boolean isStatic;
+        final boolean needsReflow;
 
         SpanGroup(Object o, int s, int e) {
             span = o;
             start = s;
             end = e;
-            isStatic = (span instanceof UpdateLayout || span instanceof StaticSpan);
+            needsReflow = span instanceof StaticSpan;
+            isStatic = needsReflow || span instanceof UpdateLayout;
         }
 
         @Override
@@ -194,10 +196,6 @@ public abstract class SyntaxHighlighterBase {
 
     // ---------------------------------------------------------------------------------------------
 
-    public SyntaxHighlighterBase clearAll() {
-        return clearDynamic().clearStatic();
-    }
-
     /**
      * Removes all dynamic spans applied by this highlighter to the currently set spannable
      *
@@ -222,21 +220,21 @@ public abstract class SyntaxHighlighterBase {
      *
      * @return this
      */
-    public SyntaxHighlighterBase clearStatic() {
+    public SyntaxHighlighterBase clearStatic(final boolean reflow) {
         if (_spannable == null) {
             return this;
         }
 
-        boolean hasStatic = false;
+        boolean needsReflow = false;
         for (int i = _groups.size() - 1; i >= 0; i--) {
             final SpanGroup group = _groups.get(i);
-            if (group.isStatic) {
-                hasStatic = true;
+            if (group != null && group.isStatic) {
+                needsReflow |= group.needsReflow;
                 _spannable.removeSpan(group.span);
             }
         }
 
-        if (hasStatic) {
+        if (reflow && needsReflow) {
             reflow();
         }
 
@@ -328,10 +326,6 @@ public abstract class SyntaxHighlighterBase {
         _fixupDelta = 0;
     }
 
-    public SyntaxHighlighterBase applyAll() {
-        return applyDynamic().applyStatic();
-    }
-
     public SyntaxHighlighterBase applyDynamic() {
         return applyDynamic(new int[]{0, _spannable.length()});
     }
@@ -368,20 +362,19 @@ public abstract class SyntaxHighlighterBase {
     }
 
 
-
     public SyntaxHighlighterBase applyStatic() {
         if (_spannable != null && !_staticApplied) {
             applyFixup();
 
-            boolean hasStatic = false;
+            boolean needsReflow = false;
             for (final SpanGroup group : _groups) {
-                if (group.isStatic) {
-                    hasStatic = true;
+                if (group != null && group.isStatic) {
+                    needsReflow |= group.needsReflow;
                     _spannable.setSpan(group.span, group.start, group.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
 
-            if (hasStatic) {
+            if (needsReflow) {
                 reflow();
             }
 

@@ -1,9 +1,9 @@
 /*#######################################################
  *
- * SPDX-FileCopyrightText: 2017-2024 Gregor Santner <gsantner AT mailbox DOT org>
+ * SPDX-FileCopyrightText: 2017-2025 Gregor Santner <gsantner AT mailbox DOT org>
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
  *
- * Written 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ * Written 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  * To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
  * You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 #########################################################*/
@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -36,7 +37,6 @@ import net.gsantner.markor.frontend.textview.TextViewUtils;
 import net.gsantner.markor.model.AppSettings;
 import net.gsantner.markor.util.MarkorContextUtils;
 import net.gsantner.opoc.format.GsTextUtils;
-import net.gsantner.opoc.frontend.GsAudioRecordOmDialog;
 import net.gsantner.opoc.frontend.filebrowser.GsFileBrowserOptions;
 import net.gsantner.opoc.util.GsFileUtils;
 import net.gsantner.opoc.wrapper.GsCallback;
@@ -368,7 +368,7 @@ public class AttachLinkOrFileDialog {
                 if (GsTextUtils.isNullOrEmpty(nameEdit.getText())) {
                     nameEdit.setText(pathEdit.getText());
                 }
-            }  else {
+            } else {
                 if (pathEdit != null) {
                     pathEdit.setText(GsFileUtils.relativePath(currentFile, file));
                 }
@@ -408,7 +408,7 @@ public class AttachLinkOrFileDialog {
             }
             case AUDIO_RECORDING: {
                 if (!cu.requestAudioRecording(activity, insertFileLink)) {
-                    GsAudioRecordOmDialog.showAudioRecordDialog(activity, R.string.record_audio, insertFileLink);
+                    Toast.makeText(activity, "❌", Toast.LENGTH_SHORT).show();
                 }
                 break;
             }

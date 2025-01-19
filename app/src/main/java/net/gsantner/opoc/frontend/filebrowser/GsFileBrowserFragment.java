@@ -1,9 +1,9 @@
 /*#######################################################
  *
- * SPDX-FileCopyrightText: 2017-2024 Gregor Santner <gsantner AT mailbox DOT org>
+ * SPDX-FileCopyrightText: 2017-2025 Gregor Santner <gsantner AT mailbox DOT org>
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
  *
- * Written 2018-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ * Written 2018-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  * To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
  * You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 #########################################################*/
@@ -91,7 +91,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
     private Menu _fragmentMenu;
     private MarkorContextUtils _cu;
     private Toolbar _toolbar;
-    private File _lastSelectedFile;
+    private boolean _reloadRequiredOnResume = true;
 
     //########################
     //## Methods
@@ -124,7 +124,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
 
         _filesystemViewerAdapter = new GsFileBrowserListAdapter(_dopt, context);
         _recyclerList.setAdapter(_filesystemViewerAdapter);
-        _filesystemViewerAdapter.getFilter().filter("");
+        setReloadRequiredOnResume(false); // setAdapter will trigger a load
         onFsViewerDoUiUpdate(_filesystemViewerAdapter);
 
         _swipe.setOnRefreshListener(() -> {
@@ -208,6 +208,11 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         if (_callback != null) {
             _callback.onFsViewerConfig(dopt);
         }
+
+        final Context context = getContext();
+        if (context != null) {
+            MarkorFileBrowserFactory.updateFsViewerOpts(dopt, context, _appSettings);
+        }
     }
 
     @Override
@@ -236,7 +241,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         // Check if is a favourite
         boolean selTextFilesOnly = true;
         boolean selDirectoriesOnly = true;
-        boolean selWritable = (!curFilepath.equals("/storage") && !curFilepath.equals("/storage/emulated"));
+        boolean selWritable = true;
         boolean allSelectedFav = true;
         final Collection<File> favFiles = _dopt.favouriteFiles != null ? _dopt.favouriteFiles : Collections.emptySet();
         for (final File f : selFiles) {
@@ -312,19 +317,20 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         _filesystemViewerAdapter.restoreSavedInstanceState(savedInstanceState);
     }
 
+    public void setReloadRequiredOnResume(boolean reloadRequiredOnResume) {
+        _reloadRequiredOnResume = reloadRequiredOnResume;
+    }
+
     @Override
     public void onResume() {
         super.onResume();
-        if (_dopt.refresh != null) {
-            _dopt.refresh.callback();
-        }
-
+        _dopt.listener.onFsViewerConfig(_dopt);
         final File folder = getCurrentFolder();
         final Activity activity = getActivity();
-        if (isVisible() && folder != null && activity != null) {
-            activity.setTitle(folder.getName());
+        if (_reloadRequiredOnResume && isVisible() && folder != null && activity != null) {
             reloadCurrentFolder();
         }
+        _reloadRequiredOnResume = true;
     }
 
     @Override
@@ -356,7 +362,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         }
 
         List<Pair<File, String>> sdcardFolders = _cu.getAppDataPublicDirs(getContext(), false, true, true);
-        int[] sdcardResIds = {R.id.action_go_to_appdata_sdcard_1, R.id.action_go_to_appdata_sdcard_2};
+        int[] sdcardResIds = {};
         for (int i = 0; i < sdcardResIds.length && i < sdcardFolders.size(); i++) {
             item = menu.findItem(sdcardResIds[i]);
             item.setTitle(item.getTitle().toString().replaceFirst("[)]\\s*$", " " + sdcardFolders.get(i).second) + ")");
@@ -432,18 +438,9 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 reloadCurrentFolder();
                 return true;
             }
-            case R.id.action_go_to_home:
-            case R.id.action_go_to_popular_files:
-            case R.id.action_go_to_recent_files:
-            case R.id.action_go_to_favourite_files:
-            case R.id.action_go_to_appdata_private:
-            case R.id.action_go_to_storage:
-            case R.id.action_go_to_appdata_sdcard_1:
-            case R.id.action_go_to_appdata_sdcard_2:
-            case R.id.action_go_to_appdata_public: {
-                final File folder = _appSettings.getFolderToLoadByMenuId(_id);
+            case R.id.action_go_to: {
+                final File folder = new File("/storage");
                 _filesystemViewerAdapter.setCurrentFolder(folder);
-                Toast.makeText(getContext(), folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
                 return true;
             }
             case R.id.action_favourite: {
@@ -574,7 +571,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             @Override
             public void onFsViewerConfig(GsFileBrowserOptions.Options dopt) {
                 dopt.titleText = isMove ? R.string.move : R.string.copy;
-                dopt.rootFolder = _appSettings.getNotebookDirectory();
+                dopt.rootFolder = GsFileBrowserListAdapter.VIRTUAL_STORAGE_ROOT;
                 dopt.startFolder = getCurrentFolder();
                 // Directories cannot be moved into themselves. Don't give users the option
                 final Set<String> selSet = new HashSet<>();
@@ -638,12 +635,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
     private void importFileToCurrentDirectory(Context context, File sourceFile) {
         GsFileUtils.copyFile(sourceFile, new File(getCurrentFolder().getAbsolutePath(), sourceFile.getName()));
         Toast.makeText(context, getString(R.string.import_) + ": " + sourceFile.getName(), Toast.LENGTH_LONG).show();
-    }
-
-    public void setCurrentFolder(final File folder) {
-        if (folder != null && (folder.canRead() || GsFileBrowserListAdapter.isVirtualFolder(folder)) && _filesystemViewerAdapter != null) {
-            _filesystemViewerAdapter.setCurrentFolder(folder);
-        }
     }
 
     public GsFileBrowserOptions.Options getOptions() {

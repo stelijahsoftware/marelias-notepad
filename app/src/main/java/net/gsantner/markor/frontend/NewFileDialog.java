@@ -1,6 +1,6 @@
 /*#######################################################
  *
- *   Maintained 2018-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ *   Maintained 2018-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  *
  *   License of this file: Apache 2.0
  *     https://www.apache.org/licenses/LICENSE-2.0
@@ -161,6 +161,12 @@ public class NewFileDialog extends DialogFragment {
         templateAdapter.addAll(GsCollectionUtils.map(snippets, p -> p.first));
         templateAdapter.addAll(GsCollectionUtils.map(templates, p -> p.first));
         templateSpinner.setAdapter(templateAdapter);
+
+        templateSpinner.setOnItemSelectedListener(new GsAndroidSpinnerOnItemSelectedAdapter(pos -> {
+            final String template = templateAdapter.getItem(pos);
+            final String fmt = appSettings.getTemplateTitleFormat(template);
+            formatEdit.setText(fmt);
+        }));
 
         // Setup type / format spinner and action
         // -----------------------------------------------------------------------------------------

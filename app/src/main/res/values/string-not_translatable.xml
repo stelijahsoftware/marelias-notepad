@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-Maintained 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+Maintained 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
 
 To the extent possible under law, the person who associated CC0 with
 this file has waived all copyright and related or neighboring rights
@@ -40,6 +40,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="quicknote" translatable="false">QuickNote</string>
     <string name="todo" translatable="false">To-Do</string>
     <string name="todo_txt" translatable="false">todo.txt</string>
+    <string name="storage" translatable="false">Storage</string>
     <string name="quicknote_default_filename" translatable="false">QuickNote.md</string>
     <string name="todo_default_filename" translatable="false">todo.txt</string>
     <string name="web_browser" translatable="false">Web browser</string>
@@ -61,7 +62,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 
     <!-- About Screen -->
     <string name="copyright_license_text_official" translatable="false"><![CDATA[
-        ### Copyright © 2017-2024
+        ### Copyright © 2017-2025
         **Gregor Santner**
         \n**Official project sources:**
         [Project page](https://github.com/gsantner/markor#readme) | [Source code](https://github.com/gsantner/markor) | [F-Droid](https://f-droid.org/repository/browse/?fdid=net.gsantner.markor)
@@ -179,7 +180,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__editor_disable_spelling_red_underline" translatable="false">pref_key__editor_disable_spelling_red_underline</string>
     <string name="pref_key__highlight_code_monospace_font" translatable="false">pref_key__highlight_code_monospace_font</string>
     <string name="pref_key__highlight_code_block_disabled" translatable="false">pref_key__highlight_code_block_disabled</string>
-    <string name="pref_key__editor_markdown_bigger_headings_2" translatable="false">pref_key__editor_markdown_bigger_headings_2</string>
+    <string name="pref_key__editor_markdown_bigger_headings_3" translatable="false">pref_key__editor_markdown_bigger_headings_3</string>
     <string name="pref_key__editor_unordered_list_character" translatable="false">pref_key__editor_unordered_list_character</string>
     <string name="pref_key__recent_documents" translatable="false">pref_key__recent_documents</string>
     <string name="pref_key__popular_documents" translatable="false">pref_key__popular_documents</string>
@@ -348,6 +349,16 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="abid_todotxt_sort_todo" translatable="false">abid_todotxt_sort_todo</string>
 
 
+    <string name="abid_orgmode_h1" translatable="false">abid_orgmode_h1</string>
+    <string name="abid_orgmode_h2" translatable="false">abid_orgmode_h2</string>
+    <string name="abid_orgmode_h3" translatable="false">abid_orgmode_h3</string>
+    <string name="abid_orgmode_bold" translatable="false">abid_orgmode_bold</string>
+    <string name="abid_orgmode_italic" translatable="false">abid_orgmode_italic</string>
+    <string name="abid_orgmode_strikeout" translatable="false">abid_orgmode_strikeout</string>
+    <string name="abid_orgmode_underline" translatable="false">abid_orgmode_underline</string>
+    <string name="abid_orgmode_code_inline" translatable="false">abid_orgmode_code_inline</string>
+
+
     <string name="jekyll_post" translatable="false">Jekyll Post</string>
     <string name="wikitext" translatable="false">Wikitext / Zim</string>
     <string name="pref_key__is_multi_window_enabled" translatable="false">pref_key__is_multi_window_enabled</string>
@@ -404,6 +415,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__is_only_first_content_match" translatable="false">pref_key__is_only_first_content_match</string>
     <string name="pref_key__restore_settings" translatable="false">pref_key__restore_settings</string>
     <string name="pref_key__backup_settings" translatable="false">pref_key__backup_settings</string>
+    <string name="pref_key__editor_tab_to_indent" translatable="false">pref_key__editor_tab_to_indent</string>
     <string name="hidden_password" translatable="false">****</string>
     <string name="pref_key__todotxt__additional_projects_contexts" translatable="false">"pref_key__todotxt__additional_projects_contexts"</string>
     <string name="pref_key__todotxt__due_date_offset" translatable="false">pref_key__todotxt_due_date_offset</string>
@@ -425,4 +437,5 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="squarebrackets" translatable="false">Square Brackets</string>
     <string name="csv" translatable="false">CSV</string>
     <string name="orgmode" translatable="false">OrgMode</string>
+    <string name="option_select_lines" translatable="false">option_select_lines</string>
 </resources>

@@ -1,6 +1,6 @@
 /*#######################################################
  *
- *   Maintained 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ *   Maintained 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  *   License of this file: Apache 2.0
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
@@ -37,7 +38,6 @@ import net.gsantner.opoc.util.GsContextUtils;
 import net.gsantner.opoc.util.GsFileUtils;
 
 import java.io.File;
-import java.util.Stack;
 
 import other.so.AndroidBug5497Workaround;
 
@@ -95,8 +95,8 @@ public class DocumentActivity extends MarkorBaseActivity {
             intent = new Intent(activity, DocumentActivity.class);
 
             if (!(activity instanceof DocumentActivity) &&
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
-                as.isMultiWindowEnabled()
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
+                    as.isMultiWindowEnabled()
             ) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
             }
@@ -254,7 +254,8 @@ public class DocumentActivity extends MarkorBaseActivity {
         }
         try {
             return super.dispatchTouchEvent(event);
-        } catch (IndexOutOfBoundsException ignored) {
+        } catch (Exception e) {
+            Log.e(getClass().getName(), "Error in super.dispatchTouchEvent: " + e);
             return false;
         }
     }

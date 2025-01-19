@@ -1,6 +1,6 @@
 /*#######################################################
  *
- *   Maintained 2018-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ *   Maintained 2018-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  *   License of this file: Apache 2.0
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
@@ -32,6 +32,7 @@ import net.gsantner.markor.format.ActionButtonBase;
 import net.gsantner.markor.format.ActionButtonBase.ActionItem.DisplayMode;
 import net.gsantner.markor.format.asciidoc.AsciidocActionButtons;
 import net.gsantner.markor.format.markdown.MarkdownActionButtons;
+import net.gsantner.markor.format.orgmode.OrgmodeActionButtons;
 import net.gsantner.markor.format.plaintext.PlaintextActionButtons;
 import net.gsantner.markor.format.todotxt.TodoTxtActionButtons;
 import net.gsantner.markor.format.wikitext.WikitextActionButtons;
@@ -133,6 +134,8 @@ public class ActionButtonSettingsActivity extends MarkorBaseActivity {
             _textActions = new WikitextActionButtons(this, null);
         } else if (documentType == R.string.pref_key__asciidoc__reorder_actions) {
             _textActions = new AsciidocActionButtons(this, null);
+        } else if (documentType == R.string.pref_key__orgmode__reorder_actions) {
+            _textActions = new OrgmodeActionButtons(this, null);
         } else { // Default to Plaintext
             _textActions = new PlaintextActionButtons(this, null);
         }

@@ -1,9 +1,9 @@
 /*#######################################################
  *
- * SPDX-FileCopyrightText: 2016-2024 Gregor Santner <gsantner AT mailbox DOT org>
+ * SPDX-FileCopyrightText: 2016-2025 Gregor Santner <gsantner AT mailbox DOT org>
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
  *
- * Written 2016-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ * Written 2016-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  * To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
  * You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 #########################################################*/
@@ -58,7 +58,6 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
 import android.os.SystemClock;
@@ -1861,7 +1860,7 @@ public class GsContextUtils {
                 if (resultCode == Activity.RESULT_OK && intent != null && intent.getData() != null) {
                     final Uri uri = intent.getData();
                     final String uriPath = uri.getPath();
-                    final String ext = uriPath.substring(uriPath.lastIndexOf("."));
+                    final String ext = uriPath == null || !uriPath.contains(".") ? "" : uriPath.substring(uriPath.lastIndexOf("."));
                     final String datestr = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss", Locale.ENGLISH).format(new Date());
                     final File temp = new File(context.getCacheDir(), datestr + ext);
                     GsFileUtils.copyUriToFile(context, uri, temp);
@@ -2743,12 +2742,12 @@ public class GsContextUtils {
     }
 
     public static void windowAspectRatio(
-        final Window window,
-        final DisplayMetrics displayMetrics,
-        float portraitWidthRatio,
-        float portraitHeightRatio,
-        float landscapeWidthRatio,
-        float landscapeHeightRatio
+            final Window window,
+            final DisplayMetrics displayMetrics,
+            float portraitWidthRatio,
+            float portraitHeightRatio,
+            float landscapeWidthRatio,
+            float landscapeHeightRatio
     ) {
         if (window == null) {
             return;

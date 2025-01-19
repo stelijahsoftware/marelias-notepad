@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-Maintained 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+Maintained 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
 
 To the extent possible under law, the person who associated CC0 with
 this file has waived all copyright and related or neighboring rights
@@ -113,7 +113,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="miscellaneous">Rôzne</string>
     <string name="background">Pozadie</string>
     <string name="font">Písmo</string>
-    <string name="use_current_date_and_time">Vzdycky vyuzivaj sucasny datum a cas</string>
     <string name="close">Zavrieť</string>
     <string name="favourite">Obľúbené</string>
     <string name="amount_of_space_for_tab">Pocet medzier po pouzity tabulatora</string>

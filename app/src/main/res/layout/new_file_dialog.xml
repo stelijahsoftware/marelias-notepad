@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!--
     /*#######################################################
     *
-    *   Maintained 2018-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+    *   Maintained 2018-2025 by Gregor Santner <gsantner AT mailbox DOT org>
     *
     *   License: Apache 2.0
     *  https://github.com/gsantner/opoc/#licensing
@@ -150,7 +150,7 @@
             android:text="@string/template"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
-        <Spinner
+        <view class="net.gsantner.markor.frontend.NewFileDialog$ReselectSpinner"
             android:id="@+id/new_file_dialog__template"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

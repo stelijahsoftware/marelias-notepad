@@ -1,6 +1,6 @@
 /*#######################################################
  *
- *   Maintained 2017-2024 by Gregor Santner <gsantner AT mailbox DOT org>
+ *   Maintained 2017-2025 by Gregor Santner <gsantner AT mailbox DOT org>
  *   License of this file: Apache 2.0
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
@@ -255,7 +255,8 @@ public class MarkdownActionButtons extends ActionButtonBase {
                     final int start = m.start(), end = m.end();
                     if (start <= po && end >= po) {
                         final boolean isImage = m.group(1) != null;
-                        return new Link(m.group(2), m.group(3), isImage, start, end);
+                        final String link = m.group(3);
+                        return new Link(m.group(2), link == null ? null : link.trim(), isImage, start, end);
                     }
                 }
             }
