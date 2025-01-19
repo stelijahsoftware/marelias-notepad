@@ -55,7 +55,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     public static Boolean _isDeviceGoodHardware = null;
     private MarkorContextUtils _cu;
 
-    private static final File LOCAL_TESTFOLDER_FILEPATH = new File("/storage/emulated/0/00_sync/documents/special");
+//    private static final File LOCAL_TESTFOLDER_FILEPATH = new File("/storage/emulated/0/00_sync/documents/special");
 
     @Override
     public AppSettings init(final Context context) {
@@ -72,9 +72,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return this;
     }
 
-    public boolean isLoadLastDirectoryAtStartup() {
-        return getBool(R.string.pref_key__load_last_directory_at_startup, false);
-    }
+//    public boolean isLoadLastDirectoryAtStartup() {
+//        return getBool(R.string.pref_key__load_last_directory_at_startup, false);
+//    }
 
     public boolean isPreferViewMode() {
         return getBool(R.string.pref_key__is_preview_first, false);
@@ -117,32 +117,32 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_dynamic_highlighting_activated, true);
     }
 
-    public int getHighlightingDelayTodoTxt() {
-        return getInt(R.string.pref_key__todotxt__hl_delay, 200);
-    }
+//    public int getHighlightingDelayTodoTxt() {
+//        return getInt(R.string.pref_key__todotxt__hl_delay, 200);
+//    }
 
     public boolean isRenderRtl() {
         return getBool(R.string.pref_key__is_render_rtl, false);
     }
 
-    public boolean isMarkdownMathEnabled() {
-        return getBool(R.string.pref_key__markdown_render_math, false);
-    }
+//    public boolean isMarkdownMathEnabled() {
+//        return getBool(R.string.pref_key__markdown_render_math, false);
+//    }
+//
+//    public List<String> getMarkdownShownYamlFrontMatterKeys() {
+//        String pref = getString(R.string.pref_key__markdown_always_shown_yaml_front_matter_keys, "title,tags,date");
+//        List<String> keys = new ArrayList<>(Arrays.asList(pref.replace(" ", "").split(",\\s*")));
+//        keys.removeAll(Arrays.asList("", null));
+//        return keys;
+//    }
 
-    public List<String> getMarkdownShownYamlFrontMatterKeys() {
-        String pref = getString(R.string.pref_key__markdown_always_shown_yaml_front_matter_keys, "title,tags,date");
-        List<String> keys = new ArrayList<>(Arrays.asList(pref.replace(" ", "").split(",\\s*")));
-        keys.removeAll(Arrays.asList("", null));
-        return keys;
-    }
-
-    public boolean isMarkdownNewlineNewparagraphEnabled() {
-        return getBool(R.string.pref_key__markdown_newline_newparagraph, false);
-    }
-
-    public boolean isMarkdownTableOfContentsEnabled() {
-        return getMarkdownTableOfContentLevels().length > 0;
-    }
+//    public boolean isMarkdownNewlineNewparagraphEnabled() {
+//        return getBool(R.string.pref_key__markdown_newline_newparagraph, false);
+//    }
+//
+//    public boolean isMarkdownTableOfContentsEnabled() {
+//        return getMarkdownTableOfContentLevels().length > 0;
+//    }
 
     public int[] getMarkdownTableOfContentLevels() {
         final List<String> v = getStringSet(R.string.pref_key__markdown_table_of_contents_enabled_levels, Collections.emptyList());
@@ -223,19 +223,19 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         setStringList(R.string.pref_key__favourite_files, GsCollectionUtils.map(set, p -> p));
     }
 
-    public void toggleFavouriteFile(File file) {
-        final List<String> list = new ArrayList<>();
-        final Set<File> favourites = getFavouriteFiles();
-        if (favourites.contains(file)) {
-            favourites.remove(file);
-        } else {
-            favourites.add(file);
-        }
-        setFavouriteFiles(favourites);
-    }
+//    public void toggleFavouriteFile(File file) {
+//        final List<String> list = new ArrayList<>();
+//        final Set<File> favourites = getFavouriteFiles();
+//        if (favourites.contains(file)) {
+//            favourites.remove(file);
+//        } else {
+//            favourites.add(file);
+//        }
+//        setFavouriteFiles(favourites);
+//    }
 
     private static final String PREF_PREFIX_EDIT_POS_CHAR = "PREF_PREFIX_EDIT_POS_CHAR";
-    private static final String PREF_PREFIX_WRAP_STATE = "PREF_PREFIX_WRAP_STATE";
+//    private static final String PREF_PREFIX_WRAP_STATE = "PREF_PREFIX_WRAP_STATE";
     private static final String PREF_PREFIX_HIGHLIGHT_STATE = "PREF_PREFIX_HIGHLIGHT_STATE";
     private static final String PREF_PREFIX_PREVIEW_STATE = "PREF_PREFIX_PREVIEW_STATE";
     private static final String PREF_PREFIX_INDENT_SIZE = "PREF_PREFIX_INDENT_SIZE";
