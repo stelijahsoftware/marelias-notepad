@@ -17,14 +17,7 @@
         android:icon="@drawable/ic_save_black_24dp"
         android:key="@string/pref_key__notebook_directory"
         android:title="Notebook save location" />
-
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:icon="@drawable/ic_screen_lock_portrait_black_24dp"
-        android:key="@string/pref_key__is_keep_screen_on"
-        android:title="@string/keep_screen_on" />
-
-
+    
     <androidx.preference.SeekBarPreference
         android:defaultValue="18"
         android:icon="@drawable/ic_format_size_black_24dp"
