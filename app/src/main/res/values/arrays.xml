@@ -8,34 +8,10 @@
 #########################################################*/
 -->
 <resources>
-    <string-array name="pref_arrdisp__app_themes" translatable="false">
-        <item translatable="false">System</item>
-        <item translatable="false">Auto</item>
-        <item translatable="false">Auto (09:00 - 17:00)</item>
-        <item translatable="false">@string/light</item>
-        <item translatable="false">@string/dark</item>
-        <item translatable="false">@string/black</item>
-    </string-array>
-
-    <string-array name="pref_arrkeys__app_themes" translatable="false">
-        <item translatable="false">system</item>
-        <item translatable="false">auto</item>
-        <item translatable="false">autocompat</item>
-        <item translatable="false">light</item>
-        <item translatable="false">dark</item>
-        <item translatable="false">dark-black</item>
-    </string-array>
-
     <string-array name="pref_arrdisp__editor_basic_color_schemes" translatable="false">
         <item translatable="false">@string/editor_basic_color_scheme_notepad2</item>
         <item translatable="false">@string/editor_basic_color_scheme_black_or_white</item>
         <item translatable="false">@string/editor_basic_color_scheme_solarized</item>
-    </string-array>
-
-    <string-array name="pref_arrdisp__bottomnav" translatable="false">
-        <item translatable="false">@string/notebook</item>
-        <item translatable="false">@string/todo</item>
-        <item translatable="false">@string/quicknote</item>
     </string-array>
 
     <string-array name="pref_arrdisp__search_depth" translatable="false">
