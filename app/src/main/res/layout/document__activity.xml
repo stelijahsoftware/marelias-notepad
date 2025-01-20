@@ -14,6 +14,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/primary_dark"
     android:orientation="vertical"
     android:theme="@style/AppTheme.Unified"
     tools:context="net.marelias.notepad.activity.DocumentActivity">
@@ -27,7 +28,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="?attr/colorPrimary"
+            android:background="@color/primary_dark"
             android:theme="@style/LightTextToolbarOverlay">
 
         </androidx.appcompat.widget.Toolbar>
