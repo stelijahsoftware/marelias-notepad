@@ -27,7 +27,7 @@
         <item name="actionModeBackground">@color/primary_dark</item>
         <item name="colorPrimary">@color/primary</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowBackground">@color/background1</item> <!-- settings background -->
         <item name="dialogCornerRadius">@dimen/dialog_corner_radius</item>
 
         <!-- Android V21 options; ignore IDE warnings -->

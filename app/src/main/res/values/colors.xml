@@ -14,7 +14,7 @@
     <color name="secondary_text">@color/light__secondary_text</color>
     <color name="file">@color/light__file</color>
     <color name="folder">@color/light__folder</color>
-    <color name="background">@color/light__background</color>
+    <color name="background1">@color/light__background</color>
     <color name="background_2">@color/dark__background_2</color>
     <color name="textActionBarColor">@color/dark__background_2</color>
     <color name="textActionIconColor">@color/grey</color>

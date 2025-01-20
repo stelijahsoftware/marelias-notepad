@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:background="@color/background"
+            android:background="@color/background1"
             android:divider="@color/grey"
             android:dividerHeight="0.5dp" />
     </RelativeLayout>
