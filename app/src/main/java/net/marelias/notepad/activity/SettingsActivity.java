@@ -254,7 +254,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                                  //"Project name: Markor<br>" +
                                  "<font color='#276230'>Author: </font><font color='#000000'>Gregor Santner</font><br>" +
                                  "<font color='#276230'>Project source:</font>" +
-                                 "<br><font color='#000000'><a href=''>https://github.com/gsantner/markor</a></font><br>";// +
+                                 "<br><font color='#0040ff'><a href=''>https://github.com/gsantner/markor</a></font><br>";// +
                                  //"<font color='#276230'>LICENSE: </font>" +
                                  //"<font color='#0040ff'><a href='https://github.com/writing-tools/marelias-notepad/blob/master/LICENSE.txt'>APACHE 2.0</a></font><br>";
                     // See:
