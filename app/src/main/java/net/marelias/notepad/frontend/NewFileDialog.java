@@ -156,7 +156,15 @@ public class NewFileDialog extends DialogFragment {
         // elyahw merge conflict: existing:
         final GsCallback.s0 getTitle_folder = () -> {
             final String title = titleEdit.getText().toString().trim();
-            String format = "{{title}}";
+            String format = formatEdit.getText().toString().trim();
+            if (title.isEmpty())//format.isEmpty() &&
+            {
+                format = "`yyyyMMdd'_'hhMMss`"; // the rest of options are in AppSettings.java
+            }
+            else
+            {
+                format = "{{title}}";
+            }
             return TextViewUtils.interpolateSnippet(format, title, "").trim();
         };
 
@@ -211,8 +219,9 @@ public class NewFileDialog extends DialogFragment {
             dialogInterface.dismiss();
         });
 
+        // Folder creation button:
         dialogBuilder.setNeutralButton(R.string.folder, (dialogInterface, i) -> {
-            final String title = getTitle.callback();
+            final String title = getTitle_folder.callback();
             final String dirName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title);
 
             final File f = new File(basedir, dirName);
