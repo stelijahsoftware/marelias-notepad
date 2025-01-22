@@ -34,12 +34,6 @@ public class MarkdownActionButtons extends ActionButtonBase {
     }
 
     @Override
-    public List<ActionItem> getFormatActionList() {
-        return Arrays.asList(
-        );
-    }
-
-    @Override
     public boolean runTitleClick() {
 
         return true;

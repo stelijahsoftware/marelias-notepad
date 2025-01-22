@@ -113,10 +113,6 @@ public class AutoTextFormatter implements InputFilter {
             return isEmpty || (!line.isEmpty && (indent - line.indent) > patterns.indentSlack);
         }
 
-        public boolean isSiblingLevelOf(final ListLine line) {
-            return !isParentLevelOf(line) && !isChildLevelOf(line);
-        }
-
         @Override
         public boolean equals(final Object obj) {
             final ListLine other = obj instanceof ListLine ? (ListLine) obj : null;

@@ -242,17 +242,6 @@ public class TextViewUndoRedo {
         }
 
         /**
-         * Set the maximum history size. If size is negative, then history size
-         * is only limited by the device memory.
-         */
-        private void setMaxHistorySize(int maxHistorySize) {
-            _maxHistorySize = maxHistorySize;
-            if (_maxHistorySize >= 0) {
-                trimHistory();
-            }
-        }
-
-        /**
          * Trim history when it exceeds max history size.
          */
         private void trimHistory() {

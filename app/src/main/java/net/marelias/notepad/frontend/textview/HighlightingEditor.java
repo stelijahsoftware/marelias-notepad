@@ -435,11 +435,6 @@ public class HighlightingEditor extends AppCompatEditText {
     // Utility functions for interaction
     // ---------------------------------------------------------------------------------------------
 
-    public void simulateKeyPress(int keyEvent_KEYCODE_SOMETHING) {
-        dispatchKeyEvent(new KeyEvent(0, 0, KeyEvent.ACTION_DOWN, keyEvent_KEYCODE_SOMETHING, 0));
-        dispatchKeyEvent(new KeyEvent(0, 0, KeyEvent.ACTION_UP, keyEvent_KEYCODE_SOMETHING, 0));
-    }
-
     public boolean indexesValid(int... indexes) {
         return GsTextUtils.inRange(0, length(), indexes);
     }
