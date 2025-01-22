@@ -86,7 +86,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="more_info">More info</string>
     <string name="show_license_of_the_app">Show license of the app</string>
     <string name="show_third_party_licenses">Show 3rd party licenses</string>
-    <string name="language_change_restart_description">Change language of this app. Restart app for changes to take effect</string>
     <string name="language">Language</string>
     <string name="storage_permission_required">Storage permission required to read and write files</string>
     <string name="open_with">Open with</string>
@@ -123,9 +122,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="document_to_be_loaded_and_saved_as_witharg">Document to be loaded and saved as "%s"</string>
     <string name="refresh">Refresh</string>
     <string name="create_shortcut">Create shortcut</string>
-    <string name="tried_to_create_shortcut_for_this_notice">Tried to create a shortcut to your home screen. Note that some launchers may not support this.</string>
-    <string name="file_not_in_save_path_do_import_notice__appspecific">The selected file is not located in the app\'s notebook directory. Do you want to copy it to the current folder? This will overwrite any existing file with the same name.</string>
-    <string name="file_not_in_current_folder_do_copy__appspecific">The file is not located in the current folder. Do you want to copy it to the current folder? This will overwrite any existing file with the same name.</string>
     <string name="files_and_folders">Files and folders</string>
     <string name="document_browser">Document browser</string>
     <string name="file_browser">File browser</string>
@@ -328,16 +324,13 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="please_wait">Please wait</string>
     <string name="app_start_folder">App start folder</string>
     <string name="tab_width">Tab width</string>
-    <string name="amount_of_space_for_tab">Amount of space characters to display tabulator</string>
     <string name="selected_file_may_be_a_textfile_want_to_open_in_editor">The selected file may be a plaintext file. Do you want to open it in the editor, or in another app?\n\nDo not try to open binary files. If you are not sure, open with other app.</string>
     <string name="list_in_recent_files">List in recent files</string>
     <string name="reload">Reload</string>
     <string name="wrap_words">Wrap words</string>
     <string name="line_numbers">Line numbers</string>
-    <string name="soft_break_if_not_fit_to_width_else_enable_horizontal_scrolling">Soft break if text doesn\'t fit to screen width. Else enable horizontal scrolling.</string>
     <string name="recursive_search_in_location">Recursive search in %s</string>
     <string name="always_open_with_this_app">Always open with this app</string>
-    <string name="always_open_files_with_this_app_when_list_contains_file_extension">Always open files with this app when the list contains the file extension. Use \'None, .html, .css , .js\' for example if you want to edit web files and those without file extension.</string>
     <string name="open_file_with">Open file with</string>
     <string name="rotate">Rotate</string>
     <string name="template">Template</string>
@@ -400,18 +393,9 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="drag">Drag</string>
     <string name="created">Created</string>
 
-    <string name="file_encryption_password">File encryption password</string>
-    <string name="no_password_set_cannot_encrypt_decrypt">No password set, cannot encrypt or decrypt.\nGo to Settings -> General -> Password to set a password.</string>
-    <string name="encrypt_file_content">Encrypt file content</string>
-    <string name="utf8_with_bom">UTF-8 with BOM</string>
-    <string name="could_not_encrypt_file_content_the_file_was_not_saved">Could not encrypt file content. The file was not saved.</string>
-    <string name="could_not_decrypt_file_content_wrong_password_or_is_the_file_maybe_not_encrypted">Could not decrypt file content. Did you use a wrong password? Is the file really encrypted with Markors AES encryption?</string>
-    <string name="password_already_set_setting_a_new_password_will_overwrite">Password already set. Setting a new password will overwrite the existing password and you may not be able to access files anymore in case you forget the password.</string>
     <string name="code_block">Code block</string>
     <string name="add_completion_date">Add completion date</string>
-    <string name="add_completion_date_for_todos_when_marking_them_as_done">Add completion date for todos when marking them as done</string>
     <string name="file_description_format">File description format</string>
-    <string name="file_description_format_dialog">Format for the description under each file in the file browser. Follows Android\'s SimpleDateFormat rules, with the addition of FS for showing file size. Leave blank to use the default format for your locale.\n\nExample input:\nFS yyyy MMM dd hh:mm:ss aa\nOutput format:\n30KB 2020 Mar 20 11:24:52 PM</string>
     <string name="loading_default_value">Loading default value</string>
     <string name="file_settings">File settings</string>
     <string name="search_and_replace">Search / Replace</string>
@@ -425,13 +409,11 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="restore_settings">Restore settings</string>
     <string name="failed_to_create_backup">Failed to create backup</string>
     <string name="export_settings_to_json_file">Export settings to json file</string>
-    <string name="import_settings_from_backup_json_file_on_success_the_app_is_restarted">Import settings from backup json file. On success, the app is restarted.</string>
     <string name="failed_to_restore_settings_from_backup">Failed to restore settings from backup</string>
     <string name="newline_is_new_paragraph">Newline = new paragraph</string>
     <string name="search_in_content">Search in content</string>
     <string name="max_search_depth">Search depth</string>
     <string name="ignore_list">Ignore list</string>
-    <string name="do_not_search_specified_files_and_folders">Do not search specified files and folders.\nUse new line as separator.\nUse quotes for exact dir names: \"Test\".\nOr use Regex \'^[.].*\'\nExamples: ^\\..*\n\"test\"\n\"Test\"\n.*secret.*\n.*BACKUP.*\n.*.ini</string>
     <string name="regex_search">Regex search</string>
     <string name="case_sensitive">Case sensitive</string>
     <string name="stop_search_after_first_match">Stop search after first match</string>
@@ -444,7 +426,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="overwrite_all">Overwrite (all)</string>
     <string name="copy_move_conflict_message">\'%s\' already exists in %s</string>
     <string name="additional_contexts_and_projects">Additional contexts and projects</string>
-    <string name="enter_space_seperated_contexts_and_projects_these_will">Enter space-separated @contexts and +projects. These will always be visible at todo.txt insert dialogs.</string>
     <string name="infinite">Infinite</string>
     <string name="browse_by_project">Browse by project</string>
     <string name="browse_by_context">Browse by context</string>
@@ -461,11 +442,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="match_any">Match Any</string>
     <string name="match_all">Match All</string>
     <string name="dynamic_notebook_root_links">Dynamic search for notebook root</string>
-    <string name="search_dynamically_for_notebook_root">In order to follow wiki links, dynamically search for the notebook.zim file to identify the root directory for the current notebook. Check this if you use multiple zim notebooks or the notebook directory set in the app does not correspond to your zim notebook.</string>
-    <string name="share_into_format_prefix_for_text_shared">Format/Prefix for text shared into Markor. Follows Android\'s SimpleDateFormat rules.\n\nUse the placeholder {{text}} to position the shared text. If not specified, the shared text is appended and the format used as a prefix.</string>
     <string name="share_into_format">Share into - Format</string>
-    <string name="attachment_folder_name">Attachment folder name</string>
-    <string name="attachment_folder_name_desc">Subfolder under the current folder where attachments will be saved. If left blank, attachments will be saved in the current folder.</string>
     <string name="auto_format">Auto-format</string>
     <string name="insert_snippet">Insert snippet</string>
     <string name="snippet_directory">Snippet / Template directory</string>

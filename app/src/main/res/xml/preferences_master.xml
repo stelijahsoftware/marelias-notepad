@@ -36,7 +36,7 @@
         android:title="@string/dynamic_highlighting" />
 
     <Preference
-        android:icon="@drawable/ic_code_black_24dp"
+        android:icon="@drawable/ic_info_black_24dp"
         android:key="@string/pref_key__more_info__source_code"
         android:summary=""
         android:title="About" />
