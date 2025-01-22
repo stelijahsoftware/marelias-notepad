@@ -176,7 +176,6 @@ public class NewFileDialog extends DialogFragment {
             // Get template string
             // -------------------------------------------------------------------------------------
             final String template;
-
             template = "";
 
             final Pair<String, Integer> content = getTemplateContent(template, title);
@@ -216,9 +215,9 @@ public class NewFileDialog extends DialogFragment {
         });
 
         dialogBuilder.setNeutralButton(R.string.folder, (dialogInterface, i) -> {
-            final String title = getTitle_folder.callback();
-
+            final String title = getTitle.callback();
             final String dirName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title);
+
             final File f = new File(basedir, dirName);
 
             final String titleFormat = formatEdit.getText().toString().trim();
