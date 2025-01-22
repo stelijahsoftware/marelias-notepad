@@ -10,13 +10,11 @@ package net.marelias.notepad.model;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.graphics.Color;
 import android.os.Environment;
 import android.util.Pair;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
-import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 import net.marelias.notepad.R;
@@ -46,7 +44,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
-//import other.de.stanetz.jpencconverter.PasswordStore;
 
 @SuppressWarnings({"SameParameterValue", "WeakerAccess", "FieldCanBeLocal"})
 public class AppSettings extends GsSharedPreferencesPropertyBackend {
@@ -71,10 +68,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         }
         return this;
     }
-
-//    public boolean isLoadLastDirectoryAtStartup() {
-//        return getBool(R.string.pref_key__load_last_directory_at_startup, false);
-//    }
 
     public boolean isPreferViewMode() {
         return getBool(R.string.pref_key__is_preview_first, false);
@@ -117,42 +110,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__is_dynamic_highlighting_activated, true);
     }
 
-//    public int getHighlightingDelayTodoTxt() {
-//        return getInt(R.string.pref_key__todotxt__hl_delay, 200);
-//    }
-
-    public boolean isRenderRtl() {
-        return getBool(R.string.pref_key__is_render_rtl, false);
-    }
-
-//    public boolean isMarkdownMathEnabled() {
-//        return getBool(R.string.pref_key__markdown_render_math, false);
-//    }
-//
-//    public List<String> getMarkdownShownYamlFrontMatterKeys() {
-//        String pref = getString(R.string.pref_key__markdown_always_shown_yaml_front_matter_keys, "title,tags,date");
-//        List<String> keys = new ArrayList<>(Arrays.asList(pref.replace(" ", "").split(",\\s*")));
-//        keys.removeAll(Arrays.asList("", null));
-//        return keys;
-//    }
-
-//    public boolean isMarkdownNewlineNewparagraphEnabled() {
-//        return getBool(R.string.pref_key__markdown_newline_newparagraph, false);
-//    }
-//
-//    public boolean isMarkdownTableOfContentsEnabled() {
-//        return getMarkdownTableOfContentLevels().length > 0;
-//    }
-
-    public int[] getMarkdownTableOfContentLevels() {
-        final List<String> v = getStringSet(R.string.pref_key__markdown_table_of_contents_enabled_levels, Collections.emptyList());
-        int[] ret = new int[v.size()];
-        for (int i = 0; i < v.size(); i++) {
-            ret[i] = Integer.parseInt(v.get(i));
-        }
-        return ret;
-    }
-
     public String getLanguage() {
         return getString(R.string.pref_key__language, "");
     }
@@ -190,28 +147,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return false; // getBool(R.string.pref_key__show_settings_option_in_main_toolbar, true);
     }
 
-    public String getLastTodoUsedArchiveFilename() {
-        return getString(R.string.pref_key__todotxt__last_used_archive_filename, "todo.archive.txt");
-    }
-
     public boolean isEditorStartEditingInCenter() {
         return getBool(R.string.pref_key__editor_start_editing_in_center, false);
     }
-
-//    public void addRecentFile(final File file) {
-//        if (!listFileInRecents(file)) {
-//            return;
-//        }
-//        final String path = Document.getPath(file);
-//            ArrayList<String> recent = getRecentDocuments();
-//            recent.add(0, path);
-//            recent.remove("");
-//            recent.remove(null);
-//
-//            setInt(path, getInt(path, 0, _prefCache) + 1, _prefCache);
-//            setRecentDocuments(recent);
-//        ShortcutUtils.setShortcuts(_context);
-//    }
 
     public void setFavouriteFiles(final Collection<File> files) {
         final Set<String> set = new LinkedHashSet<>();
@@ -223,42 +161,18 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         setStringList(R.string.pref_key__favourite_files, GsCollectionUtils.map(set, p -> p));
     }
 
-//    public void toggleFavouriteFile(File file) {
-//        final List<String> list = new ArrayList<>();
-//        final Set<File> favourites = getFavouriteFiles();
-//        if (favourites.contains(file)) {
-//            favourites.remove(file);
-//        } else {
-//            favourites.add(file);
-//        }
-//        setFavouriteFiles(favourites);
-//    }
-
     private static final String PREF_PREFIX_EDIT_POS_CHAR = "PREF_PREFIX_EDIT_POS_CHAR";
-//    private static final String PREF_PREFIX_WRAP_STATE = "PREF_PREFIX_WRAP_STATE";
     private static final String PREF_PREFIX_HIGHLIGHT_STATE = "PREF_PREFIX_HIGHLIGHT_STATE";
     private static final String PREF_PREFIX_PREVIEW_STATE = "PREF_PREFIX_PREVIEW_STATE";
-    private static final String PREF_PREFIX_INDENT_SIZE = "PREF_PREFIX_INDENT_SIZE";
     private static final String PREF_PREFIX_FONT_SIZE = "PREF_PREFIX_FONT_SIZE";
     private static final String PREF_PREFIX_FILE_FORMAT = "PREF_PREFIX_FILE_FORMAT";
     private static final String PREF_PREFIX_AUTO_FORMAT = "PREF_PREFIX_AUTO_FORMAT";
-    private static final String PREF_PREFIX_VIEW_SCROLL_X = "PREF_PREFIX_VIEW_SCROLL_X";
-    private static final String PREF_PREFIX_VIEW_SCROLL_Y = "PREF_PREFIX_VIEW_SCROLL_Y";
     private static final String PREF_PREFIX_TODO_DONE_NAME = "PREF_PREFIX_TODO_DONE_NAME";
     private static final String PREF_PREFIX_LINE_NUM_STATE = "PREF_PREFIX_LINE_NUM_STATE";
 
     public void setLastTodoDoneName(final String path, final String name) {
         if (fexists(path)) {
             setString(PREF_PREFIX_TODO_DONE_NAME + path, name);
-        }
-    }
-
-    public String getLastTodoDoneName(final String path) {
-        final String def = getLastTodoUsedArchiveFilename();
-        if (!fexists(path)) {
-            return def;
-        } else {
-            return getString(PREF_PREFIX_TODO_DONE_NAME + path, def);
         }
     }
 
@@ -274,14 +188,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         } else {
             return getInt(PREF_PREFIX_EDIT_POS_CHAR + path, def);
         }
-    }
-
-    public void setLastViewPosition(File file, int scrollX, int scrollY) {
-        if (file == null || !file.exists()) {
-            return;
-        }
-        setInt(PREF_PREFIX_VIEW_SCROLL_X + Document.getPath(file), scrollX, _prefCache);
-        setInt(PREF_PREFIX_VIEW_SCROLL_Y + Document.getPath(file), scrollY, _prefCache);
     }
 
     public void setDocumentLineNumbersEnabled(final String path, final boolean enabled) {
@@ -319,12 +225,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         }
     }
 
-    public void setDocumentAutoFormatEnabled(final String path, final boolean enabled) {
-        if (fexists(path)) {
-            setBool(PREF_PREFIX_AUTO_FORMAT + path, enabled);
-        }
-    }
-
     public boolean getDocumentAutoFormatEnabled(final String path) {
         final boolean _default = true;
         if (!fexists(path)) {
@@ -349,21 +249,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         }
     }
 
-    public void setDocumentIndentSize(final String path, final int size) {
-        if (fexists(path)) {
-            setInt(PREF_PREFIX_INDENT_SIZE + path, size);
-        }
-    }
-
-    public int getDocumentIndentSize(final String path) {
-        final int _default = 4;
-        if (!fexists(path)) {
-            return _default;
-        } else {
-            return getInt(PREF_PREFIX_INDENT_SIZE + path, _default);
-        }
-    }
-
     public void setDocumentPreviewState(final String path, final boolean isViewMode) {
         setBool(PREF_PREFIX_PREVIEW_STATE + path, isViewMode);
     }
@@ -379,27 +264,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         }
     }
 
-    public void setDocumentHighlightState(final String path, final boolean state) {
-        setBool(PREF_PREFIX_HIGHLIGHT_STATE + path, state);
-    }
-
     public boolean getDocumentHighlightState(final String path, final CharSequence chars) {
         final boolean lengthOk = chars != null && chars.length() < (_isDeviceGoodHardware ? 100000 : 35000);
         return getBool(PREF_PREFIX_HIGHLIGHT_STATE + path, lengthOk && isHighlightingEnabled());
-    }
-
-    public int getLastViewPositionX(File file) {
-        if (file == null || !file.exists()) {
-            return -1;
-        }
-        return getInt(PREF_PREFIX_VIEW_SCROLL_X + Document.getPath(file), -3, _prefCache);
-    }
-
-    public int getLastViewPositionY(File file) {
-        if (file == null || !file.exists()) {
-            return -1;
-        }
-        return getInt(PREF_PREFIX_VIEW_SCROLL_Y + Document.getPath(file), -3, _prefCache);
     }
 
     private List<String> getPopularDocumentsSorted() {
@@ -428,14 +295,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
             }
         }
         return list;
-    }
-
-    public ArrayList<File> getAsFileList(List<String> list) {
-        ArrayList<File> r = new ArrayList<>();
-        for (String f : list) {
-            r.add(new File(f));
-        }
-        return r;
     }
 
     public static Set<File> getFileSet(final List<String> paths) {
@@ -473,23 +332,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         final boolean night = GsContextUtils.instance.isDarkModeEnabled(_context);
         return getInt(night ? R.string.pref_key__basic_color_scheme__fg_dark : R.string.pref_key__basic_color_scheme__fg_light, rcolor(R.color.primary_text));
     }
-
-//    public int getEditorBackgroundColor() {
-//        final boolean night = GsContextUtils.instance.isDarkModeEnabled(_context);
-//        int c = getInt(night ? R.string.pref_key__basic_color_scheme__bg_dark : R.string.pref_key__basic_color_scheme__bg_light, rcolor(R.color.background));
-//        if (getAppThemeName().contains("black")) {
-//            c = Color.BLACK;
-//        }
-//        return c;
-//    }
-
-//    public void applyAppTheme() {
-//        GsContextUtils.instance.applyDayNightTheme(getString(R.string.pref_key__app_theme, getAppThemeName()));
-//    }
-
-//    public String getAppThemeName() {
-//        return getString(R.string.pref_key__app_theme, _context.getString(R.string.app_theme_system));
-//    }
 
     public void setEditorBasicColor(boolean forDarkMode, @ColorRes int fgColor, @ColorRes int bgColor) {
         int resIdFg = R.string.pref_key__basic_color_scheme__fg_light;
@@ -551,13 +393,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
     public @IdRes
     int getAppStartupTab() {
-//        int i = getIntOfStringPref(R.string.pref_key__app_start_tab_v2, R.id.nav_notebook);
-//        switch (i) {
-//            case 1:
-//                return R.id.nav_todo;
-//            case 2:
-//                return R.id.nav_quicknote;
-//        }
         return R.id.nav_notebook;
     }
 
@@ -570,33 +405,9 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return v;
     }
 
-
     public boolean isFileBrowserSortFolderFirst() {
         return getBool(R.string.pref_key__filesystem_folder_first, false);
     }
-
-//    public String getNavigationBarColor() {
-//        return getString(R.string.pref_key__navigationbar_color, "#000000");
-//    }
-
-//    public @IdRes
-//    Integer getAppStartupFolderMenuId() {
-//        switch (getString(R.string.pref_key__app_start_folder, "notebook")) {
-//            case "favourites":
-//                return R.id.action_go_to_favourite_files;
-//            case "internal_storage":
-//                return R.id.action_go_to_storage;
-//            case "appdata_public":
-//                return R.id.action_go_to_appdata_public;
-//            case "appdata_private":
-//                return R.id.action_go_to_appdata_private;
-//            case "popular_documents":
-//                return R.id.action_go_to_popular_files;
-//            case "recently_viewed_documents":
-//                return R.id.action_go_to_recent_files;
-//        }
-//        return 0; // R.id.action_go_to_home;
-//    }
 
     public File getFolderToLoadByMenuId() {
         return getNotebookDirectory();
@@ -616,22 +427,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
                 setRecentDocuments(recent);
             }
         }
-    }
-
-    /*public ArrayList<String> getFilesRatedWith(int rating) {
-        return getFilesTaggedWith("rating_" + Integer.toString(rating));
-    }
-
-    public ArrayList<String> getFilesTaggedWith(String tag) {
-        return getStringList("files_tagged_with" + tag, _prefHistory);
-    }*/
-
-    public int getRating(File file) {
-        return getInt(Document.getPath(file) + "_rating", 0);
-    }
-
-    public void setRating(File file, int value) {
-        setInt(Document.getPath(file) + "_rating", value);
     }
 
     public boolean isEditorLineBreakingEnabled() {
@@ -667,10 +462,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         setString(R.string.pref_key__file_browser_last_browsed_folder, Document.getPath(f));
     }
 
-    public File getFileBrowserLastBrowsedFolder() {
-        return new File(getString(R.string.pref_key__file_browser_last_browsed_folder, getNotebookDirectory().getAbsolutePath()));
-    }
-
     public boolean getSetWebViewFulldrawing(boolean... setValue) {
         final String k = "getSetWebViewFulldrawing";
         if (setValue != null && setValue.length == 1) {
@@ -678,23 +469,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
             return setValue[0];
         }
         return getBool(k, false);
-    }
-
-    public String getTodotxtAdditionalContextsAndProjects() {
-        return getString(R.string.pref_key__todotxt__additional_projects_contexts, "+music +video @home @shop");
-    }
-
-    // Not tied to an actual settings. Just moved here for clarity.
-    public int getDueDateOffset() {
-        return getInt(R.string.pref_key__todotxt__due_date_offset, 3);
-    }
-
-    public boolean isWikitextDynamicNotebookRootEnabled() {
-        return getBool(R.string.pref_key__wikitext_dynamic_notebook_root, false);
-    }
-
-    public String getShareIntoPrefix() {
-        return getString(R.string.pref_key__share_into_format, "\\n----\\n{{text}}");
     }
 
     public List<Pair<String, String>> getBuiltinTemplates() {
@@ -717,32 +491,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return templates;
     }
 
-    public void setTypeTemplate(final @StringRes int format, final String template) {
-        final String js = getString(R.string.pref_key__filetype_template_map, "{}");
-        final Map<String, String> map = jsonStringToMap(js);
-        map.put(_context.getString(format), template);
-        setString(R.string.pref_key__filetype_template_map, mapToJsonString(map));
-    }
-
-    public @Nullable String getTypeTemplate(final @StringRes int format) {
-        final String js = getString(R.string.pref_key__filetype_template_map, "{}");
-        final Map<String, String> map = jsonStringToMap(js);
-        return map.get(format == 0 ? "" : _context.getString(format));
-    }
-
-    public void setTemplateTitleFormat(final String templateName, final String titleFormat) {
-        final String js = getString(R.string.pref_key__template_title_format_map, "{}");
-        final Map<String, String> map = jsonStringToMap(js);
-        map.put(templateName, titleFormat);
-        setString(R.string.pref_key__template_title_format_map, mapToJsonString(map));
-    }
-
-    public @Nullable String getTemplateTitleFormat(final String templateName) {
-        final String js = getString(R.string.pref_key__template_title_format_map, "{}");
-        final Map<String, String> map = jsonStringToMap(js);
-        return map.get(templateName);
-    }
-
     public Set<String> getTitleFormats() {
         final String js = getString(R.string.pref_key__title_format_list, "[]");
         final Set<String> formats = new LinkedHashSet<>(jsonStringToList(js));
@@ -756,14 +504,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public void saveTitleFormat(final String format, final int maxCount) {
-    }
-
-    public void setFormatShareAsLink(final boolean asLink) {
-        setBool(R.string.pref_key__format_share_as_link, asLink);
-    }
-
-    public boolean getFormatShareAsLink() {
-        return getBool(R.string.pref_key__format_share_as_link, true);
     }
 
     private static String mapToJsonString(final Map<String, String> map) {
@@ -785,11 +525,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
             e.printStackTrace();
         }
         return map;
-    }
-
-    public String toJsonString(final Collection<String> list) {
-        final JSONArray jsonArray = new JSONArray(list);
-        return jsonArray.toString();
     }
 
     public List<String> jsonStringToList(final String jsonString) {
