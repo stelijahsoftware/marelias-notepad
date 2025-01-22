@@ -318,10 +318,6 @@ public class DocumentActivity extends MarkorBaseActivity {
         return fragment;
     }
 
-    public synchronized GsFragmentBase<?, ?> getExistingFragment(final String fragmentTag) {
-        return (GsFragmentBase<?, ?>) getSupportFragmentManager().findFragmentByTag(fragmentTag);
-    }
-
     private GsFragmentBase<?, ?> getCurrentVisibleFragment() {
         return (GsFragmentBase<?, ?>) getSupportFragmentManager().findFragmentById(R.id.document__placeholder_fragment);
     }

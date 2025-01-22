@@ -107,10 +107,6 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
         return null;
     }
 
-    public Boolean isFlagSecure() {
-        return null;
-    }
-
     @Override
     public void setTitle(CharSequence title) {
         super.setTitle(title);

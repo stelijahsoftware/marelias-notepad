@@ -167,14 +167,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     private static final String PREF_PREFIX_FONT_SIZE = "PREF_PREFIX_FONT_SIZE";
     private static final String PREF_PREFIX_FILE_FORMAT = "PREF_PREFIX_FILE_FORMAT";
     private static final String PREF_PREFIX_AUTO_FORMAT = "PREF_PREFIX_AUTO_FORMAT";
-    private static final String PREF_PREFIX_TODO_DONE_NAME = "PREF_PREFIX_TODO_DONE_NAME";
     private static final String PREF_PREFIX_LINE_NUM_STATE = "PREF_PREFIX_LINE_NUM_STATE";
-
-    public void setLastTodoDoneName(final String path, final String name) {
-        if (fexists(path)) {
-            setString(PREF_PREFIX_TODO_DONE_NAME + path, name);
-        }
-    }
 
     public void setLastEditPosition(final String path, final int pos) {
         if (fexists(path)) {
@@ -320,10 +313,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getFileSet(getStringList(R.string.pref_key__popular_documents));
     }
 
-    public String getInjectedBody() {
-        return getString(R.string.pref_key__inject_to_body, "");
-    }
-
     public boolean isEditorHistoryEnabled() {
         return true;//getBool(R.string.pref_key__editor_history_enabled3, true);
     }
@@ -338,10 +327,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         int resIdBg = R.string.pref_key__basic_color_scheme__bg_light;
         setInt(resIdFg, rcolor(fgColor));
         setInt(resIdBg, rcolor(bgColor));
-    }
-
-    public boolean isMultiWindowEnabled() {
-        return false;
     }
 
     public boolean isSearchQueryCaseSensitive() {
