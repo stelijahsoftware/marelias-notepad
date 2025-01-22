@@ -12,6 +12,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputFilter;
@@ -19,6 +20,7 @@ import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -108,19 +110,36 @@ public class NewFileDialog extends DialogFragment {
 
         // Setup title format spinner and actions
         // -----------------------------------------------------------------------------------------
-        final ArrayAdapter<String> formatAdapter = new ArrayAdapter<>(
-                activity, android.R.layout.simple_spinner_dropdown_item);
+        final ArrayAdapter<String> formatAdapter = new ArrayAdapter<String>(activity, android.R.layout.simple_spinner_dropdown_item) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                TextView textView = (TextView) view.findViewById(android.R.id.text1);
+
+                String item = getItem(position);
+                if (item != null && item.equals(formatEdit.getText().toString())) {
+                    textView.setTypeface(null, Typeface.BOLD);
+                } else {
+                    textView.setTypeface(null, Typeface.NORMAL);
+                }
+
+                return view;
+            }
+        };
 
         formatAdapter.addAll(appSettings.getTitleFormats());
 
         final ListPopupWindow formatPopup = new ListPopupWindow(activity);
         formatPopup.setAdapter(formatAdapter);
         formatPopup.setAnchorView(formatEdit);
+
         formatEdit.setText(formatAdapter.getItem(0));
-        formatPopup.setOnItemClickListener((parent, view, position, id) ->
-        {
-            formatEdit.setText(formatAdapter.getItem(position));
+        formatPopup.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedItem = formatAdapter.getItem(position);
+            formatEdit.setText(selectedItem);
             formatPopup.dismiss();
+            formatAdapter.notifyDataSetChanged();
         });
 
         formatSpinner.setOnClickListener(v -> formatPopup.show());

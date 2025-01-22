@@ -27,7 +27,6 @@ import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,14 +35,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
-
 
 @SuppressWarnings({"SameParameterValue", "WeakerAccess", "FieldCanBeLocal"})
 public class AppSettings extends GsSharedPreferencesPropertyBackend {
@@ -51,8 +46,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     private SharedPreferences _prefHistory;
     public static Boolean _isDeviceGoodHardware = null;
     private MarkorContextUtils _cu;
-
-//    private static final File LOCAL_TESTFOLDER_FILEPATH = new File("/storage/emulated/0/00_sync/documents/special");
 
     @Override
     public AppSettings init(final Context context) {
@@ -63,7 +56,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         _isDeviceGoodHardware = _cu.isDeviceGoodHardware(context);
 
         if (getInt(R.string.pref_key__basic_color_scheme__bg_light, -999) == -999) {
-//            setEditorBasicColor(true, R.color.white, R.color.dark_grey);
             setEditorBasicColor(false, R.color.dark_grey, R.color.light__background);
         }
         return this;

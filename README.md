@@ -32,7 +32,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
     - Add plus button to create folders from top menu
 
 [H] - color symbols
-[h] - make default selected format bold
 [H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
 [H] - Auto-delete empty notes on save + disable auto-save?
 [H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
@@ -95,6 +94,7 @@ X - colour line beginning with $ as code
 X - FIX: Touch all parent folders on save starting from home
 X - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
 X - Publish to gplay
+X - make default selected format bold
 
 ### Build Commands:
 ./gradlew build --warning-mode all
