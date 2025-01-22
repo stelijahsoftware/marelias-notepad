@@ -33,7 +33,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 
 [H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
 
-[H] - SMALL: FIX: Creating new folder with no name moves directory navigation up (goes up one level)
 [H] - SMALL: Auto-delete empty notes on save + disable auto-save?
 [H] - SMALL: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 [H] - WIP: Publish to gplay
@@ -94,6 +93,7 @@ X - green & red bg + [r + make 3 hashes orange ###
 X - Colour: ✓ ✗
 X - colour line beginning with $ as code
 X - FIX: Touch all parent folders on save starting from home
+X - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
 
 ### Build Commands:
 ./gradlew build --warning-mode all
