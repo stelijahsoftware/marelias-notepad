@@ -145,10 +145,6 @@ public class NewFileDialog extends DialogFragment {
             {
                 format = "`yyyyMMdd'_'hhMMss`";
             }
-            else if (format.isEmpty())
-            {
-                format = "{{title}}";
-            }
             else if (!title.isEmpty() && !format.contains("{{title}}"))
             {
                 format += "_{{title}}";
