@@ -112,10 +112,6 @@ public class FormatRegistry {
         return _highlighter;
     }
 
-    public TextConverterBase getConverter() {
-        return _converter;
-    }
-
     public int getFormatId() {
         return _formatId;
     }

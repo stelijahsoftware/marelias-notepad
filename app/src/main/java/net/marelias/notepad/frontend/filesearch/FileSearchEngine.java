@@ -69,7 +69,6 @@ public class FileSearchEngine {
         public List<String> ignoredDirectories;
         public boolean isShowMatchPreview = true;
         public boolean isShowResultOnCancel = true;
-        public char[] password = new char[0];
         public int message = 0;
     }
 

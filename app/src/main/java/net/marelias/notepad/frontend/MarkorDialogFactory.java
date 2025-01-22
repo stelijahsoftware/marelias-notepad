@@ -64,50 +64,6 @@ public class MarkorDialogFactory {
         return ApplicationObject.settings();
     }
 
-    public static void showSpecialKeyDialog(Activity activity, GsSearchOrCustomTextDialog.DialogState state, GsCallback.a1<String> callback) {
-        DialogOptions dopt = new DialogOptions();
-        baseConf(activity, dopt);
-        dopt.callback = callback;
-        String[] actions = activity.getResources().getStringArray(R.array.textactions_press_key__text);
-        dopt.data = new ArrayList<>(Arrays.asList(actions));
-        dopt.dialogHeightDp = 530;
-        dopt.titleText = R.string.special_key;
-        dopt.isSearchEnabled = false;
-        dopt.okButtonText = 0;
-        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt, state);
-    }
-
-    public static void showInsertTableRowDialog(final Activity activity, final boolean isHeader, GsCallback.a2<Integer, Boolean> callback) {
-        final DialogOptions dopt = new DialogOptions();
-        final String PREF_LAST_USED_TABLE_SIZE = "pref_key_last_used_table_size";
-        final int lastUsedTableSize = as().getInt(PREF_LAST_USED_TABLE_SIZE, 3);
-        final List<String> availableData = new ArrayList<>();
-        for (int i = 2; i <= 5; i++) {
-            availableData.add(Integer.toString(i));
-        }
-
-        baseConf(activity, dopt);
-        dopt.titleText = R.string.table;
-        dopt.messageText = activity.getString(R.string.how_much_columns_press_table_button_long_to_start_table) + "\n";
-        dopt.messageText += activity.getString(R.string.example_of_a_markdown_table) + ":\n\n";
-        dopt.messageText += "" +
-                "| id | name | info |\n" +
-                "|----| ---- | ---- |\n" +
-                "| 1  | John | text |\n" +
-                "| 2  | Anna | text |";
-
-        dopt.callback = colsStr -> {
-            as().setInt(PREF_LAST_USED_TABLE_SIZE, Integer.parseInt(colsStr));
-            callback.callback(Integer.parseInt(colsStr), isHeader);
-        };
-        dopt.data = availableData;
-        dopt.isSoftInputVisible = false;
-        dopt.searchInputType = InputType.TYPE_CLASS_NUMBER;
-        dopt.highlightData = Collections.singletonList(Integer.toString(lastUsedTableSize));
-        dopt.searchHintText = R.string.search_or_custom;
-        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
-    }
-
     public static void showSearchFilesDialog(
             final Activity activity,
             final File searchDir,
@@ -171,23 +127,6 @@ public class MarkorDialogFactory {
         dopt.neutralButtonText = R.string.search_and_replace;
         dopt.positionCallback = (result) -> TextViewUtils.selectLines(text, result);
         GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
-    }
-
-    private static class Heading {
-        final int level, line;
-        final String str;
-
-        Heading(int level, CharSequence str, int line) {
-            this.level = level;
-            this.str = str.toString();
-            this.line = line;
-        }
-    }
-
-    public static class HeadlineDialogState {
-        public Set<Integer> disabledLevels = new HashSet<>();
-        public String searchQuery = "";
-        public int listPosition = -1;
     }
 
     public static void showFontSizeDialog(final Activity activity, final int currentSize, final GsCallback.a1<Integer> callback) {

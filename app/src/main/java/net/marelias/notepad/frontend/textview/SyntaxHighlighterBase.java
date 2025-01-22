@@ -251,11 +251,6 @@ public abstract class SyntaxHighlighterBase {
         return this;
     }
 
-    // Get currently attached spannable
-    public Spannable getSpannable() {
-        return _spannable;
-    }
-
     public boolean hasSpans() {
         return _spannable != null && !_groups.isEmpty();
     }
@@ -315,10 +310,6 @@ public abstract class SyntaxHighlighterBase {
     private void clearFixup() {
         _fixupAfter = -1;
         _fixupDelta = 0;
-    }
-
-    public SyntaxHighlighterBase applyDynamic() {
-        return applyDynamic(new int[]{0, _spannable.length()});
     }
 
     /**

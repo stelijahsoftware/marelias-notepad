@@ -506,27 +506,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     public void saveTitleFormat(final String format, final int maxCount) {
     }
 
-    private static String mapToJsonString(final Map<String, String> map) {
-        return new JSONObject(map).toString();
-    }
-
-    private static Map<String, String> jsonStringToMap(final String jsonString) {
-        final Map<String, String> map = new LinkedHashMap<>();
-        try {
-            final JSONObject jsonObject = new JSONObject(jsonString);
-            final Iterator<String> keys = jsonObject.keys();
-
-            while (keys.hasNext()) {
-                String key = keys.next();
-                String value = jsonObject.getString(key);
-                map.put(key, value);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return map;
-    }
-
     public List<String> jsonStringToList(final String jsonString) {
         final List<String> list = new ArrayList<>();
         try {

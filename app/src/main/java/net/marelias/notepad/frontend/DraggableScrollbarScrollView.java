@@ -28,14 +28,6 @@ public class DraggableScrollbarScrollView extends ScrollView {
         super(context, attrs);
     }
 
-    public boolean slowScrollShift(final int shift) {
-        if (!_isFastScrolling && Math.abs(shift) > 0) {
-            setScrollY(getScrollY() + shift);
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (!_fastScrollEnabled) {
@@ -88,7 +80,6 @@ public class DraggableScrollbarScrollView extends ScrollView {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             _ltr = getLayoutDirection() == View.LAYOUT_DIRECTION_LTR;
         }
-        final DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
         _grabWidth = 25;//(int) (1.5 * (float) getVerticalScrollbarWidth() * displayMetrics.density); // 66
         //System.out.println(">>>>>>> elyahw: ");
         //System.out.println(_grabWidth);
