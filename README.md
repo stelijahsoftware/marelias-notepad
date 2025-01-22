@@ -118,3 +118,11 @@ Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'Default
 ```
 app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk
 ```
+
+# Possible colours:
+<color name="primary_dark">#2f3355</color>
+<color name="primary_light">#CED9DD</color>
+<color name="accent_light">#FF9800</color>
+<color name="accent">#F04B4B</color>
+<color name="dark__folder">#72B3D9</color>
+<color name="dark__folder">#0040ff</color>
