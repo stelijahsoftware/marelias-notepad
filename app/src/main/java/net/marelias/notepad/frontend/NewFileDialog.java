@@ -143,7 +143,7 @@ public class NewFileDialog extends DialogFragment {
 
             if (title.isEmpty())//format.isEmpty() &&
             {
-                format = "`yyyyMMdd'_'hhMMss`";
+                format = "`yyyyMMdd'_'hhMMss`"; // the rest of options are in AppSettings.java
             }
             else if (!title.isEmpty() && !format.contains("{{title}}"))
             {
