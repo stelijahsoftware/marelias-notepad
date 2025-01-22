@@ -24,11 +24,6 @@ import java.io.File;
 import java.util.List;
 
 public class MarkorFileBrowserFactory {
-    public static GsCallback.b2<Context, File> IsMimeText = (context, file) -> file != null && GsContextUtils.instance.getMimeType(context, file).startsWith("text/");
-//    public static GsCallback.b2<Context, File> IsMimeImage = (context, file) -> file != null && GsContextUtils.instance.getMimeType(context, file).startsWith("image/");
-//    public static GsCallback.b2<Context, File> IsMimeAudio = (context, file) -> file != null && GsContextUtils.instance.getMimeType(context, file).startsWith("audio/");
-//    public static GsCallback.b2<Context, File> IsMimeVideo = (context, file) -> file != null && GsContextUtils.instance.getMimeType(context, file).startsWith("video/");
-
     public static GsFileBrowserOptions.Options prepareFsViewerOpts(
             final Context context,
             final boolean doSelectFolder,
@@ -87,30 +82,10 @@ public class MarkorFileBrowserFactory {
         return opts;
     }
 
-    public static File[] strlistToArray(List<String> strlist) {
-        File[] files = new File[strlist.size()];
-        for (int i = 0; i < files.length; i++) {
-            files[i] = new File(strlist.get(i));
-        }
-        return files;
-    }
-
     private static GsFileBrowserDialog showDialog(final FragmentManager fm, final GsFileBrowserOptions.Options opts) {
         final GsFileBrowserDialog filesystemViewerDialog = GsFileBrowserDialog.newInstance(opts);
         filesystemViewerDialog.show(fm, GsFileBrowserDialog.FRAGMENT_TAG);
         return filesystemViewerDialog;
-    }
-
-    public static GsFileBrowserDialog showFileDialog(
-            final GsFileBrowserOptions.SelectionListener listener,
-            final FragmentManager fm,
-            final Context context,
-            final GsCallback.b2<Context, File> fileOverallFilter
-    ) {
-        final GsFileBrowserOptions.Options opts = prepareFsViewerOpts(context, false, listener);
-        opts.fileOverallFilter = fileOverallFilter;
-        opts.descModtimeInsteadOfParent = true;
-        return showDialog(fm, opts);
     }
 
     public static GsFileBrowserDialog showFolderDialog(

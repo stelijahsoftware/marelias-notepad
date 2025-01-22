@@ -29,7 +29,6 @@ import java.util.Stack;
 public class WrMarkorSingleton {
 
     private static WrMarkorSingleton notepad2SingletonInstance = null;
-    private static File notesLastDirectory = null;
 
     public static WrMarkorSingleton getInstance() {
         if (notepad2SingletonInstance == null) {

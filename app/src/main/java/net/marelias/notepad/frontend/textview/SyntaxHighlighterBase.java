@@ -97,10 +97,6 @@ public abstract class SyntaxHighlighterBase {
      */
     public static final Pattern URL = Pattern.compile("\\b(http|Http|HTTP)s?://(?:(?:[-;:&=+$,\\w]+@)?[A-Za-z0-9.-]+|(?:www\\.|[-;:&=+$,\\w]+@)[A-Za-z0-9.-]+)(?:/[+~%/.\\w_-]*\\??[-+=&;%@.\\w_]*#?[.!/\\\\\\w]*)?");
 
-    protected static SyntaxHighlighterBase getDefaultHighlighter(final AppSettings as) {
-        return new PlaintextSyntaxHighlighter(as);
-    }
-
     // Functions for derived classes to implement
     // ---------------------------------------------------------------------------------------------
 
@@ -118,10 +114,6 @@ public abstract class SyntaxHighlighterBase {
     protected boolean _isDarkMode = false;
     protected int _textColor = Color.BLACK;
     protected String _fontFamily = "";
-
-    public SyntaxHighlighterBase configure() {
-        return configure(null);
-    }
 
     /**
      * Configure this highlighter. Call before doing any highlighting
@@ -325,10 +317,6 @@ public abstract class SyntaxHighlighterBase {
         _fixupDelta = 0;
     }
 
-    public SyntaxHighlighterBase applyAll() {
-        return applyDynamic().applyStatic();
-    }
-
     public SyntaxHighlighterBase applyDynamic() {
         return applyDynamic(new int[]{0, _spannable.length()});
     }
@@ -495,10 +483,6 @@ public abstract class SyntaxHighlighterBase {
 
     protected final void createTypefaceSpanForMatches(Pattern pattern, final String typeface, int... groupsToMatch) {
         createSpanForMatches(pattern, matcher -> new TypefaceSpan(typeface), groupsToMatch);
-    }
-
-    protected final void createRelativeSizeSpanForMatches(final Pattern pattern, float relativeSize, int... groupsToMatch) {
-        createSpanForMatches(pattern, matcher -> new RelativeSizeSpan(relativeSize), groupsToMatch);
     }
 
     protected final void createReplacementSpanForMatches(final Pattern pattern, final int charWidth, int... groupsToMatch) {
