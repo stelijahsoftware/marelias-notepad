@@ -31,20 +31,20 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
     - Rename title from pressing `note title` on opening.
     - Add plus button to create folders from top menu
 
+[H] - color symbols
+[h] - make default selected format bold
 [H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
-
-[H] - SMALL: Auto-delete empty notes on save + disable auto-save?
-[H] - SMALL: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[H] - WIP: Publish to gplay
+[H] - Auto-delete empty notes on save + disable auto-save?
+[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 
 [M] - Put top bar on bottom for easier access to save button & rename..etc
 [M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [M] - Keep recently searched for items in search list
 
-[L] - Show total notes count (+ on folders?)
+[L] - Show total notes count (+ on folders?) (information already available when selecting multiple files)
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 [L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
-[L] - Add git integration (add note in 'about' screen how to do it in about)
+[L] - Add git integration info (add how to note in 'about' screen)
 
 ### Ignored tasks:
 X - Add button to insert date yyy-mm-dd?
@@ -94,6 +94,7 @@ X - Colour: ✓ ✗
 X - colour line beginning with $ as code
 X - FIX: Touch all parent folders on save starting from home
 X - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
+X - Publish to gplay
 
 ### Build Commands:
 ./gradlew build --warning-mode all
