@@ -124,6 +124,7 @@ public class NewFileDialog extends DialogFragment {
         });
 
         formatSpinner.setOnClickListener(v -> formatPopup.show());
+        formatEdit.setOnClickListener(v -> formatPopup.show());
 
         // Setup template spinner and action
         // -----------------------------------------------------------------------------------------
