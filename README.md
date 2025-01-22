@@ -31,6 +31,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
     - Rename title from pressing `note title` on opening.
     - Add plus button to create folders from top menu
 
+[H] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
 [H] - color symbols
 [H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
 [H] - Auto-delete empty notes on save + disable auto-save?
@@ -40,7 +41,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [M] - Keep recently searched for items in search list
 
-[L] - Show total notes count (+ on folders?) (information already available when selecting multiple files)
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 [L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
 [L] - Add git integration info (add how to note in 'about' screen)
