@@ -49,8 +49,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-//import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
-
 public class NewFileDialog extends DialogFragment {
     public static final String FRAGMENT_TAG = NewFileDialog.class.getName();
     public static final String EXTRA_DIR = "EXTRA_DIR";
@@ -59,13 +57,7 @@ public class NewFileDialog extends DialogFragment {
     public static final int MAX_TITLE_FORMATS = 10;
 
     private static final List<Integer> NEW_FILE_FORMATS = Arrays.asList(
-//            FormatRegistry.FORMAT_MARKDOWN,
             FormatRegistry.FORMAT_PLAIN
-            //FormatRegistry.FORMAT_TODOTXT,
-            //FormatRegistry.FORMAT_WIKITEXT,
-            //FormatRegistry.FORMAT_ASCIIDOC,
-            //FormatRegistry.FORMAT_ORGMODE,
-            //FormatRegistry.FORMAT_CSV
     );
 
     private GsCallback.a1<File> callback;
@@ -101,29 +93,13 @@ public class NewFileDialog extends DialogFragment {
         final View root = inflater.inflate(R.layout.new_file_dialog, null);
 
         final EditText titleEdit = root.findViewById(R.id.new_file_dialog__name);
-//        final EditText extEdit = root.findViewById(R.id.new_file_dialog__ext);
-//        final CheckBox encryptCheckbox = root.findViewById(R.id.new_file_dialog__encrypt);
-//        final CheckBox utf8BomCheckbox = root.findViewById(R.id.new_file_dialog__utf8_bom);
-//        final Spinner typeSpinner = root.findViewById(R.id.new_file_dialog__type);
-//        final Spinner templateSpinner = root.findViewById(R.id.new_file_dialog__template);
         final EditText formatEdit = root.findViewById(R.id.new_file_dialog__name_format);
         final TextView formatSpinner = root.findViewById(R.id.new_file_dialog__name_format_spinner);
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && appSettings.isDefaultPasswordSet()) {
-//            encryptCheckbox.setChecked(appSettings.getNewFileDialogLastUsedEncryption());
-//        } else {
-//            encryptCheckbox.setVisibility(View.GONE);
-//        }
-
-//        utf8BomCheckbox.setChecked(appSettings.getNewFileDialogLastUsedUtf8Bom());
-//        utf8BomCheckbox.setVisibility(appSettings.isExperimentalFeaturesEnabled() ? View.VISIBLE : View.GONE);
-//        extEdit.setText(appSettings.getNewFileDialogLastUsedExtension());
 
         titleEdit.requestFocus();
         new Handler().postDelayed(new GsContextUtils.DoTouchView(titleEdit), 200);
 
         titleEdit.setFilters(new InputFilter[]{GsContextUtils.instance.makeFilenameInputFilter()});
-//        extEdit.setFilters(titleEdit.getFilters());
 
         // Build a list of available formats
         // -----------------------------------------------------------------------------------------
@@ -135,7 +111,6 @@ public class NewFileDialog extends DialogFragment {
         final ArrayAdapter<String> formatAdapter = new ArrayAdapter<>(
                 activity, android.R.layout.simple_spinner_dropdown_item);
 
-        //formatAdapter.add("");
         formatAdapter.addAll(appSettings.getTitleFormats());
 
         final ListPopupWindow formatPopup = new ListPopupWindow(activity);
@@ -187,25 +162,6 @@ public class NewFileDialog extends DialogFragment {
             String format = "{{title}}";
             return TextViewUtils.interpolateSnippet(format, title, "").trim();
         };
-        // elyahw merge conflict: new:
-//        final @ColorInt int color = titleEdit.getCurrentTextColor();
-//        titleEdit.addTextChangedListener(new GsTextWatcherAdapter() {
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                try {
-//                    final String title = getTitle.callback();
-//                    final String ext = extEdit.getText().toString().trim();
-//                    final String fn = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ext);
-//                    if (new File(basedir, fn).exists()) {
-//                        titleEdit.setTextColor(0xffff0000);
-//                    } else {
-//                        titleEdit.setTextColor(color);
-//                    }
-//                } catch (Exception ignored) {
-//                    titleEdit.setTextColor(color);
-//                }
-//            }
-//        });
 
         final MarkorContextUtils cu = new MarkorContextUtils(getContext());
         dialogBuilder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> dialogInterface.dismiss());
@@ -217,10 +173,8 @@ public class NewFileDialog extends DialogFragment {
             final String ext = ".txt";
             String fileName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ext);
 
-
             // Get template string
             // -------------------------------------------------------------------------------------
-//            final int ti = templateSpinner.getSelectedItemPosition();
             final String template;
 
             template = "";
@@ -235,13 +189,8 @@ public class NewFileDialog extends DialogFragment {
 
             // These are done even if the file isn't created
             final String titleFormat = formatEdit.getText().toString().trim();
-
-//            appSettings.setTemplateTitleFormat(templateAdapter.getItem(ti), titleFormat);
             final FormatRegistry.Format fmt = formats.get(0);
-//            appSettings.setTypeTemplate(fmt.format, (String) templateSpinner.getSelectedItem());
-
             appSettings.setNewFileDialogLastUsedType(fmt.format);
-//            appSettings.setNewFileDialogLastUsedExtension(extEdit.getText().toString().trim());
 
             if (!titleFormat.isEmpty()) {
                 appSettings.saveTitleFormat(titleFormat, MAX_TITLE_FORMATS);
@@ -253,9 +202,7 @@ public class NewFileDialog extends DialogFragment {
                 // We only make these changes if the file did not already exist
                 appSettings.setDocumentFormat(document.path, fmt.format);
                 appSettings.setLastEditPosition(document.path, content.second);
-
                 appSettings.setNewFileDialogLastUsedExtension(".txt");
-
 
                 callback(file);
 
@@ -269,11 +216,7 @@ public class NewFileDialog extends DialogFragment {
         });
 
         dialogBuilder.setNeutralButton(R.string.folder, (dialogInterface, i) -> {
-
-//            final String title = getTitle.callback();
             final String title = getTitle_folder.callback();
-//            final String title = TextViewUtils.interpolateSnippet(".txt", "{{title}}", "").trim();
-
 
             final String dirName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title);
             final File f = new File(basedir, dirName);
@@ -291,7 +234,6 @@ public class NewFileDialog extends DialogFragment {
             } else if (f.isDirectory() || f.mkdirs()) {
                 callback(f);
             }
-
             dialogInterface.dismiss();
         });
 
@@ -345,11 +287,9 @@ public class NewFileDialog extends DialogFragment {
         public ReselectSpinner(Context context) {
             super(context);
         }
-
         public ReselectSpinner(Context context, AttributeSet attrs) {
             super(context, attrs);
         }
-
         public ReselectSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
             super(context, attrs, defStyleAttr);
         }
