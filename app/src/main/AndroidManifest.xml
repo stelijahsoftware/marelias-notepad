@@ -85,10 +85,6 @@
         </provider>
 
         <activity
-            android:name=".activity.IntroActivity"
-            android:label="@string/about" />
-
-        <activity
             android:name=".activity.openeditor.OpenFromShortcutOrWidgetActivity"
             android:launchMode="standard"
             android:theme="@android:style/Theme.NoDisplay" />
