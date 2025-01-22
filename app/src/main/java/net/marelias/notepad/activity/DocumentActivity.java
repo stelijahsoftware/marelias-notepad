@@ -73,11 +73,6 @@ public class DocumentActivity extends MarkorBaseActivity {
             return;
         }
 
-//        if (GsFileUtils.getFilenameExtension(file).equals(".apk")) {
-//            GsContextUtils.instance.requestApkInstallation(activity, file);
-//            return;
-//        }
-
         if (!forceOpenInThisApp && file.isFile() && !FormatRegistry.isFileSupported(file)) {
             askUserIfWantsToOpenFileInThisApp(activity, file);
             return;
@@ -132,10 +127,6 @@ public class DocumentActivity extends MarkorBaseActivity {
         setContentView(R.layout.document__activity);
         _toolbar = findViewById(R.id.toolbar);
 
-//        if (_appSettings.isHideSystemStatusbar()) {
-//            AndroidBug5497Workaround.assistActivity(this);
-//        }
-
         setSupportActionBar(findViewById(R.id.toolbar));
         _fragManager = getSupportFragmentManager();
 
@@ -159,12 +150,10 @@ public class DocumentActivity extends MarkorBaseActivity {
         File file = (File) intent.getSerializableExtra(Document.EXTRA_FILE);
 
         final boolean intentIsView = Intent.ACTION_VIEW.equals(intentAction);
-//        final boolean intentIsSend = Intent.ACTION_SEND.equals(intentAction);
         final boolean intentIsEdit = Intent.ACTION_EDIT.equals(intentAction);
 
         if (Intent.ACTION_PROCESS_TEXT.equals(intentAction) && intent.hasExtra(Intent.EXTRA_PROCESS_TEXT)) {
             intent.putExtra(Intent.EXTRA_TEXT, intent.getStringExtra("android.intent.extra.PROCESS_TEXT"));
-            //showShareInto(intent);
             return;
         } else if (file == null && (intentIsView || intentIsEdit)) {
             file = _cu.extractFileFromIntent(this, intent);

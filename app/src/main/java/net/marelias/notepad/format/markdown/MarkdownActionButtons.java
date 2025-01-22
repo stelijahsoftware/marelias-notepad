@@ -35,7 +35,6 @@ public class MarkdownActionButtons extends ActionButtonBase {
 
     @Override
     public boolean runTitleClick() {
-
         return true;
     }
 

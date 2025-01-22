@@ -126,18 +126,6 @@ public class NewFileDialog extends DialogFragment {
         formatSpinner.setOnClickListener(v -> formatPopup.show());
         formatEdit.setOnClickListener(v -> formatPopup.show());
 
-        // Fix attempt above:
-//        View.OnClickListener toggleDropdown = v -> {
-//            if (formatPopup.isShowing()) {
-//                formatPopup.dismiss();
-//            } else {
-//                formatPopup.show();
-//            }
-//        };
-//        formatSpinner.setOnClickListener(toggleDropdown);
-//        formatEdit.setOnClickListener(toggleDropdown);
-
-
         // Setup template spinner and action
         // -----------------------------------------------------------------------------------------
         final List<Pair<String, String>> templates = appSettings.getBuiltinTemplates();

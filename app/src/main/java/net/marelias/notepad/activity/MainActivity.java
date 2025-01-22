@@ -45,14 +45,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 
 public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFragment.FilesystemFragmentOptionsListener {
-
-//    public static boolean IS_DEBUG_ENABLED = false;
-
-//    private BottomNavigationView _bottomNav;
     private ViewPager2 _viewPager;
     private GsFileBrowserFragment _notebook;
-    //private DocumentEditAndViewFragment _quicknote, _todo;
-//    private MoreFragment _more;
     private FloatingActionButton _fab;
 
     private MarkorContextUtils _cu;
@@ -62,10 +56,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        IS_DEBUG_ENABLED |= BuildConfig.IS_TEST_BUILD;
-
         try {
-            //noinspection ResultOfMethodCallIgnored
             _appSettings.getNotebookDirectory().mkdirs();
         } catch (Exception ignored) {
         }
@@ -73,7 +64,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
         _cu = new MarkorContextUtils(this);
         setContentView(R.layout.main__activity);
-//        _bottomNav = findViewById(R.id.bottom_navigation_bar);
         _viewPager = findViewById(R.id.main__view_pager_container);
         _fab = findViewById(R.id.fab_add_new_item);
         _fab.setOnClickListener(this::onClickFab);
@@ -87,20 +77,12 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         });
 
         setSupportActionBar(findViewById(R.id.toolbar));
-//        optShowRate();
 
         // Setup viewpager
         _viewPager.setAdapter(new SectionsPagerAdapter(getSupportFragmentManager()));
         _viewPager.setOffscreenPageLimit(4);
 
         reduceViewpagerSwipeSensitivity();
-
-        // noinspection PointlessBooleanExpression - Send Test intent
-//        if (BuildConfig.IS_TEST_BUILD && false) {
-//            DocumentActivity.launch(this, new File("/sdcard/Documents/mordor/aa-beamer.md"), true, null);
-//        }
-
-//        _cu.applySpecialLaunchersVisibility(this, _appSettings.isSpecialFileLaunchersEnabled());
 
         // Elyahw: Create default note:
         final SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -412,9 +394,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
     public GsFragmentBase<?, ?> getPosFragment(final int pos) {
         if (pos == 0) return _notebook;
-        //if (pos == 1) return _todo;
-        //if (pos == 2) return _quicknote;
-//        if (pos == 3) return _more;
         return null;
     }
 
@@ -514,7 +493,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         @Override
         public int getItemCount() {
             return 1;
-            //return _bottomNav.getMenu().size();
         }
     }
 
@@ -525,7 +503,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     @Override
     protected void onPause() {
         super.onPause();
-//        WrMarkorWidgetProvider.updateLauncherWidgets();
     }
 
     @Override

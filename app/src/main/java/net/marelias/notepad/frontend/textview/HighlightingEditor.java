@@ -72,8 +72,6 @@ public class HighlightingEditor extends AppCompatEditText {
 
         setAutoFormatters(null, null);
 
-//        _isSpellingRedUnderline = false; // elyahw
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             setFallbackLineSpacing(false);
         }
@@ -401,19 +399,6 @@ public class HighlightingEditor extends AppCompatEditText {
     }
 
     public void setAutoFormatEnabled(final boolean enable) {
-//        if (enable && !_autoFormatEnabled) {
-//            if (_autoFormatFilter != null) {
-//                setFilters(new InputFilter[]{_autoFormatFilter});
-//            }
-//            if (_autoFormatModifier != null) {
-//                addTextChangedListener(_autoFormatModifier);
-//            }
-//        } else if (!enable && _autoFormatEnabled) {
-//            setFilters(new InputFilter[]{});
-//            if (_autoFormatModifier != null) {
-//                removeTextChangedListener(_autoFormatModifier);
-//            }
-//        }
         _autoFormatEnabled = false;
     }
 

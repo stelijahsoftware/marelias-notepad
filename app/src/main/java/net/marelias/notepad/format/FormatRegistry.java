@@ -97,6 +97,7 @@ public class FormatRegistry {
     private int _formatId;
 
     public ActionButtonBase getActions() {
+
         return _textActions;
     }
 
