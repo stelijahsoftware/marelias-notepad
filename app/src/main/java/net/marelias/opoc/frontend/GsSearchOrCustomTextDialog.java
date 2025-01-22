@@ -238,11 +238,6 @@ public class GsSearchOrCustomTextDialog {
         }
     }
 
-    public static Adapter getAdapter(final AlertDialog dialog) {
-        final ListView list = dialog.findViewById(GsSearchOrCustomTextDialog.LIST_VIEW_ID);
-        return list != null ? (Adapter) list.getAdapter() : null;
-    }
-
     public static boolean standardSearch(final CharSequence constraint, final CharSequence text) {
         final Locale locale = Locale.getDefault();
         return text.toString().toLowerCase(locale).contains(constraint.toString().toLowerCase(locale));

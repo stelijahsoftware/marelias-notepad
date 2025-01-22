@@ -198,10 +198,6 @@ public class HighlightingEditor extends AppCompatEditText {
         recomputeHighlighting();
     }
 
-    public boolean isDynamicHighlightingEnabled() {
-        return _isDynamicHighlightingEnabled;
-    }
-
     public void setHighlighter(final SyntaxHighlighterBase newHighlighter) {
         if (_hl != null) {
             _hl.clearAll();
@@ -224,14 +220,6 @@ public class HighlightingEditor extends AppCompatEditText {
         if (_hl != null) {
             _hl.setSpannable(getText()).configure(paint);
         }
-    }
-
-    public SyntaxHighlighterBase getHighlighter() {
-        return _hl;
-    }
-
-    public boolean getHighlightingEnabled() {
-        return _hlEnabled;
     }
 
     public boolean setHighlightingEnabled(final boolean enable) {
@@ -450,48 +438,6 @@ public class HighlightingEditor extends AppCompatEditText {
     public void simulateKeyPress(int keyEvent_KEYCODE_SOMETHING) {
         dispatchKeyEvent(new KeyEvent(0, 0, KeyEvent.ACTION_DOWN, keyEvent_KEYCODE_SOMETHING, 0));
         dispatchKeyEvent(new KeyEvent(0, 0, KeyEvent.ACTION_UP, keyEvent_KEYCODE_SOMETHING, 0));
-    }
-
-    public void insertOrReplaceTextOnCursor(final String newText) {
-        final Editable edit = getText();
-        if (edit != null && newText != null) {
-
-            // Fill in any instances of selection
-            final int[] sel = TextViewUtils.getSelection(this);
-            final CharSequence selected = TextViewUtils.toString(edit, sel[0], sel[1]);
-            String expanded = newText.replace(INSERT_SELECTION_HERE_TOKEN, selected);
-
-            // Determine where to place the cursor
-            final int newCursorPos = expanded.indexOf(PLACE_CURSOR_HERE_TOKEN);
-            final String finalText = expanded.replace(PLACE_CURSOR_HERE_TOKEN, "");
-
-            sel[0] = Math.max(sel[0], 0);
-
-            // Needed to prevent selection of whole of inserted text after replace
-            // if we want a cursor position instead
-            if (newCursorPos >= 0) {
-                setSelection(sel[0]);
-            }
-
-            withAutoFormatDisabled(() -> edit.replace(sel[0], sel[1], finalText));
-
-            if (newCursorPos >= 0) {
-                setSelection(sel[0] + newCursorPos);
-                postDelayed(() -> TextViewUtils.showSelection(this), 500);
-            }
-        }
-    }
-
-    public int moveCursorToEndOfLine(int offset) {
-        simulateKeyPress(KeyEvent.KEYCODE_MOVE_END);
-        setSelection(getSelectionStart() + offset);
-        return getSelectionStart();
-    }
-
-    public int moveCursorToBeginOfLine(int offset) {
-        simulateKeyPress(KeyEvent.KEYCODE_MOVE_HOME);
-        setSelection(getSelectionStart() + offset);
-        return getSelectionStart();
     }
 
     public boolean indexesValid(int... indexes) {
