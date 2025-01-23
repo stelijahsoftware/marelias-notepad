@@ -265,7 +265,7 @@ public class NewFileDialog extends DialogFragment {
             dialogBuilder.setNeutralButton("", null);
         }
 
-        // elyahw merge request..
+        // elyahw (makes no difference)
         // titleEdit.requestFocus();
         /////////////////
         // Initial creation - loop through and set type

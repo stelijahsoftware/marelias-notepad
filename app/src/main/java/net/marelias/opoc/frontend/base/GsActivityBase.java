@@ -17,14 +17,12 @@ import android.os.Handler;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import net.marelias.opoc.model.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.wrapper.GsCallback;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -36,23 +34,15 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
     protected GsContextUtils _cu;
     private int m_initialToolbarHeight = 0;
 
-//    private final GsCallback.a0 m_setActivityBackgroundColor = () -> GsContextUtils.instance.setActivityBackgroundColor(GsActivityBase.this, getNewActivityBackgroundColor());
-//    private final GsCallback.a0 m_setActivityNavigationBarColor = () -> GsContextUtils.instance.setActivityNavigationBarBackgroundColor(GsActivityBase.this, getNewNavigationBarColor());
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         onPreCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
 
-//        m_setActivityBackgroundColor.callback();
-//        m_setActivityNavigationBarColor.callback();
-
-
         try {
             getWindow().clearFlags(FLAG_SECURE);
         } catch (Exception ignored) {
         }
-
     }
 
     protected void onPreCreate(@Nullable Bundle savedInstanceState) {
@@ -78,8 +68,6 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
     @Override
     protected void onResume() {
         super.onResume();
-//        m_setActivityBackgroundColor.callback();
-//        m_setActivityNavigationBarColor.callback();
     }
 
     @Override
@@ -96,18 +84,6 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
      */
     public void onActivityFirstTimeVisible() {
     }
-
-//    @ColorInt
-//    public Integer getNewNavigationBarColor() {
-//
-//        return null;
-//    }
-//
-//    @ColorInt
-//    public Integer getNewActivityBackgroundColor() {
-//
-//        return null;
-//    }
 
     @Override
     public void setTitle(CharSequence title) {
