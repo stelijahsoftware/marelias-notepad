@@ -137,7 +137,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "Urls and websites will be highlighted:\n" +
                                         "https://www.github.com/gsantner/markor\n" +
                                         "\n" +
-                                        "You can also add **bold**, another __bold__ and _italic_ or *italic* text; or ~~striked~~\n" +
+                                        "You can also add **bold**, another __bold__ and _italic_ or *italic* text; or ~~struck~~\n" +
                                         "\n" +
                                         "***** Asterisks will be coloured\n" +
                                         "----- Dashes will be coloured too\n" +
@@ -372,8 +372,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     public int tabIdToPos(final int id) {
         if (id == R.id.nav_notebook) return 0;
         //if (id == R.id.nav_todo) return 1;
-        //if (id == R.id.nav_quicknote) return 2;
-        //if (id == R.id.nav_more) return 3;
         return 0;
     }
 
