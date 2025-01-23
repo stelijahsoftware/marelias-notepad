@@ -36,15 +36,16 @@ public abstract class MarkorBaseActivity extends GsActivityBase<AppSettings, Mar
         return fragment.onReceiveKeyPress(keyCode, event);
     }
 
-    @Override
-    public Integer getNewNavigationBarColor() {
-        return Color.BLACK;
-    }
-
-    @Override
-    public Integer getNewActivityBackgroundColor() {
-        return null; // _appSettings.getAppThemeName().contains("black") ? Color.BLACK :
-    }
+//    @Override
+//    public Integer getNewNavigationBarColor() {
+//
+//        return Color.BLACK;
+//    }
+//
+//    @Override
+//    public Integer getNewActivityBackgroundColor() {
+//        return null; // _appSettings.getAppThemeName().contains("black") ? Color.BLACK :
+//    }
 
     @Override
     public AppSettings createAppSettingsInstance(Context applicationContext) {

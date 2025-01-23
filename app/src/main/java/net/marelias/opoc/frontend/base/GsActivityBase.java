@@ -36,16 +36,16 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
     protected GsContextUtils _cu;
     private int m_initialToolbarHeight = 0;
 
-    private final GsCallback.a0 m_setActivityBackgroundColor = () -> GsContextUtils.instance.setActivityBackgroundColor(GsActivityBase.this, getNewActivityBackgroundColor());
-    private final GsCallback.a0 m_setActivityNavigationBarColor = () -> GsContextUtils.instance.setActivityNavigationBarBackgroundColor(GsActivityBase.this, getNewNavigationBarColor());
+//    private final GsCallback.a0 m_setActivityBackgroundColor = () -> GsContextUtils.instance.setActivityBackgroundColor(GsActivityBase.this, getNewActivityBackgroundColor());
+//    private final GsCallback.a0 m_setActivityNavigationBarColor = () -> GsContextUtils.instance.setActivityNavigationBarBackgroundColor(GsActivityBase.this, getNewNavigationBarColor());
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         onPreCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
 
-        m_setActivityBackgroundColor.callback();
-        m_setActivityNavigationBarColor.callback();
+//        m_setActivityBackgroundColor.callback();
+//        m_setActivityNavigationBarColor.callback();
 
 
         try {
@@ -78,8 +78,8 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
     @Override
     protected void onResume() {
         super.onResume();
-        m_setActivityBackgroundColor.callback();
-        m_setActivityNavigationBarColor.callback();
+//        m_setActivityBackgroundColor.callback();
+//        m_setActivityNavigationBarColor.callback();
     }
 
     @Override
@@ -97,15 +97,17 @@ public abstract class GsActivityBase<AS extends GsSharedPreferencesPropertyBacke
     public void onActivityFirstTimeVisible() {
     }
 
-    @ColorInt
-    public Integer getNewNavigationBarColor() {
-        return null;
-    }
-
-    @ColorInt
-    public Integer getNewActivityBackgroundColor() {
-        return null;
-    }
+//    @ColorInt
+//    public Integer getNewNavigationBarColor() {
+//
+//        return null;
+//    }
+//
+//    @ColorInt
+//    public Integer getNewActivityBackgroundColor() {
+//
+//        return null;
+//    }
 
     @Override
     public void setTitle(CharSequence title) {

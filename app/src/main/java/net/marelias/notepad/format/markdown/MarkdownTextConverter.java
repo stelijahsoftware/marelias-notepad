@@ -7,11 +7,11 @@
 #########################################################*/
 package net.marelias.notepad.format.markdown;
 
-import com.vladsch.flexmark.html.AttributeProvider;
-import com.vladsch.flexmark.html.renderer.AttributablePart;
-import com.vladsch.flexmark.util.ast.Document;
-import com.vladsch.flexmark.util.ast.Node;
-import com.vladsch.flexmark.util.html.Attributes;
+//import com.vladsch.flexmark.html.AttributeProvider;
+//import com.vladsch.flexmark.html.renderer.AttributablePart;
+//import com.vladsch.flexmark.util.ast.Document;
+//import com.vladsch.flexmark.util.ast.Node;
+//import com.vladsch.flexmark.util.html.Attributes;
 import net.marelias.notepad.format.TextConverterBase;
 import java.io.File;
 import java.util.regex.Pattern;
