@@ -6,6 +6,5 @@ local.properties
 build/
 app/flavor*
 app/src/main/res/raw/*
-app_github/
 
 *.apk
