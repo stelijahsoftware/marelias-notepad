@@ -26,17 +26,18 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [H] - BIG: `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
     - Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
     - SEE THE DIALOG it shows you when you try to open an odt file.
-
 [H] - BIG: `Plus button` should not show dialog, instead auto add note (like snotepad)
     - Rename title from pressing `note title` on opening.
     - Add plus button to create folders from top menu
-
+[H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [H] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
 [H] - color symbols
-[H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0"
+[h] - ability to pin notes to top
+[h] - add modificationDate_creationDate title to notes. E.g. `20250122-20241127 note.txt`. Whenever you modify the note, the first date gets updated. Note: This needs to make sure that no new note is created.
 [H] - Auto-delete empty notes on save + disable auto-save?
 [H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 
+[m] - add % + -- comments
 [m] - Fix theme when system dark more is enabled (some window colours are correct).
 [M] - Put top bar on bottom for easier access to save button & rename..etc
 [M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
