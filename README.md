@@ -37,6 +37,8 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [H] - Auto-delete empty notes on save + disable auto-save?
 [H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 
+- Add separate button for folders
+
 [m] - add % + -- comments
 [m] - Fix theme when system dark more is enabled (some window colours are correct).
 [M] - Put top bar on bottom for easier access to save button & rename..etc
