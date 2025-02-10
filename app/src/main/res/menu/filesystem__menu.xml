@@ -24,12 +24,12 @@
         android:title="@string/favourite"
         android:visible="false"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/action_fs_copy_to_clipboard"
-        android:icon="@drawable/ic_content_copy_black_24dp"
-        android:title="@string/clipboard"
-        android:visible="false"
-        app:showAsAction="never" />
+<!--    <item-->
+<!--        android:id="@+id/action_fs_copy_to_clipboard"-->
+<!--        android:icon="@drawable/ic_content_copy_black_24dp"-->
+<!--        android:title="@string/clipboard"-->
+<!--        android:visible="false"-->
+<!--        app:showAsAction="never" />-->
     <item
         android:id="@+id/action_rename_selected_item"
         android:icon="@drawable/ic_gs_rename_black_24dp"
@@ -39,7 +39,7 @@
     <item
         android:id="@+id/action_info_selected_item"
         android:icon="@drawable/ic_info_black_24dp"
-        android:title="@string/details"
+        android:title="Details"
         android:visible="false"
         app:showAsAction="always" />
     <item
@@ -54,12 +54,12 @@
         android:title="@string/move"
         android:visible="false"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_copy_selected_items"
-        android:icon="@drawable/ic_baseline_file_copy_24"
-        android:title="@string/copy"
-        android:visible="false"
-        app:showAsAction="never" />
+<!--    <item-->
+<!--        android:id="@+id/action_copy_selected_items"-->
+<!--        android:icon="@drawable/ic_baseline_file_copy_24"-->
+<!--        android:title="@string/copy"-->
+<!--        android:visible="false"-->
+<!--        app:showAsAction="never" />-->
     <item
         android:id="@+id/action_create_shortcut"
         android:icon="@drawable/ic_widgets_black_24dp"
@@ -88,12 +88,12 @@
                 <item
                     android:id="@+id/action_sort_by_name"
                     android:icon="@drawable/ic_sort_by_alpha_black_24dp"
-                    android:title="@string/deleteme____1"
+                    android:title="Name"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/action_sort_by_date"
                     android:icon="@drawable/ic_date_range_black_24dp"
-                    android:title="@string/date"
+                    android:title="Date"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/action_sort_by_filesize"
@@ -128,16 +128,16 @@
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/search"
+        android:title="Search"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_check_all"
         android:icon="@drawable/ic_check_circle_24dp"
-        android:title="@string/select_all"
+        android:title="Select all"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_clear_selection"
         android:icon="@drawable/ic_baseline_clear_24"
-        android:title="@string/clear_selection"
+        android:title="Clear selection"
         app:showAsAction="never" />
 </menu>

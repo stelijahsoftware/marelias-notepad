@@ -90,8 +90,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="storage_permission_required">Storage permission required to read and write files</string>
     <string name="open_with">Open with</string>
     <string name="sort_by">Sort by</string>
-    <string name="date">Date</string>
-    <string name="deleteme____1">Name</string>
     <string name="size">Size</string>
     <string name="reverse_order">Reverse order</string>
     <string name="contribute">Contribute</string>
@@ -239,16 +237,13 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="help_translating_this_app">Translate this app into other languages</string>
     <string name="source_code">Source Code</string>
     <string name="project_license">Project License</string>
-    <string name="contribute_code_to_this_project_anybody_welcome">Contribute code to the project. Everybody is welcome to do so, including newcomers</string>
     <string name="project_team">Project Team</string>
     <string name="community">Community</string>
-    <string name="contributors_public_add_yourself_description">Show contributor info. Provide it to be shown here on an opt-in basis after contributing</string>
 
     <string name="descending">descending</string>
     <string name="ascending">ascending</string>
 
     <string name="disable_spelling_underline">Disable spelling underline</string>
-    <string name="spellcheck_keyboard_suggestion_stay_red_underline_vanishes">Keyboard suggestions stay, red underline vanishes</string>
     <string name="location">Location</string>
     <string name="text_lines">Text Lines</string>
     <string name="text_characters">Text Characters</string>
@@ -257,15 +252,12 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="recently_viewed_documents">Recently viewed documents</string>
     <string name="details">Details</string>
     <string name="calendar">Calendar</string>
-    <string name="warning_disallowed_sd_access">Warning! The app doesn\'t have the permission to save this file, all changes will be lost. There is no possibility to resolve the problem or to confirm something, Android denies any access here.</string>
     <string name="error_picture_selection">No picture selected, taken or saved.</string>
     <string name="gallery_picture">Gallery picture</string>
     <string name="camera_picture">Camera picture</string>
-    <string name="enable_undo_and_redo_be_patient">Enable undo and redo actions. Only suited for advanced use, be patient to not delete something important. Close and open editor to clear history.</string>
     <string name="description">Description</string>
     <string name="edit_picture">Edit picture</string>
     <string name="math">Math</string>
-    <string name="enter_yaml_front_matter_attributes_to_show">Display entered YAML Front Matter attributes on top at viewed documents. Enter keys separated by commas. Leave empty for none or use \'*\' for all. \n\nIf any attribute is defined in the document (i.e. title: \'Hello\') and there is {{ post.title }} in your document too it is replaced. You can make a custom Front Matter heading this way.</string>
     <string name="table_of_contents">Table of contents</string>
     <string name="miscellaneous">Miscellaneous</string>
 
@@ -274,18 +266,15 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="popular_documents">Popular documents</string>
     <string name="color">Color</string>
     <string name="basic_color_scheme">Basic color scheme</string>
-    <string name="background_foreground_color_in_editor_works_dark_light">Changes background and foreground color of the text editor. Adjusts to app theme so available in light and dark theme. Syntax highlighting colors remain the same.</string>
     <string name="preset">Preset</string>
     <string name="foreground">Foreground</string>
     <string name="background">Background</string>
-    <string name="set_foreground_or_background_color_hexcolor_also_possible">Set foreground or background color of text? Inserting hex color code is also possible.</string>
     <string name="type">Type</string>
     <string name="folder">Folder</string>
     <string name="folder_is_created_without_extension">- Folder is created without file extension</string>
     <string name="keep_existing_file">Files and folders are not overwritten</string>
     <string name="multiple_windows">Multiple windows</string>
     <string name="font">Font</string>
-    <string name="open_new_documents_always_in_new_window">Open documents always in separate windows. Switch using the \'recents\' key of your device.</string>
     <string name="enter_or_select_format">Enter or select format</string>
     <string name="pick_date">Pick date</string>
     <string name="pick_time">Pick time</string>
@@ -308,8 +297,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="appdata_private">AppData (private)</string>
     <string name="appdata_sdcard">AppData (SD Card)</string>
     <string name="internal_storage">Internal storage</string>
-    <string name="open_the_document_from_main_view">You can open the document from main view on the bottom, the file browser or the launcher. There is also a option to append text shared into Markor.</string>
-    <string name="notebook_is_the_home_of_your_files">Notebook is the folder that Markor loads in the file browser when the app is started. It is the home folder of your files.</string>
     <string name="navigationbar_color">Navigation bar color</string>
     <string name="black">Black</string>
     <string name="white">White</string>
@@ -348,7 +335,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="reading">Reading</string>
     <string name="read">Read</string>
     <string name="table">Table</string>
-    <string name="how_much_columns_press_table_button_long_to_start_table">How many columns? Press table button long to start a table (insert header), press short to add a row.</string>
     <string name="example_of_a_markdown_table">Example of a Markdown table</string>
     <string name="delete_lines">Delete lines</string>
     <string name="duplicate_lines">Duplicate lines</string>
@@ -386,7 +372,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="back">Back</string>
     <string name="expand_collapse">Expand / Collapse</string>
     <string name="essential">Essential</string>
-    <string name="append_human_readable_uuid_to_new_tasks">Append human readable UUID to new tasks</string>
     <string name="action_order">Action order</string>
     <string name="toggle_action_visibility">Toggle action visibility</string>
     <string name="load_default_settings">Load default settings</string>
@@ -449,6 +434,5 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="error_could_not_open_file">Error: Could not open file.</string>
     <string name="document_error_clip">Error encountered: Text copied to clipboard.</string>
     <string name="wont_save_min_length">Files with fewer than %d characters not saved automatically in order to prevent data loss.</string>
-    <string name="advanced_filtering_help"><![CDATA[<small><a href="https://www.github.com/gsantner/notepad2/discussions/1940">Advanced filtering syntax</a></small>]]></string>
     <string name="filter">Filter</string>
 </resources>
