@@ -67,7 +67,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         _viewPager = findViewById(R.id.main__view_pager_container);
         _fab = findViewById(R.id.fab_add_new_item);
         _fab.setOnClickListener(this::onClickFab);
-        _fab.setOnLongClickListener(this::onLongClickFab);
         _viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -295,28 +294,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
 //        _cu.setKeepScreenOn(this, _appSettings.isKeepScreenOn());
 
-    }
-
-    // Cycle between recent, favourite, and current
-    public boolean onLongClickFab(View view) {
-        if (_notebook != null) {
-            final File current = _notebook.getCurrentFolder();
-            final File dest;
-            if (GsFileBrowserListAdapter.VIRTUAL_STORAGE_RECENTS.equals(current)) {
-                dest = GsFileBrowserListAdapter.VIRTUAL_STORAGE_FAVOURITE;
-            } else if (GsFileBrowserListAdapter.VIRTUAL_STORAGE_FAVOURITE.equals(current)) {
-                if (_quickSwitchPrevFolder != null) {
-                    dest = _quickSwitchPrevFolder;
-                } else {
-                    dest = GsFileBrowserListAdapter.VIRTUAL_STORAGE_RECENTS;
-                }
-            } else {
-                _quickSwitchPrevFolder = current;
-                dest = GsFileBrowserListAdapter.VIRTUAL_STORAGE_FAVOURITE;
-            }
-            _notebook.getAdapter().setCurrentFolder(dest);
-        }
-        return true;
     }
 
     public void onClickFab(final View view) {
