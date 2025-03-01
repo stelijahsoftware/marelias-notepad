@@ -38,6 +38,8 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 
 - Add separate button for folders
+- pointer not visible inside highlights
+- when highlighting, move dedicated info button to expandable list
 
 [m] - add % + -- comments
 [m] - Fix theme when system dark more is enabled (some window colours are correct).
