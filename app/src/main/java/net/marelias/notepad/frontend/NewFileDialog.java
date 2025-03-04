@@ -192,9 +192,7 @@ public class NewFileDialog extends DialogFragment {
             // final FormatRegistry.Format fmt = formats.get(typeSpinner.getSelectedItemPosition());
 
             final String title = getTitle.callback();
-
-            final String ext = ".txt";
-            String fileName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ext);
+            String fileName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ".txt");
 
             // Get template string
             // -------------------------------------------------------------------------------------
@@ -329,4 +327,79 @@ public class NewFileDialog extends DialogFragment {
             }
         }
     }
+
+
+    public void createNewFile(File basedir, String title, String format, String template) {
+        final Activity activity = getActivity();
+        final AppSettings appSettings = ApplicationObject.settings();
+        final MarkorContextUtils cu = new MarkorContextUtils(getContext());
+
+        title = TextViewUtils.interpolateSnippet(format, title, "").trim();
+
+        String fileName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title + ".txt");
+        File file = new File(basedir, fileName);
+
+        // Get template string
+        final Pair<String, Integer> content = getTemplateContent(template, title);
+
+        final Document document = new Document(file);
+
+        final List<FormatRegistry.Format> formats = GsCollectionUtils.map(
+                NEW_FILE_FORMATS, t -> GsCollectionUtils.selectFirst(FormatRegistry.FORMATS, f -> f.format == t));
+
+        // These are done even if the file isn't created
+        final FormatRegistry.Format fmt = formats.get(0);
+        appSettings.setNewFileDialogLastUsedType(fmt.format);
+
+        if (!file.exists() || file.length() <= GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH) {
+            document.saveContent(activity, content.first, cu, true);
+
+            // We only make these changes if the file did not already exist
+            appSettings.setDocumentFormat(document.path, fmt.format);
+            appSettings.setLastEditPosition(document.path, content.second);
+            appSettings.setNewFileDialogLastUsedExtension(".txt");
+
+            callback(file);
+        } else if (file.canWrite()) {
+            callback(file);
+        } else {
+            Toast.makeText(activity, R.string.failed_to_create_backup, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void createNewFolder(File basedir, String title, String format) {
+        final MarkorContextUtils cu = new MarkorContextUtils(getContext());
+
+        title = TextViewUtils.interpolateSnippet(format, title, "").trim();
+
+        final String dirName = GsFileUtils.getFilteredFilenameWithoutDisallowedChars(title);
+        final File f = new File(basedir, dirName);
+
+        if (cu.isUnderStorageAccessFolder(getContext(), f, true)) {
+            DocumentFile dof = cu.getDocumentFile(getContext(), f, true);
+            if (dof != null && dof.exists()) {
+                callback(f);
+            }
+        } else if (f.isDirectory() || f.mkdirs()) {
+            callback(f);
+        }
+    }
+
+    public static void createNewFileCaller(File basedir, GsCallback.a1<File> callback, String title, String format, String template) {
+        NewFileDialog dialog = new NewFileDialog();
+        dialog.setCallback(callback);
+
+        dialog.createNewFile(basedir, title, format, template);
+    }
+
+    public static void createNewFolderCaller(File basedir, GsCallback.a1<File> callback, String title, String format) {
+        NewFileDialog dialog = new NewFileDialog();
+        dialog.setCallback(callback);
+
+        dialog.createNewFolder(basedir, title, format);
+    }
+
+
+
+
 }

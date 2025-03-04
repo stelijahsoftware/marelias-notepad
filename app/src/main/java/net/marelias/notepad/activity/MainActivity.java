@@ -320,7 +320,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             return;
         }
 
-        // TODO: Make this button create a note only (rename it later by triggering the rename dialog)
+        // This button creates a note only (rename it later by triggering the rename dialog)
         if (view.getId() == R.id.fab_add_new_item) {
             if (_cu.isUnderStorageAccessFolder(this, _notebook.getCurrentFolder(), true) && _cu.getStorageAccessFrameworkTreeUri(this) == null) {
                 _cu.showMountSdDialog(this);
@@ -331,11 +331,17 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                 return;
             }
 
-            NewFileDialog.newInstance(_notebook.getCurrentFolder(), true, this::newItemCallback)
-                    .show(getSupportFragmentManager(), NewFileDialog.FRAGMENT_TAG);
+            // Original file creation dialog:
+            // NewFileDialog.newInstance(_notebook.getCurrentFolder(), true, this::newItemCallback)
+            //         .show(getSupportFragmentManager(), NewFileDialog.FRAGMENT_TAG);
+
+            String title = "";
+            String format = "`yyyyMMdd_HHmmss`"; // "`yyyyMMdd_HHmmss` {{title}}";
+            final String template = ""; // "-----\nNote Title\n-----\n";
+            NewFileDialog.createNewFileCaller(_notebook.getCurrentFolder(), this::newItemCallback, title, format, template);
         }
 
-        // TODO: Make this button create a folder only (rename it later by triggering the rename dialog)
+        // This button create a folder only (rename it later by triggering the rename dialog)
         if (view.getId() == R.id.fab_add_new_item_top) {
             if (_cu.isUnderStorageAccessFolder(this, _notebook.getCurrentFolder(), true) && _cu.getStorageAccessFrameworkTreeUri(this) == null) {
                 _cu.showMountSdDialog(this);
@@ -346,9 +352,15 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                 return;
             }
 
-            NewFileDialog.newInstance(_notebook.getCurrentFolder(), true, this::newItemCallback)
-                    .show(getSupportFragmentManager(), NewFileDialog.FRAGMENT_TAG);
+            // Original file creation dialog:
+            // NewFileDialog.newInstance(_notebook.getCurrentFolder(), true, this::newItemCallback)
+            //         .show(getSupportFragmentManager(), NewFileDialog.FRAGMENT_TAG);
+
+            String title = "";
+            String format = "`yyyyMMdd_HHmmss`"; // "`yyyyMMdd_HHmmss` {{title}}";
+            NewFileDialog.createNewFolderCaller(_notebook.getCurrentFolder(), this::newItemCallback, title, format);
         }
+
     }
 
     private void newItemCallback(final File file) {
