@@ -9,16 +9,19 @@
 package net.marelias.notepad.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -31,13 +34,18 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.marelias.notepad.R;
+import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.frontend.NewFileDialog;
 import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.marelias.notepad.frontend.textview.TextViewUtils;
+import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.frontend.base.GsFragmentBase;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserFragment;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
+import net.marelias.opoc.util.GsContextUtils;
+import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -48,6 +56,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     private ViewPager2 _viewPager;
     private GsFileBrowserFragment _notebook;
     private FloatingActionButton _fab;
+    private FloatingActionButton _fab2;
 
     private MarkorContextUtils _cu;
     private File _quickSwitchPrevFolder = null;
@@ -65,8 +74,13 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         _cu = new MarkorContextUtils(this);
         setContentView(R.layout.main__activity);
         _viewPager = findViewById(R.id.main__view_pager_container);
+
         _fab = findViewById(R.id.fab_add_new_item);
+        _fab2 = findViewById(R.id.fab_add_new_item_top);
+
         _fab.setOnClickListener(this::onClickFab);
+        _fab2.setOnClickListener(this::onClickFab);
+
         _viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -306,7 +320,23 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             return;
         }
 
+        // TODO: Make this button create a note only (rename it later by triggering the rename dialog)
         if (view.getId() == R.id.fab_add_new_item) {
+            if (_cu.isUnderStorageAccessFolder(this, _notebook.getCurrentFolder(), true) && _cu.getStorageAccessFrameworkTreeUri(this) == null) {
+                _cu.showMountSdDialog(this);
+                return;
+            }
+
+            if (!_notebook.getAdapter().isCurrentFolderWriteable()) {
+                return;
+            }
+
+            NewFileDialog.newInstance(_notebook.getCurrentFolder(), true, this::newItemCallback)
+                    .show(getSupportFragmentManager(), NewFileDialog.FRAGMENT_TAG);
+        }
+
+        // TODO: Make this button create a folder only (rename it later by triggering the rename dialog)
+        if (view.getId() == R.id.fab_add_new_item_top) {
             if (_cu.isUnderStorageAccessFolder(this, _notebook.getCurrentFolder(), true) && _cu.getStorageAccessFrameworkTreeUri(this) == null) {
                 _cu.showMountSdDialog(this);
                 return;
@@ -388,9 +418,11 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
         if (pos == tabIdToPos(R.id.nav_notebook)) {
             _fab.show();
+            _fab2.show();
             _cu.showSoftKeyboard(this, false, _notebook.getView());
         } else {
             _fab.hide();
+            _fab2.hide();
             restoreDefaultToolbar();
         }
 
