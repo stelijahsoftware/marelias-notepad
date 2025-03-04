@@ -39,7 +39,6 @@ import net.marelias.notepad.R;
 import net.marelias.notepad.format.ActionButtonBase;
 import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.frontend.DraggableScrollbarScrollView;
-import net.marelias.notepad.frontend.FileInfoDialog;
 import net.marelias.notepad.frontend.MarkorDialogFactory;
 import net.marelias.notepad.frontend.textview.HighlightingEditor;
 import net.marelias.notepad.frontend.textview.TextViewUtils;
@@ -460,7 +459,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 setViewModeVisibility(!_isPreviewVisible);
                 return true;
             }
-
             case R.string.action_format_plaintext:
             case R.string.action_format_markdown: {
                 if (itemId != _document.getFormat()) {
@@ -475,19 +473,11 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 _format.getActions().onSearch();
                 return true;
             }
-
             case R.id.action_line_numbers: {
                 final boolean newState = !_hlEditor.getLineNumbersEnabled();
                 _appSettings.setDocumentLineNumbersEnabled(_document.path, newState);
                 _hlEditor.setLineNumbersEnabled(newState);
                 updateMenuToggleStates(0);
-                return true;
-            }
-
-            case R.id.action_info: {
-                if (saveDocument(false)) { // In order to have the correct info displayed
-                    FileInfoDialog.show(_document.file, getParentFragmentManager());
-                }
                 return true;
             }
             case R.id.action_set_font_size: {
