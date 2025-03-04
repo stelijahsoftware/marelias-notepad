@@ -480,9 +480,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return formats;
     }
 
-    public void saveTitleFormat(final String format, final int maxCount) {
-    }
-
     public List<String> jsonStringToList(final String jsonString) {
         final List<String> list = new ArrayList<>();
         try {

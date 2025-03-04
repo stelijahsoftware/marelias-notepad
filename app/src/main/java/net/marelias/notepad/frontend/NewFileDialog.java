@@ -215,10 +215,6 @@ public class NewFileDialog extends DialogFragment {
             final FormatRegistry.Format fmt = formats.get(0);
             appSettings.setNewFileDialogLastUsedType(fmt.format);
 
-            if (!titleFormat.isEmpty()) {
-                appSettings.saveTitleFormat(titleFormat, MAX_TITLE_FORMATS);
-            }
-
             if (!file.exists() || file.length() <= GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH) {
                 document.saveContent(activity, content.first, cu, true);
 
@@ -246,9 +242,6 @@ public class NewFileDialog extends DialogFragment {
             final File f = new File(basedir, dirName);
 
             final String titleFormat = formatEdit.getText().toString().trim();
-            if (!titleFormat.isEmpty()) {
-                appSettings.saveTitleFormat(titleFormat, MAX_TITLE_FORMATS);
-            }
 
             if (cu.isUnderStorageAccessFolder(getContext(), f, true)) {
                 DocumentFile dof = cu.getDocumentFile(getContext(), f, true);
