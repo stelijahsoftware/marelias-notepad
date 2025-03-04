@@ -200,7 +200,8 @@ public class NewFileDialog extends DialogFragment {
             // Get template string
             // -------------------------------------------------------------------------------------
             final String template;
-            template = "";
+            //template = "";
+            template = "-----\nNote Title\n-----\n"; // possible to enter a template here..
 
             final Pair<String, Integer> content = getTemplateContent(template, title);
             // -------------------------------------------------------------------------------------
