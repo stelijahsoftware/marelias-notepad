@@ -23,25 +23,21 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[H] - BIG: `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
-    - Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
-    - SEE THE DIALOG it shows you when you try to open an odt file.
-[H] - BIG: `Plus button` should not show dialog, instead auto add note (like snotepad)
-    - Rename title from pressing `note title` on opening.
-    - Add plus button to create folders from top menu
-[H] - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
-[H] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
-[H] - color symbols
-[h] - ability to pin notes to top
-[h] - add modificationDate_creationDate title to notes. E.g. `20250122-20241127 note.txt`. Whenever you modify the note, the first date gets updated. Note: This needs to make sure that no new note is created.
-[H] - Auto-delete empty notes on save + disable auto-save?
-[H] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-
-- Add separate button for folders
+- BIG: `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
+      Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
+      SEE THE DIALOG it shows you when you try to open an odt file.
+- Rename title from pressing `note title` on opening.
+- BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
+- Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
+- color symbols
+- ability to pin notes to top
+- add modificationDate_creationDate title to notes? E.g. `20250122-20241127 note.txt`. Whenever you modify the note, the first date gets updated.
+  Note: This needs to make sure that no new note is created.
+- Auto-delete empty notes on save + disable auto-save?
+- Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 - pointer not visible inside highlights
-- when highlighting, move dedicated info button to expandable list
 
-[m] - add % + -- comments
+[m] - add % -- comments
 [m] - Fix theme when system dark more is enabled (some window colours are correct).
 [M] - Put top bar on bottom for easier access to save button & rename..etc
 [M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
@@ -55,6 +51,9 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - when highlighting, move dedicated info button to expandable list (removed altogether)
+X - [h] BIG: `Plus button` should not show dialog, instead auto add note (like snotepad)
+X - Add plus button to create folders (Add separate button for folders)
 X - Remove all occurrences of: audio, epub, ascii, csv
 X - See todos from Snotepad.
 X - Fix: search when launched from inside a file (breaks file search)
