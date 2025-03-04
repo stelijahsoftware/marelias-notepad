@@ -172,7 +172,6 @@ public class NewFileDialog extends DialogFragment {
             return TextViewUtils.interpolateSnippet(format, title, "").trim();
         };
 
-        // elyahw merge conflict: existing:
         final GsCallback.s0 getTitle_folder = () -> {
             final String title = titleEdit.getText().toString().trim();
             String format = formatEdit.getText().toString().trim();
