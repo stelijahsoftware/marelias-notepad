@@ -120,11 +120,16 @@ public class WrRenameDialog extends DialogFragment {
         String file_name = file.getName();
         editText.setText(file_name);
 
+        // EL: Automatic selection of time
         int name_len = file_name.length();
         int name_from = 0;
         int name_to = name_len-4;
-        if (file_name.contains("_")) {
+        if (file_name.contains(" ")) {
+            name_from = file_name.indexOf(' ');
+        } else if (file_name.contains("_")) {
             name_from = file_name.indexOf('_');
+        } else if (file_name.contains("-")) {
+            name_from = file_name.indexOf('-');
         }
         editText.setSelection(name_from,name_to);
 
