@@ -29,7 +29,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - Rename title from pressing `note title` on opening.
 - BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
-- color symbols
 - ability to pin notes to top
 - add modificationDate_creationDate title to notes? E.g. `20250122-20241127 note.txt`. Whenever you modify the note, the first date gets updated.
   Note: This needs to make sure that no new note is created.
@@ -37,7 +36,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 - pointer not visible inside highlights
 
-[m] - add % -- comments
+[m] - add % -- comments + colour symbols?
 [m] - Fix theme when system dark more is enabled (some window colours are correct).
 [M] - Put top bar on bottom for easier access to save button & rename..etc
 [M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
