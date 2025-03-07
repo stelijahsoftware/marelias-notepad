@@ -21,7 +21,6 @@ import androidx.annotation.StringRes;
 
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.format.FormatRegistry;
-import net.marelias.notepad.format.markdown.MarkdownTextConverter;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
@@ -31,8 +30,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.attribute.BasicFileAttributes;
-
-//import other.de.stanetz.jpencconverter.JavaPasswordbasedCryption;
 
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue", "unused", "UnnecessaryLocalVariable"})
 public class Document implements Serializable {
@@ -85,13 +82,6 @@ public class Document implements Serializable {
         } catch (NullPointerException e) {
             return "";
         }
-    }
-
-    // Get a default file
-    public static Document getDefault(final Context context) {
-        final File notebook = ApplicationObject.settings().getNotebookDirectory();
-        final File random = new File(notebook, getFileNameWithTimestamp(true));
-        return new Document(random);
     }
 
     private void initModTimePref() {
@@ -193,17 +183,6 @@ public class Document implements Serializable {
             }
             content = result.first;
             _fileInfo = result.second;
-//        }
-
-//        if (MainActivity.IS_DEBUG_ENABLED) {
-//            AppSettings.appendDebugLog(
-//                    "\n\n\n--------------\nLoaded document, filepattern "
-//                            + title.replaceAll(".*\\.", "-")
-//                            + ", chars: " + content.length() + " bytes:" + content.getBytes().length
-//                            + "(" + GsFileUtils.getReadableFileSize(content.getBytes().length, true) +
-//                            "). Language >" + Locale.getDefault()
-//                            + "<, Language override >" + ApplicationObject.settings().getLanguage() + "<");
-//        }
 
         if (_fileInfo != null && _fileInfo.ioError) {
             // Force next load on failure
@@ -233,16 +212,8 @@ public class Document implements Serializable {
         }
     }
 
-    public boolean saveContent(final Activity context, final CharSequence content) {
-        return saveContent(context, content, null, false);
-    }
-
     @SuppressWarnings("ConstantConditions")
     public synchronized boolean saveContent(final Activity context, final CharSequence content, MarkorContextUtils cu, final boolean isManualSave) {
-//        if (isBinaryFileNoTextLoading())
-//        {
-//            return true;
-//        }
 
         if (!isManualSave && TextUtils.getTrimmedLength(content) < GsContextUtils.TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH) {
             return false;
@@ -261,11 +232,7 @@ public class Document implements Serializable {
 //        try {
             final char[] pw;
             final byte[] contentAsBytes;
-//            if (isEncrypted() && (pw = getPasswordWithWarning(context)) != null) {
-//                contentAsBytes = new JavaPasswordbasedCryption(Build.VERSION.SDK_INT, new SecureRandom()).encrypt(content.toString(), pw);
-//            } else {
-                contentAsBytes = content.toString().getBytes();
-//            }
+            contentAsBytes = content.toString().getBytes();
 
             cu = cu != null ? cu : new MarkorContextUtils(context);
             final boolean isContentResolverProxyFile = cu.isContentResolverProxyFile(file);
@@ -312,41 +279,5 @@ public class Document implements Serializable {
         }
 
         return success;
-    }
-
-    public static String getMaskedContent(final String text) {
-        final String httpToken = "§$§$§$§$";
-        return text
-                .replace("http://", httpToken)
-                .replace("https://", httpToken)
-                .replaceAll("\\w", "a")
-                .replace(httpToken, "https://");
-    }
-
-    public static String normalizeFilename(final String name) {
-        if (TextUtils.isEmpty(name.trim())) {
-            return getFileNameWithTimestamp(false);
-        } else {
-            return GsFileUtils.getFilteredFilenameWithoutDisallowedChars(name);
-        }
-    }
-
-    public static String filenameFromContent(final String content) {
-        if (!TextUtils.isEmpty(content)) {
-            final String contentL1 = content.split("\n")[0];
-            if (contentL1.length() < MAX_TITLE_EXTRACTION_LENGTH) {
-                return contentL1;
-            } else {
-                return contentL1.substring(0, MAX_TITLE_EXTRACTION_LENGTH);
-            }
-        } else {
-            return getFileNameWithTimestamp(false);
-        }
-    }
-
-    // Convenient wrapper
-    private static String getFileNameWithTimestamp(final boolean includeExt) {
-        final String ext = includeExt ? MarkdownTextConverter.EXT_MARKDOWN__TXT : "";
-        return GsFileUtils.getFilenameWithTimestamp("", "", ext);
     }
 }

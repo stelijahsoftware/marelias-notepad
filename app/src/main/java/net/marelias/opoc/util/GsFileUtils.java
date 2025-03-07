@@ -68,7 +68,6 @@ import java.util.zip.CRC32;
 public class GsFileUtils {
     @SuppressLint("ConstantLocale")
     public final static Locale INITIAL_LOCALE = Locale.getDefault();
-    public final static SimpleDateFormat DATEFORMAT_IMG = new SimpleDateFormat("yyyyMMdd-HHmmss", INITIAL_LOCALE); //20190511-230845
 
     // Used on methods like copyFile(src, dst)
     private final static int BUFFER_SIZE = 4096;
@@ -715,25 +714,6 @@ public class GsFileUtils {
             str = str.replace(String.valueOf(disallowed), "");
         }
         return str.trim();
-    }
-
-    /**
-     * Generate a filename based off current datetime in filename (year, month, day, hour, minute, second)
-     * Examples: Screenshot_20210208-184301_Trebuchet.png IMG_20190511-230845.jpg
-     *
-     * @param A0prefixA1postfixA2ext All arguments are optional and default values are taken for null
-     *                               [0] = Prefix [Screenshot/IMG]
-     *                               [1] = Postfix [Trebuchet]
-     *                               [2] = File extensions [jpg/png/txt]
-     * @return Filename
-     */
-    public static String getFilenameWithTimestamp(final String... A0prefixA1postfixA2ext) {
-        final String prefix = (((A0prefixA1postfixA2ext != null && A0prefixA1postfixA2ext.length > 0 && !TextUtils.isEmpty(A0prefixA1postfixA2ext[0])) ? A0prefixA1postfixA2ext[0] : "Screenshot") + "_").trim().replaceFirst("^_$", "");
-        final String postfix = ("_" + ((A0prefixA1postfixA2ext != null && A0prefixA1postfixA2ext.length > 1 && !TextUtils.isEmpty(A0prefixA1postfixA2ext[1])) ? A0prefixA1postfixA2ext[1] : "")).trim().replaceFirst("^_$", "");
-        final String ext = (A0prefixA1postfixA2ext != null && A0prefixA1postfixA2ext.length > 2 && !TextUtils.isEmpty(A0prefixA1postfixA2ext[2])) ? A0prefixA1postfixA2ext[2] : "jpg";
-        String filename = String.format("%s%s%s.%s", prefix.trim(), DATEFORMAT_IMG.format(new Date()), postfix.trim(), ext.toLowerCase().replace(".", "").replace("jpeg", "jpg"));
-        filename = getFilteredFilenameWithoutDisallowedChars(filename);
-        return filename;
     }
 
     public static String getPrefix(final String name) {
