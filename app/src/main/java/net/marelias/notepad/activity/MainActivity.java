@@ -336,7 +336,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             //         .show(getSupportFragmentManager(), NewFileDialog.FRAGMENT_TAG);
 
             String title = "";
-            String format = "`yyyyMMdd_HHmmss`"; // "`yyyyMMdd_HHmmss` {{title}}";
+            String format = "`yyyyMMdd HHmmss`"; // "`yyyyMMdd_HHmmss` {{title}}";
             final String template = ""; // "-----\nNote Title\n-----\n";
             NewFileDialog.createNewFileCaller(_notebook.getCurrentFolder(), this::newItemCallback, title, format, template);
         }
@@ -357,7 +357,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
             //         .show(getSupportFragmentManager(), NewFileDialog.FRAGMENT_TAG);
 
             String title = "";
-            String format = "`yyyyMMdd_HHmmss`"; // "`yyyyMMdd_HHmmss` {{title}}";
+            String format = "`yyyyMMdd HHmmss`"; // "`yyyyMMdd_HHmmss` {{title}}";
             NewFileDialog.createNewFolderCaller(_notebook.getCurrentFolder(), this::newItemCallback, title, format);
         }
 

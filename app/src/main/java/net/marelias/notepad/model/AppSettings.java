@@ -474,7 +474,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         formats.addAll(Arrays.asList(
             "`yyyyMMdd` {{title}}",
             "`yyyy-MM-dd` {{title}}",
-            "`yyyyMMdd_HHmmss` {{title}}",
+            "`yyyyMMdd HHmmss` {{title}}",
             "{{title}}"
         ));
         return formats;
