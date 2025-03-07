@@ -455,10 +455,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 // touch parent (elyahw)
                 return true;
             }
-            case R.id.action_preview_edit_toggle: {
-                setViewModeVisibility(!_isPreviewVisible);
-                return true;
-            }
+//            case R.id.action_preview_edit_toggle: {
+//                setViewModeVisibility(!_isPreviewVisible);
+//                return true;
+//            }
             case R.string.action_format_plaintext:
             case R.string.action_format_markdown: {
                 if (itemId != _document.getFormat()) {

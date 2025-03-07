@@ -24,23 +24,25 @@
         android:title="@string/redo"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/action_preview_edit_toggle"
-        android:icon="@drawable/ic_visibility_black_24dp"
-        android:title="@string/view"
-        android:visible="false"
-        app:showAsAction="never" />
+<!--    <item-->
+<!--        android:id="@+id/action_preview_edit_toggle"-->
+<!--        android:icon="@drawable/ic_visibility_black_24dp"-->
+<!--        android:title="@string/view"-->
+<!--        android:visible="false"-->
+<!--        app:showAsAction="never" />-->
 
     <item
-        android:id="@+id/action_save"
-        android:icon="@drawable/ic_save_black_24dp"
-        android:title="@string/save"
+        android:id="@+id/action_line_numbers"
+        android:checkable="true"
+        android:icon="@drawable/ic_line_numbers_24dp"
+        android:title="@string/line_numbers"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/search"
+        android:id="@+id/action_set_font_size"
+        android:checkable="false"
+        android:icon="@drawable/ic_format_size_black_24dp"
+        android:title="@string/font_size"
         app:showAsAction="always" />
 
     <item
@@ -51,17 +53,15 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_line_numbers"
-        android:checkable="true"
-        android:icon="@drawable/ic_line_numbers_24dp"
-        android:title="@string/line_numbers"
-        app:showAsAction="never" />
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="@string/search"
+        app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_set_font_size"
-        android:checkable="false"
-        android:icon="@drawable/ic_format_size_black_24dp"
-        android:title="@string/font_size"
-        app:showAsAction="never" />
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_save_black_24dp"
+        android:title="@string/save"
+        app:showAsAction="always" />
 
 </menu>

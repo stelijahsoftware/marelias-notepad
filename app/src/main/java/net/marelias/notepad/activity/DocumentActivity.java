@@ -217,12 +217,13 @@ public class DocumentActivity extends MarkorBaseActivity {
 
                 if (event.getAction() == MotionEvent.ACTION_DOWN && event.getY() > (_toolbar.getBottom() + _cu.convertDpToPx(this, 8)) & event.getY() < (activityVisibleSize.bottom - _cu.convertDpToPx(this, 52))) {
                     point.set(event.getX(), event.getY(), 0, 0);
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    point.set(point.left, point.top, event.getX(), event.getY());
-                    if (Math.abs(point.width()) > SWIPE_MIN_DX && Math.abs(point.height()) < SWIPE_MAX_DY) {
-                        getCurrentVisibleFragment().getFragmentMenu().performIdentifierAction(R.id.action_preview_edit_toggle, 0);
-                    }
                 }
+//                else if (event.getAction() == MotionEvent.ACTION_UP) {
+//                    point.set(point.left, point.top, event.getX(), event.getY());
+//                    if (Math.abs(point.width()) > SWIPE_MIN_DX && Math.abs(point.height()) < SWIPE_MAX_DY) {
+//                        getCurrentVisibleFragment().getFragmentMenu().performIdentifierAction(R.id.action_preview_edit_toggle, 0);
+//                    }
+//                }
             } catch (Exception ignored) {
                 // No fancy exception handling :P. Nothing to see here.
             }
