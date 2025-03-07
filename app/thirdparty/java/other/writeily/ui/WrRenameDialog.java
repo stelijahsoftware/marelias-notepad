@@ -131,7 +131,10 @@ public class WrRenameDialog extends DialogFragment {
         } else if (file_name.contains("-")) {
             name_from = file_name.indexOf('-');
         }
-        editText.setSelection(name_from+1,name_to);
+        if (file_name.length() > 12 && file_name.charAt(8) == ' ') {
+            name_from = name_from+1;
+        }
+        editText.setSelection(name_from,name_to);
 
         dialogBuilder.setPositiveButton(getString(android.R.string.ok), null);
         dialogBuilder.setNegativeButton(getString(R.string.cancel), null);
