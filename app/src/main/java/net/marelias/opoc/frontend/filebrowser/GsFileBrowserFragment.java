@@ -246,7 +246,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         // Update subtitle with count
         if (_toolbar != null) {
             if (_filesystemViewerAdapter.areItemsSelected()) {
-                _toolbar.setSubtitle(String.format("(%d / %d)", selCount, totalCount));
+                _toolbar.setTitle(String.format("(%d / %d)", selCount, totalCount));
             } else {
                 _toolbar.setSubtitle("");
             }
