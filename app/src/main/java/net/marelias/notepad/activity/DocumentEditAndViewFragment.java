@@ -623,10 +623,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 //ppath = ff.getAbsolutePath();
 
                 // no logging, just print to terminal:
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Touching parent folder.........................................\n");
-                System.out.println(parentFolder.getPath()); // "/storage/emulated/0/Documents/mar-elias notepad/aaa/abcd/fda"
-                System.out.println(_appSettings.getNotebookDirectory().getAbsolutePath()); // "/storage/emulated/0/Documents/mar-elias notepad"
-                System.out.println(_appSettings.getNotebookDirectory().getPath()); // same
+                //System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Touching parent folder.........................................\n");
+                //System.out.println(parentFolder.getPath()); // "/storage/emulated/0/Documents/mar-elias notepad/aaa/abcd/fda"
+                //System.out.println(_appSettings.getNotebookDirectory().getAbsolutePath()); // "/storage/emulated/0/Documents/mar-elias notepad"
+                //System.out.println(_appSettings.getNotebookDirectory().getPath()); // same
 
                 long currentTime = System.currentTimeMillis();
 
