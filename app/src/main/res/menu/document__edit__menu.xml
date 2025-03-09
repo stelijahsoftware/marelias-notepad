@@ -52,9 +52,16 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/paste_text"
+        android:icon="@drawable/ic_insert_drive_file_black_24dp"
+        android:title="Paste"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_save"
         android:icon="@drawable/ic_save_black_24dp"
         android:title="@string/save"
         app:showAsAction="always" />
+
 
 </menu>

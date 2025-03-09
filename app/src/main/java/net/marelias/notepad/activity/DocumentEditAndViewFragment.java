@@ -31,6 +31,8 @@ import android.webkit.WebView;
 import android.widget.HorizontalScrollView;
 import android.widget.SearchView;
 import android.widget.Toast;
+import android.content.ClipboardManager;
+import android.content.ClipData;
 
 import androidx.annotation.NonNull;
 
@@ -298,6 +300,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _redoMenuItem = menu.findItem(R.id.action_redo).setVisible(isText && !_isPreviewVisible);
         _saveMenuItem = menu.findItem(R.id.action_save).setVisible(isText && !_isPreviewVisible);
 
+        menu.findItem(R.id.paste_text).setVisible(isText && !_isPreviewVisible);
+
         // Edit / Preview switch
         menu.findItem(R.id.action_search).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_search_view).setVisible(isText && _isPreviewVisible);
@@ -427,6 +431,29 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         return false;
     }
 
+    private void pasteFromClipboard() {
+        // Get the ClipboardManager
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard == null || !clipboard.hasPrimaryClip()) {
+            // No clipboard data
+            return;
+        }
+
+        // Get the text from the clipboard
+        ClipData clip = clipboard.getPrimaryClip();
+        if (clip != null && clip.getItemCount() > 0) {
+            ClipData.Item item = clip.getItemAt(0);
+            String pasteText = item.getText().toString();
+
+            // Insert the text into the EditText
+            if (pasteText != null && _hlEditor != null) {
+                int start = Math.max(_hlEditor.getSelectionStart(), 0);
+                int end = Math.max(_hlEditor.getSelectionEnd(), 0);
+                _hlEditor.getText().replace(Math.min(start, end), Math.max(start, end), pasteText);
+            }
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         final Activity activity = getActivity();
@@ -455,6 +482,11 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 // touch parent (elyahw)
                 return true;
             }
+            case R.id.paste_text: {
+                pasteFromClipboard();
+                return true;
+            }
+
 //            case R.id.action_preview_edit_toggle: {
 //                setViewModeVisibility(!_isPreviewVisible);
 //                return true;
