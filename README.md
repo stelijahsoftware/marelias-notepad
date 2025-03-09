@@ -50,6 +50,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - Added a button to paste text
 X - when highlighting, move dedicated info button to expandable list (removed altogether)
 X - [h] BIG: `Plus button` should not show dialog, instead auto add note (like snotepad)
 X - Add plus button to create folders (Add separate button for folders)
