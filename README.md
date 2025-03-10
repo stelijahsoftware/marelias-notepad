@@ -23,19 +23,17 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-- BIG: `Open with dialog` for odt, doc, docx, odtf and pdf (see implementation in original app).
-      Open files not ending in .txt/md in respective apps (feature already exists in original app, transfer it)
-      SEE THE DIALOG it shows you when you try to open an odt file.
-- Rename title from pressing `note title` on opening.
-- BIG: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
-- Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
-- ability to pin notes to top
-- add modificationDate_creationDate title to notes? E.g. `20250122-20241127 note.txt`. Whenever you modify the note, the first date gets updated.
-  Note: This needs to make sure that no new note is created.
-- Auto-delete empty notes on save + disable auto-save?
-- Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-- pointer not visible inside highlights
+[h] - delete empty note on back button?
+[h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
+[h] - Rename title from pressing `note title` on opening.
+[h] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
+[h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
 
+[m] - ability to pin notes to top
+[m] - add modifDate_creatDate title to notes?Eg`20250122-20241127 note.txt`.Whenever you modify the note,the first date gets updated.Needs to make sure that no new note is created.
+[m] - Auto-delete empty notes on save + disable auto-save?
+[m] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[m] - pointer not visible inside highlights
 [m] - add % -- comments + colour symbols?
 [m] - Fix theme when system dark more is enabled (some window colours are correct).
 [M] - Put top bar on bottom for easier access to save button & rename..etc
@@ -50,6 +48,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - Make font color black
 X - Added a button to paste text
 X - when highlighting, move dedicated info button to expandable list (removed altogether)
 X - [h] BIG: `Plus button` should not show dialog, instead auto add note (like snotepad)
