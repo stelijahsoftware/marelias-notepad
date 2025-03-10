@@ -309,9 +309,11 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return true;//getBool(R.string.pref_key__editor_history_enabled3, true);
     }
 
+    // Font color is defined here:
     public int getEditorForegroundColor() {
         final boolean night = GsContextUtils.instance.isDarkModeEnabled(_context);
-        return getInt(night ? R.string.pref_key__basic_color_scheme__fg_dark : R.string.pref_key__basic_color_scheme__fg_light, rcolor(R.color.primary_text));
+        return rcolor(R.color.primary_text);
+        //return getInt(night ? R.string.pref_key__basic_color_scheme__fg_dark : R.string.pref_key__basic_color_scheme__fg_light, rcolor(R.color.primary_text));
     }
 
     public void setEditorBasicColor(boolean forDarkMode, @ColorRes int fgColor, @ColorRes int bgColor) {
