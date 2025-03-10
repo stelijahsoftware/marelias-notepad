@@ -36,13 +36,13 @@
 
     <color name="light__background">#EEEEEE</color>
     <color name="light__background_2">#F9F9F9</color>
-    <color name="light__primary_text">#212121</color>
+    <color name="light__primary_text">#000000</color>
     <color name="light__secondary_text">#757575</color>
     <color name="light__file">#757575</color>
 
     <color name="light__folder">#639BCC</color>
 
-    <color name="dark__background">#222222</color>
+    <color name="dark__background">#000000</color>
     <color name="dark__background_2">#424242</color>
     <color name="dark__primary_text">@color/white</color>
     <color name="dark__secondary_text">#9E9E9E</color>
@@ -54,7 +54,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#000000</color>
     <color name="grey">#FF505050</color>
-    <color name="dark_grey">#FF212121</color>
+    <color name="dark_grey">#FF000000</color>
     <color name="light_grey">#FFC0C0C0</color>
     <color name="lighter_grey">#FFE0E0E0</color>
 
@@ -68,7 +68,7 @@
     <color name="green_dark">#00FF00</color>
     <color name="green_light">#00BB00</color>
 
-    <color name="sepia_fg_light__bg_dark">#282828</color>
+    <color name="sepia_fg_light__bg_dark">#000000</color>
     <color name="sepia_bg_light__fg_dark">#EBDBB2</color>
 
     <color name="nord_bg_dark">#2E3440</color>
