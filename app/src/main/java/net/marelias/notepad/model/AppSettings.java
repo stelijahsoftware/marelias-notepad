@@ -9,9 +9,7 @@ package net.marelias.notepad.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
 import android.os.Environment;
-import android.util.Pair;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
@@ -26,15 +24,9 @@ import net.marelias.opoc.util.GsCollectionUtils;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
 
-import org.json.JSONArray;
-
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -254,34 +246,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(PREF_PREFIX_HIGHLIGHT_STATE + path, lengthOk && isHighlightingEnabled());
     }
 
-    private List<String> getPopularDocumentsSorted() {
-        List<String> popular = getRecentDocuments();
-        Collections.sort(popular, (o1, o2) -> Integer.compare(getInt(o1, 0, _prefCache), getInt(o2, 0, _prefCache)));
-        return popular;
-    }
-
-    public void setPopularDocuments(List<String> v) {
-        limitListTo(v, 20, true);
-        setStringList(R.string.pref_key__popular_documents, v, _prefApp);
-    }
-
-    public void setRecentDocuments(List<String> v) {
-        limitListTo(v, 20, true);
-        setStringList(R.string.pref_key__recent_documents, v, _prefApp);
-        setPopularDocuments(getPopularDocumentsSorted());
-    }
-
-    public ArrayList<String> getRecentDocuments() {
-        final ArrayList<String> list = getStringList(R.string.pref_key__recent_documents);
-        for (int i = 0; i < list.size(); i++) {
-            if (!new File(list.get(i)).isFile()) {
-                list.remove(i);
-                i--;
-            }
-        }
-        return list;
-    }
-
     public static Set<File> getFileSet(final List<String> paths) {
         final Set<File> set = new LinkedHashSet<>();
         for (final String fp : paths) {
@@ -392,21 +356,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getNotebookDirectory();
     }
 
-    public boolean listFileInRecents(File file) {
-        return getBool(Document.getPath(file) + "_list_in_recents", true);
-    }
-
-    public void setListFileInRecents(File file, boolean value) {
-        setBool(Document.getPath(file) + "_list_in_recents", value);
-
-        if (!value) {
-            ArrayList<String> recent = getRecentDocuments();
-            if (recent.contains(Document.getPath(file))) {
-                recent.remove(Document.getPath(file));
-                setRecentDocuments(recent);
-            }
-        }
-    }
 
     public boolean isEditorLineBreakingEnabled() {
         return getBool(R.string.pref_key__editor_enable_line_breaking, true);
@@ -450,48 +399,4 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(k, false);
     }
 
-    public List<Pair<String, String>> getBuiltinTemplates() {
-        final List<Pair<String, String>> templates = new ArrayList<>();
-        final String templateAssetDir = "templates";
-        try {
-            // Assuming templates are stored in res/raw directory
-            final AssetManager am = _context.getAssets();
-            final String[] names = am.list("templates");
-            for (final String name : names) {
-                try (final InputStream is = am.open(templateAssetDir + File.separator + name)) {
-                    final String contents = GsFileUtils.readInputStreamFast(is, null).first;
-                    templates.add(Pair.create(name, contents));
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return templates;
-    }
-
-    public Set<String> getTitleFormats() {
-        final String js = getString(R.string.pref_key__title_format_list, "[]");
-        final Set<String> formats = new LinkedHashSet<>(jsonStringToList(js));
-        formats.addAll(Arrays.asList(
-            "`yyyyMMdd` {{title}}",
-            "`yyyy-MM-dd` {{title}}",
-            "`yyyyMMdd HHmmss` {{title}}",
-            "{{title}}"
-        ));
-        return formats;
-    }
-
-    public List<String> jsonStringToList(final String jsonString) {
-        final List<String> list = new ArrayList<>();
-        try {
-            final JSONArray jsonArray = new JSONArray(jsonString);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                list.add(jsonArray.getString(i));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
 }

@@ -90,11 +90,6 @@ public final class TextViewUtils {
         return -1;
     }
 
-
-    public static int getFirstNonWhitespace(final CharSequence s) {
-        return getNextNonWhitespace(s, 0);
-    }
-
     public static int getNextNonWhitespace(final CharSequence s, final int start) {
         if (s != null && start >= 0) {
             final int length = s.length();
@@ -196,10 +191,6 @@ public final class TextViewUtils {
         return offsets;
     }
 
-    public static void setSelectionFromOffsets(final TextView text, final int[][] offsets) {
-        setSelectionFromOffsets((Spannable) text.getText(), offsets);
-    }
-
     public static void setSelectionFromOffsets(final Spannable text, final int[][] offsets) {
         if (offsets != null && offsets.length >= 2 &&
             offsets[0] != null && offsets[0].length == 2 &&
@@ -252,11 +243,6 @@ public final class TextViewUtils {
             }
         }
         return i;
-    }
-
-
-    public static void selectLines(final EditText edit, final Integer... positions) {
-        selectLines(edit, Arrays.asList(positions));
     }
 
     /**

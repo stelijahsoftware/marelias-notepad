@@ -69,13 +69,6 @@ public class MarkorContextUtils extends GsContextUtils {
         return thisp();
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//    @SuppressWarnings("deprecation")
-//    public PrintJob printOrCreatePdfFromWebview(final WebView webview, Document document, boolean... landscape) {
-//        String jobName = String.format("%s (%s)", document.title, webview.getContext().getString(R.string.app_name_real));
-//        return super.print(webview, jobName, landscape);
-//    }
-
     public <T extends GsContextUtils> T showMountSdDialog(final Activity activity) {
         showMountSdDialog(activity, R.string.mount_storage, R.string.application_needs_access_to_storage_mount_it, 0);
         return thisp();

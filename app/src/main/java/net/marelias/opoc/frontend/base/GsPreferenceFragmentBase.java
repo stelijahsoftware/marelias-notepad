@@ -212,15 +212,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
         return 0;
     }
 
-    /**
-     * Try to fetch string resource id from key
-     * This only works if the key is only defined once and value=key
-     */
-    protected int keyToStringResId(String keyAsString) {
-        return _cu.getResId(getContext(), GsContextUtils.ResType.STRING, keyAsString);
-    }
-
-
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -259,7 +250,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
             }
         }
     }
-
 
     @Override
     public void onResume() {
@@ -335,21 +325,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
         updatePreference(keyResId, null, null, summary, null);
     }
 
-    /**
-     * Finds a {@link Preference} based on its key res id.
-     *
-     * @param key The key of the preference to retrieve.
-     * @return The {@link DialogPreference} with the key, or null.
-     * @see androidx.preference.PreferenceGroup#findPreference(CharSequence)
-     */
-    public DialogPreference setDialogMessage(@StringRes int key, CharSequence message) {
-        Preference p = findPreference(key);
-        if (p instanceof DialogPreference) {
-            ((DialogPreference) p).setDialogMessage(message);
-            return (DialogPreference) p;
-        }
-        return null;
-    }
 
     /**
      * Finds a {@link Preference} based on its key res id.
@@ -360,21 +335,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
      */
     public Preference findPreference(@StringRes int key) {
         return isAdded() ? findPreference(getString(key)) : null;
-    }
-
-    /**
-     * Finds a {@link Preference} based on its key res id.
-     *
-     * @param key The key of the preference to retrieve.
-     * @return The {@link Preference} with the key, or null.
-     * @see androidx.preference.PreferenceGroup#findPreference(CharSequence)
-     */
-    public Preference setPreferenceVisible(@StringRes int key, boolean visible) {
-        Preference pref;
-        if ((pref = findPreference(key)) != null) {
-            pref.setVisible(visible);
-        }
-        return pref;
     }
 
     @Nullable
@@ -400,17 +360,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
             }
         }
         return pref;
-    }
-
-    protected void removePreference(@Nullable Preference preference) {
-        if (preference == null) {
-            return;
-        }
-        PreferenceGroup parent = getPreferenceParent(getPreferenceScreen(), preference);
-        if (parent == null) {
-            return;
-        }
-        parent.removePreference(preference);
     }
 
     public boolean canGoBack() {
@@ -454,18 +403,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
     /**
      * Is key equal
      *
-     * @param pref     A preference
-     * @param resIdKey one or more string resource ids
-     * @return if equals any of the resource ids
-     */
-    public boolean eq(final @Nullable Preference pref, final @StringRes int... resIdKey) {
-        return pref != null && eq(pref.getKey(), resIdKey);
-    }
-
-
-    /**
-     * Is key equal
-     *
      * @param key      the key
      * @param resIdKey one or more string resource ids
      * @return if equals any of the resource ids
@@ -499,27 +436,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
             startActivity(intent);
         }
     }
-
-    /**
-     * Append a pref to given {@code target}. If target is null, the current screen is taken
-     * The pref icon is tint according to color
-     *
-     * @param pref   Preference to add
-     * @param target The target to add the pref to, or null for current screen
-     * @return true if successfully added
-     */
-    protected boolean appendPreference(Preference pref, @Nullable PreferenceGroup target) {
-        if (target == null) {
-            if ((target = getPreferenceScreen()) == null) {
-                return false;
-            }
-        }
-        if (getIconTintColor() != null && pref.getIcon() != null && isAllowedToTint(pref)) {
-            pref.setIcon(_cu.tintDrawable(pref.getIcon(), getIconTintColor()));
-        }
-        return target.addPreference(pref);
-    }
-
 
     //###############################
     //### Divider
@@ -577,10 +493,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
         private GsCallback.b1<Integer> _isCategoryAtFlatpositionCallback;
         private final Paint _paint;
         private int _heightDp;
-
-        public DividerDecoration(Context context, @Nullable GsCallback.b1<Integer> isCategoryAtFlatpos) {
-            this(context, null, 1f, isCategoryAtFlatpos);
-        }
 
         // b8b8b8          = default divider color
         // d1d1d1 / 3d3d3d = color for light / dark mode
