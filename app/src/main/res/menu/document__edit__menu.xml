@@ -53,7 +53,7 @@
 
     <item
         android:id="@+id/paste_text"
-        android:icon="@drawable/ic_insert_drive_file_black_24dp"
+        android:icon="@drawable/paste_simple"
         android:title="Paste"
         app:showAsAction="always" />
 
