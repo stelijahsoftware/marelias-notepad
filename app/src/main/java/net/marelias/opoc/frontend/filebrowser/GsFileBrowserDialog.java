@@ -140,9 +140,9 @@ public class GsFileBrowserDialog extends DialogFragment implements GsFileBrowser
         _buttonOk.setTextColor(rcolor(_dopt.accentColor));
         _buttonOk.setText(_dopt.okButtonText);
 
-        _toolBar.setTitleTextColor(rcolor(_dopt.titleTextColor));
+        _toolBar.setTitleTextColor(ContextCompat.getColor(getContext(), R.color.dark__primary_text)); // <<<<<<<<<<<<<<<<<<<<< COLOR
         _toolBar.setTitle(_dopt.titleText);
-        _toolBar.setSubtitleTextColor(rcolor(_dopt.secondaryTextColor));
+        _toolBar.setSubtitleTextColor(ContextCompat.getColor(getContext(), R.color.dark__primary_text));
         setSubtitleApprearance(_toolBar);
 
         _homeButton.setImageResource(_dopt.homeButtonImage);
