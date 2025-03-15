@@ -26,7 +26,7 @@
     <color name="primary">#1E2135</color>
     <color name="primary_dark">#161828</color>
     <color name="primary_light">#CED9DD</color>
-    <color name="accent">#F04B4B</color>
+    <color name="accent">#F04B4B</color> <!-- COLOR OF FILE AND FOLDER ADDING BUTTONS -->
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
 
