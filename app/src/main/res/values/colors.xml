@@ -77,5 +77,5 @@
     <color name="nord_fg_light">#2E3440</color>
 
     <color name="link">#FF1EA3FD</color>;
-    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color> <!-- AARRGGBB -->
 </resources>
