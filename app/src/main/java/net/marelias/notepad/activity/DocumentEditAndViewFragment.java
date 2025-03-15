@@ -512,13 +512,14 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 updateMenuToggleStates(0);
                 return true;
             }
-            case R.id.action_set_font_size: {
-                MarkorDialogFactory.showFontSizeDialog(activity, _appSettings.getDocumentFontSize(_document.path), (newSize) -> {
-                    _hlEditor.setTextSize(TypedValue.COMPLEX_UNIT_SP, (float) newSize);
-                    _appSettings.setDocumentFontSize(_document.path, newSize);
-                });
-                return true;
-            }
+            // Create custom font size for a specific file
+//            case R.id.action_set_font_size: {
+//                MarkorDialogFactory.showFontSizeDialog(activity, _appSettings.getDocumentFontSize(_document.path), (newSize) -> {
+//                    _hlEditor.setTextSize(TypedValue.COMPLEX_UNIT_SP, (float) newSize);
+//                    _appSettings.setDocumentFontSize(_document.path, newSize);
+//                });
+//                return true;
+//            }
 
             default: {
                 return super.onOptionsItemSelected(item);
