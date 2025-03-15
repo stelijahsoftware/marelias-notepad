@@ -243,6 +243,11 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             _fragmentMenu.findItem(R.id.action_clear_selection).setVisible(_filesystemViewerAdapter.areItemsSelected());
         }
 
+//        if (_toolbar != null) {
+//            _toolbar.setTitle(String.format("%s %d", _toolbar.getTitle(), totalCount));
+//        }
+
+        // TODO:
         // Update subtitle with count
         if (_toolbar != null) {
             if (_filesystemViewerAdapter.areItemsSelected()) {
