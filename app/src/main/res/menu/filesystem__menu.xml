@@ -44,14 +44,14 @@
         android:icon="@drawable/ic_widgets_black_24dp"
         android:title="@string/create_shortcut"
         android:visible="false"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_share_files"
         android:icon="@drawable/ic_share_black_24dp"
         android:title="@string/share"
         android:visible="false"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_sort"
@@ -114,7 +114,7 @@
         android:id="@+id/action_check_all"
         android:icon="@drawable/ic_check_circle_24dp"
         android:title="Select all"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_rename_selected_item"
