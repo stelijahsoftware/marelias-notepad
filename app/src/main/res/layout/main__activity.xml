@@ -65,7 +65,7 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="Create file"
         android:src="@drawable/ic_add_white_24dp"
-        app:maxImageSize="48dp"/>
+        app:maxImageSize="58dp"/>
         <!-- app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton" -->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
