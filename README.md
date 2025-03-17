@@ -1,5 +1,5 @@
 # Mar-Elias Notepad
-A Simple noteapd with highlights.
+A Simple noteapd with highlights (<a href="https://writing-tools.github.io/marelias-notepad/">website</a>)
 
 [<img src="icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=net.marelias.notepad)
 
