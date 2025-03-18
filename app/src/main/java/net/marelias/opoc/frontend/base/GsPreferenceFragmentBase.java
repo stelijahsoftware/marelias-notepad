@@ -98,8 +98,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
     @XmlRes
     public abstract int getPreferenceResourceForInflation();
 
-    public abstract String getFragmentTag();
-
     protected abstract AS getAppSettings(Context context);
 
     //

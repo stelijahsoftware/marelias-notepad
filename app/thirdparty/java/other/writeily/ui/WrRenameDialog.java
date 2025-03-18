@@ -37,11 +37,6 @@ public class WrRenameDialog extends DialogFragment {
     public static final String EXTRA_FILEPATH = "EXTRA_FILEPATH";
     public static final String FRAGMENT_TAG = "WrRenameDialog";
 
-    public static WrRenameDialog newInstance(File sourceFile) {
-        return newInstance(sourceFile, null);
-    }
-
-
     public static WrRenameDialog newInstance(File sourceFile, GsCallback.a1<File> callback) {
         WrRenameDialog dialog = new WrRenameDialog();
         Bundle args = new Bundle();

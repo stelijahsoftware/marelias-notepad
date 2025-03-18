@@ -67,8 +67,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
     //########################
     //## Static
     //########################
-    public static final String FRAGMENT_TAG = "FilesystemViewerFragment";
-
     public static GsFileBrowserFragment newInstance() {
         return new GsFileBrowserFragment();
     }

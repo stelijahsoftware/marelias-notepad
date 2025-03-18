@@ -19,12 +19,6 @@ import java.io.File;
 @SuppressWarnings("WeakerAccess")
 public abstract class TextConverterBase {
     //########################
-    //## HTML
-    //########################
-    protected static final String TOKEN_FONT = "{{ app.text_font }}";
-
-
-    //########################
     //## Methods
     //########################
     protected final AppSettings _appSettings;

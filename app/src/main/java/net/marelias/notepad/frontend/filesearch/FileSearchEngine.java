@@ -69,7 +69,6 @@ public class FileSearchEngine {
         public List<String> ignoredDirectories;
         public boolean isShowMatchPreview = true;
         public boolean isShowResultOnCancel = true;
-        public int message = 0;
     }
 
     public static class FitFile {

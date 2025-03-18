@@ -41,7 +41,6 @@ public class SettingsActivity extends MarkorBaseActivity {
     public static class RESULT {
         public static final int NOCHANGE = -1;
         public static final int CHANGED = 1;
-        public static final int RESTART_REQ = 2;
     }
 
     public static int activityRetVal = RESULT.NOCHANGE;
@@ -133,11 +132,6 @@ public class SettingsActivity extends MarkorBaseActivity {
         @Override
         public int getPreferenceResourceForInflation() {
             return R.xml.preferences_master;
-        }
-
-        @Override
-        public String getFragmentTag() {
-            return TAG;
         }
 
         @Override

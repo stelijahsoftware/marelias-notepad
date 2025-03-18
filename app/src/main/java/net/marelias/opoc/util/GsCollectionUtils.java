@@ -28,14 +28,6 @@ import java.util.Set;
 // Class for general utilities
 public class GsCollectionUtils {
 
-    /**
-     * Like Arrays.asList, but supports null input (returns empty list)
-     */
-    @SafeVarargs
-    public static <T> List<T> asList(final T... items) {
-        return items == null ? Collections.emptyList() : Arrays.asList(items);
-    }
-
     @SafeVarargs
     public static <T> boolean addAll(Collection<? super T> c, T... elements) {
         return elements != null && Collections.addAll(c, elements);
@@ -44,16 +36,6 @@ public class GsCollectionUtils {
     public static <T> boolean addAll(Collection<? super T> c, Collection<? extends T> elements) {
         return elements != null && c.addAll(elements);
     }
-
-    /**
-     * Replace each element with result of op. Like foo.replaceAll
-     */
-    public static <T> void replaceAll(final List<T> l, final GsCallback.r1<T, ? super T> op) {
-        for (int i = 0; i < l.size(); i++) {
-            l.set(i, op.callback(l.get(i)));
-        }
-    }
-
 
     /**
      * Apply the opertation op on each element of in, and return the result.
@@ -72,17 +54,6 @@ public class GsCollectionUtils {
     // Map without index
     public static <I, O> List<O> map(final Collection<? extends I> in, final GsCallback.r1<O, ? super I> op) {
         return map(in, (v, i) -> op.callback(v));
-    }
-
-    public static <T extends Comparable<T>> int listComp(final List<T> a, final List<T> b) {
-        final int la = a.size(), lb = b.size();
-        for (int i = 0; i < Math.min(la, lb); i++) {
-            final int comp = a.get(i).compareTo(b.get(i));
-            if (comp != 0) {
-                return comp;
-            }
-        }
-        return Integer.compare(la, lb);
     }
 
     /**
@@ -147,16 +118,6 @@ public class GsCollectionUtils {
         return ret;
     }
 
-    /**
-     * Set intersection
-     */
-    public static <T> Set<T> intersection(final Collection<T> a, final Collection<T> b) {
-        final Set<T> ret = new LinkedHashSet<>(a);
-        ret.retainAll(b);
-        return ret;
-    }
-
-
     public static <T, V> V accumulate(
             final Collection<T> collection,
             final GsCallback.r2<V, ? super T, V> func,
@@ -191,21 +152,6 @@ public class GsCollectionUtils {
             }
         }
         return true;
-    }
-
-    /**
-     * Get indices of data where predicate is true. Meaningless for unordered data.
-     */
-    public static <T> List<Integer> indices(final Collection<T> data, final GsCallback.b1<? super T> predicate) {
-        final List<Integer> indices = new ArrayList<>();
-        int index = 0;
-        for (final T item : data) {
-            if (predicate.callback(item)) {
-                indices.add(index);
-            }
-            index++;
-        }
-        return indices;
     }
 
     /**

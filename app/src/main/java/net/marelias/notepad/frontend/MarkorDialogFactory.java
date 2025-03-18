@@ -115,26 +115,6 @@ public class MarkorDialogFactory {
         GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
     }
 
-    public static void showFontSizeDialog(final Activity activity, final int currentSize, final GsCallback.a1<Integer> callback) {
-        DialogOptions dopt = new DialogOptions();
-        baseConf(activity, dopt);
-        dopt.callback = (selectedDialogValueAsString -> callback.callback(Integer.parseInt(selectedDialogValueAsString)));
-        final int minFontSize = 5;
-        final int maxFontSize = 36;
-        final List<String> sizes = new ArrayList<>();
-        for (int i = minFontSize; i <= maxFontSize; i++) {
-            if (i == currentSize) dopt.listPosition = i - minFontSize - 2;
-            sizes.add(Integer.toString(i));
-        }
-        dopt.data = sizes;
-        dopt.highlightData = Collections.singletonList(Integer.toString(currentSize));
-        dopt.isSearchEnabled = false;
-        dopt.dialogHeightDp = 400;
-        dopt.titleText = R.string.font_size;
-        dopt.dialogWidthDp = WindowManager.LayoutParams.WRAP_CONTENT;
-        GsSearchOrCustomTextDialog.showMultiChoiceDialogWithSearchFilterUI(activity, dopt);
-    }
-
     @SuppressLint("StringFormatMatches")
     public static void showCopyMoveConflictDialog(final Activity activity, final String fileName, final String destName, final boolean multiple, final GsCallback.a1<Integer> callback) {
         final DialogOptions dopt = new DialogOptions();

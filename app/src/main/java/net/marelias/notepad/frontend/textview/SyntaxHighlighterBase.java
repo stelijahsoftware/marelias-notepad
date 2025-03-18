@@ -474,40 +474,13 @@ public abstract class SyntaxHighlighterBase {
         createSpanForMatches(pattern, matcher -> new TypefaceSpan(typeface), groupsToMatch);
     }
 
-    protected final void createReplacementSpanForMatches(final Pattern pattern, final int charWidth, int... groupsToMatch) {
-        createSpanForMatches(pattern, matcher -> new ReplacementSpan() {
-            @Override
-            public int getSize(@NonNull Paint paint, CharSequence text, int start, int end, Paint.FontMetricsInt fm) {
-                return charWidth;
-            }
-
-            @Override
-            public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
-            }
-        }, groupsToMatch);
-    }
-
     protected final void createMonospaceSpanForMatches(final Pattern pattern, int... groupsToMatch) {
         createTypefaceSpanForMatches(pattern, "monospace", groupsToMatch);
-    }
-
-//    protected final void createColoredUnderlineSpanForMatches(final Pattern pattern, final GsCallback.r1<Object, Matcher> creator, int... groupsToMatch) {
-//        createSpanForMatches(pattern, creator, groupsToMatch);
-//    }
-
-    protected final void createTabSpans(final int tabWidth) {
-        if (tabWidth > 0) {
-            createReplacementSpanForMatches(PATTERN_TAB, tabWidth);
-        }
     }
 
     protected final void createSmallBlueLinkSpans() {
         createSpanForMatches(URL, new HighlightSpan().setForeColor(0xff1ea3fd).setItalic(true).setTextScale(0.85f).setUnderline(true));
     }
-
-//    protected final void createUnderlineHexColorsSpans() {
-//        createColoredUnderlineSpanForMatches(ColorUnderlineSpan.HEX_CODE_UNDERLINE_PATTERN, m -> new ColorUnderlineSpan(m.group(1), 3f), 1);
-//    }
 
     // We _do not_ implement UpdateLayout or Parcelable for performance reasons
     public static class HighlightSpan extends CharacterStyle implements UpdateAppearance, GsCallback.r1<Object, Matcher> {

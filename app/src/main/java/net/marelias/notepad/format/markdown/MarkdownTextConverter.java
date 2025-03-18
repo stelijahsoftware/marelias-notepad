@@ -7,11 +7,6 @@
 #########################################################*/
 package net.marelias.notepad.format.markdown;
 
-//import com.vladsch.flexmark.html.AttributeProvider;
-//import com.vladsch.flexmark.html.renderer.AttributablePart;
-//import com.vladsch.flexmark.util.ast.Document;
-//import com.vladsch.flexmark.util.ast.Node;
-//import com.vladsch.flexmark.util.html.Attributes;
 import net.marelias.notepad.format.TextConverterBase;
 import java.io.File;
 import java.util.regex.Pattern;
@@ -19,7 +14,6 @@ import java.util.regex.Pattern;
 @SuppressWarnings({"unchecked", "WeakerAccess"})
 public class MarkdownTextConverter extends TextConverterBase {
 
-    public static final String EXT_MARKDOWN__TXT = ".txt";
     public static final String MD_EXTENSIONS_PATTERN_LIST = "((md)|(markdown)|(mkd)|(mdown)|(mkdn)|(txt)|(mdwn)|(mdx)|(text)|(rmd))";
     public static final Pattern PATTERN_HAS_FILE_EXTENSION_FOR_THIS_FORMAT = Pattern.compile("((?i).*\\." + MD_EXTENSIONS_PATTERN_LIST + "$)");
 

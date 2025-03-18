@@ -87,7 +87,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int elyahw_colour_green = Color.parseColor("#009f00");
     private static final int elyahw_colour_green_light = Color.parseColor("#e1ffe3");
 
-    private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
+//    private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
     private static final int elyahw_colour_blue_kate = Color.parseColor("#1603ff");
     private static final int elyahw_colour_blue_light = Color.parseColor("#cadfff");
     private static final int elyahw_colour_blue_dark = Color.parseColor("#0000ff");

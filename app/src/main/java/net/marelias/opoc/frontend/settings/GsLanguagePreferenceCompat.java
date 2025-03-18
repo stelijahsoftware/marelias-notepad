@@ -44,10 +44,8 @@ static String getUsedAndroidLanguages() {
  */
 package net.marelias.opoc.frontend.settings;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 

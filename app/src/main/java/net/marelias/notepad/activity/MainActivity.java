@@ -51,7 +51,6 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     private FloatingActionButton _fab2;
 
     private MarkorContextUtils _cu;
-    private File _quickSwitchPrevFolder = null;
 
     @SuppressLint("SdCardPath")
     @Override
