@@ -10,10 +10,7 @@
 package net.marelias.opoc.util;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
@@ -34,7 +31,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
@@ -49,19 +45,16 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Pattern;
 import java.util.zip.CRC32;
 
 @SuppressWarnings({"WeakerAccess", "unused", "SameParameterValue", "SpellCheckingInspection"})
@@ -263,10 +256,6 @@ public class GsFileUtils {
         }
     }
 
-    public static boolean writeFile(final File file, final String data, final FileInfo options) {
-        return writeFile(file, data.getBytes(), options);
-    }
-
     public static boolean copyFile(final File src, final File dst) {
         // Just touch file if src is empty
         if (src.length() == 0) {
@@ -299,56 +288,6 @@ public class GsFileUtils {
         }
     }
 
-    public static boolean copyFile(final File src, final OutputStream os) {
-        InputStream is = null;
-        try {
-            try {
-                is = new FileInputStream(src);
-                byte[] buf = new byte[BUFFER_SIZE];
-                int len;
-                while ((len = is.read(buf)) > 0) {
-                    os.write(buf, 0, len);
-                }
-                return true;
-            } finally {
-                if (is != null) {
-                    is.close();
-                }
-                if (os != null) {
-                    os.close();
-                }
-            }
-        } catch (IOException ex) {
-            return false;
-        }
-    }
-
-    // Returns -1 if the file did not contain any of the needles, otherwise,
-    // the index of which needle was found in the contents of the file.
-    //
-    // Needless MUST be in lower-case.
-    public static int fileContains(File file, String... needles) {
-        try {
-            FileInputStream in = new FileInputStream(file);
-
-            int i;
-            String line;
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-            while ((line = reader.readLine()) != null) {
-                for (i = 0; i != needles.length; ++i)
-                    if (line.toLowerCase(Locale.ROOT).contains(needles[i])) {
-                        return i;
-                    }
-            }
-
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return -1;
-    }
-
     public static boolean deleteRecursive(final File file) {
         boolean ok = true;
         if (file.exists()) {
@@ -359,17 +298,6 @@ public class GsFileUtils {
             ok &= file.delete();
         }
         return ok;
-    }
-
-    // Example: Check if this is maybe a conf: (str, "jpg", "png", "jpeg")
-    public static boolean hasExtension(String str, String... extensions) {
-        String lc = str.toLowerCase(Locale.ROOT);
-        for (String extension : extensions) {
-            if (lc.endsWith("." + extension.toLowerCase(Locale.ROOT))) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static boolean renameFile(File srcFile, File destFile) {
@@ -409,37 +337,6 @@ public class GsFileUtils {
             return file.setLastModified(System.currentTimeMillis());
         } catch (IOException e) {
             return false;
-        }
-    }
-
-    // Get relative path to specified destination
-    public static String relativePath(File src, File dest) {
-        try {
-            String[] srcSplit = (src.isDirectory() ? src : src.getParentFile()).getCanonicalPath().split(Pattern.quote(File.separator));
-            String[] destSplit = dest.getCanonicalPath().split(Pattern.quote(File.separator));
-            StringBuilder sb = new StringBuilder();
-            int i = 0;
-
-            for (; i < destSplit.length && i < srcSplit.length; ++i) {
-                if (!destSplit[i].equals(srcSplit[i]))
-                    break;
-            }
-            if (i != srcSplit.length) {
-                for (int iUpperDir = i; iUpperDir < srcSplit.length; ++iUpperDir) {
-                    sb.append("..");
-                    sb.append(File.separator);
-                }
-            }
-            for (; i < destSplit.length; ++i) {
-                sb.append(destSplit[i]);
-                sb.append(File.separator);
-            }
-            if (!dest.getPath().endsWith("/") && !dest.getPath().endsWith("\\")) {
-                sb.delete(sb.length() - File.separator.length(), sb.length());
-            }
-            return sb.toString();
-        } catch (IOException | NullPointerException exception) {
-            return null;
         }
     }
 
@@ -666,12 +563,6 @@ public class GsFileUtils {
         return alg.getValue();
     }
 
-    public static long crc32(final byte[] data) {
-        final CRC32 alg = new CRC32();
-        alg.update(data);
-        return alg.getValue();
-    }
-
     // Return true if the target file exists, false if there is an issue with the file or it's parent directories
     public static boolean fileExists(final File checkFile, boolean... caseInsensitive) {
         boolean isAndroid = System.getProperty("java.specification.vendor").contains("Android");
@@ -840,48 +731,6 @@ public class GsFileUtils {
             i++;
         }
         return dest;
-    }
-
-    public static boolean isUriOrFilePath(final String path) {
-        try {
-            // Attempt to create a URI from the given path
-            // If the URI scheme is "file", it's a file path
-            return "file".equals(Uri.parse(path).getScheme());
-        } catch (Exception e) {
-            // If parsing the path as a URI fails, it's not a valid URI
-            // So, assume it's a file path
-            return true;
-        }
-    }
-
-    public static void copyUriToFile(final Context context, final Uri source, final File dest) {
-
-        try (final OutputStream outputStream = new FileOutputStream(dest, false);
-             final InputStream inputStream = context.getContentResolver().openInputStream(source)
-        ) {
-            final byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
-            }
-        } catch (IOException ignored) {
-        }
-    }
-
-    public static File makeAbsolute(final String path, final File base) {
-        return path != null ? makeAbsolute(new File(path.trim()), base) : null;
-    }
-
-    public static File makeAbsolute(final File file, final File base) {
-        if (file == null) {
-            return null;
-        } else if (file.isAbsolute()) {
-            return file;
-        } else if (base != null) {
-            return new File(base, file.getPath()).getAbsoluteFile();
-        } else {
-            return null;
-        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

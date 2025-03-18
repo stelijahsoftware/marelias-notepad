@@ -66,16 +66,6 @@ public class GsFontPreferenceCompat extends ListPreference {
             "sans-serif-black", "casual", "sans-serif-smallcaps", "cursive"
     };
 
-    public GsFontPreferenceCompat(Context context) {
-        super(context);
-        loadFonts(context, null);
-    }
-
-    public GsFontPreferenceCompat(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        loadFonts(context, attrs);
-    }
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public GsFontPreferenceCompat(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);

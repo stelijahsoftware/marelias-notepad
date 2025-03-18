@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
 package net.marelias.opoc.frontend.textview;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
@@ -47,7 +45,6 @@ import android.widget.TextView;
 
 import net.marelias.notepad.frontend.textview.TextViewUtils;
 
-import java.io.File;
 import java.util.LinkedList;
 
 /**

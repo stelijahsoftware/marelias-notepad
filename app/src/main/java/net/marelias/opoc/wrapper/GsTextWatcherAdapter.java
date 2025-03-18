@@ -26,14 +26,6 @@ public class GsTextWatcherAdapter implements TextWatcher {
     public void afterTextChanged(final Editable s) {
     }
 
-    public static TextWatcher before(final GsCallback.a4<CharSequence, Integer, Integer, Integer> impl) {
-        return new GsTextWatcherAdapter() {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                impl.callback(s, start, count, after);
-            }
-        };
-    }
-
     public static TextWatcher on(final GsCallback.a4<CharSequence, Integer, Integer, Integer> impl) {
         return new GsTextWatcherAdapter() {
             public void onTextChanged(final CharSequence s, final int start, final int before, final int count) {
