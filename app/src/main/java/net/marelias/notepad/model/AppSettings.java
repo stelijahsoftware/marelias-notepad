@@ -211,12 +211,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         }
     }
 
-    public void setDocumentFontSize(final String path, final int size) {
-        if (fexists(path)) {
-            setInt(PREF_PREFIX_FONT_SIZE + path, size);
-        }
-    }
-
     public int getDocumentFontSize(final String path) {
         final int _default = getFontSize();
         if (!fexists(path)) {

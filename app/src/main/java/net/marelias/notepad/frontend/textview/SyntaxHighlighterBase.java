@@ -8,7 +8,6 @@
 
 package net.marelias.notepad.frontend.textview;
 
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -17,14 +16,12 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
-import android.text.style.ReplacementSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.UpdateAppearance;
 import android.text.style.UpdateLayout;
 import android.util.Log;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import net.marelias.notepad.model.AppSettings;

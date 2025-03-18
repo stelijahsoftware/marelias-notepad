@@ -204,8 +204,6 @@ public class DocumentActivity extends MarkorBaseActivity {
     }
 
     private final RectF point = new RectF(0, 0, 0, 0);
-    private static final int SWIPE_MIN_DX = 150;
-    private static final int SWIPE_MAX_DY = 90;
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
