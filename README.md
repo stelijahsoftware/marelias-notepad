@@ -23,12 +23,12 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] - delete empty note on back button?
-[h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Rename title from pressing `note title` on opening.
-[h] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
+[h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
 
+[m] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
+[m] - delete empty note on back button?
 [m] - ability to pin notes to top
 [m] - add modifDate_creatDate title to notes?Eg`20250122-20241127 note.txt`.Whenever you modify the note,the first date gets updated.Needs to make sure that no new note is created.
 [m] - Auto-delete empty notes on save + disable auto-save?
