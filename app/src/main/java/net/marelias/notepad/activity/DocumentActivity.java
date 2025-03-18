@@ -23,7 +23,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
-import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
 import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.model.AppSettings;

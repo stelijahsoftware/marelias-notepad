@@ -19,16 +19,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Build;
 import android.text.Editable;
-import android.text.Html;
-import android.text.InputType;
-import android.text.TextUtils;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.EditText;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
 import net.marelias.notepad.ApplicationObject;
@@ -38,7 +32,6 @@ import net.marelias.notepad.frontend.filesearch.FileSearchEngine;
 import net.marelias.notepad.frontend.filesearch.FileSearchResultSelectorDialog;
 import net.marelias.notepad.frontend.textview.TextViewUtils;
 import net.marelias.notepad.model.AppSettings;
-import net.marelias.opoc.format.GsTextUtils;
 import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog;
 import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog.DialogOptions;
 import net.marelias.opoc.util.GsCollectionUtils;
@@ -49,15 +42,8 @@ import net.marelias.opoc.wrapper.GsCallback;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 
 public class MarkorDialogFactory {
     public static AppSettings as() {

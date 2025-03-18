@@ -15,21 +15,11 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
-import net.marelias.notepad.R;
 import net.marelias.notepad.frontend.MarkorDialogFactory;
 import net.marelias.notepad.frontend.textview.HighlightingEditor;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
 public abstract class ActionButtonBase {

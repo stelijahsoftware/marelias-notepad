@@ -1,11 +1,8 @@
 package net.marelias.opoc.frontend;
 
 import android.content.Context;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.HorizontalScrollView;
-
-import androidx.annotation.RequiresApi;
 
 public class GsHorizontalScrollView extends HorizontalScrollView {
 

@@ -9,19 +9,16 @@
 package net.marelias.notepad.activity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -34,18 +31,13 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.marelias.notepad.R;
-import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.frontend.NewFileDialog;
 import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.marelias.notepad.frontend.textview.TextViewUtils;
-import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.frontend.base.GsFragmentBase;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserFragment;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
-import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;

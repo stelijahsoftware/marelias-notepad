@@ -83,18 +83,6 @@ public class GsLanguagePreferenceCompat extends ListPreference {
         loadLangs(context, attrs);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public GsLanguagePreferenceCompat(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        loadLangs(context, attrs);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public GsLanguagePreferenceCompat(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        loadLangs(context, attrs);
-    }
-
     @Override
     public boolean callChangeListener(Object newValue) {
         if (newValue instanceof String) {
@@ -152,22 +140,6 @@ public class GsLanguagePreferenceCompat extends ListPreference {
                 + ((!country.isEmpty() && !country.toLowerCase(Locale.getDefault()).equals(language.toLowerCase(Locale.getDefault()))) ? (", " + country) : "")
                 + ")";
 
-        if (localeAndroidCode.equals("zh-rCN")) {
-            ret = ret.substring(0, ret.indexOf(" ") + 1) + "Simplified" + ret.substring(ret.indexOf(" "));
-        } else if (localeAndroidCode.equals("zh-rTW")) {
-            ret = ret.substring(0, ret.indexOf(" ") + 1) + "Traditional" + ret.substring(ret.indexOf(" "));
-        } else if (localeAndroidCode.equals("sr-rRS")) {
-            ret = ret.substring(0, ret.indexOf(" ") + 1) + "Latin" + ret.substring(ret.indexOf(" "));
-        } else if (localeAndroidCode.startsWith("sr")) {
-            ret = ret.substring(0, ret.indexOf(" ") + 1) + "Cyrillic" + ret.substring(ret.indexOf(" "));
-        } else if (localeAndroidCode.equals("fil")) {
-            ret = ret.substring(0, ret.indexOf("(") + 1) + "Philippines)";
-        } else if (localeAndroidCode.equals("kmr")) {
-            ret = "Kurdish Kurmanji (کورمانجی)";
-        } else if (localeAndroidCode.equals("ckb")) {
-            ret = "Kurdish Sorani (" + ret.split("\\(")[1];
-        }
-
         return ret;
     }
 
@@ -180,21 +152,4 @@ public class GsLanguagePreferenceCompat extends ListPreference {
         return prefix + summarizeLocale(locale, getValue());
     }
 
-    public String getSystemLanguageName() {
-        return _systemLanguageName;
-    }
-
-    public void setSystemLanguageName(String systemLanguageName) {
-        _systemLanguageName = systemLanguageName;
-        loadLangs(getContext());
-    }
-
-    public String getDefaultLanguageCode() {
-        return _defaultLanguageCode;
-    }
-
-    public void setDefaultLanguageCode(String defaultLanguageCode) {
-        _defaultLanguageCode = defaultLanguageCode;
-        loadLangs(getContext());
-    }
 }

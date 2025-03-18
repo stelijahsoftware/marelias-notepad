@@ -18,9 +18,6 @@ import net.marelias.notepad.R;
 import net.marelias.notepad.format.ActionButtonBase;
 import net.marelias.notepad.model.Document;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class MarkdownActionButtons extends ActionButtonBase {
 
     public MarkdownActionButtons(@NonNull Context context, Document document) {
