@@ -141,10 +141,6 @@ public class GsSharedPreferencesPropertyBackend implements GsPropertyBackend<Str
         gp(pref).edit().putString(key, value).apply();
     }
 
-    public void setString(@StringRes int keyResourceId, @StringRes int defaultValueResourceId, final SharedPreferences... pref) {
-        gp(pref).edit().putString(rstr(keyResourceId), rstr(defaultValueResourceId)).apply();
-    }
-
     public String getString(@StringRes int keyResourceId, String defaultValue, final SharedPreferences... pref) {
         return gp(pref).getString(rstr(keyResourceId), defaultValue);
     }
@@ -246,14 +242,6 @@ public class GsSharedPreferencesPropertyBackend implements GsPropertyBackend<Str
     public boolean getBool(String key, boolean defaultValue, final SharedPreferences... pref) {
         try {
             return gp(pref).getBoolean(key, defaultValue);
-        } catch (ClassCastException e) {
-            return defaultValue;
-        }
-    }
-
-    public List<String> getStringSet(String key, List<String> defaultValue, final SharedPreferences... pref) {
-        try {
-            return new ArrayList<>(gp(pref).getStringSet(key, new HashSet<>(defaultValue)));
         } catch (ClassCastException e) {
             return defaultValue;
         }
