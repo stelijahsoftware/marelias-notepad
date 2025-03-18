@@ -38,7 +38,7 @@
         android:appCategory="productivity"
         android:icon="@drawable/ic_launcher"
         android:isGame="false"
-        android:label="@string/app_name"
+        android:label="Notepad Mar-Elias"
         android:requestLegacyExternalStorage="true"
         android:resizeableActivity="true"
         android:supportsRtl="true"
@@ -91,7 +91,7 @@
         <activity
             android:name=".activity.DocumentActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="Notepad Mar-Elias"
             android:launchMode="standard"
             android:maxRecents="5"
             android:parentActivityName=".activity.MainActivity"
