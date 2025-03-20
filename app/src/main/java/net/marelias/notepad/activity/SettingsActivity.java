@@ -172,7 +172,7 @@ public class SettingsActivity extends MarkorBaseActivity {
             Preference pref = findPreference(R.string.pref_key__more_info__source_code);
 
             pref.setTitle("About");
-            pref.setSummary(String.format(locale,"Mar-Elias Notepad\n(%s)\nVersion v%s",
+            pref.setSummary(String.format(locale,"Notepad Mar-Elias\n(%s)\nVersion v%s",
                                                     _cu.getAppIdUsedAtManifest(context),
                                                     //_cu.getAppIdFlavorSpecific(context),
                                                     _cu.getAppVersionName(context))); // BuildConfig.VERSION_NAME
@@ -241,7 +241,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                     // Or display html text in a window:
                     String html_info =
                             "<br>" +
-                            "<font color='#000000'><b>Mar-Elias Notepad</b> is a simple .txt file editor with custom highlight syntax. " +
+                            "<font color='#000000'><b>Notepad Mar-Elias</b> is a simple .txt file editor with custom highlight syntax. " +
                             "A fork of <b>Markor</b>, an open source notes project authored by Gregor Santner.</font>" +
                             "<br><br>" +
                             "<font color='#555555'><b>Project website:</b></font>" +
