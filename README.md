@@ -11,7 +11,7 @@ Apache 2.0 license (see [LICENSE.html](./docs/LICENSE.html); all licenses in the
 
 <img src="./docs/icon/icon.png" alt="icon" width="25%" />
 
-A simple text notes editor and heavily trimmed down version of [Markor](https://www.github.com/gsantner/markor), with customised highlights.
+A simple text notes editor and heavily trimmed down version of Markor, with customised highlights.
 
 # Declaration:
 I forked this project as I thought the original notepad was too bulky and difficult to use, it seemed to me that the authors provided the ability to do minor tweaks, even on individual txt files! A notepad shouldn't be like this. So I created a simpler, easier to use, trimmed down version of the original notepad and I removed 100s of flags and options that were standing in the way of the notepad to be a practical one. If one day the markor authors decide to adopt this simplicity, there would be no more need for me to continue maintaining this project, and I would stop doing so. This is how open source works, and this project is a healthy development of it.
