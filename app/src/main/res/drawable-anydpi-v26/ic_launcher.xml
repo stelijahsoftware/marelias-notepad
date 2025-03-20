@@ -8,7 +8,10 @@
     -->
 
     <!-- elyahw: you can choose either 'drawable' or 'mipmap' -->
-    <background android:drawable="@android:color/transparent"/>
-    <foreground android:drawable="@mipmap/ic_launcher_mar_elias2_foreground"/>
+<!--    <background android:drawable="@android:color/transparent"/>-->
+<!--    <foreground android:drawable="@mipmap/ic_launcher_mar_elias2_foreground"/>-->
+
+    <background android:drawable="@mipmap/ic_launcher_mar_elias_square"/>
+    <foreground android:drawable="@mipmap/ic_launcher_mar_elias_square"/>
 
 </adaptive-icon>
