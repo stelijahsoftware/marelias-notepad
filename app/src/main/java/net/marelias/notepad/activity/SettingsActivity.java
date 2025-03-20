@@ -240,14 +240,12 @@ public class SettingsActivity extends MarkorBaseActivity {
 
                     // Or display html text in a window:
                     String html_info = "<br>" + // + Add links
-                                 "<font color='#000000'><b>Mar-Elias Notepad</b> is a simple text file editor with customised highlight syntax</font><br>" +
-                                 "<font color='#FF9800'>Project source:</font><br>" +
-                                 "<font color='#0040ff'><a href='https://github.com/writing-tools/marelias-notepad'>https://github.com/writing-tools/marelias-notepad</a></font><br>" +
+                                 "<font color='#000000'><b>Mar-Elias Notepad</b> is a simple .txt file editor with custom highlight syntax</font><br>" +
+                                 "<font color='#555555'>Project website:</font><br>" +
+                                 "<font color='#0040ff'><a href='https://writing-tools.github.io/marelias-notepad/'>https://writing-tools.github.io/marelias-notepad/</a></font><br>" +
                                  "<br>" +
-                                 "<font color='#000000'>A fork of <b>Markor</b>, an open source notes project</font><br>" +
-                                 //"Project name: Markor<br>" +
-                                 "<font color='#FF9800'>Author: </font><font color='#000000'>Gregor Santner</font><br>" +
-                                 "<font color='#FF9800'>Project source:</font>" +
+                                 "<font color='#000000'>A fork of <b>Markor</b>, an open source notes project authored by Gregor Santner</font><br>" +
+                                 "<font color='#555555'>Markor source:</font>" +
                                  "<br><font color='#0040ff'><a href=''>https://github.com/gsantner/markor</a></font><br>";// +
                                  //"<font color='#276230'>LICENSE: </font>" +
                                  //"<font color='#0040ff'><a href='https://github.com/writing-tools/marelias-notepad/blob/master/LICENSE.txt'>APACHE 2.0</a></font><br>";
