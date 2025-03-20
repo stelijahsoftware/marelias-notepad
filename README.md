@@ -1,13 +1,13 @@
 # Mar-Elias Notepad
 A Simple noteapd with highlights (<a href="https://writing-tools.github.io/marelias-notepad/">website</a>)
 
-[<img src="icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=net.marelias.notepad)
+[<img src="./icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=net.marelias.notepad)
 
 # Rights:
 
 Forked from Gregor Santner's [Markor](https://www.github.com/gsantner/markor)
 
-Apache 2.0 license (see [LICENSE.txt](./LICENSE.txt); all licenses in the original repo (Markor) apply to this repo).
+Apache 2.0 license (see [./docs/LICENSE.html](./LICENSE.txt); all licenses in the original repo (Markor) apply to this repo).
 
 <img src="./icon/icon.png" alt="icon" width="25%" />
 
