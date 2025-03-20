@@ -7,7 +7,7 @@ A Simple noteapd with highlights (<a href="https://writing-tools.github.io/marel
 
 Forked from Gregor Santner's [Markor](https://www.github.com/gsantner/markor)
 
-Apache 2.0 license (see [./docs/LICENSE.html](./LICENSE.txt); all licenses in the original repo (Markor) apply to this repo).
+Apache 2.0 license (see [LICENSE.html](./docs/LICENSE.html); all licenses in the original repo (Markor) apply to this repo).
 
 <img src="./docs/icon/icon.png" alt="icon" width="25%" />
 
