@@ -130,3 +130,29 @@ app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk
 <color name="accent">#F04B4B</color>
 <color name="dark__folder">#72B3D9</color>
 <color name="dark__folder">#0040ff</color>
+
+# Template note:
+# This is a green line
+
+## This is a blue line
+
+// Red line
+
+This is a list:
+- element 1
+- element 2
+- element 3
+X - this is a finished task
+
+All numbers will be coloured orange, for example 2024-09-28
+
+Urls and websites will be highlighted: https://www.github.com/gsantner/markor
+
+You can also add **bold** and _italic_ text
+
+***** Asterisks will also be coloured
+
+You can also add importance tags like:
+[h] task 1
+[m] task 2
+[l] task 3
