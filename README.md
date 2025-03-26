@@ -23,9 +23,12 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] - Rename title from pressing `note title` on opening.
+[h] - Rename note title from pressing `note title` on document edit screen.
 [h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
+
+[m] - Make file browser scrollbar wider + draggable
+[m] - When press back on note empty, ask to delete.
 
 [m] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [m] - delete empty note on back button?
@@ -48,6 +51,8 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - Improve rename dialog
+X - Make document edit scrollbars wider
 X - Make font color black
 X - Added a button to paste text
 X - when highlighting, move dedicated info button to expandable list (removed altogether)
