@@ -118,18 +118,26 @@ public class WrRenameDialog extends DialogFragment {
         // EL: Automatic selection of time
         int name_len = file_name.length();
         int name_from = 0;
-        int name_to = name_len-4;
-        if (file_name.contains(" ")) {
-            name_from = file_name.indexOf(' ');
-        } else if (file_name.contains("_")) {
-            name_from = file_name.indexOf('_');
-        } else if (file_name.contains("-")) {
-            name_from = file_name.indexOf('-');
+        int name_to;
+        // if it's a file:
+        if (file_name.contains(".")) {
+            name_to = name_len - 4;
+
+            if (file_name.contains(" ")) {
+                name_from = file_name.indexOf(' ');
+            } else if (file_name.contains("_")) {
+                name_from = file_name.indexOf('_');
+            } else if (file_name.contains("-")) {
+                name_from = file_name.indexOf('-');
+            }
+            if (file_name.length() > 12 && file_name.charAt(8) == ' ') {
+                name_from = name_from+1;
+            }
         }
-        if (file_name.length() > 12 && file_name.charAt(8) == ' ') {
-            name_from = name_from+1;
+        else { // it's a folder select all name
+            name_to = name_len;
         }
-        editText.setSelection(name_from,name_to);
+        editText.setSelection(name_from, name_to);
 
         dialogBuilder.setPositiveButton(getString(android.R.string.ok), null);
         dialogBuilder.setNegativeButton(getString(R.string.cancel), null);
