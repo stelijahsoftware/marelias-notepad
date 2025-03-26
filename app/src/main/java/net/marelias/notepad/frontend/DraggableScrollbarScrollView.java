@@ -79,7 +79,7 @@ public class DraggableScrollbarScrollView extends ScrollView {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             _ltr = getLayoutDirection() == View.LAYOUT_DIRECTION_LTR;
         }
-        _grabWidth = 25;//(int) (1.5 * (float) getVerticalScrollbarWidth() * displayMetrics.density); // 66
+        _grabWidth = 60;//(int) (1.5 * (float) getVerticalScrollbarWidth() * displayMetrics.density); // 66
         //System.out.println(">>>>>>> elyahw: ");
         //System.out.println(_grabWidth);
     }
