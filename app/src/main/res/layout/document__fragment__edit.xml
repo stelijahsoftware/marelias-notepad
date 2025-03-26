@@ -26,7 +26,7 @@
         android:layout_marginTop="0mm"
         android:background="@android:color/transparent"
         android:scrollbarSize="8dip"
-        android:scrollbarThumbVertical="@color/dark_grey"
+        android:scrollbarThumbVertical="@color/edit_scrollbar_grey"
         android:scrollbarTrackVertical="@color/transparent"
         android:fillViewport="true">
 

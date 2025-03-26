@@ -57,6 +57,7 @@
     <color name="dark_grey">#FF000000</color>
     <color name="light_grey">#FFC0C0C0</color>
     <color name="lighter_grey">#FFE0E0E0</color>
+    <color name="edit_scrollbar_grey">#99555555</color>
 
     <color name="solarized_bg_dark">#002B36</color>
     <color name="solarized_bg_light">#FCF5E4</color>
