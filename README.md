@@ -26,11 +26,10 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - Rename note title from pressing `note title` on document edit screen.
 [h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
-
 [h] - Keep highlight on the recently opened folder/file.
+[h] - When press back on note empty, ask to delete.
 
-[m] - Make file browser scrollbar wider + draggable
-[m] - When press back on note empty, ask to delete.
+[h] - Make file browser scrollbar wider + draggable
 
 [m] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [m] - delete empty note on back button?
