@@ -74,10 +74,9 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
     private static final File GO_BACK_SIGNIFIER = new File("__GO_BACK__");
     private static final StrikethroughSpan STRIKE_THROUGH_SPAN = new StrikethroughSpan();
     public static final String EXTRA_CURRENT_FOLDER = "EXTRA_CURRENT_FOLDER";
-    public static final String EXTRA_DOPT = "EXTRA_DOPT";
     public static final String EXTRA_RECYCLER_SCROLL_STATE = "EXTRA_RECYCLER_SCROLL_STATE";
-    public static final String EXTRA_REQ_FOLDER = "EXTRA_REQ_FOLDER";
     private static final int HIGHLIGHT_ITEM_COLOR = 0xFFCFCFCF;
+    private File _lastAccessedFile; // Track last accessed (opened) file
 
     //########################
     //## Members
@@ -256,13 +255,19 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         holder.itemRoot.setOnLongClickListener(this);
 
         final File currentFile = _adapterDataFiltered.get(position);
-        final TagContainer data = folderLevelDataMap.get(getPathLevel(_currentFolder.getAbsolutePath()));
-        if (data != null && data.file != null && data.file.equals(currentFile)) {
-            holder.itemView.setBackgroundColor(HIGHLIGHT_ITEM_COLOR);
-        }
-        else
+
+        // Clear any previous highlight
+        holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+
+        // Only highlight if:
+        // 1. It's the last accessed file AND we're in its parent directory
+        // 2. OR it's a folder that was recently navigated into
+        if (_lastAccessedFile != null &&
+            _lastAccessedFile.getParentFile() != null &&
+            _lastAccessedFile.getParentFile().equals(_currentFolder) &&
+            currentFile.equals(_lastAccessedFile))
         {
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+                holder.itemView.setBackgroundColor(HIGHLIGHT_ITEM_COLOR);
         }
     }
 
@@ -336,7 +341,6 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
     public static class TagContainer {
         public final File file;
         public final int position;
-        public Parcelable lastRecyclerViewState;
 
         public TagContainer(File file_, int position_) {
             file = file_;
@@ -379,39 +383,14 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         return canWrite(_currentFolder);
     }
 
-    private final HashMap<Integer, TagContainer> folderLevelDataMap = new HashMap<>();
-
-    private int getPathLevel(String path) {
-        final int end = path.lastIndexOf('/') + 1;
-        int level = 0;
-        for (int i = 0; i < end; i++) {
-            if (path.charAt(i) == '/') {
-                level++;
-            }
-        }
-        return level;
-    }
-
-    private void saveItemPositionState(final TagContainer data) {
-        if (data == null || data.file == null) return;
-
-        int currentItemLevel = getPathLevel(data.file.getAbsolutePath());
-        int currentFolderLevel = getPathLevel(_currentFolder.getAbsolutePath());
-
-        if (currentItemLevel > currentFolderLevel) {
-            data.lastRecyclerViewState = _recyclerView.getLayoutManager().onSaveInstanceState();
-            folderLevelDataMap.put(currentFolderLevel, data);
-        } else {
-            folderLevelDataMap.remove(currentFolderLevel);
-        }
-    }
-
     @Override
     @SuppressWarnings("UnnecessaryReturnStatement")
     public void onClick(View view) {
         final TagContainer data = (TagContainer) view.getTag();
-        if (_currentSelection.size() == 0) {
-            saveItemPositionState(data);
+
+        if (!_currentSelection.isEmpty()) {
+            // Blink in multi-select
+            GsContextUtils.blinkView(view);
         }
 
         switch (view.getId()) {
@@ -426,11 +405,19 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
                             loadFolder(file, null);
                         }
                     } else if (file != null) {
+                        // Clear previous highlight before setting new one
+                        clearLastAccessedHighlight();
+
+                        // Update last accessed file whether it's a directory or file
+                        _lastAccessedFile = file;
+
                         // No pre-selection
                         if (file.isDirectory() || isVirtualFolder(file)) {
                             loadFolder(file, isParent(file, _currentFolder) ? _currentFolder : null);
                         } else if (file.isFile()) {
                             _dopt.listener.onFsViewerSelected(_dopt.requestId, file, null);
+                            // Ensure the file gets highlighted
+                            notifyItemChanged(getFilePosition(file));
                         }
                     }
                 }
@@ -645,13 +632,13 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         final int pos = getFilePosition(file);
         if (pos >= 0 && _layoutManager != null) {
             _layoutManager.scrollToPosition(pos);
-            _recyclerView.post(() ->
-                    _recyclerView.postDelayed(() -> {
-                        final RecyclerView.ViewHolder holder = _recyclerView.findViewHolderForLayoutPosition(pos);
-                        if (holder != null) {
-                            GsContextUtils.blinkView(holder.itemView);
-                        }
-                    }, 400));
+//            _recyclerView.post(() ->
+//                    _recyclerView.postDelayed(() -> {
+//                        final RecyclerView.ViewHolder holder = _recyclerView.findViewHolderForLayoutPosition(pos);
+//                        if (holder != null) {
+//                            GsContextUtils.blinkView(holder.itemView);
+//                        }
+//                    }, 400));
             return true;
         }
         return false;
@@ -767,10 +754,14 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         }
 
         if (_recyclerView == null) {
-            //noinspection UnnecessaryReturnStatement
             return;
         } else if (folderChanged || modSumChanged || !newData.equals(_adapterData)) {
             _recyclerView.post(() -> {
+                // Clear file highlights when changing folders
+                if (folderChanged) {
+                    clearLastAccessedHighlight();
+                }
+
                 // Modify all these values in the UI thread
                 _adapterData.clear();
                 _adapterData.addAll(newData);
@@ -786,42 +777,21 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
                 // TODO - add logic to notify the changed bits
                 notifyDataSetChanged();
 
+                // Preserve the last accessed file when refreshing
+                if (_lastAccessedFile != null && !newData.contains(_lastAccessedFile)) {
+                    _lastAccessedFile = null;
+                }
+
                 if (folderChanged) {
                     _recyclerView.post(() -> {
                         if (_layoutManager != null) {
                             _layoutManager.onRestoreInstanceState(_folderScrollMap.remove(_currentFolder));
                         }
 
-                        if (toShow != null) {
-                            _recyclerView.post(() -> {
-                                scrollToAndFlash(toShow);
-                                // Update the highlight for the file
-                                for (int i = 0; i < _adapterDataFiltered.size(); i++) {
-                                    if (_adapterDataFiltered.get(i).equals(toShow)) {
-                                        int level = getPathLevel(_currentFolder.getAbsolutePath());
-                                        folderLevelDataMap.put(level, new TagContainer(toShow, i));
-                                        notifyItemChanged(i);
-                                        break;
-                                    }
-                                }
-                            });
-                        }
+                        _recyclerView.post(() -> scrollToAndFlash(toShow));
                     });
                 } else if (toShow != null && _adapterDataFiltered.contains(toShow)) {
-                    if (toShow != null) {
-                        _recyclerView.post(() -> {
-                            scrollToAndFlash(toShow);
-                            // Update the highlight for the file
-                            for (int i = 0; i < _adapterDataFiltered.size(); i++) {
-                                if (_adapterDataFiltered.get(i).equals(toShow)) {
-                                    int level = getPathLevel(_currentFolder.getAbsolutePath());
-                                    folderLevelDataMap.put(level, new TagContainer(toShow, i));
-                                    notifyItemChanged(i);
-                                    break;
-                                }
-                            }
-                        });
-                    }
+                    _recyclerView.post(() -> scrollToAndFlash(toShow));
                 }
 
                 if (_dopt.listener != null) {
@@ -830,6 +800,16 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
             });
         } else if (toShow != null && _adapterDataFiltered.contains(toShow)) {
 //            scrollToAndFlash(toShow); // elyahw fix bug https://github.com/gsantner/markor/issues/2427
+        }
+    }
+
+    public void clearLastAccessedHighlight() {
+        if (_lastAccessedFile != null) {
+            int position = getFilePosition(_lastAccessedFile);
+            if (position >= 0) {
+                notifyItemChanged(position);
+            }
+            _lastAccessedFile = null;
         }
     }
 
