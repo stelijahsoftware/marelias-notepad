@@ -77,6 +77,7 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
     public static final String EXTRA_DOPT = "EXTRA_DOPT";
     public static final String EXTRA_RECYCLER_SCROLL_STATE = "EXTRA_RECYCLER_SCROLL_STATE";
     public static final String EXTRA_REQ_FOLDER = "EXTRA_REQ_FOLDER";
+    private static final int HIGHLIGHT_ITEM_COLOR = 0xFFCFCFCF;
 
     //########################
     //## Members
@@ -254,9 +255,14 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         holder.itemRoot.setOnClickListener(this);
         holder.itemRoot.setOnLongClickListener(this);
 
-        final Drawable drawable = holder.itemView.getBackground();
-        if (drawable != null && ((ColorDrawable) drawable).getColor() == Color.LTGRAY) {
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT); // Clear highlight
+        final File currentFile = _adapterDataFiltered.get(position);
+        final TagContainer data = folderLevelDataMap.get(getPathLevel(_currentFolder.getAbsolutePath()));
+        if (data != null && data.file != null && data.file.equals(currentFile)) {
+            holder.itemView.setBackgroundColor(HIGHLIGHT_ITEM_COLOR);
+        }
+        else
+        {
+            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
         }
     }
 
@@ -323,13 +329,6 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         }
     }
 
-//    public void reconfigure() {
-//        if (_dopt.listener != null) {
-//            _dopt.listener.onFsViewerConfig(_dopt);
-//            reloadCurrentFolder();
-//        }
-//    }
-
     public boolean isCurrentFolderVirtual() {
         return isVirtualFolder(_currentFolder);
     }
@@ -337,6 +336,7 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
     public static class TagContainer {
         public final File file;
         public final int position;
+        public Parcelable lastRecyclerViewState;
 
         public TagContainer(File file_, int position_) {
             file = file_;
@@ -379,25 +379,39 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         return canWrite(_currentFolder);
     }
 
-//    private int getPathLevel(String path) {
-//        final int end = path.lastIndexOf('/');
-//        int level = 0;
-//        for (int i = 0; i <= end; i++) {
-//            if (path.charAt(i) == '/') {
-//                level++;
-//            }
-//        }
-//        return level;
-//    }
+    private final HashMap<Integer, TagContainer> folderLevelDataMap = new HashMap<>();
+
+    private int getPathLevel(String path) {
+        final int end = path.lastIndexOf('/') + 1;
+        int level = 0;
+        for (int i = 0; i < end; i++) {
+            if (path.charAt(i) == '/') {
+                level++;
+            }
+        }
+        return level;
+    }
+
+    private void saveItemPositionState(final TagContainer data) {
+        if (data == null || data.file == null) return;
+
+        int currentItemLevel = getPathLevel(data.file.getAbsolutePath());
+        int currentFolderLevel = getPathLevel(_currentFolder.getAbsolutePath());
+
+        if (currentItemLevel > currentFolderLevel) {
+            data.lastRecyclerViewState = _recyclerView.getLayoutManager().onSaveInstanceState();
+            folderLevelDataMap.put(currentFolderLevel, data);
+        } else {
+            folderLevelDataMap.remove(currentFolderLevel);
+        }
+    }
 
     @Override
     @SuppressWarnings("UnnecessaryReturnStatement")
     public void onClick(View view) {
         final TagContainer data = (TagContainer) view.getTag();
-
-        if (!_currentSelection.isEmpty()) {
-            // Blink in multi-select
-            GsContextUtils.blinkView(view);
+        if (_currentSelection.size() == 0) {
+            saveItemPositionState(data);
         }
 
         switch (view.getId()) {
@@ -778,10 +792,36 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
                             _layoutManager.onRestoreInstanceState(_folderScrollMap.remove(_currentFolder));
                         }
 
-                        _recyclerView.post(() -> scrollToAndFlash(toShow));
+                        if (toShow != null) {
+                            _recyclerView.post(() -> {
+                                scrollToAndFlash(toShow);
+                                // Update the highlight for the file
+                                for (int i = 0; i < _adapterDataFiltered.size(); i++) {
+                                    if (_adapterDataFiltered.get(i).equals(toShow)) {
+                                        int level = getPathLevel(_currentFolder.getAbsolutePath());
+                                        folderLevelDataMap.put(level, new TagContainer(toShow, i));
+                                        notifyItemChanged(i);
+                                        break;
+                                    }
+                                }
+                            });
+                        }
                     });
                 } else if (toShow != null && _adapterDataFiltered.contains(toShow)) {
-                    _recyclerView.post(() -> scrollToAndFlash(toShow));
+                    if (toShow != null) {
+                        _recyclerView.post(() -> {
+                            scrollToAndFlash(toShow);
+                            // Update the highlight for the file
+                            for (int i = 0; i < _adapterDataFiltered.size(); i++) {
+                                if (_adapterDataFiltered.get(i).equals(toShow)) {
+                                    int level = getPathLevel(_currentFolder.getAbsolutePath());
+                                    folderLevelDataMap.put(level, new TagContainer(toShow, i));
+                                    notifyItemChanged(i);
+                                    break;
+                                }
+                            }
+                        });
+                    }
                 }
 
                 if (_dopt.listener != null) {
