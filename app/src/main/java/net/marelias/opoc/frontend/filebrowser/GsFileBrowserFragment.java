@@ -77,7 +77,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
 
     private RecyclerView _recyclerList;
     private SwipeRefreshLayout _swipe;
-    private TextView _emptyHint;
 
     private GsFileBrowserListAdapter _filesystemViewerAdapter;
     private GsFileBrowserOptions.Options _dopt;
@@ -101,7 +100,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         Context context = getContext();
         _recyclerList = root.findViewById(R.id.ui__filesystem_dialog__list);
         _swipe = root.findViewById(R.id.pull_to_refresh);
-        _emptyHint = root.findViewById(R.id.empty_hint);
 
         _appSettings = ApplicationObject.settings();
         _cu = new MarkorContextUtils(root.getContext());
@@ -197,7 +195,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         }
 
         updateMenuItems();
-        _emptyHint.postDelayed(() -> _emptyHint.setVisibility(adapter.isCurrentFolderEmpty() ? View.VISIBLE : View.GONE), 200);
         _recyclerList.postDelayed(this::updateMenuItems, 1000);
     }
 
@@ -419,7 +416,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 return true;
             }
             case R.id.action_move_selected_items:
-//            case R.id.action_copy_selected_items:
             {
                 askForMoveOrCopy(_id == R.id.action_move_selected_items);
                 return true;
@@ -446,16 +442,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 }
                 return true;
             }
-//            case R.id.action_fs_copy_to_clipboard: {
-//                if (_filesystemViewerAdapter.areItemsSelected()) {
-//                    final File file = new ArrayList<>(currentSelection).get(0);
-//                    if (FormatRegistry.isFileSupported(file, true)) {
-//                        _cu.setClipboard(getContext(), GsFileUtils.readTextFileFast(file).first);
-//                        Toast.makeText(getContext(), R.string.clipboard, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                return true;
-//            }
         }
 
         return false;
