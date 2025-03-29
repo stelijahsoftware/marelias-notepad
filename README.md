@@ -26,9 +26,9 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - Rename note title from pressing `note title` on document edit screen.
 [h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
-[h] - Keep highlight on the recently opened folder/file.
 [h] - When press back on note empty, ask to delete.
 
+[m] - highlight recently opened folder
 [m] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [m] - delete empty note on back button?
 [m] - ability to pin notes to top
@@ -50,6 +50,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - highlight recently opened file.
 X - Remove unuseful stop after first match option
 X - Make file browser scrollbar wider + draggable
 X - Don't make document scrollbars darker, but auto disappear when paused for 2 secs
