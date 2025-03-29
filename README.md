@@ -29,8 +29,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - Keep highlight on the recently opened folder/file.
 [h] - When press back on note empty, ask to delete.
 
-[h] - Make file browser scrollbar wider + draggable
-
 [m] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [m] - delete empty note on back button?
 [m] - ability to pin notes to top
@@ -52,6 +50,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - Make file browser scrollbar wider + draggable
 X - Don't make document scrollbars darker, but auto disappear when paused for 2 secs
 X - Improve rename dialog
 X - Make document edit scrollbars wider
