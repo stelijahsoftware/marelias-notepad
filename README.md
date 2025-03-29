@@ -50,6 +50,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - Remove unuseful stop after first match option
 X - Make file browser scrollbar wider + draggable
 X - Don't make document scrollbars darker, but auto disappear when paused for 2 secs
 X - Improve rename dialog
