@@ -27,6 +27,9 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
 
+[h] - Keep highlight on the recently opened folder/file.
+[h] - Don't make darker, but auto disappear when paused for 2 secs
+
 [m] - Make file browser scrollbar wider + draggable
 [m] - When press back on note empty, ask to delete.
 
