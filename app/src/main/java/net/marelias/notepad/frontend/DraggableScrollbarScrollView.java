@@ -26,8 +26,8 @@ public class DraggableScrollbarScrollView extends ScrollView {
     public DraggableScrollbarScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setScrollbarFadingEnabled(true);
-        setScrollBarFadeDuration(500);
-        setScrollBarDefaultDelayBeforeFade(2000);
+        setScrollBarFadeDuration(200);
+        setScrollBarDefaultDelayBeforeFade(1000);
     }
 
     @Override
