@@ -115,10 +115,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         final Activity activity = getActivity();
 
         _hlEditor = view.findViewById(R.id.document__fragment__edit__highlighting_editor);
-//        _textActionsBar = view.findViewById(R.id.document__fragment__edit__text_actions_bar);
+        // _textActionsBar = view.findViewById(R.id.document__fragment__edit__text_actions_bar);
         _webView = view.findViewById(R.id.document__fragment_view_webview);
         _primaryScrollView = view.findViewById(R.id.document__fragment__edit__content_editor__scrolling_parent);
-        _primaryScrollView.setScrollbarFadingEnabled(false);
+        // _primaryScrollView.setScrollbarFadingEnabled(true); // set instead in DraggableScrollbarScrollView
         _primaryScrollView.setBackgroundColor(Color.BLACK); // elyahw: colour at bottom of screen when scrolling and releasing
         _cu = new MarkorContextUtils(activity);
 

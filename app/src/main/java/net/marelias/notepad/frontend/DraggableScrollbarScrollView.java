@@ -25,7 +25,9 @@ public class DraggableScrollbarScrollView extends ScrollView {
 
     public DraggableScrollbarScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setScrollbarFadingEnabled(true); // elyahw not working
+        setScrollbarFadingEnabled(true);
+        setScrollBarFadeDuration(500);
+        setScrollBarDefaultDelayBeforeFade(2000);
     }
 
     @Override
