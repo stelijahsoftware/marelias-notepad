@@ -28,7 +28,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
 
 [h] - Keep highlight on the recently opened folder/file.
-[h] - Don't make darker, but auto disappear when paused for 2 secs
 
 [m] - Make file browser scrollbar wider + draggable
 [m] - When press back on note empty, ask to delete.
@@ -54,6 +53,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - Don't make document scrollbars darker, but auto disappear when paused for 2 secs
 X - Improve rename dialog
 X - Make document edit scrollbars wider
 X - Make font color black
