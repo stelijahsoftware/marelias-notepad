@@ -62,7 +62,7 @@ public class FileSearchDialog {
         final CheckBox regexCheckBox = new CheckBox(activity);
         final CheckBox caseSensitivityCheckBox = new CheckBox(activity);
         final CheckBox searchInContentCheckBox = new CheckBox(activity);
-        final CheckBox onlyFirstContentMatchCheckBox = new CheckBox(activity);
+//        final CheckBox onlyFirstContentMatchCheckBox = new CheckBox(activity);
 
         // TextView
         final String loc = activity.getString(options.searchLocation != 0 ? options.searchLocation : R.string.directory);
@@ -117,21 +117,12 @@ public class FileSearchDialog {
         if (options.enableSearchInContent) {
             searchInContentCheckBox.setText(R.string.search_in_content);
             searchInContentCheckBox.setChecked(appSettings.isSearchInContent());
-            searchInContentCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                onlyFirstContentMatchCheckBox.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
-            });
             dialogLayout.addView(searchInContentCheckBox, margins);
-
-            // Checkbox: Only first content match
-            onlyFirstContentMatchCheckBox.setText(R.string.stop_search_after_first_match);
-            onlyFirstContentMatchCheckBox.setChecked(appSettings.isOnlyFirstContentMatch());
-            onlyFirstContentMatchCheckBox.setVisibility(searchInContentCheckBox.isChecked() ? View.VISIBLE : View.INVISIBLE);
-            dialogLayout.addView(onlyFirstContentMatchCheckBox, subCheckBoxMargins);
-        } else {
+        }
+        else
+        {
             searchInContentCheckBox.setChecked(false);
             searchInContentCheckBox.setVisibility(View.GONE);
-            onlyFirstContentMatchCheckBox.setChecked(false);
-            onlyFirstContentMatchCheckBox.setVisibility(View.GONE);
         }
 
         // ScrollView
@@ -155,16 +146,13 @@ public class FileSearchDialog {
                 opt.isRegexQuery = regexCheckBox.isChecked();
                 opt.isCaseSensitiveQuery = caseSensitivityCheckBox.isChecked();
                 opt.isSearchInContent = searchInContentCheckBox.isChecked();
-                opt.isOnlyFirstContentMatch = onlyFirstContentMatchCheckBox.isChecked();
                 opt.ignoredDirectories = appSettings.getFileSearchIgnorelist();
                 opt.maxSearchDepth = appSettings.getSearchMaxDepth();
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-//                    opt.password = appSettings.getDefaultPassword();
                 }
                 appSettings.setSearchQueryRegexUsing(opt.isRegexQuery);
                 appSettings.setSearchQueryCaseSensitivity(opt.isCaseSensitiveQuery);
                 appSettings.setSearchInContent(opt.isSearchInContent);
-                appSettings.setOnlyFirstContentMatch(opt.isOnlyFirstContentMatch);
 
                 dialog.dismiss();
                 dialogCallback.callback(opt);

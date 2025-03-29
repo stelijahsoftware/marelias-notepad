@@ -305,14 +305,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         setBool(R.string.pref_key__is_search_in_content, isSearchInContent);
     }
 
-    public boolean isOnlyFirstContentMatch() {
-        return getBool(R.string.pref_key__is_only_first_content_match, false);
-    }
-
-    public void setOnlyFirstContentMatch(final boolean isOnlyFirstContentMatch) {
-        setBool(R.string.pref_key__is_only_first_content_match, isOnlyFirstContentMatch);
-    }
-
     public int getSearchMaxDepth() {
         int depth = getIntOfStringPref(R.string.pref_key__max_search_depth, Integer.MAX_VALUE);
 
@@ -370,10 +362,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
     public void setNewFileDialogLastUsedExtension(String v) {
         setString(R.string.pref_key__new_file_dialog_lastused_extension, v);
-    }
-
-    public int getNewFileDialogLastUsedType() {
-            return FormatRegistry.FORMAT_PLAIN;
     }
 
     public void setNewFileDialogLastUsedType(final int format) {
