@@ -29,6 +29,9 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - When press back on note empty, ask to delete.
 
 [m] - highlight recently opened folder
+[m] - make scroll bar black when pressed
+[m] - share notes app
+
 [m] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [m] - delete empty note on back button?
 [m] - ability to pin notes to top
