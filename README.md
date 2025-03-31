@@ -26,26 +26,24 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - Rename note title from pressing `note title` on document edit screen.
 [h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
-[h] - When press back on note empty, ask to delete.
+[h] - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
+[h] - Keep recently searched for items in search list
+[h] - Fix theme when system dark more is enabled (some window colours are correct).
+[h] - highlight recently opened folder (not just files)
 
-[m] - highlight recently opened folder
-[m] - make scroll bar black when pressed
 [m] - share notes app
 
-[m] - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
-[m] - delete empty note on back button?
-[m] - ability to pin notes to top
-[m] - add modifDate_creatDate title to notes?Eg`20250122-20241127 note.txt`.Whenever you modify the note,the first date gets updated.Needs to make sure that no new note is created.
-[m] - Auto-delete empty notes on save + disable auto-save?
-[m] - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[m] - pointer not visible inside highlights
+[m] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
+[m] - Sorting: Ability to pin notes to top
+[m] - Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+[m] - Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 [m] - add % -- comments + colour symbols?
-[m] - Fix theme when system dark more is enabled (some window colours are correct).
-[M] - Put top bar on bottom for easier access to save button & rename..etc
 [M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[M] - Keep recently searched for items in search list
+
+[L] - Put top bar on bottom for easier access to save button & rename..etc?
+[L] - pointer not visible inside highlights
+[L] - make scrollbars darker+bigger when pressed
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
-[L] - Highlight briefly when going back (see Merge requests on github) (this feature is not implemented yet in upstream)
 [L] - Add git integration info (add how to note in 'about' screen)
 
 ### Ignored tasks:
