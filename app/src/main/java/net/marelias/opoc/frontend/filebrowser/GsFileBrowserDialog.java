@@ -241,7 +241,6 @@ public class GsFileBrowserDialog extends DialogFragment implements GsFileBrowser
         }
 
         final GsSearchOrCustomTextDialog.DialogOptions dopt = new GsSearchOrCustomTextDialog.DialogOptions();
-        dopt.isDarkDialog = GsContextUtils.instance.isDarkModeEnabled(activity);
         dopt.titleText = _dopt.newDirButtonText;
         dopt.textColor = rcolor(_dopt.primaryTextColor);
         dopt.searchHintText = android.R.string.untitled;

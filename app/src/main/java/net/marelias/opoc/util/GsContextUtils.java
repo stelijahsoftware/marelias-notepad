@@ -156,24 +156,15 @@ public class GsContextUtils {
     @SuppressLint("ConstantLocale")
     public final static Locale INITIAL_LOCALE = Locale.getDefault();
     public final static String EXTRA_FILEPATH = "EXTRA_FILEPATH";
-    public final static String EXTRA_URI = "EXTRA_URI";
-    public final static SimpleDateFormat DATEFORMAT_RFC3339ISH = new SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss", INITIAL_LOCALE);
-    public final static String MIME_TEXT_PLAIN = "text/plain";
     public final static String PREF_KEY__SAF_TREE_URI = "pref_key__saf_tree_uri";
     public final static String CONTENT_RESOLVER_FILE_PROXY_SEGMENT = "CONTENT_RESOLVER_FILE_PROXY_SEGMENT";
 
-//    public final static int REQUEST_CAMERA_PICTURE = 50001;
-//    public final static int REQUEST_PICK_PICTURE = 50002;
     public final static int REQUEST_SAF = 50003;
     public final static int REQUEST_STORAGE_PERMISSION_M = 50004;
     public final static int REQUEST_STORAGE_PERMISSION_R = 50005;
-//    public final static int REQUEST_RECORD_AUDIO = 50006;
     private final static int BLINK_ANIMATOR_TAG = -1206813720;
 
     public static int TEXTFILE_OVERWRITE_MIN_TEXT_LENGTH = 2;
-    protected static Pair<File, List<Pair<String, String>>> m_cacheLastExtractFileMetadata;
-    protected static String _lastCameraPictureFilepath = null;
-    protected static WeakReference<GsCallback.a1<String>> _receivePathCallback = null;
     protected static String m_chooserTitle = "➥";
 
 
@@ -249,15 +240,6 @@ public class GsContextUtils {
         return ContextCompat.getColor(context, resId);
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //########################
-    //## App & Device information
-    //########################
-
-    public static String getAndroidVersion() {
-        return Build.VERSION.RELEASE + " (" + Build.VERSION.SDK_INT + ")";
-    }
-
     public String getAppVersionName(final Context context) {
         final PackageManager manager = context.getPackageManager();
         try {
@@ -271,36 +253,6 @@ public class GsContextUtils {
             }
         }
         return "?";
-    }
-
-    public String getAppInstallationSource(final Context context) {
-        String src = null;
-        try {
-            src = context.getPackageManager().getInstallerPackageName(getAppIdFlavorSpecific(context));
-        } catch (Exception ignored) {
-            try {
-                src = context.getPackageManager().getInstallerPackageName(getAppIdUsedAtManifest(context));
-            } catch (Exception ignored2) {
-            }
-        }
-
-        src = TextUtils.isEmpty(src) ? "" : src;
-        src = src.replaceAll("^\\s*$", "Sideloaded")
-                .replaceAll("(?i).*(vending)|(google).*", "Google Play")
-                .replaceAll("(?i).*fdroid.*", "F-Droid")
-                .replaceAll("(?i).*amazon.*", "Amazon Appstore")
-                .replaceAll("(?i).*yalp.*", "Yalp Store").replaceAll("(?i).*aptoide.*", "Aptoide")
-                .replaceAll("(?i).*package.*installer.*", "Package Installer");
-        return src;
-    }
-
-    @SuppressLint("PrivateApi")
-    public Application getApplicationObject() {
-        try {
-            return (Application) Class.forName("android.app.AppGlobals").getMethod("getInitialApplication").invoke(null, (Object[]) null);
-        } catch (Exception e) {
-            return null;
-        }
     }
 
     /**
@@ -335,30 +287,6 @@ public class GsContextUtils {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public List<String> getBuildConfigFields(final Context context) {
-        final String pkg = getAppIdUsedAtManifest(context) + ".BuildConfig";
-        final List<String> fields = new ArrayList<>();
-        try {
-            for (Field f : Class.forName(pkg).getFields()) {
-                fields.add(f.getName());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return fields;
-    }
-
-    /**
-     * Get a BuildConfig string value
-     */
-    public Integer bcint(final Context context, final String fieldName, final int defaultValue) {
-        Object field = getBuildConfigValue(context, fieldName);
-        if (field instanceof Integer) {
-            return (Integer) field;
-        }
-        return defaultValue;
     }
 
     /**
@@ -409,16 +337,6 @@ public class GsContextUtils {
     }
 
     /**
-     * Try to guess if the color on top of the given {@code colorOnBottomInt}
-     * should be light or dark. Returns true if top color should be light
-     */
-    public boolean shouldColorOnTopBeLight(@ColorInt final int colorOnBottomInt) {
-        return 186 > (((0.299 * Color.red(colorOnBottomInt))
-                + ((0.587 * Color.green(colorOnBottomInt))
-                + (0.114 * Color.blue(colorOnBottomInt)))));
-    }
-
-    /**
      * Convert a html string to an android {@link Spanned} object
      */
     public Spanned htmlToSpanned(final String html) {
@@ -436,21 +354,6 @@ public class GsContextUtils {
      */
     public int convertDpToPx(final Context context, final float dp) {
         return (int) (dp * context.getResources().getDisplayMetrics().density);
-    }
-
-    /**
-     * Get the private directory for the current package (usually /data/data/package.name/)
-     */
-    @SuppressWarnings("StatementWithEmptyBody")
-    public File getAppDataPrivateDir(final Context context) {
-        File filesDir;
-        try {
-            filesDir = new File(new File(context.getPackageManager().getPackageInfo(getAppIdFlavorSpecific(context), 0).applicationInfo.dataDir), "files");
-        } catch (PackageManager.NameNotFoundException e) {
-            filesDir = context.getFilesDir();
-        }
-        if (!filesDir.exists() && filesDir.mkdirs()) ;
-        return filesDir;
     }
 
     /**
@@ -513,50 +416,6 @@ public class GsContextUtils {
     }
 
     /**
-     * Calculates the scaling factor so the bitmap is maximal as big as the maxDimen
-     *
-     * @param options  Bitmap-options that contain the current dimensions of the bitmap
-     * @param maxDimen Max size of the Bitmap (width or height)
-     * @return the scaling factor that needs to be applied to the bitmap
-     */
-    public int calculateInSampleSize(final BitmapFactory.Options options, final int maxDimen) {
-        // Raw height and width of image
-        int height = options.outHeight;
-        int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (Math.max(height, width) > maxDimen) {
-            inSampleSize = Math.round(1f * Math.max(height, width) / maxDimen);
-        }
-        return inSampleSize;
-    }
-
-    /**
-     * Write the given {@link Bitmap} to filesystem
-     *
-     * @param targetFile The file to be written in
-     * @param image      Android {@link Bitmap}
-     * @return True if writing was successful
-     */
-    public <T extends GsContextUtils> T writeImageToFile(final File targetFile, final Bitmap image, GsCallback.a1<Boolean> okCallback, Integer... a0quality) {
-        final int quality = (a0quality != null && a0quality.length > 0 && a0quality[0] >= 0 && a0quality[0] <= 100) ? a0quality[0] : 70;
-        final String lc = targetFile.getAbsolutePath().toLowerCase(Locale.ROOT);
-        final CompressFormat format = lc.endsWith(".webp") ? CompressFormat.WEBP : (lc.endsWith(".png") ? CompressFormat.PNG : CompressFormat.JPEG);
-
-        writeFile(null, targetFile, false, (isOk, outputStream) -> {
-            isOk &= image.compress(format, quality, outputStream);
-            if (okCallback != null) {
-                okCallback.callback(isOk);
-            }
-            try {
-                image.recycle();
-            } catch (Exception ignored) {
-            }
-        });
-        return thisp();
-    }
-
-    /**
      * Try to tint all {@link Menu}s {@link MenuItem}s with given color
      */
     public void tintMenuItems(final Menu menu, final boolean recurse, @ColorInt final int iconColor) {
@@ -611,19 +470,6 @@ public class GsContextUtils {
         }
     }
 
-
-    public String getLocalizedDateFormat(final Context context) {
-        return ((SimpleDateFormat) android.text.format.DateFormat.getDateFormat(context)).toPattern();
-    }
-
-    public String getLocalizedTimeFormat(final Context context) {
-        return ((SimpleDateFormat) android.text.format.DateFormat.getTimeFormat(context)).toPattern();
-    }
-
-//    public String getLocalizedDateTimeFormat(final Context context) {
-//        return getLocalizedDateFormat(context) + " " + getLocalizedTimeFormat(context);
-//    }
-
     /**
      * A {@link InputFilter} for filenames
      */
@@ -640,28 +486,6 @@ public class GsContextUtils {
             return null;
         };
     }
-
-    /**
-     * A simple {@link Runnable} which does a touch event on a view.
-     * This pops up e.g. the keyboard on a {@link android.widget.EditText}
-     * <p>
-     * Example: new Handler().postDelayed(new DoTouchView(editView), 200);
-     */
-    public static class DoTouchView implements Runnable {
-        private View m_view;
-
-        public DoTouchView(View view) {
-            m_view = view;
-        }
-
-        @Override
-        public void run() {
-            m_view.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, 0, 0, 0));
-            m_view.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, 0, 0, 0));
-            m_view = null;
-        }
-    }
-
 
     public String getMimeType(final Context context, final File file) {
         return getMimeType(context, file.getAbsolutePath());
@@ -692,29 +516,6 @@ public class GsContextUtils {
         return mimeType.toLowerCase(Locale.ROOT);
     }
 
-    /**
-     * Parse color hex string, using RGBA (instead of {@link Color#parseColor(String)} which uses ARGB)
-     *
-     * @param hexcolorString Hex color string in RRGGBB or RRGGBBAA format
-     * @return {@link ColorInt}
-     */
-    public @ColorInt
-    Integer parseHexColorString(final String hexcolorString) {
-        String h = TextUtils.isEmpty(hexcolorString) ? "" : hexcolorString;
-        h = h.replaceAll("[^A-Fa-f0-9]", "").trim();
-        if (h.isEmpty() || h.length() > 8) {
-            return null;
-        }
-        try {
-            if (h.length() > 6) {
-                h = h.substring(6) + (h.length() == 8 ? "" : "0") + h.substring(0, 6);
-            }
-            return Color.parseColor("#" + h);
-        } catch (Exception ignored) {
-            return null;
-        }
-    }
-
     public boolean isDeviceGoodHardware(final Context context) {
         try {
             ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -724,29 +525,6 @@ public class GsContextUtils {
         } catch (Exception ignored) {
             return true;
         }
-    }
-
-    // Vibrate device one time by given amount of time, defaulting to 50ms
-    // Requires <uses-permission android:name="android.permission.VIBRATE" /> in AndroidManifest to work
-    @SuppressWarnings("UnnecessaryReturnStatement")
-    @SuppressLint("MissingPermission")
-    public void vibrate(final Context context, final int... ms) {
-        int ms_v = ms != null && ms.length > 0 ? ms[0] : 50;
-        Vibrator vibrator = ((Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE));
-        if (vibrator == null) {
-            return;
-        } else if (Build.VERSION.SDK_INT >= 26) {
-            vibrator.vibrate(VibrationEffect.createOneShot(ms_v, VibrationEffect.DEFAULT_AMPLITUDE));
-        } else {
-            vibrator.vibrate(ms_v);
-        }
-    }
-
-    // Returns if the device is currently in portrait orientation (landscape=false)
-    @SuppressWarnings("deprecation")
-    public boolean isDeviceOrientationPortrait(final Context context) {
-        final int rotation = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getOrientation();
-        return (rotation == Surface.ROTATION_0) || (rotation == Surface.ROTATION_180);
     }
 
     // Get all of providers of the current app
@@ -776,7 +554,8 @@ public class GsContextUtils {
      * @param finishFromActivity true: Finish the current activity
      * @param requestCode        Request code for stating the activity, not waiting for result if null
      */
-    public <T extends GsContextUtils> T animateToActivity(final Activity context, final Class to, final Boolean finishFromActivity, final Integer requestCode) {
+    public <T extends GsContextUtils> T animateToActivity(final Activity context, final Class to,
+                                                          final Boolean finishFromActivity, final Integer requestCode) {
         return animateToActivity(context, new Intent(context, to), finishFromActivity, requestCode);
     }
 
@@ -788,7 +567,8 @@ public class GsContextUtils {
      * @param finishFromActivity true: Finish the current activity
      * @param requestCode        Request code for stating the activity, not waiting for result if null
      */
-    public <T extends GsContextUtils> T animateToActivity(final Activity context, final Intent intent, final Boolean finishFromActivity, final Integer requestCode) {
+    public <T extends GsContextUtils> T animateToActivity(final Activity context, final Intent intent,
+                                                          final Boolean finishFromActivity, final Integer requestCode) {
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         if (requestCode != null) {
             context.startActivityForResult(intent, requestCode);
@@ -822,24 +602,6 @@ public class GsContextUtils {
         }
     }
 
-    public <T extends GsContextUtils> T setLauncherActivityEnabled(final Context context, Class activityClass, boolean enable) {
-        try {
-            ComponentName component = new ComponentName(context, activityClass);
-            context.getPackageManager().setComponentEnabledSetting(component, enable ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-        } catch (Exception ignored) {
-        }
-        return thisp();
-    }
-
-    public <T extends GsContextUtils> T setLauncherActivityEnabledFromString(final Context context, String activityClass, boolean enable) {
-        try {
-            ComponentName component = new ComponentName(context, activityClass);
-            context.getPackageManager().setComponentEnabledSetting(component, enable ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-        } catch (Exception ignored) {
-        }
-        return thisp();
-    }
-
     /**
      * Try to create a new desktop shortcut on the launcher. Add permissions:
      * <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
@@ -866,64 +628,6 @@ public class GsContextUtils {
     }
 
     /**
-     * Try to create a new desktop shortcut on the launcher. This will not work on Api > 25. Add permissions:
-     * <uses-permission android:name="android.permission.INSTALL_SHORTCUT" />
-     * <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-     *
-     * @param intent  The intent to be invoked on tap
-     * @param iconRes Icon resource for the item
-     * @param title   Title of the item
-     */
-    public void createLauncherDesktopShortcutLegacy(final Context context, final Intent intent, @DrawableRes final int iconRes, final String title) {
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if (intent.getAction() == null) {
-            intent.setAction(Intent.ACTION_VIEW);
-        }
-
-        Intent creationIntent = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
-        creationIntent.putExtra("duplicate", true);
-        creationIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
-        creationIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, title);
-        creationIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(context, iconRes));
-        context.sendBroadcast(creationIntent);
-    }
-
-    /**
-     * Share text with given mime-type
-     *
-     * @param text     The text to share
-     * @param mimeType MimeType or null (uses text/plain)
-     */
-    public void shareText(final Context context, final String text, @Nullable final String mimeType) {
-        final Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT, text);
-        intent.setType(mimeType != null ? mimeType : MIME_TEXT_PLAIN);
-        showChooser(context, intent, null);
-    }
-
-    /**
-     * Share the given file as stream with given mime-type
-     *
-     * @param file     The file to share
-     * @param mimeType The files mime type
-     */
-    public boolean shareStream(final Context context, final File file, final String mimeType) {
-        final Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(EXTRA_FILEPATH, file.getAbsolutePath());
-        intent.setType(mimeType);
-
-        try {
-            final Uri fileUri = FileProvider.getUriForFile(context, getFileProvider(context), file);
-            intent.putExtra(Intent.EXTRA_STREAM, fileUri);
-            showChooser(context, intent, null);
-            return true;
-        } catch (Exception ignored) { // FileUriExposed(API24) / IllegalArgument
-            return false;
-        }
-    }
-
-    /**
      * Share the given files as stream with given mime-type
      *
      * @param files    The files to share
@@ -944,37 +648,6 @@ public class GsContextUtils {
             showChooser(context, intent, null);
             return true;
         } catch (Exception e) { // FileUriExposed(API24) / IllegalArgument
-            return false;
-        }
-    }
-
-    /**
-     * Start calendar application to add new event, with given details prefilled
-     */
-    public boolean createCalendarAppointment(final Context context, @Nullable final String title, @Nullable final String description, @Nullable final String location, @Nullable final Long... startAndEndTime) {
-        final Intent intent = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI);
-        if (title != null) {
-            intent.putExtra(CalendarContract.Events.TITLE, title);
-        }
-        if (description != null) {
-            intent.putExtra(CalendarContract.Events.DESCRIPTION, (description.length() > 800 ? description.substring(0, 800) : description));
-        }
-        if (location != null) {
-            intent.putExtra(CalendarContract.Events.EVENT_LOCATION, location);
-        }
-        if (startAndEndTime != null) {
-            if (startAndEndTime.length > 0 && startAndEndTime[0] > 0) {
-                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startAndEndTime[0]);
-            }
-            if (startAndEndTime.length > 1 && startAndEndTime[1] > 0) {
-                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, startAndEndTime[1]);
-            }
-        }
-
-        try {
-            startActivity(context, intent);
-            return true;
-        } catch (ActivityNotFoundException e) {
             return false;
         }
     }
@@ -1025,87 +698,6 @@ public class GsContextUtils {
         return false;
     }
 
-    /**
-     * Print a {@link WebView}'s contents, also allows to create a PDF
-     *
-     * @param webview WebView
-     * @param jobName Name of the job (affects PDF name too)
-     * @return {{@link PrintJob}} or null
-     */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public PrintJob print(final WebView webview, final String jobName, final boolean... landscape) {
-        final Context context = webview.getContext();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            final PrintDocumentAdapter printAdapter;
-            final PrintManager printManager = (PrintManager) context.getSystemService(Context.PRINT_SERVICE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                printAdapter = webview.createPrintDocumentAdapter(jobName);
-            } else {
-                printAdapter = webview.createPrintDocumentAdapter();
-            }
-            final PrintAttributes.Builder attrib = new PrintAttributes.Builder();
-            if (landscape != null && landscape.length > 0 && landscape[0]) {
-                attrib.setMediaSize(new PrintAttributes.MediaSize("ISO_A4", "android", 11690, 8270));
-                attrib.setMinMargins(new PrintAttributes.Margins(0, 0, 0, 0));
-            }
-            if (printManager != null) {
-                try {
-                    return printManager.print(jobName, printAdapter, attrib.build());
-                } catch (Exception ignored) {
-                }
-            }
-        } else {
-            Log.e(getClass().getName(), "ERROR: Method called on too low Android API version");
-        }
-        return null;
-    }
-
-
-    /**
-     * See {@link #print(WebView, String, boolean...)}  print method}
-     */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public PrintJob createPdf(final WebView webview, final String jobName) {
-        return print(webview, jobName);
-    }
-
-
-    /**
-     * Create a picture out of {@link WebView}'s whole content
-     *
-     * @param webView The WebView to get contents from
-     * @return A {@link Bitmap} or null
-     */
-    @Nullable
-    public Bitmap getBitmapFromWebView(final WebView webView, final boolean... a0fullpage) {
-        try {
-            //Measure WebView's content
-            if (a0fullpage != null && a0fullpage.length > 0 && a0fullpage[0]) {
-                int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-                int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-                webView.measure(widthMeasureSpec, heightMeasureSpec);
-                webView.layout(0, 0, webView.getMeasuredWidth(), webView.getMeasuredHeight());
-            }
-
-            //Build drawing cache and store its size
-            webView.buildDrawingCache();
-
-            //Creates the bitmap and draw WebView's content on in
-            Bitmap bitmap = Bitmap.createBitmap(webView.getMeasuredWidth(), webView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(bitmap);
-            canvas.drawBitmap(bitmap, 0, bitmap.getHeight(), new Paint());
-
-            webView.draw(canvas);
-            webView.destroyDrawingCache();
-
-            return bitmap;
-        } catch (Exception | OutOfMemoryError e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
     /***
      * Replace (primary) clipboard contents with given {@code text}
      * @param text Text to be set
@@ -1119,47 +711,6 @@ public class GsContextUtils {
         } catch (Exception ignored) {
             return false;
         }
-    }
-
-    /**
-     * Get clipboard contents, very failsafe and compat to older android versions
-     */
-    public List<String> getClipboard(final Context context) {
-        List<String> clipper = new ArrayList<>();
-        ClipboardManager cm = ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE));
-        if (cm != null && cm.hasPrimaryClip()) {
-            ClipData data = cm.getPrimaryClip();
-            for (int i = 0; data != null && i < data.getItemCount() && i < data.getItemCount(); i++) {
-                ClipData.Item item = data.getItemAt(i);
-                if (item != null && !TextUtils.isEmpty(item.getText())) {
-                    clipper.add(data.getItemAt(i).getText().toString());
-                }
-            }
-        }
-        return clipper;
-    }
-
-    /**
-     * Draft an email with given data. Unknown data can be supplied as null.
-     * This will open a chooser with installed mail clients where the mail can be sent from
-     *
-     * @param subject Subject (top/title) text to be prefilled in the mail
-     * @param body    Body (content) text to be prefilled in the mail
-     * @param to      recipients to be prefilled in the mail
-     */
-    public void draftEmail(final Context context, final String subject, final String body, final String... to) {
-        final Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:"));
-        if (subject != null) {
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        }
-        if (body != null) {
-            intent.putExtra(Intent.EXTRA_TEXT, body);
-        }
-        if (to != null && to.length > 0 && to[0] != null) {
-            intent.putExtra(Intent.EXTRA_EMAIL, to);
-        }
-        showChooser(context, intent, null);
     }
 
     private static File checkPath(final String path) {
@@ -1317,26 +868,6 @@ public class GsContextUtils {
         return out;
     }
 
-    public String extractFileFromIntentStr(final Context context, final Intent receivingIntent) {
-        File f = extractFileFromIntent(context, receivingIntent);
-        return f != null ? f.getAbsolutePath() : null;
-    }
-
-    private void setPathCallback(final GsCallback.a1<String> callback) {
-        _receivePathCallback = new WeakReference<>(callback);
-    }
-
-    private void sendPathCallback(final String path) {
-        if (!GsTextUtils.isNullOrEmpty(path) && _receivePathCallback != null) {
-            final GsCallback.a1<String> cb = _receivePathCallback.get();
-            if (cb != null) {
-                cb.callback(path);
-            }
-        }
-        // Send only once and once only
-        _receivePathCallback = null;
-    }
-
     /**
      * Extract result data from {@link Activity}.onActivityResult.
      * Forward all arguments from context. Only requestCodes as implemented in {@link GsContextUtils} are analyzed.
@@ -1366,132 +897,6 @@ public class GsContextUtils {
                 break;
             }
         }
-    }
-
-    /**
-     * Request edit of file
-     *
-     * @param context Context to use to get provider and start activity
-     * @param file    File that should be edited
-     */
-    public void requestFileEdit(final Context context, File file) {
-        if (file == null || !file.exists()) {
-            return;
-        }
-
-        try {
-            file = file.getCanonicalFile();
-            final Uri uri = FileProvider.getUriForFile(context, getFileProvider(context), file);
-            final Intent intent = new Intent(Intent.ACTION_EDIT);
-            intent.setDataAndType(uri, GsFileUtils.getMimeType(file));
-            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-            intent.putExtra(EXTRA_FILEPATH, file.getPath());
-            startActivity(context, intent);
-        } catch (IOException e) {
-            Log.e(GsContextUtils.class.getName(), "ERROR: Failed to get canonical file path");
-        }
-    }
-
-    /**
-     * Get content://media/ Uri for given file, or null if not indexed
-     *
-     * @param file Target file
-     * @param mode 1 for picture, 2 for video, anything else for other
-     * @return Media URI
-     */
-    @SuppressWarnings("TryFinallyCanBeTryWithResources")
-    public Uri getMediaUri(final Context context, final File file, final int mode) {
-        Uri uri = MediaStore.Files.getContentUri("external");
-        uri = (mode != 0) ? (mode == 1 ? MediaStore.Images.Media.EXTERNAL_CONTENT_URI : MediaStore.Video.Media.EXTERNAL_CONTENT_URI) : uri;
-
-        Cursor cursor = null;
-        try {
-            cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.Media._ID}, MediaStore.Images.Media.DATA + "= ?", new String[]{file.getAbsolutePath()}, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                @SuppressLint("Range")
-                int mediaid = cursor.getInt(cursor.getColumnIndex(MediaStore.Images.Media._ID));
-                return Uri.withAppendedPath(uri, mediaid + "");
-            }
-        } catch (Exception ignored) {
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-        return null;
-    }
-
-    /**
-     * By default Chrome Custom Tabs only uses Chrome Stable to open links
-     * There are also other packages (like Chrome Beta, Chromium, Firefox, ..)
-     * which implement the Chrome Custom Tab interface. This method changes
-     * the customtab intent to use an available compatible browser, if available.
-     */
-    public void enableChromeCustomTabsForOtherBrowsers(final Context context, final Intent customTabIntent) {
-        String[] checkpkgs = new String[]{
-                "com.android.chrome", "com.chrome.beta", "com.chrome.dev", "com.google.android.apps.chrome", "org.chromium.chrome",
-                "org.mozilla.fennec_fdroid", "org.mozilla.firefox", "org.mozilla.firefox_beta", "org.mozilla.fennec_aurora",
-                "org.mozilla.klar", "org.mozilla.focus",
-        };
-
-        // Get all intent handlers for web links
-        PackageManager pm = context.getPackageManager();
-        Intent urlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.example.com"));
-        List<String> browsers = new ArrayList<>();
-        for (ResolveInfo ri : pm.queryIntentActivities(urlIntent, 0)) {
-            Intent i = new Intent("android.support.customtabs.action.CustomTabsService");
-            i.setPackage(ri.activityInfo.packageName);
-            if (pm.resolveService(i, 0) != null) {
-                browsers.add(ri.activityInfo.packageName);
-            }
-        }
-
-        // Check if the user has a "default browser" selected
-        ResolveInfo ri = pm.resolveActivity(urlIntent, 0);
-        String userDefaultBrowser = (ri == null) ? null : ri.activityInfo.packageName;
-
-        // Select which browser to use out of all installed customtab supporting browsers
-        String pkg = null;
-        if (browsers.size() == 1) {
-            pkg = browsers.get(0);
-        } else if (!TextUtils.isEmpty(userDefaultBrowser) && browsers.contains(userDefaultBrowser)) {
-            pkg = userDefaultBrowser;
-        } else if (!browsers.isEmpty()) {
-            for (String checkpkg : checkpkgs) {
-                if (browsers.contains(checkpkg)) {
-                    pkg = checkpkg;
-                    break;
-                }
-            }
-            if (pkg == null) {
-                pkg = browsers.get(0);
-            }
-        }
-        if (pkg != null && customTabIntent != null) {
-            customTabIntent.setPackage(pkg);
-        }
-    }
-
-    @SuppressWarnings("deprecation")
-    public boolean openWebpageInChromeCustomTab(final Context context, final String url) {
-        boolean ok = false;
-        try {
-            // Use a CustomTabsIntent.Builder to configure CustomTabsIntent.
-            // Once ready, call CustomTabsIntent.Builder.build() to create a CustomTabsIntent
-            // and launch the desired Url with CustomTabsIntent.launchUrl()
-            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-            builder.setToolbarColor(ContextCompat.getColor(context, getResId(context, GsContextUtils.ResType.COLOR, "primary")));
-            builder.setSecondaryToolbarColor(ContextCompat.getColor(context, getResId(context, GsContextUtils.ResType.COLOR, "primary_dark")));
-            builder.addDefaultShareMenuItem();
-            CustomTabsIntent customTabsIntent = builder.build();
-            enableChromeCustomTabsForOtherBrowsers(context, customTabsIntent.intent);
-            customTabsIntent.launchUrl(context, Uri.parse(url));
-            ok = true;
-        } catch (Exception ignored) {
-        }
-        return ok;
     }
 
     /***
@@ -1673,7 +1078,8 @@ public class GsContextUtils {
         return dof;
     }
 
-    public void showMountSdDialog(final Activity context, @StringRes final int title, @StringRes final int description, @DrawableRes final int mountDescriptionGraphic) {
+    public void showMountSdDialog(final Activity context, @StringRes final int title, @StringRes final int description,
+                                  @DrawableRes final int mountDescriptionGraphic) {
         // Image viewer
         ImageView imv = new ImageView(context);
         imv.setImageResource(mountDescriptionGraphic);
@@ -1741,47 +1147,14 @@ public class GsContextUtils {
     }
 
     /**
-     * Call telephone number.
-     * Non direct call, opens up the dialer and pre-sets the telephone number. User needs to press manually.
-     * Direct call requires M permission granted, also add permissions to manifest:
-     * <uses-permission android:name="android.permission.CALL_PHONE" />
-     *
-     * @param telNo      The telephone number to call
-     * @param directCall Direct call number if possible
-     */
-    @SuppressWarnings("SimplifiableConditionalExpression")
-    public void callTelephoneNumber(final Activity context, String telNo, final boolean... directCall) {
-        boolean ldirectCall = (directCall != null && directCall.length > 0) ? directCall[0] : true;
-        telNo = telNo.replaceAll("(?i)(tel:?)+", "");
-
-        if (android.os.Build.VERSION.SDK_INT >= 23 && ldirectCall && context != null) {
-            if (ContextCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.CALL_PHONE}, 4001);
-                ldirectCall = false;
-            } else {
-                try {
-                    Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:" + telNo));
-                    startActivity(context, callIntent);
-                } catch (Exception ignored) {
-                    ldirectCall = false;
-                }
-            }
-        }
-        // Show dialer up with telephone number pre-inserted
-        if (!ldirectCall) {
-            startActivity(context, new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", telNo, null)));
-        }
-    }
-
-    /**
      * @param locale   {@link Locale} locale
      * @param format   {@link String} text which 'll be used as format for {@link SimpleDateFormat}
      * @param datetime {@link Long}   requested time miliseconds
      * @param fallback {@link String} default fallback value. If the format is incorrect and a default is not provided, return the specified format
      * @return formatted string
      */
-    public String formatDateTime(@Nullable final Locale locale, @NonNull final String format, @Nullable final Long datetime, @Nullable final String... fallback) {
+    public String formatDateTime(@Nullable final Locale locale, @NonNull final String format, @Nullable final Long datetime,
+                                 @Nullable final String... fallback) {
         try {
             final Locale l = locale != null ? locale : Locale.getDefault();
             final long t = datetime != null ? datetime : System.currentTimeMillis();
@@ -1817,20 +1190,6 @@ public class GsContextUtils {
         ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_PERMISSION_M);
     }
 
-    public void requestExternalStoragePermission(final Activity activity, @StringRes int description) {
-        requestExternalStoragePermission(activity, activity.getString(description));
-    }
-
-    public void requestExternalStoragePermission(final Activity activity, final String description) {
-        final AlertDialog d = new AlertDialog.Builder(activity)
-                .setMessage(description)
-                .setCancelable(false)
-                .setPositiveButton(android.R.string.yes, (dialog, which) -> requestExternalStoragePermission(activity))
-                .setNegativeButton(android.R.string.no, null)
-                .show();
-        d.setCanceledOnTouchOutside(false);
-    }
-
     @SuppressWarnings("ConstantConditions")
     public boolean checkExternalStoragePermission(final Context context) {
         final int v = android.os.Build.VERSION.SDK_INT;
@@ -1855,108 +1214,6 @@ public class GsContextUtils {
         return false;
     }
 
-    public List<Pair<String, String>> extractFileMetadata(final Context context, File file, boolean withHtml) {
-        if (m_cacheLastExtractFileMetadata != null && m_cacheLastExtractFileMetadata.first.equals(file)) {
-            return m_cacheLastExtractFileMetadata.second;
-        }
-        final Uri fileUri = Uri.fromFile(file.getAbsoluteFile());
-        final ArrayList<Pair<String, String>> extracted = new ArrayList<>();
-
-        // "Last modified" -> R.string.last_modified
-        final GsCallback.a2<String, String> append = (key, value) -> {
-            final int resId = getResId(context, GsContextUtils.ResType.STRING, key);
-            extracted.add(new Pair<>((resId != 0 ? context.getString(resId) : key), value));
-        };
-
-        // java.io.File metadata like name, size, modtime
-        append.callback("File", file.getAbsolutePath());
-        append.callback("Size", GsFileUtils.getReadableFileSize(file.length(), true));
-        append.callback("Last modified", DateUtils.formatDateTime(context, file.lastModified(), (DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE)));
-
-        // Detect all possible metadata keys from MediaMetadataRetriever as there is no queryAll method
-        final List<Pair<Integer, String>> mmrfields = new ArrayList<>();
-        for (Field field : MediaMetadataRetriever.class.getDeclaredFields()) {
-            String prefix = "METADATA_KEY_";
-            String name = field.getName();
-            if (name.startsWith(prefix)) {
-                prefix = GsTextUtils.toTitleCase(name.replace(prefix, "").replace("_", " ").replaceAll("\\s*(?i)num(ber)?\\s*", " No. "));
-                try {
-                    mmrfields.add(new Pair<>(field.getInt(null), prefix));
-                } catch (Exception ignored) {
-                }
-            }
-        }
-        //noinspection ComparatorCombinators
-        Collections.sort(mmrfields, (sortO1, sortO2) -> sortO1.first - sortO2.first);
-
-        // Extractor for generic multimedia file metadata like title/artist
-        // setDataSource may throw exception on certain files, hence wrap the call
-        final MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-        try {
-            mmr.setDataSource(context, fileUri);
-        } catch (Exception ignored) {
-        }
-
-        // Extract Cover& preview if available
-        try {
-            Bitmap bitmap;
-            final byte[] data = withHtml ? mmr.getEmbeddedPicture() : null;
-            if (data != null) {
-                bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                append.callback("Cover", "<img src='data:image/jpeg;base64,%s' style='max-height: 85vh; max-width: 100%;' />".replace("%s", imageToBase64(bitmap, Bitmap.CompressFormat.JPEG, 50)));
-            }
-            bitmap = withHtml ? mmr.getFrameAtTime() : null;
-            if (bitmap != null) {
-                append.callback("Preview", "<img src='data:image/jpeg;base64,%s' style='max-height: 85vh; max-width: 100%;' />".replace("%s", imageToBase64(bitmap, Bitmap.CompressFormat.JPEG, 50)));
-            }
-        } catch (Exception ignored) {
-        }
-
-        // Extract all other detected fields
-        for (final Pair<Integer, String> mmrfield : mmrfields) {
-            String v = null;
-            try {
-                v = mmr.extractMetadata(mmrfield.first);
-            } catch (Exception ignored) {
-            }
-            if (!TextUtils.isEmpty(v)) {
-                if (mmrfield.first == MediaMetadataRetriever.METADATA_KEY_BITRATE) {
-                    v = GsFileUtils.getHumanReadableByteCountSI(Long.parseLong(v)) + "ps";
-                    if (v.startsWith("-1 ")) {
-                        continue; // invalid / unknown
-                    }
-                } else if (mmrfield.first == MediaMetadataRetriever.METADATA_KEY_DURATION) {
-                    final int[] hms = GsFileUtils.getTimeDiffHMS(Long.parseLong(v), 0);
-                    v = String.format("%sh %sm %ss", hms[0], hms[1], hms[2]);
-                    if (v.equals("0h 0m 0s")) {
-                        continue; // Duration key might be set but no actual duration information
-                    }
-                }
-                append.callback(mmrfield.second, v);
-            }
-        }
-
-        // free resources
-        try {
-            mmr.release();
-        } catch (Exception ignored) {
-        }
-        m_cacheLastExtractFileMetadata = new Pair<>(file, extracted);
-        return extracted;
-    }
-
-    public static String imageToBase64(Bitmap bitmap, Bitmap.CompressFormat format, int q) {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(format, q, outputStream);
-        return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT).replaceAll("\\s+", "");
-    }
-
-    public void showSnackBar(final Activity context, @StringRes int stringResId, boolean showLong, @StringRes int actionResId, View.OnClickListener listener) {
-        Snackbar.make(context.findViewById(android.R.id.content), stringResId, (showLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT))
-                .setAction(actionResId, listener)
-                .show();
-    }
-
     public <T extends GsContextUtils> T showSoftKeyboard(final Activity activity, final boolean show, final View... view) {
         if (activity != null) {
             final InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -1973,7 +1230,8 @@ public class GsContextUtils {
         return thisp();
     }
 
-    public void showDialogWithHtmlTextView(final Activity context, @StringRes int resTitleId, String text, boolean isHtml, DialogInterface.OnDismissListener dismissedListener) {
+    public void showDialogWithHtmlTextView(final Activity context, @StringRes int resTitleId, String text, boolean isHtml,
+                                           DialogInterface.OnDismissListener dismissedListener) {
         ScrollView scroll = new ScrollView(context);
         AppCompatTextView textView = new AppCompatTextView(context);
         int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, context.getResources().getDisplayMetrics());
@@ -1994,72 +1252,10 @@ public class GsContextUtils {
         dialogFullWidth(dialog.show(), true, false);
     }
 
-    public <T extends GsContextUtils> T showGooglePlayEntryForThisApp(final Context context) {
-        String pkgId = "details?id=" + context.getPackageName();
-        try {
-            final Intent gplay = new Intent(Intent.ACTION_VIEW, Uri.parse("market://" + pkgId));
-            gplay.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-            gplay.addFlags((Build.VERSION.SDK_INT >= 21 ? Intent.FLAG_ACTIVITY_NEW_DOCUMENT : Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET));
-            startActivity(context, gplay);
-        } catch (ActivityNotFoundException e) {
-            openWebpageInExternalBrowser(context, "https://play.google.com/store/apps/" + pkgId);
-        }
-        return thisp();
-    }
-
-    @ColorInt
-    public Integer getActivityBackgroundColor(final Activity activity) {
-        TypedArray array = activity.getTheme().obtainStyledAttributes(new int[]{
-                android.R.attr.colorBackground,
-        });
-        int c = array.getColor(0, 0xFF0000);
-        array.recycle();
-        return c;
-    }
-
     @ColorInt
     public int getListDividerColor(@Nullable final Activity activity) {
         GsContextUtils cu = GsContextUtils.instance;
-        final String forBlackBg = "#d1d1d1", forWhiteBg = "#3d3d3d";
-        boolean isWhiteBg = true;
-        try {
-            //noinspection ConstantConditions
-            isWhiteBg = shouldColorOnTopBeLight(getActivityBackgroundColor(activity));
-        } catch (Exception ignored) {
-        }
-        return Color.parseColor(isWhiteBg ? forWhiteBg : forBlackBg);
-    }
-
-    public <T extends GsContextUtils> T setActivityBackgroundColor(final Activity activity, @ColorInt Integer color) {
-        if (color != null) {
-            try {
-                ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0).setBackgroundColor(color);
-            } catch (Exception ignored) {
-            }
-        }
-        return thisp();
-    }
-
-    public <T extends GsContextUtils> T setActivityNavigationBarBackgroundColor(final Activity context, @ColorInt Integer color) {
-        if (context != null && color != null) {
-            try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    final Window window = context.getWindow();
-                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                    window.setNavigationBarColor(color);
-                }
-            } catch (Exception ignored) {
-            }
-        }
-        return thisp();
-    }
-
-    public void setKeepScreenOn(final Activity activity, Boolean keepOn) {
-        if (keepOn) {
-            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        } else {
-            activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        }
+        return Color.parseColor("#3d3d3d");
     }
 
     /**
@@ -2080,87 +1276,6 @@ public class GsContextUtils {
             }
         } catch (Exception ignored) {
         }
-    }
-
-    public static void windowAspectRatio(
-        final Window window,
-        final DisplayMetrics displayMetrics,
-        float portraitWidthRatio,
-        float portraitHeightRatio,
-        float landscapeWidthRatio,
-        float landscapeHeightRatio
-    ) {
-        if (window == null) {
-            return;
-        }
-
-        WindowManager.LayoutParams params = window.getAttributes();
-        final int width = displayMetrics.widthPixels;
-        final int height = displayMetrics.heightPixels;
-        if (width < height) { // Portrait
-            params.width = (int) (width * portraitWidthRatio);
-            params.height = (int) (height * portraitHeightRatio);
-        } else { // Landscape
-            params.width = (int) (width * landscapeWidthRatio);
-            params.height = (int) (height * landscapeHeightRatio);
-        }
-        window.setAttributes(params);
-    }
-
-    /**
-     * Set Android day-night theme
-     *
-     * @param pref one out of system (daynight toggle), auto (daynight hour), autocompat (hour 5-17), light (fixed), dark (fixed)
-     */
-    @SuppressLint("WrongConstant")
-    public void applyDayNightTheme(final String pref) {
-        final boolean prefLight = pref.contains("light") || ("autocompat".equals(pref) && isCurrentHourOfDayBetween(9, 17));
-        final boolean prefDark = pref.contains("dark") || ("autocompat".equals(pref) && !isCurrentHourOfDayBetween(9, 17));
-
-        if (prefLight) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        } else if (prefDark) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else if ("system".equals(pref)) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-        } else if ("auto".equals(pref)) {
-            //noinspection deprecation
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
-        }
-    }
-
-    /**
-     * A method to determine if current hour is between begin and end.
-     * This is especially useful for time-based light/dark mode
-     */
-    public boolean isCurrentHourOfDayBetween(int begin, int end) {
-        begin = (begin >= 23 || begin < 0) ? 0 : begin;
-        end = (end >= 23 || end < 0) ? 0 : end;
-        int h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        return h >= begin && h <= end;
-    }
-
-    /**
-     * Check if the Dark theme mode is enable in this app currently (or at system if system theme is set)
-     *
-     * @param context {@link Context}
-     * @return true if the dark theme/mode is currently enabled in this app
-     */
-    public boolean isDarkModeEnabled(final Context context) {
-        final int state = AppCompatDelegate.getDefaultNightMode();
-        if (state == AppCompatDelegate.MODE_NIGHT_YES) {
-            return true;
-        } else if (state == AppCompatDelegate.MODE_NIGHT_NO) {
-            return false;
-        } else {
-            switch (context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) {
-                case Configuration.UI_MODE_NIGHT_YES:
-                    return true;
-                case Configuration.UI_MODE_NIGHT_NO:
-                    return false;
-            }
-        }
-        return false;
     }
 
     public static void blinkView(final View view) {
@@ -2185,21 +1300,6 @@ public class GsContextUtils {
         animator.start();
     }
 
-    public static void stopBlinking(final View view) {
-        if (view == null) {
-            return;
-        }
 
-        final Object tagRef = view.getTag(BLINK_ANIMATOR_TAG);
-        if (tagRef instanceof WeakReference) {
-            final Object tag = ((WeakReference<?>) tagRef).get();
-            if (tag instanceof ObjectAnimator) {
-                final ObjectAnimator anim = ((ObjectAnimator) tag);
-                if (anim.isRunning()) {
-                    anim.cancel();
-                }
-            }
-        }
-    }
 
 }

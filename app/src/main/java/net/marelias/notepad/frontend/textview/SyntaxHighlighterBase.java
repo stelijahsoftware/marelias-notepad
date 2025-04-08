@@ -106,7 +106,6 @@ public abstract class SyntaxHighlighterBase {
     // Configuration - to be set on a call to configure
     protected int _delay = LONG_HIGHLIGHTING_DELAY;
     protected int _tabSize = 1;
-    protected boolean _isDarkMode = false;
     protected int _textColor = Color.BLACK;
     protected String _fontFamily = "";
 
@@ -118,7 +117,6 @@ public abstract class SyntaxHighlighterBase {
      * @return Highlighter
      */
     public SyntaxHighlighterBase configure(@Nullable final Paint paint) {
-        _isDarkMode = GsContextUtils.instance.isDarkModeEnabled(_appSettings.getContext());
         _fontFamily = _appSettings.getFontFamily();
         _textColor = _appSettings.getEditorForegroundColor();
         if (paint != null) {

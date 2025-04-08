@@ -152,7 +152,7 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
         if (activity != null && activity.getTheme() != null) {
             TypedArray array = activity.getTheme().obtainStyledAttributes(new int[]{android.R.attr.colorBackground});
             int bgcolor = array.getColor(0, 0xFFFFFF);
-            _defaultIconTintColor = _cu.shouldColorOnTopBeLight(bgcolor) ? Color.WHITE : Color.BLACK;
+            _defaultIconTintColor = Color.BLACK;
         }
 
         // on bottom
@@ -491,8 +491,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
         private final Paint _paint;
         private int _heightDp;
 
-        // b8b8b8          = default divider color
-        // d1d1d1 / 3d3d3d = color for light / dark mode
         public DividerDecoration(Context context, @Nullable @ColorInt Integer color, @Nullable GsCallback.b1<Integer> isCategoryAtFlatpos) {
             this(context, color, 1f, isCategoryAtFlatpos);
         }

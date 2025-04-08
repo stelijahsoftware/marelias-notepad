@@ -7,14 +7,6 @@
 #########################################################*/
 package net.marelias.notepad.frontend;
 
-//import static net.marelias.notepad.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_CONTEXT;
-//import static net.marelias.notepad.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_CREATION_DATE;
-//import static net.marelias.notepad.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_DESCRIPTION;
-//import static net.marelias.notepad.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_DUE_DATE;
-//import static net.marelias.notepad.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_LINE;
-//import static net.marelias.notepad.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_PRIORITY;
-//import static net.marelias.notepad.format.todotxt.TodoTxtTask.SttTaskSimpleComparator.BY_PROJECT;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Build;
@@ -137,7 +129,6 @@ public class MarkorDialogFactory {
     }
 
     public static void baseConf(Activity activity, DialogOptions dopt) {
-        dopt.isDarkDialog = GsContextUtils.instance.isDarkModeEnabled(activity);
         dopt.clearInputIcon = R.drawable.ic_baseline_clear_24;
         dopt.textColor = ContextCompat.getColor(activity, R.color.primary_text);
         dopt.highlightColor = ContextCompat.getColor(activity, R.color.accent);

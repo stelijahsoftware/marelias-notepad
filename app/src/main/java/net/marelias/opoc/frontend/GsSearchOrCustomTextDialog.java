@@ -90,7 +90,6 @@ public class GsSearchOrCustomTextDialog {
         public List<Integer> iconsForData;
         public CharSequence messageText = "";
         public String defaultText = "";
-        public boolean isDarkDialog = false;
         public boolean isSearchEnabled = true;
         public boolean isSoftInputVisible = true;
         public boolean isDismissOnItemSelected = true;
@@ -192,7 +191,7 @@ public class GsSearchOrCustomTextDialog {
                 textView.setCompoundDrawablesWithIntrinsicBounds(_dopt.iconsForData.get(index), 0, 0, 0);
                 textView.setCompoundDrawablePadding(32);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    TextViewCompat.setCompoundDrawableTintList(textView, ColorStateList.valueOf(_dopt.isDarkDialog ? Color.WHITE : Color.BLACK));
+                    TextViewCompat.setCompoundDrawableTintList(textView, ColorStateList.valueOf(Color.BLACK));
                 }
             } else {
                 textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
@@ -245,7 +244,7 @@ public class GsSearchOrCustomTextDialog {
 
     public static void showMultiChoiceDialogWithSearchFilterUI(final Activity activity, final DialogOptions dopt, final DialogState state) {
         final int dialogStyle = dopt.dialogStyle != 0 ? dopt.dialogStyle : GsContextUtils.instance.getResId(activity,
-                GsContextUtils.ResType.STYLE, dopt.isDarkDialog ? "Theme_AppCompat_Dialog" : "Theme_AppCompat_Light_Dialog");
+                GsContextUtils.ResType.STYLE, "Theme_AppCompat_Light_Dialog");
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity, dialogStyle);
 
         final Adapter listAdapter = new Adapter(activity, dopt);
@@ -550,7 +549,7 @@ public class GsSearchOrCustomTextDialog {
         final ImageView clearButton = new ImageView(context);
         clearButton.setImageResource(dopt.clearInputIcon);
         TooltipCompat.setTooltipText(clearButton, context.getString(android.R.string.cancel));
-        clearButton.setColorFilter(dopt.isDarkDialog ? Color.WHITE : Color.parseColor("#ff505050"));
+        clearButton.setColorFilter(Color.parseColor("#ff505050"));
         clearButton.setOnClickListener((v) -> searchEditText.setText(""));
         clearButton.setPadding(margin, 0, margin, 0);
 
