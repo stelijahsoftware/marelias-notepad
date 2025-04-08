@@ -1252,12 +1252,6 @@ public class GsContextUtils {
         dialogFullWidth(dialog.show(), true, false);
     }
 
-    @ColorInt
-    public int getListDividerColor(@Nullable final Activity activity) {
-        GsContextUtils cu = GsContextUtils.instance;
-        return Color.parseColor("#3d3d3d");
-    }
-
     /**
      * Show dialog in full width / show keyboard
      *
