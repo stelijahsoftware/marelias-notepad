@@ -251,10 +251,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="directory">Directory</string>
     <string name="recently_viewed_documents">Recently viewed documents</string>
     <string name="details">Details</string>
-    <string name="calendar">Calendar</string>
-    <string name="error_picture_selection">No picture selected, taken or saved.</string>
-    <string name="gallery_picture">Gallery picture</string>
-    <string name="camera_picture">Camera picture</string>
     <string name="description">Description</string>
     <string name="edit_picture">Edit picture</string>
     <string name="math">Math</string>
@@ -320,11 +316,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="always_open_with_this_app">Always open with this app</string>
     <string name="open_file_with">Open file with</string>
     <string name="rotate">Rotate</string>
-    <string name="template">Template</string>
-    <string name="send_debug_log">Send Debug Log</string>
-    <string name="print_pdf">Print / PDF</string>
-    <string name="bigger_headings">Bigger headings</string>
-    <string name="increase_text_size_of_headings_according_to_level">Increase text size of headers according to level (# h1, ## h2. ### h3…)</string>
     <string name="current">Current</string>
     <string name="record_audio">Record Audio</string>
     <string name="attach">Attach</string>
@@ -346,13 +337,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="date_and_time">Date and time</string>
     <string name="jump_to_bottom">Jump to bottom</string>
     <string name="quote">Quote</string>
-    <string name="heading">Heading</string>
-    <string name="heading_1">Heading 1</string>
-    <string name="heading_2">Heading 2</string>
-    <string name="heading_3">Heading 3</string>
-    <string name="heading_4">Heading 4</string>
-    <string name="heading_5">Heading 5</string>
-    <string name="heading_6">Heading 6</string>
     <string name="bold">Bold</string>
     <string name="italic">Italic</string>
     <string name="highlighted">Highlighted</string>
@@ -414,16 +398,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="infinite">Infinite</string>
     <string name="browse_by_project">Browse by project</string>
     <string name="browse_by_context">Browse by context</string>
-    <string name="insert_project">Insert projects</string>
-    <string name="insert_context">Insert contexts</string>
-    <string name="browse_todo">Browse todo</string>
-    <string name="browse_by_priority">Browse by priority</string>
-    <string name="browse_by_due_date">Browse by due date</string>
-    <string name="due_overdue">Overdue</string>
-    <string name="due_today">Due today</string>
-    <string name="due_future">Due in future</string>
-    <string name="completed">Completed</string>
-    <string name="advanced_filtering">Advanced filtering</string>
     <string name="match_any">Match Any</string>
     <string name="match_all">Match All</string>
     <string name="dynamic_notebook_root_links">Dynamic search for notebook root</string>
@@ -432,7 +406,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="insert_snippet">Insert snippet</string>
     <string name="snippet_directory">Snippet / Template directory</string>
     <string name="error_could_not_open_file">Error: Could not open file.</string>
-    <string name="document_error_clip">Error encountered: Text copied to clipboard.</string>
     <string name="wont_save_min_length">Files with fewer than %d characters not saved automatically in order to prevent data loss.</string>
     <string name="filter">Filter</string>
 </resources>
