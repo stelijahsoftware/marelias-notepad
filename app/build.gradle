@@ -81,8 +81,8 @@ android {
 
 dependencies {
     // Testing
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.assertj:assertj-core:3.13.1'
+//    testImplementation 'junit:junit:4.13.2'
+//    testImplementation 'org.assertj:assertj-core:3.13.1'
 
     // Android standard libs
     implementation "androidx.multidex:multidex:2.0.1"
