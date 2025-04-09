@@ -53,6 +53,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - make white bg of icon when starting up
 X - [h] `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 X - highlight recently opened file.
 X - Remove unuseful stop after first match option
