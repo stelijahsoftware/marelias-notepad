@@ -5,14 +5,11 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.marelias.notepad.activity.openeditor;
+package net.marelias.notepad.activity;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-
-import net.marelias.notepad.activity.MarkorBaseActivity;
-import net.marelias.notepad.activity.StoragePermissionActivity;
 
 public class OpenEditorActivity extends MarkorBaseActivity {
 

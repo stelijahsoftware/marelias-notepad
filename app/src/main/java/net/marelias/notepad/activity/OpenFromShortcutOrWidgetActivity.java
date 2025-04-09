@@ -1,10 +1,7 @@
-package net.marelias.notepad.activity.openeditor;
+package net.marelias.notepad.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import net.marelias.notepad.activity.DocumentActivity;
-import net.marelias.notepad.activity.MarkorBaseActivity;
 
 
 /**

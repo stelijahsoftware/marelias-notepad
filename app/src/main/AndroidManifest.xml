@@ -81,7 +81,7 @@
         </provider>
 
         <activity
-            android:name=".activity.openeditor.OpenFromShortcutOrWidgetActivity"
+            android:name=".activity.OpenFromShortcutOrWidgetActivity"
             android:launchMode="standard"
             android:theme="@android:style/Theme.NoDisplay" />
         <activity

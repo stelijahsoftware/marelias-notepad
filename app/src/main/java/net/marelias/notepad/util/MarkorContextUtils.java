@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import net.marelias.notepad.R;
-import net.marelias.notepad.activity.openeditor.OpenFromShortcutOrWidgetActivity;
+import net.marelias.notepad.activity.OpenFromShortcutOrWidgetActivity;
 import net.marelias.notepad.model.Document;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.util.GsContextUtils;
