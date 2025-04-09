@@ -21,7 +21,7 @@
  * FILTER_WEB is intended to be used at engines understanding most common HTML tags.
  */
 
-package net.marelias.opoc.format;
+package net.marelias.opoc.opoc;
 
 /**
  * Simple Markdown Parser

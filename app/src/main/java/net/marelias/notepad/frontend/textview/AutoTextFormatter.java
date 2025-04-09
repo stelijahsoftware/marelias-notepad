@@ -12,7 +12,7 @@ import android.text.InputFilter;
 import android.text.Selection;
 import android.text.Spanned;
 
-import net.marelias.opoc.format.GsTextUtils;
+import net.marelias.opoc.opoc.GsTextUtils;
 
 import java.util.EmptyStackException;
 import java.util.Stack;

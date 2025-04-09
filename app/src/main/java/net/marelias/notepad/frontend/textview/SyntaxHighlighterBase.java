@@ -25,7 +25,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
 import net.marelias.notepad.model.AppSettings;
-import net.marelias.opoc.format.GsTextUtils;
+import net.marelias.opoc.opoc.GsTextUtils;
 import net.marelias.opoc.opoc.GsCallback;
 
 import java.util.ArrayList;

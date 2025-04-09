@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import net.marelias.opoc.format.GsTextUtils;
+import net.marelias.opoc.opoc.GsTextUtils;
 import net.marelias.opoc.util.GsContextUtils;
 
 import java.lang.reflect.Array;

@@ -27,7 +27,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import net.marelias.notepad.R;
-import net.marelias.opoc.format.GsTextUtils;
+import net.marelias.opoc.opoc.GsTextUtils;
 import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 
 import org.json.JSONArray;

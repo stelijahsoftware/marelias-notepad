@@ -17,7 +17,7 @@ import android.util.Pair;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import net.marelias.opoc.format.GsTextUtils;
+import net.marelias.opoc.opoc.GsTextUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
