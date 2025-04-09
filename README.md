@@ -24,7 +24,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 
 ### TODO:
 [h] - Rename note title from pressing `note title` on document edit screen.
-[h] - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 [h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
 [h] - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 [h] - Keep recently searched for items in search list
@@ -51,6 +50,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 X - highlight recently opened file.
 X - Remove unuseful stop after first match option
 X - Make file browser scrollbar wider + draggable

@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.marelias.notepad.format.plaintext;
+package net.marelias.notepad.format.markdown;
 
 import net.marelias.notepad.format.TextConverterBase;
 import net.marelias.opoc.util.GsFileUtils;
@@ -19,7 +19,12 @@ import java.util.List;
 public class PlaintextTextConverter extends TextConverterBase {
     private static final List<String> EXT_TEXT = Arrays.asList(".taskpaper", ".org", ".ldg", ".ledger", ".m3u", ".m3u8");
     private static final List<String> EXT_HTML = Arrays.asList(".html", ".htm");
-    private static final List<String> EXT_CODE_HL = Arrays.asList(".py", ".cpp", ".h", ".c", ".js", ".mjs", ".css", ".cs", ".kt", ".lua", ".perl", ".java", ".qml", ".diff", ".php", ".r", ".patch", ".rs", ".swift", ".ts", ".mm", ".go", ".sh", ".rb", ".tex", ".xml", ".xlf");
+    private static final List<String> EXT_CODE_HL = Arrays.asList(".py", ".cpp", ".h", ".c", ".js",
+                                                                ".mjs", ".css", ".cs", ".kt",
+                                                                ".lua", ".perl", ".java", ".qml",
+                                                                ".diff", ".php", ".r", ".patch",
+                                                                ".rs", ".swift", ".ts", ".mm", ".go",
+                                                                ".sh", ".rb", ".tex", ".xml", ".xlf");
     private static final List<String> EXT = new ArrayList<>();
 
     static {

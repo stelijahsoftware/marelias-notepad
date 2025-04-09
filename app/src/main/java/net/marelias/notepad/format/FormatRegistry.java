@@ -19,8 +19,7 @@ import net.marelias.notepad.R;
 import net.marelias.notepad.format.markdown.MarkdownActionButtons;
 import net.marelias.notepad.format.markdown.MarkdownReplacePatternGenerator;
 import net.marelias.notepad.format.markdown.MarkdownSyntaxHighlighter;
-import net.marelias.notepad.format.markdown.MarkdownTextConverter;
-import net.marelias.notepad.format.plaintext.PlaintextTextConverter;
+import net.marelias.notepad.format.markdown.PlaintextTextConverter;
 import net.marelias.notepad.frontend.textview.AutoTextFormatter;
 import net.marelias.notepad.frontend.textview.ListHandler;
 import net.marelias.notepad.frontend.textview.SyntaxHighlighterBase;
@@ -35,14 +34,12 @@ import java.util.Locale;
 public class FormatRegistry {
     public static final int FORMAT_PLAIN = R.string.action_format_plaintext;
 
-
-    public final static MarkdownTextConverter CONVERTER_MARKDOWN = new MarkdownTextConverter();
     public final static PlaintextTextConverter CONVERTER_PLAINTEXT = new PlaintextTextConverter();
 
     public static class Format {
         public final @StringRes int format, name;
         public final String defaultExtensionWithDot;
-        public final TextConverterBase converter;
+         public final TextConverterBase converter;
 
         public Format(@StringRes final int a_format, @StringRes final int a_name, final String a_defaultFileExtension, final TextConverterBase a_converter) {
             format = a_format;
@@ -62,7 +59,7 @@ public class FormatRegistry {
         if (file != null) {
             final String filepath = file.getAbsolutePath().toLowerCase(Locale.ROOT);
             for (final Format format : FORMATS) {
-                if (format.converter != null) {
+                if (format.converter != null && format.converter.isFileOutOfThisFormat(file)) {
                     return true;
                 }
             }
@@ -79,7 +76,7 @@ public class FormatRegistry {
         final AppSettings appSettings = ApplicationObject.settings();
 
         formatId = FORMAT_PLAIN;
-        format._converter = CONVERTER_MARKDOWN;
+        format._converter = CONVERTER_PLAINTEXT;
         format._highlighter = new MarkdownSyntaxHighlighter(appSettings);
         format._textActions = new MarkdownActionButtons(context, document);
         format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
