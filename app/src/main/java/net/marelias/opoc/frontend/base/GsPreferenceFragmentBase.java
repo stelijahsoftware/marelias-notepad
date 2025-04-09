@@ -73,9 +73,9 @@ import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.marelias.opoc.model.GsSharedPreferencesPropertyBackend;
+import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.wrapper.GsCallback;
+import net.marelias.opoc.opoc.GsCallback;
 
 import java.util.ArrayList;
 import java.util.HashSet;

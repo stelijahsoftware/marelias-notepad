@@ -23,8 +23,8 @@ import androidx.core.content.ContextCompat;
 import net.marelias.notepad.R;
 import net.marelias.notepad.frontend.filesearch.FileSearchEngine.FitFile;
 import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.wrapper.GsCallback;
-import net.marelias.opoc.wrapper.GsTextWatcherAdapter;
+import net.marelias.opoc.opoc.GsCallback;
+import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;

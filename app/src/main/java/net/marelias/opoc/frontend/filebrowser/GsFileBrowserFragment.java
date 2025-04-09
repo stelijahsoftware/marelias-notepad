@@ -44,7 +44,7 @@ import net.marelias.notepad.frontend.filesearch.FileSearchEngine;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.frontend.base.GsFragmentBase;
-import net.marelias.opoc.model.GsSharedPreferencesPropertyBackend;
+import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsCollectionUtils;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;

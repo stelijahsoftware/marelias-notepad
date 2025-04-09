@@ -9,7 +9,7 @@
 #########################################################*/
 
 /*
- * This is a wrapper for settings based on SharedPreferences
+ * This is a opoc for settings based on SharedPreferences
  * with keys in resources. Extend from this class and add
  * getters/setters for the app's settings.
  * Example:
@@ -30,7 +30,7 @@
     }
  */
 
-package net.marelias.opoc.model;
+package net.marelias.opoc.opoc;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -44,7 +44,6 @@ import androidx.core.content.ContextCompat;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 

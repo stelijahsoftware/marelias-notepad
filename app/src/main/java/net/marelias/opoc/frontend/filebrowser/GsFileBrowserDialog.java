@@ -45,7 +45,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import net.marelias.notepad.R;
 import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog;
 import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.wrapper.GsTextWatcherAdapter;
+import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 
 import java.io.File;
 

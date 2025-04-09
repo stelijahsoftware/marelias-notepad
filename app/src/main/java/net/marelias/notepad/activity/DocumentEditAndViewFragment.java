@@ -49,7 +49,7 @@ import net.marelias.opoc.frontend.settings.GsFontPreferenceCompat;
 import net.marelias.opoc.frontend.textview.TextViewUndoRedo;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.web.GsWebViewChromeClient;
-import net.marelias.opoc.wrapper.GsTextWatcherAdapter;
+import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 
 import java.io.File;
 

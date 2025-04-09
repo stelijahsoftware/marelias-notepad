@@ -11,8 +11,6 @@ package net.marelias.opoc.frontend.filebrowser;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Spannable;
@@ -41,7 +39,7 @@ import net.marelias.notepad.R;
 import net.marelias.opoc.util.GsCollectionUtils;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
-import net.marelias.opoc.wrapper.GsCallback;
+import net.marelias.opoc.opoc.GsCallback;
 
 import java.io.File;
 import java.io.FilenameFilter;

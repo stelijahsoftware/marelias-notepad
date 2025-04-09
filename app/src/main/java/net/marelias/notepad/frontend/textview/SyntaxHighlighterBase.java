@@ -26,8 +26,7 @@ import androidx.annotation.Nullable;
 
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.format.GsTextUtils;
-import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.wrapper.GsCallback;
+import net.marelias.opoc.opoc.GsCallback;
 
 import java.util.ArrayList;
 import java.util.Collections;

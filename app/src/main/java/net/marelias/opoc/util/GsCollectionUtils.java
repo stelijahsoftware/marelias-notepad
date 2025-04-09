@@ -11,7 +11,7 @@ package net.marelias.opoc.util;
 
 import android.util.Pair;
 
-import net.marelias.opoc.wrapper.GsCallback;
+import net.marelias.opoc.opoc.GsCallback;
 
 import java.util.ArrayList;
 import java.util.Collection;

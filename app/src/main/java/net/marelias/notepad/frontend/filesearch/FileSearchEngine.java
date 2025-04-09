@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import net.marelias.notepad.R;
 import net.marelias.opoc.util.GsFileUtils;
-import net.marelias.opoc.wrapper.GsCallback;
+import net.marelias.opoc.opoc.GsCallback;
 
 import java.io.BufferedReader;
 import java.io.File;

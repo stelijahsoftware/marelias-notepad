@@ -55,8 +55,8 @@ import androidx.core.widget.TextViewCompat;
 
 import net.marelias.opoc.util.GsCollectionUtils;
 import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.wrapper.GsCallback;
-import net.marelias.opoc.wrapper.GsTextWatcherAdapter;
+import net.marelias.opoc.opoc.GsCallback;
+import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;

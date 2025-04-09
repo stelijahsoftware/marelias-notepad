@@ -21,7 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import net.marelias.opoc.model.GsSharedPreferencesPropertyBackend;
+import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsContextUtils;
 
 import java.util.concurrent.atomic.AtomicBoolean;

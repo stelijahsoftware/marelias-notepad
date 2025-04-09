@@ -27,9 +27,8 @@ import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog;
 import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog.DialogOptions;
 import net.marelias.opoc.util.GsCollectionUtils;
-import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
-import net.marelias.opoc.wrapper.GsCallback;
+import net.marelias.opoc.opoc.GsCallback;
 
 import java.io.File;
 import java.util.ArrayList;

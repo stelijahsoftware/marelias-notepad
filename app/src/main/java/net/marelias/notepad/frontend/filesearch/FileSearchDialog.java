@@ -23,7 +23,7 @@ import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.wrapper.GsCallback;
+import net.marelias.opoc.opoc.GsCallback;
 
 public class FileSearchDialog {
     public static final class Options {
