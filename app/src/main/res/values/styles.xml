@@ -10,7 +10,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="AppTheme.Unified.StartupFlash" parent="AppTheme.Unified">
-        <item name="android:windowBackground">@color/dark__background</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="AppTheme.Unified" parent="Theme.AppCompat.DayNight.DarkActionBar">
@@ -58,7 +58,6 @@
         <item name="android:textColorSecondary">@android:color/white</item>
     </style>
 
-
     <!-- reduced spacing -->
     <style name="LessSpaceActionButtonStyle" parent="Widget.AppCompat.ActionButton">
         <item name="android:minWidth">1dip</item>
@@ -67,6 +66,7 @@
         <item name="android:paddingStart">8dip</item>
         <item name="android:paddingEnd">8dip</item>
     </style>
+
     <style name="Theme.AppCompat.DayNight.Dialog.Rounded" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="dialogCornerRadius">@dimen/dialog_corner_radius</item>
         <item name="android:backgroundDimEnabled">true</item>
