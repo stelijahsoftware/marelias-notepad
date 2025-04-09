@@ -172,11 +172,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         // Preview mode set before loadDocument to prevent flicker
         final Bundle args = getArguments();
         final boolean startInPreview = _appSettings.getDocumentPreviewState(_document.path);
-        if (args != null && savedInstanceState == null) { // Use the launch flag on first launch
-            setViewModeVisibility(args.getBoolean(START_PREVIEW, startInPreview), false);
-        } else {
-            setViewModeVisibility(startInPreview, false);
-        }
 
         _hlEditor.setSaveInstanceState(false); // We will reload from disk
         _document.resetChangeTracking(); // force next reload
@@ -362,7 +357,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 }
                 return true;
             } else if (keyCode == KeyEvent.KEYCODE_SLASH) {
-                setViewModeVisibility(!_isPreviewVisible);
                 return true;
             }
         }
@@ -421,9 +415,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             checkTextChangeState();
 
-            if (_isPreviewVisible) {
-                updateViewModeText();
-            }
             return true;
         }
         return false;
@@ -499,7 +490,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 return true;
             }
             case R.id.action_search: {
-                setViewModeVisibility(false);
                 _format.getActions().onSearch();
                 return true;
             }
@@ -560,10 +550,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             mi.setChecked(_hlEditor.getLineNumbersEnabled());
         }
     }
-
-//    private boolean isWrapped() {
-//        return _hsView == null || (_hlEditor.getParent() == _primaryScrollView);
-//    }
 
     @Override
     public String getFragmentTag() {
@@ -666,33 +652,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             return true; // Report success if text not changed
         }
     }
-
-//    private boolean isDisplayedAtMainActivity() {
-//        return getActivity() instanceof MainActivity;
-//    }
-
-    public void updateViewModeText() {
-//        final String text = getTextString();
-//        _format.getConverter().convertMarkupShowInWebView(_document, text, getActivity(), _webView, _nextConvertToPrintMode, _hlEditor.getLineNumbersEnabled());
-    }
-
-    public void setViewModeVisibility(final boolean show) {
-//        setViewModeVisibility(show, true);
-    }
-
-    public void setViewModeVisibility(boolean show, final boolean animate) {
-    }
-
-    // Callback from view-mode/javascript
-//    @SuppressWarnings("unused")
-//    @JavascriptInterface
-//    public void webViewJavascriptCallback(final String[] jsArgs) {
-//        final String[] args = (jsArgs == null || jsArgs.length == 0 || jsArgs[0] == null) ? new String[0] : jsArgs;
-//        final String type = args.length == 0 || TextUtils.isEmpty(args[0]) ? "" : args[0];
-//        if (type.equalsIgnoreCase("toast") && args.length == 2) {
-//            Toast.makeText(getActivity(), args[1], Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     @Override
     protected void onToolbarClicked(View v) {

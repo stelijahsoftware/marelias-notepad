@@ -447,14 +447,10 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
         _isDividerVisible = visible;
         RecyclerView recyclerView = getListView();
         if (visible) {
-            recyclerView.addItemDecoration(new DividerDecoration(getContext(), getDividerColor(), _flatPosIsPreferenceCategoryCallback));
+            recyclerView.addItemDecoration(new DividerDecoration(getContext(), Color.parseColor("#3d3d3d"), _flatPosIsPreferenceCategoryCallback));
         } else if (recyclerView.getItemDecorationCount() > 0) {
             recyclerView.removeItemDecoration(recyclerView.getItemDecorationAt(0));
         }
-    }
-
-    public Integer getDividerColor() {
-        return _cu.getListDividerColor(getActivity());
     }
 
     GsCallback.b1<Integer> _flatPosIsPreferenceCategoryCallback = position -> {
