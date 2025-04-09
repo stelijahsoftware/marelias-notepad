@@ -45,7 +45,7 @@ import net.marelias.notepad.frontend.textview.TextViewUtils;
 import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.notepad.util.MarkorWebViewClient;
-import net.marelias.opoc.frontend.settings.GsFontPreferenceCompat;
+import net.marelias.opoc.frontend.GsFontPreferenceCompat;
 import net.marelias.opoc.opoc.TextViewUndoRedo;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsWebViewChromeClient;

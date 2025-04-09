@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.marelias.notepad.frontend.filebrowser;
+package net.marelias.notepad.frontend;
 
 import android.content.Context;
 

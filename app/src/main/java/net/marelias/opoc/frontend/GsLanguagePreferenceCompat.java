@@ -42,7 +42,7 @@ static String getUsedAndroidLanguages() {
         android:summary="@string/pref_desc__language"
         android:title="@string/pref_title__language"/>
  */
-package net.marelias.opoc.frontend.settings;
+package net.marelias.opoc.frontend;
 
 import android.content.Context;
 import android.content.res.Resources;

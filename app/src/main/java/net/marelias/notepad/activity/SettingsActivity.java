@@ -24,12 +24,12 @@ import androidx.preference.PreferenceScreen;
 
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
-import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.marelias.notepad.frontend.MarkorFileBrowserFactory;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.frontend.GsActivityBase;
 import net.marelias.opoc.frontend.GsPreferenceFragmentBase;
 import net.marelias.opoc.frontend.GsFileBrowserOptions;
-import net.marelias.opoc.frontend.settings.GsFontPreferenceCompat;
+import net.marelias.opoc.frontend.GsFontPreferenceCompat;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

@@ -16,7 +16,7 @@
         android:key="@string/pref_key__font_family"
         android:title="@string/pref_title__font_choice" />
  */
-package net.marelias.opoc.frontend.settings;
+package net.marelias.opoc.frontend;
 
 import android.annotation.TargetApi;
 import android.content.Context;

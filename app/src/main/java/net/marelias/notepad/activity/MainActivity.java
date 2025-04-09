@@ -32,7 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.marelias.notepad.R;
 import net.marelias.notepad.frontend.NewFileDialog;
-import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
+import net.marelias.notepad.frontend.MarkorFileBrowserFactory;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.frontend.GsFragmentBase;
 import net.marelias.opoc.frontend.GsFileBrowserFragment;
