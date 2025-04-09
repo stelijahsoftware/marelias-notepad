@@ -68,9 +68,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="one_item_selected">One item selected</string>
     <string name="items_selected_witharg" tools:ignore="PluralsCandidate">%d items selected</string>
 
-    <string name="hide_statusbar_at_this_view">Hide the status bar in this view</string>
-    <string name="hide_statusbar">Hide status bar</string>
-
     <string name="name">Name</string>
     <string name="url_or_path">URL / Path</string>
     <string name="insert_link">Insert link</string>
@@ -293,7 +290,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="appdata_private">AppData (private)</string>
     <string name="appdata_sdcard">AppData (SD Card)</string>
     <string name="internal_storage">Internal storage</string>
-    <string name="navigationbar_color">Navigation bar color</string>
     <string name="black">Black</string>
     <string name="white">White</string>
     <string name="view">View</string>
