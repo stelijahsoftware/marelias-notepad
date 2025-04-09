@@ -105,8 +105,8 @@ public class DocumentActivity extends MarkorBaseActivity {
                     .setTitle(R.string.open_with)
                     .setMessage(R.string.selected_file_may_be_a_textfile_want_to_open_in_editor)
                     .setIcon(R.drawable.ic_open_in_browser_black_24dp)
-                    .setPositiveButton(R.string.app_name, (dialog1, which) -> DocumentActivity.launch(activity, file, null, null, true))
-                    .setNegativeButton(R.string.other, (dialog1, which) -> new MarkorContextUtils(activity).viewFileInOtherApp(activity, file, null))
+                    .setPositiveButton("Open here", (dialog1, which) -> DocumentActivity.launch(activity, file, null, null, true))
+                    .setNegativeButton("Other app", (dialog1, which) -> new MarkorContextUtils(activity).viewFileInOtherApp(activity, file, null))
                     .create()
                     .show();
         } else {
