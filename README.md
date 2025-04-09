@@ -25,7 +25,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 ### TODO:
 [h] 10. Fix theme when system dark more is enabled (some window colours are correct).
 [h] 20. Keep recently searched for items in search list
-[h] 30. Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
+[h] 30. file count to folders after folder name (information already available when selecting multiple files). total notes count (including folders) on main screen
 [h] 40. highlight recently opened folder (not just files)
 [h] 50. Rename note title from pressing `note title` on document edit screen.
 [h] 60. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
@@ -33,6 +33,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [m] 10. add % -- comments + colour symbols?
 [m] 20. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [m] 30. share notes app
+[m] 50. Remove save delay
 
 [L] 10. Put top bar on bottom for easier access to save button & rename..etc?
 [L] 50. make scrollbars darker+bigger when pressed (see opencontacts app)
