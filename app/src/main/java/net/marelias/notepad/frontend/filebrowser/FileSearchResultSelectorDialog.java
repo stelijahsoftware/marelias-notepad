@@ -1,4 +1,4 @@
-package net.marelias.notepad.frontend.filesearch;
+package net.marelias.notepad.frontend.filebrowser;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,7 +21,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 
 import net.marelias.notepad.R;
-import net.marelias.notepad.frontend.filesearch.FileSearchEngine.FitFile;
+import net.marelias.notepad.frontend.filebrowser.FileSearchEngine.FitFile;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.opoc.GsCallback;
 import net.marelias.opoc.opoc.GsTextWatcherAdapter;

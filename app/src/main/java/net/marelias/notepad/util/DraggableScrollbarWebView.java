@@ -1,12 +1,9 @@
-package net.marelias.notepad.web;
+package net.marelias.notepad.util;
 
 //import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.View;
 import android.webkit.WebView;
 
 @SuppressLint("ClickableViewAccessibility")

@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.marelias.notepad.web;
+package net.marelias.notepad.util;
 
 import android.app.Activity;
 import android.webkit.WebView;

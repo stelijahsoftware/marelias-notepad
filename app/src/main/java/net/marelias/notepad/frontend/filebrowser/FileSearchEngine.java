@@ -1,4 +1,4 @@
-package net.marelias.notepad.frontend.filesearch;
+package net.marelias.notepad.frontend.filebrowser;
 
 import android.app.Activity;
 import android.os.AsyncTask;

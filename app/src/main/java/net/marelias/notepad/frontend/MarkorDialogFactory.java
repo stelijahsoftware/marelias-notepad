@@ -19,9 +19,9 @@ import androidx.core.content.ContextCompat;
 
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
-import net.marelias.notepad.frontend.filesearch.FileSearchDialog;
-import net.marelias.notepad.frontend.filesearch.FileSearchEngine;
-import net.marelias.notepad.frontend.filesearch.FileSearchResultSelectorDialog;
+import net.marelias.notepad.frontend.filebrowser.FileSearchDialog;
+import net.marelias.notepad.frontend.filebrowser.FileSearchEngine;
+import net.marelias.notepad.frontend.filebrowser.FileSearchResultSelectorDialog;
 import net.marelias.notepad.frontend.textview.TextViewUtils;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog;

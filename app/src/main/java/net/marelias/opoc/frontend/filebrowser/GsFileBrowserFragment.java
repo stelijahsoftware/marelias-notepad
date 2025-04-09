@@ -40,7 +40,7 @@ import net.marelias.notepad.R;
 import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.frontend.MarkorDialogFactory;
 import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
-import net.marelias.notepad.frontend.filesearch.FileSearchEngine;
+import net.marelias.notepad.frontend.filebrowser.FileSearchEngine;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.frontend.base.GsFragmentBase;
