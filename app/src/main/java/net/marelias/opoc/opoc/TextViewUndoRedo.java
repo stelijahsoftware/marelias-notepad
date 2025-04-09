@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 */
 
-package net.marelias.opoc.frontend.textview;
+package net.marelias.opoc.opoc;
 
 import android.text.Editable;
 import android.text.Selection;
