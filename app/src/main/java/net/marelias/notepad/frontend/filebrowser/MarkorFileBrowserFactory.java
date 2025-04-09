@@ -15,8 +15,8 @@ import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.frontend.filebrowser.GsFileBrowserDialog;
-import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
+import net.marelias.opoc.frontend.GsFileBrowserDialog;
+import net.marelias.opoc.frontend.GsFileBrowserOptions;
 
 public class MarkorFileBrowserFactory {
     public static GsFileBrowserOptions.Options prepareFsViewerOpts(

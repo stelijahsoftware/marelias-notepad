@@ -18,7 +18,7 @@ import androidx.annotation.StringRes;
 import net.marelias.notepad.R;
 import net.marelias.notepad.format.FormatRegistry;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
+import net.marelias.opoc.frontend.GsFileBrowserListAdapter;
 import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsCollectionUtils;
 import net.marelias.opoc.util.GsContextUtils;

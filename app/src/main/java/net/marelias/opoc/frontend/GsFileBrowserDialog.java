@@ -15,7 +15,7 @@
  * The data container contains a listener callback for results.
  * Most features are usable without any additional project files and resources
  */
-package net.marelias.opoc.frontend.filebrowser;
+package net.marelias.opoc.frontend;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -43,7 +43,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.marelias.notepad.R;
-import net.marelias.opoc.frontend.GsSearchOrCustomTextDialog;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 

@@ -28,7 +28,7 @@ import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.frontend.GsActivityBase;
 import net.marelias.opoc.frontend.GsPreferenceFragmentBase;
-import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
+import net.marelias.opoc.frontend.GsFileBrowserOptions;
 import net.marelias.opoc.frontend.settings.GsFontPreferenceCompat;
 
 import java.io.File;

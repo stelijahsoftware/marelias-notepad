@@ -30,7 +30,7 @@ import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.format.GsTextUtils;
 import net.marelias.opoc.frontend.GsFragmentBase;
-import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
+import net.marelias.opoc.frontend.GsFileBrowserListAdapter;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
 
