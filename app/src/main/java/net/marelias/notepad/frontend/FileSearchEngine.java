@@ -63,7 +63,6 @@ public class FileSearchEngine {
         public boolean isRegexQuery;
         public boolean isCaseSensitiveQuery;
         public boolean isSearchInContent;
-        public boolean isOnlyFirstContentMatch;
 
         public int maxSearchDepth;
         public List<String> ignoredDirectories;
@@ -233,7 +232,7 @@ public class FileSearchEngine {
 
                         final int beforeContentCount = _result.size();
                         if (_config.isSearchInContent && !isDir && f.canRead() && GsFileUtils.isTextFile(f)) {
-                            getContentMatches(f, _config.isOnlyFirstContentMatch, trimSize);
+                            getContentMatches(f, false, trimSize);
                         }
 
                         // Search name if director or not already included due to content

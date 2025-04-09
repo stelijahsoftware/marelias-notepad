@@ -34,16 +34,16 @@ import java.util.Set;
 
 @SuppressWarnings({"SameParameterValue", "WeakerAccess", "FieldCanBeLocal"})
 public class AppSettings extends GsSharedPreferencesPropertyBackend {
-    private SharedPreferences _prefCache;
-    private SharedPreferences _prefHistory;
+//    private SharedPreferences _prefCache;
+//    private SharedPreferences _prefHistory;
     public static Boolean _isDeviceGoodHardware = null;
     private MarkorContextUtils _cu;
 
     @Override
     public AppSettings init(final Context context) {
         super.init(context);
-        _prefCache = context.getSharedPreferences("cache", Context.MODE_PRIVATE);
-        _prefHistory = context.getSharedPreferences("history", Context.MODE_PRIVATE);
+//        _prefCache = context.getSharedPreferences("cache", Context.MODE_PRIVATE);
+//        _prefHistory = context.getSharedPreferences("history", Context.MODE_PRIVATE);
         _cu = new MarkorContextUtils(context);
         _isDeviceGoodHardware = _cu.isDeviceGoodHardware(context);
 
@@ -197,7 +197,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
             if (value == null) {
                 return _default;
             }
-            final int sid = _cu.getResId(_context, GsContextUtils.ResType.STRING, value);
+//            final int sid = _cu.getResId(_context, GsContextUtils.ResType.STRING, value);
             return FormatRegistry.FORMAT_PLAIN; // sid != FormatRegistry.FORMAT_PLAIN ? sid : _default;
         }
     }
