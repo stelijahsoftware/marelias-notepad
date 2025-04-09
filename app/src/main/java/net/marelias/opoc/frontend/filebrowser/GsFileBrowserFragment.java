@@ -26,7 +26,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,9 +58,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import other.writeily.model.WrMarkorSingleton;
-import other.writeily.ui.WrConfirmDialog;
-import other.writeily.ui.WrRenameDialog;
+import other.writeily.write.WrMarkorSingleton;
+import other.writeily.write.WrConfirmDialog;
+import other.writeily.write.WrRenameDialog;
 
 public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPropertyBackend, GsContextUtils> implements GsFileBrowserOptions.SelectionListener {
     //########################

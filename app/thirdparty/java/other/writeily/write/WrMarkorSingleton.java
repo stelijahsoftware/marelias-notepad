@@ -7,7 +7,7 @@
  * You can get a copy of the license text here:
  *   https://opensource.org/licenses/MIT
 ###########################################################*/
-package other.writeily.model;
+package other.writeily.write;
 
 import android.app.Activity;
 import android.content.Context;
