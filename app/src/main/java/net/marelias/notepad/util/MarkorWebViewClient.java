@@ -10,7 +10,7 @@ package net.marelias.notepad.util;
 import android.app.Activity;
 import android.webkit.WebView;
 
-import net.marelias.opoc.web.GsWebViewClient;
+import net.marelias.opoc.util.GsWebViewClient;
 
 public class MarkorWebViewClient extends GsWebViewClient {
     protected final Activity _activity;

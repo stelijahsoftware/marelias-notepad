@@ -10,8 +10,8 @@ import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.frontend.base.GsActivityBase;
-import net.marelias.opoc.frontend.base.GsFragmentBase;
+import net.marelias.opoc.frontend.GsActivityBase;
+import net.marelias.opoc.frontend.GsFragmentBase;
 
 public abstract class MarkorBaseActivity extends GsActivityBase<AppSettings, MarkorContextUtils> {
 

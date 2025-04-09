@@ -38,7 +38,7 @@
 
 
  */
-package net.marelias.opoc.frontend.base;
+package net.marelias.opoc.frontend;
 
 import android.app.Activity;
 import android.content.Context;

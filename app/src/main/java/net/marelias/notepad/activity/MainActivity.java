@@ -34,7 +34,7 @@ import net.marelias.notepad.R;
 import net.marelias.notepad.frontend.NewFileDialog;
 import net.marelias.notepad.frontend.filebrowser.MarkorFileBrowserFactory;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.frontend.base.GsFragmentBase;
+import net.marelias.opoc.frontend.GsFragmentBase;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserFragment;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserListAdapter;
 import net.marelias.opoc.frontend.filebrowser.GsFileBrowserOptions;
