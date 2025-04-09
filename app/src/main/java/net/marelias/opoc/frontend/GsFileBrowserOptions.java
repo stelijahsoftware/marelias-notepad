@@ -16,8 +16,8 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
-import net.marelias.opoc.util.GsFileUtils;
 import net.marelias.opoc.opoc.GsCallback;
+import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
 import java.io.Serializable;

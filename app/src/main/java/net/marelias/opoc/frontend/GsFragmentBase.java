@@ -26,9 +26,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import net.marelias.opoc.opoc.GsMenuItemDummy;
 import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.opoc.GsMenuItemDummy;
 
 import java.util.LinkedList;
 import java.util.Queue;

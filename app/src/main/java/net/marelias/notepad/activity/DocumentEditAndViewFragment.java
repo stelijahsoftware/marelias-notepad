@@ -9,6 +9,8 @@ package net.marelias.notepad.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -30,8 +32,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.SearchView;
 import android.widget.Toast;
-import android.content.ClipboardManager;
-import android.content.ClipData;
 
 import androidx.annotation.NonNull;
 
@@ -46,10 +46,10 @@ import net.marelias.notepad.model.Document;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.notepad.util.MarkorWebViewClient;
 import net.marelias.opoc.frontend.GsFontPreferenceCompat;
+import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 import net.marelias.opoc.opoc.TextViewUndoRedo;
 import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsWebViewChromeClient;
-import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 
 import java.io.File;
 

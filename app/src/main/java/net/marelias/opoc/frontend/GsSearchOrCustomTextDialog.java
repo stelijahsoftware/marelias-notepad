@@ -53,10 +53,10 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.TooltipCompat;
 import androidx.core.widget.TextViewCompat;
 
-import net.marelias.opoc.util.GsCollectionUtils;
-import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.opoc.GsCallback;
 import net.marelias.opoc.opoc.GsTextWatcherAdapter;
+import net.marelias.opoc.util.GsCollectionUtils;
+import net.marelias.opoc.util.GsContextUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;

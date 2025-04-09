@@ -8,7 +8,6 @@
 package net.marelias.notepad.model;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Environment;
 
 import androidx.annotation.ColorRes;
@@ -21,7 +20,6 @@ import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.frontend.GsFileBrowserListAdapter;
 import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import net.marelias.opoc.util.GsCollectionUtils;
-import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;

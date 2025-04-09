@@ -80,8 +80,8 @@ import androidx.core.view.ViewCompat;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.preference.PreferenceManager;
 
-import net.marelias.opoc.opoc.GsTextUtils;
 import net.marelias.opoc.opoc.GsCallback;
+import net.marelias.opoc.opoc.GsTextUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -28,8 +28,8 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.model.AppSettings;
-import net.marelias.opoc.opoc.GsTextUtils;
 import net.marelias.opoc.opoc.GsCallback;
+import net.marelias.opoc.opoc.GsTextUtils;
 import net.marelias.opoc.opoc.GsTextWatcherAdapter;
 
 import java.util.concurrent.ExecutorService;

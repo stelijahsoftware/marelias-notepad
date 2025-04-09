@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import com.google.android.material.snackbar.Snackbar;
 
 import net.marelias.notepad.R;
-import net.marelias.opoc.util.GsFileUtils;
 import net.marelias.opoc.opoc.GsCallback;
+import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.BufferedReader;
 import java.io.File;

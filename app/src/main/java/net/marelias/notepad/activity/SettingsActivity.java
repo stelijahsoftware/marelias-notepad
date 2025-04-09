@@ -27,9 +27,9 @@ import net.marelias.notepad.R;
 import net.marelias.notepad.frontend.MarkorFileBrowserFactory;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.opoc.frontend.GsActivityBase;
-import net.marelias.opoc.frontend.GsPreferenceFragmentBase;
 import net.marelias.opoc.frontend.GsFileBrowserOptions;
 import net.marelias.opoc.frontend.GsFontPreferenceCompat;
+import net.marelias.opoc.frontend.GsPreferenceFragmentBase;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

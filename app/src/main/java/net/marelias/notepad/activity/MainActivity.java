@@ -31,13 +31,13 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import net.marelias.notepad.R;
-import net.marelias.notepad.frontend.NewFileDialog;
 import net.marelias.notepad.frontend.MarkorFileBrowserFactory;
+import net.marelias.notepad.frontend.NewFileDialog;
 import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.frontend.GsFragmentBase;
 import net.marelias.opoc.frontend.GsFileBrowserFragment;
 import net.marelias.opoc.frontend.GsFileBrowserListAdapter;
 import net.marelias.opoc.frontend.GsFileBrowserOptions;
+import net.marelias.opoc.frontend.GsFragmentBase;
 
 import java.io.File;
 import java.io.FileOutputStream;

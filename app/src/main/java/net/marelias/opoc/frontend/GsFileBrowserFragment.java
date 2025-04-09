@@ -38,9 +38,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
 import net.marelias.notepad.format.FormatRegistry;
+import net.marelias.notepad.frontend.FileSearchEngine;
 import net.marelias.notepad.frontend.MarkorDialogFactory;
 import net.marelias.notepad.frontend.MarkorFileBrowserFactory;
-import net.marelias.notepad.frontend.FileSearchEngine;
 import net.marelias.notepad.model.AppSettings;
 import net.marelias.notepad.util.MarkorContextUtils;
 import net.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
@@ -57,8 +57,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import other.writeily.write.WrMarkorSingleton;
 import other.writeily.write.WrConfirmDialog;
+import other.writeily.write.WrMarkorSingleton;
 import other.writeily.write.WrRenameDialog;
 
 public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPropertyBackend, GsContextUtils> implements GsFileBrowserOptions.SelectionListener {

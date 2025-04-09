@@ -22,8 +22,8 @@ import androidx.core.content.ContextCompat;
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
 import net.marelias.notepad.model.AppSettings;
-import net.marelias.opoc.util.GsContextUtils;
 import net.marelias.opoc.opoc.GsCallback;
+import net.marelias.opoc.util.GsContextUtils;
 
 public class FileSearchDialog {
     public static final class Options {
