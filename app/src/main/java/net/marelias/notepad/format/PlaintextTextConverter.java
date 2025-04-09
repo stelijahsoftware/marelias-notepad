@@ -5,9 +5,8 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.marelias.notepad.format.markdown;
+package net.marelias.notepad.format;
 
-import net.marelias.notepad.format.TextConverterBase;
 import net.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;

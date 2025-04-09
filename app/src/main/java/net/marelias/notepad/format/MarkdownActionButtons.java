@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.marelias.notepad.format.markdown;
+package net.marelias.notepad.format;
 
 //import android.annotation.SuppressLint;
 
@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
 import net.marelias.notepad.R;
-import net.marelias.notepad.format.ActionButtonBase;
 import net.marelias.notepad.model.Document;
 
 public class MarkdownActionButtons extends ActionButtonBase {

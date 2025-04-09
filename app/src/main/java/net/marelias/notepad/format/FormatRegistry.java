@@ -16,10 +16,6 @@ import androidx.annotation.StringRes;
 
 import net.marelias.notepad.ApplicationObject;
 import net.marelias.notepad.R;
-import net.marelias.notepad.format.markdown.MarkdownActionButtons;
-import net.marelias.notepad.format.markdown.MarkdownReplacePatternGenerator;
-import net.marelias.notepad.format.markdown.MarkdownSyntaxHighlighter;
-import net.marelias.notepad.format.markdown.PlaintextTextConverter;
 import net.marelias.notepad.frontend.textview.AutoTextFormatter;
 import net.marelias.notepad.frontend.textview.ListHandler;
 import net.marelias.notepad.frontend.textview.SyntaxHighlighterBase;

@@ -5,7 +5,7 @@
  *     https://www.apache.org/licenses/LICENSE-2.0
  *
 #########################################################*/
-package net.marelias.notepad.format.markdown;
+package net.marelias.notepad.format;
 
 import android.graphics.Color;
 import android.graphics.Paint;
