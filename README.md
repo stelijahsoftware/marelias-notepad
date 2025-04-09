@@ -23,25 +23,24 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] - Rename note title from pressing `note title` on document edit screen.
-[h] - Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
-[h] - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
-[h] - Keep recently searched for items in search list
-[h] - Fix theme when system dark more is enabled (some window colours are correct).
-[h] - highlight recently opened folder (not just files)
+[h] 10. Fix theme when system dark more is enabled (some window colours are correct).
+[h] 20. Keep recently searched for items in search list
+[h] 30. Show total notes count (+ on folders?) after folder name (information already available when selecting multiple files)
+[h] 40. highlight recently opened folder (not just files)
+[h] 50. Rename note title from pressing `note title` on document edit screen.
+[h] 60. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 
-[m] - share notes app
+[m] 10. add % -- comments + colour symbols?
+[m] 20. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+[m] 30. share notes app
 
-[m] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
-[m] - Sorting: Ability to pin notes to top
-[m] - Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
-[m] - Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[m] - add % -- comments + colour symbols?
-[M] - Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-
-[L] - Put top bar on bottom for easier access to save button & rename..etc?
+[L] 10. Put top bar on bottom for easier access to save button & rename..etc?
+[L] 50. make scrollbars darker+bigger when pressed (see opencontacts app)
+[L] 80. Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[L] 90. Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+[L] - Sorting: Ability to pin notes to top?
+[L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [L] - pointer not visible inside highlights
-[L] - make scrollbars darker+bigger when pressed
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 [L] - Add git integration info (add how to note in 'about' screen)
 
@@ -50,7 +49,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
-X - `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
+X - [h] `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
 X - highlight recently opened file.
 X - Remove unuseful stop after first match option
 X - Make file browser scrollbar wider + draggable
@@ -65,7 +64,6 @@ X - Add plus button to create folders (Add separate button for folders)
 X - Remove all occurrences of: audio, epub, ascii, csv
 X - See todos from Snotepad.
 X - Fix: search when launched from inside a file (breaks file search)
-X - call them notes 1 & notes 2
 X - Remove bottom bar in text editing
 X - do not open multiple instances (single instance only), not one for each file and for each reopened file. I.e just like snotepad
 X - Change the versioning to match the new versions
