@@ -37,6 +37,8 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 
 - keep history when searching for a file (same as history in search and replace inside file)
 - search and replace (inside a file): make it possible to replace all occurrences + case insensitive.
+- button to insert "- " at the beginning of the current line
+- button to rename note
 
 [L] 10. Put top bar on bottom for easier access to save button & rename..etc?
 [L] 50. make scrollbars darker+bigger when pressed (see opencontacts app)
