@@ -462,7 +462,7 @@ public class HighlightingEditor extends AppCompatEditText {
         }
 
         public void setTextSize(final float textSize) {
-            _paint.setTextSize(textSize);
+            _paint.setTextSize(40);
         }
 
         public boolean isTextSizeChanged() {
