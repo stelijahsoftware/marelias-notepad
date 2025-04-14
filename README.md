@@ -23,6 +23,7 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
+[h] 09. Make numbers smaller in numbered lines
 [h] 10. Fix theme when system dark more is enabled (some window colours are correct).
 [h] 20. Keep recently searched for items in search list
 [h] 30. file count to folders after folder name (information already available when selecting multiple files). total notes count (including folders) on main screen
