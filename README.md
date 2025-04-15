@@ -25,7 +25,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 ### TODO:
 [h] 1. Fix theme when system dark mode is enabled (some window colours are correct).
 [h] 2. Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
-[h] 3. file count to folders after folder name (information already available when selecting multiple files). total notes count (including folders) on main screen
+[h] 3. file count to folders after folder name (information already available when selecting multiple files)
 
 [h] 7. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [h] 8. button to insert "- " at the beginning of the current line
@@ -51,6 +51,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - show total notes count (including folders) on main screen
 X - Add git integration info (add how to note in 'about' screen)
 X - [m] 10. add % -- comments
 X - [h] Make numbers smaller in numbered lines
