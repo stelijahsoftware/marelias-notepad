@@ -239,15 +239,20 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
 //            _toolbar.setTitle(String.format("%s %d", _toolbar.getTitle(), totalCount));
 //        }
 
-        // TODO:
-        // Update subtitle with count
         if (_toolbar != null) {
             if (_filesystemViewerAdapter.areItemsSelected()) {
                 _toolbar.setTitle(String.format("(%d/%d)", selCount, totalCount));
             } else {
                 // _toolbar.setSubtitle("");
+
                 String app_name = getString(R.string.app_name_file_browser);
-                _toolbar.setTitle(app_name + String.format(" (%d)", totalCount));
+                String app_name_full = getString(R.string.app_name);
+                if (getCurrentFolder() != null && !getCurrentFolder().getName().equals(app_name_full.toLowerCase())) {
+                    _toolbar.setTitle("> " + getCurrentFolder().getName() + String.format(" (%d)", totalCount));
+                }
+                else {
+                    _toolbar.setTitle(app_name + String.format(" (%d)", totalCount));
+                }
             }
         }
     }
