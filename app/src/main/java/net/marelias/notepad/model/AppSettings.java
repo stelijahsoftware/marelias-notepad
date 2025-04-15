@@ -45,9 +45,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         _cu = new MarkorContextUtils(context);
         _isDeviceGoodHardware = _cu.isDeviceGoodHardware(context);
 
-        //if (getInt(R.string.pref_key__basic_color_scheme__bg_light, -999) == -999) {
-            setEditorBasicColor(R.color.dark_grey, R.color.light__background);
-        //}
         return this;
     }
 
@@ -268,13 +265,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     // Font color is defined here:
     public int getEditorForegroundColor() {
         return rcolor(R.color.primary_text);
-    }
-
-    public void setEditorBasicColor(@ColorRes int fgColor, @ColorRes int bgColor) {
-        int resIdFg = R.string.pref_key__basic_color_scheme__fg_light;
-        int resIdBg = R.string.pref_key__basic_color_scheme__bg_light;
-        setInt(resIdFg, rcolor(fgColor));
-        setInt(resIdBg, rcolor(bgColor));
     }
 
     public boolean isSearchQueryCaseSensitive() {
