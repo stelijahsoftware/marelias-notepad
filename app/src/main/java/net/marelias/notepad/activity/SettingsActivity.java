@@ -242,7 +242,8 @@ public class SettingsActivity extends MarkorBaseActivity {
                     String html_info =
                             "<br>" +
                             "<font color='#000000'><b>Notepad Mar-Elias</b> is a simple .txt file editor with custom highlight syntax. " +
-                            "A fork of <b>Markor</b>, an open source notes project authored by Gregor Santner.</font>" +
+                            "A fork of <b>Markor</b>, an open source notes project authored by Gregor Santner. " +
+                            "You can sync notes using a git client (e.g. Termux).</font>" +
                             "<br><br>" +
                             "<font color='#555555'><b>Project website:</b></font>" +
                             "<br><font color='#0040ff'><a href='https://writing-tools.github.io/marelias-notepad/'>writing-tools.github.io/marelias-notepad</a></font>" +

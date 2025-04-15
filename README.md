@@ -34,17 +34,16 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [m] 6. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 [m] 8. Remove save delay
 
-[L] 4. highlight recently opened folder (not just files)
-[L] 1. Put top bar on bottom for easier access to save button & rename..etc?
-[L] 5. make scrollbars darker+bigger when pressed (see opencontacts app)
-[L] 7. Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[L] 8. Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
-[L] 9. share notes app
+[L] - Navigation: highlight recently opened folder (not just files)
+[L] - Navigation: Put top bar on bottom for easier access to save button & rename..etc?
+[L] - Visibility: make scrollbars darker+bigger when pressed (see opencontacts app)
+[L] - Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[L] - Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+[L] - share notes app
 [L] - Sorting: Ability to pin notes to top?
 [L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
-[L] - pointer not visible inside highlights
+[L] - Visibility: pointer not visible inside highlights
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
-[L] - Add git integration info (add how to note in 'about' screen)
 
 ### Ignored tasks:
 X - Add button to insert date yyy-mm-dd?
@@ -52,6 +51,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - Add git integration info (add how to note in 'about' screen)
 X - [m] 10. add % -- comments
 X - [h] Make numbers smaller in numbered lines
 X - make white bg of icon when starting up
