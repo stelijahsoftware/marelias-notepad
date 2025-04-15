@@ -45,7 +45,7 @@ public class FileSearchEngine {
     private static final List<String> defaultIgnoredDirs = Arrays.asList("^\\.git$", "^\\.tmp$", ".*[Tt]humb.*");
     private static final int maxPreviewLength = 100;
     public static final int maxQueryHistoryCount = 20;
-    public static final LinkedList<String> queryHistory = new LinkedList<>();
+    public static final LinkedList<String> queryHistory = new LinkedList<>(); // <<<< save it
 
     public static void addToHistory(String query) {
         queryHistory.remove(query);

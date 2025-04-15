@@ -77,6 +77,7 @@ public class FileSearchDialog {
         searchEditText.setHintTextColor((textColor & 0x00FFFFFF) | 0x99000000);
         dialogLayout.addView(searchEditText, margins);
 
+        // <<<<
         // Spinner: History
         if (FileSearchEngine.queryHistory.size() > 0) {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, R.layout.list_group_history_item, FileSearchEngine.queryHistory);
