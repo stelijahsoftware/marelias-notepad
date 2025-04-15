@@ -33,7 +33,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [m] 20. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [m] 50. Remove save delay
 [m] keep history when searching for a file (same as history in search and replace inside file)
-[m] search and replace (inside a file): make it possible to replace all occurrences + case insensitive.
 [m] button to insert "- " at the beginning of the current line
 
 [L] 10. Put top bar on bottom for easier access to save button & rename..etc?
@@ -50,6 +49,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 ### Ignored tasks:
 X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
+X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
 X - [m] 10. add % -- comments
