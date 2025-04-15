@@ -245,7 +245,9 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             if (_filesystemViewerAdapter.areItemsSelected()) {
                 _toolbar.setTitle(String.format("(%d/%d)", selCount, totalCount));
             } else {
-                _toolbar.setSubtitle("");
+                // _toolbar.setSubtitle("");
+                String app_name = getString(R.string.app_name);
+                _toolbar.setTitle(app_name + String.format(" (%d)", totalCount));
             }
         }
     }

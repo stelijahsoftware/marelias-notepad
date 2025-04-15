@@ -377,7 +377,8 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
         if (file != null && !_appSettings.getNotebookDirectory().equals(file)) {
             return "> " + file.getName();
         } else {
-            return getString(R.string.app_name);
+            String app_name = getString(R.string.app_name);
+            return app_name;
         }
     }
 
