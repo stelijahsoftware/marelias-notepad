@@ -23,7 +23,7 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] 10. Fix theme when system dark more is enabled (some window colours are correct).
+[h] 10. Fix theme when system dark mode is enabled (some window colours are correct).
 [h] 20. Keep recently searched for items in search list
 [h] 30. file count to folders after folder name (information already available when selecting multiple files). total notes count (including folders) on main screen
 [h] 40. highlight recently opened folder (not just files)
@@ -32,9 +32,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 
 [m] 10. add % -- comments + colour symbols?
 [m] 20. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[m] 30. share notes app
 [m] 50. Remove save delay
-
 [m] keep history when searching for a file (same as history in search and replace inside file)
 [m] search and replace (inside a file): make it possible to replace all occurrences + case insensitive.
 [m] button to insert "- " at the beginning of the current line
@@ -44,6 +42,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [L] 50. make scrollbars darker+bigger when pressed (see opencontacts app)
 [L] 80. Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 [L] 90. Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+[L] 91. share notes app
 [L] - Sorting: Ability to pin notes to top?
 [L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [L] - pointer not visible inside highlights
