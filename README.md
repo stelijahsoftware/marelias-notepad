@@ -23,23 +23,23 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] 10. Fix theme when system dark mode is enabled (some window colours are correct).
-[h] 20. Keep recently searched for items in search list
-[h] 30. file count to folders after folder name (information already available when selecting multiple files). total notes count (including folders) on main screen
-[h] 40. highlight recently opened folder (not just files)
-[h] 50. Rename note title from pressing `note title` on document edit screen/button to rename note.
-[h] 60. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
+[h] 1. Fix theme when system dark mode is enabled (some window colours are correct).
+[h] 2. Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
+[h] 3. file count to folders after folder name (information already available when selecting multiple files). total notes count (including folders) on main screen
 
-[m] 20. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[m] 50. Remove save delay
-[m] keep history when searching for a file (same as history in search and replace inside file)
-[m] button to insert "- " at the beginning of the current line
+[h] 7. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+[h] 8. button to insert "- " at the beginning of the current line
 
-[L] 10. Put top bar on bottom for easier access to save button & rename..etc?
-[L] 50. make scrollbars darker+bigger when pressed (see opencontacts app)
-[L] 80. Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[L] 90. Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
-[L] 91. share notes app
+[m] 5. Rename note title from pressing `note title` on document edit screen/button to rename note.
+[m] 6. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
+[m] 8. Remove save delay
+
+[L] 4. highlight recently opened folder (not just files)
+[L] 1. Put top bar on bottom for easier access to save button & rename..etc?
+[L] 5. make scrollbars darker+bigger when pressed (see opencontacts app)
+[L] 7. Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[L] 8. Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+[L] 9. share notes app
 [L] - Sorting: Ability to pin notes to top?
 [L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
 [L] - pointer not visible inside highlights
