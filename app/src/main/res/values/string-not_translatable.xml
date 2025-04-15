@@ -11,7 +11,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 <resources>
     <string name="app_name_real" translatable="false">Notepad Mar-Elias</string> <!-- Android application name; used in [app/src/main/AndroidManifest.xml] -->
     <string name="app_name" translatable="false">@string/app_name_real</string>
-    <string name="app_name_file_browser" translatable="false">Mar-Elias</string> <!-- app name as it appears on top of file browser -->
+    <string name="app_name_short" translatable="false">Mar-Elias</string> <!-- app name as it appears on top of file browser -->
     <string name="app_license_name" translatable="false">Apache 2.0</string>
 
     <string name="app_web_url" translatable="false">https://github.com/gsantner/notepad2</string>
