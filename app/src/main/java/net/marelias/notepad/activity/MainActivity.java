@@ -114,6 +114,8 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                 String defaultContent = "# This is a green line\n" +
                                         "## This is a blue line\n" +
                                         "### This is an orange line\n" +
+                                        "% green line\n" +
+                                        "-- green line\n" +
                                         "\n" +
                                         "// Red line\n" +
                                         "\n" +

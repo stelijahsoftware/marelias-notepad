@@ -41,6 +41,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     // public final static Pattern ACTION_LINK_PATTERN = Pattern.compile("(?m)\\[(.*?)\\]\\((.*?)\\)");
 
     // Elyahw regexes: reference: https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
+    public final static Pattern elyahw_comment_latex = Pattern.compile("^(\\% .+)$", Pattern.MULTILINE);
+    public final static Pattern elyahw_comment_lua = Pattern.compile("^(\\-\\- .+)$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_python = Pattern.compile("^\\#.+$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#{2}+.+$", Pattern.MULTILINE); // overriden by orange
@@ -207,6 +209,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         //$ Filter ✓ ✗
         createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
         createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_red_bg);
+        createColorSpanForMatches(elyahw_comment_latex, elyahw_colour_green);
+        createColorSpanForMatches(elyahw_comment_lua, elyahw_colour_green);
 
         //$ # ## ### Python comments
         createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);

@@ -30,7 +30,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] 50. Rename note title from pressing `note title` on document edit screen.
 [h] 60. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 
-[m] 10. add % -- comments + colour symbols?
 [m] 20. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [m] 50. Remove save delay
 [m] keep history when searching for a file (same as history in search and replace inside file)
@@ -54,6 +53,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 
 ### Changelog from Markor:
+X - [m] 10. add % -- comments
 X - [h] Make numbers smaller in numbered lines
 X - make white bg of icon when starting up
 X - [h] `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
