@@ -25,7 +25,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 ### TODO:
 [h] 1. Fix theme when system dark mode is enabled (some window colours are correct).
 [h] 2. Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
-[h] 3. file count to folders after folder name (information already available when selecting multiple files)
 
 [m] 4. Rename note title from pressing `note title` on document edit screen/button to rename note.
 [m] 5. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
@@ -33,6 +32,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [m] 7. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 [m] 8. button to insert "- " at the beginning of the current line
 
+[L] - file count to folders after folder name (information already available when selecting multiple files)
 [L] - Navigation: highlight recently opened folder (not just files)
 [L] - Navigation: Put top bar on bottom for easier access to save button & rename..etc?
 [L] - Visibility: make scrollbars darker+bigger when pressed (see opencontacts app)
