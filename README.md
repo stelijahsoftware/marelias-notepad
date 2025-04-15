@@ -27,12 +27,11 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] 2. Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 [h] 3. file count to folders after folder name (information already available when selecting multiple files)
 
-[h] 7. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[h] 8. button to insert "- " at the beginning of the current line
-
-[m] 5. Rename note title from pressing `note title` on document edit screen/button to rename note.
-[m] 6. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
-[m] 8. Remove save delay
+[m] 4. Rename note title from pressing `note title` on document edit screen/button to rename note.
+[m] 5. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
+[m] 6. Remove save delay
+[m] 7. Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+[m] 8. button to insert "- " at the beginning of the current line
 
 [L] - Navigation: highlight recently opened folder (not just files)
 [L] - Navigation: Put top bar on bottom for easier access to save button & rename..etc?
