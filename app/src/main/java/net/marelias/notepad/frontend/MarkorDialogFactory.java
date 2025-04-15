@@ -128,6 +128,6 @@ public class MarkorDialogFactory {
         dopt.clearInputIcon = R.drawable.ic_baseline_clear_24;
         dopt.textColor = ContextCompat.getColor(activity, R.color.primary_text);
         dopt.highlightColor = ContextCompat.getColor(activity, R.color.accent);
-        dopt.dialogStyle = R.style.Theme_AppCompat_DayNight_Dialog_Rounded;
+        dopt.dialogStyle = R.style.Theme_AppCompat_Light_Dialog_Rounded;
     }
 }

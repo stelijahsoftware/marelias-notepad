@@ -55,7 +55,7 @@ public class WrConfirmDialog extends DialogFragment {
         _data = getArguments().getSerializable(EXTRA_DATA);
 
         AlertDialog.Builder dialogBuilder;
-        dialogBuilder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_DayNight_Dialog_Rounded);
+        dialogBuilder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Light_Dialog_Rounded);
 
         dialogBuilder.setTitle(title);
         if (!TextUtils.isEmpty(message)) {

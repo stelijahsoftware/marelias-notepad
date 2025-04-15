@@ -101,7 +101,7 @@ public class DocumentActivity extends MarkorBaseActivity {
 
     public static void askUserIfWantsToOpenFileInThisApp(final Activity activity, final File file) {
         if (GsFileUtils.isContentsPlainText(file)) {
-            new AlertDialog.Builder(activity, R.style.Theme_AppCompat_DayNight_Dialog_Rounded)
+            new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Rounded)
                     .setTitle(R.string.open_with)
                     .setMessage(R.string.selected_file_may_be_a_textfile_want_to_open_in_editor)
                     .setIcon(R.drawable.ic_open_in_browser_black_24dp)
@@ -195,7 +195,7 @@ public class DocumentActivity extends MarkorBaseActivity {
 
     private void showNotSupportedMessage() {
         final String notSupportedMessage = (getString(R.string.filemanager_doesnot_supply_required_data__appspecific) + "\n\n" + getString(R.string.sync_to_local_folder_notice)).replace("\n", "<br/>");
-        new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Rounded)
+        new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Rounded)
                 .setMessage(Html.fromHtml(notSupportedMessage))
                 .setNegativeButton(R.string.more_info, (di, i) -> _cu.openWebpageInExternalBrowser(this, ""))
                 .setPositiveButton(android.R.string.ok, null)

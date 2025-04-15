@@ -23,8 +23,7 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] 1. Fix theme when system dark mode is enabled (some window colours are correct).
-[h] 2. Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
+[h] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 
 [m] 4. Rename note title from pressing `note title` on document edit screen/button to rename note.
 [m] 5. When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
@@ -50,6 +49,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - Fix theme when system dark mode is enabled (some window colours are correct).
 X - show total notes count (including folders) on main screen
 X - Add git integration info (add how to note in 'about' screen)
 X - [m] 10. add % -- comments
