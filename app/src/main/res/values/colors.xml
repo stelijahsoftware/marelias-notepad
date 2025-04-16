@@ -9,59 +9,30 @@
 -->
 <resources>
     <!-- Named colors -->
-    <color name="colorPrimary">@color/primary</color>
-    <color name="primary_text">@color/light__primary_text</color>
-    <color name="secondary_text">@color/light__secondary_text</color>
-    <color name="file">@color/light__file</color>
-    <color name="folder">@color/light__folder</color>
-    <color name="background1">@color/light__background</color>
-    <color name="background_2">@color/dark__background_2</color>
-    <color name="textActionBarColor">@color/dark__background_2</color>
-    <color name="textActionIconColor">@color/grey</color>
-
-    <!-- Named colors differing common to day and night -->
-    <color name="colorAccent">@color/accent</color>
+    <color name="primary">#1E2135</color>
+    <color name="primary_text">#000000</color>
+    <color name="secondary_text">#757575</color>
+    <color name="file">#757575</color>
+    <color name="folder">#639BCC</color>
+    <color name="background1">#EEEEEE</color>
+    <color name="background_2">#424242</color>
 
     <!-- Color values -->
-    <color name="primary">#1E2135</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="light_grey">#FFC0C0C0</color>
     <color name="primary_dark">#161828</color>
     <color name="primary_light">#CED9DD</color>
     <color name="accent">#F04B4B</color> <!-- COLOR OF FILE AND FOLDER ADDING BUTTONS -->
+    <color name="accent_light">#FF9800</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
-
-    <color name="accent_light">#FF9800</color>
     <color name="divider_2">#3D3D3D</color>
-    <color name="default_link_color">#388E3C</color>
-
-    <color name="light__background">#EEEEEE</color>
-    <color name="light__background_2">#F9F9F9</color>
-    <color name="light__primary_text">#000000</color>
     <color name="light__secondary_text">#757575</color>
-    <color name="light__file">#757575</color>
-
-    <color name="light__folder">#639BCC</color>
-
     <color name="dark__background">#000000</color>
-    <color name="dark__background_2">#424242</color>
-    <color name="dark__primary_text">@color/white</color>
-    <color name="dark__secondary_text">#9E9E9E</color>
-    <color name="dark__file">#9E9E9E</color>
-
-    <color name="dark__folder">#72B3D9</color>
-
     <color name="ic_launcher_background">#636363</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="grey">#FF505050</color>
-    <color name="dark_grey">#FF000000</color>
-    <color name="light_grey">#FFC0C0C0</color>
-    <color name="lighter_grey">#FFE0E0E0</color>
     <color name="edit_scrollbar_grey">#99555555</color>
-
-    <color name="green_dark">#00FF00</color>
     <color name="green_light">#00BB00</color>
-
     <color name="link">#FF1EA3FD</color>;
     <color name="transparent">#00FFFFFF</color> <!-- AARRGGBB -->
 </resources>
