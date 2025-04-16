@@ -122,19 +122,9 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="features" translatable="false">Features</string>
     <string name="chrome_custom_tabs" translatable="false">Chrome Custom Tabs</string>
     <string name="key_value" translatable="false">Key - Value</string>
-    <string name="ohm" translatable="false">Ohm (Ω)</string>
     <string name="text" translatable="false">Text</string>
-    <string name="inject" translatable="false">Inject</string>
-    <string name="char_punctation_mark_arrows" translatable="false">Punctuation mark (»«)</string>
     <string name="indent" translatable="false">Indent</string>
-    <string name="deindent" translatable="false">De-indent</string>
-    <string name="indent_level" translatable="false">Indent Level</string>
-    <string name="deindent_level" translatable="false">De-indent Level</string>
     <string name="assets" translatable="false">Assets</string>
-    <string name="audio" translatable="false">Audio</string>
-    <string name="screenshot" translatable="false">Screenshot</string>
-    <string name="continued_overline" translatable="false">Continued overline (‾‾‾‾)</string>
-    <string name="accordion" translatable="false">Accordion</string>
     <string name="pref_key__default_encryption_password" translatable="false">pref_key__default_encryption_password</string>
     <string name="pref_key__set_encryption_password" translatable="false">pref_key__set_encryption_password</string>
     <string name="empty_string" translatable="false" />
@@ -148,9 +138,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__is_search_query_case_sensitive" translatable="false">pref_key__is_search_query_case_sensitive</string>
     <string name="pref_key__is_search_query_use_regex" translatable="false">pref_key__is_search_query_use_regex</string>
     <string name="pref_key__is_search_in_content" translatable="false">pref_key__is_search_in_content</string>
-    <string name="action_format_keyvalue" translatable="false">action_format_keyvalue</string>
     <string name="action_format_plaintext" translatable="false">action_format_plaintext</string>
-    <string name="action_format_embedbinary" translatable="false">action_format_embedbinary</string>
     <string name="action_format_markdown" translatable="false">action_format_markdown</string>
     <string name="pref_key__share_into_format" translatable="false">pref_key__share_into_format</string>
     <string name="pref_key__attachment_folder_name" translatable="false">pref_key__attachment_directory_name</string>
