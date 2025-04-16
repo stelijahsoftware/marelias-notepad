@@ -39,7 +39,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [L] - Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
 [L] - share notes app
 [L] - Sorting: Ability to pin notes to top?
-[L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin)
+[L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
 [L] - Visibility: pointer not visible inside highlights
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 
