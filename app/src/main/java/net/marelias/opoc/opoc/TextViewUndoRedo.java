@@ -59,14 +59,8 @@ public class TextViewUndoRedo {
      */
     private boolean mIsUndoOrRedo = false;
 
-    /**
-     * The edit history.
-     */
     private final EditHistory mEditHistory;
 
-    /**
-     * The change listener.
-     */
     private final EditTextChangeListener mChangeListener;
 
     /**
@@ -105,23 +99,14 @@ public class TextViewUndoRedo {
         }
     }
 
-    /**
-     * Clear history.
-     */
     public void clearHistory() {
         mEditHistory.clear();
     }
 
-    /**
-     * Can undo be performed?
-     */
     public boolean getCanUndo() {
         return (mEditHistory.position > 0);
     }
 
-    /**
-     * Perform undo.
-     */
     public void undo() {
         final EditItem edit = mEditHistory.getPrevious();
         if (edit == null) {
