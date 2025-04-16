@@ -245,24 +245,18 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             } else {
                 // _toolbar.setSubtitle("");
 
-                String app_name_short = getString(R.string.app_name_short);
-                String app_name_full = getString(R.string.app_name);
-
-                String folder_name = "";
-                String home_name = "";
-                if (getCurrentFolder() != null) {
-                    folder_name = getCurrentFolder().getPath();
-                    home_name = _appSettings.getNotebookDirectory().getPath();
-                }
+                // String app_name_full = getString(R.string.app_name);
 //                System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<!");
 //                System.out.println(folder_name);
 //                System.out.println(home_name);
 
-                if (getCurrentFolder() != null && !folder_name.equals(home_name) ) {
-                    _toolbar.setTitle("> " + getCurrentFolder().getName() + String.format(" (%d)", totalCount));
-                }
-                else {
-                    _toolbar.setTitle(app_name_short + String.format(" (%d)", totalCount));
+                final Activity activity = getActivity();
+                if (getCurrentFolder() != null && activity != null) {
+                    if (!getCurrentFolder().getPath().equals(_appSettings.getNotebookDirectory().getPath())) {
+                        _toolbar.setTitle("> " + getCurrentFolder().getName() + String.format(" (%d)", totalCount));
+                    } else {
+                        _toolbar.setTitle(getString(R.string.app_name_short) + String.format(" (%d)", totalCount));
+                    }
                 }
             }
         }
