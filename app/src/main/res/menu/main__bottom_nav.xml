@@ -9,7 +9,7 @@
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="net.marelias.notepad.activity.MainActivity">
+    tools:context="org.marelias.notepad.activity.MainActivity">
 
     <item
         android:id="@+id/nav_notebook"

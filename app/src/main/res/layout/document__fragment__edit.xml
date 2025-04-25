@@ -15,10 +15,10 @@
     android:background="@android:color/transparent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context="net.marelias.notepad.activity.DocumentEditAndViewFragment"
+    tools:context="org.marelias.notepad.activity.DocumentEditAndViewFragment"
     tools:showIn="@layout/document__activity">
 
-    <net.marelias.notepad.frontend.DraggableScrollbarScrollView
+    <org.marelias.notepad.frontend.DraggableScrollbarScrollView
         android:id="@+id/document__fragment__edit__content_editor__scrolling_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,7 +30,7 @@
         android:scrollbarTrackVertical="@color/transparent"
         android:fillViewport="true">
 
-        <net.marelias.notepad.frontend.textview.HighlightingEditor
+        <org.marelias.notepad.frontend.textview.HighlightingEditor
             android:id="@+id/document__fragment__edit__highlighting_editor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,9 +46,9 @@
             android:scrollbars="none"
             android:textCursorDrawable="@drawable/cursor_accent" />
 
-    </net.marelias.notepad.frontend.DraggableScrollbarScrollView>
+    </org.marelias.notepad.frontend.DraggableScrollbarScrollView>
 
-    <net.marelias.notepad.util.DraggableScrollbarWebView
+    <org.marelias.notepad.util.DraggableScrollbarWebView
         android:id="@+id/document__fragment_view_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

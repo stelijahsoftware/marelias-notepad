@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import net.marelias.notepad.R;
+import org.marelias.notepad.R;
 
 import java.io.Serializable;
 

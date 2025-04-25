@@ -23,8 +23,8 @@ android {
     compileSdkVersion rootProject.ext.version_compileSdk
 
     defaultConfig {
-        resValue "string", "manifest_package_id", "net.marelias.notepad"
-        applicationId "net.marelias.notepad"
+        resValue "string", "manifest_package_id", "org.marelias.notepad"
+        applicationId "org.marelias.notepad"
         versionName "1.3.10"
         versionCode 1310 // an internal version number x.x.xx
 
@@ -72,7 +72,7 @@ android {
 //        targetCompatibility JavaVersion.VERSION_11
     }
 
-    namespace 'net.marelias.notepad'
+    namespace 'org.marelias.notepad'
     lint {
         abortOnError false
         disable 'MissingTranslation', 'InvalidPackage', 'ObsoleteLintCustomCheck', 'DefaultLocale', 'UnusedAttribute', 'VectorRaster', 'InflateParams', 'IconLocation', 'UnusedResources', 'TypographyEllipsis'

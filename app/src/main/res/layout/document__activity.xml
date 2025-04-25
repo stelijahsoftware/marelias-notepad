@@ -17,7 +17,7 @@
     android:background="@color/primary_dark"
     android:orientation="vertical"
     android:theme="@style/AppTheme.Unified"
-    tools:context="net.marelias.notepad.activity.DocumentActivity">
+    tools:context="org.marelias.notepad.activity.DocumentActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

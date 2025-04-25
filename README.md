@@ -1,7 +1,7 @@
 # Mar-Elias Notepad
 A Simple .txt file editor with highlights (<a href="https://writing-tools.github.io/marelias-notepad/">website</a>)
 
-[<img src="./docs/icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=net.marelias.notepad)
+[<img src="./docs/icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=org.marelias.notepad)
 
 # Rights:
 
@@ -84,7 +84,7 @@ X - change icon
 X - remove auto insertion of tabs when enter is pressed on a line with multiple spaces + prevent auto insertion of '-' when enter is pressed on a line beginning with '-'
 X - remove local file settings
 X - main screen: remove import from device option; replace '...' on top right with cog icon
-X - Create custom syntax highlighting (make it like kate) see ./Notepad2-markor/app/src/main/java/net/gsantner/opoc/format/GsSimpleMarkdownParser.java
+X - Create custom syntax highlighting (make it like kate) see ./app/src/main/java/org/gsantner/opoc/format/GsSimpleMarkdownParser.java
 X - Move new note button to bottom right corner
 X - Clean up settings menu
 X - add to highlighting: [h] [m] [l]
@@ -133,7 +133,7 @@ Build -> Generate signed bundle/APKs -> APK -> create new key -> choose 'Default
 ```
 4. Then find the apk here:
 ```
-app/flavorDefault/release/net.elyahw.notepad2-v11-0.8-flavorDefault-release.apk
+app/flavorDefault/release/flavorDefault-release.apk
 ```
 
 # Possible colours:

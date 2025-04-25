@@ -20,7 +20,7 @@
     android:fitsSystemWindows="true"
     android:background="@color/primary_dark"
     android:theme="@style/AppTheme.Unified"
-    tools:context="net.marelias.notepad.activity.MainActivity">
+    tools:context="org.marelias.notepad.activity.MainActivity">
 
     <View
         android:id="@+id/status_bar_placeholder"

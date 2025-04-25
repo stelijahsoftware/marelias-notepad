@@ -25,11 +25,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.fragment.app.DialogFragment;
 
-import net.marelias.notepad.R;
-import net.marelias.notepad.util.MarkorContextUtils;
-import net.marelias.opoc.opoc.GsCallback;
-import net.marelias.opoc.util.GsContextUtils;
-import net.marelias.opoc.util.GsFileUtils;
+import org.marelias.notepad.R;
+import org.marelias.notepad.util.MarkorContextUtils;
+import org.marelias.opoc.opoc.GsCallback;
+import org.marelias.opoc.util.GsContextUtils;
+import org.marelias.opoc.util.GsFileUtils;
 
 import java.io.File;
 
