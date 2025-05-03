@@ -123,9 +123,9 @@
         android:visible="false"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/action_clear_selection"
-        android:icon="@drawable/ic_baseline_clear_24"
-        android:title="Clear selection"
-        app:showAsAction="always" />
+<!--    <item-->
+<!--        android:id="@+id/action_clear_selection"-->
+<!--        android:icon="@drawable/ic_baseline_clear_24"-->
+<!--        android:title="Clear selection"-->
+<!--        app:showAsAction="always" />-->
 </menu>

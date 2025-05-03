@@ -232,7 +232,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             _fragmentMenu.findItem(R.id.action_favourite_remove).setVisible(selMultiAny && allSelectedFav);
             _fragmentMenu.findItem(R.id.action_create_shortcut).setVisible(selMulti1 && (selFilesOnly || selDirectoriesOnly));
             _fragmentMenu.findItem(R.id.action_check_all).setVisible(_filesystemViewerAdapter.areItemsSelected() && selCount < totalCount);
-            _fragmentMenu.findItem(R.id.action_clear_selection).setVisible(_filesystemViewerAdapter.areItemsSelected());
+//            _fragmentMenu.findItem(R.id.action_clear_selection).setVisible(_filesystemViewerAdapter.areItemsSelected());
         }
 
 //        if (_toolbar != null) {
@@ -271,10 +271,18 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
 
     @Override
     public boolean onBackPressed() {
-        if (_filesystemViewerAdapter != null && _filesystemViewerAdapter.goBack()) {
+        //System.out.println("<<<<<<<<<<<<<<<<< HELLO!");
+
+        if (_filesystemViewerAdapter.areItemsSelected()) {
+            _filesystemViewerAdapter.unselectAll();
             return true;
         }
-        return super.onBackPressed();
+        else {
+            if (_filesystemViewerAdapter != null && _filesystemViewerAdapter.goBack()) {
+                return true;
+            }
+            return super.onBackPressed();
+        }
     }
 
     public void reloadCurrentFolder() {
@@ -434,10 +442,10 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 _filesystemViewerAdapter.selectAll();
                 return true;
             }
-            case R.id.action_clear_selection: {
-                _filesystemViewerAdapter.unselectAll();
-                return true;
-            }
+//            case R.id.action_clear_selection: {
+//                _filesystemViewerAdapter.unselectAll();
+//                return true;
+//            }
             case R.id.action_share_files: {
                 MarkorContextUtils s = new MarkorContextUtils(getContext());
                 s.shareStreamMultiple(getContext(), currentSelection, "*/*");
