@@ -99,21 +99,6 @@ public class FileSearchDialog {
             dialogLayout.addView(queryHistorySpinner);
         }
 
-        // Checkbox: Regex search
-        if (options.enableRegex) {
-            regexCheckBox.setText(R.string.regex_search);
-            regexCheckBox.setChecked(appSettings.isSearchQueryUseRegex());
-            dialogLayout.addView(regexCheckBox, margins);
-        } else {
-            regexCheckBox.setChecked(false);
-            regexCheckBox.setVisibility(View.GONE);
-        }
-
-        // Checkbox: Case sensitive
-        caseSensitivityCheckBox.setText(R.string.case_sensitive);
-        caseSensitivityCheckBox.setChecked(appSettings.isSearchQueryCaseSensitive());
-        dialogLayout.addView(caseSensitivityCheckBox, margins);
-
         // Checkbox: Search in content
         if (options.enableSearchInContent) {
             searchInContentCheckBox.setText(R.string.search_in_content);
@@ -124,6 +109,21 @@ public class FileSearchDialog {
         {
             searchInContentCheckBox.setChecked(false);
             searchInContentCheckBox.setVisibility(View.GONE);
+        }
+
+        // Checkbox: Case sensitive
+        caseSensitivityCheckBox.setText(R.string.case_sensitive);
+        caseSensitivityCheckBox.setChecked(appSettings.isSearchQueryCaseSensitive());
+        dialogLayout.addView(caseSensitivityCheckBox, margins);
+
+        // Checkbox: Regex search
+        if (options.enableRegex) {
+            regexCheckBox.setText(R.string.regex_search);
+            regexCheckBox.setChecked(appSettings.isSearchQueryUseRegex());
+            dialogLayout.addView(regexCheckBox, margins);
+        } else {
+            regexCheckBox.setChecked(false);
+            regexCheckBox.setVisibility(View.GONE);
         }
 
         // ScrollView
