@@ -191,9 +191,18 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                         c.drawRect((float) itemView.getRight() + dX, (float) itemView.getTop(),
                                 (float) itemView.getRight(), (float) itemView.getBottom(), p);
 
-                        // Draw rename icon
+                        // Text paint (must be separate from background paint)
+//                        Paint textPaint = new Paint();
+//                        textPaint.setColor(Color.WHITE);
+//                        textPaint.setTextSize(52f); // Larger size for visibility
+//                        textPaint.setAntiAlias(true); // Smooth text edges
+//                        String text = "Rename";
+//                        float textX = itemView.getRight() - itemView.getWidth()/5; // Adjust as needed
+//                        float textY = itemView.getTop() + (itemView.getHeight() + 20)/2;
+//                        c.drawText(text, textX, textY, textPaint);
 
-                        Drawable icon = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+                        // Draw rename icon
+                        Drawable icon = getResources().getDrawable(R.drawable.ic_gs_rename_black_24dp); // ic_arrow_back_white_24dp
                         if (icon != null) {
                             int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
                             int iconTop = itemView.getTop() + iconMargin;
@@ -201,6 +210,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                             int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
                             int iconRight = itemView.getRight() - iconMargin;
                             icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+                            icon.setTint(Color.WHITE);
                             icon.draw(c);
                         }
                     }
