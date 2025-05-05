@@ -61,6 +61,12 @@ import other.writeily.write.WrConfirmDialog;
 import other.writeily.write.WrMarkorSingleton;
 import other.writeily.write.WrRenameDialog;
 
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
+
 public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPropertyBackend, GsContextUtils> implements GsFileBrowserOptions.SelectionListener {
     //########################
     //## Static
@@ -127,6 +133,83 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         }
 
         _toolbar = activity.findViewById(R.id.toolbar);
+
+        setupSwipeToRename();
+    }
+
+
+    private void setupSwipeToRename() {
+        ItemTouchHelper.SimpleCallback swipeCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView,
+                                  @NonNull RecyclerView.ViewHolder viewHolder,
+                                  @NonNull RecyclerView.ViewHolder target) {
+                return false; // We don't want move functionality
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    File file = _filesystemViewerAdapter.getItemAtPosition(position);
+                    if (file != null) {
+                        // Clear previous selection
+                        _filesystemViewerAdapter.unselectAll();
+
+                        // Select current file
+                        Set<File> selection = new HashSet<>();
+                        selection.add(file);
+                        _filesystemViewerAdapter.setCurrentSelection(selection);
+
+                        // Update menu items to reflect single selection
+                        updateMenuItems();
+
+                        // Execute rename command
+                        MenuItem renameItem = _fragmentMenu.findItem(R.id.action_rename_selected_item);
+                        if (renameItem != null && renameItem.isVisible()) {
+                            onOptionsItemSelected(renameItem);
+                        }
+                    }
+                }
+
+                // Immediately reset the item view state
+                viewHolder.itemView.setTranslationX(0);
+            }
+
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView,
+                                    @NonNull RecyclerView.ViewHolder viewHolder,
+                                    float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                    View itemView = viewHolder.itemView;
+
+                    // Draw rename background and icon
+                    Paint p = new Paint();
+                    if (dX < 0) {
+                        // Swiping left - show rename background
+                        p.setColor(Color.RED);
+                        c.drawRect((float) itemView.getRight() + dX, (float) itemView.getTop(),
+                                (float) itemView.getRight(), (float) itemView.getBottom(), p);
+
+                        // Draw rename icon
+
+                        Drawable icon = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+                        if (icon != null) {
+                            int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+                            int iconTop = itemView.getTop() + iconMargin;
+                            int iconBottom = iconTop + icon.getIntrinsicHeight();
+                            int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
+                            int iconRight = itemView.getRight() - iconMargin;
+                            icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+                            icon.draw(c);
+                        }
+                    }
+                    super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+                }
+            }
+        };
+
+        new ItemTouchHelper(swipeCallback).attachToRecyclerView(_recyclerList);
     }
 
     @Override
@@ -455,7 +538,16 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             case R.id.action_rename_selected_item: {
                 if (_filesystemViewerAdapter.areItemsSelected()) {
                     final File file = currentSelection.iterator().next();
-                    final WrRenameDialog renameDialog = WrRenameDialog.newInstance(file, renamedFile -> reloadCurrentFolder());
+                    final WrRenameDialog renameDialog = WrRenameDialog.newInstance(file, renamedFile -> {
+                        if (renamedFile != null) {
+                            // Rename was successful
+                            _filesystemViewerAdapter.unselectAll();
+                            reloadCurrentFolder();
+                        } else {
+                            // Rename was cancelled
+                            _filesystemViewerAdapter.unselectAll();
+                        }
+                    });
                     renameDialog.show(getChildFragmentManager(), WrRenameDialog.FRAGMENT_TAG);
                 }
                 return true;

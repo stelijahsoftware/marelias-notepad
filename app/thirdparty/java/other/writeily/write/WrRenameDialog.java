@@ -95,7 +95,19 @@ public class WrRenameDialog extends DialogFragment {
             }
         });
 
-        _dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(view -> _dialog.dismiss());
+        _dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(view -> {
+            if (_callback != null) {
+                _callback.callback(null); // Pass null to indicate cancellation
+            }
+            _dialog.dismiss();
+        });
+
+        // Add dismiss listener to handle cases where dialog is dismissed other ways
+        _dialog.setOnDismissListener(dialog -> {
+            if (_callback != null) {
+                _callback.callback(null); // Pass null to indicate cancellation
+            }
+        });
 
         return _dialog;
     }

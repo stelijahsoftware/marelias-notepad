@@ -121,7 +121,7 @@
         android:icon="@drawable/ic_gs_rename_black_24dp"
         android:title="@string/rename"
         android:visible="false"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
 <!--    <item-->
 <!--        android:id="@+id/action_clear_selection"-->

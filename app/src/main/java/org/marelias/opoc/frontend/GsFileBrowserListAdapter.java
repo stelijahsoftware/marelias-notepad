@@ -169,6 +169,19 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         return map;
     }
 
+    public File getItemAtPosition(int position) {
+        if (position >= 0 && position < _adapterDataFiltered.size()) {
+            return _adapterDataFiltered.get(position);
+        }
+        return null;
+    }
+
+    public void setCurrentSelection(Set<File> selection) {
+        _currentSelection.clear();
+        _currentSelection.addAll(selection);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public FilesystemViewerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
