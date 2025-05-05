@@ -49,6 +49,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - Add swipe to rename
 X - Remove cancel button when selecting
 X - Fix theme when system dark mode is enabled (some window colours are correct).
 X - show total notes count (including folders) on main screen
