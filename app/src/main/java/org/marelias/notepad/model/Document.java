@@ -62,7 +62,7 @@ public class Document implements Serializable {
     public Document(@NonNull final File f) {
         path = getPath(f);
         file = new File(path);
-        title = GsFileUtils.getFilenameWithoutExtension(file);
+        title = file.getName(); // GsFileUtils.getFilenameWithoutExtension(file);
         extension = GsFileUtils.getFilenameExtension(file);
 
         // Set initial format
