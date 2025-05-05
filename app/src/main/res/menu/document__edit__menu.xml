@@ -29,7 +29,7 @@
         android:checkable="true"
         android:icon="@drawable/ic_line_numbers_24dp"
         android:title="@string/line_numbers"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
 <!--    <item-->
 <!--        android:id="@+id/action_set_font_size"-->
@@ -49,7 +49,7 @@
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/search"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/paste_text"
