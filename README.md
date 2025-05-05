@@ -25,6 +25,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 ### TODO:
 [h] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 [h] File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
+[h] rename note after being opened by pressing on title (see branch)
 
 [m] When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 [m] Remove save delay
