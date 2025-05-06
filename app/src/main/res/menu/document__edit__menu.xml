@@ -63,5 +63,11 @@
         android:title="Save"
         app:showAsAction="always" />
 
+    <item
+    android:id="@+id/action_rename"
+    android:icon="@drawable/ic_edit_black_24dp"
+    android:title="@string/rename"
+    app:showAsAction="always" />
+
 
 </menu>

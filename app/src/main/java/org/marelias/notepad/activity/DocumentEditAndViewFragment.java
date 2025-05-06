@@ -51,6 +51,9 @@ import org.marelias.opoc.opoc.TextViewUndoRedo;
 import org.marelias.opoc.util.GsContextUtils;
 import org.marelias.opoc.util.GsWebViewChromeClient;
 
+import other.writeily.write.WrRenameDialog;
+import org.marelias.opoc.opoc.GsCallback;
+
 import java.io.File;
 
 @SuppressWarnings({"UnusedReturnValue"})
@@ -300,6 +303,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         menu.findItem(R.id.action_search_view).setVisible(isText && _isPreviewVisible);
 //        menu.findItem(R.id.submenu_per_file_settings).setVisible(isText);
 
+        menu.findItem(R.id.action_rename).setVisible(isText && !_isPreviewVisible);
+
         // SearchView (View Mode)
         _menuSearchViewForViewMode = (SearchView) menu.findItem(R.id.action_search_view).getActionView();
         if (_menuSearchViewForViewMode != null) {
@@ -509,7 +514,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 //                });
 //                return true;
 //            }
-
+            case R.id.action_rename: {
+                renameCurrentFile();
+                return true;
+            }
             default: {
                 return super.onOptionsItemSelected(item);
             }
@@ -652,6 +660,31 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         {
             return true; // Report success if text not changed
         }
+    }
+
+    private void renameCurrentFile() {
+        if (_document == null || _document.file == null) {
+            return;
+        }
+
+        WrRenameDialog.newInstance(_document.file, new GsCallback.a1<File>() {
+            @Override
+            public void callback(File renamedFile) {
+                if (renamedFile != null) {
+
+                    // Update the document with the new file
+                    _document = new Document(renamedFile);
+
+                    // Update the title in the activity
+                    if (getActivity() instanceof DocumentActivity) {
+                        ((DocumentActivity) getActivity()).setDocumentTitle(_document.title);
+                    }
+
+                    // Reload the document
+                    loadDocument();
+                }
+            }
+        }).show(getParentFragmentManager(), WrRenameDialog.FRAGMENT_TAG);
     }
 
     @Override
