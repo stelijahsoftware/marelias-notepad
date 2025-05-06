@@ -240,16 +240,26 @@ public class SettingsActivity extends MarkorBaseActivity {
 
                     // Or display html text in a window:
                     String html_info =
-                            "<br>" +
-                            "<font color='#000000'><b>Notepad Mar-Elias</b> is a simple .txt file editor with custom highlight syntax. " +
-                            "A fork of <b>Markor</b>, an open source notes project authored by Gregor Santner. " +
-                            "You can sync notes using a git client (e.g. Termux).</font>" +
-                            "<br><br>" +
-                            "<font color='#555555'><b>Project website:</b></font>" +
-                            "<br><font color='#0040ff'><a href='https://writing-tools.github.io/marelias-notepad/'>writing-tools.github.io/marelias-notepad</a></font>" +
-                            "<br><font color='#555555'><b>Markor source:</b></font>" +
-                            "<br><font color='#0040ff'><a href='https://github.com/gsantner/markor'>github.com/gsantner/markor</a></font>" +
-                            "";
+                        "<br>" +
+                        "<font color='#000000'><b>Notepad Mar-Elias</b> is a simple .txt file editor with custom syntax highlights. " +
+                        "A fork of <b>Markor</b>, an open source notes project authored by Gregor Santner. " +
+                        "You can sync notes to a PC using a git client (e.g. Termux).</font>" +
+                        "<br>" +
+                        "<br>" +
+                        "<font color='#555555'><b>Project website:</b></font>" +
+                        "<br>" +
+                        "<font color='#0040ff'><a href='https://writing-tools.github.io/marelias-notepad/'>https://writing-tools.github.io/marelias-notepad</a></font>" +
+                        "<br>" +
+                        "<br>" +
+                        "<font color='#555555'><b>Project source:</b></font>" +
+                        "<br>" +
+                        "<font color='#0040ff'><a href='https://github.com/writing-tools/marelias-notepad/'>https://github.com/writing-tools/marelias-notepad</a></font>" +
+                        "<br>" +
+                        "<br>" +
+                        "<font color='#555555'><b>Markor source:</b></font>" +
+                        "<br>" +
+                        "<font color='#0040ff'><a href='https://github.com/gsantner/markor'>https://github.com/gsantner/markor</a></font>" +
+                        "";
                     // See:
                     // app/src/main/res/xml/preferences_master.xml
 
