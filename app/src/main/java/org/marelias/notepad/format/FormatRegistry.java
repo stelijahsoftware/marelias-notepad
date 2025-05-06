@@ -74,7 +74,7 @@ public class FormatRegistry {
         formatId = FORMAT_PLAIN;
         format._converter = CONVERTER_PLAINTEXT;
         format._highlighter = new MarkdownSyntaxHighlighter(appSettings);
-        format._textActions = new MarkdownActionButtons(context, document);
+        format._textActions = new ActionButtonBase(context, document);
         format._autoFormatInputFilter = new AutoTextFormatter(MarkdownReplacePatternGenerator.formatPatterns);
         format._autoFormatTextWatcher = new ListHandler(MarkdownReplacePatternGenerator.formatPatterns);
 

@@ -12,6 +12,7 @@ import android.content.Context;
 import android.webkit.WebView;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
@@ -22,7 +23,7 @@ import org.marelias.notepad.model.Document;
 import org.marelias.notepad.util.MarkorContextUtils;
 
 @SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
-public abstract class ActionButtonBase {
+public class ActionButtonBase {
     private Activity _activity;
     private MarkorContextUtils _cu;
 
@@ -37,19 +38,9 @@ public abstract class ActionButtonBase {
         return true;
     }
 
-    // Override to implement custom title action
-    public boolean runTitleClick() {
-        return false;
+    public ActionButtonBase(@NonNull Context context, Document document) {
+//        super(context, document);
     }
-
-    /**
-     * Derived classes must return a unique StringRes id.
-     * This is used to extract the appropriate action order preference.
-     *
-     * @return StringRes preference key
-     */
-    @StringRes
-    protected abstract int getFormatActionsKey();
 
     public ActionButtonBase setUiReferences(@Nullable final Activity activity, @Nullable final HighlightingEditor hlEditor, @Nullable final WebView webview) {
         _activity = activity;
@@ -78,47 +69,7 @@ public abstract class ActionButtonBase {
 
 
     public static class ActionItem {
-        @StringRes
-        public int keyId;
-        @DrawableRes
-        public int iconId;
-        @StringRes
-        public int stringId;
-        public DisplayMode displayMode = DisplayMode.EDIT;
-
-        public boolean isRepeatable = false;
-
         public enum DisplayMode {EDIT, VIEW, ANY}
-
-        public ActionItem(@StringRes int key, @DrawableRes int icon, @StringRes int string) {
-            keyId = key;
-            iconId = icon;
-            stringId = string;
-        }
-
-        public ActionItem setDisplayMode(DisplayMode mode) {
-            displayMode = mode;
-            return this;
-        }
-
-        public ActionItem setRepeatable(boolean repeatable) {
-            isRepeatable = repeatable;
-            return this;
-        }
-    }
-
-    public void runJumpBottomTopAction(ActionItem.DisplayMode displayMode) {
-        if (displayMode == ActionItem.DisplayMode.EDIT) {
-            int pos = _hlEditor.getSelectionStart();
-            _hlEditor.setSelection(pos == 0 ? _hlEditor.getText().length() : 0);
-        } else if (displayMode == ActionItem.DisplayMode.VIEW) {
-            boolean top = _webView.getScrollY() > 100;
-            _webView.scrollTo(0, top ? 0 : _webView.getContentHeight());
-            if (!top) {
-                _webView.scrollBy(0, 1000);
-                _webView.scrollBy(0, 1000);
-            }
-        }
     }
 
 }

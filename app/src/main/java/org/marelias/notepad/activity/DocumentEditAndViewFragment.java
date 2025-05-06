@@ -653,21 +653,21 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         }
     }
 
-    @Override
-    protected void onToolbarClicked(View v) {
-        if (_format != null) {
-            _format.getActions().runTitleClick();
-        }
-    }
-
-    @Override
-    protected boolean onToolbarLongClicked(View v) {
-        if (isVisible() && isResumed()) {
-            _format.getActions().runJumpBottomTopAction(_isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
-            return true;
-        }
-        return false;
-    }
+//    @Override
+//    protected void onToolbarClicked(View v) {
+//        if (_format != null) {
+//            _format.getActions().runTitleClick();
+//        }
+//    }
+//
+//    @Override
+//    protected boolean onToolbarLongClicked(View v) {
+//        if (isVisible() && isResumed()) {
+//            _format.getActions().runJumpBottomTopAction(_isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
+//            return true;
+//        }
+//        return false;
+//    }
 
     @Override
     public void onDestroy() {
