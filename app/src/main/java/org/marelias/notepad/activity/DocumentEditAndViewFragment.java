@@ -37,9 +37,9 @@ import androidx.annotation.NonNull;
 
 import org.marelias.notepad.ApplicationObject;
 import org.marelias.notepad.R;
-import org.marelias.notepad.format.ActionButtonBase;
 import org.marelias.notepad.format.FormatRegistry;
 import org.marelias.notepad.frontend.DraggableScrollbarScrollView;
+import org.marelias.notepad.frontend.MarkorDialogFactory;
 import org.marelias.notepad.frontend.textview.HighlightingEditor;
 import org.marelias.notepad.frontend.textview.TextViewUtils;
 import org.marelias.notepad.model.Document;
@@ -490,7 +490,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
                 return true;
             }
             case R.id.action_search: {
-                _format.getActions().onSearch();
+//                _format.getActions().onSearch();
+                MarkorDialogFactory.showSearchDialog(activity, _hlEditor);
                 return true;
             }
             case R.id.action_line_numbers: {
@@ -536,9 +537,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _hlEditor.setDynamicHighlightingEnabled(_appSettings.isDynamicHighlightingEnabled());
         _hlEditor.setAutoFormatters(_format.getAutoFormatInputFilter(), _format.getAutoFormatTextWatcher());
         _hlEditor.setAutoFormatEnabled(_appSettings.getDocumentAutoFormatEnabled(_document.path));
-        _format.getActions()
-                .setDocument(_document) // elyahw line added by merge request
-                .setUiReferences(activity, _hlEditor, _webView);
+//        _format.getActions()
+//                .setDocument(_document) // elyahw line added by merge request
+//                .setUiReferences(activity, _hlEditor, _webView);
 
         updateMenuToggleStates(_format.getFormatId());
 
@@ -652,22 +653,6 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             return true; // Report success if text not changed
         }
     }
-
-//    @Override
-//    protected void onToolbarClicked(View v) {
-//        if (_format != null) {
-//            _format.getActions().runTitleClick();
-//        }
-//    }
-//
-//    @Override
-//    protected boolean onToolbarLongClicked(View v) {
-//        if (isVisible() && isResumed()) {
-//            _format.getActions().runJumpBottomTopAction(_isPreviewVisible ? ActionButtonBase.ActionItem.DisplayMode.VIEW : ActionButtonBase.ActionItem.DisplayMode.EDIT);
-//            return true;
-//        }
-//        return false;
-//    }
 
     @Override
     public void onDestroy() {
