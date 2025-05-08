@@ -1,7 +1,7 @@
 # Mar-Elias Notepad
 A Simple .txt file editor with highlights (<a href="https://writing-tools.github.io/marelias-notepad/">website</a>)
 
-[<img src="./docs/icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=org.marelias.notepad)
+[<img src="./docs/icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=)
 
 # Rights:
 
