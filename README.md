@@ -49,6 +49,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - Remove confirmation when deleting a note
 X - Add swipe to rename (not: Rename note title from pressing `note title` on document edit screen/button to rename note.)
 X - Remove cancel button when selecting
 X - Fix theme when system dark mode is enabled (some window colours are correct).
