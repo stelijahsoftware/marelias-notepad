@@ -515,15 +515,15 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 return true;
             }
             case R.id.action_delete_selected_items: {
-                askForDeletingFilesRecursive((confirmed, data) -> {
-                    if (confirmed) {
+//                askForDeletingFilesRecursive((confirmed, data) -> {
+//                    if (confirmed) {
                         Runnable deleter = () -> {
                             WrMarkorSingleton.getInstance().deleteSelectedItems(currentSelection, getContext());
                             _recyclerList.post(() -> _filesystemViewerAdapter.reloadCurrentFolder());
                         };
                         new Thread(deleter).start();
-                    }
-                });
+//                    }
+//                });
                 return true;
             }
             case R.id.action_move_selected_items:
