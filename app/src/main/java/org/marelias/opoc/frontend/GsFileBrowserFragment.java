@@ -165,10 +165,20 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                         updateMenuItems();
 
                         // Execute rename command
-                        MenuItem renameItem = _fragmentMenu.findItem(R.id.action_rename_selected_item);
-                        if (renameItem != null && renameItem.isVisible()) {
-                            onOptionsItemSelected(renameItem);
+                        if (file != null) {
+                            final WrRenameDialog renameDialog = WrRenameDialog.newInstance(file, renamedFile -> {
+                                if (renamedFile != null) {
+                                    // Rename was successful
+                                    _filesystemViewerAdapter.unselectAll();
+                                    reloadCurrentFolder();
+                                } else {
+                                    // Rename was cancelled
+                                    _filesystemViewerAdapter.unselectAll();
+                                }
+                            });
+                            renameDialog.show(getChildFragmentManager(), WrRenameDialog.FRAGMENT_TAG);
                         }
+
                     }
                 }
 
@@ -316,7 +326,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         if (_fragmentMenu != null && _fragmentMenu.findItem(R.id.action_delete_selected_items) != null) {
             _fragmentMenu.findItem(R.id.action_search).setVisible(selFiles.isEmpty() && !_filesystemViewerAdapter.isCurrentFolderVirtual());
             _fragmentMenu.findItem(R.id.action_delete_selected_items).setVisible((selMulti1 || selMultiMore) && selWritable);
-            _fragmentMenu.findItem(R.id.action_rename_selected_item).setVisible(selMulti1 && selWritable & !selInVirtualDirectory);
+//            _fragmentMenu.findItem(R.id.action_rename_selected_item).setVisible(selMulti1 && selWritable & !selInVirtualDirectory);
             _fragmentMenu.findItem(R.id.action_move_selected_items).setVisible((selMulti1 || selMultiMore) && selWritable && !selInVirtualDirectory && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
             _fragmentMenu.findItem(R.id.action_share_files).setVisible(selFilesOnly && (selMulti1 || selMultiMore) && !_cu.isUnderStorageAccessFolder(getContext(), getCurrentFolder(), true));
             _fragmentMenu.findItem(R.id.action_sort).setVisible(!_filesystemViewerAdapter.areItemsSelected());
@@ -545,23 +555,23 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 _filesystemViewerAdapter.reloadCurrentFolder();
                 return true;
             }
-            case R.id.action_rename_selected_item: {
-                if (_filesystemViewerAdapter.areItemsSelected()) {
-                    final File file = currentSelection.iterator().next();
-                    final WrRenameDialog renameDialog = WrRenameDialog.newInstance(file, renamedFile -> {
-                        if (renamedFile != null) {
-                            // Rename was successful
-                            _filesystemViewerAdapter.unselectAll();
-                            reloadCurrentFolder();
-                        } else {
-                            // Rename was cancelled
-                            _filesystemViewerAdapter.unselectAll();
-                        }
-                    });
-                    renameDialog.show(getChildFragmentManager(), WrRenameDialog.FRAGMENT_TAG);
-                }
-                return true;
-            }
+//            case R.id.action_rename_selected_item: {
+//                if (_filesystemViewerAdapter.areItemsSelected()) {
+//                    final File file = currentSelection.iterator().next();
+//                    final WrRenameDialog renameDialog = WrRenameDialog.newInstance(file, renamedFile -> {
+//                        if (renamedFile != null) {
+//                            // Rename was successful
+//                            _filesystemViewerAdapter.unselectAll();
+//                            reloadCurrentFolder();
+//                        } else {
+//                            // Rename was cancelled
+//                            _filesystemViewerAdapter.unselectAll();
+//                        }
+//                    });
+//                    renameDialog.show(getChildFragmentManager(), WrRenameDialog.FRAGMENT_TAG);
+//                }
+//                return true;
+//            }
         }
 
         return false;
