@@ -119,18 +119,20 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
         _hlEditor = view.findViewById(R.id.document__fragment__edit__highlighting_editor);
 
-        // Remove the Share option from text selection context menu
+
+        // Remove the Share option from text selection context menu ******************************
         _hlEditor.setCustomSelectionActionModeCallback(new ActionMode.Callback() {
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 // Remove the share text item
-                menu.removeItem(android.R.id.shareText); // Removes Share
-                menu.removeItem(android.R.id.textAssist); // Removes Read Aloud (Android 13+)
+                 menu.removeItem(android.R.id.shareText); // Removes Share
+                 // menu.removeItem(android.R.id.textAssist); // Removes Read Aloud (Android 13+). Also removes open in browser
 
                 // Remove all unwanted items by iterating through the menu
                 for (int i = 0; i < menu.size(); i++) {
                     MenuItem item = menu.getItem(i);
                     if (item.getTitle().toString().toLowerCase().contains("read aloud") ||
+                            item.getTitle().toString().toLowerCase().contains("translate") ||
                             item.getItemId() == android.R.id.shareText) {
                         menu.removeItem(item.getItemId());
                     }
@@ -141,13 +143,14 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
             @Override
             public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                menu.removeItem(android.R.id.shareText);
-                menu.removeItem(android.R.id.textAssist);
+                 menu.removeItem(android.R.id.shareText);
+                 // menu.removeItem(android.R.id.textAssist); // Removes open in browser
 
                 // Remove all unwanted items by iterating through the menu
                 for (int i = 0; i < menu.size(); i++) {
                     MenuItem item = menu.getItem(i);
                     if (item.getTitle().toString().toLowerCase().contains("read aloud") ||
+                            item.getTitle().toString().toLowerCase().contains("translate") ||
                             item.getItemId() == android.R.id.shareText) {
                         menu.removeItem(item.getItemId());
                     }
@@ -164,7 +167,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             @Override
             public void onDestroyActionMode(ActionMode mode) {
             }
-        });
+        }); // **************************************************************************************
+
 
         // _textActionsBar = view.findViewById(R.id.document__fragment__edit__text_actions_bar);
         _webView = view.findViewById(R.id.document__fragment_view_webview);
