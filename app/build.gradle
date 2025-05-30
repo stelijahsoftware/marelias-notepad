@@ -25,8 +25,8 @@ android {
     defaultConfig {
         resValue "string", "manifest_package_id", "org.marelias.notepad"
         applicationId "org.marelias.notepad" // org (organisation/nonprofit)
-        versionName "1.4.0"
-        versionCode 1400 // an internal version number x.x.xx
+        versionName "1.4.01" // x.x.xx
+        versionCode 1401 // an internal version number x.x.xx
 
         multiDexEnabled true
         minSdkVersion rootProject.ext.version_minSdk
