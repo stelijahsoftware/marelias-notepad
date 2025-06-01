@@ -28,16 +28,6 @@
         <item name="android:windowBackground">@color/background1</item> <!-- settings background -->
         <item name="dialogCornerRadius">@dimen/dialog_corner_radius</item>
 
-        <!-- Android V21 options; ignore IDE warnings -->
-        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap" tools:targetApi="lollipop">true</item>
-        <item name="android:windowAllowReturnTransitionOverlap" tools:targetApi="lollipop">true</item>
-        <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">@android:transition/move</item>
-        <item name="android:windowSharedElementExitTransition" tools:targetApi="lollipop">@android:transition/move</item>
-
-        <!-- Android V28 options; ignore IDE warnings -->
-        <item name="android:dialogCornerRadius" tools:targetApi="p">@dimen/dialog_corner_radius</item>
-
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
     </style>
 
