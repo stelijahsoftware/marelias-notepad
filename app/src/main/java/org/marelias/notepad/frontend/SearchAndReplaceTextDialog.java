@@ -134,8 +134,8 @@ public class SearchAndReplaceTextDialog {
                     final String desc = String.format("%s: %s\n%s: %s\n%s: %b, %s: %b\n",
                             res.getString(R.string.search_for), rg._search,
                             res.getString(R.string.replace_with), rg._replace,
-                            res.getString(R.string.regex), rg._isRegex,
-                            res.getString(R.string.multiline), rg._isMultiline);
+                            "Regex", rg._isRegex,
+                            "Multiline", rg._isMultiline);
                     textView.setText(desc);
                 }
 

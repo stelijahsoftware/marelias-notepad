@@ -35,8 +35,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
         <item quantity="one" translatable="false">@string/document</item>
         <item quantity="other" translatable="false">@string/documents</item>
     </plurals>
-    <string name="regex" translatable="false">Regex</string>
-    <string name="multiline" translatable="false">Multiline</string>
 
     <!--
         Preference keys
@@ -108,15 +106,8 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__view_font_size" translatable="false">pref_key__view_font_size</string>
     <string name="pref_key__view_mode_link_color" translatable="false">pref_key__view_mode_link_color</string>
     <string name="pref_key__open_links_with_chrome_custom_tabs" translatable="false">pref_key__open_links_with_chrome_custom_tabs</string>
-    <string name="features" translatable="false">Features</string>
-    <string name="chrome_custom_tabs" translatable="false">Chrome Custom Tabs</string>
-    <string name="key_value" translatable="false">Key - Value</string>
-    <string name="text" translatable="false">Text</string>
-    <string name="indent" translatable="false">Indent</string>
-    <string name="assets" translatable="false">Assets</string>
     <string name="pref_key__default_encryption_password" translatable="false">pref_key__default_encryption_password</string>
     <string name="pref_key__set_encryption_password" translatable="false">pref_key__set_encryption_password</string>
-    <string name="empty_string" translatable="false" />
     <string name="pref_key__new_file_dialog_lastused_encryption" translatable="false">pref_key__new_file_dialog_lastused_encryption</string>
     <string name="pref_key__new_file_dialog_lastused_extension" translatable="false">pref_key__new_file_dialog_lastused_extension</string>
     <string name="pref_key__new_file_dialog_lastused_type" translatable="false">pref_key__new_file_dialog_lastused_type</string>
