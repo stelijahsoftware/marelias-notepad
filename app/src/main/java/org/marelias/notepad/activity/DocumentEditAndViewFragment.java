@@ -535,8 +535,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 //                setViewModeVisibility(!_isPreviewVisible);
 //                return true;
 //            }
-            case R.string.action_format_plaintext:
-            case R.string.action_format_markdown: {
+            case R.string.action_format_plaintext: {
                 if (itemId != _document.getFormat()) {
                     _document.setFormat(itemId);
                     applyTextFormat(itemId);

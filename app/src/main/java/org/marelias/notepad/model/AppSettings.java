@@ -271,7 +271,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public void setSearchQueryCaseSensitivity(final boolean isQuerySensitive) {
-        setBool(R.string.pref_key__is_search_query_case_sensitive, isQuerySensitive);
+        setBool(R.string.pref_key__is_search_query_case_sensitive, false);
     }
 
     public boolean isSearchQueryUseRegex() {
