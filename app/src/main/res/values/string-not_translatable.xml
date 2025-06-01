@@ -14,36 +14,12 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="app_name_short" translatable="false">Mar-Elias</string> <!-- app name as it appears on top of file browser -->
     <string name="app_license_name" translatable="false">Apache 2.0</string>
 
-    <string name="app_web_url" translatable="false">https://github.com/gsantner/notepad2</string>
-    <string name="huuid" translatable="false">hUUID</string>
-    <string name="embed_binary" translatable="false">Embed binary</string>
-    <string name="actionbutton" translatable="false">ActionButton</string>
-
-    <string name="plus" translatable="false">+</string>
-    <string name="front_matter" translatable="false">Front Matter</string>
-    <string name="mime_type" translatable="false">Type</string>
-
-    <string name="default_font_family" translatable="false">sans-serif-regular</string>
-    <string name="start" translatable="false">Start</string>
-
-    <plurals name="item_selected" translatable="false">
-        <item quantity="one" translatable="false">@string/one_item_selected</item>
-        <item quantity="other" translatable="false">@string/items_selected_witharg</item>
-    </plurals>
-
     <plurals name="documents" translatable="false">
         <item quantity="one" translatable="false">@string/document</item>
         <item quantity="other" translatable="false">@string/documents</item>
     </plurals>
 
-    <!--
-        Preference keys
-     -->
-    <string name="pref_key__markdown__hl_delay_v2" translatable="false">pref_key__markdown__hl_delay_v2</string>
-    <string name="pref_key__quicknote_filepath" translatable="false">pref_key__quicknote_filepath</string>
-    <string name="pref_key__markdown__highlight_lineending_two_or_more_space" translatable="false">pref_key__markdown__highlight_lineending_two_or_more_space</string>
-    <string name="pref_key__markdown__auto_renumber_ordered_list" translatable="false">pref_key__markdown__auto_renumber_ordered_list</string>
-    <string name="pref_key__markdown__reorder_actions" translatable="false">pref_key__markdown__reorder_actions</string>
+    <!--    Preference keys     -->
     <string name="pref_key__plaintext__reorder_actions" translatable="false">pref_key__plaintext__reorder_actions</string>
     <string name="pref_key__markdown__action_keys" translatable="false">pref_key__markdown__action_keys</string>
     <string name="pref_key__plaintext__action_keys" translatable="false">pref_key__plaintext__action_keys</string>
@@ -69,16 +45,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__more_info__settings" translatable="false">pref_key__more_info__settings</string>
     <string name="pref_key__more_info__source_code" translatable="false">pref_key__more_info__source_code</string>
     <string name="pref_key__more_info__project_license" translatable="false">pref_key__more_info__project_license</string>
-    <string name="pref_key__more_info__open_source_licenses" translatable="false">pref_key__more_info__open_source_licenses</string>
-    <string name="pref_key__more_info__bug_reports" translatable="false">pref_key__more_info__bug_reports</string>
-    <string name="pref_key__more_info__help" translatable="false">pref_key__more_info__help</string>
-    <string name="pref_key__more_info__rate_app" translatable="false">pref_key__more_info__rate_app</string>
-    <string name="pref_key__more_info__translate" translatable="false">pref_key__more_info__translate</string>
-    <string name="pref_key__more_info__join_community" translatable="false">pref_key__more_info__join_community</string>
-
     <string name="pref_key__more_info__app" translatable="false">pref_key__more_info__app</string>
-    <string name="pref_key__editor_textaction_bar_item_padding" translatable="false">pref_key__editor_textaction_bar_item_padding</string>
-    <string name="pref_key__editor_disable_spelling_red_underline" translatable="false">pref_key__editor_disable_spelling_red_underline</string>
     <string name="pref_key__highlight_code_monospace_font" translatable="false">pref_key__highlight_code_monospace_font</string>
     <string name="pref_key__highlight_code_block_disabled" translatable="false">pref_key__highlight_code_block_disabled</string>
     <string name="pref_key__editor_markdown_bigger_headings_2" translatable="false">pref_key__editor_markdown_bigger_headings_2</string>
@@ -91,24 +58,17 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__is_keep_screen_on" translatable="false">pref_key__keep_screen_on</string>
     <string name="pref_key__is_disallow_screenshots" translatable="false">pref_key__is_disallow_screenshots</string>
     <string name="pref_key__snippet_directory_path" translatable="false">pref_key__snippet_directory_path</string>
-
     <string name="pref_key__is_multi_window_enabled" translatable="false">pref_key__is_multi_window_enabled</string>
     <string name="pref_key__is_enable_experimental_features" translatable="false">pref_key__is_enable_experimental_features</string>
     <string name="pref_key__app_start_tab_v2" translatable="false">pref_key__app_start_tab_v2</string>
     <string name="pref_key__app_start_folder" translatable="false">pref_key__app_start_folder</string>
     <string name="pref_key__swipe_to_change_mode" translatable="false">pref_key__swipe_to_change_mode</string>
     <string name="pref_key__filesystem_folder_first" translatable="false">pref_key__filesystem_folder_first</string>
-    <string name="pref_key__show_dot_files_v2" translatable="false">pref_key__show_dot_files_v2</string>
-    <string name="pref_key__tab_width_v2" translatable="false">pref_key__tab_width_v2</string>
     <string name="pref_key__editor_enable_line_breaking" translatable="false">pref_key__editor_enable_line_breaking</string>
     <string name="pref_key__enable_line_numbers" translatable="false">pref_key__enable_line_numbers</string>
     <string name="pref_key__exts_to_always_open_in_this_app" translatable="false">pref_key__exts_to_always_open_in_this_app</string>
     <string name="pref_key__view_font_size" translatable="false">pref_key__view_font_size</string>
     <string name="pref_key__view_mode_link_color" translatable="false">pref_key__view_mode_link_color</string>
-    <string name="pref_key__open_links_with_chrome_custom_tabs" translatable="false">pref_key__open_links_with_chrome_custom_tabs</string>
-    <string name="pref_key__default_encryption_password" translatable="false">pref_key__default_encryption_password</string>
-    <string name="pref_key__set_encryption_password" translatable="false">pref_key__set_encryption_password</string>
-    <string name="pref_key__new_file_dialog_lastused_encryption" translatable="false">pref_key__new_file_dialog_lastused_encryption</string>
     <string name="pref_key__new_file_dialog_lastused_extension" translatable="false">pref_key__new_file_dialog_lastused_extension</string>
     <string name="pref_key__new_file_dialog_lastused_type" translatable="false">pref_key__new_file_dialog_lastused_type</string>
     <string name="pref_key__file_browser_last_browsed_folder" translatable="false">pref_key__file_browser_last_browsed_folder</string>
@@ -121,9 +81,5 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="action_format_plaintext" translatable="false">action_format_plaintext</string>
     <string name="action_format_markdown" translatable="false">action_format_markdown</string>
     <string name="pref_key__share_into_format" translatable="false">pref_key__share_into_format</string>
-    <string name="pref_key__attachment_folder_name" translatable="false">pref_key__attachment_directory_name</string>
-    <string name="pref_key__filetype_template_map" translatable="false">pref_key__filetype_template_map</string>
-    <string name="pref_key__template_title_format_map" translatable="false">pref_key__template_title_format_map</string>
     <string name="pref_key__title_format_list" translatable="false">pref_key__title_format_list</string>
-    <string name="pref_key__format_share_as_link" translatable="false">pref_key__format_share_as_link</string>
 </resources>

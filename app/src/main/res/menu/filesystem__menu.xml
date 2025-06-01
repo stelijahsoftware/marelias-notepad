@@ -83,7 +83,7 @@
                 <item
                     android:id="@+id/action_sort_by_mimetype"
                     android:icon="@drawable/ic_extension_black_24dp"
-                    android:title="@string/mime_type"
+                    android:title="Type"
                     app:showAsAction="never" />
             </group>
             <group
