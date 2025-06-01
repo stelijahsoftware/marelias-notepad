@@ -166,7 +166,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="disable_code_block_highlight">Disable highlighting for code blocks</string>
     <string name="auto_renumber_ordered_list">Auto-renumber ordered lists</string>
     <string name="auto_renumber_ordered_list_slowdown">This option may impact app performance.</string>
-    <string name="use_different_fonttype_slow_down">Make use of a different font type. Changing it dynamically impacts app performance.</string>
     <string name="general">General</string>
     <string name="resources">Resources</string>
     <string name="space_between_lines_in_percent">Space between lines in percent</string>
@@ -207,8 +206,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="table_of_contents">Table of contents</string>
     <string name="miscellaneous">Miscellaneous</string>
     <string name="prefer_view">Prefer view</string>
-    <string name="no_calendar_app_is_installed">No calendar app is installed!</string>
-    <string name="popular_documents">Popular documents</string>
     <string name="color">Color</string>
     <string name="basic_color_scheme">Basic color scheme</string>
     <string name="preset">Preset</string>
@@ -216,7 +213,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="background">Background</string>
     <string name="type">Type</string>
     <string name="folder">Folder</string>
-    <string name="folder_is_created_without_extension">- Folder is created without file extension</string>
     <string name="keep_existing_file">Files and folders are not overwritten</string>
     <string name="font">Font</string>
     <string name="result">Result</string>
@@ -224,6 +220,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="just_date">Date only</string>
     <string name="last_used">Last used</string>
     <string name="my_note">my_note</string>
+    <string name="copy_move_conflict_message">\'%s\' already exists in %s</string>
     <string name="close">Close</string>
     <string name="cancel">Cancel</string>
     <string name="app_start_tab">App start tab</string>
@@ -247,8 +244,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="please_wait">Please wait</string>
     <string name="app_start_folder">App start folder</string>
     <string name="tab_width">Tab width</string>
-    <string name="selected_file_may_be_a_textfile_want_to_open_in_editor">Do you want to open it in the editor, or in another app?
-        (Do not try to open binary files.)</string>
+    <string name="selected_file_may_be_a_textfile_want_to_open_in_editor">Do you want to open it in the editor, or in another app?</string>
     <string name="list_in_recent_files">List in recent files</string>
     <string name="reload">Reload</string>
     <string name="wrap_words">Wrap words</string>
@@ -261,17 +257,14 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="record_audio">Record Audio</string>
     <string name="attach">Attach</string>
     <string name="copy_file">Copy file</string>
-    <string name="example_of_a_markdown_table">Example of a Markdown table</string>
     <string name="open_link">Open link</string>
     <string name="common_color_picker">Color picker</string>
     <string name="date_and_time">Date and time</string>
-    <string name="toggle_done">Toggle done</string>
     <string name="link_color">Link color</string>
     <string name="add_context">Add context</string>
     <string name="add_project">Add project</string>
     <string name="archive_completed_tasks">Archive completed tasks</string>
     <string name="selected">Selected</string>
-    <string name="code_block">Code block</string>
     <string name="add_completion_date">Add completion date</string>
     <string name="file_description_format">File description format</string>
     <string name="loading_default_value">Loading default value</string>
@@ -293,18 +286,12 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="keep_both_all">Keep both (all)</string>
     <string name="skip_all">Skip (all)</string>
     <string name="overwrite_all">Overwrite (all)</string>
-    <string name="copy_move_conflict_message">\'%s\' already exists in %s</string>
     <string name="additional_contexts_and_projects">Additional contexts and projects</string>
     <string name="infinite">Infinite</string>
-    <string name="browse_by_project">Browse by project</string>
-    <string name="browse_by_context">Browse by context</string>
     <string name="match_any">Match Any</string>
     <string name="match_all">Match All</string>
     <string name="dynamic_notebook_root_links">Dynamic search for notebook root</string>
-    <string name="share_into_format">Share into - Format</string>
     <string name="auto_format">Auto-format</string>
-    <string name="insert_snippet">Insert snippet</string>
-    <string name="snippet_directory">Snippet / Template directory</string>
     <string name="error_could_not_open_file">Error: Could not open file.</string>
     <string name="wont_save_min_length">Files with fewer than %d characters not saved automatically in order to prevent data loss.</string>
     <string name="filter">Filter</string>
