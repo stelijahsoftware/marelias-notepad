@@ -15,13 +15,13 @@
 
     <Preference
         android:icon="@drawable/ic_save_black_24dp"
-        android:key="@string/pref_key__notebook_directory"
+        android:key="pref_key__notebook_directory"
         android:title="Notebook save location" />
     
     <androidx.preference.SeekBarPreference
         android:defaultValue="18"
         android:icon="@drawable/ic_format_size_black_24dp"
-        android:key="@string/pref_key__editor_font_size"
+        android:key="pref_key__editor_font_size"
         android:max="36"
         android:min="1"
         android:summary="@string/control_font_size_in_editor"
@@ -31,13 +31,13 @@
     <CheckBoxPreference
         android:defaultValue="true"
         android:icon="@drawable/ic_highlight_black_24dp"
-        android:key="@string/pref_key__is_dynamic_highlighting_activated"
+        android:key="pref_key__is_dynamic_highlighting_activated"
         android:summary="@string/dynamic_highlighting_effect"
         android:title="@string/dynamic_highlighting" />
 
     <Preference
         android:icon="@drawable/ic_info_black_24dp"
-        android:key="@string/pref_key__more_info__source_code"
+        android:key="pref_key__more_info__source_code"
         android:title="About" />
 
 </PreferenceScreen> <!-- Screen -->
