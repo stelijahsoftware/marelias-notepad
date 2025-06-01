@@ -282,7 +282,7 @@ public class SearchAndReplaceTextDialog {
         final Resources res = _activity.getResources();
 
         if (error) {
-            matchState.setText(res.getString(R.string.search_replace_pattern_error_message));
+            matchState.setText("Search or replace pattern error");
         } else {
             matchState.setText(String.format(res.getConfiguration().locale, "%s: %d", res.getString(R.string.matches), count));
         }

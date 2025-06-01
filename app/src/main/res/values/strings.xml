@@ -178,48 +178,21 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="zero_width_space">Zero-width space</string>
     <string name="em_space">Em space (&amp;emsp;)</string>
     <string name="start_on_bottom">Start on bottom</string>
-    <string name="filemanager_doesnot_supply_required_data__appspecific">Markor can only edit local, offline available documents and
-        does not support file managers that do not provide the full file path.</string>
     <string name="file_does_not_exist_and_cant_be_created">File or directory does not exist and can not be created</string>
     <string name="permissions">Permissions</string>
     <string name="permission_paths_revert">Revert to default paths?</string>
     <string name="permission_not_granted">Permission not granted</string>
-    <string name="sync_to_local_folder_notice">Note: Sync apps may place files in custom folders. Open them by changing Markor\'s
-        document folder accordingly, or in another file manager.</string>
-    <string name="vertical_alignment">Vertical alignment</string>
-    <string name="horizontal_alignment">Horizontal alignment</string>
     <string name="default_">Default</string>
     <string name="left">Left</string>
     <string name="right">Right</string>
     <string name="top">Top</string>
     <string name="bottom">Bottom</string>
     <string name="center">Center</string>
-    <string name="actionbutton_spacing">ActionButton spacing</string>
-    <string name="horizontal_space_between_actionbuttons">Horizontal space between ActionButtons</string>
     <string name="center_text">Center text</string>
     <string name="edit_text_in_center_of_screen">Edit text in the center of the screen</string>
     <string name="clipboard">Clipboard</string>
     <string name="select_existing_document">Select existing document</string>
     <string name="select_create_document">Select or create document</string>
-    <string name="open_source_licenses">Open Source Licenses</string>
-    <string name="rate_this_app">Rate this app</string>
-    <string name="translate">Translate</string>
-    <string name="more_info_and_help">More info and help</string>
-    <string name="report_bugs">Report bugs</string>
-    <string name="do_you_have_a_question_or_problem">Do you have a question or a problem?</string>
-
-
-    <string name="join_community">Join the Community</string>
-    <string name="bug_reports_suggest_improvements">Give feedback, report bugs or suggest improvements</string>
-    <string name="help_translating_this_app">Translate this app into other languages</string>
-    <string name="source_code">Source Code</string>
-    <string name="project_license">Project License</string>
-    <string name="project_team">Project Team</string>
-    <string name="community">Community</string>
-
-    <string name="descending">descending</string>
-    <string name="ascending">ascending</string>
-
     <string name="disable_spelling_underline">Disable spelling underline</string>
     <string name="location">Location</string>
     <string name="text_lines">Text Lines</string>
@@ -233,7 +206,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="math">Math</string>
     <string name="table_of_contents">Table of contents</string>
     <string name="miscellaneous">Miscellaneous</string>
-
     <string name="prefer_view">Prefer view</string>
     <string name="no_calendar_app_is_installed">No calendar app is installed!</string>
     <string name="popular_documents">Popular documents</string>
@@ -246,13 +218,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="folder">Folder</string>
     <string name="folder_is_created_without_extension">- Folder is created without file extension</string>
     <string name="keep_existing_file">Files and folders are not overwritten</string>
-    <string name="multiple_windows">Multiple windows</string>
     <string name="font">Font</string>
-    <string name="enter_or_select_format">Enter or select format</string>
-    <string name="pick_date">Pick date</string>
-    <string name="pick_time">Pick time</string>
-    <string name="get_format_instead_date_or_time">Get format instead date or time</string>
-    <string name="always_use_current_date_and_time">Always use current date &amp; time</string>
     <string name="result">Result</string>
     <string name="just_time">Time only</string>
     <string name="just_date">Date only</string>
@@ -295,47 +261,16 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="record_audio">Record Audio</string>
     <string name="attach">Attach</string>
     <string name="copy_file">Copy file</string>
-    <string name="page">Page</string>
-    <string name="experimental_features">Experimental features</string>
-    <string name="tools">Tools</string>
-    <string name="reading">Reading</string>
-    <string name="read">Read</string>
-    <string name="table">Table</string>
     <string name="example_of_a_markdown_table">Example of a Markdown table</string>
-    <string name="delete_lines">Delete lines</string>
-    <string name="duplicate_lines">Duplicate lines</string>
-    <string name="unordered_list">Unordered list</string>
-    <string name="ordered_list">Ordered list</string>
-    <string name="check_list">Check list</string>
     <string name="open_link">Open link</string>
     <string name="common_color_picker">Color picker</string>
     <string name="date_and_time">Date and time</string>
-    <string name="jump_to_bottom">Jump to bottom</string>
-    <string name="quote">Quote</string>
-    <string name="bold">Bold</string>
-    <string name="italic">Italic</string>
-    <string name="highlighted">Highlighted</string>
-    <string name="strikeout">Strike out</string>
-    <string name="inline_code">Inline code</string>
-    <string name="horizontal_line">Horizontal line</string>
     <string name="toggle_done">Toggle done</string>
     <string name="link_color">Link color</string>
     <string name="add_context">Add context</string>
     <string name="add_project">Add project</string>
     <string name="archive_completed_tasks">Archive completed tasks</string>
-
-    <string name="create_new_file_or_folder">Create a new file or folder</string>
-    <string name="choose_format">Choose format</string>
-    <string name="clear_selection">Clear selection</string>
     <string name="selected">Selected</string>
-    <string name="back">Back</string>
-    <string name="expand_collapse">Expand / Collapse</string>
-    <string name="essential">Essential</string>
-    <string name="action_order">Action order</string>
-    <string name="load_default_settings">Load default settings</string>
-    <string name="drag">Drag</string>
-    <string name="created">Created</string>
-
     <string name="code_block">Code block</string>
     <string name="add_completion_date">Add completion date</string>
     <string name="file_description_format">File description format</string>
@@ -347,15 +282,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="replace_once">Replace (1)</string>
     <string name="replace_all">Replace all</string>
     <string name="matches">Matches</string>
-    <string name="search_replace_pattern_error_message">Search or replace pattern error.</string>
-    <string name="backup_settings">Backup settings</string>
-    <string name="restore_settings">Restore settings</string>
-    <string name="failed_to_create_backup">Failed to create backup</string>
-    <string name="export_settings_to_json_file">Export settings to json file</string>
-    <string name="failed_to_restore_settings_from_backup">Failed to restore settings from backup</string>
-    <string name="newline_is_new_paragraph">Newline = new paragraph</string>
-    <string name="search_in_content">Search in content</string>
-    <string name="max_search_depth">Search depth</string>
     <string name="ignore_list">Ignore list</string>
     <string name="regex_search">Regex search</string>
     <string name="case_sensitive">Case sensitive</string>

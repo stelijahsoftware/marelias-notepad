@@ -101,7 +101,7 @@ public class FileSearchDialog {
 
         // Checkbox: Search in content
         if (options.enableSearchInContent) {
-            searchInContentCheckBox.setText(R.string.search_in_content);
+            searchInContentCheckBox.setText("Search in content");
             searchInContentCheckBox.setChecked(appSettings.isSearchInContent());
             dialogLayout.addView(searchInContentCheckBox, margins);
         }

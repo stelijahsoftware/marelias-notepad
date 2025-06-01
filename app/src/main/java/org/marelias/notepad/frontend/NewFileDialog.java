@@ -131,7 +131,7 @@ public class NewFileDialog extends DialogFragment {
         } else if (file.canWrite()) {
             callback(file);
         } else {
-            Toast.makeText(activity, R.string.failed_to_create_backup, Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Failed to create backup", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -194,7 +194,7 @@ public class DocumentActivity extends MarkorBaseActivity {
     }
 
     private void showNotSupportedMessage() {
-        final String notSupportedMessage = (getString(R.string.filemanager_doesnot_supply_required_data__appspecific) + "\n\n" + getString(R.string.sync_to_local_folder_notice)).replace("\n", "<br/>");
+        final String notSupportedMessage = "App does not support file managers that do not provide the full file path.";
         new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Rounded)
                 .setMessage(Html.fromHtml(notSupportedMessage))
                 .setNegativeButton(R.string.more_info, (di, i) -> _cu.openWebpageInExternalBrowser(this, ""))
