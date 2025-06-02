@@ -20,7 +20,7 @@
         <item name="android:windowActionBarOverlay">true</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="android:actionButtonStyle">@style/LessSpaceActionButtonStyle</item>
+        <item name="android:actionButtonStyle">@style/reduced_spacing_buttons</item>
         <item name="preferenceTheme">@style/AppTheme.PreferenceTheme</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorPrimary">@color/primary</item>
@@ -30,11 +30,19 @@
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item> <!-- system top status bar (battery, time..) -->
     </style>
 
-    <style name="AppTheme.PreferenceTheme" parent="PreferenceThemeOverlay.v14.Material">
-        <item name="preferenceCategoryStyle">@style/AppTheme.PreferenceTheme.CategoryStyle</item>
+    <style name="reduced_spacing_buttons" parent="Widget.AppCompat.ActionButton">
+        <item name="android:minWidth">0dip</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:paddingStart">4dip</item>
+        <item name="android:paddingEnd">4dip</item>
     </style>
 
-    <style name="AppTheme.PreferenceTheme.CategoryStyle" parent="Preference.Category">
+    <style name="AppTheme.PreferenceTheme" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="preferenceCategoryStyle">@style/PreferenceThemeCategoryStyle</item>
+    </style>
+
+    <style name="PreferenceThemeCategoryStyle" parent="Preference.Category">
         <item name="android:layout">@layout/opoc_pref_category_text</item>
     </style>
 
@@ -50,15 +58,6 @@
         <item name="iconTint">@color/primary_dark</item>
         <item name="android:tint">@color/primary_dark</item>
         <item name="actionMenuTextColor">@color/primary_dark</item>
-    </style>
-
-    <!-- reduced spacing -->
-    <style name="LessSpaceActionButtonStyle" parent="Widget.AppCompat.ActionButton">
-        <item name="android:minWidth">1dip</item>
-        <item name="android:paddingLeft">8dip</item>
-        <item name="android:paddingRight">8dip</item>
-        <item name="android:paddingStart">8dip</item>
-        <item name="android:paddingEnd">8dip</item>
     </style>
 
     <style name="Theme.AppCompat.Light.Dialog.Rounded" parent="Theme.AppCompat.Light.Dialog">

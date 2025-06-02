@@ -8,36 +8,6 @@
  * You should have received a copy of the CC0 Public Domain Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 #########################################################*/
 
-/*
- * Add dependencies:
-    implementation "com.android.support:preference-v7:${version_library_appcompat}"
-    implementation "com.android.support:preference-v14:${version_library_appcompat}"
-
- * Apply to activity using setTheme(), add to styles.xml/theme:
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
- * OR
-    <style name="AppTheme" ...
-        <item name="preferenceTheme">@style/AppTheme.PreferenceTheme</item>
-    </style>
-    <style name="AppTheme.PreferenceTheme" parent="PreferenceThemeOverlay.v14.Material">
-      <item name="preferenceCategoryStyle">@style/AppTheme.PreferenceTheme.CategoryStyle</item>
-    </style>
-    <style name="AppTheme.PreferenceTheme.CategoryStyle" parent="Preference.Category">
-        <item name="android:layout">@layout/opoc_pref_category_text</item>
-    </style>
-
- * Layout file:
-    <?xml version="1.0" encoding="utf-8"?>
-    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@android:id/title"
-        style="?android:attr/listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:textColor="@color/accent" />
-
-
- */
 package org.marelias.opoc.frontend;
 
 import android.app.Activity;
