@@ -381,42 +381,6 @@ public class GsContextUtils {
     }
 
     /**
-     * Try to tint all {@link Menu}s {@link MenuItem}s with given color
-     */
-    public void tintMenuItems(final Menu menu, final boolean recurse, @ColorInt final int iconColor) {
-        for (int i = 0; i < menu.size(); i++) {
-            MenuItem item = menu.getItem(i);
-            try {
-                tintDrawable(item.getIcon(), iconColor);
-                if (item.hasSubMenu() && recurse) {
-                    //noinspection ConstantConditions
-                    tintMenuItems(item.getSubMenu(), recurse, iconColor);
-                }
-            } catch (Exception ignored) {
-                // This should not happen at all, but may in bad menu.xml configuration
-            }
-        }
-    }
-
-    /**
-     * Loads {@link Drawable} by given {@link DrawableRes} and applies a color
-     */
-    public Drawable tintDrawable(final Context context, @DrawableRes final int drawableRes, @ColorInt final int color) {
-        return tintDrawable(rdrawable(context, drawableRes), color);
-    }
-
-    /**
-     * Tint a {@link Drawable} with given {@code color}
-     */
-    public Drawable tintDrawable(@Nullable Drawable drawable, @ColorInt final int color) {
-        if (drawable != null) {
-            drawable = DrawableCompat.wrap(drawable);
-            DrawableCompat.setTint(drawable.mutate(), color);
-        }
-        return drawable;
-    }
-
-    /**
      * Try to make icons in Toolbar/ActionBars SubMenus visible
      * This may not work on some devices and it maybe won't work on future android updates
      */

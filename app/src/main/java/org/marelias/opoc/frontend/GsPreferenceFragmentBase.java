@@ -92,10 +92,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
     protected void onPreferenceScreenChanged(PreferenceFragmentCompat preferenceFragmentCompat, PreferenceScreen preferenceScreen) {
     }
 
-    public Integer getIconTintColor() {
-        return _defaultIconTintColor;
-    }
-
     public String getTitle() {
         return null;
     }
@@ -107,7 +103,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
     private final Set<String> _registeredPrefs = new HashSet<>();
     private final List<PreferenceScreen> _prefScreenBackstack = new ArrayList<>();
     protected AS _appSettings;
-    protected int _defaultIconTintColor;
     protected GsContextUtils _cu;
 
     @Override
@@ -122,50 +117,10 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
         if (activity != null && activity.getTheme() != null) {
             TypedArray array = activity.getTheme().obtainStyledAttributes(new int[]{android.R.attr.colorBackground});
             int bgcolor = array.getColor(0, 0xFFFFFF);
-            _defaultIconTintColor = Color.BLACK;
         }
 
         // on bottom
         afterOnCreate(savedInstanceState, activity);
-    }
-
-    public final GsCallback.a1<PreferenceFragmentCompat> updatePreferenceIcons = (frag) -> {
-        try {
-            View view = frag.getView();
-            final Integer color = getIconTintColor();
-            if (view != null && color != null) {
-                Runnable r = () -> tintAllPrefIcons(frag, color);
-                for (long delayFactor : new int[]{1, 10, 50, 100, 500}) {
-                    view.postDelayed(r, delayFactor * DEFAULT_ICON_TINT_DELAY);
-                }
-            }
-        } catch (Exception ignored) {
-        }
-    };
-
-    public void tintAllPrefIcons(PreferenceFragmentCompat preferenceFragment, @ColorInt int iconColor) {
-        tintPrefIconsRecursive(getPreferenceScreen(), iconColor);
-    }
-
-    private void tintPrefIconsRecursive(PreferenceGroup prefGroup, @ColorInt int iconColor) {
-        if (prefGroup != null && isAdded()) {
-            int prefCount = prefGroup.getPreferenceCount();
-            for (int i = 0; i < prefCount; i++) {
-                Preference pref = prefGroup.getPreference(i);
-                if (pref != null) {
-                    if (isAllowedToTint(pref)) {
-                        pref.setIcon(_cu.tintDrawable(pref.getIcon(), iconColor));
-                    }
-                    if (pref instanceof PreferenceGroup) {
-                        tintPrefIconsRecursive((PreferenceGroup) pref, iconColor);
-                    }
-                }
-            }
-        }
-    }
-
-    protected boolean isAllowedToTint(Preference pref) {
-        return true;
     }
 
     /**
@@ -182,7 +137,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        updatePreferenceIcons.callback(this);
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             view.postDelayed(() -> {
@@ -283,7 +237,6 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
     public boolean onPreferenceStartScreen(PreferenceFragmentCompat preferenceFragmentCompat, PreferenceScreen preferenceScreen) {
         _prefScreenBackstack.add(getPreferenceScreen());
         preferenceFragmentCompat.setPreferenceScreen(preferenceScreen);
-        updatePreferenceIcons.callback(this);
         onPreferenceScreenChangedPriv(preferenceFragmentCompat, preferenceScreen);
         return true;
     }
@@ -316,11 +269,7 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
                 pref.setTitle(title);
             }
             if (iconRes != null && iconRes != 0) {
-                if (isAllowedToTint(pref)) {
-                    pref.setIcon(_cu.tintDrawable(getContext(), iconRes, getIconTintColor()));
-                } else {
-                    pref.setIcon(iconRes);
-                }
+                pref.setIcon(iconRes);
             }
             if (visible != null) {
                 pref.setVisible(visible);
