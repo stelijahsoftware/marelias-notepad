@@ -27,20 +27,17 @@
     <item
         android:id="@+id/action_line_numbers"
         android:checkable="true"
-        android:icon="@drawable/ic_line_numbers_24dp"
         android:title="Line numbers"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_view"
-        android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_black_24dp"
         android:title="Search"
         app:showAsAction="never" />
 

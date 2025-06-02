@@ -67,22 +67,18 @@
 
                 <item
                     android:id="@+id/action_sort_by_name"
-                    android:icon="@drawable/ic_sort_by_alpha_black_24dp"
                     android:title="Name"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/action_sort_by_date"
-                    android:icon="@drawable/ic_date_range_black_24dp"
                     android:title="Date"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/action_sort_by_filesize"
-                    android:icon="@drawable/ic_sort_black_24dp"
                     android:title="@string/size"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/action_sort_by_mimetype"
-                    android:icon="@drawable/ic_extension_black_24dp"
                     android:title="Type"
                     app:showAsAction="never" />
             </group>
@@ -92,13 +88,11 @@
                 <item
                     android:id="@+id/action_folder_first"
                     android:checkable="true"
-                    android:icon="@drawable/ic_folder_white_24dp"
                     android:title="@string/folder_first"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/action_sort_reverse"
                     android:checkable="true"
-                    android:icon="@drawable/ic_baseline_arrow_upward_24"
                     android:title="@string/reverse_order"
                     app:showAsAction="never" />
             </group>
@@ -112,20 +106,6 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_check_all"
-        android:icon="@drawable/ic_check_circle_24dp"
         android:title="Select all"
         app:showAsAction="never" />
-
-<!--    <item-->
-<!--        android:id="@+id/action_rename_selected_item"-->
-<!--        android:icon="@drawable/ic_gs_rename_black_24dp"-->
-<!--        android:title="@string/rename"-->
-<!--        android:visible="false"-->
-<!--        app:showAsAction="never" />-->
-
-<!--    <item-->
-<!--        android:id="@+id/action_clear_selection"-->
-<!--        android:icon="@drawable/ic_baseline_clear_24"-->
-<!--        android:title="Clear selection"-->
-<!--        app:showAsAction="always" />-->
 </menu>
