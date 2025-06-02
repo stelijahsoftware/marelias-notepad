@@ -15,33 +15,33 @@
     <item
         android:id="@+id/action_undo"
         android:icon="@drawable/ic_undo_black_24dp"
-        android:title="@string/undo"
+        android:title="Undo"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_redo"
         android:icon="@drawable/ic_redo_black_24dp"
-        android:title="@string/redo"
+        android:title="Redo"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_line_numbers"
         android:checkable="true"
         android:icon="@drawable/ic_line_numbers_24dp"
-        android:title="@string/line_numbers"
+        android:title="Line numbers"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search_view"
         android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/search"
+        android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search_black_24dp"
-        android:title="@string/search"
+        android:title="Search"
         app:showAsAction="never" />
 
     <item
