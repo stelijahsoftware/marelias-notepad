@@ -132,8 +132,8 @@ public class SearchAndReplaceTextDialog {
                 if (pos >= 0 && pos < recentReplaces.size()) {
                     final ReplaceGroup rg = recentReplaces.get(pos);
                     final String desc = String.format("%s: %s\n%s: %s\n%s: %b, %s: %b\n",
-                            res.getString(R.string.search_for), rg._search,
-                            res.getString(R.string.replace_with), rg._replace,
+                            "Search for (case sensitive)", rg._search,
+                            "Replace with", rg._replace,
                             "Regex", rg._isRegex,
                             "Multiline", rg._isMultiline);
                     textView.setText(desc);

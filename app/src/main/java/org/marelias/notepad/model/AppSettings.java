@@ -266,14 +266,6 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return rcolor(R.color.primary_text);
     }
 
-    public boolean isSearchQueryCaseSensitive() {
-        return getBool(R.string.pref_key__is_search_query_case_sensitive, false);
-    }
-
-    public void setSearchQueryCaseSensitivity(final boolean isQuerySensitive) {
-        setBool(R.string.pref_key__is_search_query_case_sensitive, false);
-    }
-
     public boolean isSearchQueryUseRegex() {
         return getBool(R.string.pref_key__is_search_query_use_regex, false);
     }

@@ -31,10 +31,11 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="append_to_witharg">Append to %s</string>
     <string name="select_folder">Select folder</string>
     <string name="edit">Edit</string>
-    <string name="search_documents">Search documents</string>
+    <string name="search_documents">Search</string>
     <string name="share_to_arrow" tools:ignore="TypographyEllipsis">Share to&#8230;</string>
     <string name="share">Share</string>
     <string name="search">Search</string>
+    <string name="search_hint">(case insensitive)</string>
     <string name="display_converted_markup">Display converted markup</string>
     <string name="editor">Editor</string>
     <string name="folders">Folders</string>
@@ -200,7 +201,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="reload">Reload</string>
     <string name="wrap_words">Wrap words</string>
     <string name="line_numbers">Line numbers</string>
-    <string name="recursive_search_in_location">Recursive search in %s</string>
     <string name="always_open_with_this_app">Always open with this app</string>
     <string name="open_file_with">Open file with</string>
     <string name="rotate">Rotate</string>
@@ -220,14 +220,12 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="loading_default_value">Loading default value</string>
     <string name="file_settings">File settings</string>
     <string name="search_and_replace">Search / Replace</string>
-    <string name="search_for">Search for (case sensitive)</string>
     <string name="replace_with">Replace with</string>
     <string name="replace_once">Replace (1)</string>
     <string name="replace_all">Replace all</string>
     <string name="matches">Matches</string>
     <string name="ignore_list">Ignore list</string>
     <string name="regex_search">Regex search</string>
-    <string name="case_sensitive">Case sensitive</string>
     <string name="stop_search_after_first_match">Stop search after first match</string>
     <string name="regex_can_not_be_compiled">Regex can not be compiled</string>
     <string name="keep_both">Keep both</string>

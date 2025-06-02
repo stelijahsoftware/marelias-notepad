@@ -92,7 +92,7 @@ public class MarkorDialogFactory {
         dopt.data = Arrays.asList(edit.toString().split("\n", -1)); // Do not ignore empty lines
         dopt.extraFilter = "[^\\s]+"; // Line must have one or more non-whitespace to display
         dopt.titleText = R.string.search_documents;
-        dopt.searchHintText = R.string.search;
+        dopt.searchHintText = R.string.search_hint;
         dopt.neutralButtonCallback = (dialog) -> {
             dialog.dismiss();
             SearchAndReplaceTextDialog.showSearchReplaceDialog(activity, edit, TextViewUtils.getSelection(text));

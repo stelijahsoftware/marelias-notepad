@@ -61,7 +61,6 @@ public class FileSearchEngine {
         public String query;
 
         public boolean isRegexQuery;
-        public boolean isCaseSensitiveQuery;
         public boolean isSearchInContent;
 
         public int maxSearchDepth;
@@ -123,7 +122,8 @@ public class FileSearchEngine {
             _config = config;
             _callback = callback;
 
-            _config.query = _config.isCaseSensitiveQuery ? _config.query : _config.query.toLowerCase();
+            // case insensitive search:
+            _config.query = _config.query.toLowerCase();
             splitRegexExactFiles(config.ignoredDirectories, _ignoredExactDirs, _ignoredRegexDirs);
             splitRegexExactFiles(FileSearchEngine.defaultIgnoredDirs, _ignoredExactDirs, _ignoredRegexDirs);
 
@@ -288,9 +288,8 @@ public class FileSearchEngine {
                 if (pattern.isEmpty()) {
                     continue;
                 }
-                if (!_config.isCaseSensitiveQuery) {
-                    pattern = pattern.toLowerCase();
-                }
+                // Case insensitive search:
+                pattern = pattern.toLowerCase();
 
                 if (pattern.startsWith("\"")) {
                     pattern = pattern.replace("\"", "");
@@ -327,7 +326,8 @@ public class FileSearchEngine {
 
         private void getFileIfNameMatches(final File file, final int baseLength) {
             try {
-                final String fileName = _config.isCaseSensitiveQuery ? file.getName() : file.getName().toLowerCase();
+                // Case insensitive:
+                final String fileName = file.getName().toLowerCase();
                 if (_config.isRegexQuery ? _matcher.reset(fileName).matches() : fileName.contains(_config.query)) {
                     _result.add(new FitFile(file.getCanonicalPath().substring(baseLength), file.isDirectory(), null));
                 }
@@ -362,7 +362,8 @@ public class FileSearchEngine {
 
         // Match line and return preview string. Preview will be null if no match found
         private String matchLine(final String line) {
-            final String preparedLine = _config.isCaseSensitiveQuery ? line : line.toLowerCase();
+            // Case insensitive:
+            final String preparedLine = line.toLowerCase();
 
             int start = -1, end = -1;
             if (_config.isRegexQuery) {
@@ -429,7 +430,7 @@ public class FileSearchEngine {
         }
 
         private boolean isIgnored(String dirName) {
-            dirName = _config.isCaseSensitiveQuery ? dirName : dirName.toLowerCase();
+            dirName = dirName.toLowerCase();
             for (final String pattern : _ignoredExactDirs) {
                 if (dirName.equals(pattern)) {
                     return true;

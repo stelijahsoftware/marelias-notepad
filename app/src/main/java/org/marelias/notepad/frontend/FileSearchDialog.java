@@ -29,7 +29,6 @@ public class FileSearchDialog {
     public static final class Options {
         public boolean enableRegex = true;
         public boolean enableSearchInContent = true;
-        public @StringRes int searchLocation = R.string.directory;
     }
 
     public static void showDialog(final Activity activity, final GsCallback.a1<FileSearchEngine.SearchOptions> dialogCallback) {
@@ -56,21 +55,20 @@ public class FileSearchDialog {
         final LinearLayout.LayoutParams subCheckBoxMargins = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         subCheckBoxMargins.setMargins(dp4px * 5 * 2, dp4px, dp4px * 5, dp4px);
 
-        final TextView messageTextView = new TextView(activity);
+//        final TextView messageTextView = new TextView(activity);
         final AppCompatEditText searchEditText = new AppCompatEditText(activity);
         final Spinner queryHistorySpinner = new Spinner(activity);
         final CheckBox regexCheckBox = new CheckBox(activity);
-        final CheckBox caseSensitivityCheckBox = new CheckBox(activity);
         final CheckBox searchInContentCheckBox = new CheckBox(activity);
 //        final CheckBox onlyFirstContentMatchCheckBox = new CheckBox(activity);
 
         // TextView
-        final String loc = activity.getString(options.searchLocation != 0 ? options.searchLocation : R.string.directory);
-        messageTextView.setText(activity.getString(R.string.recursive_search_in_location, loc));
-        dialogLayout.addView(messageTextView, margins);
+//        final String loc = activity.getString(options.searchLocation != 0 ? options.searchLocation : R.string.directory);
+//        messageTextView.setText("(case insensitive)");
+//        dialogLayout.addView(messageTextView, margins);
 
         // EdiText: Search query input
-        searchEditText.setHint(R.string.search);
+        searchEditText.setHint("(case insensitive)");
         searchEditText.setSingleLine(true);
         searchEditText.setMaxLines(1);
         searchEditText.setTextColor(textColor);
@@ -101,7 +99,7 @@ public class FileSearchDialog {
 
         // Checkbox: Search in content
         if (options.enableSearchInContent) {
-            searchInContentCheckBox.setText("Search in content");
+            searchInContentCheckBox.setText("Search file contents");
             searchInContentCheckBox.setChecked(appSettings.isSearchInContent());
             dialogLayout.addView(searchInContentCheckBox, margins);
         }
@@ -111,14 +109,9 @@ public class FileSearchDialog {
             searchInContentCheckBox.setVisibility(View.GONE);
         }
 
-        // Checkbox: Case sensitive
-        caseSensitivityCheckBox.setText(R.string.case_sensitive);
-        caseSensitivityCheckBox.setChecked(appSettings.isSearchQueryCaseSensitive());
-        dialogLayout.addView(caseSensitivityCheckBox, margins);
-
         // Checkbox: Regex search
         if (options.enableRegex) {
-            regexCheckBox.setText(R.string.regex_search);
+            regexCheckBox.setText("Regex");
             regexCheckBox.setChecked(appSettings.isSearchQueryUseRegex());
             dialogLayout.addView(regexCheckBox, margins);
         } else {
@@ -133,7 +126,7 @@ public class FileSearchDialog {
 
         // Configure dialog
         final AlertDialog dialog = dialogBuilder
-                .setTitle(R.string.search)
+                .setTitle("Search for file")
                 .setOnCancelListener(null)
                 .setNegativeButton(android.R.string.cancel, (dialogInterface, i) -> dialogInterface.dismiss())
                 .setView(scrollView)
@@ -145,14 +138,12 @@ public class FileSearchDialog {
                 FileSearchEngine.SearchOptions opt = new FileSearchEngine.SearchOptions();
                 opt.query = query;
                 opt.isRegexQuery = regexCheckBox.isChecked();
-                opt.isCaseSensitiveQuery = caseSensitivityCheckBox.isChecked();
                 opt.isSearchInContent = searchInContentCheckBox.isChecked();
                 opt.ignoredDirectories = appSettings.getFileSearchIgnorelist();
                 opt.maxSearchDepth = appSettings.getSearchMaxDepth();
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 }
                 appSettings.setSearchQueryRegexUsing(opt.isRegexQuery);
-                appSettings.setSearchQueryCaseSensitivity(opt.isCaseSensitiveQuery);
                 appSettings.setSearchInContent(opt.isSearchInContent);
 
                 dialog.dismiss();
