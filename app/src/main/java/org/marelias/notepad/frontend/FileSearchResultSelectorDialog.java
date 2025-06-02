@@ -210,24 +210,7 @@ public class FileSearchResultSelectorDialog {
 
         @Override
         public View getGroupView(final int groupPosition, final boolean isExpanded, final View convertView, final ViewGroup parent) {
-            final FitFile groupInfo = (FitFile) getGroup(groupPosition);
             TextView textView = (TextView) convertView;
-            if (convertView == null) {
-                final LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                textView = (TextView) inflater.inflate(R.layout.expandable_list_group_item, null);
-                textView.setClickable(false);
-            }
-            textView.setText(groupInfo.toString());
-
-            final int iconResId;
-            if (groupInfo.isDirectory || groupInfo.children.isEmpty()) {
-                iconResId = 0;
-            } else if (isExpanded) {
-                iconResId = R.drawable.ic_baseline_keyboard_arrow_up_24;
-            } else {
-                iconResId = R.drawable.ic_baseline_keyboard_arrow_down_24;
-            }
-            textView.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
             return textView;
         }
 
@@ -235,15 +218,7 @@ public class FileSearchResultSelectorDialog {
         @SuppressLint("SetTextI18n")
         @Override
         public View getChildView(final int groupPosition, final int childPosition, final boolean isLastChild, final View convertView, final ViewGroup parent) {
-            Pair<String, Integer> childInfo = (Pair<String, Integer>) getChild(groupPosition, childPosition);
             TextView textView = (TextView) convertView;
-            if (convertView == null) {
-                LayoutInflater mInflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                textView = (TextView) mInflater.inflate(android.R.layout.simple_list_item_1, null);
-                textView.setClickable(false);
-            }
-            textView.setText("+" + childInfo.second + ": " + childInfo.first);
-
             return textView;
         }
 
