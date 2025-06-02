@@ -98,8 +98,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="app_settings" needed="false">App Settings</string>
     <string name="editor_settings" needed="false">Editor Settings</string>
     <string name="remember_last_folder_location_on_startup" needed="false">Remember last folder location on startup</string>
-    <string name="number_of_files_witharg" needed="false">Number of files: %d</string>
-    <string name="app_wide">App-wide</string>
     <string name="main_view">Main View</string>
     <string name="overall_theme_used_in_app">The overall theme used in the app</string>
     <string name="remember_last_directory">Remember last directory</string>
@@ -133,8 +131,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="line_spacing">Line Spacing</string>
     <string name="key_ctrl_a">Select all (Ctrl+A)</string>
     <string name="key_tab">Tabulator</string>
-    <string name="zero_width_space">Zero-width space</string>
-    <string name="em_space">Em space (&amp;emsp;)</string>
     <string name="start_on_bottom">Start on bottom</string>
     <string name="file_does_not_exist_and_cant_be_created">File or directory does not exist and can not be created</string>
     <string name="permissions">Permissions</string>
@@ -161,9 +157,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="description">Description</string>
     <string name="edit_picture">Edit picture</string>
     <string name="math">Math</string>
-    <string name="table_of_contents">Table of contents</string>
-    <string name="miscellaneous">Miscellaneous</string>
-    <string name="prefer_view">Prefer view</string>
     <string name="color">Color</string>
     <string name="basic_color_scheme">Basic color scheme</string>
     <string name="preset">Preset</string>
