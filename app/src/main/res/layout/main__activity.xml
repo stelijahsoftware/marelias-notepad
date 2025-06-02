@@ -45,6 +45,10 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+<!--    You can use above to indent title:-->
+<!--    app:contentInsetStart="0dp"-->
+<!--    app:contentInsetLeft="0dp"-->
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main__view_pager_container"
         android:layout_width="match_parent"
