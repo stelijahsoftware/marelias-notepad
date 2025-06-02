@@ -25,15 +25,12 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="create_new_document">Create new document</string>
     <string name="move">Move</string>
     <string name="info">Info</string>
-
     <string name="file_folder_already_exists_please_use_a_different_name">File/folder already exists! Please use a different name</string>
-
     <string name="import_from_device">Import from device</string>
     <string name="import_">Import</string>
     <string name="append_to_witharg">Append to %s</string>
     <string name="select_folder">Select folder</string>
     <string name="edit">Edit</string>
-
     <string name="search_documents">Search documents</string>
     <string name="share_to_arrow" tools:ignore="TypographyEllipsis">Share to&#8230;</string>
     <string name="share">Share</string>
@@ -45,7 +42,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="document">Document</string>
     <string name="documents">Documents</string>
     <string name="html_as_plaintext">HTML (as plain text)</string>
-
     <string name="document_editor_font">Document Editor Font</string>
     <string name="theme">Theme</string>
     <string name="open_existing_files_in_view_mode">Open existing files in view mode</string>
@@ -54,7 +50,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="file">File</string>
     <string name="render_rtl_language">Render for right-to-left languages</string>
     <string name="error_cannot_create_notebook_dir__appspecific">Error: Cannot create notebook directory</string>
-
     <string name="last_modified_witharg">Last modified: %s</string>
     <string name="last_modified">Last modified</string>
     <string name="select_this_folder">Select this folder</string>
@@ -64,13 +59,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="select_entries">Select entries</string>
     <string name="one_item_selected">One item selected</string>
     <string name="items_selected_witharg" tools:ignore="PluralsCandidate">%d items selected</string>
-
     <string name="name">Name</string>
-    <string name="url_or_path">URL / Path</string>
-    <string name="insert_link">Insert link</string>
-    <string name="format_link">Format link</string>
-    <string name="insert_image">Insert Image</string>
-
     <string name="save_location">Save location</string>
     <string name="saved_location_to">Saved to %s</string>
     <string name="select_storage_folder">Select storage folder</string>
@@ -91,42 +80,25 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="redo">Redo</string>
     <string name="more">More</string>
     <string name="notebook">Notebook</string>
-    <string name="help">Help</string>
-    <string name="todo_list">To-Do List</string>
-    <string name="task">Task</string>
-    <string name="context">Context</string>
-    <string name="list">List</string>
-    <string name="priority">Priority</string>
-    <string name="history">History</string>
-    <string name="sync">Sync</string>
-    <string name="search_or_custom">Search / Custom</string>
     <string name="save">Save</string>
     <string name="update">Update</string>
     <string name="clear">Clear</string>
     <string name="due_date">Due date</string>
     <string name="current_date">Current date</string>
     <string name="archive">Archive</string>
-    <string name="add_task">Add task</string>
-    <string name="add_x_witharg">Add %s</string>
     <string name="document_to_be_loaded_and_saved_as_witharg">Document to be loaded and saved as "%s"</string>
     <string name="refresh">Refresh</string>
     <string name="create_shortcut">Create shortcut</string>
     <string name="files_and_folders">Files and folders</string>
     <string name="document_browser">Document browser</string>
     <string name="file_browser">File browser</string>
-    <string name="set_due_date">Set due date</string>
-    <string name="insert_replace_date">Insert date</string>
-
     <string name="create_note" needed="false">Create Note</string>
     <string name="special_documents" needed="false">Special documents</string>
-    <string name="keep_screen_on" needed="false">Keep screen on</string>
-    <string name="disallow_screenshots">Disallow screenshots</string>
     <string name="back_to_previous_folder" needed="false">Back to previous folder</string>
     <string name="app_settings" needed="false">App Settings</string>
     <string name="editor_settings" needed="false">Editor Settings</string>
     <string name="remember_last_folder_location_on_startup" needed="false">Remember last folder location on startup</string>
     <string name="number_of_files_witharg" needed="false">Number of files: %d</string>
-
     <string name="app_wide">App-wide</string>
     <string name="main_view">Main View</string>
     <string name="overall_theme_used_in_app">The overall theme used in the app</string>
@@ -147,12 +119,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="empty_file">Empty file</string>
     <string name="break_page_pdf_print">Break page (PDF/Printing)</string>
     <string name="underline">Underline</string>
-
-
-    <string name="underline_hex_color_wether_or_not_to_description__appspecific">Whether to underline hex color codes according to color</string>
-    <string name="underline_hex_color_codes">Underline Hex Color Codes</string>
-    <string name="insert_current_date_when_starting_new_task">Insert the current date when starting a new task</string>
-    <string name="tasks_with_todays_date">Tasks with today\'s date</string>
     <string name="append_contexts_and_projects">Append contexts and projects</string>
     <string name="rtl_rendering">RTL rendering</string>
     <string name="highlight_line_ending">Highlight line ending</string>
@@ -165,8 +131,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="resources">Resources</string>
     <string name="space_between_lines_in_percent">Space between lines in percent</string>
     <string name="line_spacing">Line Spacing</string>
-    <string name="archive_does_move_done_tasks">Move done tasks to specified file in same folder</string>
-    <string name="sort_tasks_by_selected_order">Sort tasks by selected order</string>
     <string name="key_ctrl_a">Select all (Ctrl+A)</string>
     <string name="key_tab">Tabulator</string>
     <string name="zero_width_space">Zero-width space</string>
@@ -183,7 +147,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="bottom">Bottom</string>
     <string name="center">Center</string>
     <string name="center_text">Center text</string>
-    <string name="edit_text_in_center_of_screen">Edit text in the center of the screen</string>
     <string name="clipboard">Clipboard</string>
     <string name="select_existing_document">Select existing document</string>
     <string name="select_create_document">Select or create document</string>
@@ -258,7 +221,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="link_color">Link color</string>
     <string name="add_context">Add context</string>
     <string name="add_project">Add project</string>
-    <string name="archive_completed_tasks">Archive completed tasks</string>
     <string name="selected">Selected</string>
     <string name="add_completion_date">Add completion date</string>
     <string name="file_description_format">File description format</string>
