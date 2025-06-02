@@ -23,10 +23,11 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
-[h] File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
-[h] rename note after being opened by pressing on title (see branch)
+[h] make icons dark in top bar
 
+[m] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
+[m] File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
+[m] rename note after being opened by pressing on title (see branch)
 [m] When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 [m] Remove save delay
 [m] Make selecting text and scrolling up faster (selecting text from middle of screen until top)
