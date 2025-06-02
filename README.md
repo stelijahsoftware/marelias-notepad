@@ -23,6 +23,8 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
+[h] update selection icon
+
 [m] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 [m] File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
 [m] rename note after being opened by pressing on title (see branch)
