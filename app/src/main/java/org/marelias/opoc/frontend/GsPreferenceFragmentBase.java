@@ -58,7 +58,6 @@ import java.util.Set;
 @SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPropertyBackend> extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener, PreferenceFragmentCompat.OnPreferenceStartScreenCallback {
-    private static final int DEFAULT_ICON_TINT_DELAY = 200;
     protected boolean _isDividerVisible = false;
 
     //
