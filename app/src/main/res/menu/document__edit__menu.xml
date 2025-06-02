@@ -31,13 +31,6 @@
         android:title="@string/line_numbers"
         app:showAsAction="never" />
 
-<!--    <item-->
-<!--        android:id="@+id/action_set_font_size"-->
-<!--        android:checkable="false"-->
-<!--        android:icon="@drawable/ic_format_size_black_24dp"-->
-<!--        android:title="@string/font_size"-->
-<!--        app:showAsAction="always" />-->
-
     <item
         android:id="@+id/action_search_view"
         android:icon="@drawable/ic_search_black_24dp"
@@ -62,6 +55,4 @@
         android:icon="@drawable/ic_save_big"
         android:title="Save"
         app:showAsAction="always" />
-
-
 </menu>
