@@ -17,7 +17,7 @@
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings_black_24dp"
         android:orderInCategory="100"
-        android:title="@string/settings"
+        android:title="Settings"
         android:visible="true"
         app:showAsAction="always" />
 </menu>

@@ -11,7 +11,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:title="@string/settings">
+    android:title="Settings">
 
     <Preference
         android:icon="@drawable/ic_save_black_24dp"
@@ -24,16 +24,16 @@
         android:key="pref_key__editor_font_size"
         android:max="36"
         android:min="1"
-        android:summary="@string/control_font_size_in_editor"
-        android:title="@string/font_size"
+        android:summary="Editor font size."
+        android:title="Font size"
         app:showSeekBarValue="true" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:icon="@drawable/ic_highlight_black_24dp"
         android:key="pref_key__is_dynamic_highlighting_activated"
-        android:summary="@string/dynamic_highlighting_effect"
-        android:title="@string/dynamic_highlighting" />
+        android:summary="Dynamic highlighting increases performance. May cause rendering artifacts."
+        android:title="Dynamic highlighting" />
 
     <Preference
         android:icon="@drawable/ic_info_black_24dp"

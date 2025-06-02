@@ -63,7 +63,7 @@
         </activity>
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="@string/settings"
+            android:label="Settings"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.StoragePermissionActivity"

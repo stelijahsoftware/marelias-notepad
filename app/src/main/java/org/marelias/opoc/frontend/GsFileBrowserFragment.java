@@ -212,7 +212,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
 //                        c.drawText(text, textX, textY, textPaint);
 
                         // Draw rename icon
-                        Drawable icon = getResources().getDrawable(R.drawable.ic_gs_rename_black_24dp); // ic_arrow_back_white_24dp
+                        Drawable icon = getResources().getDrawable(R.drawable.ic_gs_rename_black_24dp);
                         if (icon != null) {
                             int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
                             int iconTop = itemView.getTop() + iconMargin;

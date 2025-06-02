@@ -59,7 +59,7 @@ public class SettingsActivity extends MarkorBaseActivity {
         // Custom code
         GsFontPreferenceCompat.additionalyCheckedFolder = new File(_appSettings.getNotebookDirectory(), ".app/fonts");
         iconColor = _cu.rcolor(this, R.color.primary_text);
-        toolbar.setTitle(R.string.settings);
+        toolbar.setTitle("Settings");
         setSupportActionBar(findViewById(R.id.toolbar));
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp));
         toolbar.setNavigationOnClickListener(view -> SettingsActivity.this.onBackPressed());
@@ -67,7 +67,7 @@ public class SettingsActivity extends MarkorBaseActivity {
     }
 
     protected void showFragment(String tag, boolean addToBackStack) {
-        String toolbarTitle = getString(R.string.settings);
+        String toolbarTitle = "Settings";
         GsPreferenceFragmentBase prefFrag = (GsPreferenceFragmentBase) getSupportFragmentManager().findFragmentByTag(tag);
         if (prefFrag == null) {
             switch (tag) {

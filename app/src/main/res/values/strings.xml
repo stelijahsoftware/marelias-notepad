@@ -9,7 +9,6 @@ You should have received a copy of the CC0 legalcode along with this
 work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="settings">Settings</string>
     <string name="light">Light</string>
     <string name="delete">Delete</string>
     <string name="appearance">Appearance</string>
@@ -53,8 +52,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="about">About</string>
     <string name="plaintext">Plain Text</string>
     <string name="file">File</string>
-    <string name="image">Image</string>
-    <string name="font_size">Font Size</string>
     <string name="render_rtl_language">Render for right-to-left languages</string>
     <string name="error_cannot_create_notebook_dir__appspecific">Error: Cannot create notebook directory</string>
 
@@ -140,8 +137,6 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="highlighting_delay_lower_value_more_battery_drain_description__appspecific">Delay in milliseconds for highlighting refresh.
         A lower value will start highlighting earlier, but it will drain your battery and may slow down the app on older devices.</string>
     <string name="highlighting_enabled_or_not__appspecific">Control whether entered text should be highlighted or not</string>
-    <string name="dynamic_highlighting_effect">Dynamic highlighting increases performance. May cause rendering artifacts.</string>
-    <string name="control_font_size_in_editor">Control the font size used in the editor</string>
     <string name="load_last_opened_folder_at_startup">Load the last opened folder at startup</string>
     <string name="format">Format</string>
     <string name="contexts">Contexts</string>
