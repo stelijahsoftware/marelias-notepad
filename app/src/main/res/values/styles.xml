@@ -39,10 +39,10 @@
     </style>
 
     <style name="AppTheme.PreferenceTheme" parent="PreferenceThemeOverlay.v14.Material">
-        <item name="preferenceCategoryStyle">@style/PreferenceThemeCategoryStyle</item>
+        <item name="preferenceCategoryStyle">@style/preference_theme_style</item>
     </style>
 
-    <style name="PreferenceThemeCategoryStyle" parent="Preference.Category">
+    <style name="preference_theme_style" parent="Preference.Category">
         <item name="android:layout">@layout/opoc_pref_category_text</item>
     </style>
 
