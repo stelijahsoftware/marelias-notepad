@@ -15,41 +15,39 @@
     <item
         android:id="@+id/action_favourite"
         android:icon="@drawable/ic_star_border_black_24dp"
-        android:title="@string/favourite"
+        android:title="Favourite"
         android:visible="false"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_favourite_remove"
         android:icon="@drawable/ic_star_black_24dp"
-        android:title="@string/favourite"
+        android:title="Favourite"
         android:visible="false"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_delete_selected_items"
         android:icon="@drawable/ic_delete_black_24dp"
-        android:title="@string/delete"
+        android:title="Delete"
         android:visible="false"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_move_selected_items"
         android:icon="@drawable/ic_gs_file_move_black_24dp"
-        android:title="@string/move"
+        android:title="Move"
         android:visible="false"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_create_shortcut"
-        android:icon="@drawable/ic_widgets_black_24dp"
-        android:title="@string/create_shortcut"
+        android:title="Create shortcut"
         android:visible="false"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_share_files"
-        android:icon="@drawable/ic_share_black_24dp"
-        android:title="@string/share"
+        android:title="Share"
         android:visible="false"
         app:showAsAction="never" />
 
@@ -57,7 +55,7 @@
         android:id="@+id/action_sort"
         android:layout_width="match_parent"
         android:icon="@drawable/ic_sort_black_24dp"
-        android:title="@string/sort_by"
+        android:title="Sort by"
         app:showAsAction="always">
 
         <menu>
