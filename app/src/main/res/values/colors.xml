@@ -25,6 +25,7 @@
     <color name="primary_light">#CED9DD</color>
     <color name="primary_top_and_system_bars">#e7e9ea</color>
     <color name="accent">#F04B4B</color> <!-- COLOR OF FILE AND FOLDER ADDING BUTTONS -->
+    <color name="accent_selection">#ff8844</color>
     <color name="accent_light">#FF9800</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
