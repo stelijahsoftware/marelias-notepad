@@ -84,8 +84,6 @@ public abstract class SyntaxHighlighterBase {
 
     protected final static int LONG_HIGHLIGHTING_DELAY = 2400;
 
-    private static final Pattern PATTERN_TAB = Pattern.compile("\t");
-
     /**
      * Url pattern with required http/https protocol. Case-sensitive.
      */
