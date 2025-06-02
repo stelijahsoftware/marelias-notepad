@@ -48,6 +48,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - Made searching case insensitive
 X - Made icons dark in top bar
 X - Made top navigation bars light
 X - Remove rename item from menu
