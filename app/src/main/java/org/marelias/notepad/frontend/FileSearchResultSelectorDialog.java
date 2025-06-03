@@ -208,19 +208,47 @@ public class FileSearchResultSelectorDialog {
             return childPosition;
         }
 
+        // Note: this function is actually used when searching
         @Override
         public View getGroupView(final int groupPosition, final boolean isExpanded, final View convertView, final ViewGroup parent) {
+                        final FitFile groupInfo = (FitFile) getGroup(groupPosition);
             TextView textView = (TextView) convertView;
+                        if (convertView == null) {
+                                final LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                textView = (TextView) inflater.inflate(R.layout.expandable_list_group_item, null);
+                                textView.setClickable(false);
+                            }
+                        textView.setText(groupInfo.toString());
+
+                                final int iconResId;
+                        if (groupInfo.isDirectory || groupInfo.children.isEmpty()) {
+                                iconResId = 0;
+                            } else if (isExpanded) {
+                                iconResId = R.drawable.ic_redo_black_24dp;
+                            } else {
+                                iconResId = R.drawable.ic_baseline_add_24;
+                            }
+                        textView.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
             return textView;
         }
 
+        // Note: this function is actually used when searching
         @SuppressWarnings("unchecked")
         @SuppressLint("SetTextI18n")
         @Override
         public View getChildView(final int groupPosition, final int childPosition, final boolean isLastChild, final View convertView, final ViewGroup parent) {
+            Pair<String, Integer> childInfo = (Pair<String, Integer>) getChild(groupPosition, childPosition);
+            int child_second = childInfo.second + 1;
             TextView textView = (TextView) convertView;
+            if (convertView == null) {
+                    LayoutInflater mInflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    textView = (TextView) mInflater.inflate(android.R.layout.simple_list_item_1, null);
+                    textView.setClickable(false);
+            }
+            textView.setText(child_second + ": " + childInfo.first);
             return textView;
         }
+
 
         @Override
         public boolean isChildSelectable(int groupPosition, int childPosition) {
