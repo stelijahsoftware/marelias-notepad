@@ -31,25 +31,12 @@ public class MarkorContextUtils extends GsContextUtils {
 
     public MarkorContextUtils(@Nullable final Context context) {
         if (context != null) {
-            setChooserTitle(context.getString(R.string.share_to_arrow));
+            setChooserTitle("Share to");
         }
     }
 
-//    public <T extends GsContextUtils> T applySpecialLaunchersVisibility(final Context context, boolean extraLaunchersEnabled) {
-//        setLauncherActivityEnabled(context, OpenShareIntoActivity.class, extraLaunchersEnabled);
-//        setLauncherActivityEnabledFromString(context, "org.marelias.notepad.AliasDocumentProcessText", extraLaunchersEnabled);
-//        return thisp();
-//    }
-
     private static int getIconResForFile(final @NonNull File file) {
-//        if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_POPULAR)) {
-//            return R.mipmap.ic_shortcut_popular;
-//        } else if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_RECENTS)) {
-//            return R.mipmap.ic_shortcut_recent;
-//        } else if (file.equals(GsFileBrowserListAdapter.VIRTUAL_STORAGE_FAVOURITE)) {
-//            return R.mipmap.ic_shortcut_favourite;
-//        } else
-            if (file.isDirectory()) {
+        if (file.isDirectory()) {
             return R.mipmap.ic_shortcut_folder;
         } else {
             return R.mipmap.ic_shortcut_file;
