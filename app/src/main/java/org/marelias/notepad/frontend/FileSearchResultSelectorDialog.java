@@ -92,7 +92,7 @@ public class FileSearchResultSelectorDialog {
                 .setView(dialogLayout)
                 .setTitle(R.string.select)
                 .setOnCancelListener(null)
-                .setMessage(searchResults.isEmpty() ? "     ¯\\_(ツ)_/¯     " : null)
+                .setMessage(null)
                 .setNegativeButton(android.R.string.cancel, (dialogInterface, i) -> dialogInterface.dismiss())
                 .create();
 
