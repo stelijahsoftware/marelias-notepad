@@ -258,7 +258,7 @@ public class FileSearchEngine {
             super.onProgressUpdate(values);
             if (_snackBar != null) {
                 // _currentQueueLength, _currentSearchDepth, _result.size(), _countCheckedFiles
-                _snackBar.setText("⭕" + values[2] + " || \uD83D\uDD0D" + values[0] + " || ⬇️ " + values[1] + " || \uD83D\uDC41️" + values[3] + "\n" + _config.query);
+                _snackBar.setText("Found: " + values[2] + " - " + values[0] + " - " + values[1] + " - " + values[3] + "\n" + _config.query);
             }
         }
 
@@ -446,17 +446,8 @@ public class FileSearchEngine {
         }
 
         private InputStream getInputStream(File file) throws FileNotFoundException {
-//            if (isEncryptedFile(file)) {
-//                final byte[] encryptedContext = GsFileUtils.readCloseStreamWithSize(new FileInputStream(file), (int) file.length());
-//                return new ByteArrayInputStream(JavaPasswordbasedCryption.getDecryptedText(encryptedContext, _config.password.clone()).getBytes(StandardCharsets.UTF_8));
-//            } else {
                 return new FileInputStream(file);
-//            }
         }
     }
 
-
-//    private static boolean isEncryptedFile(File file) {
-//        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && file.getName().endsWith(JavaPasswordbasedCryption.DEFAULT_ENCRYPTION_EXTENSION);
-//    }
 }
