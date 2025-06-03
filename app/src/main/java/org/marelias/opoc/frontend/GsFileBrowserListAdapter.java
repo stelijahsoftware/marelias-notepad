@@ -243,9 +243,15 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         holder.description.setTextColor(ContextCompat.getColor(_context, _dopt.secondaryTextColor));
 
         // Set the selection color:
-        holder.image.setImageResource(isSelected ? _dopt.selectedItemImage : isFile ? _dopt.fileImage : _dopt.folderImage);
-        holder.image.setColorFilter(ContextCompat.getColor(_context, _dopt.accentColor),
-                android.graphics.PorterDuff.Mode.SRC_ATOP);
+        if (isSelected) {
+            holder.image.setImageResource(R.drawable.ic_baseline_add_24);
+            holder.image.setColorFilter(ContextCompat.getColor(_context, _dopt.accentColor),
+                    android.graphics.PorterDuff.Mode.SRC_ATOP);
+        } else {
+            holder.image.setImageResource(isSelected ? _dopt.selectedItemImage : isFile ? _dopt.fileImage : _dopt.folderImage);
+            holder.image.setColorFilter(ContextCompat.getColor(_context, isSelected ? _dopt.accentColor : isFile? _dopt.fileColor : _dopt.folderColor),
+                    android.graphics.PorterDuff.Mode.SRC_ATOP);
+        }
 
         if (!isSelected && isFavourite) {
             holder.image.setColorFilter(0xFFE3B51B);
