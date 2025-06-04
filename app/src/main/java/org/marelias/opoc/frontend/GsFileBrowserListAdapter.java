@@ -249,16 +249,14 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         // Set the selection color:
         if (isSelected) {
             holder.image.setImageResource(R.drawable.ic_baseline_add_24);
-            holder.image.setColorFilter(ContextCompat.getColor(_context, _dopt.accentColor),
-                    android.graphics.PorterDuff.Mode.SRC_ATOP);
         } else {
-            holder.image.setImageResource(isSelected ? _dopt.selectedItemImage : isFile ? _dopt.fileImage : _dopt.folderImage);
-            holder.image.setColorFilter(ContextCompat.getColor(_context, isSelected ? _dopt.accentColor : isFile? _dopt.fileColor : _dopt.folderColor),
-                    android.graphics.PorterDuff.Mode.SRC_ATOP);
-        }
-
-        if (!isSelected && isFavourite) {
-            holder.image.setColorFilter(0xFFE3B51B);
+//            holder.image.setImageResource(isSelected ? _dopt.selectedItemImage : isFile ? _dopt.fileImage : _dopt.folderImage);
+            if (!isSelected && isFavourite && isFile) {
+                    holder.image.setImageResource(R.drawable.ic_star_black_24dp); // New favourite icon
+            } else {
+                // Default icon (file/folder)
+                holder.image.setImageResource(isFile ? _dopt.fileImage : _dopt.folderImage);
+            }
         }
 
         if (_dopt.itemSidePadding > 0) {
