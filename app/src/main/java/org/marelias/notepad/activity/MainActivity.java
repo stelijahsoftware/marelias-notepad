@@ -111,15 +111,12 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
                 // Create a new file (it won't write anything if a file with similar name exists)
                 FileOutputStream fos = new FileOutputStream(file);
-                String defaultContent = "# This is a green line\n" +
-                                        "## This is a blue line\n" +
+                String defaultContent = "// This is a red line\n" +
                                         "### This is an orange line\n" +
-                                        "% green line\n" +
-                                        "-- green line\n" +
-                                        "\n" +
-                                        "// Red line\n" +
-                                        "\n" +
-                                        "123456789543250 154223\n" +
+                                        "## This is a blue line\n" +
+                                        "# This is a green line\n" +
+                                        "% This is a cyan line\n" +
+                                        "-- This is a purple line\n" +
                                         "\n" +
                                         "[R red line\n" +
                                         "[o orange line\n" +
@@ -135,10 +132,10 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "- element 1\n" +
                                         "- element 2\n" +
                                         "- element 3\n" +
-                                        "X - this is a finished task\n" +
-                                        "x - another finished task\n" +
+                                        "X - I am the Way and the Truth and the Life\n" +
+                                        "x - I am the Light of the world\n" +
                                         "\n" +
-                                        "All numbers will be coloured orange, for example 2024-09-28\n" +
+                                        "All numbers will be coloured orange, for example 2024-09-28 or 360.0\n" +
                                         "\n" +
                                         "Urls and websites will be highlighted:\n" +
                                         "https://www.github.com/gsantner/markor\n" +

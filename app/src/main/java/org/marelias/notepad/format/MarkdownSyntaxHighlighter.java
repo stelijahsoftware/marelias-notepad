@@ -47,9 +47,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern elyahw_comment_latex = Pattern.compile("^(\\% .+)$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_lua = Pattern.compile("^(\\-\\- .+)$", Pattern.MULTILINE);
     public final static Pattern elyahw_comment_cpp = Pattern.compile("^(\\/\\/.+)$", Pattern.MULTILINE);
-    public final static Pattern elyahw_comment_python = Pattern.compile("^\\#.+$", Pattern.MULTILINE);
-    public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#{2}+.+$", Pattern.MULTILINE); // overriden by orange
-    public final static Pattern elyahw_comment_python_triple = Pattern.compile("^\\#{3}+.+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_comment_python = Pattern.compile("^\\# .+$", Pattern.MULTILINE);
+    public final static Pattern elyahw_comment_python_double = Pattern.compile("^\\#{2} .+$", Pattern.MULTILINE); // overriden by orange
+    public final static Pattern elyahw_comment_python_triple = Pattern.compile("^\\#{3} .+$", Pattern.MULTILINE);
     // public final static Pattern elyahw_link = Pattern.compile("((h|H)ttps?):\\/\\/\\S+ ");
     public final static Pattern elyahw_numbers = Pattern.compile("(?<!((https?|Https?|HTTPS?):\\/\\/\\S{0,300})|(^\\/\\/.{0,300})|(^#.{0,300}))\\d+", Pattern.MULTILINE); // look behind to avoid highlighting numbers in urls
 
@@ -79,8 +79,8 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     // private static final int MD_COLOR_HEADING = 0xffef6D00;
     private static final int MD_COLOR_LINK = 0xff1ea3fe;
     // private static final int MD_COLOR_LIST = 0xffdaa521;
-    private static final int MD_COLOR_QUOTE = Color.parseColor("#e0e0e0");
-    private static final int MD_COLOR_CODEBLOCK = Color.parseColor("#e0e0e0");
+    private static final int MD_COLOR_QUOTE = Color.parseColor("#707070");
+    private static final int MD_COLOR_CODEBLOCK = Color.parseColor("#161828"); // was light grey e0e0e0
 
     private static final int elyahw_colour_white = Color.parseColor("#ffffff");
 
@@ -101,8 +101,10 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int elyahw_colour_orange_bg = Color.parseColor("#fff9f2");
     private static final int elyahw_colour_yellow = Color.parseColor("#ffff00");
     private static final int elyahw_colour_purple_kate = Color.parseColor("#800080");
+    private static final int elyahw_colour_purple_bg = Color.parseColor("#d4bed4");
     private static final int elyahw_colour_purple = Color.parseColor("#ff00ff");
     private static final int elyahw_colour_cyan = Color.parseColor("#00ffff");
+    private static final int elyahw_colour_cyan_bg = Color.parseColor("#c4f1f1");
 
     /*
     from Kate:
@@ -158,6 +160,12 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
             createColorBackgroundSpan(DOUBLESPACE_LINE_ENDING, MD_COLOR_CODEBLOCK);
         }
 
+        createStyleSpanForMatches(elyahw_comment_python, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_comment_python_double, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_comment_python_triple, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_comment_cpp, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_comment_latex, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_comment_lua, Typeface.BOLD);
         createStyleSpanForMatches(QUOTATION_after_the_greaterthansymbol, Typeface.ITALIC);
 
         createStyleSpanForMatches(BOLD, Typeface.BOLD);
@@ -175,6 +183,10 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
         createColorBackgroundSpan(CODE_dollar, MD_COLOR_CODEBLOCK);
         createColorBackgroundSpan(CODE_big, MD_COLOR_CODEBLOCK);
+
+        createColorSpanForMatches(CODE, elyahw_colour_white);
+        createColorSpanForMatches(CODE_dollar, elyahw_colour_white);
+        createColorSpanForMatches(CODE_big, elyahw_colour_white);
 
 
         // Elyahw custom: (order matters)
@@ -194,36 +206,38 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createStyleSpanForMatches(elyahw_priority_low, Typeface.BOLD); // Make bold
 
         //$ [r [g [b..
-        createColorSpanForMatches(elyahw_heading_red, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_heading_red, elyahw_colour_red_bright);
-        createColorSpanForMatches(elyahw_heading_green, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_heading_green, elyahw_colour_green);
-        createColorSpanForMatches(elyahw_heading_blue, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_heading_blue, elyahw_colour_blue_kate);
-        createColorSpanForMatches(elyahw_heading_cyan, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_heading_cyan, elyahw_colour_cyan);
-        createColorSpanForMatches(elyahw_heading_purple, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_heading_purple, elyahw_colour_purple_kate);
-        createColorSpanForMatches(elyahw_heading_orange, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_heading_orange, elyahw_colour_orange);
+        createColorSpanForMatches(elyahw_heading_red, elyahw_colour_red_bright);
+        createColorBackgroundSpan(elyahw_heading_red, elyahw_colour_red_bg);
+        createColorSpanForMatches(elyahw_heading_green, elyahw_colour_green);
+        createColorBackgroundSpan(elyahw_heading_green, elyahw_colour_green_light);
+        createColorSpanForMatches(elyahw_heading_blue, elyahw_colour_blue_kate);
+        createColorBackgroundSpan(elyahw_heading_blue, elyahw_colour_blue_light);
+        createColorSpanForMatches(elyahw_heading_cyan, elyahw_colour_cyan);
+        createColorBackgroundSpan(elyahw_heading_cyan, elyahw_colour_cyan_bg);
+        createColorSpanForMatches(elyahw_heading_purple, elyahw_colour_purple_kate);
+        createColorBackgroundSpan(elyahw_heading_purple, elyahw_colour_purple_bg);
+        createColorSpanForMatches(elyahw_heading_orange, elyahw_colour_orange);
+        createColorBackgroundSpan(elyahw_heading_orange, elyahw_colour_orange_bg);
 
         //$ // Red comment
         createColorBackgroundSpan(elyahw_filter_allow, elyahw_colour_green);
         createColorBackgroundSpan(elyahw_filter_block, elyahw_colour_red);
 
         //$ Filter ✓ ✗
-        createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red);
-        createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_red_bg);
-        createColorSpanForMatches(elyahw_comment_latex, elyahw_colour_green);
-        createColorSpanForMatches(elyahw_comment_lua, elyahw_colour_green);
+        createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_red);
+        createColorSpanForMatches(elyahw_comment_latex, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_comment_latex, elyahw_colour_cyan);
+        createColorSpanForMatches(elyahw_comment_lua, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_comment_lua, elyahw_colour_purple_kate);
 
         //$ # ## ### Python comments
-        createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
-        createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green_light);
-        createColorSpanForMatches(elyahw_comment_python_double, elyahw_colour_blue_dark);
-        createColorBackgroundSpan(elyahw_comment_python_double, elyahw_colour_blue_light);
-        createColorSpanForMatches(elyahw_comment_python_triple, elyahw_colour_orange);
-        createColorBackgroundSpan(elyahw_comment_python_triple, elyahw_colour_orange_bg);
+        createColorSpanForMatches(elyahw_comment_python, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green);
+        createColorSpanForMatches(elyahw_comment_python_double, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_comment_python_double, elyahw_colour_blue_dark);
+        createColorSpanForMatches(elyahw_comment_python_triple, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_comment_python_triple, elyahw_colour_orange);
 
         createColorSpanForMatches(elyahw_numbers, elyahw_colour_orange);
 
