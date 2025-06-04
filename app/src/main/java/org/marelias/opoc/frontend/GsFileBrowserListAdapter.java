@@ -73,7 +73,9 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
     private static final StrikethroughSpan STRIKE_THROUGH_SPAN = new StrikethroughSpan();
     public static final String EXTRA_CURRENT_FOLDER = "EXTRA_CURRENT_FOLDER";
     public static final String EXTRA_RECYCLER_SCROLL_STATE = "EXTRA_RECYCLER_SCROLL_STATE";
-    private static final int HIGHLIGHT_ITEM_COLOR = 0xFFCFCFCF;
+    private int HIGHLIGHT_ITEM_COLOR = 0;
+    // private static final int HIGHLIGHT_ITEM_COLOR = 0xFFCFCFCF;
+
     private File _lastAccessedFile; // Track last accessed (opened) file
 
     //########################
@@ -105,6 +107,8 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         _adapterDataFiltered = new ArrayList<>();
         _currentSelection = new HashSet<>();
         _context = context;
+        HIGHLIGHT_ITEM_COLOR = ContextCompat.getColor(_context, R.color.highlight_item_in_list);
+
         GsContextUtils.instance.setAppLocale(_context, Locale.getDefault());
 
         // Prevents view flicker - https://stackoverflow.com/a/32488059
