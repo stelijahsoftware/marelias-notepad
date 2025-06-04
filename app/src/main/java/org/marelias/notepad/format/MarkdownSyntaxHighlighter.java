@@ -31,8 +31,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     public final static Pattern LINK = Pattern.compile("\\[([^\\[]+)\\]\\(([^\\)]+)\\)");
     // public final static Pattern LIST_UNORDERED = Pattern.compile("(\\n|^)\\s{0,16}([*+-])( \\[[ xX]\\])?(?= )");
     // public final static Pattern LIST_ORDERED = Pattern.compile("(?m)^\\s{0,16}(\\d+)(:?\\.|\\))\\s");
-    public final static Pattern QUOTATION = Pattern.compile("(\\n|^)>");
     public final static Pattern STRIKETHROUGH = Pattern.compile("~{1}(.*?)\\S~{1}");
+    public final static Pattern QUOTATION = Pattern.compile("(\\n|^)>");
+    public final static Pattern QUOTATION_rest = Pattern.compile("(\\n|^)>.+");
 
     public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)");
     //public final static Pattern CODE = Pattern.compile("(?m)(`(?!`)(.*?)`)|(^[^\\S\\n]{4}(?![0-9\\-*+]).*$)"); // includes any code tabbed with 4 spaces
@@ -157,6 +158,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
             createColorBackgroundSpan(DOUBLESPACE_LINE_ENDING, MD_COLOR_CODEBLOCK);
         }
 
+        createStyleSpanForMatches(QUOTATION_rest, Typeface.ITALIC);
         createStyleSpanForMatches(BOLD, Typeface.BOLD);
         createStyleSpanForMatches(ITALICS, Typeface.ITALIC);
         createColorSpanForMatches(QUOTATION, MD_COLOR_QUOTE);

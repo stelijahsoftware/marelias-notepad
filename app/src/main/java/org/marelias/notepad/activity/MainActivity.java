@@ -144,6 +144,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "https://www.github.com/gsantner/markor\n" +
                                         "\n" +
                                         "You can also add *bold*, _italic_; or ~strikethrough~\n" +
+                                        "\n" +
                                         "> This is a quote\n" +
                                         "\n" +
                                         "***** Asterisks will be coloured\n" +
