@@ -43,6 +43,7 @@ import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.marelias.notepad.R;
 import org.marelias.opoc.opoc.GsCallback;
 import org.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import org.marelias.opoc.util.GsContextUtils;
@@ -115,7 +116,7 @@ public abstract class GsPreferenceFragmentBase<AS extends GsSharedPreferencesPro
 
         if (activity != null && activity.getTheme() != null) {
             TypedArray array = activity.getTheme().obtainStyledAttributes(new int[]{android.R.attr.colorBackground});
-            int bgcolor = array.getColor(0, 0xFFFFFF);
+            int bgcolor = array.getColor(0, getResources().getColor(R.color.white));
         }
 
         // on bottom

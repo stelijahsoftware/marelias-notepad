@@ -53,6 +53,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.TooltipCompat;
 import androidx.core.widget.TextViewCompat;
 
+import org.marelias.notepad.R;
 import org.marelias.opoc.opoc.GsCallback;
 import org.marelias.opoc.opoc.GsTextWatcherAdapter;
 import org.marelias.opoc.util.GsCollectionUtils;
@@ -106,9 +107,9 @@ public class GsSearchOrCustomTextDialog {
         public @Nullable InputFilter searchInputFilter = null;
 
         @ColorInt
-        public int textColor = 0xFF000000;
+        public int textColor = R.color.white;
         @ColorInt
-        public int highlightColor = 0xFF00FF00;
+        public int highlightColor = R.color.green_light;
         @StringRes
         public int cancelButtonText = android.R.string.cancel;
         @StringRes
