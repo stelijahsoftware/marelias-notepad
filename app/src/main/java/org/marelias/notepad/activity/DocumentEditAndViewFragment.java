@@ -333,7 +333,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.document__edit__menu, menu);
+        inflater.inflate(R.layout.document__edit__menu, menu);
         _cu.setSubMenuIconsVisibility(menu, true);
 
         final boolean isText = true; //!_document.isBinaryFileNoTextLoading();

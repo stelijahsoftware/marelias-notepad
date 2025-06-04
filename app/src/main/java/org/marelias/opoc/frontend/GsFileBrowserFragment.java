@@ -427,7 +427,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.filesystem__menu, menu);
+        inflater.inflate(R.layout.filesystem__menu, menu);
         _cu.setSubMenuIconsVisibility(menu, true);
 
         MenuItem item;

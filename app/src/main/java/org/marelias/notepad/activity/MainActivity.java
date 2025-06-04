@@ -273,7 +273,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.main__menu, menu);
+        getMenuInflater().inflate(R.layout.main__menu, menu);
         menu.findItem(R.id.action_settings).setVisible(_appSettings.isShowSettingsOptionInMainToolbar());
         _cu.setSubMenuIconsVisibility(menu, true);
         return true;
