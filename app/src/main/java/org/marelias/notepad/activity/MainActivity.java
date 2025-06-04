@@ -143,7 +143,8 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "Urls and websites will be highlighted:\n" +
                                         "https://www.github.com/gsantner/markor\n" +
                                         "\n" +
-                                        "You can also add **bold**, another __bold__ and _italic_ or *italic* text; or ~~struck~~\n" +
+                                        "You can also add *bold*, _italic_; or ~strikethrough~\n" +
+                                        "> This is a quote\n" +
                                         "\n" +
                                         "***** Asterisks will be coloured\n" +
                                         "----- Dashes will be coloured too\n" +
