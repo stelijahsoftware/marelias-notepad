@@ -13,7 +13,7 @@
     <color name="primary_text">#000000</color>
     <color name="secondary_text">#757575</color>
     <color name="file">#757575</color>
-    <color name="folder">#639BCC</color>
+    <color name="folder">#1691F2</color> <!-- original (good colour for colour screen) 639BCC -->
     <color name="background1">#EEEEEE</color>
     <color name="background_2">#424242</color>
 
