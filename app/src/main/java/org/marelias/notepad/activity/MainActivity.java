@@ -160,7 +160,7 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "\n" +
                                         "`This is code, it has a different font`\n" +
                                         "\n" +
-                                        "$ This is another line of code`\n" +
+                                        "$ This is another line of code\n" +
                                         "\n" +
                                         "```\n" +
                                         "Multiple lines\n" +
