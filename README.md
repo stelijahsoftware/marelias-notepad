@@ -23,7 +23,7 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h] update selection icon
+Bug: top system bar invisible on 4a
 
 [m] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 [m] File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
@@ -50,6 +50,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - update selection icon
 X - Made searching case insensitive
 X - Made icons dark in top bar
 X - Made top navigation bars light
