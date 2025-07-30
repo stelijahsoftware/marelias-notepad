@@ -23,8 +23,6 @@ feedbackATstelijahDOTcoDOTuk
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-Bug: top system bar invisible on 4a
-
 - colour: TODO:/Note:/Now:
 - turn on dark mode
 - button to insert dash at line begin?
@@ -53,6 +51,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - Bug: top system bar invisible on 4a
 X - Visibility: pointer not visible inside highlights
 X - Visibility: invisible selection color within highlights when selecting text
 X - update selection icon
