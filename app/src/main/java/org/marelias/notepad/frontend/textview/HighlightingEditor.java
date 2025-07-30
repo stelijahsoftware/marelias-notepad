@@ -377,6 +377,34 @@ public class HighlightingEditor extends AppCompatEditText {
     @Override
     protected void onSelectionChanged(int selStart, int selEnd) {
         super.onSelectionChanged(selStart, selEnd);
+
+        // Handle text selection visibility by temporarily removing syntax highlighting from selected text
+        if (_hl != null && _hlEnabled && selStart != selEnd) {
+            // Remove syntax highlighting from selected text to make selection visible
+            _hl.clearDynamic();
+
+            // Re-apply highlighting to non-selected regions only, using selection-aware method
+            if (_hl.hasSpans()) {
+                int[] selectionRange = {selStart, selEnd};
+
+                // Apply highlighting to text before selection
+                if (selStart > 0) {
+                    _hl.applyDynamicWithSelection(new int[]{0, selStart}, selectionRange);
+                }
+
+                // Apply highlighting to text after selection
+                if (selEnd < length()) {
+                    _hl.applyDynamicWithSelection(new int[]{selEnd, length()}, selectionRange);
+                }
+            }
+        } else if (_hl != null && _hlEnabled && selStart == selEnd) {
+            // No selection, restore normal highlighting
+            _hl.clearDynamic();
+            if (_hl.hasSpans()) {
+                _hl.applyDynamic(new int[]{0, length()});
+            }
+        }
+
 //        if (MainActivity.IS_DEBUG_ENABLED) {
 //            AppSettings.appendDebugLog("Selection changed: " + selStart + "->" + selEnd);
 //        }

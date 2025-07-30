@@ -333,6 +333,53 @@ public abstract class SyntaxHighlighterBase {
         return this;
     }
 
+    /**
+     * Apply dynamic highlighting with selection-aware handling.
+     * This method ensures that background color spans don't interfere with text selection.
+     *
+     * @param range The range to apply highlighting to
+     * @param selectionRange The current text selection range (can be null if no selection)
+     * @return this
+     */
+    public SyntaxHighlighterBase applyDynamicWithSelection(final int[] range, final int[] selectionRange) {
+        if (GsTextUtils.isValidSelection(_spannable, range) && range.length >= 2) {
+            applyFixup();
+            final int length = _spannable.length();
+
+            for (int i = 0; i < _groups.size(); i++) {
+                final SpanGroup group = _groups.get(i);
+
+                if (group.isStatic) {
+                    continue;
+                }
+
+                if (group.start >= range[1]) {
+                    // As we are sorted on start, we can break out after the first group.start > end
+                    break;
+                }
+
+                final boolean valid = group.start >= 0 && group.end > range[0] && group.end <= length;
+                if (valid && !_appliedDynamic.contains(i)) {
+                    // Check if this span overlaps with the selection
+                    boolean overlapsWithSelection = false;
+                    if (selectionRange != null && selectionRange.length >= 2) {
+                        int selStart = selectionRange[0];
+                        int selEnd = selectionRange[1];
+                        // Check if the span overlaps with the selection
+                        overlapsWithSelection = !(group.end <= selStart || group.start >= selEnd);
+                    }
+
+                    // Only apply the span if it doesn't overlap with selection
+                    if (!overlapsWithSelection) {
+                        _spannable.setSpan(group.span, group.start, group.end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        _appliedDynamic.add(i);
+                    }
+                }
+            }
+        }
+        return this;
+    }
+
 
 
     public SyntaxHighlighterBase applyStatic() {

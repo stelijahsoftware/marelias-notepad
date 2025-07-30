@@ -22,9 +22,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     // 1. REGULAR EXPRESSIONS/PATTERNS:
     /// *******************************
 
-//    public final static Pattern BOLD = Pattern.compile("(?<=(\\n|^|\\s|\\[|\\{|\\())(([*_]){2,3})(?=\\S)(.*?)\\S\\2(?=(\\n|$|\\s|\\.|,|:|;|-|\\]|\\}|\\)))");
+    //    public final static Pattern BOLD = Pattern.compile("(?<=(\\n|^|\\s|\\[|\\{|\\())(([*_]){2,3})(?=\\S)(.*?)\\S\\2(?=(\\n|$|\\s|\\.|,|:|;|-|\\]|\\}|\\)))");
     public final static Pattern BOLD = Pattern.compile("\\*(?!\\s)([0-9a-zA-Z ]+?)(?<!\\s)\\*");
-//    public final static Pattern ITALICS = Pattern.compile("(?<=(\\n|^|\\s|\\[|\\{|\\())([*_])(?=((?!\\2)|\\2{2,}))(?=\\S)(.*?)\\S\\2(?=(\\n|$|\\s|\\.|,|:|;|-|\\]|\\}|\\)))");
+    //    public final static Pattern ITALICS = Pattern.compile("(?<=(\\n|^|\\s|\\[|\\{|\\())([*_])(?=((?!\\2)|\\2{2,}))(?=\\S)(.*?)\\S\\2(?=(\\n|$|\\s|\\.|,|:|;|-|\\]|\\}|\\)))");
     public final static Pattern ITALICS = Pattern.compile("\\_(?!\\s)([0-9a-zA-Z ]+?)(?<!\\s)\\_");
     // public final static Pattern HEADING = Pattern.compile("(?m)((^#{1,6}[^\\S\\n][^\\n]+)|((\\n|^)[^\\s]+.*?\\n(-{2,}|={2,})[^\\S\\n]*$))");
     // public final static Pattern HEADING_SIMPLE = Pattern.compile("(?m)^(#{1,6}\\s.*$)");
@@ -92,7 +92,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int elyahw_colour_green = Color.parseColor("#009f00");
     private static final int elyahw_colour_green_light = Color.parseColor("#e1ffe3");
 
-//    private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
+    //    private static final int elyahw_colour_blue = Color.parseColor("#0080ff");
     private static final int elyahw_colour_blue_kate = Color.parseColor("#1603ff");
     private static final int elyahw_colour_blue_light = Color.parseColor("#cadfff");
     private static final int elyahw_colour_blue_dark = Color.parseColor("#0000ff");
@@ -140,12 +140,12 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         /// **********************
 
         // Bold:
-//        createStyleSpanForMatches(elyahw_comment_python, Typeface.BOLD);
-//        createStyleSpanForMatches(elyahw_comment_python_double, Typeface.BOLD);
-//        createStyleSpanForMatches(elyahw_comment_python_triple, Typeface.BOLD);
-//        createStyleSpanForMatches(elyahw_comment_cpp, Typeface.BOLD);
-//        createStyleSpanForMatches(elyahw_comment_latex, Typeface.BOLD);
-//        createStyleSpanForMatches(elyahw_comment_lua, Typeface.BOLD);
+        //        createStyleSpanForMatches(elyahw_comment_python, Typeface.BOLD);
+        //        createStyleSpanForMatches(elyahw_comment_python_double, Typeface.BOLD);
+        //        createStyleSpanForMatches(elyahw_comment_python_triple, Typeface.BOLD);
+        //        createStyleSpanForMatches(elyahw_comment_cpp, Typeface.BOLD);
+        //        createStyleSpanForMatches(elyahw_comment_latex, Typeface.BOLD);
+        //        createStyleSpanForMatches(elyahw_comment_lua, Typeface.BOLD);
         createStyleSpanForMatches(elyahw_heading_red, Typeface.BOLD);
         createStyleSpanForMatches(elyahw_heading_green, Typeface.BOLD);
         createStyleSpanForMatches(elyahw_heading_blue, Typeface.BOLD);
