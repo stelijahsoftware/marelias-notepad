@@ -80,7 +80,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int MD_COLOR_LINK = 0xff1ea3fe;
     // private static final int MD_COLOR_LIST = 0xffdaa521;
     private static final int MD_COLOR_QUOTE = Color.parseColor("#707070");
-    private static final int MD_COLOR_CODEBLOCK = Color.parseColor("#161828"); // was light grey e0e0e0
+    private static final int MD_COLOR_CODEBLOCK = Color.parseColor("#161828"); // was light grey e0e0e0 / black 161828
 
     private static final int elyahw_colour_white = Color.parseColor("#ffffff");
 

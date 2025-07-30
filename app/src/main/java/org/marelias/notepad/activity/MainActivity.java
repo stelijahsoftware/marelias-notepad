@@ -129,11 +129,11 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
                                         "✗ filter block rule\n" +
                                         "\n" +
                                         "This is a list:\n" +
-                                        "- element 1\n" +
-                                        "- element 2\n" +
+                                        "- I am the Way and the Truth and the Life\n" +
+                                        "- I am the Light of the world\n" +
                                         "- element 3\n" +
-                                        "X - I am the Way and the Truth and the Life\n" +
-                                        "x - I am the Light of the world\n" +
+                                        "X - Finished task\n" +
+                                        "x - Done task\n" +
                                         "\n" +
                                         "All numbers will be coloured orange, for example 2024-09-28 or 360.0\n" +
                                         "\n" +
