@@ -54,6 +54,7 @@ X - search and replace (inside a file): make it possible to replace all occurren
 
 ### Changelog from Markor:
 X - Visibility: pointer not visible inside highlights
+X - Visibility: invisible selection color within highlights when selecting text
 X - update selection icon
 X - Made searching case insensitive
 X - Made icons dark in top bar
