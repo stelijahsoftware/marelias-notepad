@@ -73,7 +73,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     // TODO: how to avoid highlighting in the middle of another highlight?
 
     /// **********************
-    // 2. COLOURS:
+    // 2. COLOUR VALUES:
     /// **********************
 
     // private static final int MD_COLOR_HEADING = 0xffef6D00;
@@ -104,7 +104,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int elyahw_colour_purple_bg = Color.parseColor("#d4bed4");
     private static final int elyahw_colour_purple = Color.parseColor("#ff00ff");
     private static final int elyahw_colour_cyan = Color.parseColor("#00ffff");
-    private static final int elyahw_colour_cyan_bg = Color.parseColor("#c4f1f1");
+    private static final int elyahw_colour_cyan_bg = Color.parseColor("#cffdfd");
 
     /*
     from Kate:
@@ -116,15 +116,11 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         super(as);
     }
 
-    private boolean _highlightLineEnding;
-    private boolean _highlightCodeChangeFont;
     private boolean _highlightBiggerHeadings;
 
     @Override
     public SyntaxHighlighterBase configure(Paint paint)
     {
-        _highlightLineEnding = true; // _appSettings.isMarkdownHighlightLineEnding();
-        _highlightCodeChangeFont = true; // _appSettings.isHighlightCodeMonospaceFont();
         _highlightBiggerHeadings = false; // _appSettings.isHighlightBiggerHeadings();
         _delay = 200; // _appSettings.getMarkdownHighlightingDelay();
         return super.configure(paint);
@@ -138,6 +134,47 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
 
         // Highlighting urls:
         createSmallBlueLinkSpans();
+
+        /// **********************
+        // 3. TEXT STYLES (FONT/BOLD/ITALIC):
+        /// **********************
+
+        // Bold:
+//        createStyleSpanForMatches(elyahw_comment_python, Typeface.BOLD);
+//        createStyleSpanForMatches(elyahw_comment_python_double, Typeface.BOLD);
+//        createStyleSpanForMatches(elyahw_comment_python_triple, Typeface.BOLD);
+//        createStyleSpanForMatches(elyahw_comment_cpp, Typeface.BOLD);
+//        createStyleSpanForMatches(elyahw_comment_latex, Typeface.BOLD);
+//        createStyleSpanForMatches(elyahw_comment_lua, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_heading_red, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_heading_green, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_heading_blue, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_heading_cyan, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_heading_purple, Typeface.BOLD);
+        createStyleSpanForMatches(elyahw_heading_orange, Typeface.BOLD);
+        createStyleSpanForMatches(BOLD, Typeface.BOLD);
+
+        // Italic:
+        createStyleSpanForMatches(QUOTATION_after_the_greaterthansymbol, Typeface.ITALIC);
+        createStyleSpanForMatches(ITALICS, Typeface.ITALIC);
+
+        // Strikethrough:
+        createStrikeThroughSpanForMatches(STRIKETHROUGH);
+
+        // Monospace font:
+        createMonospaceSpanForMatches(CODE);
+        createMonospaceSpanForMatches(CODE_dollar);
+        createMonospaceSpanForMatches(CODE_big);
+
+        // Elyahw custom: (order matters)
+        //createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
+        //createStyleSpanForMatches(elyahw_link, Typeface.ITALIC);
+
+
+
+        /// **********************
+        // 4. COLOUR MAPPINGS:
+        /// **********************
 
         // Causes strange highlighting above '=='
         //        if (_highlightBiggerHeadings)
@@ -155,30 +192,9 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         // createColorSpanForMatches(LIST_UNORDERED, MD_COLOR_LIST);
         // createColorSpanForMatches(LIST_ORDERED, MD_COLOR_LIST);
 
-        if (_highlightLineEnding)
-        {
-            createColorBackgroundSpan(DOUBLESPACE_LINE_ENDING, MD_COLOR_CODEBLOCK);
-        }
+        createColorBackgroundSpan(DOUBLESPACE_LINE_ENDING, MD_COLOR_CODEBLOCK);
 
-        createStyleSpanForMatches(elyahw_comment_python, Typeface.BOLD);
-        createStyleSpanForMatches(elyahw_comment_python_double, Typeface.BOLD);
-        createStyleSpanForMatches(elyahw_comment_python_triple, Typeface.BOLD);
-        createStyleSpanForMatches(elyahw_comment_cpp, Typeface.BOLD);
-        createStyleSpanForMatches(elyahw_comment_latex, Typeface.BOLD);
-        createStyleSpanForMatches(elyahw_comment_lua, Typeface.BOLD);
-        createStyleSpanForMatches(QUOTATION_after_the_greaterthansymbol, Typeface.ITALIC);
-
-        createStyleSpanForMatches(BOLD, Typeface.BOLD);
-        createStyleSpanForMatches(ITALICS, Typeface.ITALIC);
         createColorSpanForMatches(QUOTATION, MD_COLOR_QUOTE);
-        createStrikeThroughSpanForMatches(STRIKETHROUGH);
-
-        if (_highlightCodeChangeFont)
-        {
-            createMonospaceSpanForMatches(CODE);
-            createMonospaceSpanForMatches(CODE_dollar);
-            createMonospaceSpanForMatches(CODE_big);
-        }
 
         createColorBackgroundSpan(CODE, MD_COLOR_CODEBLOCK);
         createColorBackgroundSpan(CODE_dollar, MD_COLOR_CODEBLOCK);
@@ -187,15 +203,6 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createColorSpanForMatches(CODE, elyahw_colour_white);
         createColorSpanForMatches(CODE_dollar, elyahw_colour_white);
         createColorSpanForMatches(CODE_big, elyahw_colour_white);
-
-
-        // Elyahw custom: (order matters)
-        //createColorSpanForMatches(elyahw_link, elyahw_colour_blue);
-        //createStyleSpanForMatches(elyahw_link, Typeface.ITALIC);
-
-        /// **********************
-        // 3. COLOUR MAPPINGS:
-        /// **********************
 
         //$ [l] [m] [h]
         createColorBackgroundSpan(elyahw_priority_high, elyahw_colour_red_bright);
@@ -206,46 +213,47 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createStyleSpanForMatches(elyahw_priority_low, Typeface.BOLD); // Make bold
 
         //$ [r [g [b..
-        createColorSpanForMatches(elyahw_heading_red, elyahw_colour_red_bright);
-        createColorBackgroundSpan(elyahw_heading_red, elyahw_colour_red_bg);
-        createColorSpanForMatches(elyahw_heading_green, elyahw_colour_green);
-        createColorBackgroundSpan(elyahw_heading_green, elyahw_colour_green_light);
-        createColorSpanForMatches(elyahw_heading_blue, elyahw_colour_blue_kate);
-        createColorBackgroundSpan(elyahw_heading_blue, elyahw_colour_blue_light);
-        createColorSpanForMatches(elyahw_heading_cyan, elyahw_colour_cyan);
-        createColorBackgroundSpan(elyahw_heading_cyan, elyahw_colour_cyan_bg);
-        createColorSpanForMatches(elyahw_heading_purple, elyahw_colour_purple_kate);
-        createColorBackgroundSpan(elyahw_heading_purple, elyahw_colour_purple_bg);
-        createColorSpanForMatches(elyahw_heading_orange, elyahw_colour_orange);
-        createColorBackgroundSpan(elyahw_heading_orange, elyahw_colour_orange_bg);
+        createColorSpanForMatches(elyahw_heading_red, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_red, elyahw_colour_red);
+        createColorSpanForMatches(elyahw_heading_green, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_green, elyahw_colour_green);
+        createColorSpanForMatches(elyahw_heading_blue, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_blue, elyahw_colour_blue_dark);
+        createColorSpanForMatches(elyahw_heading_cyan, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_cyan, elyahw_colour_cyan);
+        createColorSpanForMatches(elyahw_heading_purple, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_purple, elyahw_colour_purple_kate);
+        createColorSpanForMatches(elyahw_heading_orange, elyahw_colour_white);
+        createColorBackgroundSpan(elyahw_heading_orange, elyahw_colour_orange);
 
-        //$ // Red comment
+        // -- % //
+        createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_red_bright);
+        createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_red_bg);
+        createColorSpanForMatches(elyahw_comment_latex, elyahw_colour_cyan);
+        createColorBackgroundSpan(elyahw_comment_latex, elyahw_colour_cyan_bg);
+        createColorSpanForMatches(elyahw_comment_lua, elyahw_colour_purple_kate);
+        createColorBackgroundSpan(elyahw_comment_lua, elyahw_colour_purple_bg);
+
+        // # ## ### Python comments
+        createColorSpanForMatches(elyahw_comment_python, elyahw_colour_green);
+        createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green_light);
+        createColorSpanForMatches(elyahw_comment_python_double, elyahw_colour_blue_kate);
+        createColorBackgroundSpan(elyahw_comment_python_double, elyahw_colour_blue_light);
+        createColorSpanForMatches(elyahw_comment_python_triple, elyahw_colour_orange);
+        createColorBackgroundSpan(elyahw_comment_python_triple, elyahw_colour_orange_bg);
+
+        // Filter ✓ ✗
         createColorBackgroundSpan(elyahw_filter_allow, elyahw_colour_green);
         createColorBackgroundSpan(elyahw_filter_block, elyahw_colour_red);
 
-        //$ Filter ✓ ✗
-        createColorSpanForMatches(elyahw_comment_cpp, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_comment_cpp, elyahw_colour_red);
-        createColorSpanForMatches(elyahw_comment_latex, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_comment_latex, elyahw_colour_cyan);
-        createColorSpanForMatches(elyahw_comment_lua, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_comment_lua, elyahw_colour_purple_kate);
-
-        //$ # ## ### Python comments
-        createColorSpanForMatches(elyahw_comment_python, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green);
-        createColorSpanForMatches(elyahw_comment_python_double, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_comment_python_double, elyahw_colour_blue_dark);
-        createColorSpanForMatches(elyahw_comment_python_triple, elyahw_colour_white);
-        createColorBackgroundSpan(elyahw_comment_python_triple, elyahw_colour_orange);
-
+        // Numbers:
         createColorSpanForMatches(elyahw_numbers, elyahw_colour_orange);
 
-        // createColorBackgroundSpan(elyahw_comment_python, elyahw_colour_green_light);
+        // Separate chars:
         createColorSpanForMatches(elyahw_chars, elyahw_colour_purple);
 
+        // Crossover:
         createStrikeThroughSpanForMatches(elyahw_crossover);
         createStyleSpanForMatches(elyahw_crossover, Typeface.BOLD);
-
     }
 }
