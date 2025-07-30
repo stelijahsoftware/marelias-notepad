@@ -41,7 +41,6 @@ Bug: top system bar invisible on 4a
 [L] - Share notes app
 [L] - Sorting: Ability to pin notes to top?
 [L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
-[L] - Visibility: pointer not visible inside highlights
 [L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 
 ### Ignored tasks:
@@ -50,6 +49,7 @@ X - Change dropdown text (of new file creation button) to dropdown menu (select 
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
 ### Changelog from Markor:
+X - Visibility: pointer not visible inside highlights
 X - update selection icon
 X - Made searching case insensitive
 X - Made icons dark in top bar
