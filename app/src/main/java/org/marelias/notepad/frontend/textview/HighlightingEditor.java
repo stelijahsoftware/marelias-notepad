@@ -398,10 +398,20 @@ public class HighlightingEditor extends AppCompatEditText {
                 }
             }
         } else if (_hl != null && _hlEnabled && selStart == selEnd) {
-            // No selection, restore normal highlighting
+            // Cursor only (no selection) - ensure cursor is visible by removing highlighting around cursor position
             _hl.clearDynamic();
             if (_hl.hasSpans()) {
-                _hl.applyDynamic(new int[]{0, length()});
+                int[] cursorRange = {selStart, selStart};
+
+                // Apply highlighting to text before cursor
+                if (selStart > 0) {
+                    _hl.applyDynamicWithSelection(new int[]{0, selStart}, cursorRange);
+                }
+
+                // Apply highlighting to text after cursor
+                if (selStart < length()) {
+                    _hl.applyDynamicWithSelection(new int[]{selStart, length()}, cursorRange);
+                }
             }
         }
 
