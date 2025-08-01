@@ -50,7 +50,7 @@ X - Add button to insert date yyy-mm-dd?
 X - Change dropdown text (of new file creation button) to dropdown menu (select title without date as name)
 X - search and replace (inside a file): make it possible to replace all occurrences (already exists) + case insensitive
 
-### Changelog from Markor:
+### Changelog from Markor (modifications):
 X - Bug: top system bar invisible on 4a
 X - Visibility: pointer not visible inside highlights
 X - Visibility: invisible selection color within highlights when selecting text
