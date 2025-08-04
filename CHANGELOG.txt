@@ -1,0 +1,73 @@
+X - Bug: top system bar invisible on 4a
+X - Visibility: pointer not visible inside highlights
+X - Visibility: invisible selection color within highlights when selecting text
+X - update selection icon
+X - Made searching case insensitive
+X - Made icons dark in top bar
+X - Made top navigation bars light
+X - Remove rename item from menu
+X - Remove confirmation when deleting a note
+X - Add swipe to rename (not: Rename note title from pressing `note title` on document edit screen/button to rename note.)
+X - Remove cancel button when selecting
+X - Fix theme when system dark mode is enabled (some window colours are correct).
+X - show total notes count (including folders) on main screen
+X - Add git integration info (add how to note in 'about' screen)
+X - [m] 10. add % -- comments
+X - [h] Make numbers smaller in numbered lines
+X - make white bg of icon when starting up
+X - [h] `Open with dialog` for odt,doc,docx,odtf,pdf (files not ending in .txt/md) (see implementation in original app).SEE DIALOG it shows you when you try to open an odt file
+X - highlight recently opened file.
+X - Remove unuseful stop after first match option
+X - Make file browser scrollbar wider + draggable
+X - Don't make document scrollbars darker, but auto disappear when paused for 2 secs
+X - Improve rename dialog
+X - Make document edit scrollbars wider
+X - Make font color black
+X - Added a button to paste text
+X - when highlighting, move dedicated info button to expandable list (removed altogether)
+X - [h] BIG: `Plus button` should not show dialog, instead auto add note (like snotepad)
+X - Add plus button to create folders (Add separate button for folders)
+X - Remove all occurrences of: audio, epub, ascii, csv
+X - See todos from Snotepad.
+X - Fix: search when launched from inside a file (breaks file search)
+X - Remove bottom bar in text editing
+X - do not open multiple instances (single instance only), not one for each file and for each reopened file. I.e just like snotepad
+X - Change the versioning to match the new versions
+X - remove the bottom dark bar (Files)
+X - change app name from markor to notepad2
+X - one click starts new note with date and time
+X - scrollbar always visible + clickable
+X - simplify new file dialog
+X - Change the default flags of (sort by date; reverse order.. etc)
+X - Touch the parent folder whenever a note is edited (created issue https://github.com/gsantner/markor/issues/2382)
+X - change icon
+X - remove auto insertion of tabs when enter is pressed on a line with multiple spaces + prevent auto insertion of '-' when enter is pressed on a line beginning with '-'
+X - remove local file settings
+X - main screen: remove import from device option; replace '...' on top right with cog icon
+X - Create custom syntax highlighting (make it like kate) see ./app/src/main/java/org/gsantner/opoc/format/GsSimpleMarkdownParser.java
+X - Move new note button to bottom right corner
+X - Clean up settings menu
+X - add to highlighting: [h] [m] [l]
+X - Disable highlighting inside other highlights (see commits ending in)
+X - convert local file settings to global + set defaults
+X - Add version number to About
+X - Use a single process (for editor and file manager). It has to do with starting and stopping activities (see SettingsActivity, MainActivity.. etc)
+X - Pull any improvements from latest version (single process implemented here https://github.com/gsantner/markor/commit/c5fe529515830dd16ba5dea6e14eadd016b1a1bf); start pulling from current state (see reference in project information; update it when pulling new changes)
+X - Add an about screen that shows the original developer (+ a link to his github) + license name + my own link
+X - rename to mar-elias notes (see commit "Rename app to notepad2" and "Rename folder from markor to notepad2" (Jul17))
+X - Add **bold** to and italics notes _template_ + x - cross over
+X - disable red underlining of incorrectly typed words
+X - remove hinted text on new note creation
+X - Notes: Shift down the page
+X - Automatically create default note template in storage location on install
+X - When renaming a note, automatically highlight the time part of the name i.e. "_hhmmss" inside the full form "yyymmdd_hhmmss" for easier renames.
+X - Make hinted text have lighter grey colour at new note creation (completely removed)
+X - make scrollbar in files list always visible
+X - Darker scrollbars + wider
+X - green & red bg + [r + make 3 hashes orange ###
+X - Colour: ✓ ✗
+X - colour line beginning with $ as code
+X - FIX: Touch all parent folders on save starting from home
+X - FIX: Creating new folder with no name moves directory navigation up (goes up one level)
+X - Publish to gplay
+X - make default selected format bold
