@@ -1,7 +1,7 @@
 # Mar-Elias Notepad
-A Simple .txt file editor with highlights (<a href="https://stelijah.com/apps/marelias-notepad.html">website</a>)
+A Simple .txt file editor with highlights (<a href="https://stelijah.com/products/marelias-notepad.html">website</a>)
 
-[<img src="https://stelijah.com/apps/marelias-notepad/icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=org.marelias.notepad&pli=1)
+[<img src="https://stelijah.com/products/marelias-notepad/icon/Google_Play_Store_badge_EN.svg" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=org.marelias.notepad&pli=1)
 
 # Rights:
 
@@ -9,7 +9,7 @@ Forked from Gregor Santner's [Markor](https://www.github.com/gsantner/markor)
 
 Apache 2.0 license (see [LICENSE.txt](./LICENSE.txt); all licenses in the original repo (Markor) apply to this repo).
 
-<img src="https://stelijah.com/apps/marelias-notepad/icon/icon.png" alt="icon" width="25%" />
+<img src="https://stelijah.com/products/marelias-notepad/icon/icon.png" alt="icon" width="25%" />
 
 A simple .txt notes editor, heavily trimmed down version of Markor, with customised highlights.
 
