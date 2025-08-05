@@ -248,7 +248,7 @@ public class SettingsActivity extends MarkorBaseActivity {
                         "<br>" +
                         "<font color='#555555'><b>Project website:</b></font>" +
                         "<br>" +
-                        "<font color='#0040ff'><a href='https://www.stelijah.com/apps/marelias-notepad.html'>https://www.stelijah.com/apps/marelias-notepad.html</a></font>" +
+                        "<font color='#0040ff'><a href='https://www.stelijah.com/products/marelias-notepad.html'>https://www.stelijah.com/apps/marelias-notepad.html</a></font>" +
                         "<br>" +
                         "<br>" +
                         "<font color='#555555'><b>Project source:</b></font>" +
