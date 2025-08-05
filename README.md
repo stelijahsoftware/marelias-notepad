@@ -23,6 +23,11 @@ feedbackATstelijahDOTcom
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
+- responsiveness: when press search, immediately draw keyboard
+- responsiveness: when starring files; unselect all (as if you press back button)
+- Simplify highlighting
+- Add ok slide delete option
+
 - colour: TODO:/Note:/Now:
 - turn on dark mode
 - button to insert dash at line begin?
