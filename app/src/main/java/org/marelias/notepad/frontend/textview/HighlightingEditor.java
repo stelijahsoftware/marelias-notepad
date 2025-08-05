@@ -378,42 +378,43 @@ public class HighlightingEditor extends AppCompatEditText {
     protected void onSelectionChanged(int selStart, int selEnd) {
         super.onSelectionChanged(selStart, selEnd);
 
+        // improve:
         // Handle text selection visibility by temporarily removing syntax highlighting from selected text
-        if (_hl != null && _hlEnabled && selStart != selEnd) {
-            // Remove syntax highlighting from selected text to make selection visible
-            _hl.clearDynamic();
-
-            // Re-apply highlighting to non-selected regions only, using selection-aware method
-            if (_hl.hasSpans()) {
-                int[] selectionRange = {selStart, selEnd};
-
-                // Apply highlighting to text before selection
-                if (selStart > 0) {
-                    _hl.applyDynamicWithSelection(new int[]{0, selStart}, selectionRange);
-                }
-
-                // Apply highlighting to text after selection
-                if (selEnd < length()) {
-                    _hl.applyDynamicWithSelection(new int[]{selEnd, length()}, selectionRange);
-                }
-            }
-        } else if (_hl != null && _hlEnabled && selStart == selEnd) {
-            // Cursor only (no selection) - ensure cursor is visible by removing highlighting around cursor position
-            _hl.clearDynamic();
-            if (_hl.hasSpans()) {
-                int[] cursorRange = {selStart, selStart};
-
-                // Apply highlighting to text before cursor
-                if (selStart > 0) {
-                    _hl.applyDynamicWithSelection(new int[]{0, selStart}, cursorRange);
-                }
-
-                // Apply highlighting to text after cursor
-                if (selStart < length()) {
-                    _hl.applyDynamicWithSelection(new int[]{selStart, length()}, cursorRange);
-                }
-            }
-        }
+//        if (_hl != null && _hlEnabled && selStart != selEnd) {
+//            // Remove syntax highlighting from selected text to make selection visible
+//            _hl.clearDynamic();
+//
+//            // Re-apply highlighting to non-selected regions only, using selection-aware method
+//            if (_hl.hasSpans()) {
+//                int[] selectionRange = {selStart, selEnd};
+//
+//                // Apply highlighting to text before selection
+//                if (selStart > 0) {
+//                    _hl.applyDynamicWithSelection(new int[]{0, selStart}, selectionRange);
+//                }
+//
+//                // Apply highlighting to text after selection
+//                if (selEnd < length()) {
+//                    _hl.applyDynamicWithSelection(new int[]{selEnd, length()}, selectionRange);
+//                }
+//            }
+//        } else if (_hl != null && _hlEnabled && selStart == selEnd) {
+//            // Cursor only (no selection) - ensure cursor is visible by removing highlighting around cursor position
+//            _hl.clearDynamic();
+//            if (_hl.hasSpans()) {
+//                int[] cursorRange = {selStart, selStart};
+//
+//                // Apply highlighting to text before cursor
+//                if (selStart > 0) {
+//                    _hl.applyDynamicWithSelection(new int[]{0, selStart}, cursorRange);
+//                }
+//
+//                // Apply highlighting to text after cursor
+//                if (selStart < length()) {
+//                    _hl.applyDynamicWithSelection(new int[]{selStart, length()}, cursorRange);
+//                }
+//            }
+//        }
 
 //        if (MainActivity.IS_DEBUG_ENABLED) {
 //            AppSettings.appendDebugLog("Selection changed: " + selStart + "->" + selEnd);
