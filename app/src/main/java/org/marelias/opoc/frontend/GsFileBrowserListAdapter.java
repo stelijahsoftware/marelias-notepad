@@ -251,11 +251,13 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
             holder.image.setImageResource(R.drawable.red_big_cross);
         } else {
 //            holder.image.setImageResource(isSelected ? _dopt.selectedItemImage : isFile ? _dopt.fileImage : _dopt.folderImage);
-            if (!isSelected && isFavourite && isFile) {
-                holder.image.setImageResource(R.drawable.ic_star_black_24dp); // New favourite icon
-            }
-            else if (!isSelected && isFavourite && !isFile) { // folder
-                holder.image.setImageResource(R.drawable.ic_folder_golden_24dp); // New favourite icon
+            if (isFavourite) {
+                if (!isSelected && isFile) {
+                    holder.image.setImageResource(R.drawable.ic_star_black_24dp); // New favourite icon
+                }
+                else { // folder
+                    holder.image.setImageResource(R.drawable.ic_folder_golden_24dp); // New favourite icon
+                }
             } else {
                 // Default icon (file/folder)
                 holder.image.setImageResource(isFile ? _dopt.fileImage : _dopt.folderImage);
@@ -581,18 +583,6 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         } catch (SecurityException ignored) {
             return false;
         }
-    }
-
-    @Override
-    public boolean onLongClick(final View view) {
-        GsContextUtils.blinkView(view);
-        if (view.getId() == R.id.opoc_filesystem_item__root) {
-            final TagContainer data = (TagContainer) view.getTag();
-            toggleSelection(data);
-            _dopt.listener.onFsViewerItemLongPressed(data.file, _dopt.doSelectMultiple);
-            return true;
-        }
-        return false;
     }
 
     public File createDirectoryHere(final CharSequence name) {
