@@ -583,6 +583,18 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         }
     }
 
+    @Override
+    public boolean onLongClick(final View view) {
+        GsContextUtils.blinkView(view);
+        if (view.getId() == R.id.opoc_filesystem_item__root) {
+            final TagContainer data = (TagContainer) view.getTag();
+            toggleSelection(data);
+            _dopt.listener.onFsViewerItemLongPressed(data.file, _dopt.doSelectMultiple);
+            return true;
+        }
+        return false;
+    }
+
     public File createDirectoryHere(final CharSequence name) {
         if (name == null || _currentFolder == null || !_currentFolder.canWrite()) {
             return null;
