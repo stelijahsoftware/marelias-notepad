@@ -248,7 +248,7 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
 
         // Set the selection color:
         if (isSelected) {
-            holder.image.setImageResource(R.drawable.ic_baseline_add_24);
+            holder.image.setImageResource(R.drawable.red_big_cross);
         } else {
 //            holder.image.setImageResource(isSelected ? _dopt.selectedItemImage : isFile ? _dopt.fileImage : _dopt.folderImage);
             if (!isSelected && isFavourite && isFile) {

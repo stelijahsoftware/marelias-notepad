@@ -226,7 +226,7 @@ public class FileSearchResultSelectorDialog {
                             } else if (isExpanded) {
                                 iconResId = R.drawable.ic_redo_black_24dp;
                             } else {
-                                iconResId = R.drawable.ic_baseline_add_24;
+                                iconResId = R.drawable.ic_baseline_add_24; // matched search item
                             }
                         textView.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
             return textView;
