@@ -252,7 +252,10 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         } else {
 //            holder.image.setImageResource(isSelected ? _dopt.selectedItemImage : isFile ? _dopt.fileImage : _dopt.folderImage);
             if (!isSelected && isFavourite && isFile) {
-                    holder.image.setImageResource(R.drawable.ic_star_black_24dp); // New favourite icon
+                holder.image.setImageResource(R.drawable.ic_star_black_24dp); // New favourite icon
+            }
+            else if (!isSelected && isFavourite && !isFile) { // folder
+                holder.image.setImageResource(R.drawable.ic_folder_golden_24dp); // New favourite icon
             } else {
                 // Default icon (file/folder)
                 holder.image.setImageResource(isFile ? _dopt.fileImage : _dopt.folderImage);
