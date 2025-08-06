@@ -32,23 +32,23 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - turn on dark mode
 - button to insert dash at line begin?
 
+[h] rename note after being opened by pressing on title (see branch)
+[h] When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
+[h] responsiveness: Remove save delay
+[h] responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+
 [m] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 [m] File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
-[m] rename note after being opened by pressing on title (see branch)
-[m] When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
-[m] Remove save delay
-[m] Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[m] Button to insert "- " at the beginning of the current line
 
-[L] - Navigation: highlight recently opened folder (not just files)
-[L] - Navigation: Put top bar on bottom for easier access to save button & rename..etc?
-[L] - Visibility: make scrollbars darker+bigger when pressed (see opencontacts app)
-[L] - Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[L] - Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
-[L] - Share notes app
-[L] - Sorting: Ability to pin notes to top?
-[L] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
-[L] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+[l] - Navigation: highlight recently opened folder (not just files)
+[l] - Navigation: Put top bar on bottom for easier access to save button & rename..etc?
+[l] - Visibility: make scrollbars darker+bigger when pressed (see opencontacts app)
+[l] - Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+[l] - Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+[l] - Share notes app
+[l] - Sorting: Ability to pin notes to top?
+[l] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
+[l] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 
 ### Ignored tasks:
 X - Add button to insert date yyy-mm-dd?
