@@ -13,20 +13,20 @@ if (enable_plugin_kotlin) {
     apply plugin: 'kotlin-kapt'
 }
 
-rootProject.ext.version_minSdk = 21
+rootProject.ext.version_minSdk = 21 // <<<<< TODO Put it below, don't increase it for compatibility.
 
 // https://github.com/vsch/flexmark-java/releases
 ext.version_library_flexmark = "0.42.14"
 
 android {
-    buildToolsVersion rootProject.ext.version_buildTools
+    buildToolsVersion rootProject.ext.version_buildTools // <<<< SEARCH WHERE DO THESE VALUES COME FROM?
     compileSdkVersion rootProject.ext.version_compileSdk
 
     defaultConfig {
         resValue "string", "manifest_package_id", "org.marelias.notepad"
         applicationId "org.marelias.notepad" // org (organisation/nonprofit)
-        versionName "1.5.00" // x.x.xx
-        versionCode 1500 // an internal version number x.x.xx
+        versionName "1.5.01" // x.x.xx
+        versionCode 1501 // an internal version number x.x.xx
 
         multiDexEnabled true
         minSdkVersion rootProject.ext.version_minSdk
