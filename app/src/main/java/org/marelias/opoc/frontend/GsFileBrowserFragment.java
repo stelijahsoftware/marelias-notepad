@@ -139,7 +139,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
 
 
     private void setupSwipeToRename() {
-        ItemTouchHelper.SimpleCallback swipeCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback swipeCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView,
                                   @NonNull RecyclerView.ViewHolder viewHolder,
@@ -164,19 +164,21 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                         // Update menu items to reflect single selection
                         updateMenuItems();
 
-                        // Execute rename command
-                        if (file != null) {
+                        if (direction == ItemTouchHelper.LEFT) {
+                            // Execute rename
                             final WrRenameDialog renameDialog = WrRenameDialog.newInstance(file, renamedFile -> {
                                 if (renamedFile != null) {
-                                    // Rename was successful
                                     _filesystemViewerAdapter.unselectAll();
                                     reloadCurrentFolder();
                                 } else {
-                                    // Rename was cancelled
                                     _filesystemViewerAdapter.unselectAll();
+                                    _filesystemViewerAdapter.notifyItemChanged(position);
                                 }
                             });
                             renameDialog.show(getChildFragmentManager(), WrRenameDialog.FRAGMENT_TAG);
+                        } else if (direction == ItemTouchHelper.RIGHT) {
+                            // Confirm and delete
+                            confirmAndDeleteSingle(file, position);
                         }
 
                     }
@@ -193,23 +195,13 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
                     View itemView = viewHolder.itemView;
 
-                    // Draw rename background and icon
+                    // Draw rename/delete background and icon depending on direction
                     Paint p = new Paint();
                     if (dX < 0) {
                         // Swiping left - show rename background
-                        p.setColor(Color.RED);
+                        p.setColor(Color.parseColor("#FF9900")); // Color.BLUE
                         c.drawRect((float) itemView.getRight() + dX, (float) itemView.getTop(),
                                 (float) itemView.getRight(), (float) itemView.getBottom(), p);
-
-                        // Text paint (must be separate from background paint)
-//                        Paint textPaint = new Paint();
-//                        textPaint.setColor(Color.WHITE);
-//                        textPaint.setTextSize(52f); // Larger size for visibility
-//                        textPaint.setAntiAlias(true); // Smooth text edges
-//                        String text = "Rename";
-//                        float textX = itemView.getRight() - itemView.getWidth()/5; // Adjust as needed
-//                        float textY = itemView.getTop() + (itemView.getHeight() + 20)/2;
-//                        c.drawText(text, textX, textY, textPaint);
 
                         // Draw rename icon
                         Drawable icon = getResources().getDrawable(R.drawable.ic_gs_rename_black_24dp);
@@ -223,6 +215,24 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                             icon.setTint(Color.WHITE);
                             icon.draw(c);
                         }
+                    } else if (dX > 0) {
+                        // Swiping right - show delete background
+                        p.setColor(Color.RED); // Color.parseColor("#D32F2F")
+                        c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(),
+                                (float) itemView.getLeft() + dX, (float) itemView.getBottom(), p);
+
+                        // Draw delete icon
+                        Drawable icon = getResources().getDrawable(R.drawable.ic_delete_black_24dp);
+                        if (icon != null) {
+                            int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+                            int iconTop = itemView.getTop() + iconMargin;
+                            int iconBottom = iconTop + icon.getIntrinsicHeight();
+                            int iconLeft = itemView.getLeft() + iconMargin;
+                            int iconRight = iconLeft + icon.getIntrinsicWidth();
+                            icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+                            icon.setTint(Color.WHITE);
+                            icon.draw(c);
+                        }
                     }
                     super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
                 }
@@ -230,6 +240,36 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         };
 
         new ItemTouchHelper(swipeCallback).attachToRecyclerView(_recyclerList);
+    }
+
+    private void confirmAndDeleteSingle(final File file, final int position) {
+        if (file == null) {
+            return;
+        }
+        final ArrayList<File> itemsToDelete = new ArrayList<>();
+        itemsToDelete.add(file);
+
+        final StringBuilder message = new StringBuilder(getString(R.string.do_you_really_want_to_delete_this_witharg, getResources().getQuantityString(R.plurals.documents, 1)));
+        message.append("\n\n").append(file.getName());
+
+        final WrConfirmDialog confirmDialog = WrConfirmDialog.newInstance(getString(R.string.confirm_delete), message.toString(), itemsToDelete,
+                (confirmed, data) -> {
+                    if (confirmed) {
+                        Runnable deleter = () -> {
+                            WrMarkorSingleton.getInstance().deleteSelectedItems(new HashSet<>(itemsToDelete), getContext());
+                            _recyclerList.post(() -> {
+                                _filesystemViewerAdapter.unselectAll();
+                                _filesystemViewerAdapter.reloadCurrentFolder();
+                            });
+                        };
+                        new Thread(deleter).start();
+                    } else {
+                        // Restore item visual state if cancelled
+                        _filesystemViewerAdapter.unselectAll();
+                        _filesystemViewerAdapter.notifyItemChanged(position);
+                    }
+                });
+        confirmDialog.show(getChildFragmentManager(), WrConfirmDialog.FRAGMENT_TAG);
     }
 
     @Override
