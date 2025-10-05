@@ -1,3 +1,5 @@
+X - Show note size
+X - Swipe right to delete note (with dialog)
 X - Bug: top system bar invisible on 4a
 X - Visibility: pointer not visible inside highlights
 X - Visibility: invisible selection color within highlights when selecting text
