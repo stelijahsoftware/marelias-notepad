@@ -302,7 +302,13 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
 
     public String formatFileDescription(final File file, String format) {
         if (TextUtils.isEmpty(format)) {
-            return DateUtils.formatDateTime(_context, file.lastModified(), (DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE));
+            String date = DateUtils.formatDateTime(_context, file.lastModified(), (DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE));
+            // Append size for files by default
+            if (file.isFile()) {
+                String size = GsFileUtils.getHumanReadableByteCountSI(file.length());
+                return date + " — " + size;
+            }
+            return date;
         } else {
             format = format.replaceAll("FS(?=([^']*'[^']*')*[^']*$)", '\'' + GsFileUtils.getHumanReadableByteCountSI(file.length()) + '\'');
             return new SimpleDateFormat(format, Locale.getDefault()).format(file.lastModified());
