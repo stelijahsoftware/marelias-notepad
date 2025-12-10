@@ -68,7 +68,7 @@ public class FileSearchDialog {
 //        dialogLayout.addView(messageTextView, margins);
 
         // EdiText: Search query input
-        searchEditText.setHint("(case insensitive)");
+        searchEditText.setHint("(Case insensitive)");
         searchEditText.setSingleLine(true);
         searchEditText.setMaxLines(1);
         searchEditText.setTextColor(textColor);
@@ -167,7 +167,7 @@ public class FileSearchDialog {
         final Window window = dialog.getWindow();
         if (window != null) {
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE | WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
 
         }
     }
