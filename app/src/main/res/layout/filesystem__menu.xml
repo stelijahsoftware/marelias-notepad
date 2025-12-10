@@ -79,15 +79,6 @@
                     android:id="@+id/action_sort_by_mimetype"
                     android:title="Type"
                     app:showAsAction="never" />
-            </group>
-            <group
-                android:id="@+id/action_grp_sort2"
-                android:checkableBehavior="all">
-                <item
-                    android:id="@+id/action_folder_first"
-                    android:checkable="true"
-                    android:title="@string/folder_first"
-                    app:showAsAction="never" />
                 <item
                     android:id="@+id/action_sort_reverse"
                     android:checkable="true"
@@ -106,4 +97,10 @@
         android:id="@+id/action_check_all"
         android:title="Select all"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_folder_first"
+        android:checkable="true"
+        android:title="@string/folder_first"
+        app:showAsAction="always"
+        app:actionLayout="@layout/menu_checkbox_folder_first" />
 </menu>
