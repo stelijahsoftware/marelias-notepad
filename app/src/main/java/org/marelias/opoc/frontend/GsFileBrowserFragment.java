@@ -555,6 +555,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 if (_filesystemViewerAdapter.areItemsSelected()) {
                     _dopt.favouriteFiles = GsCollectionUtils.union(_dopt.favouriteFiles, currentSelection);
                     _appSettings.setFavouriteFiles(_dopt.favouriteFiles);
+                    _filesystemViewerAdapter.unselectAll();
                     updateMenuItems();
                 }
                 return true;
@@ -563,6 +564,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 if (_filesystemViewerAdapter.areItemsSelected()) {
                     _dopt.favouriteFiles = GsCollectionUtils.setDiff(_dopt.favouriteFiles, currentSelection);
                     _appSettings.setFavouriteFiles(_dopt.favouriteFiles);
+                    _filesystemViewerAdapter.unselectAll();
                     updateMenuItems();
                 }
                 return true;
