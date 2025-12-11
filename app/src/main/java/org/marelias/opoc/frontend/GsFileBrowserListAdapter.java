@@ -46,6 +46,7 @@ import java.io.FilenameFilter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -302,11 +303,14 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
 
     public String formatFileDescription(final File file, String format) {
         if (TextUtils.isEmpty(format)) {
-            String date = DateUtils.formatDateTime(_context, file.lastModified(), (DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE));
+            // String date = DateUtils.formatDateTime(_context, file.lastModified(), (DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_NUMERIC_DATE));
+            String date = new SimpleDateFormat("yyyy-MM-dd hh:mm a", Locale.getDefault())
+                    .format(new Date(file.lastModified()))
+                    .toLowerCase(Locale.getDefault());
             // Append size for files by default
             if (file.isFile()) {
                 String size = GsFileUtils.getHumanReadableByteCountSI(file.length());
-                return date + " — " + size;
+                return date + "    —    " + size;
             }
             return date;
         } else {
