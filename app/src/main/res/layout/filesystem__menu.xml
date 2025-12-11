@@ -52,6 +52,13 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_folder_first"
+        android:checkable="true"
+        android:title="@string/folder_first"
+        app:showAsAction="always"
+        app:actionLayout="@layout/menu_checkbox_folder_first" />
+
+    <item
         android:id="@+id/action_sort"
         android:layout_width="match_parent"
         android:icon="@drawable/ic_sort_black_24dp"
@@ -97,10 +104,4 @@
         android:id="@+id/action_check_all"
         android:title="Select all"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_folder_first"
-        android:checkable="true"
-        android:title="@string/folder_first"
-        app:showAsAction="always"
-        app:actionLayout="@layout/menu_checkbox_folder_first" />
 </menu>
