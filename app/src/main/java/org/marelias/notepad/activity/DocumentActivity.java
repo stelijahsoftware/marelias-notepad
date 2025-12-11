@@ -14,9 +14,15 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +30,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import org.marelias.notepad.R;
+import org.marelias.notepad.activity.DocumentEditAndViewFragment;
 import org.marelias.notepad.format.FormatRegistry;
 import org.marelias.notepad.model.AppSettings;
 import org.marelias.notepad.model.Document;
@@ -42,6 +49,8 @@ public class DocumentActivity extends MarkorBaseActivity {
 
     private Toolbar _toolbar;
     private FragmentManager _fragManager;
+    private EditText _titleEditText;
+    private DocumentEditAndViewFragment _currentFragment;
 
     private static boolean nextLaunchTransparentBg = false;
 
@@ -128,6 +137,9 @@ public class DocumentActivity extends MarkorBaseActivity {
 
         setSupportActionBar(findViewById(R.id.toolbar));
         _fragManager = getSupportFragmentManager();
+
+        // Set up editable title
+        setupEditableTitle();
 
         handleLaunchingIntent(getIntent());
     }
@@ -238,15 +250,114 @@ public class DocumentActivity extends MarkorBaseActivity {
         _cu.extractResultFromActivityResult(this, requestCode, resultCode, data);
     }
 
+    private void setupEditableTitle() {
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+        }
+
+        _titleEditText = new EditText(_toolbar.getContext());
+        _titleEditText.setSingleLine(true);
+        _titleEditText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        _titleEditText.setTextSize(20);
+        _titleEditText.setTextColor(getResources().getColor(android.R.color.black));
+        _titleEditText.setHintTextColor(getResources().getColor(android.R.color.darker_gray));
+        _titleEditText.setBackground(null);
+        _titleEditText.setBackgroundColor(getResources().getColor(android.R.color.white));
+        _titleEditText.setPadding(20, 5, 20, 5);
+
+        Toolbar.LayoutParams params = new Toolbar.LayoutParams(
+                Toolbar.LayoutParams.WRAP_CONTENT,
+                Toolbar.LayoutParams.WRAP_CONTENT);
+        params.gravity = android.view.Gravity.START | android.view.Gravity.CENTER_VERTICAL;
+        _titleEditText.setLayoutParams(params);
+
+        _titleEditText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                _titleEditText.clearFocus();
+                renameDocument();
+                return true;
+            }
+            return false;
+        });
+
+        _titleEditText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus) {
+                renameDocument();
+            }
+        });
+
+        _toolbar.addView(_titleEditText);
+    }
+
+    private void renameDocument() {
+        if (_titleEditText == null || _currentFragment == null) {
+            return;
+        }
+
+        final String newName = _titleEditText.getText().toString().trim();
+        if (newName.isEmpty()) {
+            // Restore original name if empty
+            updateTitleFromDocument();
+            return;
+        }
+
+        final Document doc = _currentFragment.getDocument();
+        if (doc == null || doc.file == null) {
+            return;
+        }
+
+        final File oldFile = doc.file;
+        final File newFile = new File(oldFile.getParentFile(), newName);
+
+        // Don't rename if name hasn't changed
+        if (oldFile.getName().equals(newName)) {
+            return;
+        }
+
+        // Don't rename if target file already exists
+        if (newFile.exists()) {
+            _titleEditText.setText(oldFile.getName());
+            return;
+        }
+
+        if (oldFile.renameTo(newFile)) {
+            // Close current fragment and open renamed file
+            // Clear the current fragment reference to force a new one to be created
+            _currentFragment = null;
+            // Create new document with renamed file
+            final Document newDoc = new Document(newFile);
+            // Close old fragment and open new one
+            showTextEditor(newDoc, null, null);
+        } else {
+            // Restore original name on failure
+            _titleEditText.setText(oldFile.getName());
+        }
+    }
+
     public void setTitle(final CharSequence title) {
-        final ActionBar bar = getSupportActionBar();
-        if (bar != null) {
-            bar.setTitle(title);
+        if (_titleEditText != null) {
+            _titleEditText.setText(title);
+            _titleEditText.setHint(title);
+        } else {
+            final ActionBar bar = getSupportActionBar();
+            if (bar != null) {
+                bar.setTitle(title);
+            }
         }
     }
 
     public void setDocumentTitle(final String title) {
         setTitle(title);
+    }
+
+    private void updateTitleFromDocument() {
+        if (_currentFragment != null) {
+            final Document doc = _currentFragment.getDocument();
+            if (doc != null && doc.file != null) {
+                setTitle(doc.file.getName());
+            }
+        }
     }
 
     public void showTextEditor(final Document document, final Integer lineNumber, final Boolean startPreview) {
@@ -257,7 +368,19 @@ public class DocumentActivity extends MarkorBaseActivity {
                         document.path.equals(((DocumentEditAndViewFragment) currentFragment).getDocument().path));
 
         if (!sameDocumentRequested) {
-            showFragment(DocumentEditAndViewFragment.newInstance(document, lineNumber, startPreview));
+            final DocumentEditAndViewFragment fragment = DocumentEditAndViewFragment.newInstance(document, lineNumber, startPreview);
+            _currentFragment = fragment;
+            showFragment(fragment);
+            // Update title when document is shown
+            if (document.file != null) {
+                setTitle(document.file.getName());
+            }
+        } else {
+            _currentFragment = (DocumentEditAndViewFragment) currentFragment;
+            // Update title in case file was renamed
+            if (document.file != null) {
+                setTitle(document.file.getName());
+            }
         }
     }
 
@@ -306,6 +429,10 @@ public class DocumentActivity extends MarkorBaseActivity {
     }
 
     private GsFragmentBase<?, ?> getCurrentVisibleFragment() {
-        return (GsFragmentBase<?, ?>) getSupportFragmentManager().findFragmentById(R.id.document__placeholder_fragment);
+        final GsFragmentBase<?, ?> fragment = (GsFragmentBase<?, ?>) getSupportFragmentManager().findFragmentById(R.id.document__placeholder_fragment);
+        if (fragment instanceof DocumentEditAndViewFragment) {
+            _currentFragment = (DocumentEditAndViewFragment) fragment;
+        }
+        return fragment;
     }
 }

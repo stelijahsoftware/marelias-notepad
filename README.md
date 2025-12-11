@@ -32,13 +32,22 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - turn on dark mode
 - button to insert dash at line begin?
 
-[h] rename note after being opened by pressing on title (see branch)
-[h] When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
-[h] responsiveness: Remove save delay
-[h] responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+[h] - rename note after being opened by pressing on title (see branch)
+[h] - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
+- Make a floating button appear/disappear for saving. Or: Put the buttons bar below, directly on top of keyboard
+- Create a separate bar for title on top
+- Button for immediately go back to notes list
+- Ability to use colored stars (color folders/files) like mac
+- Improve searching to grep
 
-[m] Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
-[m] File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
+[m] - responsiveness: Remove save delay
+[m] - responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+[m] - Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
+[m] - File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
+- Fix bin icon being white
+- File History button?
+- update Creating a note should move the highlight
+- Insert empty line if saved file without one at end
 
 [l] - Navigation: highlight recently opened folder (not just files)
 [l] - Navigation: Put top bar on bottom for easier access to save button & rename..etc?
