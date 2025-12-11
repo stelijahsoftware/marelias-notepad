@@ -3,6 +3,11 @@ X - make search window wider
 X - Put "folders first" sorting checkbox in main bar (move it outside of the list)
 X - Reformat modification date in file subtitles
 X - Add cut button
+X - Edit title from inside
+X - Highlight newly created file
+X - Update highlight to renamed file
+X - update Creating a note should move the highlight
+X - Create a separate bar for title on top
 
 # Earlier:
 X - Show note size

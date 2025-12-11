@@ -35,7 +35,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h] - rename note after being opened by pressing on title (see branch)
 [h] - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 - Make a floating button appear/disappear for saving. Or: Put the buttons bar below, directly on top of keyboard
-- Create a separate bar for title on top
 - Button for immediately go back to notes list
 - Ability to use colored stars (color folders/files) like mac
 - Improve searching to grep
@@ -46,7 +45,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [m] - File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
 - Fix bin icon being white
 - File History button?
-- update Creating a note should move the highlight
 - Insert empty line if saved file without one at end
 
 [l] - Navigation: highlight recently opened folder (not just files)
