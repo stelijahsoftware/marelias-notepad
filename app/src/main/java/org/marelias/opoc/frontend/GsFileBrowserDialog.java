@@ -132,11 +132,11 @@ public class GsFileBrowserDialog extends DialogFragment implements GsFileBrowser
         }
 
         _buttonCancel.setVisibility(_dopt.cancelButtonEnable ? View.VISIBLE : View.GONE);
-        _buttonCancel.setTextColor(rcolor(_dopt.accentColor));
+        _buttonCancel.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
         _buttonCancel.setText(_dopt.cancelButtonText);
 
         _buttonOk.setVisibility(_dopt.okButtonEnable ? View.VISIBLE : View.GONE);
-        _buttonOk.setTextColor(rcolor(_dopt.accentColor));
+        _buttonOk.setTextColor(ContextCompat.getColor(getContext(), R.color.green));
         _buttonOk.setText(_dopt.okButtonText);
 
         _toolBar.setTitleTextColor(ContextCompat.getColor(getContext(), R.color.white)); // <<<<<<<<<<<<<<<<<<<<< COLOR
