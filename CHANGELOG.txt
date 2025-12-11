@@ -7,8 +7,10 @@ X - Edit title from inside
 X - Highlight newly created file
 X - Update highlight to renamed file
 X - update Creating a note should move the highlight
-X - Create a separate bar for title on top
+X - Create a separate bar for title on top. Put the buttons bar below, directly on top of keyboard.
 X - Focus keyboard when search button is pressed
+X - Button for immediately go back to notes list
+X - when starring files; unselect all (as if you press back button)
 
 # Earlier:
 X - Show note size

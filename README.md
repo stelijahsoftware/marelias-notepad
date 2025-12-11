@@ -26,16 +26,13 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 [h]
 - rename note after being opened by pressing on title (see branch)
 - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
-- Make a floating button appear/disappear for saving. Or: Put the buttons bar below, directly on top of keyboard
 - Ability to use colored stars (color folders/files) like mac
 - Improve searching to grep
 - colour: TODO:/Note:/Now:
 - turn on dark mode
 - button to insert dash at line beginning?
-- when starring files; unselect all (as if you press back button)
 - Simplify highlighting
 - Add ok slide delete option
-- Button for immediately go back to notes list
 
 [m]
 - responsiveness: Remove save delay
