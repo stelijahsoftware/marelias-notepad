@@ -17,16 +17,12 @@
         android:icon="@drawable/ic_save_black_24dp"
         android:key="pref_key__notebook_directory"
         android:title="Notebook save location" />
-    
-    <androidx.preference.SeekBarPreference
-        android:defaultValue="18"
+
+    <org.marelias.notepad.frontend.FontSizePreference
         android:icon="@drawable/ic_format_size_black_24dp"
         android:key="pref_key__editor_font_size"
-        android:max="36"
-        android:min="1"
         android:summary="Editor font size."
-        android:title="Font size"
-        app:showSeekBarValue="true" />
+        android:title="Font size" />
 
     <CheckBoxPreference
         android:defaultValue="true"
