@@ -13,6 +13,7 @@ X - Button for immediately go back to notes list
 X - when starring files; unselect all (as if you press back button)
 X - rename note after being opened by pressing on title
 X - button to insert dash at line beginning
+X - Change font size scroll to buttons
 
 # Earlier:
 X - Show note size
