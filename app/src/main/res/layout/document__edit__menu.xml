@@ -28,6 +28,7 @@
         android:id="@+id/action_line_numbers"
         android:checkable="true"
         android:title="Line numbers"
+        android:icon="@drawable/ic_line_numbers_24dp"
         app:showAsAction="always" />
 
     <item
