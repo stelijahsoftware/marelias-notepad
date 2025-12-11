@@ -13,6 +13,12 @@
     tools:ignore="AlwaysShowAction">
 
     <item
+        android:id="@+id/action_save_and_back"
+        android:icon="@drawable/ic_arrow_back_white_24dp"
+        android:title="Save and Back"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_undo"
         android:icon="@drawable/ic_undo_black_24dp"
         android:title="Undo"

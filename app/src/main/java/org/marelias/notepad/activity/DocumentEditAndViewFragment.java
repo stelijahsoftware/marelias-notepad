@@ -355,6 +355,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _redoMenuItem = menu.findItem(R.id.action_redo).setVisible(isText && !_isPreviewVisible);
         _saveMenuItem = menu.findItem(R.id.action_save).setVisible(isText && !_isPreviewVisible);
 
+        menu.findItem(R.id.action_save_and_back).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.paste_text).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_cut_all).setVisible(isText && !_isPreviewVisible);
 
@@ -397,6 +398,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         menu.findItem(R.id.action_undo).setVisible(false);
         menu.findItem(R.id.action_redo).setVisible(false);
         menu.findItem(R.id.action_save).setVisible(false);
+        menu.findItem(R.id.action_save_and_back).setVisible(false);
         menu.findItem(R.id.paste_text).setVisible(false);
         menu.findItem(R.id.action_cut_all).setVisible(false);
         menu.findItem(R.id.action_search).setVisible(false);
@@ -469,6 +471,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         copyMenuState(topMenu, bottomMenu, R.id.action_undo);
         copyMenuState(topMenu, bottomMenu, R.id.action_redo);
         copyMenuState(topMenu, bottomMenu, R.id.action_save);
+        copyMenuState(topMenu, bottomMenu, R.id.action_save_and_back);
         copyMenuState(topMenu, bottomMenu, R.id.paste_text);
         copyMenuState(topMenu, bottomMenu, R.id.action_cut_all);
         copyMenuState(topMenu, bottomMenu, R.id.action_search);
@@ -607,6 +610,12 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             case R.id.action_save: {
                 saveDocument(true);
                 // touch parent (elyahw)
+                return true;
+            }
+            case R.id.action_save_and_back: {
+                if (saveDocument(true) && activity != null) {
+                    activity.finish();
+                }
                 return true;
             }
             case R.id.paste_text: {
