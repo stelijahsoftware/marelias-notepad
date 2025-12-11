@@ -72,7 +72,7 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     public int getFontSize() {
-        return getInt(R.string.pref_key__editor_font_size, 15);
+        return getInt(R.string.pref_key__editor_font_size, 22);
     }
 
     public int getViewFontSize() {

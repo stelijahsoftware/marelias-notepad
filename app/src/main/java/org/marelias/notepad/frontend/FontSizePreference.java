@@ -14,7 +14,7 @@ import org.marelias.notepad.R;
 public class FontSizePreference extends Preference {
     private static final int MIN_SIZE = 1;
     private static final int MAX_SIZE = 36;
-    private static final int DEFAULT_SIZE = 18;
+    private static final int DEFAULT_SIZE = 22;
 
     private TextView tvFontSize;
     private Button btnDecrease;
