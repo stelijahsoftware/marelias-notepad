@@ -19,6 +19,12 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_insert_bullet"
+        android:icon="@drawable/ic_line_start_24"
+        android:title="Insert -"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_undo"
         android:icon="@drawable/ic_undo_black_24dp"
         android:title="Undo"
@@ -60,7 +66,6 @@
         android:icon="@drawable/paste_simple"
         android:title="Paste"
         app:showAsAction="always" />
-
 
     <item
         android:id="@+id/action_save"

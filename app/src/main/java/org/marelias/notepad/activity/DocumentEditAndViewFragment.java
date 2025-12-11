@@ -358,6 +358,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         menu.findItem(R.id.action_save_and_back).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.paste_text).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_cut_all).setVisible(isText && !_isPreviewVisible);
+        menu.findItem(R.id.action_insert_bullet).setVisible(isText && !_isPreviewVisible);
 
         // Edit / Preview switch
         menu.findItem(R.id.action_search).setVisible(isText && !_isPreviewVisible);
@@ -401,6 +402,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         menu.findItem(R.id.action_save_and_back).setVisible(false);
         menu.findItem(R.id.paste_text).setVisible(false);
         menu.findItem(R.id.action_cut_all).setVisible(false);
+        menu.findItem(R.id.action_insert_bullet).setVisible(false);
         menu.findItem(R.id.action_search).setVisible(false);
         menu.findItem(R.id.action_search_view).setVisible(false);
         menu.findItem(R.id.action_line_numbers).setVisible(false);
@@ -474,6 +476,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         copyMenuState(topMenu, bottomMenu, R.id.action_save_and_back);
         copyMenuState(topMenu, bottomMenu, R.id.paste_text);
         copyMenuState(topMenu, bottomMenu, R.id.action_cut_all);
+        copyMenuState(topMenu, bottomMenu, R.id.action_insert_bullet);
         copyMenuState(topMenu, bottomMenu, R.id.action_search);
         copyMenuState(topMenu, bottomMenu, R.id.action_search_view);
         copyMenuState(topMenu, bottomMenu, R.id.action_line_numbers);
@@ -584,6 +587,42 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         checkTextChangeState();
     }
 
+    private void insertBulletAtLineStart() {
+        if (_hlEditor == null) {
+            return;
+        }
+
+        final CharSequence text = _hlEditor.getText();
+        if (text == null) {
+            return;
+        }
+
+        final int[] selection = TextViewUtils.getSelection(_hlEditor);
+        final int cursorPos = selection[0];
+
+        // Find the start of the current line
+        final int lineStart = TextViewUtils.getLineStart(text, cursorPos);
+        final int lineEnd = TextViewUtils.getLineEnd(text, cursorPos);
+
+        // Check if "- " already exists at the start of the line
+        if (lineStart < text.length() && lineStart + 2 <= text.length()) {
+            final String lineStartText = text.subSequence(lineStart, Math.min(lineStart + 2, text.length())).toString();
+            if (lineStartText.equals("- ")) {
+                // Already has "- ", just move cursor after it
+                _hlEditor.getText().insert(lineEnd, "\n");
+                TextViewUtils.setSelectionAndShow(_hlEditor, lineEnd + 1);
+                return;
+            }
+        }
+
+        // Insert "- " at the start of the line
+        _hlEditor.getText().insert(lineStart, "- ");
+
+        // Move cursor to after the inserted text
+        // TextViewUtils.setSelectionAndShow(_hlEditor, lineStart + 2);
+        checkTextChangeState();
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         final Activity activity = getActivity();
@@ -624,6 +663,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             case R.id.action_cut_all: {
                 cutAllText();
+                return true;
+            }
+            case R.id.action_insert_bullet: {
+                insertBulletAtLineStart();
                 return true;
             }
 

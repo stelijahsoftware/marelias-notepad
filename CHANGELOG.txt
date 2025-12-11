@@ -11,6 +11,8 @@ X - Create a separate bar for title on top. Put the buttons bar below, directly 
 X - Focus keyboard when search button is pressed
 X - Button for immediately go back to notes list
 X - when starring files; unselect all (as if you press back button)
+X - rename note after being opened by pressing on title
+X - button to insert dash at line beginning
 
 # Earlier:
 X - Show note size

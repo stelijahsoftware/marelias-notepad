@@ -24,15 +24,11 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 
 ### TODO:
 [h]
-- rename note after being opened by pressing on title (see branch)
 - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 - Ability to use colored stars (color folders/files) like mac
 - Improve searching to grep
-- colour: TODO:/Note:/Now:
+- colour TODO:/Note:/Now:
 - turn on dark mode
-- button to insert dash at line beginning?
-- Simplify highlighting
-- Add ok slide delete option
 
 [m]
 - responsiveness: Remove save delay
