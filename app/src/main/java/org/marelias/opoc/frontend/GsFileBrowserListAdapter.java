@@ -78,6 +78,7 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
     // private static final int HIGHLIGHT_ITEM_COLOR = 0xFFCFCFCF;
 
     private File _lastAccessedFile; // Track last accessed (opened) file
+    private static java.lang.ref.WeakReference<GsFileBrowserListAdapter> _instanceRef;
 
     //########################
     //## Members
@@ -109,6 +110,7 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         _currentSelection = new HashSet<>();
         _context = context;
         HIGHLIGHT_ITEM_COLOR = ContextCompat.getColor(_context, R.color.highlight_item_in_list);
+        _instanceRef = new java.lang.ref.WeakReference<>(this);
 
         GsContextUtils.instance.setAppLocale(_context, Locale.getDefault());
 
@@ -842,6 +844,35 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
                 notifyItemChanged(position);
             }
             _lastAccessedFile = null;
+        }
+    }
+
+    public void updateLastAccessedFile(File oldFile, File newFile) {
+        if (_lastAccessedFile != null && _lastAccessedFile.equals(oldFile)) {
+            // Clear old highlight
+            int oldPosition = getFilePosition(oldFile);
+            if (oldPosition >= 0) {
+                notifyItemChanged(oldPosition);
+            }
+            // Update to new file
+            _lastAccessedFile = newFile;
+            // Highlight new file if it's in the current folder
+            if (newFile != null && newFile.getParentFile() != null &&
+                newFile.getParentFile().equals(_currentFolder)) {
+                int newPosition = getFilePosition(newFile);
+                if (newPosition >= 0) {
+                    notifyItemChanged(newPosition);
+                }
+            }
+        }
+    }
+
+    public static void updateLastAccessedFileStatic(File oldFile, File newFile) {
+        if (_instanceRef != null) {
+            GsFileBrowserListAdapter adapter = _instanceRef.get();
+            if (adapter != null) {
+                adapter.updateLastAccessedFile(oldFile, newFile);
+            }
         }
     }
 

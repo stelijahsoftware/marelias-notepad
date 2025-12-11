@@ -322,6 +322,9 @@ public class DocumentActivity extends MarkorBaseActivity {
         }
 
         if (oldFile.renameTo(newFile)) {
+            // Update file browser to highlight the renamed file
+            GsFileBrowserListAdapter.updateLastAccessedFileStatic(oldFile, newFile);
+
             // Close current fragment and open renamed file
             // Clear the current fragment reference to force a new one to be created
             _currentFragment = null;
