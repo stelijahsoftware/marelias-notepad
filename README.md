@@ -23,39 +23,39 @@ feedbackATstelijahDOTcom
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-- responsiveness: when press search, immediately draw keyboard
-- responsiveness: when starring files; unselect all (as if you press back button)
-- Simplify highlighting
-- Add ok slide delete option
-
-- colour: TODO:/Note:/Now:
-- turn on dark mode
-- button to insert dash at line begin?
-
-[h] - rename note after being opened by pressing on title (see branch)
-[h] - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
+[h]
+- rename note after being opened by pressing on title (see branch)
+- When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 - Make a floating button appear/disappear for saving. Or: Put the buttons bar below, directly on top of keyboard
-- Button for immediately go back to notes list
 - Ability to use colored stars (color folders/files) like mac
 - Improve searching to grep
+- colour: TODO:/Note:/Now:
+- turn on dark mode
+- button to insert dash at line beginning?
+- when starring files; unselect all (as if you press back button)
+- Simplify highlighting
+- Add ok slide delete option
+- Button for immediately go back to notes list
 
-[m] - responsiveness: Remove save delay
-[m] - responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-[m] - Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
-[m] - File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
-- Fix bin icon being white
+[m]
+- responsiveness: Remove save delay
+- responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
+- Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
+- File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
 - File History button?
 - Insert empty line if saved file without one at end
 
-[l] - Navigation: highlight recently opened folder (not just files)
-[l] - Navigation: Put top bar on bottom for easier access to save button & rename..etc?
-[l] - Visibility: make scrollbars darker+bigger when pressed (see opencontacts app)
-[l] - Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-[l] - Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
-[l] - Share notes app
-[l] - Sorting: Ability to pin notes to top?
-[l] - Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
-[l] - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+[l]
+- Navigation: highlight recently opened folder (not just files)
+- Navigation: Put top bar on bottom for easier access to save button & rename..etc?
+- Visibility: make scrollbars darker+bigger when pressed (see opencontacts app)
+- Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+- Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+- Share notes app
+- Sorting: Ability to pin notes to top?
+- Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
+- Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
+- Fix bin icon sometimes appearing white
 
 ### Ignored tasks:
 X - Add button to insert date yyy-mm-dd?

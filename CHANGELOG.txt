@@ -8,6 +8,7 @@ X - Highlight newly created file
 X - Update highlight to renamed file
 X - update Creating a note should move the highlight
 X - Create a separate bar for title on top
+X - Focus keyboard when search button is pressed
 
 # Earlier:
 X - Show note size
