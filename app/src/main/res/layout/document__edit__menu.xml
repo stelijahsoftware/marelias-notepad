@@ -42,10 +42,17 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_cut_all"
+        android:icon="@drawable/ic_cut_black_24dp"
+        android:title="Cut all"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/paste_text"
         android:icon="@drawable/paste_simple"
         android:title="Paste"
         app:showAsAction="always" />
+
 
     <item
         android:id="@+id/action_save"

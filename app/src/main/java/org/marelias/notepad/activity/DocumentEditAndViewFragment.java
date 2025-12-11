@@ -347,6 +347,7 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _saveMenuItem = menu.findItem(R.id.action_save).setVisible(isText && !_isPreviewVisible);
 
         menu.findItem(R.id.paste_text).setVisible(isText && !_isPreviewVisible);
+        menu.findItem(R.id.action_cut_all).setVisible(isText && !_isPreviewVisible);
 
         // Edit / Preview switch
         menu.findItem(R.id.action_search).setVisible(isText && !_isPreviewVisible);
@@ -496,6 +497,28 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         }
     }
 
+    private void cutAllText() {
+        if (_hlEditor == null) {
+            return;
+        }
+        final CharSequence content = _hlEditor.getText();
+        if (content == null || content.length() == 0) {
+            return;
+        }
+
+        // Copy all text to clipboard
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        if (clipboard != null) {
+            ClipData clip = ClipData.newPlainText("note", content);
+            clipboard.setPrimaryClip(clip);
+        }
+
+        // Clear the editor
+        _hlEditor.withAutoFormatDisabled(() -> _hlEditor.setText(""));
+        TextViewUtils.setSelectionAndShow(_hlEditor, 0);
+        checkTextChangeState();
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         final Activity activity = getActivity();
@@ -526,6 +549,10 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             case R.id.paste_text: {
                 pasteFromClipboard();
+                return true;
+            }
+            case R.id.action_cut_all: {
+                cutAllText();
                 return true;
             }
 

@@ -1,7 +1,10 @@
-2025-12-11
+# 2025-12-11
 X - make search window wider
 X - Put "folders first" sorting checkbox in main bar (move it outside of the list)
+X - Reformat modification date in file subtitles
+X - Add cut button
 
+# Earlier:
 X - Show note size
 X - Swipe right to delete note (with dialog)
 X - Bug: top system bar invisible on 4a
