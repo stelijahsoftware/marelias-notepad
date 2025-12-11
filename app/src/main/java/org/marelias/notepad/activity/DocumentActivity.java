@@ -396,6 +396,7 @@ public class DocumentActivity extends MarkorBaseActivity {
     @Override
     @SuppressWarnings("StatementWithEmptyBody")
     public void onBackPressed() {
+        super.onBackPressed();
         final int entryCount = _fragManager.getBackStackEntryCount();
         final GsFragmentBase<?, ?> top = getCurrentVisibleFragment();
 

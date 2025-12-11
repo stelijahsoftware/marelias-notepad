@@ -637,6 +637,10 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
             return;
         }
 
+        // Clear previous highlight and update last accessed file
+        clearLastAccessedHighlight();
+        _lastAccessedFile = file;
+
         if (getFilePosition(file) < 0) {
             final File dir = file.getParentFile();
             if (dir != null) {
@@ -644,6 +648,11 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
             }
         } else {
             scrollToAndFlash(file);
+            // Update highlight for the new file
+            int position = getFilePosition(file);
+            if (position >= 0) {
+                notifyItemChanged(position);
+            }
         }
     }
 
@@ -811,8 +820,17 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
                 // TODO - add logic to notify the changed bits
                 notifyDataSetChanged();
 
-                // Preserve the last accessed file when refreshing
-                if (_lastAccessedFile != null && !newData.contains(_lastAccessedFile)) {
+                // Preserve the last accessed file when refreshing, or update it if showing a new file
+                if (toShow != null && toShow.isFile() && newData.contains(toShow)) {
+                    // Clear previous highlight and set new file as last accessed
+                    if (_lastAccessedFile != null && !_lastAccessedFile.equals(toShow)) {
+                        int oldPosition = getFilePosition(_lastAccessedFile);
+                        if (oldPosition >= 0) {
+                            notifyItemChanged(oldPosition);
+                        }
+                    }
+                    _lastAccessedFile = toShow;
+                } else if (_lastAccessedFile != null && !newData.contains(_lastAccessedFile)) {
                     _lastAccessedFile = null;
                 }
 
@@ -822,10 +840,28 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
                             _layoutManager.onRestoreInstanceState(_folderScrollMap.remove(_currentFolder));
                         }
 
-                        _recyclerView.post(() -> scrollToAndFlash(toShow));
+                        _recyclerView.post(() -> {
+                            scrollToAndFlash(toShow);
+                            // Update highlight for the new file
+                            if (toShow != null && toShow.isFile()) {
+                                int position = getFilePosition(toShow);
+                                if (position >= 0) {
+                                    notifyItemChanged(position);
+                                }
+                            }
+                        });
                     });
                 } else if (toShow != null && _adapterDataFiltered.contains(toShow)) {
-                    _recyclerView.post(() -> scrollToAndFlash(toShow));
+                    _recyclerView.post(() -> {
+                        scrollToAndFlash(toShow);
+                        // Update highlight for the new file
+                        if (toShow.isFile()) {
+                            int position = getFilePosition(toShow);
+                            if (position >= 0) {
+                                notifyItemChanged(position);
+                            }
+                        }
+                    });
                 }
 
                 if (_dopt.listener != null) {
