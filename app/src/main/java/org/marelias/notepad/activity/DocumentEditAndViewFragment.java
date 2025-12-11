@@ -34,6 +34,7 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 
 import org.marelias.notepad.ApplicationObject;
 import org.marelias.notepad.R;
@@ -89,6 +90,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
     private MarkorContextUtils _cu;
     private TextViewUndoRedo _editTextUndoRedoHelper;
     private MenuItem _saveMenuItem, _undoMenuItem, _redoMenuItem;
+    private Toolbar _bottomToolbar;
+    private MenuItem _bottomSaveMenuItem, _bottomUndoMenuItem, _bottomRedoMenuItem;
     private boolean _isPreviewVisible;
 
     public DocumentEditAndViewFragment() {
@@ -176,6 +179,12 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         // _primaryScrollView.setScrollbarFadingEnabled(true); // set instead in DraggableScrollbarScrollView
         _primaryScrollView.setBackgroundColor(Color.BLACK); // elyahw: colour at bottom of screen when scrolling and releasing
         _cu = new MarkorContextUtils(activity);
+
+        _bottomToolbar = view.findViewById(R.id.document_bottom_toolbar);
+        if (_bottomToolbar != null) {
+            _bottomToolbar.inflateMenu(R.layout.document__edit__menu);
+            _bottomToolbar.setOnMenuItemClickListener(this::onOptionsItemSelected);
+        }
 
         // Using `if (_document != null)` everywhere is dangerous
         // It may cause reads or writes to _silently fail_
@@ -382,6 +391,18 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
 
         // Set various initial states
         updateMenuToggleStates(_document.getFormat());
+        syncBottomToolbarMenu(menu);
+
+        // Hide all action buttons from top toolbar (keep only title)
+        menu.findItem(R.id.action_undo).setVisible(false);
+        menu.findItem(R.id.action_redo).setVisible(false);
+        menu.findItem(R.id.action_save).setVisible(false);
+        menu.findItem(R.id.paste_text).setVisible(false);
+        menu.findItem(R.id.action_cut_all).setVisible(false);
+        menu.findItem(R.id.action_search).setVisible(false);
+        menu.findItem(R.id.action_search_view).setVisible(false);
+        menu.findItem(R.id.action_line_numbers).setVisible(false);
+
         checkTextChangeState();
         updateUndoRedoIconStates();
     }
@@ -424,10 +445,51 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         if (_undoMenuItem != null && _undoMenuItem.isEnabled() != canUndo && (d = _undoMenuItem.setEnabled(canUndo).getIcon()) != null) {
             d.mutate().setAlpha(canUndo ? 255 : 40);
         }
+        if (_bottomUndoMenuItem != null && _bottomUndoMenuItem.isEnabled() != canUndo && (d = _bottomUndoMenuItem.setEnabled(canUndo).getIcon()) != null) {
+            d.mutate().setAlpha(canUndo ? 255 : 40);
+        }
 
         final boolean canRedo = _editTextUndoRedoHelper != null && _editTextUndoRedoHelper.getCanRedo();
         if (_redoMenuItem != null && _redoMenuItem.isEnabled() != canRedo && (d = _redoMenuItem.setEnabled(canRedo).getIcon()) != null) {
             d.mutate().setAlpha(canRedo ? 255 : 40);
+        }
+        if (_bottomRedoMenuItem != null && _bottomRedoMenuItem.isEnabled() != canRedo && (d = _bottomRedoMenuItem.setEnabled(canRedo).getIcon()) != null) {
+            d.mutate().setAlpha(canRedo ? 255 : 40);
+        }
+    }
+
+    private void syncBottomToolbarMenu(final Menu topMenu) {
+        if (_bottomToolbar == null) {
+            return;
+        }
+        final Menu bottomMenu = _bottomToolbar.getMenu();
+        bottomMenu.clear();
+        _bottomToolbar.inflateMenu(R.layout.document__edit__menu);
+
+        copyMenuState(topMenu, bottomMenu, R.id.action_undo);
+        copyMenuState(topMenu, bottomMenu, R.id.action_redo);
+        copyMenuState(topMenu, bottomMenu, R.id.action_save);
+        copyMenuState(topMenu, bottomMenu, R.id.paste_text);
+        copyMenuState(topMenu, bottomMenu, R.id.action_cut_all);
+        copyMenuState(topMenu, bottomMenu, R.id.action_search);
+        copyMenuState(topMenu, bottomMenu, R.id.action_search_view);
+        copyMenuState(topMenu, bottomMenu, R.id.action_line_numbers);
+
+        _bottomUndoMenuItem = bottomMenu.findItem(R.id.action_undo);
+        _bottomRedoMenuItem = bottomMenu.findItem(R.id.action_redo);
+        _bottomSaveMenuItem = bottomMenu.findItem(R.id.action_save);
+    }
+
+    private void copyMenuState(final Menu src, final Menu dest, final int id) {
+        if (src == null || dest == null) {
+            return;
+        }
+        final MenuItem s = src.findItem(id);
+        final MenuItem d = dest.findItem(id);
+        if (s != null && d != null) {
+            d.setVisible(s.isVisible());
+            d.setEnabled(s.isEnabled());
+            d.setChecked(s.isChecked());
         }
     }
 
@@ -602,6 +664,9 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         if (_saveMenuItem != null && _saveMenuItem.isEnabled() != isTextChanged && (d = _saveMenuItem.setEnabled(isTextChanged).getIcon()) != null) {
             d.mutate().setAlpha(isTextChanged ? 255 : 40);
         }
+        if (_bottomSaveMenuItem != null && _bottomSaveMenuItem.isEnabled() != isTextChanged && (d = _bottomSaveMenuItem.setEnabled(isTextChanged).getIcon()) != null) {
+            d.mutate().setAlpha(isTextChanged ? 255 : 40);
+        }
     }
 
     @Override
@@ -628,6 +693,12 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         MenuItem mi;
         if ((mi = _fragmentMenu.findItem(R.id.action_line_numbers)) != null) {
             mi.setChecked(_hlEditor.getLineNumbersEnabled());
+        }
+        if (_bottomToolbar != null) {
+            final Menu bm = _bottomToolbar.getMenu();
+            if ((mi = bm.findItem(R.id.action_line_numbers)) != null) {
+                mi.setChecked(_hlEditor.getLineNumbersEnabled());
+            }
         }
     }
 
