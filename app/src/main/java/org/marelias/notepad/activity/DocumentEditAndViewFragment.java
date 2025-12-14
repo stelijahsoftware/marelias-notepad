@@ -266,11 +266,14 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         updateMenuToggleStates(0);
         // ---------------------------------------------------------
 
-        final Runnable debounced = TextViewUtils.makeDebounced(500, () -> {
-            checkTextChangeState();
+        // Update save button state immediately when text changes
+        final Runnable debouncedUndoRedo = TextViewUtils.makeDebounced(100, () -> {
             updateUndoRedoIconStates();
         });
-        _hlEditor.addTextChangedListener(GsTextWatcherAdapter.after(s -> debounced.run()));
+        _hlEditor.addTextChangedListener(GsTextWatcherAdapter.after(s -> {
+            checkTextChangeState(); // Immediate update for save button
+            debouncedUndoRedo.run(); // Debounced update for undo/redo
+        }));
 
         // We set the keyboard to be hidden if it was hidden when we lost focus
         // This works well to preserve keyboard state.
