@@ -1,3 +1,6 @@
+# 20251214
+Enable save button immediately on edit
+
 # 2025-12-11
 X - make search window wider
 X - Put "folders first" sorting checkbox in main bar (move it outside of the list)
