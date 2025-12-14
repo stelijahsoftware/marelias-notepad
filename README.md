@@ -37,14 +37,13 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - Insert empty line if saved file without one at end
 
 [l]
-- Navigation: highlight recently opened folder (not just files)
-- Navigation: Put top bar on bottom for easier access to save button & rename..etc?
-- Visibility: make scrollbars darker+bigger when pressed (see opencontacts app)
-- Naming: Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
-- Naming/Sorting: add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
+- highlight recently opened folder (not just files)
+- make scrollbars darker+bigger when pressed (see opencontacts app)
+- Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
+- add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
 - Share notes app
-- Sorting: Ability to pin notes to top?
-- Sorting: Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
+- Ability to pin notes to top?
+- Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
 - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 - Fix bin icon sometimes appearing white
 
