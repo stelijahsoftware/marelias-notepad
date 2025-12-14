@@ -1,5 +1,6 @@
 # 20251214
-Enable save button immediately on edit
+X - Enable save button immediately on edit
+X - - add paste button to doc name edit
 
 # 2025-12-11
 X - make search window wider

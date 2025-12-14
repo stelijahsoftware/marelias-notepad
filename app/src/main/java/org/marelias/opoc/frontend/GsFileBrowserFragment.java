@@ -19,6 +19,7 @@ package org.marelias.opoc.frontend;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -178,6 +179,16 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                                 }
                             });
                             renameDialog.show(getChildFragmentManager(), WrRenameDialog.FRAGMENT_TAG);
+                            // Reset selection when dialog is dismissed (e.g., via back button)
+                            _recyclerList.post(() -> {
+                                Dialog dialog = renameDialog.getDialog();
+                                if (dialog != null) {
+                                    dialog.setOnDismissListener(d -> {
+                                        _filesystemViewerAdapter.unselectAll();
+                                        _filesystemViewerAdapter.notifyItemChanged(position);
+                                    });
+                                }
+                            });
                         } else if (direction == ItemTouchHelper.RIGHT) {
                             // Confirm and delete
                             confirmAndDeleteSingle(file, position);
@@ -272,6 +283,16 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                     }
                 });
         confirmDialog.show(getChildFragmentManager(), WrConfirmDialog.FRAGMENT_TAG);
+        // Reset selection when dialog is dismissed (e.g., via back button)
+        _recyclerList.post(() -> {
+            Dialog dialog = confirmDialog.getDialog();
+            if (dialog != null) {
+                dialog.setOnDismissListener(d -> {
+                    _filesystemViewerAdapter.unselectAll();
+                    _filesystemViewerAdapter.notifyItemChanged(position);
+                });
+            }
+        });
     }
 
     @Override
