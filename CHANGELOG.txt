@@ -1,7 +1,6 @@
 # 20251214
 X - Enable save button immediately on edit. responsiveness: Remove save delay
 X - add paste button to doc name edit
-X - Remove red color on cancelling delete
 
 # 2025-12-11
 X - make search window wider
