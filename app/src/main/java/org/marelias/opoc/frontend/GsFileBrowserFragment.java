@@ -278,8 +278,14 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                         new Thread(deleter).start();
                     } else {
                         // Restore item visual state if cancelled
-                        _filesystemViewerAdapter.unselectAll();
-                        _filesystemViewerAdapter.notifyItemChanged(position);
+                        _recyclerList.post(() -> {
+                            _filesystemViewerAdapter.unselectAll();
+                            // Find current position of the file and notify change
+                            int currentPosition = _filesystemViewerAdapter.getFilePosition(file);
+                            if (currentPosition >= 0) {
+                                _filesystemViewerAdapter.notifyItemChanged(currentPosition);
+                            }
+                        });
                     }
                 });
         confirmDialog.show(getChildFragmentManager(), WrConfirmDialog.FRAGMENT_TAG);
@@ -288,8 +294,14 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             Dialog dialog = confirmDialog.getDialog();
             if (dialog != null) {
                 dialog.setOnDismissListener(d -> {
-                    _filesystemViewerAdapter.unselectAll();
-                    _filesystemViewerAdapter.notifyItemChanged(position);
+                    _recyclerList.post(() -> {
+                        _filesystemViewerAdapter.unselectAll();
+                        // Find current position of the file and notify change
+                        int currentPosition = _filesystemViewerAdapter.getFilePosition(file);
+                        if (currentPosition >= 0) {
+                            _filesystemViewerAdapter.notifyItemChanged(currentPosition);
+                        }
+                    });
                 });
             }
         });
