@@ -31,11 +31,9 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - turn on dark mode
 
 [m]
-- responsiveness: Remove save delay
 - responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
-- Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
+- File History button: Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 - File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
-- File History button?
 - Insert empty line if saved file without one at end
 
 [l]
