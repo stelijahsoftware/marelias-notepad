@@ -10,6 +10,9 @@
 package other.writeily.write;
 
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -17,6 +20,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -63,6 +67,26 @@ public class WrRenameDialog extends DialogFragment {
         EditText newNameField = _dialog.findViewById(R.id.new_name);
         addFilenameClashTextWatcher(newNameField);
         newNameField.setFilters(new InputFilter[]{GsContextUtils.instance.makeFilenameInputFilter()});
+
+        // Set up paste button
+        Button pasteButton = _dialog.findViewById(R.id.btn_paste);
+        if (pasteButton != null) {
+            pasteButton.setOnClickListener(v -> {
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                if (clipboard != null && clipboard.hasPrimaryClip()) {
+                    ClipData clip = clipboard.getPrimaryClip();
+                    if (clip != null && clip.getItemCount() > 0) {
+                        ClipData.Item item = clip.getItemAt(0);
+                        CharSequence pasteText = item.getText();
+                        if (pasteText != null) {
+                            int start = Math.max(newNameField.getSelectionStart(), 0);
+                            int end = Math.max(newNameField.getSelectionEnd(), 0);
+                            newNameField.getText().replace(Math.min(start, end), Math.max(start, end), pasteText);
+                        }
+                    }
+                }
+            });
+        }
 
         _dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(view -> {
             View root = inflater.inflate(R.layout.rename__dialog, null);
