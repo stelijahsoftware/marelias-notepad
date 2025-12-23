@@ -29,7 +29,7 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - Improve searching to grep
 - colour TODO:/Note:/Now:
 - turn on dark mode
-- back button should cancel delete and rename
+- back button should cancel deletion and renaming dialogs
 
 [m]
 - responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
