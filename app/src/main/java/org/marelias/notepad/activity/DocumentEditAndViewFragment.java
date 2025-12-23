@@ -28,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.SearchView;
@@ -317,6 +318,20 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         _hlEditor.recomputeHighlighting();
 
         TextViewUtils.setSelectionAndShow(_hlEditor, startPos);
+
+        // Show keyboard for newly created files (or empty files)
+        if (_document.file != null && _document.file.exists() && _document.file.length() == 0) {
+            _hlEditor.post(() -> {
+                _hlEditor.requestFocus();
+                Activity activity = getActivity();
+                if (activity != null) {
+                    InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.showSoftInput(_hlEditor, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                }
+            });
+        }
     }
 
     @Override
