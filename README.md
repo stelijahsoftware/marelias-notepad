@@ -23,27 +23,24 @@ stelijahsoftwareAtProtonmailDotCom
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-[h]
 - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 - Ability to use colored stars (color folders/files) like mac
 - Improve searching to grep
 - colour TODO:/Note:/Now:
 - turn on dark mode
 - back button should cancel deletion and renaming dialogs
+- Make cursor not blinking
 
-[m]
 - responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 - File History button: Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 - File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
 - Insert empty line if saved file without one at end
 
-[l]
 - highlight recently opened folder (not just files)
 - make scrollbars darker+bigger when pressed (see opencontacts app)
 - Do not use hour and minute for automatic numbering, instead use sequential numbers (if name exists, number sequentially rather than open existing note)
 - add modifDate_creatDate?Eg`20250122-20241127 note.txt`.the first date gets updated on modification.Needs to make sure that no new note is created.
 - Share notes app
-- Ability to pin notes to top?
 - Add file with keywords to select sorting of specific folder, e.g.: "Sorting: 1/2/3", "Linenumbers: 1/0" (just like dolphin) + so save starred documents + pinned
 - Don't use currentTimeMillis(), instead copy the stamp from the just written file https://github.com/gsantner/markor/pull/2422#issuecomment-2365364977
 - Fix bin icon sometimes appearing white
