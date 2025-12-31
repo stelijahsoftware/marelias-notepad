@@ -23,14 +23,14 @@ stelijahsoftwareAtProtonmailDotCom
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-- When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 - Ability to use colored stars (color folders/files) like mac
 - Improve searching to grep
+- Make cursor not blinking
+
 - colour TODO:/Note:/Now:
 - turn on dark mode
 - back button should cancel deletion and renaming dialogs
-- Make cursor not blinking
-
+- When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 - responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)
 - File History button: Keep recently searched for items in search list. keep history when searching for a file (same as history in search and replace inside file)
 - File count to folders after folder name (information already available when selecting multiple files). Do not count folders as 1 instead as num of contents
