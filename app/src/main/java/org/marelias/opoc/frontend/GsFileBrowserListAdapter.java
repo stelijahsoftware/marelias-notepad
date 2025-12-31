@@ -778,6 +778,25 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         // Don't sort recent items - use the default order
         if (!folder.equals(VIRTUAL_STORAGE_RECENTS)) {
             GsFileUtils.sortFiles(newData, _dopt.sortByType, _dopt.sortFolderFirst, _dopt.sortReverse);
+
+            // Pin favorites to the top while preserving sort order
+            if (_dopt.favouriteFiles != null && !_dopt.favouriteFiles.isEmpty()) {
+                List<File> favourites = new ArrayList<>();
+                List<File> nonFavourites = new ArrayList<>();
+
+                for (File file : newData) {
+                    if (_dopt.favouriteFiles.contains(file)) {
+                        favourites.add(file);
+                    } else {
+                        nonFavourites.add(file);
+                    }
+                }
+
+                // Rebuild list with favorites first
+                newData.clear();
+                newData.addAll(favourites);
+                newData.addAll(nonFavourites);
+            }
         }
 
         // Testing if modtimes have changed (modtimes generally only increase)
