@@ -14,8 +14,8 @@
 
     <item
         android:id="@+id/action_save_and_back"
-        android:icon="@drawable/ic_arrow_back_white_24dp"
-        android:title="Save and Back"
+        android:icon="@drawable/go_up_icon"
+        android:title="Save and Go Up"
         app:showAsAction="always" />
 
     <item
