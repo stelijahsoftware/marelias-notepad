@@ -46,6 +46,8 @@ public class FileSearchEngine {
     private static final int maxPreviewLength = 100;
     public static final int maxQueryHistoryCount = 20;
     public static final LinkedList<String> queryHistory = new LinkedList<>(); // <<<< save it
+    private static final long MAX_FILE_SIZE_FOR_CONTENT_SEARCH = 1024 * 512; // 500kb limit
+    private static final int MAX_CONTENT_MATCHES_PER_FILE = 100; // Limit matches per file
 
     public static void addToHistory(String query) {
         queryHistory.remove(query);
@@ -117,6 +119,7 @@ public class FileSearchEngine {
         private final List<FitFile> _result = new ArrayList<>();
         private final Set<Matcher> _ignoredRegexDirs = new HashSet<>();
         private final Set<String> _ignoredExactDirs = new HashSet<>();
+        private final java.util.Map<File, String> _canonicalPathCache = new java.util.HashMap<>();
 
         public QueueSearchFilesTask(final SearchOptions config, final GsCallback.a1<List<FitFile>> callback) {
             _config = config;
@@ -217,7 +220,8 @@ public class FileSearchEngine {
                 }
 
                 final File[] subDirsOrFiles = currentDir.listFiles();
-                final int trimSize = _config.rootSearchDir.getCanonicalPath().length() + 1;
+                final String rootCanonicalPath = getCachedCanonicalPath(_config.rootSearchDir);
+                final int trimSize = rootCanonicalPath.length() + 1;
 
                 for (final File f : (subDirsOrFiles != null ? subDirsOrFiles : new File[0])) {
 
@@ -231,8 +235,12 @@ public class FileSearchEngine {
                         final boolean isDir = f.isDirectory();
 
                         final int beforeContentCount = _result.size();
-                        if (_config.isSearchInContent && !isDir && f.canRead() && GsFileUtils.isTextFile(f)) {
-                            getContentMatches(f, false, trimSize);
+                        if (_config.isSearchInContent && !isDir && f.canRead()) {
+                            // Quick size check before expensive text file check
+                            final long fileSize = f.length();
+                            if (fileSize > 0 && fileSize <= MAX_FILE_SIZE_FOR_CONTENT_SEARCH && GsFileUtils.isTextFile(f)) {
+                                getContentMatches(f, false, trimSize);
+                            }
                         }
 
                         // Search name if director or not already included due to content
@@ -314,9 +322,14 @@ public class FileSearchEngine {
 
         private boolean isFileContainSymbolicLinks(File file, File expectedParentDir) {
             try {
-                File realParentDir = file.getCanonicalFile().getParentFile();
-                if (realParentDir != null && expectedParentDir.getCanonicalPath().equals(realParentDir.getCanonicalPath())) {
-                    return false;
+                final String fileCanonicalPath = getCachedCanonicalPath(file);
+                final int lastSlash = fileCanonicalPath.lastIndexOf('/');
+                if (lastSlash > 0) {
+                    final String realParentPath = fileCanonicalPath.substring(0, lastSlash);
+                    final String expectedParentPath = getCachedCanonicalPath(expectedParentDir);
+                    if (realParentPath.equals(expectedParentPath)) {
+                        return false;
+                    }
                 }
             } catch (Exception ignored) {
             }
@@ -329,16 +342,30 @@ public class FileSearchEngine {
                 // Case insensitive:
                 final String fileName = file.getName().toLowerCase();
                 if (_config.isRegexQuery ? _matcher.reset(fileName).matches() : fileName.contains(_config.query)) {
-                    _result.add(new FitFile(file.getCanonicalPath().substring(baseLength), file.isDirectory(), null));
+                    final String canonicalPath = getCachedCanonicalPath(file);
+                    _result.add(new FitFile(canonicalPath.substring(baseLength), file.isDirectory(), null));
                 }
             } catch (Exception ignored) {
             }
         }
 
+        private String getCachedCanonicalPath(File file) {
+            String path = _canonicalPathCache.get(file);
+            if (path == null) {
+                try {
+                    path = file.getCanonicalPath();
+                    _canonicalPathCache.put(file, path);
+                } catch (Exception e) {
+                    path = file.getAbsolutePath();
+                }
+            }
+            return path;
+        }
+
         private int getDirectoryDepth(File parentDir, File childDir) {
             try {
-                String parentPath = parentDir.getCanonicalPath();
-                String childPath = childDir.getCanonicalPath();
+                String parentPath = getCachedCanonicalPath(parentDir);
+                String childPath = getCachedCanonicalPath(childDir);
                 if (!childPath.startsWith(parentPath)) {
                     return -1;
                 }
@@ -398,26 +425,35 @@ public class FileSearchEngine {
         private void getContentMatches(final File file, final boolean isFirstMatchOnly, final int trim) {
             List<Pair<String, Integer>> contentMatches = null;
 
-            try (final BufferedReader br = new BufferedReader(new InputStreamReader(getInputStream(file)))) {
+            try (final BufferedReader br = new BufferedReader(new InputStreamReader(getInputStream(file)), 8192)) {
                 int lineNumber = 0;
+                int matchCount = 0;
+                final String canonicalPath = getCachedCanonicalPath(file);
+
                 for (String line; (line = br.readLine()) != null; ) {
                     if (isCancelled() || _isCanceled) {
                         break;
                     }
-                    line = matchLine(line);
-                    if (line != null) {
+
+                    // Limit matches per file to avoid memory issues
+                    if (matchCount >= MAX_CONTENT_MATCHES_PER_FILE) {
+                        break;
+                    }
+
+                    final String matchedLine = matchLine(line);
+                    if (matchedLine != null) {
 
                         // We lazily create the match list
                         // And therefore avoid creating it for _every_ file
                         if (contentMatches == null) {
                             contentMatches = new ArrayList<>();
-
-                            final String path = file.getCanonicalPath().substring(trim);
+                            final String path = canonicalPath.substring(trim);
                             _result.add(new FitFile(path, false, contentMatches));
                         }
 
                         // Note that content matches is only created on the first find
-                        contentMatches.add(new Pair<>(line, lineNumber));
+                        contentMatches.add(new Pair<>(matchedLine, lineNumber));
+                        matchCount++;
 
                         if (isFirstMatchOnly) {
                             break;
