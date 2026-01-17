@@ -1,6 +1,7 @@
 # 2026-01-17
 X - Add search history
 X - Add buttons to go to top file & beginning of line
+X - Add buttons to scroll to top and bottom
 
 # 2025-12-31
 X - Ability to pin favourited notes to top
