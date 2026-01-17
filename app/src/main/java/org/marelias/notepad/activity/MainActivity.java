@@ -264,8 +264,19 @@ public class MainActivity extends MarkorBaseActivity implements GsFileBrowserFra
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-        if (item.getItemId() == R.id.action_settings) {
+        final int itemId = item.getItemId();
+        if (itemId == R.id.action_settings) {
             _cu.animateToActivity(this, SettingsActivity.class, false, null);
+            return true;
+        } else if (itemId == R.id.action_scroll_to_top) {
+            if (_notebook != null) {
+                _notebook.scrollToTop();
+            }
+            return true;
+        } else if (itemId == R.id.action_scroll_to_bottom) {
+            if (_notebook != null) {
+                _notebook.scrollToBottom();
+            }
             return true;
         }
         return false;

@@ -19,6 +19,22 @@
         android:visible="false"/>
 
     <item
+        android:id="@+id/action_scroll_to_top"
+        android:icon="@drawable/arrow_up_icon"
+        android:orderInCategory="90"
+        android:title="Scroll to top"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_scroll_to_bottom"
+        android:icon="@drawable/arrow_down_icon"
+        android:orderInCategory="91"
+        android:title="Scroll to bottom"
+        android:visible="true"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings_black_24dp"
         android:orderInCategory="100"

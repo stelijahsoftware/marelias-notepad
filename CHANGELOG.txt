@@ -1,5 +1,9 @@
+# 2026-01-17
+X - Add search history
+X - Add buttons to go to top file & beginning of line
+
 # 2025-12-31
-- Ability to pin favourited notes to top
+X - Ability to pin favourited notes to top
 
 # 2025-12-23
 X - Immediately Focus note after creating it

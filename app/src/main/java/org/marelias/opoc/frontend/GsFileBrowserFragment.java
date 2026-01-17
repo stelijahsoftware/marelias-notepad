@@ -499,6 +499,29 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         return _filesystemViewerAdapter;
     }
 
+    public void scrollToTop() {
+        if (_recyclerList != null) {
+            _recyclerList.post(() -> {
+                if (_recyclerList.getLayoutManager() != null) {
+                    _recyclerList.getLayoutManager().scrollToPosition(0);
+                }
+            });
+        }
+    }
+
+    public void scrollToBottom() {
+        if (_recyclerList != null && _filesystemViewerAdapter != null) {
+            _recyclerList.post(() -> {
+                if (_recyclerList.getLayoutManager() != null) {
+                    int itemCount = _filesystemViewerAdapter.getItemCount();
+                    if (itemCount > 0) {
+                        _recyclerList.getLayoutManager().scrollToPosition(itemCount - 1);
+                    }
+                }
+            });
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
         final int _id = item.getItemId();
