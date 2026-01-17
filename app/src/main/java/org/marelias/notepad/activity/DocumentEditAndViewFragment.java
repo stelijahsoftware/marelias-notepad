@@ -377,6 +377,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         menu.findItem(R.id.paste_text).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_cut_all).setVisible(isText && !_isPreviewVisible);
         menu.findItem(R.id.action_insert_bullet).setVisible(isText && !_isPreviewVisible);
+        menu.findItem(R.id.action_go_to_line_start).setVisible(isText && !_isPreviewVisible);
+        menu.findItem(R.id.action_go_to_file_start).setVisible(isText && !_isPreviewVisible);
 
         // Edit / Preview switch
         menu.findItem(R.id.action_search).setVisible(isText && !_isPreviewVisible);
@@ -424,6 +426,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         menu.findItem(R.id.action_search).setVisible(false);
         menu.findItem(R.id.action_search_view).setVisible(false);
         menu.findItem(R.id.action_line_numbers).setVisible(false);
+        menu.findItem(R.id.action_go_to_line_start).setVisible(false);
+        menu.findItem(R.id.action_go_to_file_start).setVisible(false);
 
         checkTextChangeState();
         updateUndoRedoIconStates();
@@ -498,6 +502,8 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         copyMenuState(topMenu, bottomMenu, R.id.action_search);
         copyMenuState(topMenu, bottomMenu, R.id.action_search_view);
         copyMenuState(topMenu, bottomMenu, R.id.action_line_numbers);
+        copyMenuState(topMenu, bottomMenu, R.id.action_go_to_line_start);
+        copyMenuState(topMenu, bottomMenu, R.id.action_go_to_file_start);
 
         _bottomUndoMenuItem = bottomMenu.findItem(R.id.action_undo);
         _bottomRedoMenuItem = bottomMenu.findItem(R.id.action_redo);
@@ -641,6 +647,33 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
         checkTextChangeState();
     }
 
+    private void goToLineStart() {
+        if (_hlEditor == null) {
+            return;
+        }
+
+        final CharSequence text = _hlEditor.getText();
+        if (text == null) {
+            return;
+        }
+
+        final int[] selection = TextViewUtils.getSelection(_hlEditor);
+        final int cursorPos = selection[0];
+
+        // Find the start of the current line
+        final int lineStart = TextViewUtils.getLineStart(text, cursorPos);
+        TextViewUtils.setSelectionAndShow(_hlEditor, lineStart);
+    }
+
+    private void goToFileStart() {
+        if (_hlEditor == null) {
+            return;
+        }
+
+        // Move cursor to the beginning of the file (position 0)
+        TextViewUtils.setSelectionAndShow(_hlEditor, 0);
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         final Activity activity = getActivity();
@@ -685,6 +718,14 @@ public class DocumentEditAndViewFragment extends MarkorBaseFragment implements F
             }
             case R.id.action_insert_bullet: {
                 insertBulletAtLineStart();
+                return true;
+            }
+            case R.id.action_go_to_line_start: {
+                goToLineStart();
+                return true;
+            }
+            case R.id.action_go_to_file_start: {
+                goToFileStart();
                 return true;
             }
 

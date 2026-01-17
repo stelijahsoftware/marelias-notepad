@@ -19,6 +19,18 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_go_to_file_start"
+        android:icon="@drawable/arrow_up_icon"
+        android:title="Go to beginning of file"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_go_to_line_start"
+        android:icon="@drawable/ic_arrow_back_white_24dp"
+        android:title="Go to beginning of line"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_insert_bullet"
         android:icon="@drawable/ic_line_start_24"
         android:title="Insert -"
