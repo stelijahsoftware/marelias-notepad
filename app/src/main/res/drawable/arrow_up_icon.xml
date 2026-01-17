@@ -2,13 +2,13 @@
     android:height="50dp"
     android:width="50dp"
     android:tint="#000000"
-    android:viewportHeight="330"
-    android:viewportWidth="330" >
+    android:viewportHeight="630"
+    android:viewportWidth="630" >
 
     <group android:translateX="-75.0"
         android:translateY="-75.0"
-        android:scaleX="0.5"
-        android:scaleY="0.5">
+        android:scaleX="0.8"
+        android:scaleY="0.8">
     <path android:fillColor="@android:color/white"
         android:pathData="M440,800L440,313L216,537L160,480L480,160L800,480L744,537L520,313L520,800L440,800Z"/>
     </group>
