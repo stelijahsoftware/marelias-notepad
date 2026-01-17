@@ -49,13 +49,58 @@ public class FileSearchEngine {
     private static final long MAX_FILE_SIZE_FOR_CONTENT_SEARCH = 1024 * 512; // 500kb limit
     private static final int MAX_CONTENT_MATCHES_PER_FILE = 100; // Limit matches per file
 
+    public static void loadHistory(android.content.Context context) {
+        queryHistory.clear();
+        try {
+            org.marelias.notepad.model.AppSettings settings = org.marelias.notepad.ApplicationObject.settings();
+            if (settings != null) {
+                List<String> savedHistory = settings.getSearchQueryHistory();
+                if (savedHistory != null && !savedHistory.isEmpty()) {
+                    queryHistory.addAll(savedHistory);
+                    // Ensure we don't exceed the limit
+                    while (queryHistory.size() > maxQueryHistoryCount) {
+                        queryHistory.removeLast();
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
+    public static void saveHistory(android.content.Context context) {
+        try {
+            org.marelias.notepad.model.AppSettings settings = org.marelias.notepad.ApplicationObject.settings();
+            if (settings != null) {
+                settings.setSearchQueryHistory(new java.util.ArrayList<>(queryHistory));
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
     public static void addToHistory(String query) {
+        if (query == null || query.trim().isEmpty()) {
+            return;
+        }
         queryHistory.remove(query);
 
-        if (queryHistory.size() == maxQueryHistoryCount) {
+        if (queryHistory.size() >= maxQueryHistoryCount) {
             queryHistory.removeLast();
         }
         queryHistory.addFirst(query);
+
+        // Save to persistent storage
+        try {
+            android.content.Context context = activity.get().get();
+            if (context != null) {
+                saveHistory(context);
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
+    public static void clearHistory(android.content.Context context) {
+        queryHistory.clear();
+        saveHistory(context);
     }
 
     public static class SearchOptions {

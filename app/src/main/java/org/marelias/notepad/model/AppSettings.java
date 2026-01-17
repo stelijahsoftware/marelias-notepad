@@ -297,6 +297,14 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return Arrays.asList(pref.replace("\r", "").replace("\n\n", "\n").split("\n"));
     }
 
+    public void setSearchQueryHistory(final List<String> history) {
+        setStringList(R.string.pref_key__search_query_history, history);
+    }
+
+    public List<String> getSearchQueryHistory() {
+        return getStringList(R.string.pref_key__search_query_history);
+    }
+
     public @IdRes
     int getAppStartupTab() {
         return R.id.nav_notebook;

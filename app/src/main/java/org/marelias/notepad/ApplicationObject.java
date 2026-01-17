@@ -31,6 +31,9 @@ public class ApplicationObject extends MultiDexApplication {
         _app = this;
         _appSettings = new AppSettings().init(getApplicationContext());
 
+        // Load search query history from persistent storage
+        org.marelias.notepad.frontend.FileSearchEngine.loadHistory(getApplicationContext());
+
         // Per https://stackoverflow.com/a/54191884/4717438
         try {
             new WebView(getApplicationContext());

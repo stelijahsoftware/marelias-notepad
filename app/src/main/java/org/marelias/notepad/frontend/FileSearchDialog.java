@@ -97,6 +97,19 @@ public class FileSearchDialog {
             });
 
             dialogLayout.addView(queryHistorySpinner);
+
+            // Clear history button
+            final android.widget.Button clearHistoryButton = new android.widget.Button(activity);
+            clearHistoryButton.setText("Clear History");
+            clearHistoryButton.setOnClickListener(v -> {
+                FileSearchEngine.clearHistory(activity);
+                queryHistorySpinner.setAdapter(new ArrayAdapter<>(activity, R.layout.list_group_history_item, new java.util.ArrayList<>()));
+                queryHistorySpinner.setVisibility(View.GONE);
+                clearHistoryButton.setVisibility(View.GONE);
+            });
+            final LinearLayout.LayoutParams buttonMargins = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            buttonMargins.setMargins(dp4px * 5, dp4px, dp4px * 5, dp4px);
+            dialogLayout.addView(clearHistoryButton, buttonMargins);
         }
 
         // Checkbox: Search in content

@@ -77,6 +77,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="pref_key__filesearch_ignorelist" translatable="false">pref_key__filesearch_ignorelist</string>
     <string name="pref_key__is_search_query_use_regex" translatable="false">pref_key__is_search_query_use_regex</string>
     <string name="pref_key__is_search_in_content" translatable="false">pref_key__is_search_in_content</string>
+    <string name="pref_key__search_query_history" translatable="false">pref_key__search_query_history</string>
     <string name="action_format_plaintext" translatable="false">action_format_plaintext</string>
     <string name="action_format_markdown" translatable="false">action_format_markdown</string>
     <string name="pref_key__share_into_format" translatable="false">pref_key__share_into_format</string>
