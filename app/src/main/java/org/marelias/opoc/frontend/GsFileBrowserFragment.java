@@ -341,11 +341,51 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         _recyclerList.postDelayed(this::updateMenuItems, 1000);
     }
 
+    /**
+     * Recursively counts only files (not directories) in the given directory and all subdirectories.
+     * Excludes .git folders and .directory files.
+     * @param directory The directory to count files in
+     * @return The total number of files found
+     */
+    private int countFilesRecursively(File directory) {
+        if (directory == null || !directory.exists() || !directory.isDirectory()) {
+            return 0;
+        }
+
+        // Skip .git folders
+        if (".git".equals(directory.getName())) {
+            return 0;
+        }
+
+        int count = 0;
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    // Skip .directory files
+                    if (!".directory".equals(file.getName())) {
+                        count++;
+                    }
+                } else if (file.isDirectory()) {
+                    // Recursively count files in subdirectories (excluding .git folders)
+                    count += countFilesRecursively(file);
+                }
+            }
+        }
+        return count;
+    }
+
     private void updateMenuItems() {
         final String curFilepath = (getCurrentFolder() != null ? getCurrentFolder() : new File("/")).getAbsolutePath();
         final Set<File> selFiles = _filesystemViewerAdapter.getCurrentSelection();
         final int selCount = selFiles.size();
-        final int totalCount = _filesystemViewerAdapter.getItemCount() - 1;   // Account for ".."
+
+        // Count files recursively (excluding folders) if not a virtual folder
+        int totalCount = 0;
+        final File currentFolder = getCurrentFolder();
+        if (currentFolder != null && !_filesystemViewerAdapter.isCurrentFolderVirtual() && currentFolder.isDirectory()) {
+            totalCount = countFilesRecursively(currentFolder);
+        }
         final boolean selMulti1 = _dopt.doSelectMultiple && selCount == 1;
         final boolean selMultiMore = _dopt.doSelectMultiple && selCount > 1;
         final boolean selMultiAny = selMultiMore || selMulti1;
