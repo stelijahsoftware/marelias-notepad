@@ -438,9 +438,9 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 final Activity activity = getActivity();
                 if (getCurrentFolder() != null && activity != null) {
                     if (!getCurrentFolder().getPath().equals(_appSettings.getNotebookDirectory().getPath())) {
-                        _toolbar.setTitle("> " + getCurrentFolder().getName() + String.format(" (%d)", totalCount));
+                        _toolbar.setTitle("> " + String.format("(%d) ", totalCount) + getCurrentFolder().getName());
                     } else {
-                        _toolbar.setTitle(getString(R.string.app_name_short) + String.format(" (%d)", totalCount));
+                        _toolbar.setTitle(getString(R.string.app_name_short) + String.format(" (%d) ", totalCount));
                     }
                 }
             }
