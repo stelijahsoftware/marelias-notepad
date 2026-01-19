@@ -55,9 +55,15 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import other.writeily.write.WrConfirmDialog;
 import other.writeily.write.WrMarkorSingleton;
@@ -91,6 +97,11 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
     private Menu _fragmentMenu;
     private MarkorContextUtils _cu;
     private Toolbar _toolbar;
+
+    // Async file counting
+    private final ExecutorService _fileCountExecutor = new ThreadPoolExecutor(0, 1, 60, TimeUnit.SECONDS, new SynchronousQueue<>());
+    private final Map<String, Integer> _fileCountCache = new HashMap<>();
+    private String _currentCountingFolderPath = null;
 
     //########################
     //## Methods
@@ -337,13 +348,70 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             _callback.onFsViewerDoUiUpdate(adapter);
         }
 
+        // Reset counting tracking when folder changes
+        final File currentFolder = getCurrentFolder();
+        if (currentFolder != null) {
+            final String currentPath = currentFolder.getAbsolutePath();
+            if (!currentPath.equals(_currentCountingFolderPath)) {
+                _currentCountingFolderPath = null; // Allow new count to start
+            }
+        }
+
         updateMenuItems();
         _recyclerList.postDelayed(this::updateMenuItems, 1000);
     }
 
     /**
+     * Gets a cached count for the parent directory if available, otherwise returns 0.
+     * This provides a better placeholder than 0 when navigating into subdirectories.
+     */
+    private int getCachedCountForParent(File directory) {
+        File parent = directory.getParentFile();
+        if (parent != null) {
+            Integer parentCount = _fileCountCache.get(parent.getAbsolutePath());
+            if (parentCount != null) {
+                // Return a fraction as a rough estimate (not accurate but better than 0)
+                return Math.max(0, parentCount / 2);
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * Counts files asynchronously in a background thread and updates the UI when done.
+     * @param directory The directory to count files in
+     */
+    private void countFilesRecursivelyAsync(final File directory) {
+        if (directory == null) {
+            return;
+        }
+
+        final String folderPath = directory.getAbsolutePath();
+
+        _fileCountExecutor.execute(() -> {
+            // Perform the count in background thread
+            final int count = countFilesRecursively(directory);
+
+            // Update cache
+            _fileCountCache.put(folderPath, count);
+
+            // Update UI on main thread
+            if (getActivity() != null && _toolbar != null) {
+                getActivity().runOnUiThread(() -> {
+                    // Only update if we're still viewing the same folder
+                    final File currentFolder = getCurrentFolder();
+                    if (currentFolder != null && currentFolder.getAbsolutePath().equals(folderPath)) {
+                        updateMenuItems();
+                    }
+                });
+            }
+        });
+    }
+
+    /**
      * Recursively counts only files (not directories) in the given directory and all subdirectories.
      * Excludes .git folders and .directory files.
+     * This method should be called from a background thread as it can be slow.
      * @param directory The directory to count files in
      * @return The total number of files found
      */
@@ -363,9 +431,9 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             for (File file : files) {
                 if (file.isFile()) {
                     // Skip .directory files
-                    if (!".directory".equals(file.getName())) {
-                        count++;
-                    }
+                    // if (!".directory".equals(file.getName())) {
+                    //     count++;
+                    // }
                 } else if (file.isDirectory()) {
                     // Recursively count files in subdirectories (excluding .git folders)
                     count += countFilesRecursively(file);
@@ -384,7 +452,22 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         int totalCount = 0;
         final File currentFolder = getCurrentFolder();
         if (currentFolder != null && !_filesystemViewerAdapter.isCurrentFolderVirtual() && currentFolder.isDirectory()) {
-            totalCount = countFilesRecursively(currentFolder);
+            final String folderPath = currentFolder.getAbsolutePath();
+
+            // Check cache first
+            Integer cachedCount = _fileCountCache.get(folderPath);
+            if (cachedCount != null) {
+                totalCount = cachedCount;
+            } else {
+                // Use cached count from parent or 0 as placeholder
+                totalCount = getCachedCountForParent(currentFolder);
+
+                // Start async count if not already counting this folder
+                if (!folderPath.equals(_currentCountingFolderPath)) {
+                    _currentCountingFolderPath = folderPath;
+                    countFilesRecursivelyAsync(currentFolder);
+                }
+            }
         }
         final boolean selMulti1 = _dopt.doSelectMultiple && selCount == 1;
         final boolean selMultiMore = _dopt.doSelectMultiple && selCount > 1;
