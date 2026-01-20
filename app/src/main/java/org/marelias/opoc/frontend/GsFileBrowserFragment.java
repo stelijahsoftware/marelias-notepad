@@ -432,7 +432,7 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
                 if (file.isFile()) {
                     // Skip .directory files
                     // if (!".directory".equals(file.getName())) {
-                    //     count++;
+                         count++;
                     // }
                 } else if (file.isDirectory()) {
                     // Recursively count files in subdirectories (excluding .git folders)
