@@ -37,6 +37,12 @@
         android:key="pref_key__pin_favourites_to_top"
         android:title="Pin favorites to top" />
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:icon="@drawable/ic_folder_gray_24dp"
+        android:key="pref_key__filesystem_folder_first"
+        android:title="@string/folder_first" />
+
     <Preference
         android:icon="@drawable/ic_info_black_24dp"
         android:key="pref_key__more_info__source_code"

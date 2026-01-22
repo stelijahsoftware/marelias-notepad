@@ -26,8 +26,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -596,10 +594,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         _cu.setSubMenuIconsVisibility(menu, true);
 
         MenuItem item;
-        if ((item = menu.findItem(R.id.action_folder_first)) != null) {
-            item.setChecked(_dopt.sortFolderFirst);
-            setupFolderFirstActionView(item);
-        }
         if ((item = menu.findItem(R.id.action_sort_reverse)) != null) {
             item.setChecked(_dopt.sortReverse); // Elyahw
         }
@@ -688,13 +682,6 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
             }
             case R.id.action_search: {
                 executeSearchAction();
-                return true;
-            }
-            case R.id.action_folder_first: {
-                item.setChecked(!item.isChecked());
-                _dopt.sortFolderFirst = _appSettings.setFileBrowserSortFolderFirst(item.isChecked());
-                syncFolderFirstActionView(item);
-                reloadCurrentFolder();
                 return true;
             }
             case R.id.action_favourite: {
@@ -847,38 +834,5 @@ public class GsFileBrowserFragment extends GsFragmentBase<GsSharedPreferencesPro
         return _dopt;
     }
 
-    private void setupFolderFirstActionView(final MenuItem item) {
-        final CheckBox checkBox = getFolderFirstCheckbox(item);
-        if (checkBox == null) {
-            return;
-        }
-
-        checkBox.setChecked(item.isChecked());
-        checkBox.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
-            if (item.isChecked() != isChecked) {
-                item.setChecked(isChecked);
-                _dopt.sortFolderFirst = _appSettings.setFileBrowserSortFolderFirst(isChecked);
-                reloadCurrentFolder();
-            }
-        });
-    }
-
-    private void syncFolderFirstActionView(final MenuItem item) {
-        final CheckBox checkBox = getFolderFirstCheckbox(item);
-        if (checkBox != null && checkBox.isChecked() != item.isChecked()) {
-            checkBox.setChecked(item.isChecked());
-        }
-    }
-
-    private CheckBox getFolderFirstCheckbox(final MenuItem item) {
-        if (item == null) {
-            return null;
-        }
-        final View actionView = item.getActionView();
-        if (actionView instanceof CheckBox) {
-            return (CheckBox) actionView;
-        }
-        return actionView != null ? actionView.findViewById(R.id.folder_first_checkbox) : null;
-    }
 }
 
