@@ -323,6 +323,15 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
         return getBool(R.string.pref_key__filesystem_folder_first, false);
     }
 
+    public boolean setPinFavouritesToTop(boolean v) {
+        setBool(R.string.pref_key__pin_favourites_to_top, v);
+        return v;
+    }
+
+    public boolean isPinFavouritesToTop() {
+        return getBool(R.string.pref_key__pin_favourites_to_top, true);
+    }
+
     public File getFolderToLoadByMenuId() {
         return getNotebookDirectory();
     }

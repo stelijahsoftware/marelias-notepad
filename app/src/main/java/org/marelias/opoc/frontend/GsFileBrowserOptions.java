@@ -60,7 +60,8 @@ public class GsFileBrowserOptions {
         public boolean sortFolderFirst = false,
                 sortReverse = true,
                 descModtimeInsteadOfParent = false,
-                filterShowDotFiles = true;
+                filterShowDotFiles = true,
+                pinFavouritesToTop = true;
 
         public int itemSidePadding = 16; // dp
 

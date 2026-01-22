@@ -67,6 +67,7 @@ public class MarkorFileBrowserFactory {
             opts.sortByType = appSettings.getFileBrowserSortByType();
             opts.sortReverse = appSettings.isFileBrowserSortReverse();
             opts.filterShowDotFiles = true; // appSettings.isFileBrowserFilterShowDotFiles();
+            opts.pinFavouritesToTop = appSettings.isPinFavouritesToTop();
             opts.favouriteFiles = appSettings.getFavouriteFiles();
             opts.recentFiles = appSettings.getRecentFiles();
             opts.popularFiles = appSettings.getPopularFiles();

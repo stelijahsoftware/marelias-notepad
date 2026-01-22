@@ -31,6 +31,12 @@
         android:summary="Dynamic highlighting increases performance. May cause rendering artifacts."
         android:title="Dynamic highlighting" />
 
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:icon="@drawable/ic_star_black_24dp"
+        android:key="pref_key__pin_favourites_to_top"
+        android:title="Pin favorites to top" />
+
     <Preference
         android:icon="@drawable/ic_info_black_24dp"
         android:key="pref_key__more_info__source_code"

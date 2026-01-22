@@ -779,8 +779,8 @@ public class GsFileBrowserListAdapter extends RecyclerView.Adapter<GsFileBrowser
         if (!folder.equals(VIRTUAL_STORAGE_RECENTS)) {
             GsFileUtils.sortFiles(newData, _dopt.sortByType, _dopt.sortFolderFirst, _dopt.sortReverse);
 
-            // Pin favorites to the top while preserving sort order
-            if (_dopt.favouriteFiles != null && !_dopt.favouriteFiles.isEmpty()) {
+            // Pin favorites to the top while preserving sort order (if enabled)
+            if (_dopt.pinFavouritesToTop && _dopt.favouriteFiles != null && !_dopt.favouriteFiles.isEmpty()) {
                 List<File> favourites = new ArrayList<>();
                 List<File> nonFavourites = new ArrayList<>();
 
