@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 
+import org.marelias.notepad.ApplicationObject;
 import org.marelias.notepad.R;
 import org.marelias.notepad.frontend.FileSearchEngine.FitFile;
 import org.marelias.opoc.opoc.GsCallback;
@@ -46,7 +47,7 @@ public class FileSearchResultSelectorDialog {
             final List<FileSearchEngine.FitFile> searchResults,
             final GsCallback.a3<String, Integer, Boolean> callback
     ) {
-        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Rounded);
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity, ApplicationObject.settings().getDialogStyle());
 
         final LinearLayout dialogLayout = new LinearLayout(activity);
         dialogLayout.setOrientation(LinearLayout.VERTICAL);

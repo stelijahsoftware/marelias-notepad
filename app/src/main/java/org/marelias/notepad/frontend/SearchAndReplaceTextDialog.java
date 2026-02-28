@@ -26,6 +26,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
+import org.marelias.notepad.ApplicationObject;
 import org.marelias.notepad.R;
 import org.marelias.opoc.opoc.GsSharedPreferencesPropertyBackend;
 import org.marelias.opoc.opoc.GsTextUtils;
@@ -106,7 +107,7 @@ public class SearchAndReplaceTextDialog {
         }
 
         final Resources res = activity.getResources();
-        final AlertDialog.Builder builder = new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Rounded);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(activity, ApplicationObject.settings().getDialogStyle());
         final View viewRoot = activity.getLayoutInflater().inflate(R.layout.search_replace_dialog, null);
         final AtomicReference<Dialog> dialog = new AtomicReference<>();
 

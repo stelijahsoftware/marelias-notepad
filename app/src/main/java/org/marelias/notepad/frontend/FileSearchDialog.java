@@ -42,7 +42,7 @@ public class FileSearchDialog {
             final FileSearchDialog.Options options,
             final GsCallback.a1<FileSearchEngine.SearchOptions> dialogCallback
     ) {
-        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Rounded);
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity, ApplicationObject.settings().getDialogStyle());
         final AppSettings appSettings = ApplicationObject.settings();
 
         final ScrollView scrollView = new ScrollView(activity);

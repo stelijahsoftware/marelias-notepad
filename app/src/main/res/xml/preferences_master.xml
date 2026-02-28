@@ -43,6 +43,12 @@
         android:key="pref_key__filesystem_folder_first"
         android:title="@string/folder_first" />
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:icon="@drawable/ic_highlight_black_24dp"
+        android:key="pref_key__is_dark_mode_enabled"
+        android:title="@string/dark_mode" />
+
     <Preference
         android:icon="@drawable/ic_info_black_24dp"
         android:key="pref_key__more_info__source_code"

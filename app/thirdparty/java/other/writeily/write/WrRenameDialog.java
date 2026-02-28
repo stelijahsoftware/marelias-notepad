@@ -29,6 +29,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.fragment.app.DialogFragment;
 
+import org.marelias.notepad.ApplicationObject;
 import org.marelias.notepad.R;
 import org.marelias.notepad.util.MarkorContextUtils;
 import org.marelias.opoc.opoc.GsCallback;
@@ -139,7 +140,7 @@ public class WrRenameDialog extends DialogFragment {
     private AlertDialog.Builder setUpDialog(final File file, LayoutInflater inflater) {
         View root;
         AlertDialog.Builder dialogBuilder;
-        dialogBuilder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Light_Dialog_Rounded);
+        dialogBuilder = new AlertDialog.Builder(getActivity(), ApplicationObject.settings().getDialogStyle());
         root = inflater.inflate(R.layout.rename__dialog, null);
 
         dialogBuilder.setTitle(getResources().getString(R.string.rename));

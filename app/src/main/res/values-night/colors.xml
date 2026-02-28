@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark theme color overrides (used when dark mode is enabled). -->
+<resources>
+    <color name="primary_text">#f0f0f0</color>
+    <color name="secondary_text">#B0B0B0</color>
+    <color name="background1">#1E2135</color>
+    <color name="primary_dark">#E0E0E0</color>
+    <color name="primary_top_and_system_bars">#1E2135</color>
+    <color name="file">#B0B0B0</color>
+    <color name="folder">#1691F2</color>
+    <color name="highlight_item_in_list">#4D4D4D</color>
+    <color name="divider">#404040</color>
+</resources>

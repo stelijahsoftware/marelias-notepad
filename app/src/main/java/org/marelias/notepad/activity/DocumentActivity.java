@@ -27,8 +27,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
+import org.marelias.notepad.ApplicationObject;
 import org.marelias.notepad.R;
 import org.marelias.notepad.activity.DocumentEditAndViewFragment;
 import org.marelias.notepad.format.FormatRegistry;
@@ -110,7 +112,7 @@ public class DocumentActivity extends MarkorBaseActivity {
 
     public static void askUserIfWantsToOpenFileInThisApp(final Activity activity, final File file) {
         if (GsFileUtils.isContentsPlainText(file)) {
-            new AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Rounded)
+            new AlertDialog.Builder(activity, ApplicationObject.settings().getDialogStyle())
                     .setTitle(R.string.open_with)
                     .setMessage(R.string.selected_file_may_be_a_textfile_want_to_open_in_editor)
                     .setIcon(R.drawable.ic_open_in_browser_black_24dp)
@@ -207,7 +209,7 @@ public class DocumentActivity extends MarkorBaseActivity {
 
     private void showNotSupportedMessage() {
         final String notSupportedMessage = "App does not support file managers that do not provide the full file path.";
-        new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Rounded)
+        new AlertDialog.Builder(this, _appSettings.getDialogStyle())
                 .setMessage(Html.fromHtml(notSupportedMessage))
                 .setNegativeButton(R.string.more_info, (di, i) -> _cu.openWebpageInExternalBrowser(this, ""))
                 .setPositiveButton(android.R.string.ok, null)
@@ -260,10 +262,10 @@ public class DocumentActivity extends MarkorBaseActivity {
         _titleEditText.setSingleLine(true);
         _titleEditText.setImeOptions(EditorInfo.IME_ACTION_DONE);
         _titleEditText.setTextSize(20);
-        _titleEditText.setTextColor(getResources().getColor(android.R.color.black));
-        _titleEditText.setHintTextColor(getResources().getColor(android.R.color.darker_gray));
+        _titleEditText.setTextColor(ContextCompat.getColor(this, R.color.primary_text));
+        _titleEditText.setHintTextColor(ContextCompat.getColor(this, R.color.secondary_text));
         _titleEditText.setBackground(null);
-        _titleEditText.setBackgroundColor(getResources().getColor(android.R.color.white));
+        _titleEditText.setBackgroundColor(ContextCompat.getColor(this, R.color.primary_top_and_system_bars));
         _titleEditText.setPadding(20, 5, 20, 5);
 
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(

@@ -187,19 +187,12 @@ public class SettingsActivity extends MarkorBaseActivity {
                 return;
             }
 
-//            if (eq(key, R.string.pref_key__language)) {
-//                activityRetVal = RESULT.RESTART_REQ;
-//                _appSettings.setRecreateMainRequired(true);
-//            } else if (eq(key, R.string.pref_key__app_theme)) {
-//                _appSettings.applyAppTheme();
-//                getActivity().finish();
-//            }
-
-//            else if (eq(key, R.string.pref_key__is_launcher_for_special_files_enabled)) {
-//                boolean extraLaunchersEnabled = prefs.getBoolean(key, false);
-//                new MarkorContextUtils(getActivity()).applySpecialLaunchersVisibility(getActivity(), extraLaunchersEnabled);
-//            }
-
+            if (eq(key, R.string.pref_key__is_dark_mode_enabled)) {
+                _appSettings.applyAppTheme();
+                if (getActivity() != null) {
+                    getActivity().recreate();
+                }
+            }
             // Required for current folder change:
             else if (eq(key, R.string.pref_key__file_description_format)) {
                 try {

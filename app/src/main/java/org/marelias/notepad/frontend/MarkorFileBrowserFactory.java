@@ -54,7 +54,7 @@ public class MarkorFileBrowserFactory {
         opts.titleTextColor = R.color.primary_text;
         opts.fileColor = R.color.file;
         opts.folderColor = R.color.folder;
-        opts.fileImage = R.drawable.ic_file_white_24dp;
+        opts.fileImage = R.drawable.ic_file_gray_24dp;
         opts.folderImage = R.drawable.ic_folder_gray_24dp;
         opts.descriptionFormat = appSettings.getString(R.string.pref_key__file_description_format, "");
 

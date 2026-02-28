@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+import org.marelias.notepad.ApplicationObject;
 import org.marelias.notepad.R;
 
 import java.io.Serializable;
@@ -55,7 +56,7 @@ public class WrConfirmDialog extends DialogFragment {
         _data = getArguments().getSerializable(EXTRA_DATA);
 
         AlertDialog.Builder dialogBuilder;
-        dialogBuilder = new AlertDialog.Builder(getActivity(), R.style.Theme_AppCompat_Light_Dialog_Rounded);
+        dialogBuilder = new AlertDialog.Builder(getActivity(), ApplicationObject.settings().getDialogStyle());
 
         dialogBuilder.setTitle(title);
         if (!TextUtils.isEmpty(message)) {

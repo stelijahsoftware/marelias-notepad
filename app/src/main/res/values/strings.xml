@@ -45,6 +45,7 @@ work. If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
     <string name="html_as_plaintext">HTML (as plain text)</string>
     <string name="document_editor_font">Document Editor Font</string>
     <string name="theme">Theme</string>
+    <string name="dark_mode">Dark mode</string>
     <string name="open_existing_files_in_view_mode">Open existing files in view mode</string>
     <string name="about">About</string>
     <string name="plaintext">Plain Text</string>

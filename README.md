@@ -28,7 +28,6 @@ Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33
 - Make cursor not blinking
 
 - colour TODO:/Note:/Now:
-- turn on dark mode
 - back button should cancel deletion and renaming dialogs
 - When press back on note empty, ask to delete. Auto-delete empty notes on save + disable auto-save?
 - responsiveness: Make selecting text and scrolling up faster (selecting text from middle of screen until top)

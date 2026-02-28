@@ -45,6 +45,7 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:scrollbars="none"
+            android:textColor="@color/primary_text"
             android:textCursorDrawable="@drawable/cursor_accent" />
 
     </org.marelias.notepad.frontend.DraggableScrollbarScrollView>

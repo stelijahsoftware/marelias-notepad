@@ -8,10 +8,14 @@
 package org.marelias.notepad.model;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Environment;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.annotation.ColorRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
 
 import org.marelias.notepad.R;
 import org.marelias.notepad.format.FormatRegistry;
@@ -90,6 +94,22 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
 
     public String getLanguage() {
         return getString(R.string.pref_key__language, "");
+    }
+
+    public boolean isDarkModeEnabled() {
+        return getBool(R.string.pref_key__is_dark_mode_enabled, false);
+    }
+
+    /** Apply light/dark theme based on preference. Call from Application.onCreate() and when preference changes. */
+    public void applyAppTheme() {
+        AppCompatDelegate.setDefaultNightMode(
+                isDarkModeEnabled() ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
+    public int getDialogStyle() {
+        return isDarkModeEnabled()
+                ? R.style.Theme_AppCompat_DayNight_Dialog_Rounded
+                : R.style.Theme_AppCompat_Light_Dialog_Rounded;
     }
 
     public void setRecreateMainRequired(boolean value) {
@@ -262,8 +282,21 @@ public class AppSettings extends GsSharedPreferencesPropertyBackend {
     }
 
     // Font color is defined here:
+    private int rcolorForCurrentTheme(@ColorRes int resColorId) {
+        boolean night = isDarkModeEnabled();
+        Configuration config = new Configuration(_context.getResources().getConfiguration());
+        config.uiMode = (config.uiMode & ~Configuration.UI_MODE_NIGHT_MASK)
+                | (night ? Configuration.UI_MODE_NIGHT_YES : Configuration.UI_MODE_NIGHT_NO);
+        Context themedContext = _context.createConfigurationContext(config);
+        return ContextCompat.getColor(themedContext, resColorId);
+    }
+
     public int getEditorForegroundColor() {
-        return rcolor(R.color.primary_text);
+        return rcolorForCurrentTheme(R.color.primary_text);
+    }
+
+    public int getEditorSecondaryColor() {
+        return rcolorForCurrentTheme(R.color.secondary_text);
     }
 
     public boolean isSearchQueryUseRegex() {
