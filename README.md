@@ -23,7 +23,7 @@ stelijahsoftwareAtProtonmailDotCom
 Forked started from 25-May-2024, last commit included was a2afb69bc6edcf9ee35d33060a02ae7cc0292847. Then cherry picked commits until f31cfa73. If you would like to pull new commits, start after f31cfa73
 
 ### TODO:
-- Ability to use colored stars (color folders/files) like mac
+- Ability to use colored stars (color folders/files) like mac - Add ability to tag notes with colors
 - Improve searching to grep
 - Make cursor not blinking
 
