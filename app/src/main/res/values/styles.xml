@@ -32,6 +32,7 @@
         <item name="colorControlNormal">@color/primary_text</item>
         <item name="android:windowBackground">@color/background1</item> <!-- settings background -->
         <item name="dialogCornerRadius">@dimen/dialog_corner_radius</item>
+        <item name="android:actionBarPopupTheme">@style/AppTheme.Popup</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item> <!-- light status bar for light theme -->
     </style>
 
@@ -50,6 +51,9 @@
     <style name="preference_theme_style" parent="Preference.Category">
         <item name="android:layout">@layout/opoc_pref_category_text</item>
     </style>
+
+    <!-- Popup/overflow menu: light in light theme (values-night overrides to dark). -->
+    <style name="AppTheme.Popup" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="LightTextToolbarOverlay" parent="ThemeOverlay.MaterialComponents.Light">
         <item name="android:textColorPrimary">@color/primary_dark</item>

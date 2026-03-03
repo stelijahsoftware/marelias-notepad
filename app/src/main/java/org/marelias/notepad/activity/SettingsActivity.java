@@ -138,7 +138,7 @@ public class SettingsActivity extends MarkorBaseActivity {
         public void doUpdatePreferences() {
             String remove = "/storage/emulated/0/";
             updateSummary(R.string.pref_key__notebook_directory,
-                    _cu.htmlToSpanned("<small><small>" + _appSettings.getNotebookDirectory().getAbsolutePath().replace(remove, "") + "</small></small>")
+                    _cu.htmlToSpanned(_appSettings.getNotebookDirectory().getAbsolutePath().replace(remove, ""))
             );
 //            updateSummary(R.string.pref_key__quicknote_filepath,
 //                    _cu.htmlToSpanned("<small><small>" + _appSettings.getQuickNoteFile().getAbsolutePath().replace(remove, "") + "</small></small>")
@@ -172,8 +172,8 @@ public class SettingsActivity extends MarkorBaseActivity {
             Preference pref = findPreference(R.string.pref_key__more_info__source_code);
 
             pref.setTitle("About");
-            pref.setSummary(String.format(locale,"Notepad Mar-Elias\n(%s)\nVersion v%s",
-                                                    _cu.getAppIdUsedAtManifest(context),
+            pref.setSummary(String.format(locale,"Notepad Mar-Elias v%s", // \n(%s)
+                                                    //_cu.getAppIdUsedAtManifest(context), // each entry here will replace a single %s
                                                     //_cu.getAppIdFlavorSpecific(context),
                                                     _cu.getAppVersionName(context))); // BuildConfig.VERSION_NAME
         }
@@ -232,26 +232,30 @@ public class SettingsActivity extends MarkorBaseActivity {
                     // _cu.openWebpageInExternalBrowser(getContext(), "https://notepad.mar-elias.com/");
 
                     // Or display html text in a window:
+                    int fgColor = _appSettings.getEditorForegroundColor();
+                    String fgHex = String.format("#%06X", 0xFFFFFF & fgColor);
+                    int secColor = _appSettings.getEditorSecondaryColor();
+                    String secHex = String.format("#%06X", 0xFFFFFF & secColor);
                     String html_info =
                         "<br>" +
-                        "<font color='#000000'><b>Notepad Mar-Elias</b> is a simple .txt file editor with custom syntax highlights. " +
+                        "<font color='" + fgHex + "'><b>Notepad Mar-Elias</b> is a simple .txt file editor with custom syntax highlights. " +
                         "A fork of <b>Markor</b>, an open source notes project authored by Gregor Santner. " +
                         "You can sync notes to a PC using a git client (e.g. Termux).</font>" +
                         "<br>" +
                         "<br>" +
-                        "<font color='#555555'><b>Project website:</b></font>" +
+                        "<font color='" + secHex + "'><b>Project website:</b></font>" +
                         "<br>" +
-                        "<font color='#0040ff'><a href='https://www.stelijah.com/products/marelias-notepad.html'>https://www.stelijah.com/apps/marelias-notepad.html</a></font>" +
-                        "<br>" +
-                        "<br>" +
-                        "<font color='#555555'><b>Project source:</b></font>" +
-                        "<br>" +
-                        "<font color='#0040ff'><a href='https://github.com/stelijahsoftware/marelias-notepad'>https://github.com/stelijahsoftware/marelias-notepad</a></font>" +
+                        "<font color='#029aff'><a href='https://www.stelijah.com/products/marelias-notepad.html'>https://www.stelijah.com/apps/marelias-notepad.html</a></font>" +
                         "<br>" +
                         "<br>" +
-                        "<font color='#555555'><b>Markor source:</b></font>" +
+                        "<font color='" + secHex + "'><b>Project source:</b></font>" +
                         "<br>" +
-                        "<font color='#0040ff'><a href='https://github.com/gsantner/markor'>https://github.com/gsantner/markor</a></font>" +
+                        "<font color='#029aff'><a href='https://github.com/stelijahsoftware/marelias-notepad'>https://github.com/stelijahsoftware/marelias-notepad</a></font>" +
+                        "<br>" +
+                        "<br>" +
+                        "<font color='" + secHex + "'><b>Markor source:</b></font>" +
+                        "<br>" +
+                        "<font color='#029aff'><a href='https://github.com/gsantner/markor'>https://github.com/gsantner/markor</a></font>" +
                         "";
                     // See:
                     // app/src/main/res/xml/preferences_master.xml

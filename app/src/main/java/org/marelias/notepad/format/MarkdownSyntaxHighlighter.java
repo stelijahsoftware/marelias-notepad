@@ -103,6 +103,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final int custom_colour_orange = Color.parseColor("#ff8000");
     private static final int custom_colour_orange_bg = Color.parseColor("#fff9f2");
     private static final int custom_colour_yellow = Color.parseColor("#ffff00");
+    private static final int custom_colour_yellow_dark = Color.parseColor("#ffdd00");
     private static final int custom_colour_purple_kate = Color.parseColor("#800080");
     private static final int custom_colour_purple_bg = Color.parseColor("#d4bed4");
     private static final int custom_colour_purple = Color.parseColor("#ff00ff");
@@ -219,7 +220,7 @@ public class MarkdownSyntaxHighlighter extends SyntaxHighlighterBase {
         createStyleSpanForMatches(custom_priority_high, Typeface.BOLD);
         createColorBackgroundSpan(custom_priority_med, custom_colour_orange);
         createStyleSpanForMatches(custom_priority_med, Typeface.BOLD);
-        createColorBackgroundSpan(custom_priority_low, custom_colour_yellow); // Colour the background
+        createColorBackgroundSpan(custom_priority_low, custom_colour_yellow_dark); // Colour the background
         createStyleSpanForMatches(custom_priority_low, Typeface.BOLD); // Make bold
 
         //$ [r [g [b..

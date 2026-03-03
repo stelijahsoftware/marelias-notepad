@@ -40,6 +40,7 @@
             android:layout_height="45dp"
             android:background="@color/primary_top_and_system_bars"
             android:theme="@style/LightTextToolbarOverlay"
+            app:popupTheme="@style/AppTheme.Popup"
             app:subtitleTextColor="@color/secondary_text"
             app:title="@string/app_name">
         </androidx.appcompat.widget.Toolbar>

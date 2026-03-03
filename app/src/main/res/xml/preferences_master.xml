@@ -26,13 +26,6 @@
 
     <CheckBoxPreference
         android:defaultValue="true"
-        android:icon="@drawable/ic_highlight_black_24dp"
-        android:key="pref_key__is_dynamic_highlighting_activated"
-        android:summary="Dynamic highlighting increases performance. May cause rendering artifacts."
-        android:title="Dynamic highlighting" />
-
-    <CheckBoxPreference
-        android:defaultValue="true"
         android:icon="@drawable/ic_star_black_24dp"
         android:key="pref_key__pin_favourites_to_top"
         android:title="Pin favorites to top" />
@@ -48,6 +41,13 @@
         android:icon="@drawable/ic_highlight_black_24dp"
         android:key="pref_key__is_dark_mode_enabled"
         android:title="@string/dark_mode" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:icon="@drawable/ic_highlight_black_24dp"
+        android:key="pref_key__is_dynamic_highlighting_activated"
+        android:summary="Increases performance but may cause rendering artifacts."
+        android:title="Dynamic highlighting" />
 
     <Preference
         android:icon="@drawable/ic_info_black_24dp"

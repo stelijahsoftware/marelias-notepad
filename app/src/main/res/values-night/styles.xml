@@ -20,4 +20,6 @@
         <item name="dialogCornerRadius">@dimen/dialog_corner_radius</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
+    <!-- Popup/overflow menu: dark in dark theme. -->
+    <style name="AppTheme.Popup" parent="ThemeOverlay.AppCompat.Dark" />
 </resources>
