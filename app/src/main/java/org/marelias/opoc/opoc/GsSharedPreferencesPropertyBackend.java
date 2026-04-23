@@ -2,6 +2,7 @@
  *
  * SPDX-FileCopyrightText: 2016-2024 Gregor Santner <gsantner AT mailbox DOT org>
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
+ * Modified 2025-2026 by St Elijah (help AT stelijah dot com)
  *
  * Written 2018-2024 by Gregor Santner <gsantner AT mailbox DOT org>
  * To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.

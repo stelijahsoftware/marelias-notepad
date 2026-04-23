@@ -2,6 +2,7 @@
  * Copyright (c) 2014 Jeff Martin
  * Copyright (c) 2015 Pedro Lafuente
  * Copyright (c) 2017-2024 Gregor Santner
+ * Copyright (c) 2025-2026 St Elijah
  *
  * Licensed under the MIT license.
  * You can get a copy of the license text here:

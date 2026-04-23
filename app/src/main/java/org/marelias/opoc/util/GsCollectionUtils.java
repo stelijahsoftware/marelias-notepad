@@ -2,6 +2,7 @@
  *
  * SPDX-FileCopyrightText: 2023 Harshad Vedartham <harshad1 AT zoho DOT com>
  * SPDX-License-Identifier: Unlicense OR CC0-1.0
+ * Modified 2025-2026 by St Elijah (help AT stelijah dot com)
  *
  * Written 2023 by Harshad Vedartham <harshad1 AT zoho DOT com>
  * To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to this software to the public domain worldwide. This software is distributed without any warranty.
